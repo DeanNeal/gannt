@@ -1,0 +1,50 @@
+.popover-content form.form-model .doc-items > div.control-group,
+.popover-content form.form-model .doc-items .item.control-group {
+  display: block;
+  width: 100% ;
+}
+/* Expense ajaxcreate form */
+.popover-content form.form-model.model-expence .doc-items input.field-modulerelation_expenceexpenseitem-qty,
+.popover-content form.form-model.model-expence .doc-items input.field-modulerelation_expenceexpenseitem-sum {
+  width: 50px;
+}
+.popover-content form.form-model.model-expence .doc-items input.field-modulerelation_expenceexpenseitem-item {
+  width: 290px;
+  max-width: 290px;
+}
+/* end of  Expense ajaxcreate form */
+.finance_page__left {
+  float: left;
+  width: 250px;
+  height: 100%;
+  background-color: #403a4a;
+}
+body.kfinance .container-fluid#content {
+  overflow: hidden;
+}
+.fpl_filter__head {
+  display: block;
+  border-left: 3px solid transparent;
+  padding: 20px 10px 20px 25px;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  font: bold 14px/100% "Open Sans", Arial;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.fpl_filter__group--active .fpl_filter__head {
+  border-left-color: #fff;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+.fpl_filter__head:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.fpl_filter__head:hover {
+  border-left-color: #fff;
+  background-color: rgba(0, 0, 0, 0.12);
+}

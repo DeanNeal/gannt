@@ -1,0 +1,10 @@
+#header{
+	.navbar-nav{
+		.menu-item{
+			&[data-active="true"]{
+				background: #fff;
+				color: #999;
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+  "name": "cubegg",
+  "version": "0.0.0",
+  "authors": [
+    "leschenkosergey <leschenko.sergey@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "backbone": "~1.2.3",
+    "requirejs": "~2.1.22",
+    "jquery": "~2.1.4",
+    "requirejs-text": "~2.0.14",
+    "almond": "~0.3.1",
+    "backbone-modelbinder": "~0.1.7"
+  }
+}
