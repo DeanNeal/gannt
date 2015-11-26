@@ -1,22 +1,21 @@
  define('views/dashboard/dashboard_view', [
     'views/baseview',
-    'views/elements/list_item_view',
-    'views/elements/list_view',
+    // 'views/elements/list_item_view',
+    // 'views/elements/list_view',
     'collections/header_list',
-    'text!templates/header/header_list_item.tpl',
+    'text!templates/dashboard/dashboard.tpl',
     'views/dashboard/dashboard_tasks_view',
     'views/dashboard/dashboard_milestones_view',
     'views/dashboard/dashboard_projects_view'
 ], function(
     BaseView,
-    ListItemView,
-    ListView,
+    // ListItemView,
+    // ListView,
     navBarCollection,
-    headerListItemTpl,
+    mainTpl,
     tasksView,
     milestonesView,
-    projectsView,
-    tpl
+    projectsView
 ){
 
     var dashboardLinks = [{
@@ -33,31 +32,9 @@
         name: "projects"
     }];
 
-
-    var SidebarItemView = ListItemView.extend({
-        template: headerListItemTpl
-    });
-
-    var SidebarListView = ListView.extend({
-        tagName: 'ul',
-        className: 'tabs'
-    });
-
-    var SidebarLeftMenu = BaseView.extend({
-        tagName: 'div',
-        className: 'right_block',
-        onInitialize: function(params) {
-            this.addView(SidebarListView, {
-                collection: new navBarCollection(dashboardLinks),
-                listItemView: SidebarItemView
-            });
-            BaseView.prototype.onInitialize.call(this, params);
-        }
-    });
-
-
     var ContentView = BaseView.extend({
         tagName:'div',
+        template: mainTpl,
         className: 'dashboard',
         router: true,
         routes: {
@@ -67,7 +44,13 @@
         },
         onInitialize: function (params) {
             BaseView.prototype.onInitialize.call(this, params);
-            this.addView(SidebarLeftMenu)
+            //this.addView(SidebarLeftMenu)
+            this.collection = new navBarCollection(dashboardLinks);
+        },
+        serialize: function() {
+            this.data = {
+                navBarLinks : _.clone(this.collection.models)
+            };
         }
     });
 

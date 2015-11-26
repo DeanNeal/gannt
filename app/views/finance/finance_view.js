@@ -1,8 +1,7 @@
 define('views/finance/finance_view', [
     'views/baseview',
-    'views/elements/list_item_view',
-    'views/elements/list_view',
     'collections/header_list',
+    'text!templates/finance/finance.tpl',
     'text!templates/header/header_list_item.tpl',
     'text!templates/finance/sidebar.tpl',
     'text!templates/finance/tabs/transactions.tpl',
@@ -10,9 +9,8 @@ define('views/finance/finance_view', [
     'text!templates/finance/tabs/cashflowacnt.tpl'
 ], function(
     BaseView,
-    ListItemView,
-    ListView,
     navBarCollection,
+    financeTpl,
     headerListItemTpl,
     sidebarTpl,
     transactionsTpl,
@@ -68,29 +66,9 @@ define('views/finance/finance_view', [
         name: "purposes"
     }];
 
-    var SidebarItemView = ListItemView.extend({
-        template: headerListItemTpl
-    });
-
-    var SidebarListView = ListView.extend({
-        tagName: 'ul',
-        className: 'nav navbar-nav'
-    });
-
-    var SidebarLeftMenu = BaseView.extend({
-        tagName: 'div',
-        className: 'finance_page__left scroller',
-        onInitialize: function(params) {
-            this.addView(SidebarListView, {
-                collection: new navBarCollection(financeLinks),
-                listItemView: SidebarItemView
-            });
-            BaseView.prototype.onInitialize.call(this, params);
-        }
-    });
-
     var ContentView = BaseView.extend({
         tagName: 'div',
+        template: financeTpl,
         className: 'finance',
         router: true,
         routes: {
@@ -100,7 +78,12 @@ define('views/finance/finance_view', [
         },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
-            this.addView(SidebarLeftMenu);
+            this.collection = new navBarCollection(financeLinks);
+        },
+        serialize: function() {
+            this.data = {
+                sideBarLinks : _.clone(this.collection.models)
+            };
         }
     });
 

@@ -1,15 +1,15 @@
 define('views/header/header_list_view', [
     'views/baseview',
-    'views/elements/list_item_view',
-    'views/elements/list_view',
+    // 'views/elements/list_item_view',
+    // 'views/elements/list_view',
     'text!templates/header/header_logo.tpl',
     'text!templates/header/header_list_item.tpl',
-    'collections/header_list',
-    'modelBinder'
+    'collections/header_list'
+   // 'modelBinder'
 ], function(
     BaseView,
-    ListItemView,
-    ListView,
+    // ListItemView,
+    // ListView,
     headerLogoTpl,
     headerListItemTpl,
     navBarCollection

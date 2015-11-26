@@ -1,6 +1,6 @@
 define('views/elements/list_item_view', [
     'views/baseview',
-    'modelBinder'
+    //'modelBinder'
 ], function(
     BaseView
 ) {
@@ -13,7 +13,7 @@ define('views/elements/list_item_view', [
         },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
-            this.modelBinder = new Backbone.ModelBinder();  
+            //this.modelBinder = new Backbone.ModelBinder();  
         },
         onRender: function() {
             var bindings = {
@@ -21,7 +21,7 @@ define('views/elements/list_item_view', [
                     selector: '.menu-item', elAttribute: 'data-active'
                 }
             }
-            this.modelBinder.bind(this.model, this.el, bindings);
+           // this.modelBinder.bind(this.model, this.el, bindings);
         },
         serialize: function() {
             this.data = _.clone(this.model.attributes);

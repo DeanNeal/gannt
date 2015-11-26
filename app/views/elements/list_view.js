@@ -15,10 +15,10 @@ define('views/elements/list_view', [
                     model: model
                 });
             });
-            
+
         },
         onChangeStage: function(currentStage) {
-            
+            debugger
             this.collection.each(function(model) {
                 if(model.get('name') == currentStage)
                    model.set({'isSelected': true});

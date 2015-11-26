@@ -220,24 +220,28 @@ define('views/baseview', ['backbone', 'require'], function(Backbone, require) {
             // remove view
             Backbone.View.prototype.remove.call(this);
         },
-        onChangeStage: function() {
-            console.log('onChangeStage');
-            /** nothing to do **/
+        onChangeStage: function(currentStage) {
+            
+            this.collection.each(function(model) {
+                if(model.get('name') == currentStage)
+                   model.set({'isSelected': true});
+            });
         },
         changeStage: function(params) {
             if(params.stagesArray[0]){
                 if(this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]){ // if current stage is already rendered and next stage doesn't exist
                     if(this.nextStage) // if current view exist we have to remove it 
                        this.nextStage.remove();
-                    this.nextStage = this.addView(this.routes[params.stagesArray[0]]); // create an instance of current view and set it into current view
-                    this.$el.append(this.nextStage.render().el); // render current stage into current view
+                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, '.bb-route-container'); // create an instance of current view and set it into current view
+                    this.$el.find('.bb-route-container').append(this.nextStage.render().el); // render current stage into current view
                 }
 
                 this.currentStage = params.stagesArray[0]; // save current stage
                 params.stagesArray.shift(); // remove current stage from stages array
             
                 this.onChangeStage(this.currentStage);
-                this.nextStage.changeStage(params); // start again without current stage
+                if(this.router)
+                    this.nextStage.changeStage(params); // start again without current stage
             }
         }
     });

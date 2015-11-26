@@ -18,7 +18,12 @@ body {
 #content {
     height: 100%;
 }
-
+.full_height{
+    height: 100%;
+}
+.bb-route-container{
+    height: 100%;
+}
 .dashboard {
     .tasks {
         li {
@@ -42,24 +47,21 @@ body {
         float: right;
         width: 65%;
     }
-    .tabs {
-        background: #221d2f;
-        li{
-        	display: inline-block;
-			.menu-item{
-				padding: 5px;
-				margin-right: 10px;
-				display: block;
-				color: #928f9a;
-				&:hover {
-				    border-left-color: #fff;
-				    background-color: rgba(0, 0, 0, 0.12);
-				}
-				&[data-active="true"] {
-				    background: #fff;
-				    color: #999;
-				}
-			}
+    .dashboard-menu{
+        overflow: hidden;
+        .navbar-nav {
+            background: #221d2f;
+            li {
+                a {
+                    color: #fff;
+                    width: 50%;
+                    padding: 5px;
+                    &[data-active="true"] {
+                        background: #fff;
+                        color: #999;
+                    }
+                }
+            }
         }
     }
 }
