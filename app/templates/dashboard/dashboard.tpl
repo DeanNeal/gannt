@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div>
 	<div class="dashboard-menu">
 		<ul class="nav navbar-nav">
 			<% _.each(navBarLinks, function(model, index) { %>  

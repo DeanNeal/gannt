@@ -210,7 +210,7 @@ define('views/baseview', ['backbone', 'require'], function(Backbone, require) {
                     };
                     if(this.nextStage) // if current view exist we have to remove it
                        this.removeNestedView(this.nextStage); 
-                    var target = this.getContentInternal().find('.bb-route-container');                       
+                    var target = this.getContentInternal().find('.bb-route-container').attr('id', params.stagesArray[0]);                       
                     this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target); // create an instance of current view and set it into current view
                     this.renderNestedView(this.nextStage, target);
                 }

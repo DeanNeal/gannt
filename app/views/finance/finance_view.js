@@ -60,10 +60,6 @@ define('views/finance/finance_view', [
         title: "chart of cash flow accaunts",
         route: "finance/cashflowacnt",
         name: "cashflowacnt"
-    }, {
-        title: "tree of purposes",
-        route: "finance/purposes",
-        name: "purposes"
     }];
 
     var ContentView = BaseView.extend({
