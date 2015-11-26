@@ -2393,34 +2393,13 @@ define('views/baseview', ['backbone', 'require'], function(Backbone, require) {
             this.afterInitialize(params);
 
         },
-        // setMiddlewares : function () {
-        //     for(var key in this.middlewares) {
-        //         if (!this.middlewares.hasOwnProperty(key))
-        //             continue;
-        //         if(this[this.middlewares[key]]) {
-        //             this.registeredMiddlewares.push(
-        //                 this.controller.addMiddleware(key, this[this.middlewares[key]], this)
-        //             );
-        //         }
-        //     }
-        // },
-        // setSubscribes : function () {
-        //     for(var key in this.subscribes) {
-        //         if (!this.subscribes.hasOwnProperty(key))
-        //             continue;
-        //         if(this[this.subscribes[key]]) {
-        //             this.registeredSubscibes.push(
-        //                 this.controller.subscribe(key, this[this.subscribes[key]], this)
-        //             );
-        //         }
-        //     }
-        // },
+        
         getId : function () {
             return this.id;
         },
-        // getContentInternal: function () {
-        //     return $(this.contentInternal);
-        // },
+        getContentInternal: function () {
+            return $(this.contentInternal);
+        },
         /**
          * This method must be override by child classes for
          * custom serialization
@@ -2544,14 +2523,6 @@ define('views/baseview', ['backbone', 'require'], function(Backbone, require) {
             _.each(this.nestedViews, function (value) {
                 this.removeNestedView(value.view);
             }, this);
-            // removes registered middlewares
-            // _.each(this.registeredMiddlewares, function(id){
-            //     this.controller.removeMiddlewareById(id);
-            // }, this);
-            // removes registered subscriptions
-            // _.each(this.registeredSubscibes, function(id){
-            //     this.controller.unsubscribeById(id);
-            // }, this);
             // clear all listeners
             this.stopListening();
             // clear main element
@@ -2559,28 +2530,35 @@ define('views/baseview', ['backbone', 'require'], function(Backbone, require) {
             // remove view
             Backbone.View.prototype.remove.call(this);
         },
-        onChangeStage: function(currentStage) {
-            
-            this.collection.each(function(model) {
-                if(model.get('name') == currentStage)
-                   model.set({'isSelected': true});
-            });
+        beforeChangeStage : function (currentStage) {
+            return true;
+        },
+        afterChangeStage: function(currentStage) {
+            /*nothing to do*/
+            // this.collection.each(function(model) {
+            //     if(model.get('name') == currentStage)
+            //        model.set({'isSelected': true});
+            // });
         },
         changeStage: function(params) {
-            if(params.stagesArray[0]){
+            
+            if(params.stagesArray[0] && this.router){
                 if(this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]){ // if current stage is already rendered and next stage doesn't exist
-                    if(this.nextStage) // if current view exist we have to remove it 
-                       this.nextStage.remove();
-                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, '.bb-route-container'); // create an instance of current view and set it into current view
-                    this.$el.find('.bb-route-container').append(this.nextStage.render().el); // render current stage into current view
+                    if(!this.beforeChangeStage(params.stagesArray[0])) {
+                        return; 
+                    };
+                    if(this.nextStage) // if current view exist we have to remove it
+                       this.removeNestedView(this.nextStage); 
+                    var target = this.getContentInternal().find('.bb-route-container');                       
+                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target); // create an instance of current view and set it into current view
+                    this.renderNestedView(this.nextStage, target);
                 }
 
                 this.currentStage = params.stagesArray[0]; // save current stage
                 params.stagesArray.shift(); // remove current stage from stages array
             
-                this.onChangeStage(this.currentStage);
-                if(this.router)
-                    this.nextStage.changeStage(params); // start again without current stage
+                this.afterChangeStage(this.currentStage);
+                this.nextStage.changeStage(params); // start again without current stage
             }
         }
     });
