@@ -1,5 +1,6 @@
 define('views/finance/finance_view', [
     'views/baseview',
+    'views/elements/base_list_view',
     'collections/header_list',
     'text!templates/finance/finance.tpl',
     'text!templates/header/header_list_item.tpl',
@@ -9,6 +10,7 @@ define('views/finance/finance_view', [
     'text!templates/finance/tabs/cashflowacnt.tpl'
 ], function(
     BaseView,
+    BaseListView,
     navBarCollection,
     financeTpl,
     headerListItemTpl,
@@ -47,7 +49,6 @@ define('views/finance/finance_view', [
 
 
 
-
     var financeLinks = [{
         title: "transactions",
         route: "finance/transactions",
@@ -62,6 +63,11 @@ define('views/finance/finance_view', [
         name: "cashflowacnt"
     }];
 
+    var SidebarLeftMenu = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
+    });
+
     var ContentView = BaseView.extend({
         tagName: 'div',
         template: financeTpl,
@@ -74,12 +80,9 @@ define('views/finance/finance_view', [
         },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
-            this.collection = new navBarCollection(financeLinks);
-        },
-        serialize: function() {
-            this.data = {
-                sideBarLinks : _.clone(this.collection.models)
-            };
+            this.addView(SidebarLeftMenu, {
+                collection: new navBarCollection(financeLinks)
+            }, '.finance_page__left');
         }
     });
 

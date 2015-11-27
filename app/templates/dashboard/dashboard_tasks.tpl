@@ -11,8 +11,6 @@
 		<li>9 task</li>
 		<li>10 task</li>
 	</ul>	
-	<div class="task-tabs">
-		<a href="#dashboard/tasks/task_item_1">Task view 1</a>
-		<a href="#dashboard/tasks/task_item_2">Task view 2</a>
-	</div>
+	<div class="task-tabs"></div>
+	<div class="bb-route-container"></div>
 </div>

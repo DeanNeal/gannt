@@ -8,8 +8,6 @@ define('Helpers', function() {
 
             for (var i = 0; i < hashes.length; i++) {
                 hash = hashes[i].split('=');
-
-                debugger
                 vars[hash[i]] = hash[i+1];
             }
 

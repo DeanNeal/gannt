@@ -2564,44 +2564,6 @@ define('views/baseview', ['backbone', 'require'], function(Backbone, require) {
     });
 });
 
-define('models/header_list_item', [],function() {
-    var MenuItem = Backbone.Model.extend({
-          title: 'Default Title',
-          isSelected: false
-    });
-
-    return MenuItem;
-});
-
-define('collections/header_list', [
-    'models/header_list_item'
-], function(MenuItem) {
-    var MenuItemCollection = Backbone.Collection.extend({
-        model: MenuItem,
-        initialize: function(params) {
-            this.on('change:isSelected', this.onSelectedChanged, this);
-
-            this.lastActive = undefined;
-
-            _.each(params, function(item, key) {
-                this.add({
-                    title: item.title,
-                    route: item.route,
-                    isSelected: false
-                })
-            }, this);
-        },
-
-        onSelectedChanged: function(model) {
-            if (this.lastActive && this.lastActive != model) {
-                this.lastActive.set('isSelected', false);
-            }
-            this.lastActive = model;
-        }
-    });
-
-    return MenuItemCollection;
-});
 /**
  * @license RequireJS text 2.0.14 Copyright (c) 2010-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -2995,10 +2957,136 @@ define('text',['module'], function (module) {
 });
 
 
-define('text!templates/dashboard/dashboard.tpl',[],function () { return '<div>\r\n\t<div class="dashboard-menu">\r\n\t\t<ul class="nav navbar-nav">\r\n\t\t\t<% _.each(navBarLinks, function(model, index) { %>  \r\n\t\t\t\t<li><a class="menu-item" href="#<%=model.get(\'route\')%>"><%=model.get(\'title\')%></a></li>\r\n\t\t\t<% }); %>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div class="bb-route-container"></div>\r\n</div>';});
+define('text!templates/elements/nav_list_item.tpl',[],function () { return '<a class="menu-item" href="/#<%=route%>"><%=title%></a>';});
+
+// Backbone.ModelBinder v1.0.4
+// (c) 2013 Bart Wood
+// Distributed Under MIT License
+(function(e){if(typeof define==="function"&&define.amd){define('modelBinder',["underscore","jquery","backbone"],e)}else{e(_,$,Backbone)}})(function(e,t,n){if(!n){throw"Please include Backbone.js before Backbone.ModelBinder.js"}n.ModelBinder=function(){e.bindAll.apply(e,[this].concat(e.functions(this)))};n.ModelBinder.SetOptions=function(e){n.ModelBinder.options=e};n.ModelBinder.VERSION="1.0.3";n.ModelBinder.Constants={};n.ModelBinder.Constants.ModelToView="ModelToView";n.ModelBinder.Constants.ViewToModel="ViewToModel";e.extend(n.ModelBinder.prototype,{bind:function(e,n,r,i){this.unbind();this._model=e;this._rootEl=n;this._setOptions(i);if(!this._model)this._throwException("model must be specified");if(!this._rootEl)this._throwException("rootEl must be specified");if(r){this._attributeBindings=t.extend(true,{},r);this._initializeAttributeBindings();this._initializeElBindings()}else{this._initializeDefaultBindings()}this._bindModelToView();this._bindViewToModel()},bindCustomTriggers:function(e,t,n,r,i){this._triggers=n;this.bind(e,t,r,i)},unbind:function(){this._unbindModelToView();this._unbindViewToModel();if(this._attributeBindings){delete this._attributeBindings;this._attributeBindings=undefined}},_setOptions:function(t){this._options=e.extend({boundAttribute:"name"},n.ModelBinder.options,t);if(!this._options["modelSetOptions"]){this._options["modelSetOptions"]={}}this._options["modelSetOptions"].changeSource="ModelBinder";if(!this._options["changeTriggers"]){this._options["changeTriggers"]={"":"change","[contenteditable]":"blur"}}if(!this._options["initialCopyDirection"]){this._options["initialCopyDirection"]=n.ModelBinder.Constants.ModelToView}},_initializeAttributeBindings:function(){var t,n,r,i,s;for(t in this._attributeBindings){n=this._attributeBindings[t];if(e.isString(n)){r={elementBindings:[{selector:n}]}}else if(e.isArray(n)){r={elementBindings:n}}else if(e.isObject(n)){r={elementBindings:[n]}}else{this._throwException("Unsupported type passed to Model Binder "+r)}for(i=0;i<r.elementBindings.length;i++){s=r.elementBindings[i];s.attributeBinding=r}r.attributeName=t;this._attributeBindings[t]=r}},_initializeDefaultBindings:function(){var e,n,r,i,s;this._attributeBindings={};n=t("["+this._options["boundAttribute"]+"]",this._rootEl);for(e=0;e<n.length;e++){r=n[e];i=t(r).attr(this._options["boundAttribute"]);if(!this._attributeBindings[i]){s={attributeName:i};s.elementBindings=[{attributeBinding:s,boundEls:[r]}];this._attributeBindings[i]=s}else{this._attributeBindings[i].elementBindings.push({attributeBinding:this._attributeBindings[i],boundEls:[r]})}}},_initializeElBindings:function(){var e,n,r,i,s,o,u;for(e in this._attributeBindings){n=this._attributeBindings[e];for(r=0;r<n.elementBindings.length;r++){i=n.elementBindings[r];if(i.selector===""){s=t(this._rootEl)}else{s=t(i.selector,this._rootEl)}if(s.length===0){this._throwException("Bad binding found. No elements returned for binding selector "+i.selector)}else{i.boundEls=[];for(o=0;o<s.length;o++){u=s[o];i.boundEls.push(u)}}}}},_bindModelToView:function(){this._model.on("change",this._onModelChange,this);if(this._options["initialCopyDirection"]===n.ModelBinder.Constants.ModelToView){this.copyModelAttributesToView()}},copyModelAttributesToView:function(t){var n,r;for(n in this._attributeBindings){if(t===undefined||e.indexOf(t,n)!==-1){r=this._attributeBindings[n];this._copyModelToView(r)}}},copyViewValuesToModel:function(){var e,n,r,i,s,o;for(e in this._attributeBindings){n=this._attributeBindings[e];for(r=0;r<n.elementBindings.length;r++){i=n.elementBindings[r];if(this._isBindingUserEditable(i)){if(this._isBindingRadioGroup(i)){o=this._getRadioButtonGroupCheckedEl(i);if(o){this._copyViewToModel(i,o)}}else{for(s=0;s<i.boundEls.length;s++){o=t(i.boundEls[s]);if(this._isElUserEditable(o)){this._copyViewToModel(i,o)}}}}}}},_unbindModelToView:function(){if(this._model){this._model.off("change",this._onModelChange);this._model=undefined}},_bindViewToModel:function(){e.each(this._options["changeTriggers"],function(e,n){t(this._rootEl).delegate(n,e,this._onElChanged)},this);if(this._options["initialCopyDirection"]===n.ModelBinder.Constants.ViewToModel){this.copyViewValuesToModel()}},_unbindViewToModel:function(){if(this._options&&this._options["changeTriggers"]){e.each(this._options["changeTriggers"],function(e,n){t(this._rootEl).undelegate(n,e,this._onElChanged)},this)}},_onElChanged:function(e){var n,r,i,s;n=t(e.target)[0];r=this._getElBindings(n);for(i=0;i<r.length;i++){s=r[i];if(this._isBindingUserEditable(s)){this._copyViewToModel(s,n)}}},_isBindingUserEditable:function(e){return e.elAttribute===undefined||e.elAttribute==="text"||e.elAttribute==="html"},_isElUserEditable:function(e){var t=e.attr("contenteditable");return t||e.is("input")||e.is("select")||e.is("textarea")},_isBindingRadioGroup:function(e){var n,r;var i=e.boundEls.length>0;for(n=0;n<e.boundEls.length;n++){r=t(e.boundEls[n]);if(r.attr("type")!=="radio"){i=false;break}}return i},_getRadioButtonGroupCheckedEl:function(e){var n,r;for(n=0;n<e.boundEls.length;n++){r=t(e.boundEls[n]);if(r.attr("type")==="radio"&&r.attr("checked")){return r}}return undefined},_getElBindings:function(e){var t,n,r,i,s,o;var u=[];for(t in this._attributeBindings){n=this._attributeBindings[t];for(r=0;r<n.elementBindings.length;r++){i=n.elementBindings[r];for(s=0;s<i.boundEls.length;s++){o=i.boundEls[s];if(o===e){u.push(i)}}}}return u},_onModelChange:function(){var e,t;for(e in this._model.changedAttributes()){t=this._attributeBindings[e];if(t){this._copyModelToView(t)}}},_copyModelToView:function(e){var r,i,s,o,u,a;u=this._model.get(e.attributeName);for(r=0;r<e.elementBindings.length;r++){i=e.elementBindings[r];for(s=0;s<i.boundEls.length;s++){o=i.boundEls[s];if(!o._isSetting){a=this._getConvertedValue(n.ModelBinder.Constants.ModelToView,i,u);this._setEl(t(o),i,a)}}}},_setEl:function(e,t,n){if(t.elAttribute){this._setElAttribute(e,t,n)}else{this._setElValue(e,n)}},_setElAttribute:function(t,r,i){switch(r.elAttribute){case"html":t.html(i);break;case"text":t.text(i);break;case"enabled":t.prop("disabled",!i);break;case"displayed":t[i?"show":"hide"]();break;case"hidden":t[i?"hide":"show"]();break;case"css":t.css(r.cssAttribute,i);break;case"class":var s=this._model.previous(r.attributeBinding.attributeName);var o=this._model.get(r.attributeBinding.attributeName);if(!e.isUndefined(s)||!e.isUndefined(o)){s=this._getConvertedValue(n.ModelBinder.Constants.ModelToView,r,s);t.removeClass(s)}if(i){t.addClass(i)}break;default:t.attr(r.elAttribute,i)}},_setElValue:function(t,n){if(t.attr("type")){switch(t.attr("type")){case"radio":if(t.val()===n){t.prop("checked")||e.defer(function(){t.trigger("change")});t.prop("checked",true)}else{t.prop("checked",false)}break;case"checkbox":t.prop("checked")===!!n||e.defer(function(){t.trigger("change")});t.prop("checked",!!n);break;case"file":break;default:t.val(n)}}else if(t.is("input")||t.is("select")||t.is("textarea")){t.val(n||(n===0?"0":""))}else{t.text(n||(n===0?"0":""))}},_copyViewToModel:function(e,r){var i,s,o;if(!r._isSetting){r._isSetting=true;i=this._setModel(e,t(r));r._isSetting=false;if(i&&e.converter){s=this._model.get(e.attributeBinding.attributeName);o=this._getConvertedValue(n.ModelBinder.Constants.ModelToView,e,s);this._setEl(t(r),e,o)}}},_getElValue:function(e,t){switch(t.attr("type")){case"checkbox":return t.prop("checked")?true:false;default:if(t.attr("contenteditable")!==undefined){return t.html()}else{return t.val()}}},_setModel:function(e,t){var r={};var i=this._getElValue(e,t);i=this._getConvertedValue(n.ModelBinder.Constants.ViewToModel,e,i);r[e.attributeBinding.attributeName]=i;return this._model.set(r,this._options["modelSetOptions"])},_getConvertedValue:function(e,t,n){if(t.converter){n=t.converter(e,n,t.attributeBinding.attributeName,this._model,t.boundEls)}else if(this._options["converter"]){n=this._options["converter"](e,n,t.attributeBinding.attributeName,this._model,t.boundEls)}return n},_throwException:function(e){if(this._options.suppressThrows){if(console&&console.error){console.error(e)}}else{throw e}}});n.ModelBinder.CollectionConverter=function(t){this._collection=t;if(!this._collection){throw"Collection must be defined"}e.bindAll(this,"convert")};e.extend(n.ModelBinder.CollectionConverter.prototype,{convert:function(e,t){if(e===n.ModelBinder.Constants.ModelToView){return t?t.id:undefined}else{return this._collection.get(t)}}});n.ModelBinder.createDefaultBindings=function(e,n,r,i){var s,o,u,a;var f={};s=t("["+n+"]",e);for(o=0;o<s.length;o++){u=s[o];a=t(u).attr(n);if(!f[a]){var l={selector:"["+n+'="'+a+'"]'};f[a]=l;if(r){f[a].converter=r}if(i){f[a].elAttribute=i}}}return f};n.ModelBinder.combineBindings=function(t,n){e.each(n,function(e,n){var r={selector:e.selector};if(e.converter){r.converter=e.converter}if(e.elAttribute){r.elAttribute=e.elAttribute}if(!t[n]){t[n]=r}else{t[n]=[t[n],r]}});return t};return n.ModelBinder});
+define('views/elements/base_list_view', [
+    'views/baseview',
+    'text!templates/elements/nav_list_item.tpl',
+    'modelBinder'
+], function(
+    BaseView,
+    navListItemTpl
+) {
+
+    var listItemView = BaseView.extend({
+        tagName: 'li',
+        template: navListItemTpl,
+        className: '',
+        events: {
+            'click': 'onClick'
+        },
+        onInitialize: function(params) {
+            BaseView.prototype.onInitialize.call(this, params);
+            this.modelBinder = new Backbone.ModelBinder();  
+        },
+        onRender: function() {
+            var bindings = {
+                isSelected : {
+                    selector: '.menu-item', elAttribute: 'data-active'
+                }
+            }
+            this.modelBinder.bind(this.model, this.el, bindings);
+        },
+        serialize: function() {
+            this.data = _.clone(this.model.attributes);
+        },
+        onClick: function() {
+            this.model.set({'isSelected': true});
+        }
+    });
+
+    var listView = BaseView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav',
+        onInitialize: function(params) {
+            var self = this;
+            BaseView.prototype.onInitialize.call(this, params);
+            this.collection.each(function(model) {
+                self.addView(listItemView, {
+                    model: model
+                });
+            });
+            this.listenTo(this.parent, 'change:stage', this.onChangeStage, this);
+        },
+        onChangeStage: function(currentStage) {
+            this.collection.each(function(model) {
+                if(model.get('name') == currentStage)
+                   model.set({'isSelected': true});
+            });
+        } 
+    });
+
+    return listView;
+});
 
 
-define('text!templates/dashboard/dashboard_tasks.tpl',[],function () { return '<div class="tasks">\r\n\t<ul>\r\n\t\t<li>1 task</li>\r\n\t\t<li>2 task</li>\r\n\t\t<li>3 task</li>\r\n\t\t<li>4 task</li>\r\n\t\t<li>5 task</li>\r\n\t\t<li>6 task</li>\r\n\t\t<li>7 task</li>\r\n\t\t<li>8 task</li>\r\n\t\t<li>9 task</li>\r\n\t\t<li>10 task</li>\r\n\t</ul>\t\r\n\t<div class="task-tabs">\r\n\t\t<a href="#dashboard/tasks/task_item_1">Task view 1</a>\r\n\t\t<a href="#dashboard/tasks/task_item_2">Task view 2</a>\r\n\t</div>\r\n</div>';});
+define('text!templates/header/header_logo.tpl',[],function () { return '<span class="navbar-brand" href="/">\r\n   <div class="logo_holder">\r\n        <a href="/#"><img src="build/img/logo.png"></a>\r\n    </div>            \r\n</span>';});
+
+define('views/header/header_list_view', [
+    'views/baseview',
+    'views/elements/base_list_view',
+    'text!templates/header/header_logo.tpl'
+], function(
+    BaseView,
+    BaseListView,
+    headerLogoTpl
+) {
+
+    var HeaderListView = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
+    });
+
+    return HeaderListView;
+});
+
+define('models/header_list_item', [],function() {
+    var MenuItem = Backbone.Model.extend({
+          title: 'Default Title',
+          isSelected: false
+    });
+
+    return MenuItem;
+});
+
+define('collections/header_list', [
+    'models/header_list_item'
+], function(MenuItem) {
+    var MenuItemCollection = Backbone.Collection.extend({
+        model: MenuItem,
+        initialize: function(params) {
+            this.on('change:isSelected', this.onSelectedChanged, this);
+
+            this.lastActive = undefined;
+
+            _.each(params, function(item, key) {
+                this.add({
+                    title: item.title,
+                    route: item.route,
+                    isSelected: false
+                })
+            }, this);
+        },
+
+        onSelectedChanged: function(model) {
+            if (this.lastActive && this.lastActive != model) {
+                this.lastActive.set('isSelected', false);
+            }
+            this.lastActive = model;
+        }
+    });
+
+    return MenuItemCollection;
+});
+
+define('text!templates/dashboard/dashboard.tpl',[],function () { return '<div>\r\n\t<div class="dashboard-menu"></div>\r\n\t<div class="bb-route-container"></div>\r\n</div>';});
+
+
+define('text!templates/dashboard/dashboard_tasks.tpl',[],function () { return '<div class="tasks">\r\n\t<ul>\r\n\t\t<li>1 task</li>\r\n\t\t<li>2 task</li>\r\n\t\t<li>3 task</li>\r\n\t\t<li>4 task</li>\r\n\t\t<li>5 task</li>\r\n\t\t<li>6 task</li>\r\n\t\t<li>7 task</li>\r\n\t\t<li>8 task</li>\r\n\t\t<li>9 task</li>\r\n\t\t<li>10 task</li>\r\n\t</ul>\t\r\n\t<div class="task-tabs"></div>\r\n\t<div class="bb-route-container"></div>\r\n</div>';});
 
 
 define('text!templates/dashboard/dashboard_task_item1.tpl',[],function () { return '<span>TASK VIEW 1 Content</span>';});
@@ -3008,11 +3096,15 @@ define('text!templates/dashboard/dashboard_task_item2.tpl',[],function () { retu
 
 define('views/dashboard/dashboard_tasks_view', [
     'views/baseview',
+    'views/elements/base_list_view',
+    'collections/header_list',
     'text!templates/dashboard/dashboard_tasks.tpl',
     'text!templates/dashboard/dashboard_task_item1.tpl',
     'text!templates/dashboard/dashboard_task_item2.tpl'
 ], function(
     BaseView,
+    BaseListView,
+    navBarCollection,
     tpl,
     taskItem1Tpl,
     taskItem2Tpl
@@ -3022,7 +3114,7 @@ define('views/dashboard/dashboard_tasks_view', [
     var taskItemView1 = BaseView.extend({
         template: taskItem1Tpl,
         className: 'task_item_view_1',
-        onInitialize: function (params) {
+        onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
         }
     });
@@ -3030,9 +3122,25 @@ define('views/dashboard/dashboard_tasks_view', [
     var taskItemView2 = BaseView.extend({
         template: taskItem2Tpl,
         className: 'task_item_view_2',
-        onInitialize: function (params) {
+        onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
         }
+    });
+
+
+    var tabsLinks = [{
+        title: "Task view 1",
+        route: "dashboard/tasks/task_item_1",
+        name: "task_item_1"
+    }, {
+        title: "Task view 2",
+        route: "dashboard/tasks/task_item_2",
+        name: "task_item_2"
+    }];
+
+    var navMenu = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
     });
 
 
@@ -3041,11 +3149,17 @@ define('views/dashboard/dashboard_tasks_view', [
         className: 'tasks',
         router: true,
         routes: {
-            'task_item_1'     : taskItemView1,
-            'task_item_2'     : taskItemView2
+            'task_item_1': taskItemView1,
+            'task_item_2': taskItemView2
         },
-        onInitialize: function (params) {
+        onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
+            this.addView(navMenu, {
+                collection: new navBarCollection(tabsLinks) 
+            }, '.task-tabs');
+        },
+        afterChangeStage: function(){
+           this.trigger('change:stage', this.currentStage);
         }
     });
 
@@ -3091,64 +3205,66 @@ define('views/dashboard/dashboard_projects_view', [
 
 });
  define('views/dashboard/dashboard_view', [
-    'views/baseview',
-    // 'views/elements/list_item_view',
-    // 'views/elements/list_view',
-    'collections/header_list',
-    'text!templates/dashboard/dashboard.tpl',
-    'views/dashboard/dashboard_tasks_view',
-    'views/dashboard/dashboard_milestones_view',
-    'views/dashboard/dashboard_projects_view'
-], function(
-    BaseView,
-    // ListItemView,
-    // ListView,
-    navBarCollection,
-    mainTpl,
-    tasksView,
-    milestonesView,
-    projectsView
-){
+     'views/baseview',
+     'views/elements/base_list_view',
+     'collections/header_list',
+     'text!templates/dashboard/dashboard.tpl',
+     'views/dashboard/dashboard_tasks_view',
+     'views/dashboard/dashboard_milestones_view',
+     'views/dashboard/dashboard_projects_view'
+ ], function(
+     BaseView,
+     BaseListView,
+     navBarCollection,
+     mainTpl,
+     tasksView,
+     milestonesView,
+     projectsView
+ ) {
 
-    var dashboardLinks = [{
-        title: "tasks",
-        route: "dashboard/tasks",
-        name: "tasks"
-    }, {
-        title: "milestones",
-        route: "dashboard/milestones",
-        name: "milestones"
-    }, {
-        title: "projects",
-        route: "dashboard/projects",
-        name: "projects"
-    }];
+     var dashboardLinks = [{
+         title: "tasks",
+         route: "dashboard/tasks",
+         name: "tasks"
+     }, {
+         title: "milestones",
+         route: "dashboard/milestones",
+         name: "milestones"
+     }, {
+         title: "projects",
+         route: "dashboard/projects",
+         name: "projects"
+     }];
 
-    var ContentView = BaseView.extend({
-        tagName:'div',
-        template: mainTpl,
-        className: 'dashboard',
-        router: true,
-        routes: {
-            'tasks'          : tasksView,
-            'milestones'     : milestonesView,
-            'projects'       : projectsView
-        },
-        onInitialize: function (params) {
-            BaseView.prototype.onInitialize.call(this, params);
-            //this.addView(SidebarLeftMenu)
-            this.collection = new navBarCollection(dashboardLinks);
-        },
-        serialize: function() {
-            this.data = {
-                navBarLinks : _.clone(this.collection.models)
-            };
-        }
-    });
+     var SidebarLeftMenu = BaseListView.extend({
+         tagName: 'ul',
+         className: 'nav navbar-nav'
+     });
 
-    return ContentView;
+     var ContentView = BaseView.extend({
+         tagName: 'div',
+         template: mainTpl,
+         className: 'dashboard',
+         router: true,
+         routes: {
+             'tasks': tasksView,
+             'milestones': milestonesView,
+             'projects': projectsView
+         },
+         onInitialize: function(params) {
+             BaseView.prototype.onInitialize.call(this, params);
+             this.addView(SidebarLeftMenu, {
+                 collection: new navBarCollection(dashboardLinks)
+             }, '.dashboard-menu');
+         },
+         afterChangeStage: function(){
+            this.trigger('change:stage', this.currentStage);
+         }
+     });
 
-});
+     return ContentView;
+
+ });
 
 
 define('text!templates/tree/submenu.tpl',[],function () { return '<div class="submenu">\r\n\tTree\r\n</div>\r\n';});
@@ -3208,7 +3324,7 @@ define('views/stats/stats_view', [
 });
 
 
-define('text!templates/finance/finance.tpl',[],function () { return '<div class="full_height">\r\n\t<div class="finance_page__left scroller">\r\n\t\t<ul class="nav navbar-nav">\r\n\t\t\t<% _.each(sideBarLinks, function(model, index) { %>  \r\n\t\t\t\t<li>\r\n\t\t\t\t\t<a class="menu-item" data-name="<%=model.get(\'title\')%>" href="#<%=model.get(\'route\')%>"><%=model.get(\'title\')%></a>\r\n\t\t\t\t</li>\r\n\t\t\t<% }); %>\r\n\t\t</ul>\r\n\t</div> \r\n\t<div class="bb-route-container"></div>\r\n</div>';});
+define('text!templates/finance/finance.tpl',[],function () { return '<div class="full_height">\r\n\t<div class="finance_page__left scroller">\r\n\t</div> \r\n\t<div class="bb-route-container"></div>\r\n</div>';});
 
 
 define('text!templates/header/header_list_item.tpl',[],function () { return '<a class="menu-item" href="/#<%=route%>"><%=title%></a>';});
@@ -3227,6 +3343,7 @@ define('text!templates/finance/tabs/cashflowacnt.tpl',[],function () { return '<
 
 define('views/finance/finance_view', [
     'views/baseview',
+    'views/elements/base_list_view',
     'collections/header_list',
     'text!templates/finance/finance.tpl',
     'text!templates/header/header_list_item.tpl',
@@ -3236,6 +3353,7 @@ define('views/finance/finance_view', [
     'text!templates/finance/tabs/cashflowacnt.tpl'
 ], function(
     BaseView,
+    BaseListView,
     navBarCollection,
     financeTpl,
     headerListItemTpl,
@@ -3274,7 +3392,6 @@ define('views/finance/finance_view', [
 
 
 
-
     var financeLinks = [{
         title: "transactions",
         route: "finance/transactions",
@@ -3289,6 +3406,11 @@ define('views/finance/finance_view', [
         name: "cashflowacnt"
     }];
 
+    var SidebarLeftMenu = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
+    });
+
     var ContentView = BaseView.extend({
         tagName: 'div',
         template: financeTpl,
@@ -3301,12 +3423,9 @@ define('views/finance/finance_view', [
         },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
-            this.collection = new navBarCollection(financeLinks);
-        },
-        serialize: function() {
-            this.data = {
-                sideBarLinks : _.clone(this.collection.models)
-            };
+            this.addView(SidebarLeftMenu, {
+                collection: new navBarCollection(financeLinks)
+            }, '.finance_page__left');
         }
     });
 
@@ -3315,10 +3434,11 @@ define('views/finance/finance_view', [
 });
 
 
-define('text!templates/main.tpl',[],function () { return '<div class="full_height">\r\n\t<div id="header" class="navbar">\r\n\t\t<div>\r\n\t\t\t<span class="navbar-brand" href="/">\r\n\t\t\t    <div class="logo_holder">\r\n\t\t\t        <a href="/#"><img src="build/img/logo.png"></a>\r\n\t\t\t    </div>            \r\n\t\t\t</span>\r\n\t\t</div>\r\n\t\t<div class="top_left__menu">\r\n\t\t\t<ul class="nav navbar-nav">\r\n\t\t\t\t<% _.each(navBarLinks, function(model, index) { %>  \r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<a class="menu-item" data-name="<%=model.get(\'title\')%>" href="#<%=model.get(\'route\')%>"><%=model.get(\'title\')%></a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t<% }); %>\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class="bb-route-container"></div>\r\n</div>';});
+define('text!templates/main.tpl',[],function () { return '<div class="full_height">\r\n\t<div id="header">\r\n\t\t<span class="navbar-brand" href="/">\r\n\t\t   <div class="logo_holder">\r\n\t\t        <a href="/#"><img src="build/img/logo.png"></a>\r\n\t\t    </div>            \r\n\t\t</span>\r\n\t\t<div class="header-container"></div>\r\n\t</div>\r\n\t<div class="bb-route-container"></div>\r\n</div>';});
 
  define('views/globalview', [
     'views/baseview',
+    'views/header/header_list_view',
     'views/dashboard/dashboard_view',
     'views/tree/tree_view',
     'views/stats/stats_view',
@@ -3327,6 +3447,7 @@ define('text!templates/main.tpl',[],function () { return '<div class="full_heigh
     'text!templates/main.tpl'
 ], function(
     BaseView,
+    headerView,
     dashboardView,
     treeView,
     statsView,
@@ -3336,23 +3457,22 @@ define('text!templates/main.tpl',[],function () { return '<div class="full_heigh
 ){
 
     var headerLinks = [{
-         route: "dashboard/tasks",
-         title: 'dashboard',
-         name: "dashboard"
-     },{
-         route:"tree",
-         title: 'tree',
-         name: "tree"
-     },{
-         route: 'stats',
-         title: 'stats',
-         name: "stats"
-     },{
-         route: "finance/transactions",
-         title: 'finance',
-         name: "finance"
+        route: "dashboard/tasks",
+        title: 'dashboard',
+        name: "dashboard"
+    }, {
+        route: "tree",
+        title: 'tree',
+        name: "tree"
+    }, {
+        route: 'stats',
+        title: 'stats',
+        name: "stats"
+    }, {
+        route: "finance/transactions",
+        title: 'finance',
+        name: "finance"
     }];
-
 
     return BaseView.extend({
         tagName:'div',
@@ -3366,17 +3486,12 @@ define('text!templates/main.tpl',[],function () { return '<div class="full_heigh
             'stats'    : statsView,
             'finance'  : financeView
         },
-        onInitialize : function () {
+        onInitialize : function (params) {
             Backbone.on('change:page', this.changeStage, this);
-            this.collection = new navBarCollection(headerLinks);
+            this.addView(headerView, {collection: new navBarCollection(headerLinks)}, '.header-container');
         },
-        onRender: function(){
-    
-        },
-        serialize: function() {
-            this.data = {
-                navBarLinks : _.clone(this.collection.models)
-            };
+        afterChangeStage: function(){
+           this.trigger('change:stage', this.currentStage);
         },
         start: function(){
             document.body.appendChild(this.render().el);
@@ -3406,8 +3521,6 @@ define('Helpers', [],function() {
 
             for (var i = 0; i < hashes.length; i++) {
                 hash = hashes[i].split('=');
-
-                debugger
                 vars[hash[i]] = hash[i+1];
             }
 

@@ -1,6 +1,23 @@
 #header{
+	background: #221d2f;
 	.navbar-nav{
 		.menu-item{
+			display: block;
+			height: 60px;
+			padding: 0 15px;
+			-webkit-transition: all 150ms ease;
+			-moz-transition: all 150ms ease;
+			-ms-transition: all 150ms ease;
+			-o-transition: all 150ms ease;
+			transition: all 150ms ease;
+			font: 600 18px/60px "Open Sans", Arial;
+			color: #928f9a;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			text-decoration: none;
+			&:hover{
+				color: #fff;
+			}
 			&[data-active="true"]{
 				background: #fff;
 				color: #999;

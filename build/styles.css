@@ -1,6 +1,24 @@
-#header .navbar-nav .menu-item[data-active="true"] {
-  background: #fff;
-  color: #999; }
+#header {
+  background: #221d2f; }
+  #header .navbar-nav .menu-item {
+    display: block;
+    height: 60px;
+    padding: 0 15px;
+    -webkit-transition: all 150ms ease;
+    -moz-transition: all 150ms ease;
+    -ms-transition: all 150ms ease;
+    -o-transition: all 150ms ease;
+    transition: all 150ms ease;
+    font: 600 18px/60px "Open Sans", Arial;
+    color: #928f9a;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none; }
+    #header .navbar-nav .menu-item:hover {
+      color: #fff; }
+    #header .navbar-nav .menu-item[data-active="true"] {
+      background: #fff;
+      color: #999; }
 
 * {
   padding: 0;
@@ -24,15 +42,15 @@ body {
 .bb-route-container {
   height: 100%; }
 
-.dashboard .tasks li {
-  padding: 5px; }
 .dashboard .tasks .task-tabs {
-  width: 200px;
-  background: #221d2f; }
+  background: #221d2f;
+  overflow: hidden; }
   .dashboard .tasks .task-tabs a {
     color: #fff;
-    width: 50%;
-    padding: 5px; }
+    padding: 5px;
+    display: block;
+    float: left;
+    width: 100%; }
     .dashboard .tasks .task-tabs a[data-active="true"] {
       background: #fff;
       color: #999; }
@@ -45,7 +63,6 @@ body {
     background: #221d2f; }
     .dashboard .dashboard-menu .navbar-nav li a {
       color: #fff;
-      width: 50%;
       padding: 5px; }
       .dashboard .dashboard-menu .navbar-nav li a[data-active="true"] {
         background: #fff;
