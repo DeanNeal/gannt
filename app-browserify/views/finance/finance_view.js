@@ -1,12 +1,13 @@
-var Backbone = require('backbone'),
-    BaseView = require('../../views/baseview'),
-    BaseListView = require('./../elements/base_list_view'),
-    navBarCollection = require('./../../collections/header_list'),
-    financeTpl = require('./finance.tpl'),
-    headerListItemTpl = require('./../elements/nav_list_item.tpl'),
-    transactionsTpl = require('./tabs/transactions.tpl'),
-    finacntTpl = require('./tabs/finacnt.tpl'),
-    cashflowacntTpl = require('./tabs/cashflowacnt.tpl');
+var Backbone          = require('backbone'),
+    BaseView          = require('views/baseview'),
+    RoutedView        = require('views/routedview'),
+    BaseListView      = require('views/elements/base_list_view'),
+    navBarCollection  = require('collections/header_list'),
+    financeTpl        = require('templates/finance/finance.tpl'),
+    headerListItemTpl = require('templates/elements/nav_list_item.tpl'),
+    transactionsTpl   = require('templates/finance/tabs/transactions.tpl'),
+    finacntTpl        = require('templates/finance/tabs/finacnt.tpl'),
+    cashflowacntTpl   = require('templates/finance/tabs/cashflowacnt.tpl');
 
 var transactionsView = BaseView.extend({
     tagName: 'div',
@@ -56,11 +57,10 @@ var SidebarLeftMenu = BaseListView.extend({
     className: 'nav navbar-nav'
 });
 
-var ContentView = BaseView.extend({
+var ContentView = RoutedView.extend({
     tagName: 'div',
     template: financeTpl,
     className: 'finance',
-    router: true,
     routes: {
         transactions: transactionsView,
         finacnt: finacntView,

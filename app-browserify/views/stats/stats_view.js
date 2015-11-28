@@ -1,6 +1,6 @@
 var Backbone = require('backbone'),
-    BaseView = require('../../views/baseview'),
-    tpl = require('./submenu.tpl');
+    BaseView = require('views/baseview'),
+    tpl      = require('templates/stats/submenu.tpl');
 
     var ContentView = BaseView.extend({
         tagName: 'div',

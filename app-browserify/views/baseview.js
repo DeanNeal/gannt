@@ -1,6 +1,6 @@
 var Backbone = require('backbone'),
-    _ = require('underscore'),
-    $ = require('jquery');
+    _        = require('underscore'),
+    $        = require('jquery');
 
 var BaseView = Backbone.View.extend({
 
@@ -10,7 +10,6 @@ var BaseView = Backbone.View.extend({
 
     className: 'BaseView',
 
-    router: false,
     /**
      * Methods provides basic initialization functionality
      */
@@ -197,10 +196,6 @@ var BaseView = Backbone.View.extend({
     },
     afterChangeStage: function(currentStage) {
         /*nothing to do*/
-        // this.collection.each(function(model) {
-        //     if(model.get('name') == currentStage)
-        //        model.set({'isSelected': true});
-        // });
     },
     changeStage: function(params) {
 

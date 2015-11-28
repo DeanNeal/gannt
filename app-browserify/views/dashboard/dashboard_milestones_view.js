@@ -1,6 +1,6 @@
 var Backbone = require('backbone'),
-    BaseView = require('../../views/baseview'),
-    tpl = require('./templates/dashboard_milestones.tpl');
+    BaseView = require('views/baseview'),
+    tpl      = require('templates/dashboard/dashboard_milestones.tpl');
 
 var ContentView =  BaseView.extend({
     className : 'milestones',

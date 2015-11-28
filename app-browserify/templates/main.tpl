@@ -7,5 +7,5 @@
 		</span>
 		<div class="header-container"></div>
 	</div>
-	<div class="bb-route-container"></div>
+	<div class="bb-route-container full_height"></div>
 </div>

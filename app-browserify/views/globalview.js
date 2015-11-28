@@ -1,12 +1,13 @@
 var Backbone = require('backbone'),
-    BaseView = require('./baseview'), 
-    headerView = require('./header/header_list_view'),
-    dashboardView = require('./dashboard/dashboard_view'),
-    treeView = require('./tree/tree_view'),
-    statsView = require('./stats/stats_view'),
-    financeView = require('./finance/finance_view'),
-    navBarCollection = require('../collections/header_list');
-    mainTpl = require('./main.tpl');
+    BaseView = require('views/baseview'), 
+    RoutedView  = require('views/routedview'),
+    headerView = require('views/header/header_list_view'),
+    dashboardView = require('views/dashboard/dashboard_view'),
+    treeView = require('views/tree/tree_view'),
+    statsView = require('views/stats/stats_view'),
+    financeView = require('views/finance/finance_view'),
+    navBarCollection = require('collections/header_list');
+    mainTpl = require('templates/main.tpl');
   
     var headerLinks = [{
         route: "dashboard/tasks",
@@ -26,12 +27,11 @@ var Backbone = require('backbone'),
         name: "finance"
     }];
 
-    var GlobalView = BaseView.extend({
+    var GlobalView = RoutedView.extend({
         tagName:'div',
         template: mainTpl,
         className: 'content',
         id: 'content', 
-        router: true,
         routes: {
              'dashboard': dashboardView,
              'tree'     : treeView,
@@ -41,9 +41,6 @@ var Backbone = require('backbone'),
         onInitialize : function (params) {
             Backbone.on('change:page', this.changeStage, this);
             this.addView(headerView, {collection: new navBarCollection(headerLinks)}, '.header-container');
-        },
-        afterChangeStage: function(){
-           this.trigger('change:stage', this.currentStage);
         },
         start: function(){
             document.body.appendChild(this.render().el);

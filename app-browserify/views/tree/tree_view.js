@@ -1,5 +1,5 @@
-var BaseView = require('../../views/baseview'), 
-    tpl = require('./submenu.tpl');
+var BaseView = require('views/baseview'), 
+    tpl      = require('templates/tree/submenu.tpl');
 
     var treeView = BaseView.extend({
         className   : 'tree',
