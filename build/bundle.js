@@ -1,5 +1,105 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Helpers = {
+    getUrlVars: function(args) {
+        if(!args) return null;
+        
+        var vars = {},
+            hash, hashes = args.split('&');
+
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars[hash[i]] = hash[i+1];
+        }
+
+        return vars;
+    }
+};
+
+module.exports = Helpers;
+},{}],2:[function(require,module,exports){
+var Backbone = require('backbone'),
+    GlobalView = require('./views/globalview'),
+    Router = require('./router/router'),
+    Helpers = require('./Helpers');
+
+
+var App = new GlobalView();
+App.start();
+
+var router = new Router();
+
+router.on('route:defaultRoute', function(actions, args) {
+    
+    if (!actions) {
+        router.navigate('dashboard/tasks', {
+            trigger: true
+        });
+        return;
+    }
+
+    var stagesArray = actions.split('/'),
+        query = Helpers.getUrlVars(args);
+
+    Backbone.trigger("change:page", {
+        stagesArray: stagesArray,
+        query: query
+    });
+});
+
+Backbone.history.start();
+},{"./Helpers":1,"./router/router":5,"./views/globalview":24,"backbone":32}],3:[function(require,module,exports){
+var MenuItem = require('../models/header_list_item'),
+    Backbone = require('backbone'),
+     _ = require('underscore');
+
+var MenuItemCollection = Backbone.Collection.extend({
+    model: MenuItem,
+    initialize: function(params) {
+        this.on('change:isSelected', this.onSelectedChanged, this);
+
+        this.lastActive = undefined;
+
+        _.each(params, function(item, key) {
+            this.add({
+                title: item.title,
+                route: item.route,
+                isSelected: false
+            })
+        }, this);
+    },
+
+    onSelectedChanged: function(model) {
+        if (this.lastActive && this.lastActive != model) {
+            this.lastActive.set('isSelected', false);
+        }
+        this.lastActive = model;
+    }
+});
+
+module.exports = MenuItemCollection;
+},{"../models/header_list_item":4,"backbone":32,"underscore":35}],4:[function(require,module,exports){
 var Backbone = require('backbone');
+
+var MenuItem = Backbone.Model.extend({
+      title: 'Default Title',
+      isSelected: false
+});
+
+module.exports = MenuItem;
+},{"backbone":32}],5:[function(require,module,exports){
+var Backbone = require('backbone');
+
+var Router = Backbone.Router.extend({
+    routes: {
+        "*route(/?:params)": 'defaultRoute'
+    }
+});
+
+module.exports = Router;
+},{"backbone":32}],6:[function(require,module,exports){
+var Backbone = require('backbone'),
+    _ = require('underscore'),
+    $ = require('jquery');
 
 var BaseView = Backbone.View.extend({
 
@@ -210,8 +310,8 @@ var BaseView = Backbone.View.extend({
                 };
                 if (this.nextStage) // if current view exist we have to remove it
                     this.removeNestedView(this.nextStage);
-                var target = this.getContentInternal().find('.bb-route-container').attr('id', params.stagesArray[0]);
-                this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target); // create an instance of current view and set it into current view
+                var target = this.getContentInternal().find('.bb-route-container');
+                this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target);
                 this.renderNestedView(this.nextStage, target);
             }
 
@@ -226,7 +326,1008 @@ var BaseView = Backbone.View.extend({
 
 module.exports = BaseView;
 
-},{"backbone":2}],2:[function(require,module,exports){
+},{"backbone":32,"jquery":34,"underscore":35}],7:[function(require,module,exports){
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    tpl = require('./templates/dashboard_milestones.tpl');
+
+var ContentView =  BaseView.extend({
+    className : 'milestones',
+    template  : tpl,
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+    }
+});
+
+module.exports = ContentView;
+},{"../../views/baseview":6,"./templates/dashboard_milestones.tpl":12,"backbone":32}],8:[function(require,module,exports){
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    tpl = require('./templates/dashboard_projects.tpl');
+
+var ContentView = BaseView.extend({
+    className : 'projects',
+    template  : tpl,
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+    }
+});
+
+module.exports = ContentView;
+},{"../../views/baseview":6,"./templates/dashboard_projects.tpl":13,"backbone":32}],9:[function(require,module,exports){
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    BaseListView = require('./../elements/base_list_view'),
+    navBarCollection = require('./../../collections/header_list'),
+    tpl = require('./templates/dashboard_tasks.tpl'),
+    taskItem1Tpl = require('./templates/dashboard_task_item1.tpl'),
+    taskItem2Tpl = require('./templates/dashboard_task_item2.tpl');
+
+    var taskItemView1 = BaseView.extend({
+        template: taskItem1Tpl,
+        className: 'task_item_view_1',
+        onInitialize: function(params) {
+            BaseView.prototype.onInitialize.call(this, params);
+        }
+    });
+
+    var taskItemView2 = BaseView.extend({
+        template: taskItem2Tpl,
+        className: 'task_item_view_2',
+        onInitialize: function(params) {
+            BaseView.prototype.onInitialize.call(this, params);
+        }
+    });
+
+
+    var tabsLinks = [{
+        title: "Task view 1",
+        route: "dashboard/tasks/task_item_1",
+        name: "task_item_1"
+    }, {
+        title: "Task view 2",
+        route: "dashboard/tasks/task_item_2",
+        name: "task_item_2"
+    }];
+
+    var navMenu = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
+    });
+
+
+    var ContentView = BaseView.extend({
+        template: tpl,
+        className: 'tasks',
+        router: true,
+        routes: {
+            'task_item_1': taskItemView1,
+            'task_item_2': taskItemView2
+        },
+        onInitialize: function(params) {
+            BaseView.prototype.onInitialize.call(this, params);
+            this.addView(navMenu, {
+                collection: new navBarCollection(tabsLinks) 
+            }, '.task-tabs');
+        },
+        afterChangeStage: function(){
+           this.trigger('change:stage', this.currentStage);
+        }
+    });
+
+module.exports = ContentView;
+},{"../../views/baseview":6,"./../../collections/header_list":3,"./../elements/base_list_view":17,"./templates/dashboard_task_item1.tpl":14,"./templates/dashboard_task_item2.tpl":15,"./templates/dashboard_tasks.tpl":16,"backbone":32}],10:[function(require,module,exports){
+var BaseView = require('../../views/baseview'),
+    BaseListView = require('./../elements/base_list_view'),
+    navBarCollection = require('./../../collections/header_list'),
+    mainTpl = require('./templates/dashboard.tpl'),
+    tasksView = require('./dashboard_tasks_view'),
+    milestonesView = require('./dashboard_milestones_view'),
+    projectsView = require('./dashboard_projects_view');
+
+
+var dashboardLinks = [{
+    title: "tasks",
+    route: "dashboard/tasks",
+    name: "tasks"
+}, {
+    title: "milestones",
+    route: "dashboard/milestones",
+    name: "milestones"
+}, {
+    title: "projects",
+    route: "dashboard/projects",
+    name: "projects"
+}];
+
+var SidebarLeftMenu = BaseListView.extend({
+    tagName: 'ul',
+    className: 'nav navbar-nav'
+});
+
+var ContentView = BaseView.extend({
+    tagName: 'div',
+    template: mainTpl,
+    className: 'dashboard',
+    router: true,
+    routes: {
+        'tasks': tasksView,
+        'milestones': milestonesView,
+        'projects': projectsView
+    },
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+        this.addView(SidebarLeftMenu, {
+            collection: new navBarCollection(dashboardLinks)
+        }, '.dashboard-menu');
+    },
+    afterChangeStage: function() {
+        this.trigger('change:stage', this.currentStage);
+    }
+});
+
+module.exports = ContentView;
+},{"../../views/baseview":6,"./../../collections/header_list":3,"./../elements/base_list_view":17,"./dashboard_milestones_view":7,"./dashboard_projects_view":8,"./dashboard_tasks_view":9,"./templates/dashboard.tpl":11}],11:[function(require,module,exports){
+module.exports = "<div>\r\n\t<div class=\"dashboard-menu\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+
+},{}],12:[function(require,module,exports){
+module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 milestone</li>\r\n\t\t<li>2 milestone</li>\r\n\t\t<li>3 milestone</li>\r\n\t\t<li>4 milestone</li>\r\n\t\t<li>5 milestone</li>\r\n\t\t<li>6 milestone</li>\r\n\t\t<li>7 milestone</li>\r\n\t\t<li>8 milestone</li>\r\n\t\t<li>9 milestone</li>\r\n\t\t<li>10 milestone</li>\r\n\t</ul>\t\r\n</div>";
+
+},{}],13:[function(require,module,exports){
+module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\t\t<li>2 project</li>\r\n\t\t<li>3 project</li>\r\n\t\t<li>4 project</li>\r\n\t\t<li>5 project</li>\r\n\t\t<li>6 project</li>\r\n\t\t<li>7 project</li>\r\n\t\t<li>8 project</li>\r\n\t\t<li>9 project</li>\r\n\t\t<li>10 project</li>\r\n\t</ul>\t\r\n</div>";
+
+},{}],14:[function(require,module,exports){
+module.exports = "<span>TASK VIEW 1 Content</span>";
+
+},{}],15:[function(require,module,exports){
+module.exports = "<span>TASK VIEW 2 Content</span>";
+
+},{}],16:[function(require,module,exports){
+module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 task</li>\r\n\t\t<li>2 task</li>\r\n\t\t<li>3 task</li>\r\n\t\t<li>4 task</li>\r\n\t\t<li>5 task</li>\r\n\t\t<li>6 task</li>\r\n\t\t<li>7 task</li>\r\n\t\t<li>8 task</li>\r\n\t\t<li>9 task</li>\r\n\t\t<li>10 task</li>\r\n\t</ul>\t\r\n\t<div class=\"task-tabs\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+
+},{}],17:[function(require,module,exports){
+var Backbone = require('backbone'),
+     _ = require('underscore'),
+    BaseView = require('../../views/baseview'),
+    navListItemTpl = require('./nav_list_item.tpl'),
+    ModelBinder = require('backbone.modelbinder');
+
+var listItemView = BaseView.extend({
+    tagName: 'li',
+    template: navListItemTpl,
+    className: '',
+    events: {
+        'click': 'onClick'
+    },
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+        this.modelBinder = new Backbone.ModelBinder();
+    },
+    onRender: function() {
+        var bindings = {
+            isSelected: {
+                selector: '.menu-item',
+                elAttribute: 'data-active'
+            }
+        }
+        this.modelBinder.bind(this.model, this.el, bindings);
+    },
+    serialize: function() {
+        this.data = _.clone(this.model.attributes);
+    },
+    onClick: function() {
+        this.model.set({
+            'isSelected': true
+        });
+    }
+});
+
+var listView = BaseView.extend({
+    tagName: 'ul',
+    className: 'nav navbar-nav',
+    onInitialize: function(params) {
+        var self = this;
+        BaseView.prototype.onInitialize.call(this, params);
+        this.collection.each(function(model) {
+            self.addView(listItemView, {
+                model: model
+            });
+        });
+        this.listenTo(this.parent, 'change:stage', this.onChangeStage, this);
+    },
+    onChangeStage: function(currentStage) {
+        this.collection.each(function(model) {
+            if (model.get('name') == currentStage)
+                model.set({
+                    'isSelected': true
+                });
+        });
+    }
+});
+
+
+module.exports = listView;
+},{"../../views/baseview":6,"./nav_list_item.tpl":18,"backbone":32,"backbone.modelbinder":31,"underscore":35}],18:[function(require,module,exports){
+module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=title%></a>";
+
+},{}],19:[function(require,module,exports){
+module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+
+},{}],20:[function(require,module,exports){
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    BaseListView = require('./../elements/base_list_view'),
+    navBarCollection = require('./../../collections/header_list'),
+    financeTpl = require('./finance.tpl'),
+    headerListItemTpl = require('./../elements/nav_list_item.tpl'),
+    transactionsTpl = require('./tabs/transactions.tpl'),
+    finacntTpl = require('./tabs/finacnt.tpl'),
+    cashflowacntTpl = require('./tabs/cashflowacnt.tpl');
+
+var transactionsView = BaseView.extend({
+    tagName: 'div',
+    template: transactionsTpl,
+    className: 'finance-container',
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+    }
+});
+
+var finacntView = BaseView.extend({
+    tagName: 'div',
+    template: finacntTpl,
+    className: 'finance-container',
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+    }
+});
+
+var cashflowacntView = BaseView.extend({
+    tagName: 'div',
+    template: cashflowacntTpl,
+    className: 'finance-container',
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+    }
+});
+
+
+
+var financeLinks = [{
+    title: "transactions",
+    route: "finance/transactions",
+    name: "transactions"
+}, {
+    title: "chart of financial accaunts",
+    route: "finance/finacnt",
+    name: "finacnt"
+}, {
+    title: "chart of cash flow accaunts",
+    route: "finance/cashflowacnt",
+    name: "cashflowacnt"
+}];
+
+var SidebarLeftMenu = BaseListView.extend({
+    tagName: 'ul',
+    className: 'nav navbar-nav'
+});
+
+var ContentView = BaseView.extend({
+    tagName: 'div',
+    template: financeTpl,
+    className: 'finance',
+    router: true,
+    routes: {
+        transactions: transactionsView,
+        finacnt: finacntView,
+        cashflowacnt: cashflowacntView
+    },
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+        this.addView(SidebarLeftMenu, {
+            collection: new navBarCollection(financeLinks)
+        }, '.finance_page__left');
+    }
+});
+
+module.exports = ContentView;
+},{"../../views/baseview":6,"./../../collections/header_list":3,"./../elements/base_list_view":17,"./../elements/nav_list_item.tpl":18,"./finance.tpl":19,"./tabs/cashflowacnt.tpl":21,"./tabs/finacnt.tpl":22,"./tabs/transactions.tpl":23,"backbone":32}],21:[function(require,module,exports){
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Cashflow Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n</div>";
+
+},{}],22:[function(require,module,exports){
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t\t<div id=\"DataTables_Table_0_wrapper\" class=\"dataTables_wrapper\" role=\"grid\"><div id=\"DataTables_Table_0_processing\" class=\"dataTables_processing\" style=\"visibility: hidden;\">Processing...</div><table class=\"table datatable table-striped m-b-none text-small dataTable\" id=\"DataTables_Table_0\" aria-describedby=\"DataTables_Table_0_info\">\r\n\t            <thead>\r\n\t                <tr class=\"search\" role=\"row\"><th data-name=\"number\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"docnumber\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"amount\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"floatPositive\" data-type=\"text\">\r\n\t</th><th data-name=\"transactionreasonacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactioncounterpartyacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"description\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"date\" class=\"type_date\" rowspan=\"1\" colspan=\"1\">            <div class=\"wrapper date\">\r\n\t            <i class=\"fa fa-calendar datepicker_icon\">\r\n\t                <input type=\"text\" data-role=\"fake\" name=\"date_start\" class=\"fieldtype-date hasDatepicker\" id=\"dp1448553020152\">\r\n\t            </i>&nbsp;\r\n\t            <i class=\"fa fa-calendar datepicker_icon\">\r\n\t                <input type=\"text\" data-role=\"fake\" name=\"date_end\" class=\"fieldtype-date hasDatepicker\" id=\"dp1448553020153\">\r\n\t            </i>\r\n\t            <input type=\"hidden\" data-role=\"real\" data-name=\"date\" value=\"s\">\r\n\r\n\t        </div>\r\n\t    </th><th data-name=\"transactionfinacntdebit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactionfinacntcredit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactioncashflowacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th></tr>\r\n\r\n\t                <tr class=\"titles\" role=\"row\"><th data-name=\"number\" style=\"width: 80px;\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"Number\">Number</th><th data-name=\"docnumber\" style=\"width: 80px;\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"DocNumber\">DocNumber</th><th data-name=\"name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Transaction: activate to sort column ascending\">Transaction</th><th data-name=\"amount\" style=\"width: 150px;\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Amount: activate to sort column ascending\">Amount</th><th data-name=\"transactionreasonacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Purporse: activate to sort column ascending\">Purporse</th><th data-name=\"transactioncounterpartyacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Payment from/to: activate to sort column ascending\">Payment from/to</th><th data-name=\"description\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"Description\">Description</th><th data-name=\"date\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Date: activate to sort column ascending\">Date</th><th data-name=\"transactionfinacntdebit.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Debit: activate to sort column ascending\">Debit</th><th data-name=\"transactionfinacntcredit.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Credit: activate to sort column ascending\">Credit</th><th data-name=\"transactioncashflowacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Cashflow: activate to sort column ascending\">Cashflow</th></tr>\r\n\t            </thead>\r\n\r\n\t            <tfoot>\r\n\t                <tr class=\"\"><th data-name=\"number\" class=\"type_text\" style=\"width: 80px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"docnumber\" class=\"type_text\" style=\"width: 80px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"amount\" class=\"type_text\" style=\"width: 150px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionreasonacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactioncounterpartyacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"description\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"date\" class=\"type_date\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionfinacntdebit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionfinacntcredit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactioncashflowacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th></tr>    \r\n\t            </tfoot>\r\n\r\n\t            \r\n\t        <tbody role=\"alert\" aria-live=\"polite\" aria-relevant=\"all\"><tr class=\"odd\" data-id=\"163\" data-real-id=\"163\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/163\"><td class=\"field-number\">0163</td><td class=\"field-docnumber\">0182</td><td class=\"field-name\">Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"161\" data-real-id=\"161\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/161\"><td class=\"field-number\">0161</td><td class=\"field-docnumber\">0184</td><td class=\"field-name\">Payment for Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"160\" data-real-id=\"160\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/160\"><td class=\"field-number\">0160</td><td class=\"field-docnumber\">0183</td><td class=\"field-name\">stationery</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4160 General administrative</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"159\" data-real-id=\"159\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/159\"><td class=\"field-number\">0159</td><td class=\"field-docnumber\">0181</td><td class=\"field-name\">Payment for payroll #0126 Σ 2000.00 (2015-02-25)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-25 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"158\" data-real-id=\"158\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/158\"><td class=\"field-number\">0158</td><td class=\"field-docnumber\">0180</td><td class=\"field-name\">Payment for payroll #0125 Σ 3000.00 (2015-01-28)</td><td class=\"field-amount\">3 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-29 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"156\" data-real-id=\"156\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/156\"><td class=\"field-number\">0156</td><td class=\"field-docnumber\">0179</td><td class=\"field-name\">Payment for invoice #0121 Σ 1750.00 (2015-01-26)</td><td class=\"field-amount\">1 750.00</td><td class=\"field-transactionreasonacnt-name\">forest elephant</td><td class=\"field-transactioncounterpartyacnt-name\">Slon</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6207 Cash account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"155\" data-real-id=\"155\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/155\"><td class=\"field-number\">0155</td><td class=\"field-docnumber\">0121</td><td class=\"field-name\">invoice #0121 Σ 1750.00 (2015-01-26)</td><td class=\"field-amount\">1 750.00</td><td class=\"field-transactionreasonacnt-name\">forest elephant</td><td class=\"field-transactioncounterpartyacnt-name\">Slon</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"151\" data-real-id=\"151\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/151\"><td class=\"field-number\">0151</td><td class=\"field-docnumber\">0178</td><td class=\"field-name\">Payment for Coffe</td><td class=\"field-amount\">55.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"150\" data-real-id=\"150\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/150\"><td class=\"field-number\">0150</td><td class=\"field-docnumber\">0177</td><td class=\"field-name\">Payment for tea</td><td class=\"field-amount\">40.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"149\" data-real-id=\"149\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/149\"><td class=\"field-number\">0149</td><td class=\"field-docnumber\">0176</td><td class=\"field-name\">Payment for Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"148\" data-real-id=\"148\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/148\"><td class=\"field-number\">0148</td><td class=\"field-docnumber\">0175</td><td class=\"field-name\">Payment for Copy of Office rent</td><td class=\"field-amount\">5 000.10</td><td class=\"field-transactionreasonacnt-name\">media deal 100%</td><td class=\"field-transactioncounterpartyacnt-name\">UMHgroup</td><td class=\"field-description\"><span class=\"long-text\" title=\"bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla\">bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ...</span></td><td class=\"field-date\">2015-04-16 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"146\" data-real-id=\"146\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/146\"><td class=\"field-number\">0146</td><td class=\"field-docnumber\">0166</td><td class=\"field-name\">Payment for test</td><td class=\"field-amount\">550.00</td><td class=\"field-transactionreasonacnt-name\">media deal 100%</td><td class=\"field-transactioncounterpartyacnt-name\">QAtestKenan</td><td class=\"field-description\">1234567890</td><td class=\"field-date\">2015-04-14 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6208 Bank account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"145\" data-real-id=\"145\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/145\"><td class=\"field-number\">0145</td><td class=\"field-docnumber\">0169</td><td class=\"field-name\">Payment for invoice #0120 Σ 900.00 (2015-01-26)</td><td class=\"field-amount\">900.00</td><td class=\"field-transactionreasonacnt-name\">Kuna</td><td class=\"field-transactioncounterpartyacnt-name\">Mishka</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6208 Bank account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"144\" data-real-id=\"144\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/144\"><td class=\"field-number\">0144</td><td class=\"field-docnumber\">0130</td><td class=\"field-name\">post</td><td class=\"field-amount\">15.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-19 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"143\" data-real-id=\"143\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/143\"><td class=\"field-number\">0143</td><td class=\"field-docnumber\">0129</td><td class=\"field-name\">coffe</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-05 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"142\" data-real-id=\"142\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/142\"><td class=\"field-number\">0142</td><td class=\"field-docnumber\">0143</td><td class=\"field-name\">Payment for tea</td><td class=\"field-amount\">30.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-30 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"141\" data-real-id=\"141\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/141\"><td class=\"field-number\">0141</td><td class=\"field-docnumber\">0128</td><td class=\"field-name\">tea</td><td class=\"field-amount\">30.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-12 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"140\" data-real-id=\"140\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/140\"><td class=\"field-number\">0140</td><td class=\"field-docnumber\">0132</td><td class=\"field-name\">tea</td><td class=\"field-amount\">40.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"139\" data-real-id=\"139\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/139\"><td class=\"field-number\">0139</td><td class=\"field-docnumber\">0134</td><td class=\"field-name\">Coffe</td><td class=\"field-amount\">55.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-03 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"138\" data-real-id=\"138\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/138\"><td class=\"field-number\">0138</td><td class=\"field-docnumber\">0131</td><td class=\"field-name\">Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"137\" data-real-id=\"137\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/137\"><td class=\"field-number\">0137</td><td class=\"field-docnumber\">0160</td><td class=\"field-name\">Test Bill</td><td class=\"field-amount\">5 000.00</td><td class=\"field-transactionreasonacnt-name\">Media company</td><td class=\"field-transactioncounterpartyacnt-name\">Media company</td><td class=\"field-description\">for test</td><td class=\"field-date\">2015-04-14 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"135\" data-real-id=\"135\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/135\"><td class=\"field-number\">0135</td><td class=\"field-docnumber\">0147</td><td class=\"field-name\">Payment for invoice #0119 Σ 4000.00 (2015-01-26)</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Kater</td><td class=\"field-transactioncounterpartyacnt-name\">Oleg</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"134\" data-real-id=\"134\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/134\"><td class=\"field-number\">0134</td><td class=\"field-docnumber\">0145</td><td class=\"field-name\">Payment for post</td><td class=\"field-amount\">15.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-19 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"132\" data-real-id=\"132\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/132\"><td class=\"field-number\">0132</td><td class=\"field-docnumber\">0144</td><td class=\"field-name\">Payment for coffe</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\">coffe</td><td class=\"field-date\">2015-01-06 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"130\" data-real-id=\"130\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/130\"><td class=\"field-number\">0130</td><td class=\"field-docnumber\">0119</td><td class=\"field-name\">invoice #0119 Σ 4000.00 (2015-01-26)</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Kater</td><td class=\"field-transactioncounterpartyacnt-name\">Oleg</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"129\" data-real-id=\"129\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/129\"><td class=\"field-number\">0129</td><td class=\"field-docnumber\">0142</td><td class=\"field-name\">Payment for payroll #0124 Σ 2000.00 (2015-01-28)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-03 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"128\" data-real-id=\"128\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/128\"><td class=\"field-number\">0128</td><td class=\"field-docnumber\">0139</td><td class=\"field-name\">Payment for rent office Feb</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"127\" data-real-id=\"127\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/127\"><td class=\"field-number\">0127</td><td class=\"field-docnumber\">0138</td><td class=\"field-name\">Payment for Office rent Jan</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"126\" data-real-id=\"126\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/126\"><td class=\"field-number\">0126</td><td class=\"field-docnumber\">0122</td><td class=\"field-name\">Office rent Jan</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"123\" data-real-id=\"123\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/123\"><td class=\"field-number\">0123</td><td class=\"field-docnumber\">0135</td><td class=\"field-name\">Payment for invoice #0118 Σ 1600.00 (2015-01-26)</td><td class=\"field-amount\">1 600.00</td><td class=\"field-transactionreasonacnt-name\">MP CMC</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"117\" data-real-id=\"117\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/117\"><td class=\"field-number\">0117</td><td class=\"field-docnumber\">0124</td><td class=\"field-name\">payroll #0124 Σ 2000.00 (2015-01-28)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"116\" data-real-id=\"116\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/116\"><td class=\"field-number\">0116</td><td class=\"field-docnumber\">0125</td><td class=\"field-name\">payroll #0125 Σ 3000.00 (2015-01-28)</td><td class=\"field-amount\">3 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"115\" data-real-id=\"115\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/115\"><td class=\"field-number\">0115</td><td class=\"field-docnumber\">0123</td><td class=\"field-name\">rent office Feb</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"113\" data-real-id=\"113\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/113\"><td class=\"field-number\">0113</td><td class=\"field-docnumber\">0118</td><td class=\"field-name\">invoice #0118 Σ 1600.00 (2015-01-26)</td><td class=\"field-amount\">1 600.00</td><td class=\"field-transactionreasonacnt-name\">MP CMC</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"111\" data-real-id=\"111\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/111\"><td class=\"field-number\">0111</td><td class=\"field-docnumber\">0120</td><td class=\"field-name\">invoice #0120 Σ 900.00 (2015-01-26)</td><td class=\"field-amount\">900.00</td><td class=\"field-transactionreasonacnt-name\">Kuna</td><td class=\"field-transactioncounterpartyacnt-name\">Mishka</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"109\" data-real-id=\"109\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/109\"><td class=\"field-number\">0109</td><td class=\"field-docnumber\">0115</td><td class=\"field-name\">Payment for test payroll</td><td class=\"field-amount\">300.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"108\" data-real-id=\"108\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/108\"><td class=\"field-number\">0108</td><td class=\"field-docnumber\">0113</td><td class=\"field-name\">Domain name</td><td class=\"field-amount\">12.00</td><td class=\"field-transactionreasonacnt-name\">IMTransmitter v2</td><td class=\"field-transactioncounterpartyacnt-name\">fridayUser</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"even\" data-id=\"107\" data-real-id=\"107\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/107\"><td class=\"field-number\">0107</td><td class=\"field-docnumber\">0114</td><td class=\"field-name\">Payment for income</td><td class=\"field-amount\">100.00</td><td class=\"field-transactionreasonacnt-name\">Selling of 15%</td><td class=\"field-transactioncounterpartyacnt-name\">LA Central</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-07 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"odd\" data-id=\"106\" data-real-id=\"106\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/106\"><td class=\"field-number\">0106</td><td class=\"field-docnumber\">0112</td><td class=\"field-name\">We need marketing RND</td><td class=\"field-amount\">30 000.00</td><td class=\"field-transactionreasonacnt-name\">Selling of 15%</td><td class=\"field-transactioncounterpartyacnt-name\">AQA_Andrew</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4010 Marketing</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"even\" data-id=\"105\" data-real-id=\"105\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/105\"><td class=\"field-number\">0105</td><td class=\"field-docnumber\">0111</td><td class=\"field-name\">invoice #0111 Σ 123.00 (2015-03-20)</td><td class=\"field-amount\">123.00</td><td class=\"field-transactionreasonacnt-name\">Huindai Motors Ukraine</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"104\" data-real-id=\"104\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/104\"><td class=\"field-number\">0104</td><td class=\"field-docnumber\">0097</td><td class=\"field-name\">salary Jan</td><td class=\"field-amount\">7 500.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"103\" data-real-id=\"103\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/103\"><td class=\"field-number\">0103</td><td class=\"field-docnumber\">0098</td><td class=\"field-name\">salary Feb</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"102\" data-real-id=\"102\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/102\"><td class=\"field-number\">0102</td><td class=\"field-docnumber\">0100</td><td class=\"field-name\">salary Feb</td><td class=\"field-amount\">4 500.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"101\" data-real-id=\"101\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/101\"><td class=\"field-number\">0101</td><td class=\"field-docnumber\">0101</td><td class=\"field-name\">Rent office Jan</td><td class=\"field-amount\">750.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\">Alexander Tetievsky</td><td class=\"field-description\">Rent office Jan</td><td class=\"field-date\">2015-01-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"100\" data-real-id=\"100\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/100\"><td class=\"field-number\">0100</td><td class=\"field-docnumber\">0102</td><td class=\"field-name\">Rent office Feb</td><td class=\"field-amount\">750.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\">Alexander Tetievsky</td><td class=\"field-description\">Rent office Feb</td><td class=\"field-date\">2015-02-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"99\" data-real-id=\"99\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/99\"><td class=\"field-number\">0099</td><td class=\"field-docnumber\">0088</td><td class=\"field-name\">QA  invoice</td><td class=\"field-amount\">0.00</td><td class=\"field-transactionreasonacnt-name\">SDL project</td><td class=\"field-transactioncounterpartyacnt-name\">QAfakeUser</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3100 Cost of goods sold</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"98\" data-real-id=\"98\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/98\"><td class=\"field-number\">0098</td><td class=\"field-docnumber\">0078</td><td class=\"field-name\">staff salary December</td><td class=\"field-amount\">5 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2014-12-25 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"93\" data-real-id=\"93\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/93\"><td class=\"field-number\">0093</td><td class=\"field-docnumber\">0062</td><td class=\"field-name\">incube Nov</td><td class=\"field-amount\">5 600.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2014-11-24 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"92\" data-real-id=\"92\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/92\"><td class=\"field-number\">0092</td><td class=\"field-docnumber\">0082</td><td class=\"field-name\">Payment for staff salary December</td><td class=\"field-amount\">6 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-27 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"91\" data-real-id=\"91\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/91\"><td class=\"field-number\">0091</td><td class=\"field-docnumber\">0083</td><td class=\"field-name\">Payment for staff salary December</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-27 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr></tbody></table><div class=\"clearfix\"></div><div class=\"panel-body btm-ctrls\"><div class=\"pull-left\"><div class=\"dataTables_info\" id=\"DataTables_Table_0_info\">1-50 from 106</div></div><div class=\"pull-right\"><div class=\"dataTables_paginate paging_bootstrap pagination pagination-mini pull-right\"><ul class=\"pagination pagination-small\"><li class=\"prev disabled\"><a href=\"#\" class=\"prev_button\"> </a></li><li class=\"active\"><a href=\"#\">1</a></li><li><a href=\"#\">2</a></li><li><a href=\"#\">3</a></li><li class=\"next\"><a href=\"#\" class=\"next_button\"> </a></li></ul></div></div></div></div>\r\n</div>";
+
+},{}],23:[function(require,module,exports){
+module.exports = "<div class=\"container-fluid\"> \r\n\r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t<div class=\"pull-left\"> Transactions</div>\r\n\r\n\r\n\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t</div>\r\n\t\t</header>\r\n\r\n\t\t<div class=\"filters_controller\">\r\n\t\t\t<span class=\"comp_data\" data-name=\"eq\" data-label=\"Equal\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"gt\" data-label=\"Greater\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"lt\" data-label=\"Less\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"like\" data-label=\"Like\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"between\" data-label=\"Between\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"isnull\" data-label=\"Not set\"></span>\r\n\r\n\t\t\t<span class=\"field_data\" data-name=\"name\" data-label=\"Transaction\" data-type=\"text\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"date\" data-label=\"Date\" data-type=\"date\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"amount\" data-label=\"Amount\" data-type=\"text\" data-class=\"floatPositive\" data-sortable=\"1\" data-searchable=\"1\" data-width=\"150px\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"description\" data-label=\"Description\" data-type=\"text\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionreasonacnt.name\" data-label=\"Purporse\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionreasonacnt\" data-destmodelalias=\"kfinance.reasonacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncounterpartyacnt.name\" data-label=\"Payment from/to\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncounterpartyacnt\" data-destmodelalias=\"kfinance.counterpartyacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntdebit.name\" data-label=\"Debit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntdebit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntcredit.name\" data-label=\"Credit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntcredit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncashflowacnt.name\" data-label=\"Cashflow\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncashflowacnt\" data-destmodelalias=\"kfinance.cashflowacnt\"></span>\r\n\t\t</div>    \r\n\t\t</div>\r\n\t</section>\r\n\r\n\t<div id=\"DataTables_Table_0_wrapper\" class=\"dataTables_wrapper\" role=\"grid\"><div id=\"DataTables_Table_0_processing\" class=\"dataTables_processing\" style=\"visibility: hidden;\">Processing...</div><table class=\"table datatable table-striped m-b-none text-small dataTable\" id=\"DataTables_Table_0\" aria-describedby=\"DataTables_Table_0_info\">\r\n\t            <thead>\r\n\t                <tr class=\"search\" role=\"row\"><th data-name=\"number\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"docnumber\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"amount\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"floatPositive\" data-type=\"text\">\r\n\t</th><th data-name=\"transactionreasonacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactioncounterpartyacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"description\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"date\" class=\"type_date\" rowspan=\"1\" colspan=\"1\">            <div class=\"wrapper date\">\r\n\t            <i class=\"fa fa-calendar datepicker_icon\">\r\n\t                <input type=\"text\" data-role=\"fake\" name=\"date_start\" class=\"fieldtype-date hasDatepicker\" id=\"dp1448553020152\">\r\n\t            </i>&nbsp;\r\n\t            <i class=\"fa fa-calendar datepicker_icon\">\r\n\t                <input type=\"text\" data-role=\"fake\" name=\"date_end\" class=\"fieldtype-date hasDatepicker\" id=\"dp1448553020153\">\r\n\t            </i>\r\n\t            <input type=\"hidden\" data-role=\"real\" data-name=\"date\" value=\"s\">\r\n\r\n\t        </div>\r\n\t    </th><th data-name=\"transactionfinacntdebit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactionfinacntcredit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactioncashflowacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th></tr>\r\n\r\n\t                <tr class=\"titles\" role=\"row\"><th data-name=\"number\" style=\"width: 80px;\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"Number\">Number</th><th data-name=\"docnumber\" style=\"width: 80px;\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"DocNumber\">DocNumber</th><th data-name=\"name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Transaction: activate to sort column ascending\">Transaction</th><th data-name=\"amount\" style=\"width: 150px;\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Amount: activate to sort column ascending\">Amount</th><th data-name=\"transactionreasonacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Purporse: activate to sort column ascending\">Purporse</th><th data-name=\"transactioncounterpartyacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Payment from/to: activate to sort column ascending\">Payment from/to</th><th data-name=\"description\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"Description\">Description</th><th data-name=\"date\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Date: activate to sort column ascending\">Date</th><th data-name=\"transactionfinacntdebit.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Debit: activate to sort column ascending\">Debit</th><th data-name=\"transactionfinacntcredit.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Credit: activate to sort column ascending\">Credit</th><th data-name=\"transactioncashflowacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Cashflow: activate to sort column ascending\">Cashflow</th></tr>\r\n\t            </thead>\r\n\r\n\t            <tfoot>\r\n\t                <tr class=\"\"><th data-name=\"number\" class=\"type_text\" style=\"width: 80px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"docnumber\" class=\"type_text\" style=\"width: 80px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"amount\" class=\"type_text\" style=\"width: 150px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionreasonacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactioncounterpartyacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"description\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"date\" class=\"type_date\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionfinacntdebit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionfinacntcredit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactioncashflowacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th></tr>    \r\n\t            </tfoot>\r\n\r\n\t            \r\n\t        <tbody role=\"alert\" aria-live=\"polite\" aria-relevant=\"all\"><tr class=\"odd\" data-id=\"163\" data-real-id=\"163\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/163\"><td class=\"field-number\">0163</td><td class=\"field-docnumber\">0182</td><td class=\"field-name\">Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"161\" data-real-id=\"161\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/161\"><td class=\"field-number\">0161</td><td class=\"field-docnumber\">0184</td><td class=\"field-name\">Payment for Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"160\" data-real-id=\"160\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/160\"><td class=\"field-number\">0160</td><td class=\"field-docnumber\">0183</td><td class=\"field-name\">stationery</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4160 General administrative</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"159\" data-real-id=\"159\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/159\"><td class=\"field-number\">0159</td><td class=\"field-docnumber\">0181</td><td class=\"field-name\">Payment for payroll #0126 Σ 2000.00 (2015-02-25)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-25 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"158\" data-real-id=\"158\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/158\"><td class=\"field-number\">0158</td><td class=\"field-docnumber\">0180</td><td class=\"field-name\">Payment for payroll #0125 Σ 3000.00 (2015-01-28)</td><td class=\"field-amount\">3 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-29 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"156\" data-real-id=\"156\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/156\"><td class=\"field-number\">0156</td><td class=\"field-docnumber\">0179</td><td class=\"field-name\">Payment for invoice #0121 Σ 1750.00 (2015-01-26)</td><td class=\"field-amount\">1 750.00</td><td class=\"field-transactionreasonacnt-name\">forest elephant</td><td class=\"field-transactioncounterpartyacnt-name\">Slon</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6207 Cash account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"155\" data-real-id=\"155\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/155\"><td class=\"field-number\">0155</td><td class=\"field-docnumber\">0121</td><td class=\"field-name\">invoice #0121 Σ 1750.00 (2015-01-26)</td><td class=\"field-amount\">1 750.00</td><td class=\"field-transactionreasonacnt-name\">forest elephant</td><td class=\"field-transactioncounterpartyacnt-name\">Slon</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"151\" data-real-id=\"151\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/151\"><td class=\"field-number\">0151</td><td class=\"field-docnumber\">0178</td><td class=\"field-name\">Payment for Coffe</td><td class=\"field-amount\">55.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"150\" data-real-id=\"150\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/150\"><td class=\"field-number\">0150</td><td class=\"field-docnumber\">0177</td><td class=\"field-name\">Payment for tea</td><td class=\"field-amount\">40.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"149\" data-real-id=\"149\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/149\"><td class=\"field-number\">0149</td><td class=\"field-docnumber\">0176</td><td class=\"field-name\">Payment for Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"148\" data-real-id=\"148\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/148\"><td class=\"field-number\">0148</td><td class=\"field-docnumber\">0175</td><td class=\"field-name\">Payment for Copy of Office rent</td><td class=\"field-amount\">5 000.10</td><td class=\"field-transactionreasonacnt-name\">media deal 100%</td><td class=\"field-transactioncounterpartyacnt-name\">UMHgroup</td><td class=\"field-description\"><span class=\"long-text\" title=\"bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla\">bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ...</span></td><td class=\"field-date\">2015-04-16 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"146\" data-real-id=\"146\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/146\"><td class=\"field-number\">0146</td><td class=\"field-docnumber\">0166</td><td class=\"field-name\">Payment for test</td><td class=\"field-amount\">550.00</td><td class=\"field-transactionreasonacnt-name\">media deal 100%</td><td class=\"field-transactioncounterpartyacnt-name\">QAtestKenan</td><td class=\"field-description\">1234567890</td><td class=\"field-date\">2015-04-14 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6208 Bank account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"145\" data-real-id=\"145\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/145\"><td class=\"field-number\">0145</td><td class=\"field-docnumber\">0169</td><td class=\"field-name\">Payment for invoice #0120 Σ 900.00 (2015-01-26)</td><td class=\"field-amount\">900.00</td><td class=\"field-transactionreasonacnt-name\">Kuna</td><td class=\"field-transactioncounterpartyacnt-name\">Mishka</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6208 Bank account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"144\" data-real-id=\"144\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/144\"><td class=\"field-number\">0144</td><td class=\"field-docnumber\">0130</td><td class=\"field-name\">post</td><td class=\"field-amount\">15.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-19 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"143\" data-real-id=\"143\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/143\"><td class=\"field-number\">0143</td><td class=\"field-docnumber\">0129</td><td class=\"field-name\">coffe</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-05 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"142\" data-real-id=\"142\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/142\"><td class=\"field-number\">0142</td><td class=\"field-docnumber\">0143</td><td class=\"field-name\">Payment for tea</td><td class=\"field-amount\">30.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-30 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"141\" data-real-id=\"141\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/141\"><td class=\"field-number\">0141</td><td class=\"field-docnumber\">0128</td><td class=\"field-name\">tea</td><td class=\"field-amount\">30.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-12 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"140\" data-real-id=\"140\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/140\"><td class=\"field-number\">0140</td><td class=\"field-docnumber\">0132</td><td class=\"field-name\">tea</td><td class=\"field-amount\">40.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"139\" data-real-id=\"139\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/139\"><td class=\"field-number\">0139</td><td class=\"field-docnumber\">0134</td><td class=\"field-name\">Coffe</td><td class=\"field-amount\">55.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-03 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"138\" data-real-id=\"138\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/138\"><td class=\"field-number\">0138</td><td class=\"field-docnumber\">0131</td><td class=\"field-name\">Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"137\" data-real-id=\"137\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/137\"><td class=\"field-number\">0137</td><td class=\"field-docnumber\">0160</td><td class=\"field-name\">Test Bill</td><td class=\"field-amount\">5 000.00</td><td class=\"field-transactionreasonacnt-name\">Media company</td><td class=\"field-transactioncounterpartyacnt-name\">Media company</td><td class=\"field-description\">for test</td><td class=\"field-date\">2015-04-14 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"135\" data-real-id=\"135\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/135\"><td class=\"field-number\">0135</td><td class=\"field-docnumber\">0147</td><td class=\"field-name\">Payment for invoice #0119 Σ 4000.00 (2015-01-26)</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Kater</td><td class=\"field-transactioncounterpartyacnt-name\">Oleg</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"134\" data-real-id=\"134\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/134\"><td class=\"field-number\">0134</td><td class=\"field-docnumber\">0145</td><td class=\"field-name\">Payment for post</td><td class=\"field-amount\">15.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-19 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"132\" data-real-id=\"132\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/132\"><td class=\"field-number\">0132</td><td class=\"field-docnumber\">0144</td><td class=\"field-name\">Payment for coffe</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\">coffe</td><td class=\"field-date\">2015-01-06 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"130\" data-real-id=\"130\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/130\"><td class=\"field-number\">0130</td><td class=\"field-docnumber\">0119</td><td class=\"field-name\">invoice #0119 Σ 4000.00 (2015-01-26)</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Kater</td><td class=\"field-transactioncounterpartyacnt-name\">Oleg</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"129\" data-real-id=\"129\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/129\"><td class=\"field-number\">0129</td><td class=\"field-docnumber\">0142</td><td class=\"field-name\">Payment for payroll #0124 Σ 2000.00 (2015-01-28)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-03 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"128\" data-real-id=\"128\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/128\"><td class=\"field-number\">0128</td><td class=\"field-docnumber\">0139</td><td class=\"field-name\">Payment for rent office Feb</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"127\" data-real-id=\"127\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/127\"><td class=\"field-number\">0127</td><td class=\"field-docnumber\">0138</td><td class=\"field-name\">Payment for Office rent Jan</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"126\" data-real-id=\"126\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/126\"><td class=\"field-number\">0126</td><td class=\"field-docnumber\">0122</td><td class=\"field-name\">Office rent Jan</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"123\" data-real-id=\"123\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/123\"><td class=\"field-number\">0123</td><td class=\"field-docnumber\">0135</td><td class=\"field-name\">Payment for invoice #0118 Σ 1600.00 (2015-01-26)</td><td class=\"field-amount\">1 600.00</td><td class=\"field-transactionreasonacnt-name\">MP CMC</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"117\" data-real-id=\"117\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/117\"><td class=\"field-number\">0117</td><td class=\"field-docnumber\">0124</td><td class=\"field-name\">payroll #0124 Σ 2000.00 (2015-01-28)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"116\" data-real-id=\"116\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/116\"><td class=\"field-number\">0116</td><td class=\"field-docnumber\">0125</td><td class=\"field-name\">payroll #0125 Σ 3000.00 (2015-01-28)</td><td class=\"field-amount\">3 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"115\" data-real-id=\"115\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/115\"><td class=\"field-number\">0115</td><td class=\"field-docnumber\">0123</td><td class=\"field-name\">rent office Feb</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"113\" data-real-id=\"113\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/113\"><td class=\"field-number\">0113</td><td class=\"field-docnumber\">0118</td><td class=\"field-name\">invoice #0118 Σ 1600.00 (2015-01-26)</td><td class=\"field-amount\">1 600.00</td><td class=\"field-transactionreasonacnt-name\">MP CMC</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"111\" data-real-id=\"111\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/111\"><td class=\"field-number\">0111</td><td class=\"field-docnumber\">0120</td><td class=\"field-name\">invoice #0120 Σ 900.00 (2015-01-26)</td><td class=\"field-amount\">900.00</td><td class=\"field-transactionreasonacnt-name\">Kuna</td><td class=\"field-transactioncounterpartyacnt-name\">Mishka</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"109\" data-real-id=\"109\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/109\"><td class=\"field-number\">0109</td><td class=\"field-docnumber\">0115</td><td class=\"field-name\">Payment for test payroll</td><td class=\"field-amount\">300.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"108\" data-real-id=\"108\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/108\"><td class=\"field-number\">0108</td><td class=\"field-docnumber\">0113</td><td class=\"field-name\">Domain name</td><td class=\"field-amount\">12.00</td><td class=\"field-transactionreasonacnt-name\">IMTransmitter v2</td><td class=\"field-transactioncounterpartyacnt-name\">fridayUser</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"even\" data-id=\"107\" data-real-id=\"107\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/107\"><td class=\"field-number\">0107</td><td class=\"field-docnumber\">0114</td><td class=\"field-name\">Payment for income</td><td class=\"field-amount\">100.00</td><td class=\"field-transactionreasonacnt-name\">Selling of 15%</td><td class=\"field-transactioncounterpartyacnt-name\">LA Central</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-07 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"odd\" data-id=\"106\" data-real-id=\"106\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/106\"><td class=\"field-number\">0106</td><td class=\"field-docnumber\">0112</td><td class=\"field-name\">We need marketing RND</td><td class=\"field-amount\">30 000.00</td><td class=\"field-transactionreasonacnt-name\">Selling of 15%</td><td class=\"field-transactioncounterpartyacnt-name\">AQA_Andrew</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4010 Marketing</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"even\" data-id=\"105\" data-real-id=\"105\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/105\"><td class=\"field-number\">0105</td><td class=\"field-docnumber\">0111</td><td class=\"field-name\">invoice #0111 Σ 123.00 (2015-03-20)</td><td class=\"field-amount\">123.00</td><td class=\"field-transactionreasonacnt-name\">Huindai Motors Ukraine</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"104\" data-real-id=\"104\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/104\"><td class=\"field-number\">0104</td><td class=\"field-docnumber\">0097</td><td class=\"field-name\">salary Jan</td><td class=\"field-amount\">7 500.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"103\" data-real-id=\"103\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/103\"><td class=\"field-number\">0103</td><td class=\"field-docnumber\">0098</td><td class=\"field-name\">salary Feb</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"102\" data-real-id=\"102\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/102\"><td class=\"field-number\">0102</td><td class=\"field-docnumber\">0100</td><td class=\"field-name\">salary Feb</td><td class=\"field-amount\">4 500.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"101\" data-real-id=\"101\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/101\"><td class=\"field-number\">0101</td><td class=\"field-docnumber\">0101</td><td class=\"field-name\">Rent office Jan</td><td class=\"field-amount\">750.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\">Alexander Tetievsky</td><td class=\"field-description\">Rent office Jan</td><td class=\"field-date\">2015-01-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"100\" data-real-id=\"100\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/100\"><td class=\"field-number\">0100</td><td class=\"field-docnumber\">0102</td><td class=\"field-name\">Rent office Feb</td><td class=\"field-amount\">750.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\">Alexander Tetievsky</td><td class=\"field-description\">Rent office Feb</td><td class=\"field-date\">2015-02-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"99\" data-real-id=\"99\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/99\"><td class=\"field-number\">0099</td><td class=\"field-docnumber\">0088</td><td class=\"field-name\">QA  invoice</td><td class=\"field-amount\">0.00</td><td class=\"field-transactionreasonacnt-name\">SDL project</td><td class=\"field-transactioncounterpartyacnt-name\">QAfakeUser</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3100 Cost of goods sold</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"98\" data-real-id=\"98\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/98\"><td class=\"field-number\">0098</td><td class=\"field-docnumber\">0078</td><td class=\"field-name\">staff salary December</td><td class=\"field-amount\">5 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2014-12-25 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"93\" data-real-id=\"93\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/93\"><td class=\"field-number\">0093</td><td class=\"field-docnumber\">0062</td><td class=\"field-name\">incube Nov</td><td class=\"field-amount\">5 600.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2014-11-24 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"92\" data-real-id=\"92\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/92\"><td class=\"field-number\">0092</td><td class=\"field-docnumber\">0082</td><td class=\"field-name\">Payment for staff salary December</td><td class=\"field-amount\">6 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-27 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"91\" data-real-id=\"91\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/91\"><td class=\"field-number\">0091</td><td class=\"field-docnumber\">0083</td><td class=\"field-name\">Payment for staff salary December</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-27 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr></tbody></table><div class=\"clearfix\"></div><div class=\"panel-body btm-ctrls\"><div class=\"pull-left\"><div class=\"dataTables_info\" id=\"DataTables_Table_0_info\">1-50 from 106</div></div><div class=\"pull-right\"><div class=\"dataTables_paginate paging_bootstrap pagination pagination-mini pull-right\"><ul class=\"pagination pagination-small\"><li class=\"prev disabled\"><a href=\"#\" class=\"prev_button\"> </a></li><li class=\"active\"><a href=\"#\">1</a></li><li><a href=\"#\">2</a></li><li><a href=\"#\">3</a></li><li class=\"next\"><a href=\"#\" class=\"next_button\"> </a></li></ul></div></div></div></div>\r\n\t\r\n</div>";
+
+},{}],24:[function(require,module,exports){
+var Backbone = require('backbone'),
+    BaseView = require('./baseview'), 
+    headerView = require('./header/header_list_view'),
+    dashboardView = require('./dashboard/dashboard_view'),
+    treeView = require('./tree/tree_view'),
+    statsView = require('./stats/stats_view'),
+    financeView = require('./finance/finance_view'),
+    navBarCollection = require('../collections/header_list');
+    mainTpl = require('./main.tpl');
+  
+    var headerLinks = [{
+        route: "dashboard/tasks",
+        title: 'dashboard',
+        name: "dashboard"
+    }, {
+        route: "tree",
+        title: 'tree',
+        name: "tree"
+    }, {
+        route: 'stats',
+        title: 'stats',
+        name: "stats"
+    }, {
+        route: "finance/transactions",
+        title: 'finance',
+        name: "finance"
+    }];
+
+    var GlobalView = BaseView.extend({
+        tagName:'div',
+        template: mainTpl,
+        className: 'content',
+        id: 'content', 
+        router: true,
+        routes: {
+             'dashboard': dashboardView,
+             'tree'     : treeView,
+             'stats'    : statsView,
+             'finance'  : financeView
+        },
+        onInitialize : function (params) {
+            Backbone.on('change:page', this.changeStage, this);
+            this.addView(headerView, {collection: new navBarCollection(headerLinks)}, '.header-container');
+        },
+        afterChangeStage: function(){
+           this.trigger('change:stage', this.currentStage);
+        },
+        start: function(){
+            document.body.appendChild(this.render().el);
+        }
+    });
+
+module.exports = GlobalView;
+},{"../collections/header_list":3,"./baseview":6,"./dashboard/dashboard_view":10,"./finance/finance_view":20,"./header/header_list_view":25,"./main.tpl":26,"./stats/stats_view":27,"./tree/tree_view":30,"backbone":32}],25:[function(require,module,exports){
+var BaseView = require('../../views/baseview'),
+    BaseListView = require('../elements/base_list_view');
+
+
+    var HeaderListView = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
+    });
+
+module.exports = HeaderListView;
+},{"../../views/baseview":6,"../elements/base_list_view":17}],26:[function(require,module,exports){
+module.exports = "<div class=\"full_height\">\r\n\t<div id=\"header\">\r\n\t\t<span class=\"navbar-brand\" href=\"/\">\r\n\t\t   <div class=\"logo_holder\">\r\n\t\t        <a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t    </div>            \r\n\t\t</span>\r\n\t\t<div class=\"header-container\"></div>\r\n\t</div>\r\n\t<div class=\"bb-route-container full_height\"></div>\r\n</div>";
+
+},{}],27:[function(require,module,exports){
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    tpl = require('./submenu.tpl');
+
+    var ContentView = BaseView.extend({
+        tagName: 'div',
+        template: tpl,
+        className: 'stats',
+        router: true,
+        routes: {
+
+        },
+        onInitialize: function(params) {
+            BaseView.prototype.onInitialize.call(this, params);
+        }
+    });
+
+module.exports = ContentView;
+
+},{"../../views/baseview":6,"./submenu.tpl":28,"backbone":32}],28:[function(require,module,exports){
+module.exports = "<div class=\"submenu\">\r\n\tStats\r\n</div>";
+
+},{}],29:[function(require,module,exports){
+module.exports = "<div >\r\n\tTree\r\n\t<ul>\r\n\t\t<li>1 Tree</li>\r\n\t\t<li>2 Tree</li>\r\n\t\t<li>3 Tree</li>\r\n\t\t<li>4 Tree</li>\r\n\t\t<li>5 Tree</li>\r\n\t\t<li>6 Tree</li>\r\n\t\t<li>7 Tree</li>\r\n\t\t<li>8 Tree</li>\r\n\t\t<li>9 Tree</li>\r\n\t\t<li>10 Tree</li>\r\n\t</ul>\t\r\n</div>\r\n";
+
+},{}],30:[function(require,module,exports){
+var BaseView = require('../../views/baseview'), 
+    tpl = require('./submenu.tpl');
+
+    var treeView = BaseView.extend({
+        className   : 'tree',
+        template: tpl,
+        onInitialize : function (params) {
+            BaseView.prototype.onInitialize.call(this, params);
+        }
+    });
+
+
+module.exports = treeView;
+},{"../../views/baseview":6,"./submenu.tpl":29}],31:[function(require,module,exports){
+// Backbone.ModelBinder v1.1.0
+// (c) 2015 Bart Wood
+// Distributed Under MIT License
+
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['underscore', 'jquery', 'backbone'], factory);
+    } else if(typeof module !== 'undefined' && module.exports) {
+        // CommonJS
+        module.exports = factory(
+            require('underscore'),
+            require('jquery'),
+            require('backbone')
+        );
+    } else {
+        // Browser globals
+        factory(_, jQuery, Backbone);
+    }
+}(function(_, $, Backbone){
+
+    if(!Backbone){
+        throw 'Please include Backbone.js before Backbone.ModelBinder.js';
+    }
+
+    Backbone.ModelBinder = function(){
+        _.bindAll.apply(_, [this].concat(_.functions(this)));
+    };
+
+    // Static setter for class level options
+    Backbone.ModelBinder.SetOptions = function(options){
+        Backbone.ModelBinder.options = options;
+    };
+
+    // Current version of the library.
+    Backbone.ModelBinder.VERSION = '1.1.0';
+    Backbone.ModelBinder.Constants = {};
+    Backbone.ModelBinder.Constants.ModelToView = 'ModelToView';
+    Backbone.ModelBinder.Constants.ViewToModel = 'ViewToModel';
+
+    _.extend(Backbone.ModelBinder.prototype, {
+
+        bind:function (model, rootEl, attributeBindings, options) {
+            this.unbind();
+
+            this._model = model;
+            this._rootEl = rootEl;
+            this._setOptions(options);
+
+            if (!this._model) this._throwException('model must be specified');
+            if (!this._rootEl) this._throwException('rootEl must be specified');
+
+            if(attributeBindings){
+                // Create a deep clone of the attribute bindings
+                this._attributeBindings = $.extend(true, {}, attributeBindings);
+
+                this._initializeAttributeBindings();
+                this._initializeElBindings();
+            }
+            else {
+                this._initializeDefaultBindings();
+            }
+
+            this._bindModelToView();
+            this._bindViewToModel();
+        },
+
+        bindCustomTriggers: function (model, rootEl, triggers, attributeBindings, modelSetOptions) {
+            this._triggers = triggers;
+            this.bind(model, rootEl, attributeBindings, modelSetOptions);
+        },
+
+        unbind:function () {
+            this._unbindModelToView();
+            this._unbindViewToModel();
+
+            if(this._attributeBindings){
+                delete this._attributeBindings;
+                this._attributeBindings = undefined;
+            }
+        },
+
+        _setOptions: function(options){
+            this._options = _.extend({
+                boundAttribute: 'name'
+            }, Backbone.ModelBinder.options, options);
+
+            // initialize default options
+            if(!this._options['modelSetOptions']){
+                this._options['modelSetOptions'] = {};
+            }
+            this._options['modelSetOptions'].changeSource = 'ModelBinder';
+
+            if(!this._options['changeTriggers']){
+                this._options['changeTriggers'] = {'': 'change', '[contenteditable]': 'blur'};
+            }
+
+            if(!this._options['initialCopyDirection']){
+                this._options['initialCopyDirection'] = Backbone.ModelBinder.Constants.ModelToView;
+            }
+        },
+
+        // Converts the input bindings, which might just be empty or strings, to binding objects
+        _initializeAttributeBindings:function () {
+            var attributeBindingKey, inputBinding, attributeBinding, elementBindingCount, elementBinding;
+
+            for (attributeBindingKey in this._attributeBindings) {
+                inputBinding = this._attributeBindings[attributeBindingKey];
+
+                if (_.isString(inputBinding)) {
+                    attributeBinding = {elementBindings: [{selector: inputBinding}]};
+                }
+                else if (_.isArray(inputBinding)) {
+                    attributeBinding = {elementBindings: inputBinding};
+                }
+                else if(_.isObject(inputBinding)){
+                    attributeBinding = {elementBindings: [inputBinding]};
+                }
+                else {
+                    this._throwException('Unsupported type passed to Model Binder ' + attributeBinding);
+                }
+
+                // Add a linkage from the element binding back to the attribute binding
+                for(elementBindingCount = 0; elementBindingCount < attributeBinding.elementBindings.length; elementBindingCount++){
+                    elementBinding = attributeBinding.elementBindings[elementBindingCount];
+                    elementBinding.attributeBinding = attributeBinding;
+                }
+
+                attributeBinding.attributeName = attributeBindingKey;
+                this._attributeBindings[attributeBindingKey] = attributeBinding;
+            }
+        },
+
+        // If the bindings are not specified, the default binding is performed on the specified attribute, name by default
+        _initializeDefaultBindings: function(){
+            var elCount, elsWithAttribute, matchedEl, name, attributeBinding;
+
+            this._attributeBindings = {};
+            elsWithAttribute = $('[' + this._options['boundAttribute'] + ']', this._rootEl);
+
+            for(elCount = 0; elCount < elsWithAttribute.length; elCount++){
+                matchedEl = elsWithAttribute[elCount];
+                name = $(matchedEl).attr(this._options['boundAttribute']);
+
+                // For elements like radio buttons we only want a single attribute binding with possibly multiple element bindings
+                if(!this._attributeBindings[name]){
+                    attributeBinding =  {attributeName: name};
+                    attributeBinding.elementBindings = [{attributeBinding: attributeBinding, boundEls: [matchedEl]}];
+                    this._attributeBindings[name] = attributeBinding;
+                }
+                else{
+                    this._attributeBindings[name].elementBindings.push({attributeBinding: this._attributeBindings[name], boundEls: [matchedEl]});
+                }
+            }
+        },
+
+        _initializeElBindings:function () {
+            var bindingKey, attributeBinding, bindingCount, elementBinding, foundEls, elCount, el;
+            for (bindingKey in this._attributeBindings) {
+                attributeBinding = this._attributeBindings[bindingKey];
+
+                for (bindingCount = 0; bindingCount < attributeBinding.elementBindings.length; bindingCount++) {
+                    elementBinding = attributeBinding.elementBindings[bindingCount];
+                    if (elementBinding.selector === '') {
+                        foundEls = $(this._rootEl);
+                    }
+                    else {
+                        foundEls = $(elementBinding.selector, this._rootEl);
+                    }
+
+                    if (foundEls.length === 0) {
+                        this._throwException('Bad binding found. No elements returned for binding selector ' + elementBinding.selector);
+                    }
+                    else {
+                        elementBinding.boundEls = [];
+                        for (elCount = 0; elCount < foundEls.length; elCount++) {
+                            el = foundEls[elCount];
+                            elementBinding.boundEls.push(el);
+                        }
+                    }
+                }
+            }
+        },
+
+        _bindModelToView: function () {
+            this._model.on('change', this._onModelChange, this);
+
+            if(this._options['initialCopyDirection'] === Backbone.ModelBinder.Constants.ModelToView){
+                this.copyModelAttributesToView();
+            }
+        },
+
+        // attributesToCopy is an optional parameter - if empty, all attributes
+        // that are bound will be copied.  Otherwise, only attributeBindings specified
+        // in the attributesToCopy are copied.
+        copyModelAttributesToView: function(attributesToCopy){
+            var attributeName, attributeBinding;
+
+            for (attributeName in this._attributeBindings) {
+                if(attributesToCopy === undefined || _.indexOf(attributesToCopy, attributeName) !== -1){
+                    attributeBinding = this._attributeBindings[attributeName];
+                    this._copyModelToView(attributeBinding);
+                }
+            }
+        },
+
+        copyViewValuesToModel: function(){
+            var bindingKey, attributeBinding, bindingCount, elementBinding, elCount, el;
+            for (bindingKey in this._attributeBindings) {
+                attributeBinding = this._attributeBindings[bindingKey];
+
+                for (bindingCount = 0; bindingCount < attributeBinding.elementBindings.length; bindingCount++) {
+                    elementBinding = attributeBinding.elementBindings[bindingCount];
+
+                    if(this._isBindingUserEditable(elementBinding)){
+                        if(this._isBindingRadioGroup(elementBinding)){
+                            el = this._getRadioButtonGroupCheckedEl(elementBinding);
+                            if(el){
+                                this._copyViewToModel(elementBinding, el);
+                            }
+                        }
+                        else {
+                            for(elCount = 0; elCount < elementBinding.boundEls.length; elCount++){
+                                el = $(elementBinding.boundEls[elCount]);
+                                if(this._isElUserEditable(el)){
+                                    this._copyViewToModel(elementBinding, el);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        _unbindModelToView: function(){
+            if(this._model){
+                this._model.off('change', this._onModelChange);
+                this._model = undefined;
+            }
+        },
+
+        _bindViewToModel: function () {
+            _.each(this._options['changeTriggers'], function (event, selector) {
+                $(this._rootEl).on(event, selector, this._onElChanged);
+            }, this);
+
+            if(this._options['initialCopyDirection'] === Backbone.ModelBinder.Constants.ViewToModel){
+                this.copyViewValuesToModel();
+            }
+        },
+
+        _unbindViewToModel: function () {
+            if(this._options && this._options['changeTriggers']){
+                _.each(this._options['changeTriggers'], function (event, selector) {
+                    $(this._rootEl).off(event, selector, this._onElChanged);
+                }, this);
+            }
+        },
+
+        _onElChanged:function (event) {
+            var el, elBindings, elBindingCount, elBinding;
+
+            el = $(event.target)[0];
+            elBindings = this._getElBindings(el);
+
+            for(elBindingCount = 0; elBindingCount < elBindings.length; elBindingCount++){
+                elBinding = elBindings[elBindingCount];
+                if (this._isBindingUserEditable(elBinding)) {
+                    this._copyViewToModel(elBinding, el);
+                }
+            }
+        },
+
+        _isBindingUserEditable: function(elBinding){
+            return elBinding.elAttribute === undefined ||
+                elBinding.elAttribute === 'text' ||
+                elBinding.elAttribute === 'html';
+        },
+
+        _isElUserEditable: function(el){
+            var isContentEditable = el.attr('contenteditable');
+            return isContentEditable || el.is('input') || el.is('select') || el.is('textarea');
+        },
+
+        _isBindingRadioGroup: function(elBinding){
+            var elCount, el;
+            var isAllRadioButtons = elBinding.boundEls.length > 0;
+            for(elCount = 0; elCount < elBinding.boundEls.length; elCount++){
+                el = $(elBinding.boundEls[elCount]);
+                if(el.attr('type') !== 'radio'){
+                    isAllRadioButtons = false;
+                    break;
+                }
+            }
+
+            return isAllRadioButtons;
+        },
+
+        _getRadioButtonGroupCheckedEl: function(elBinding){
+            var elCount, el;
+            for(elCount = 0; elCount < elBinding.boundEls.length; elCount++){
+                el = $(elBinding.boundEls[elCount]);
+                if(el.attr('type') === 'radio' && el.prop('checked')){
+                    return el;
+                }
+            }
+
+            return undefined;
+        },
+
+        _getElBindings:function (findEl) {
+            var attributeName, attributeBinding, elementBindingCount, elementBinding, boundElCount, boundEl;
+            var elBindings = [];
+
+            for (attributeName in this._attributeBindings) {
+                attributeBinding = this._attributeBindings[attributeName];
+
+                for (elementBindingCount = 0; elementBindingCount < attributeBinding.elementBindings.length; elementBindingCount++) {
+                    elementBinding = attributeBinding.elementBindings[elementBindingCount];
+
+                    for (boundElCount = 0; boundElCount < elementBinding.boundEls.length; boundElCount++) {
+                        boundEl = elementBinding.boundEls[boundElCount];
+
+                        if (boundEl === findEl) {
+                            elBindings.push(elementBinding);
+                        }
+                    }
+                }
+            }
+
+            return elBindings;
+        },
+
+        _onModelChange:function () {
+            var changedAttribute, attributeBinding;
+
+            for (changedAttribute in this._model.changedAttributes()) {
+                attributeBinding = this._attributeBindings[changedAttribute];
+
+                if (attributeBinding) {
+                    this._copyModelToView(attributeBinding);
+                }
+            }
+        },
+
+        _copyModelToView:function (attributeBinding) {
+            var elementBindingCount, elementBinding, boundElCount, boundEl, value, convertedValue;
+
+            value = this._model.get(attributeBinding.attributeName);
+
+            for (elementBindingCount = 0; elementBindingCount < attributeBinding.elementBindings.length; elementBindingCount++) {
+                elementBinding = attributeBinding.elementBindings[elementBindingCount];
+
+                for (boundElCount = 0; boundElCount < elementBinding.boundEls.length; boundElCount++) {
+                    boundEl = elementBinding.boundEls[boundElCount];
+
+                    if(!boundEl._isSetting){
+                        convertedValue = this._getConvertedValue(Backbone.ModelBinder.Constants.ModelToView, elementBinding, value);
+                        this._setEl($(boundEl), elementBinding, convertedValue);
+                    }
+                }
+            }
+        },
+
+        _setEl: function (el, elementBinding, convertedValue) {
+            if (elementBinding.elAttribute) {
+                this._setElAttribute(el, elementBinding, convertedValue);
+            }
+            else {
+                this._setElValue(el, convertedValue);
+            }
+        },
+
+        _setElAttribute:function (el, elementBinding, convertedValue) {
+            switch (elementBinding.elAttribute) {
+                case 'html':
+                    el.html(convertedValue);
+                    break;
+                case 'text':
+                    el.text(convertedValue);
+                    break;
+                case 'enabled':
+                    el.prop('disabled', !convertedValue);
+                    break;
+                case 'displayed':
+                    el[convertedValue ? 'show' : 'hide']();
+                    break;
+                case 'hidden':
+                    el[convertedValue ? 'hide' : 'show']();
+                    break;
+                case 'css':
+                    el.css(elementBinding.cssAttribute, convertedValue);
+                    break;
+                case 'class':
+                    var previousValue = this._model.previous(elementBinding.attributeBinding.attributeName);
+                    var currentValue = this._model.get(elementBinding.attributeBinding.attributeName);
+                    // is current value is now defined then remove the class the may have been set for the undefined value
+                    if(!_.isUndefined(previousValue) || !_.isUndefined(currentValue)){
+                        previousValue = this._getConvertedValue(Backbone.ModelBinder.Constants.ModelToView, elementBinding, previousValue);
+                        el.removeClass(previousValue);
+                    }
+
+                    if(convertedValue){
+                        el.addClass(convertedValue);
+                    }
+                    break;
+                default:
+                    el.attr(elementBinding.elAttribute, convertedValue);
+            }
+        },
+
+        _setElValue:function (el, convertedValue) {
+            if(el.attr('type')){
+                switch (el.attr('type')) {
+                    case 'radio':
+                        el.prop('checked', el.val() === convertedValue);
+                        break;
+                    case 'checkbox':
+                         el.prop('checked', !!convertedValue);
+                        break;
+                    case 'file':
+                        break;
+                    default:
+                        el.val(convertedValue);
+                }
+            }
+            else if(el.is('input') || el.is('select') || el.is('textarea')){
+                el.val(convertedValue || (convertedValue === 0 ? '0' : ''));
+            }
+            else {
+                el.text(convertedValue || (convertedValue === 0 ? '0' : ''));
+            }
+        },
+
+        _copyViewToModel: function (elementBinding, el) {
+            var result, value, convertedValue;
+
+            if (!el._isSetting) {
+
+                el._isSetting = true;
+                result = this._setModel(elementBinding, $(el));
+                el._isSetting = false;
+
+                if(result && elementBinding.converter){
+                    value = this._model.get(elementBinding.attributeBinding.attributeName);
+                    convertedValue = this._getConvertedValue(Backbone.ModelBinder.Constants.ModelToView, elementBinding, value);
+                    this._setEl($(el), elementBinding, convertedValue);
+                }
+            }
+        },
+
+        _getElValue: function(elementBinding, el){
+            switch (el.attr('type')) {
+                case 'checkbox':
+                    return el.prop('checked') ? true : false;
+                default:
+                    if(el.attr('contenteditable') !== undefined){
+                        return el.html();
+                    }
+                    else {
+                        return el.val();
+                    }
+            }
+        },
+
+        _setModel: function (elementBinding, el) {
+            var data = {};
+            var elVal = this._getElValue(elementBinding, el);
+            elVal = this._getConvertedValue(Backbone.ModelBinder.Constants.ViewToModel, elementBinding, elVal);
+            data[elementBinding.attributeBinding.attributeName] = elVal;
+            return this._model.set(data,  this._options['modelSetOptions']);
+        },
+
+        _getConvertedValue: function (direction, elementBinding, value) {
+
+            if (elementBinding.converter) {
+                value = elementBinding.converter(direction, value, elementBinding.attributeBinding.attributeName, this._model, elementBinding.boundEls);
+            }
+            else if(this._options['converter']){
+                value = this._options['converter'](direction, value, elementBinding.attributeBinding.attributeName, this._model, elementBinding.boundEls);
+            }
+
+            return value;
+        },
+
+        _throwException: function(message){
+            if(this._options.suppressThrows){
+                if(typeof(console) !== 'undefined' && console.error){
+                    console.error(message);
+                }
+            }
+            else {
+                throw message;
+            }
+        }
+    });
+
+    Backbone.ModelBinder.CollectionConverter = function(collection){
+        this._collection = collection;
+
+        if(!this._collection){
+            throw 'Collection must be defined';
+        }
+        _.bindAll(this, 'convert');
+    };
+
+    _.extend(Backbone.ModelBinder.CollectionConverter.prototype, {
+        convert: function(direction, value){
+            if (direction === Backbone.ModelBinder.Constants.ModelToView) {
+                return value ? value.id : undefined;
+            }
+            else {
+                return this._collection.get(value);
+            }
+        }
+    });
+
+    // A static helper function to create a default set of bindings that you can customize before calling the bind() function
+    // rootEl - where to find all of the bound elements
+    // attributeType - probably 'name' or 'id' in most cases
+    // converter(optional) - the default converter you want applied to all your bindings
+    // elAttribute(optional) - the default elAttribute you want applied to all your bindings
+    Backbone.ModelBinder.createDefaultBindings = function(rootEl, attributeType, converter, elAttribute){
+        var foundEls, elCount, foundEl, attributeName;
+        var bindings = {};
+
+        foundEls = $('[' + attributeType + ']', rootEl);
+
+        for(elCount = 0; elCount < foundEls.length; elCount++){
+            foundEl = foundEls[elCount];
+            attributeName = $(foundEl).attr(attributeType);
+
+            if(!bindings[attributeName]){
+                var attributeBinding =  {selector: '[' + attributeType + '="' + attributeName + '"]'};
+                bindings[attributeName] = attributeBinding;
+
+                if(converter){
+                    bindings[attributeName].converter = converter;
+                }
+
+                if(elAttribute){
+                    bindings[attributeName].elAttribute = elAttribute;
+                }
+            }
+        }
+
+        return bindings;
+    };
+
+    // Helps you to combine 2 sets of bindings
+    Backbone.ModelBinder.combineBindings = function(destination, source){
+        _.each(source, function(value, key){
+            var elementBinding = {selector: value.selector};
+
+            if(value.converter){
+                elementBinding.converter = value.converter;
+            }
+
+            if(value.elAttribute){
+                elementBinding.elAttribute = value.elAttribute;
+            }
+
+            if(!destination[key]){
+                destination[key] = elementBinding;
+            }
+            else {
+                destination[key] = [destination[key], elementBinding];
+            }
+        });
+
+        return destination;
+    };
+
+
+    return Backbone.ModelBinder;
+
+}));
+
+},{"backbone":32,"jquery":34,"underscore":35}],32:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -2124,7 +3225,7 @@ module.exports = BaseView;
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":4,"underscore":3}],3:[function(require,module,exports){
+},{"jquery":34,"underscore":33}],33:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3674,7 +4775,7 @@ module.exports = BaseView;
   }
 }.call(this));
 
-},{}],4:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -12886,4 +13987,6 @@ return jQuery;
 
 }));
 
-},{}]},{},[1]);
+},{}],35:[function(require,module,exports){
+arguments[4][33][0].apply(exports,arguments)
+},{"dup":33}]},{},[2]);

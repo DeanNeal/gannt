@@ -1,4 +1,6 @@
-var Backbone = require('backbone');
+var Backbone = require('backbone'),
+    _ = require('underscore'),
+    $ = require('jquery');
 
 var BaseView = Backbone.View.extend({
 
@@ -209,8 +211,8 @@ var BaseView = Backbone.View.extend({
                 };
                 if (this.nextStage) // if current view exist we have to remove it
                     this.removeNestedView(this.nextStage);
-                var target = this.getContentInternal().find('.bb-route-container').attr('id', params.stagesArray[0]);
-                this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target); // create an instance of current view and set it into current view
+                var target = this.getContentInternal().find('.bb-route-container');
+                this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target);
                 this.renderNestedView(this.nextStage, target);
             }
 

@@ -1,4 +1,9 @@
 @import "header/header";
+@import "dashboard/dashboard";
+@import "tree/tree";
+@import "stats/stats";
+@import "finance/finance";
+
 * {
     padding: 0; 
     margin: 0;
@@ -20,79 +25,4 @@ body {
 }
 .full_height{
     height: 100%;
-}
-.bb-route-container{
-    height: 100%;
-}
-.dashboard {
-    .tasks {
-        .task-tabs {
-            background: #221d2f;
-            overflow: hidden;
-            a {
-                color: #fff;
-                padding: 5px;
-                display: block;
-                float: left;
-                width: 100%;
-                &[data-active="true"] {
-                    background: #fff;
-                    color: #999;
-                }
-            }
-        }
-    }
-    .right_block {
-        float: right;
-        width: 65%;
-    }
-    .dashboard-menu{
-        overflow: hidden;
-        .navbar-nav {
-            background: #221d2f;
-            li {
-                a {
-                    color: #fff;
-                    padding: 5px;
-                    &[data-active="true"] {
-                        background: #fff;
-                        color: #999;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.finance {
-    height: 100%;
-    .finance_page__left {
-        .navbar-nav {
-            li {
-                float: none;
-                a {
-                	text-transform: uppercase;
-                    font: bold 14px/100% "Open Sans", Arial;
-                    color: #fff;
-                    display: block;
-                    border-left: 3px solid transparent;
-                    -webkit-transition: all 200ms ease;
-                    -moz-transition: all 200ms ease;
-                    -ms-transition: all 200ms ease;
-                    -o-transition: all 200ms ease;
-                    &:hover {
-                        border-left-color: #fff;
-                        background-color: rgba(0, 0, 0, 0.12);
-                    }
-                    &[data-active="true"] {
-                        background: #fff;
-                        color: #999;
-                    }
-                }
-            }
-        }
-    }
-    .finance-container {
-        overflow: hidden;
-    }
 }

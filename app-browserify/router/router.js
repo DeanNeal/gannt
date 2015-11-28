@@ -1,10 +1,9 @@
-define('router/router', function() {
+var Backbone = require('backbone');
 
-    var Router = Backbone.Router.extend({
-        routes: {
-            "*route(/?:params)": 'defaultRoute'
-        }
-    });
-
-    return Router;
+var Router = Backbone.Router.extend({
+    routes: {
+        "*route(/?:params)": 'defaultRoute'
+    }
 });
+
+module.exports = Router;

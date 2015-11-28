@@ -1,29 +1,30 @@
-var GlobalView = require('./views/globalview'),
+var Backbone = require('backbone'),
+    GlobalView = require('./views/globalview'),
     Router = require('./router/router'),
     Helpers = require('./Helpers');
 
-module.exports = function() {
-    var App = new GlobalView();
-    App.start();
- 
-    var router = new Router();
 
-    router.on('route:defaultRoute', function(actions, args) {
-        if (!actions) {
-            router.navigate('dashboard/tasks', {
-                trigger: true
-            });
-            return;
-        }
+var App = new GlobalView();
+App.start();
 
-        var stagesArray = actions.split('/'),
-            query = Helpers.getUrlVars(args);
+var router = new Router();
 
-        Backbone.trigger("change:page", {
-            stagesArray: stagesArray,
-            query: query
+router.on('route:defaultRoute', function(actions, args) {
+    
+    if (!actions) {
+        router.navigate('dashboard/tasks', {
+            trigger: true
         });
-    });
+        return;
+    }
 
-    Backbone.history.start();
-};
+    var stagesArray = actions.split('/'),
+        query = Helpers.getUrlVars(args);
+
+    Backbone.trigger("change:page", {
+        stagesArray: stagesArray,
+        query: query
+    });
+});
+
+Backbone.history.start();

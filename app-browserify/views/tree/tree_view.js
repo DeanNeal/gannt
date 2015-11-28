@@ -1,25 +1,13 @@
- define('views/tree/tree_view', [
-    'views/baseview',
-    'text!templates/tree/submenu.tpl'
-], function(
-    BaseView,
-    tpl
-){
+var BaseView = require('../../views/baseview'), 
+    tpl = require('./submenu.tpl');
 
-    var ContentView = BaseView.extend({
-        tagName:'div',
+    var treeView = BaseView.extend({
+        className   : 'tree',
         template: tpl,
-        className: 'wrapper',
-        onInitialize: function (params) {
+        onInitialize : function (params) {
             BaseView.prototype.onInitialize.call(this, params);
         }
     });
 
-    return BaseView.extend({
-        className   : 'tree',
-        onInitialize : function () {
-            this.addView(ContentView);
-        }
-    });
 
-});
+module.exports = treeView;

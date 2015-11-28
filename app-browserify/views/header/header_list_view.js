@@ -1,6 +1,5 @@
-var BaseView = require('views/baseview'),
-    BaseListView = require('views/elements/base_list_view'),
-    headerLogoTpl = require('templates/header/header_logo.tpl');
+var BaseView = require('../../views/baseview'),
+    BaseListView = require('../elements/base_list_view');
 
 
     var HeaderListView = BaseListView.extend({

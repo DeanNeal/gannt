@@ -1,15 +1,11 @@
-define('views/stats/stats_view', [
-    'views/baseview',
-    'text!templates/stats/submenu.tpl'
-], function(
-    BaseView,
-    tpl
-) {
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    tpl = require('./submenu.tpl');
 
     var ContentView = BaseView.extend({
         tagName: 'div',
         template: tpl,
-        className: 'wrapper',
+        className: 'stats',
         router: true,
         routes: {
 
@@ -19,6 +15,4 @@ define('views/stats/stats_view', [
         }
     });
 
-    return ContentView;
-
-});
+module.exports = ContentView;

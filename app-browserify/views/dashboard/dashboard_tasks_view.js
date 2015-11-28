@@ -1,19 +1,10 @@
-define('views/dashboard/dashboard_tasks_view', [
-    'views/baseview',
-    'views/elements/base_list_view',
-    'collections/header_list',
-    'text!templates/dashboard/dashboard_tasks.tpl',
-    'text!templates/dashboard/dashboard_task_item1.tpl',
-    'text!templates/dashboard/dashboard_task_item2.tpl'
-], function(
-    BaseView,
-    BaseListView,
-    navBarCollection,
-    tpl,
-    taskItem1Tpl,
-    taskItem2Tpl
-) {
-
+var Backbone = require('backbone'),
+    BaseView = require('../../views/baseview'),
+    BaseListView = require('./../elements/base_list_view'),
+    navBarCollection = require('./../../collections/header_list'),
+    tpl = require('./templates/dashboard_tasks.tpl'),
+    taskItem1Tpl = require('./templates/dashboard_task_item1.tpl'),
+    taskItem2Tpl = require('./templates/dashboard_task_item2.tpl');
 
     var taskItemView1 = BaseView.extend({
         template: taskItem1Tpl,
@@ -67,5 +58,4 @@ define('views/dashboard/dashboard_tasks_view', [
         }
     });
 
-    return ContentView;
-});
+module.exports = ContentView;

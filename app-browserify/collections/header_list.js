@@ -1,5 +1,6 @@
 var MenuItem = require('../models/header_list_item'),
-    Backbone = require('backbone');
+    Backbone = require('backbone'),
+     _ = require('underscore');
 
 var MenuItemCollection = Backbone.Collection.extend({
     model: MenuItem,

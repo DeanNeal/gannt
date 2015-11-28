@@ -1,0 +1,32 @@
+.finance {
+    height: 100%;
+    .finance_page__left {
+        .navbar-nav {
+            li {
+                float: none;
+                a {
+                	text-transform: uppercase;
+                    font: bold 14px/100% "Open Sans", Arial;
+                    color: #fff;
+                    display: block;
+                    border-left: 3px solid transparent;
+                    -webkit-transition: all 200ms ease;
+                    -moz-transition: all 200ms ease;
+                    -ms-transition: all 200ms ease;
+                    -o-transition: all 200ms ease;
+                    &:hover {
+                        border-left-color: #fff;
+                        background-color: rgba(0, 0, 0, 0.12);
+                    }
+                    &[data-active="true"] {
+                        background: #fff;
+                        color: #999;
+                    }
+                }
+            }
+        }
+    }
+    .finance-container {
+        overflow: hidden;
+    }
+}
