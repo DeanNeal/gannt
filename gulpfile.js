@@ -7,8 +7,6 @@ var gulp       = require('gulp'),
 	// less       = require('gulp-less'),
 	sass       = require('gulp-sass'),
 	path       = require('path'),
-	jstify     = require('jstify'),
-	_          = require('underscore'),
 	stringify  = require('stringify'),
 	connect    = require('gulp-connect');
 
@@ -25,7 +23,11 @@ gulp.task('connect', function() {
 
 
 gulp.task('browserify', function(){
-	return browserify(sourceFile)
+	return browserify({
+	        entries: [sourceFile],
+	        // extensions: ['.jsx'],
+	        paths: ['./node_modules','./app-browserify']
+    	})
 		.transform(stringify(['.tpl']))
 		.bundle()
 		.on('error', function(e){
