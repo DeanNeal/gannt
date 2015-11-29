@@ -1,4 +1,6 @@
 var Backbone          = require('backbone'),
+    sortable          = require('jquery-ui/sortable'),
+    tooltip           = require('jquery-ui/tooltip'),
     BaseView          = require('views/baseview'),
     RoutedView        = require('views/routedview'),
     BaseListView      = require('views/elements/base_list_view'),
@@ -71,6 +73,10 @@ var ContentView = RoutedView.extend({
         this.addView(SidebarLeftMenu, {
             collection: new navBarCollection(financeLinks)
         }, '.finance_page__left');
+    },
+    onRender: function(){
+        this.getContentInternal().find('.navbar-nav').sortable();
+        this.getContentInternal().tooltip();
     }
 });
 
