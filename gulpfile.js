@@ -63,11 +63,17 @@ gulp.task('sass', function () {
     .pipe(connect.reload());
 });
 
+gulp.task('html', function () {
+   gulp.src('index.html')
+       .pipe(connect.reload());
+});
+
 
 gulp.task('watch', function() {
-    gulp.watch(['app-browserify/views/**/*.js', 'app-browserify/views/**/*.tpl'], ['browserify']);
+    gulp.watch(['app-browserify/views/**/*.js', 'app-browserify/templates/**/*.tpl'], ['browserify']);
     gulp.watch('app-browserify/scss/**/*.scss', ['sass']);
     gulp.watch('app-browserify/less/**/*.less', ['less']);
+    gulp.watch('index.html', ['html']);
 });
 
 gulp.task('default', ['connect', 'sass', 'less', 'browserify', 'watch']);

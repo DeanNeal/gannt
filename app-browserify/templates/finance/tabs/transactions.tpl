@@ -12,7 +12,7 @@
 		<a href="#" class="tpc_head__btns-export" data-title="To Excel">Export</a>
 		</div>
 		</header>
-
+  
 		<div class="filters_controller">
 			<span class="comp_data" data-name="eq" data-label="Equal"></span>
 			<span class="comp_data" data-name="gt" data-label="Greater"></span>
