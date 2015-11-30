@@ -12,4 +12,6 @@
 			</div>
 		</header>
 	</section>
+	<input type="text" class="input">
+	<span class="results"></span>
 </div>

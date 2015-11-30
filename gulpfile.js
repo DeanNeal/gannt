@@ -38,7 +38,7 @@ gulp.task('browserify', function(){
 		})
 		.pipe(source(destFile))
 		.pipe(buffer())
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest(destFolder))
 		.pipe(connect.reload());
 });
