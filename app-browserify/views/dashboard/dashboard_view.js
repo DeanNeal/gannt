@@ -30,7 +30,7 @@ var SidebarLeftMenu = BaseListView.extend({
 var ContentView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
-    className: 'dashboard',
+    className: 'dashboard full_height content',
     routes: {
         'tasks': tasksView,
         'milestones': milestonesView,
