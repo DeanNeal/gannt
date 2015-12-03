@@ -1,4 +1,11 @@
 @import "header/header.less"; 
+.clearfix {
+	&:after {
+		content: "";
+  		display: table;
+  		clear: both;
+	}
+}
 body{
 	height: 100%; 
 	width: 100%;
