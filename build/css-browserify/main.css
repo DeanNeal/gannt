@@ -1,1 +1,8 @@
-.header,body{width:100%}.clearfix:after{content:"";display:table;clear:both}body{height:100%;display:block}
+.header {
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
