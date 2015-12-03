@@ -1,16 +1,20 @@
 var Backbone = require('backbone'),
-    Rx = require('rx'),
-    sortable = require('jquery-ui/sortable'),
-    tooltip = require('jquery-ui/tooltip'),
-    BaseView = require('views/baseview'),
-    RoutedView = require('views/routedview'),
-    BaseListView = require('views/elements/base_list_view'),
-    navBarCollection = require('collections/header_list'),
-    financeTpl = require('templates/finance/finance.tpl'),
+    //Rx = require('rx/dist/rx.lite'),
+    Rx                = require('rx-dom'),
+    WikiRx            = require('views/finance/finance_rx');
+
+    Kefir             = require('kefir'),
+    sortable          = require('jquery-ui/sortable'),
+    tooltip           = require('jquery-ui/tooltip'),
+    BaseView          = require('views/baseview'),
+    RoutedView        = require('views/routedview'),
+    BaseListView      = require('views/elements/base_list_view'),
+    navBarCollection  = require('collections/header_list'),
+    financeTpl        = require('templates/finance/finance.tpl'),
     headerListItemTpl = require('templates/elements/nav_list_item.tpl'),
-    transactionsTpl = require('templates/finance/tabs/transactions.tpl'),
-    finacntTpl = require('templates/finance/tabs/finacnt.tpl'),
-    cashflowacntTpl = require('templates/finance/tabs/cashflowacnt.tpl');
+    transactionsTpl   = require('templates/finance/tabs/transactions.tpl'),
+    finacntTpl        = require('templates/finance/tabs/finacnt.tpl'),
+    cashflowacntTpl   = require('templates/finance/tabs/cashflowacnt.tpl');
 
 var transactionsView = BaseView.extend({
     tagName: 'div',
@@ -41,35 +45,41 @@ var cashflowacntView = BaseView.extend({
         var $input = this.getContentInternal().find('.input'),
             $results = this.getContentInternal().find('.results');
 
+        var wikiRx = new WikiRx($input, $results);
+        wikiRx.initialize();
+
+        //KEFIR
+        var counter = this.getContentInternal().find('.counter'),
+            count = this.getContentInternal().find('.count'),
+            outputElement = this.getContentInternal().find('.label');
+
+        var btnClicks = Kefir.fromEvents(counter, 'click');
+        var inputValue = Kefir.fromEvents(count, 'keyup')
+            .map(event =>  event.target.value);
 
 
-        // /* Only get the value from each key up */
-        var keyups = Rx.Observable.fromEvent($input, 'keyup')
-            .pluck('target', 'value')
-            .filter(function(text) {
-                return text.length > 2;
+        var clicksCount = btnClicks.scan(sum => sum + 1, 0);
+
+        // var inputNumber = inputValue.map(text => parseInt(text, 10));
+
+        // var fixedInputNumber = inputValue.flatMap(
+        //     x => isNaN(x) ? Kefir.constantError('banana?') : Kefir.constant(x)
+        // );
+
+        // var theResult = Kefir.combine([fixedInputNumber, clicksCount], (a, b) => a * b);
+
+
+        clicksCount
+            .onValue(x => {
+                outputElement.html(x);
+            })
+            .onError(error => {
+                outputElement.html('<span style="color:red">' + error + '</span>');
             });
-
-        //  Now debounce the input for 500ms 
-        // var debounced = keyups
-        //   .debounce(500 /* ms */);
-
-        // /* Now get only distinct values, so we eliminate the arrows and other control characters */
-        // var distinct = debounced
-        //   .distinctUntilChanged();
+        clicksCount.log()
 
 
-        // Same as above, but detects single clicks
-        // var singleClickStream = clickStream
-        //     .buffer(function() { return clickStream.throttle(250); })
-        //     .map(function(list) { return list.length; })
-        //     .filter(function(x) { return x === 1; });
 
-            
-        keyups.subscribe(function(event) {
-
-            $results.text(event);
-        });
     }
 });
 

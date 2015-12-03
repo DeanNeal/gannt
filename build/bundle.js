@@ -47,7 +47,7 @@ router.on('route:defaultRoute', function(actions, args) {
 });
 
 Backbone.history.start();
-},{"./Helpers":1,"./router/router":5,"./views/globalview":27,"backbone":33}],3:[function(require,module,exports){
+},{"./Helpers":1,"./router/router":5,"./views/globalview":28,"backbone":34}],3:[function(require,module,exports){
 var MenuItem = require('../models/header_list_item'),
     Backbone = require('backbone'),
      _ = require('underscore');
@@ -77,7 +77,7 @@ var MenuItemCollection = Backbone.Collection.extend({
 });
 
 module.exports = MenuItemCollection;
-},{"../models/header_list_item":4,"backbone":33,"underscore":44}],4:[function(require,module,exports){
+},{"../models/header_list_item":4,"backbone":34,"underscore":48}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var MenuItem = Backbone.Model.extend({
@@ -86,7 +86,7 @@ var MenuItem = Backbone.Model.extend({
 });
 
 module.exports = MenuItem;
-},{"backbone":33}],5:[function(require,module,exports){
+},{"backbone":34}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var Router = Backbone.Router.extend({
@@ -96,7 +96,7 @@ var Router = Backbone.Router.extend({
 });
 
 module.exports = Router;
-},{"backbone":33}],6:[function(require,module,exports){
+},{"backbone":34}],6:[function(require,module,exports){
 module.exports = "<div>\r\n\t<div class=\"dashboard-menu\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],7:[function(require,module,exports){
@@ -121,7 +121,7 @@ module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=title%></a>";
 module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],14:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<span class=\"results\"></span>\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counter\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
 
 },{}],15:[function(require,module,exports){
 module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t\t<div id=\"DataTables_Table_0_wrapper\" class=\"dataTables_wrapper\" role=\"grid\"><div id=\"DataTables_Table_0_processing\" class=\"dataTables_processing\" style=\"visibility: hidden;\">Processing...</div><table class=\"table datatable table-striped m-b-none text-small dataTable\" id=\"DataTables_Table_0\" aria-describedby=\"DataTables_Table_0_info\">\r\n\t            <thead>\r\n\t                <tr class=\"search\" role=\"row\"><th data-name=\"number\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"docnumber\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"amount\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"floatPositive\" data-type=\"text\">\r\n\t</th><th data-name=\"transactionreasonacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactioncounterpartyacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"description\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"date\" class=\"type_date\" rowspan=\"1\" colspan=\"1\">            <div class=\"wrapper date\">\r\n\t            <i class=\"fa fa-calendar datepicker_icon\">\r\n\t                <input type=\"text\" data-role=\"fake\" name=\"date_start\" class=\"fieldtype-date hasDatepicker\" id=\"dp1448553020152\">\r\n\t            </i>&nbsp;\r\n\t            <i class=\"fa fa-calendar datepicker_icon\">\r\n\t                <input type=\"text\" data-role=\"fake\" name=\"date_end\" class=\"fieldtype-date hasDatepicker\" id=\"dp1448553020153\">\r\n\t            </i>\r\n\t            <input type=\"hidden\" data-role=\"real\" data-name=\"date\" value=\"s\">\r\n\r\n\t        </div>\r\n\t    </th><th data-name=\"transactionfinacntdebit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactionfinacntcredit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th><th data-name=\"transactioncashflowacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\">    <input data-role=\"simple\" type=\"text\" class=\"\" data-type=\"text\">\r\n\t</th></tr>\r\n\r\n\t                <tr class=\"titles\" role=\"row\"><th data-name=\"number\" style=\"width: 80px;\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"Number\">Number</th><th data-name=\"docnumber\" style=\"width: 80px;\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"DocNumber\">DocNumber</th><th data-name=\"name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Transaction: activate to sort column ascending\">Transaction</th><th data-name=\"amount\" style=\"width: 150px;\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Amount: activate to sort column ascending\">Amount</th><th data-name=\"transactionreasonacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Purporse: activate to sort column ascending\">Purporse</th><th data-name=\"transactioncounterpartyacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Payment from/to: activate to sort column ascending\">Payment from/to</th><th data-name=\"description\" class=\"sorting_disabled\" role=\"columnheader\" rowspan=\"1\" colspan=\"1\" aria-label=\"Description\">Description</th><th data-name=\"date\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Date: activate to sort column ascending\">Date</th><th data-name=\"transactionfinacntdebit.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Debit: activate to sort column ascending\">Debit</th><th data-name=\"transactionfinacntcredit.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Credit: activate to sort column ascending\">Credit</th><th data-name=\"transactioncashflowacnt.name\" class=\"sorting\" role=\"columnheader\" tabindex=\"0\" aria-controls=\"DataTables_Table_0\" rowspan=\"1\" colspan=\"1\" aria-label=\"Cashflow: activate to sort column ascending\">Cashflow</th></tr>\r\n\t            </thead>\r\n\r\n\t            <tfoot>\r\n\t                <tr class=\"\"><th data-name=\"number\" class=\"type_text\" style=\"width: 80px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"docnumber\" class=\"type_text\" style=\"width: 80px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"amount\" class=\"type_text\" style=\"width: 150px;\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionreasonacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactioncounterpartyacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"description\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"date\" class=\"type_date\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionfinacntdebit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactionfinacntcredit.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th><th data-name=\"transactioncashflowacnt.name\" class=\"type_text\" rowspan=\"1\" colspan=\"1\"></th></tr>    \r\n\t            </tfoot>\r\n\r\n\t            \r\n\t        <tbody role=\"alert\" aria-live=\"polite\" aria-relevant=\"all\"><tr class=\"odd\" data-id=\"163\" data-real-id=\"163\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/163\"><td class=\"field-number\">0163</td><td class=\"field-docnumber\">0182</td><td class=\"field-name\">Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"161\" data-real-id=\"161\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/161\"><td class=\"field-number\">0161</td><td class=\"field-docnumber\">0184</td><td class=\"field-name\">Payment for Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"160\" data-real-id=\"160\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/160\"><td class=\"field-number\">0160</td><td class=\"field-docnumber\">0183</td><td class=\"field-name\">stationery</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4160 General administrative</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"159\" data-real-id=\"159\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/159\"><td class=\"field-number\">0159</td><td class=\"field-docnumber\">0181</td><td class=\"field-name\">Payment for payroll #0126 Σ 2000.00 (2015-02-25)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-25 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"158\" data-real-id=\"158\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/158\"><td class=\"field-number\">0158</td><td class=\"field-docnumber\">0180</td><td class=\"field-name\">Payment for payroll #0125 Σ 3000.00 (2015-01-28)</td><td class=\"field-amount\">3 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-29 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"156\" data-real-id=\"156\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/156\"><td class=\"field-number\">0156</td><td class=\"field-docnumber\">0179</td><td class=\"field-name\">Payment for invoice #0121 Σ 1750.00 (2015-01-26)</td><td class=\"field-amount\">1 750.00</td><td class=\"field-transactionreasonacnt-name\">forest elephant</td><td class=\"field-transactioncounterpartyacnt-name\">Slon</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6207 Cash account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"155\" data-real-id=\"155\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/155\"><td class=\"field-number\">0155</td><td class=\"field-docnumber\">0121</td><td class=\"field-name\">invoice #0121 Σ 1750.00 (2015-01-26)</td><td class=\"field-amount\">1 750.00</td><td class=\"field-transactionreasonacnt-name\">forest elephant</td><td class=\"field-transactioncounterpartyacnt-name\">Slon</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"151\" data-real-id=\"151\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/151\"><td class=\"field-number\">0151</td><td class=\"field-docnumber\">0178</td><td class=\"field-name\">Payment for Coffe</td><td class=\"field-amount\">55.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"150\" data-real-id=\"150\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/150\"><td class=\"field-number\">0150</td><td class=\"field-docnumber\">0177</td><td class=\"field-name\">Payment for tea</td><td class=\"field-amount\">40.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"149\" data-real-id=\"149\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/149\"><td class=\"field-number\">0149</td><td class=\"field-docnumber\">0176</td><td class=\"field-name\">Payment for Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"148\" data-real-id=\"148\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/148\"><td class=\"field-number\">0148</td><td class=\"field-docnumber\">0175</td><td class=\"field-name\">Payment for Copy of Office rent</td><td class=\"field-amount\">5 000.10</td><td class=\"field-transactionreasonacnt-name\">media deal 100%</td><td class=\"field-transactioncounterpartyacnt-name\">UMHgroup</td><td class=\"field-description\"><span class=\"long-text\" title=\"bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla\">bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ...</span></td><td class=\"field-date\">2015-04-16 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"146\" data-real-id=\"146\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/146\"><td class=\"field-number\">0146</td><td class=\"field-docnumber\">0166</td><td class=\"field-name\">Payment for test</td><td class=\"field-amount\">550.00</td><td class=\"field-transactionreasonacnt-name\">media deal 100%</td><td class=\"field-transactioncounterpartyacnt-name\">QAtestKenan</td><td class=\"field-description\">1234567890</td><td class=\"field-date\">2015-04-14 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6208 Bank account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"145\" data-real-id=\"145\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/145\"><td class=\"field-number\">0145</td><td class=\"field-docnumber\">0169</td><td class=\"field-name\">Payment for invoice #0120 Σ 900.00 (2015-01-26)</td><td class=\"field-amount\">900.00</td><td class=\"field-transactionreasonacnt-name\">Kuna</td><td class=\"field-transactioncounterpartyacnt-name\">Mishka</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6208 Bank account</td><td class=\"field-transactionfinacntcredit-name\">6209 Accounts Receivable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"144\" data-real-id=\"144\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/144\"><td class=\"field-number\">0144</td><td class=\"field-docnumber\">0130</td><td class=\"field-name\">post</td><td class=\"field-amount\">15.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-19 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"143\" data-real-id=\"143\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/143\"><td class=\"field-number\">0143</td><td class=\"field-docnumber\">0129</td><td class=\"field-name\">coffe</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-05 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"142\" data-real-id=\"142\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/142\"><td class=\"field-number\">0142</td><td class=\"field-docnumber\">0143</td><td class=\"field-name\">Payment for tea</td><td class=\"field-amount\">30.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-30 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"141\" data-real-id=\"141\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/141\"><td class=\"field-number\">0141</td><td class=\"field-docnumber\">0128</td><td class=\"field-name\">tea</td><td class=\"field-amount\">30.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-12 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"140\" data-real-id=\"140\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/140\"><td class=\"field-number\">0140</td><td class=\"field-docnumber\">0132</td><td class=\"field-name\">tea</td><td class=\"field-amount\">40.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"139\" data-real-id=\"139\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/139\"><td class=\"field-number\">0139</td><td class=\"field-docnumber\">0134</td><td class=\"field-name\">Coffe</td><td class=\"field-amount\">55.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-03 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"138\" data-real-id=\"138\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/138\"><td class=\"field-number\">0138</td><td class=\"field-docnumber\">0131</td><td class=\"field-name\">Water</td><td class=\"field-amount\">60.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"137\" data-real-id=\"137\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/137\"><td class=\"field-number\">0137</td><td class=\"field-docnumber\">0160</td><td class=\"field-name\">Test Bill</td><td class=\"field-amount\">5 000.00</td><td class=\"field-transactionreasonacnt-name\">Media company</td><td class=\"field-transactioncounterpartyacnt-name\">Media company</td><td class=\"field-description\">for test</td><td class=\"field-date\">2015-04-14 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"135\" data-real-id=\"135\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/135\"><td class=\"field-number\">0135</td><td class=\"field-docnumber\">0147</td><td class=\"field-name\">Payment for invoice #0119 Σ 4000.00 (2015-01-26)</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Kater</td><td class=\"field-transactioncounterpartyacnt-name\">Oleg</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"134\" data-real-id=\"134\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/134\"><td class=\"field-number\">0134</td><td class=\"field-docnumber\">0145</td><td class=\"field-name\">Payment for post</td><td class=\"field-amount\">15.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-19 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"132\" data-real-id=\"132\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/132\"><td class=\"field-number\">0132</td><td class=\"field-docnumber\">0144</td><td class=\"field-name\">Payment for coffe</td><td class=\"field-amount\">45.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Alena Grechko</td><td class=\"field-description\">coffe</td><td class=\"field-date\">2015-01-06 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"130\" data-real-id=\"130\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/130\"><td class=\"field-number\">0130</td><td class=\"field-docnumber\">0119</td><td class=\"field-name\">invoice #0119 Σ 4000.00 (2015-01-26)</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Kater</td><td class=\"field-transactioncounterpartyacnt-name\">Oleg</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"129\" data-real-id=\"129\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/129\"><td class=\"field-number\">0129</td><td class=\"field-docnumber\">0142</td><td class=\"field-name\">Payment for payroll #0124 Σ 2000.00 (2015-01-28)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-04-03 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"128\" data-real-id=\"128\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/128\"><td class=\"field-number\">0128</td><td class=\"field-docnumber\">0139</td><td class=\"field-name\">Payment for rent office Feb</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"127\" data-real-id=\"127\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/127\"><td class=\"field-number\">0127</td><td class=\"field-docnumber\">0138</td><td class=\"field-name\">Payment for Office rent Jan</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"126\" data-real-id=\"126\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/126\"><td class=\"field-number\">0126</td><td class=\"field-docnumber\">0122</td><td class=\"field-name\">Office rent Jan</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"123\" data-real-id=\"123\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/123\"><td class=\"field-number\">0123</td><td class=\"field-docnumber\">0135</td><td class=\"field-name\">Payment for invoice #0118 Σ 1600.00 (2015-01-26)</td><td class=\"field-amount\">1 600.00</td><td class=\"field-transactionreasonacnt-name\">MP CMC</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-31 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8205 Accounts payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"117\" data-real-id=\"117\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/117\"><td class=\"field-number\">0117</td><td class=\"field-docnumber\">0124</td><td class=\"field-name\">payroll #0124 Σ 2000.00 (2015-01-28)</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"116\" data-real-id=\"116\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/116\"><td class=\"field-number\">0116</td><td class=\"field-docnumber\">0125</td><td class=\"field-name\">payroll #0125 Σ 3000.00 (2015-01-28)</td><td class=\"field-amount\">3 000.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-28 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"115\" data-real-id=\"115\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/115\"><td class=\"field-number\">0115</td><td class=\"field-docnumber\">0123</td><td class=\"field-name\">rent office Feb</td><td class=\"field-amount\">400.00</td><td class=\"field-transactionreasonacnt-name\">kinds elephants</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"113\" data-real-id=\"113\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/113\"><td class=\"field-number\">0113</td><td class=\"field-docnumber\">0118</td><td class=\"field-name\">invoice #0118 Σ 1600.00 (2015-01-26)</td><td class=\"field-amount\">1 600.00</td><td class=\"field-transactionreasonacnt-name\">MP CMC</td><td class=\"field-transactioncounterpartyacnt-name\">Volvach</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"111\" data-real-id=\"111\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/111\"><td class=\"field-number\">0111</td><td class=\"field-docnumber\">0120</td><td class=\"field-name\">invoice #0120 Σ 900.00 (2015-01-26)</td><td class=\"field-amount\">900.00</td><td class=\"field-transactionreasonacnt-name\">Kuna</td><td class=\"field-transactioncounterpartyacnt-name\">Mishka</td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"109\" data-real-id=\"109\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/109\"><td class=\"field-number\">0109</td><td class=\"field-docnumber\">0115</td><td class=\"field-name\">Payment for test payroll</td><td class=\"field-amount\">300.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"108\" data-real-id=\"108\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/108\"><td class=\"field-number\">0108</td><td class=\"field-docnumber\">0113</td><td class=\"field-name\">Domain name</td><td class=\"field-amount\">12.00</td><td class=\"field-transactionreasonacnt-name\">IMTransmitter v2</td><td class=\"field-transactioncounterpartyacnt-name\">fridayUser</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4060 Office supplies</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"even\" data-id=\"107\" data-real-id=\"107\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/107\"><td class=\"field-number\">0107</td><td class=\"field-docnumber\">0114</td><td class=\"field-name\">Payment for income</td><td class=\"field-amount\">100.00</td><td class=\"field-transactionreasonacnt-name\">Selling of 15%</td><td class=\"field-transactioncounterpartyacnt-name\">LA Central</td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-07 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"odd\" data-id=\"106\" data-real-id=\"106\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/106\"><td class=\"field-number\">0106</td><td class=\"field-docnumber\">0112</td><td class=\"field-name\">We need marketing RND</td><td class=\"field-amount\">30 000.00</td><td class=\"field-transactionreasonacnt-name\">Selling of 15%</td><td class=\"field-transactioncounterpartyacnt-name\">AQA_Andrew</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4010 Marketing</td><td class=\"field-transactionfinacntcredit-name\">6208 Bank account</td><td class=\"field-transactioncashflowacnt-name\">1020 Cash paid to counterparties and employees</td></tr><tr class=\"even\" data-id=\"105\" data-real-id=\"105\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/105\"><td class=\"field-number\">0105</td><td class=\"field-docnumber\">0111</td><td class=\"field-name\">invoice #0111 Σ 123.00 (2015-03-20)</td><td class=\"field-amount\">123.00</td><td class=\"field-transactionreasonacnt-name\">Huindai Motors Ukraine</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-20 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"104\" data-real-id=\"104\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/104\"><td class=\"field-number\">0104</td><td class=\"field-docnumber\">0097</td><td class=\"field-name\">salary Jan</td><td class=\"field-amount\">7 500.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-01-26 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"103\" data-real-id=\"103\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/103\"><td class=\"field-number\">0103</td><td class=\"field-docnumber\">0098</td><td class=\"field-name\">salary Feb</td><td class=\"field-amount\">2 000.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"102\" data-real-id=\"102\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/102\"><td class=\"field-number\">0102</td><td class=\"field-docnumber\">0100</td><td class=\"field-name\">salary Feb</td><td class=\"field-amount\">4 500.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-23 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"101\" data-real-id=\"101\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/101\"><td class=\"field-number\">0101</td><td class=\"field-docnumber\">0101</td><td class=\"field-name\">Rent office Jan</td><td class=\"field-amount\">750.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\">Alexander Tetievsky</td><td class=\"field-description\">Rent office Jan</td><td class=\"field-date\">2015-01-01 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"100\" data-real-id=\"100\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/100\"><td class=\"field-number\">0100</td><td class=\"field-docnumber\">0102</td><td class=\"field-name\">Rent office Feb</td><td class=\"field-amount\">750.00</td><td class=\"field-transactionreasonacnt-name\">Elephants India</td><td class=\"field-transactioncounterpartyacnt-name\">Alexander Tetievsky</td><td class=\"field-description\">Rent office Feb</td><td class=\"field-date\">2015-02-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">4040 Rent</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"99\" data-real-id=\"99\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/99\"><td class=\"field-number\">0099</td><td class=\"field-docnumber\">0088</td><td class=\"field-name\">QA  invoice</td><td class=\"field-amount\">0.00</td><td class=\"field-transactionreasonacnt-name\">SDL project</td><td class=\"field-transactioncounterpartyacnt-name\">QAfakeUser</td><td class=\"field-description\"></td><td class=\"field-date\">2015-03-02 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3100 Cost of goods sold</td><td class=\"field-transactionfinacntcredit-name\">8205 Accounts payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"98\" data-real-id=\"98\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/98\"><td class=\"field-number\">0098</td><td class=\"field-docnumber\">0078</td><td class=\"field-name\">staff salary December</td><td class=\"field-amount\">5 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2014-12-25 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">3600 Staff costs</td><td class=\"field-transactionfinacntcredit-name\">8211 Salary payable</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"93\" data-real-id=\"93\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/93\"><td class=\"field-number\">0093</td><td class=\"field-docnumber\">0062</td><td class=\"field-name\">incube Nov</td><td class=\"field-amount\">5 600.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2014-11-24 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">6209 Accounts Receivable</td><td class=\"field-transactionfinacntcredit-name\">2010 Sales</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"odd\" data-id=\"92\" data-real-id=\"92\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/92\"><td class=\"field-number\">0092</td><td class=\"field-docnumber\">0082</td><td class=\"field-name\">Payment for staff salary December</td><td class=\"field-amount\">6 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-27 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr><tr class=\"even\" data-id=\"91\" data-real-id=\"91\" data-active=\"1\" data-archived=\"0\" data-as-string=\"\" data-editable=\"0\" data-link=\"/kfinance/transaction/detailed/id/91\"><td class=\"field-number\">0091</td><td class=\"field-docnumber\">0083</td><td class=\"field-name\">Payment for staff salary December</td><td class=\"field-amount\">4 000.00</td><td class=\"field-transactionreasonacnt-name\">Silenca Tech</td><td class=\"field-transactioncounterpartyacnt-name\"></td><td class=\"field-description\"></td><td class=\"field-date\">2015-02-27 00:00:00</td><td class=\"field-transactionfinacntdebit-name\">8211 Salary payable</td><td class=\"field-transactionfinacntcredit-name\">6207 Cash account</td><td class=\"field-transactioncashflowacnt-name\"></td></tr></tbody></table><div class=\"clearfix\"></div><div class=\"panel-body btm-ctrls\"><div class=\"pull-left\"><div class=\"dataTables_info\" id=\"DataTables_Table_0_info\">1-50 from 106</div></div><div class=\"pull-right\"><div class=\"dataTables_paginate paging_bootstrap pagination pagination-mini pull-right\"><ul class=\"pagination pagination-small\"><li class=\"prev disabled\"><a href=\"#\" class=\"prev_button\"> </a></li><li class=\"active\"><a href=\"#\">1</a></li><li><a href=\"#\">2</a></li><li><a href=\"#\">3</a></li><li class=\"next\"><a href=\"#\" class=\"next_button\"> </a></li></ul></div></div></div></div>\r\n</div>";
@@ -363,7 +363,7 @@ var BaseView = Backbone.View.extend({
 
 module.exports = BaseView;
 
-},{"backbone":33,"jquery":42,"underscore":44}],21:[function(require,module,exports){
+},{"backbone":34,"jquery":43,"underscore":48}],21:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/dashboard/dashboard_milestones.tpl');
@@ -377,7 +377,7 @@ var ContentView =  BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":33,"templates/dashboard/dashboard_milestones.tpl":7,"views/baseview":20}],22:[function(require,module,exports){
+},{"backbone":34,"templates/dashboard/dashboard_milestones.tpl":7,"views/baseview":20}],22:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/dashboard/dashboard_projects.tpl');
@@ -391,7 +391,7 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":33,"templates/dashboard/dashboard_projects.tpl":8,"views/baseview":20}],23:[function(require,module,exports){
+},{"backbone":34,"templates/dashboard/dashboard_projects.tpl":8,"views/baseview":20}],23:[function(require,module,exports){
 var Backbone         = require('backbone'),
     RoutedView       = require('views/routedview'),
     BaseView         = require('views/baseview'),
@@ -450,7 +450,7 @@ var Backbone         = require('backbone'),
     });
 
 module.exports = ContentView;
-},{"backbone":33,"collections/header_list":3,"templates/dashboard/dashboard_task_item1.tpl":9,"templates/dashboard/dashboard_task_item2.tpl":10,"templates/dashboard/dashboard_tasks.tpl":11,"views/baseview":20,"views/elements/base_list_view":25,"views/routedview":29}],24:[function(require,module,exports){
+},{"backbone":34,"collections/header_list":3,"templates/dashboard/dashboard_task_item1.tpl":9,"templates/dashboard/dashboard_task_item2.tpl":10,"templates/dashboard/dashboard_tasks.tpl":11,"views/baseview":20,"views/elements/base_list_view":25,"views/routedview":30}],24:[function(require,module,exports){
 var BaseView         = require('views/baseview'),
     RoutedView       = require('views/routedview'),
     BaseListView     = require('views/elements/base_list_view'),
@@ -498,7 +498,7 @@ var ContentView = RoutedView.extend({
 });
 
 module.exports = ContentView;
-},{"collections/header_list":3,"templates/dashboard/dashboard.tpl":6,"views/baseview":20,"views/dashboard/dashboard_milestones_view":21,"views/dashboard/dashboard_projects_view":22,"views/dashboard/dashboard_tasks_view":23,"views/elements/base_list_view":25,"views/routedview":29}],25:[function(require,module,exports){
+},{"collections/header_list":3,"templates/dashboard/dashboard.tpl":6,"views/baseview":20,"views/dashboard/dashboard_milestones_view":21,"views/dashboard/dashboard_projects_view":22,"views/dashboard/dashboard_tasks_view":23,"views/elements/base_list_view":25,"views/routedview":30}],25:[function(require,module,exports){
 var Backbone       = require('backbone'),
      _             = require('underscore'),
     BaseView       = require('views/baseview'),
@@ -560,20 +560,70 @@ var listView = BaseView.extend({
 
 
 module.exports = listView;
-},{"backbone":33,"backbone.modelbinder":32,"templates/elements/nav_list_item.tpl":12,"underscore":44,"views/baseview":20}],26:[function(require,module,exports){
+},{"backbone":34,"backbone.modelbinder":33,"templates/elements/nav_list_item.tpl":12,"underscore":48,"views/baseview":20}],26:[function(require,module,exports){
+var Rx = require('rx-dom');
+
+    var WikiRx = function($input, $results){
+        this.ui = {
+            input: $input,
+            results: $results
+        };
+
+        this.keyups = Rx.Observable.fromEvent(this.ui.input, 'keyup')
+            .pluck('target', 'value')
+            // .debounce(500 /* ms */)
+            .filter(function(text) {
+                if(text.length < 3) $results.empty();
+                return text.length > 2;
+            })
+            .distinctUntilChanged();
+    };
+
+    WikiRx.prototype.initialize = function(){
+        this.suggestions = this.keyups.flatMapLatest(this.searchWikipedia);
+        this.suggestions.subscribe(
+            function(data) {
+                var resultsName = data.response[1],
+                    resultsLink = data.response[3];
+
+                this.ui.results.empty();
+
+                for (var i = 0; i < resultsName.length; i++) {
+                    this.ui.results.append('<li><a href="' + resultsLink[i] + '">' + resultsName[i] + '</a></li>');
+                }
+            }.bind(this),
+            function(e) {
+                clearSelector(resultList);
+                this.ui.results.append(createLineItem('Error: ' + e));
+            }
+        );
+    };
+
+    WikiRx.prototype.searchWikipedia = function(term){
+        var url = 'http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + encodeURIComponent(term) + '&callback=JSONPCallback';
+        return Rx.DOM.jsonpRequest(url);
+    };
+
+module.exports = WikiRx;
+
+},{"rx-dom":46}],27:[function(require,module,exports){
 var Backbone = require('backbone'),
-    Rx = require('rx'),
-    sortable = require('jquery-ui/sortable'),
-    tooltip = require('jquery-ui/tooltip'),
-    BaseView = require('views/baseview'),
-    RoutedView = require('views/routedview'),
-    BaseListView = require('views/elements/base_list_view'),
-    navBarCollection = require('collections/header_list'),
-    financeTpl = require('templates/finance/finance.tpl'),
+    //Rx = require('rx/dist/rx.lite'),
+    Rx                = require('rx-dom'),
+    WikiRx            = require('views/finance/finance_rx');
+
+    Kefir             = require('kefir'),
+    sortable          = require('jquery-ui/sortable'),
+    tooltip           = require('jquery-ui/tooltip'),
+    BaseView          = require('views/baseview'),
+    RoutedView        = require('views/routedview'),
+    BaseListView      = require('views/elements/base_list_view'),
+    navBarCollection  = require('collections/header_list'),
+    financeTpl        = require('templates/finance/finance.tpl'),
     headerListItemTpl = require('templates/elements/nav_list_item.tpl'),
-    transactionsTpl = require('templates/finance/tabs/transactions.tpl'),
-    finacntTpl = require('templates/finance/tabs/finacnt.tpl'),
-    cashflowacntTpl = require('templates/finance/tabs/cashflowacnt.tpl');
+    transactionsTpl   = require('templates/finance/tabs/transactions.tpl'),
+    finacntTpl        = require('templates/finance/tabs/finacnt.tpl'),
+    cashflowacntTpl   = require('templates/finance/tabs/cashflowacnt.tpl');
 
 var transactionsView = BaseView.extend({
     tagName: 'div',
@@ -604,35 +654,41 @@ var cashflowacntView = BaseView.extend({
         var $input = this.getContentInternal().find('.input'),
             $results = this.getContentInternal().find('.results');
 
+        var wikiRx = new WikiRx($input, $results);
+        wikiRx.initialize();
+
+        //KEFIR
+        var counter = this.getContentInternal().find('.counter'),
+            count = this.getContentInternal().find('.count'),
+            outputElement = this.getContentInternal().find('.label');
+
+        var btnClicks = Kefir.fromEvents(counter, 'click');
+        var inputValue = Kefir.fromEvents(count, 'keyup')
+            .map(event =>  event.target.value);
 
 
-        // /* Only get the value from each key up */
-        var keyups = Rx.Observable.fromEvent($input, 'keyup')
-            .pluck('target', 'value')
-            .filter(function(text) {
-                return text.length > 2;
+        var clicksCount = btnClicks.scan(sum => sum + 1, 0);
+
+        // var inputNumber = inputValue.map(text => parseInt(text, 10));
+
+        // var fixedInputNumber = inputValue.flatMap(
+        //     x => isNaN(x) ? Kefir.constantError('banana?') : Kefir.constant(x)
+        // );
+
+        // var theResult = Kefir.combine([fixedInputNumber, clicksCount], (a, b) => a * b);
+
+
+        clicksCount
+            .onValue(x => {
+                outputElement.html(x);
+            })
+            .onError(error => {
+                outputElement.html('<span style="color:red">' + error + '</span>');
             });
-
-        //  Now debounce the input for 500ms 
-        // var debounced = keyups
-        //   .debounce(500 /* ms */);
-
-        // /* Now get only distinct values, so we eliminate the arrows and other control characters */
-        // var distinct = debounced
-        //   .distinctUntilChanged();
+        clicksCount.log()
 
 
-        // Same as above, but detects single clicks
-        // var singleClickStream = clickStream
-        //     .buffer(function() { return clickStream.throttle(250); })
-        //     .map(function(list) { return list.length; })
-        //     .filter(function(x) { return x === 1; });
 
-            
-        keyups.subscribe(function(event) {
-
-            $results.text(event);
-        });
     }
 });
 
@@ -680,7 +736,7 @@ var ContentView = RoutedView.extend({
 
 module.exports = ContentView;
 
-},{"backbone":33,"collections/header_list":3,"jquery-ui/sortable":39,"jquery-ui/tooltip":40,"rx":43,"templates/elements/nav_list_item.tpl":12,"templates/finance/finance.tpl":13,"templates/finance/tabs/cashflowacnt.tpl":14,"templates/finance/tabs/finacnt.tpl":15,"templates/finance/tabs/transactions.tpl":16,"views/baseview":20,"views/elements/base_list_view":25,"views/routedview":29}],27:[function(require,module,exports){
+},{"backbone":34,"collections/header_list":3,"jquery-ui/sortable":40,"jquery-ui/tooltip":41,"kefir":44,"rx-dom":46,"templates/elements/nav_list_item.tpl":12,"templates/finance/finance.tpl":13,"templates/finance/tabs/cashflowacnt.tpl":14,"templates/finance/tabs/finacnt.tpl":15,"templates/finance/tabs/transactions.tpl":16,"views/baseview":20,"views/elements/base_list_view":25,"views/finance/finance_rx":26,"views/routedview":30}],28:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'), 
     RoutedView  = require('views/routedview'),
@@ -731,7 +787,7 @@ var Backbone = require('backbone'),
     });
 
 module.exports = GlobalView;
-},{"backbone":33,"collections/header_list":3,"templates/main.tpl":17,"views/baseview":20,"views/dashboard/dashboard_view":24,"views/finance/finance_view":26,"views/header/header_list_view":28,"views/routedview":29,"views/stats/stats_view":30,"views/tree/tree_view":31}],28:[function(require,module,exports){
+},{"backbone":34,"collections/header_list":3,"templates/main.tpl":17,"views/baseview":20,"views/dashboard/dashboard_view":24,"views/finance/finance_view":27,"views/header/header_list_view":29,"views/routedview":30,"views/stats/stats_view":31,"views/tree/tree_view":32}],29:[function(require,module,exports){
 var BaseView     = require('views/baseview'),
     BaseListView = require('views/elements/base_list_view');
 
@@ -742,7 +798,7 @@ var BaseView     = require('views/baseview'),
     });
 
 module.exports = HeaderListView;
-},{"views/baseview":20,"views/elements/base_list_view":25}],29:[function(require,module,exports){
+},{"views/baseview":20,"views/elements/base_list_view":25}],30:[function(require,module,exports){
 var BaseView = require('views/baseview');
 
 var RoutedView = BaseView.extend({
@@ -757,7 +813,7 @@ var RoutedView = BaseView.extend({
 });
 
 module.exports = RoutedView;
-},{"views/baseview":20}],30:[function(require,module,exports){
+},{"views/baseview":20}],31:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/stats/submenu.tpl');
@@ -777,7 +833,7 @@ var Backbone = require('backbone'),
 
 module.exports = ContentView;
 
-},{"backbone":33,"templates/stats/submenu.tpl":18,"views/baseview":20}],31:[function(require,module,exports){
+},{"backbone":34,"templates/stats/submenu.tpl":18,"views/baseview":20}],32:[function(require,module,exports){
 var BaseView = require('views/baseview'), 
     tpl      = require('templates/tree/submenu.tpl');
 
@@ -791,7 +847,7 @@ var BaseView = require('views/baseview'),
 
 
 module.exports = treeView;
-},{"templates/tree/submenu.tpl":19,"views/baseview":20}],32:[function(require,module,exports){
+},{"templates/tree/submenu.tpl":19,"views/baseview":20}],33:[function(require,module,exports){
 // Backbone.ModelBinder v1.1.0
 // (c) 2015 Bart Wood
 // Distributed Under MIT License
@@ -1370,7 +1426,7 @@ module.exports = treeView;
 
 }));
 
-},{"backbone":33,"jquery":42,"underscore":44}],33:[function(require,module,exports){
+},{"backbone":34,"jquery":43,"underscore":48}],34:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -3268,7 +3324,7 @@ module.exports = treeView;
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":42,"underscore":34}],34:[function(require,module,exports){
+},{"jquery":43,"underscore":35}],35:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -4818,7 +4874,7 @@ module.exports = treeView;
   }
 }.call(this));
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -4911,7 +4967,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*!
@@ -5235,7 +5291,7 @@ $.extend( $.ui, {
 
 })( jQuery );
 
-},{"jquery":42}],37:[function(require,module,exports){
+},{"jquery":43}],38:[function(require,module,exports){
 var jQuery = require('jquery');
 require('./widget');
 
@@ -5409,7 +5465,7 @@ $.widget("ui.mouse", {
 
 })(jQuery);
 
-},{"./widget":41,"jquery":42}],38:[function(require,module,exports){
+},{"./widget":42,"jquery":43}],39:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*!
@@ -5914,7 +5970,7 @@ $.ui.position = {
 
 }( jQuery ) );
 
-},{"jquery":42}],39:[function(require,module,exports){
+},{"jquery":43}],40:[function(require,module,exports){
 var jQuery = require('jquery');
 require('./core');
 require('./mouse');
@@ -7210,7 +7266,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 })(jQuery);
 
-},{"./core":36,"./mouse":37,"./widget":41,"jquery":42}],40:[function(require,module,exports){
+},{"./core":37,"./mouse":38,"./widget":42,"jquery":43}],41:[function(require,module,exports){
 var jQuery = require('jquery');
 require('./core');
 require('./widget');
@@ -7619,7 +7675,7 @@ $.widget( "ui.tooltip", {
 
 }( jQuery ) );
 
-},{"./core":36,"./position":38,"./widget":41,"jquery":42}],41:[function(require,module,exports){
+},{"./core":37,"./position":39,"./widget":42,"jquery":43}],42:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*!
@@ -8144,7 +8200,7 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
 
 })( jQuery );
 
-},{"jquery":42}],42:[function(require,module,exports){
+},{"jquery":43}],43:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -17356,7 +17412,6047 @@ return jQuery;
 
 }));
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
+/*! Kefir.js v3.1.0
+ *  https://github.com/rpominov/kefir
+ */
+
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Kefir"] = factory();
+	else
+		root["Kefir"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Kefir = module.exports = {};
+	Kefir.Kefir = Kefir;
+
+	var Observable = Kefir.Observable = __webpack_require__(1);
+	Kefir.Stream = __webpack_require__(6);
+	Kefir.Property = __webpack_require__(7);
+
+	// Create a stream
+	// -----------------------------------------------------------------------------
+
+	// () -> Stream
+	Kefir.never = __webpack_require__(8);
+
+	// (number, any) -> Stream
+	Kefir.later = __webpack_require__(9);
+
+	// (number, any) -> Stream
+	Kefir.interval = __webpack_require__(11);
+
+	// (number, Array<any>) -> Stream
+	Kefir.sequentially = __webpack_require__(12);
+
+	// (number, Function) -> Stream
+	Kefir.fromPoll = __webpack_require__(13);
+
+	// (number, Function) -> Stream
+	Kefir.withInterval = __webpack_require__(14);
+
+	// (Function) -> Stream
+	Kefir.fromCallback = __webpack_require__(16);
+
+	// (Function) -> Stream
+	Kefir.fromNodeCallback = __webpack_require__(18);
+
+	// Target = {addEventListener, removeEventListener}|{addListener, removeListener}|{on, off}
+	// (Target, string, Function|undefined) -> Stream
+	Kefir.fromEvents = __webpack_require__(19);
+
+	// (Function) -> Stream
+	Kefir.stream = __webpack_require__(17);
+
+	// Create a property
+	// -----------------------------------------------------------------------------
+
+	// (any) -> Property
+	Kefir.constant = __webpack_require__(22);
+
+	// (any) -> Property
+	Kefir.constantError = __webpack_require__(23);
+
+	// Convert observables
+	// -----------------------------------------------------------------------------
+
+	// (Stream|Property, Function|undefined) -> Property
+	var toProperty = __webpack_require__(24);
+	Observable.prototype.toProperty = function (fn) {
+	  return toProperty(this, fn);
+	};
+
+	// (Stream|Property) -> Stream
+	var changes = __webpack_require__(26);
+	Observable.prototype.changes = function () {
+	  return changes(this);
+	};
+
+	// Interoperation with other implimentations
+	// -----------------------------------------------------------------------------
+
+	// (Promise) -> Property
+	Kefir.fromPromise = __webpack_require__(27);
+
+	// (Stream|Property, Function|undefined) -> Promise
+	var toPromise = __webpack_require__(28);
+	Observable.prototype.toPromise = function (Promise) {
+	  return toPromise(this, Promise);
+	};
+
+	// (ESObservable) -> Stream
+	Kefir.fromESObservable = __webpack_require__(29);
+
+	// (Stream|Property) -> ES7 Observable
+	var toESObservable = __webpack_require__(31);
+	Observable.prototype.toESObservable = toESObservable;
+	Observable.prototype[__webpack_require__(30)('observable')] = toESObservable;
+
+	// Modify an observable
+	// -----------------------------------------------------------------------------
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var map = __webpack_require__(32);
+	Observable.prototype.map = function (fn) {
+	  return map(this, fn);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var filter = __webpack_require__(33);
+	Observable.prototype.filter = function (fn) {
+	  return filter(this, fn);
+	};
+
+	// (Stream, number) -> Stream
+	// (Property, number) -> Property
+	var take = __webpack_require__(34);
+	Observable.prototype.take = function (n) {
+	  return take(this, n);
+	};
+
+	// (Stream, number) -> Stream
+	// (Property, number) -> Property
+	var takeErrors = __webpack_require__(35);
+	Observable.prototype.takeErrors = function (n) {
+	  return takeErrors(this, n);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var takeWhile = __webpack_require__(36);
+	Observable.prototype.takeWhile = function (fn) {
+	  return takeWhile(this, fn);
+	};
+
+	// (Stream) -> Stream
+	// (Property) -> Property
+	var last = __webpack_require__(37);
+	Observable.prototype.last = function () {
+	  return last(this);
+	};
+
+	// (Stream, number) -> Stream
+	// (Property, number) -> Property
+	var skip = __webpack_require__(38);
+	Observable.prototype.skip = function (n) {
+	  return skip(this, n);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var skipWhile = __webpack_require__(39);
+	Observable.prototype.skipWhile = function (fn) {
+	  return skipWhile(this, fn);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var skipDuplicates = __webpack_require__(40);
+	Observable.prototype.skipDuplicates = function (fn) {
+	  return skipDuplicates(this, fn);
+	};
+
+	// (Stream, Function|falsey, any|undefined) -> Stream
+	// (Property, Function|falsey, any|undefined) -> Property
+	var diff = __webpack_require__(41);
+	Observable.prototype.diff = function (fn, seed) {
+	  return diff(this, fn, seed);
+	};
+
+	// (Stream|Property, Function, any|undefined) -> Property
+	var scan = __webpack_require__(42);
+	Observable.prototype.scan = function (fn, seed) {
+	  return scan(this, fn, seed);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var flatten = __webpack_require__(43);
+	Observable.prototype.flatten = function (fn) {
+	  return flatten(this, fn);
+	};
+
+	// (Stream, number) -> Stream
+	// (Property, number) -> Property
+	var delay = __webpack_require__(44);
+	Observable.prototype.delay = function (wait) {
+	  return delay(this, wait);
+	};
+
+	// Options = {leading: boolean|undefined, trailing: boolean|undefined}
+	// (Stream, number, Options|undefined) -> Stream
+	// (Property, number, Options|undefined) -> Property
+	var throttle = __webpack_require__(45);
+	Observable.prototype.throttle = function (wait, options) {
+	  return throttle(this, wait, options);
+	};
+
+	// Options = {immediate: boolean|undefined}
+	// (Stream, number, Options|undefined) -> Stream
+	// (Property, number, Options|undefined) -> Property
+	var debounce = __webpack_require__(47);
+	Observable.prototype.debounce = function (wait, options) {
+	  return debounce(this, wait, options);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var mapErrors = __webpack_require__(48);
+	Observable.prototype.mapErrors = function (fn) {
+	  return mapErrors(this, fn);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var filterErrors = __webpack_require__(49);
+	Observable.prototype.filterErrors = function (fn) {
+	  return filterErrors(this, fn);
+	};
+
+	// (Stream) -> Stream
+	// (Property) -> Property
+	var ignoreValues = __webpack_require__(50);
+	Observable.prototype.ignoreValues = function () {
+	  return ignoreValues(this);
+	};
+
+	// (Stream) -> Stream
+	// (Property) -> Property
+	var ignoreErrors = __webpack_require__(51);
+	Observable.prototype.ignoreErrors = function () {
+	  return ignoreErrors(this);
+	};
+
+	// (Stream) -> Stream
+	// (Property) -> Property
+	var ignoreEnd = __webpack_require__(52);
+	Observable.prototype.ignoreEnd = function () {
+	  return ignoreEnd(this);
+	};
+
+	// (Stream, Function) -> Stream
+	// (Property, Function) -> Property
+	var beforeEnd = __webpack_require__(53);
+	Observable.prototype.beforeEnd = function (fn) {
+	  return beforeEnd(this, fn);
+	};
+
+	// (Stream, number, number|undefined) -> Stream
+	// (Property, number, number|undefined) -> Property
+	var slidingWindow = __webpack_require__(54);
+	Observable.prototype.slidingWindow = function (max, min) {
+	  return slidingWindow(this, max, min);
+	};
+
+	// Options = {flushOnEnd: boolean|undefined}
+	// (Stream, Function|falsey, Options|undefined) -> Stream
+	// (Property, Function|falsey, Options|undefined) -> Property
+	var bufferWhile = __webpack_require__(55);
+	Observable.prototype.bufferWhile = function (fn, options) {
+	  return bufferWhile(this, fn, options);
+	};
+
+	// (Stream, Function) -> Stream
+	// (Property, Function) -> Property
+	var transduce = __webpack_require__(56);
+	Observable.prototype.transduce = function (transducer) {
+	  return transduce(this, transducer);
+	};
+
+	// (Stream, Function) -> Stream
+	// (Property, Function) -> Property
+	var withHandler = __webpack_require__(57);
+	Observable.prototype.withHandler = function (fn) {
+	  return withHandler(this, fn);
+	};
+
+	// Combine observables
+	// -----------------------------------------------------------------------------
+
+	// (Array<Stream|Property>, Function|undefiend) -> Stream
+	// (Array<Stream|Property>, Array<Stream|Property>, Function|undefiend) -> Stream
+	var combine = Kefir.combine = __webpack_require__(58);
+	Observable.prototype.combine = function (other, combinator) {
+	  return combine([this, other], combinator);
+	};
+
+	// (Array<Stream|Property>, Function|undefiend) -> Stream
+	var zip = Kefir.zip = __webpack_require__(59);
+	Observable.prototype.zip = function (other, combinator) {
+	  return zip([this, other], combinator);
+	};
+
+	// (Array<Stream|Property>) -> Stream
+	var merge = Kefir.merge = __webpack_require__(60);
+	Observable.prototype.merge = function (other) {
+	  return merge([this, other]);
+	};
+
+	// (Array<Stream|Property>) -> Stream
+	var concat = Kefir.concat = __webpack_require__(62);
+	Observable.prototype.concat = function (other) {
+	  return concat([this, other]);
+	};
+
+	// () -> Pool
+	var Pool = Kefir.Pool = __webpack_require__(64);
+	Kefir.pool = function () {
+	  return new Pool();
+	};
+
+	// (Function) -> Stream
+	Kefir.repeat = __webpack_require__(63);
+
+	// Options = {concurLim: number|undefined, queueLim: number|undefined, drop: 'old'|'new'|undefiend}
+	// (Stream|Property, Function|falsey, Options|undefined) -> Stream
+	var FlatMap = __webpack_require__(65);
+	Observable.prototype.flatMap = function (fn) {
+	  return new FlatMap(this, fn).setName(this, 'flatMap');
+	};
+	Observable.prototype.flatMapLatest = function (fn) {
+	  return new FlatMap(this, fn, { concurLim: 1, drop: 'old' }).setName(this, 'flatMapLatest');
+	};
+	Observable.prototype.flatMapFirst = function (fn) {
+	  return new FlatMap(this, fn, { concurLim: 1 }).setName(this, 'flatMapFirst');
+	};
+	Observable.prototype.flatMapConcat = function (fn) {
+	  return new FlatMap(this, fn, { queueLim: -1, concurLim: 1 }).setName(this, 'flatMapConcat');
+	};
+	Observable.prototype.flatMapConcurLimit = function (fn, limit) {
+	  return new FlatMap(this, fn, { queueLim: -1, concurLim: limit }).setName(this, 'flatMapConcurLimit');
+	};
+
+	// (Stream|Property, Function|falsey) -> Stream
+	var FlatMapErrors = __webpack_require__(66);
+	Observable.prototype.flatMapErrors = function (fn) {
+	  return new FlatMapErrors(this, fn).setName(this, 'flatMapErrors');
+	};
+
+	// Combine two observables
+	// -----------------------------------------------------------------------------
+
+	// (Stream, Stream|Property) -> Stream
+	// (Property, Stream|Property) -> Property
+	var filterBy = __webpack_require__(67);
+	Observable.prototype.filterBy = function (other) {
+	  return filterBy(this, other);
+	};
+
+	// (Stream, Stream|Property, Function|undefiend) -> Stream
+	// (Property, Stream|Property, Function|undefiend) -> Property
+	var sampledBy2items = __webpack_require__(69);
+	Observable.prototype.sampledBy = function (other, combinator) {
+	  return sampledBy2items(this, other, combinator);
+	};
+
+	// (Stream, Stream|Property) -> Stream
+	// (Property, Stream|Property) -> Property
+	var skipUntilBy = __webpack_require__(70);
+	Observable.prototype.skipUntilBy = function (other) {
+	  return skipUntilBy(this, other);
+	};
+
+	// (Stream, Stream|Property) -> Stream
+	// (Property, Stream|Property) -> Property
+	var takeUntilBy = __webpack_require__(71);
+	Observable.prototype.takeUntilBy = function (other) {
+	  return takeUntilBy(this, other);
+	};
+
+	// Options = {flushOnEnd: boolean|undefined}
+	// (Stream, Stream|Property, Options|undefined) -> Stream
+	// (Property, Stream|Property, Options|undefined) -> Property
+	var bufferBy = __webpack_require__(72);
+	Observable.prototype.bufferBy = function (other, options) {
+	  return bufferBy(this, other, options);
+	};
+
+	// Options = {flushOnEnd: boolean|undefined}
+	// (Stream, Stream|Property, Options|undefined) -> Stream
+	// (Property, Stream|Property, Options|undefined) -> Property
+	var bufferWhileBy = __webpack_require__(73);
+	Observable.prototype.bufferWhileBy = function (other, options) {
+	  return bufferWhileBy(this, other, options);
+	};
+
+	// Deprecated
+	// -----------------------------------------------------------------------------
+
+	function warn(msg) {
+	  if (Kefir.DEPRECATION_WARNINGS !== false && console && typeof console.warn === 'function') {
+	    var msg2 = '\nHere is an Error object for you containing the call stack:';
+	    console.warn(msg, msg2, new Error());
+	  }
+	}
+
+	// (Stream|Property, Stream|Property) -> Property
+	var awaiting = __webpack_require__(74);
+	Observable.prototype.awaiting = function (other) {
+	  warn('You are using deprecated .awaiting() method, see https://github.com/rpominov/kefir/issues/145');
+	  return awaiting(this, other);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var valuesToErrors = __webpack_require__(75);
+	Observable.prototype.valuesToErrors = function (fn) {
+	  warn('You are using deprecated .valuesToErrors() method, see https://github.com/rpominov/kefir/issues/149');
+	  return valuesToErrors(this, fn);
+	};
+
+	// (Stream, Function|undefined) -> Stream
+	// (Property, Function|undefined) -> Property
+	var errorsToValues = __webpack_require__(76);
+	Observable.prototype.errorsToValues = function (fn) {
+	  warn('You are using deprecated .errorsToValues() method, see https://github.com/rpominov/kefir/issues/149');
+	  return errorsToValues(this, fn);
+	};
+
+	// (Stream) -> Stream
+	// (Property) -> Property
+	var endOnError = __webpack_require__(77);
+	Observable.prototype.endOnError = function () {
+	  warn('You are using deprecated .endOnError() method, see https://github.com/rpominov/kefir/issues/150');
+	  return endOnError(this);
+	};
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var extend = _require.extend;
+
+	var _require2 = __webpack_require__(3);
+
+	var VALUE = _require2.VALUE;
+	var ERROR = _require2.ERROR;
+	var ANY = _require2.ANY;
+	var END = _require2.END;
+
+	var _require3 = __webpack_require__(4);
+
+	var Dispatcher = _require3.Dispatcher;
+	var callSubscriber = _require3.callSubscriber;
+
+	var _require4 = __webpack_require__(5);
+
+	var findByPred = _require4.findByPred;
+
+	function Observable() {
+	  this._dispatcher = new Dispatcher();
+	  this._active = false;
+	  this._alive = true;
+	  this._activating = false;
+	  this._logHandlers = null;
+	}
+
+	extend(Observable.prototype, {
+
+	  _name: 'observable',
+
+	  _onActivation: function _onActivation() {},
+	  _onDeactivation: function _onDeactivation() {},
+
+	  _setActive: function _setActive(active) {
+	    if (this._active !== active) {
+	      this._active = active;
+	      if (active) {
+	        this._activating = true;
+	        this._onActivation();
+	        this._activating = false;
+	      } else {
+	        this._onDeactivation();
+	      }
+	    }
+	  },
+
+	  _clear: function _clear() {
+	    this._setActive(false);
+	    this._dispatcher.cleanup();
+	    this._dispatcher = null;
+	    this._logHandlers = null;
+	  },
+
+	  _emit: function _emit(type, x) {
+	    switch (type) {
+	      case VALUE:
+	        return this._emitValue(x);
+	      case ERROR:
+	        return this._emitError(x);
+	      case END:
+	        return this._emitEnd();
+	    }
+	  },
+
+	  _emitValue: function _emitValue(value) {
+	    if (this._alive) {
+	      this._dispatcher.dispatch({ type: VALUE, value: value });
+	    }
+	  },
+
+	  _emitError: function _emitError(value) {
+	    if (this._alive) {
+	      this._dispatcher.dispatch({ type: ERROR, value: value });
+	    }
+	  },
+
+	  _emitEnd: function _emitEnd() {
+	    if (this._alive) {
+	      this._alive = false;
+	      this._dispatcher.dispatch({ type: END });
+	      this._clear();
+	    }
+	  },
+
+	  _on: function _on(type, fn) {
+	    if (this._alive) {
+	      this._dispatcher.add(type, fn);
+	      this._setActive(true);
+	    } else {
+	      callSubscriber(type, fn, { type: END });
+	    }
+	    return this;
+	  },
+
+	  _off: function _off(type, fn) {
+	    if (this._alive) {
+	      var count = this._dispatcher.remove(type, fn);
+	      if (count === 0) {
+	        this._setActive(false);
+	      }
+	    }
+	    return this;
+	  },
+
+	  onValue: function onValue(fn) {
+	    return this._on(VALUE, fn);
+	  },
+	  onError: function onError(fn) {
+	    return this._on(ERROR, fn);
+	  },
+	  onEnd: function onEnd(fn) {
+	    return this._on(END, fn);
+	  },
+	  onAny: function onAny(fn) {
+	    return this._on(ANY, fn);
+	  },
+
+	  offValue: function offValue(fn) {
+	    return this._off(VALUE, fn);
+	  },
+	  offError: function offError(fn) {
+	    return this._off(ERROR, fn);
+	  },
+	  offEnd: function offEnd(fn) {
+	    return this._off(END, fn);
+	  },
+	  offAny: function offAny(fn) {
+	    return this._off(ANY, fn);
+	  },
+
+	  // A and B must be subclasses of Stream and Property (order doesn't matter)
+	  _ofSameType: function _ofSameType(A, B) {
+	    return A.prototype.getType() === this.getType() ? A : B;
+	  },
+
+	  setName: function setName(sourceObs, /* optional */selfName) {
+	    this._name = selfName ? sourceObs._name + '.' + selfName : sourceObs;
+	    return this;
+	  },
+
+	  log: function log() {
+	    var name = arguments.length <= 0 || arguments[0] === undefined ? this.toString() : arguments[0];
+
+	    var isCurrent = undefined;
+	    var handler = function handler(event) {
+	      var type = '<' + event.type + (isCurrent ? ':current' : '') + '>';
+	      if (event.type === END) {
+	        console.log(name, type);
+	      } else {
+	        console.log(name, type, event.value);
+	      }
+	    };
+
+	    if (this._alive) {
+	      if (!this._logHandlers) {
+	        this._logHandlers = [];
+	      }
+	      this._logHandlers.push({ name: name, handler: handler });
+	    }
+
+	    isCurrent = true;
+	    this.onAny(handler);
+	    isCurrent = false;
+
+	    return this;
+	  },
+
+	  offLog: function offLog() {
+	    var name = arguments.length <= 0 || arguments[0] === undefined ? this.toString() : arguments[0];
+
+	    if (this._logHandlers) {
+	      var handlerIndex = findByPred(this._logHandlers, function (obj) {
+	        return obj.name === name;
+	      });
+	      if (handlerIndex !== -1) {
+	        this.offAny(this._logHandlers[handlerIndex].handler);
+	        this._logHandlers.splice(handlerIndex, 1);
+	      }
+	    }
+
+	    return this;
+	  }
+	});
+
+	// extend() can't handle `toString` in IE8
+	Observable.prototype.toString = function () {
+	  return '[' + this._name + ']';
+	};
+
+	module.exports = Observable;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	function createObj(proto) {
+	  var F = function F() {};
+	  F.prototype = proto;
+	  return new F();
+	}
+
+	function extend(target /*, mixin1, mixin2...*/) {
+	  var length = arguments.length,
+	      i = undefined,
+	      prop = undefined;
+	  for (i = 1; i < length; i++) {
+	    for (prop in arguments[i]) {
+	      target[prop] = arguments[i][prop];
+	    }
+	  }
+	  return target;
+	}
+
+	function inherit(Child, Parent /*, mixin1, mixin2...*/) {
+	  var length = arguments.length,
+	      i = undefined;
+	  Child.prototype = createObj(Parent.prototype);
+	  Child.prototype.constructor = Child;
+	  for (i = 2; i < length; i++) {
+	    extend(Child.prototype, arguments[i]);
+	  }
+	  return Child;
+	}
+
+	module.exports = { extend: extend, inherit: inherit };
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.NOTHING = ['<nothing>'];
+	exports.END = 'end';
+	exports.VALUE = 'value';
+	exports.ERROR = 'error';
+	exports.ANY = 'any';
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var extend = _require.extend;
+
+	var _require2 = __webpack_require__(3);
+
+	var VALUE = _require2.VALUE;
+	var ERROR = _require2.ERROR;
+	var ANY = _require2.ANY;
+
+	var _require3 = __webpack_require__(5);
+
+	var concat = _require3.concat;
+	var findByPred = _require3.findByPred;
+	var _remove = _require3.remove;
+	var contains = _require3.contains;
+
+	function callSubscriber(type, fn, event) {
+	  if (type === ANY) {
+	    fn(event);
+	  } else if (type === event.type) {
+	    if (type === VALUE || type === ERROR) {
+	      fn(event.value);
+	    } else {
+	      fn();
+	    }
+	  }
+	}
+
+	function Dispatcher() {
+	  this._items = [];
+	  this._inLoop = 0;
+	  this._removedItems = null;
+	}
+
+	extend(Dispatcher.prototype, {
+
+	  add: function add(type, fn) {
+	    this._items = concat(this._items, [{ type: type, fn: fn }]);
+	    return this._items.length;
+	  },
+
+	  remove: function remove(type, fn) {
+	    var index = findByPred(this._items, function (x) {
+	      return x.type === type && x.fn === fn;
+	    });
+
+	    // if we're currently in a notification loop,
+	    // remember this subscriber was removed
+	    if (this._inLoop !== 0 && index !== -1) {
+	      if (this._removedItems === null) {
+	        this._removedItems = [];
+	      }
+	      this._removedItems.push(this._items[index]);
+	    }
+
+	    this._items = _remove(this._items, index);
+	    return this._items.length;
+	  },
+
+	  dispatch: function dispatch(event) {
+	    this._inLoop++;
+	    for (var i = 0, items = this._items; i < items.length; i++) {
+
+	      // cleanup was called
+	      if (this._items === null) {
+	        break;
+	      }
+
+	      // this subscriber was removed
+	      if (this._removedItems !== null && contains(this._removedItems, items[i])) {
+	        continue;
+	      }
+
+	      callSubscriber(items[i].type, items[i].fn, event);
+	    }
+	    this._inLoop--;
+	    if (this._inLoop === 0) {
+	      this._removedItems = null;
+	    }
+	  },
+
+	  cleanup: function cleanup() {
+	    this._items = null;
+	  }
+
+	});
+
+	module.exports = { callSubscriber: callSubscriber, Dispatcher: Dispatcher };
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	function concat(a, b) {
+	  var result = undefined,
+	      length = undefined,
+	      i = undefined,
+	      j = undefined;
+	  if (a.length === 0) {
+	    return b;
+	  }
+	  if (b.length === 0) {
+	    return a;
+	  }
+	  j = 0;
+	  result = new Array(a.length + b.length);
+	  length = a.length;
+	  for (i = 0; i < length; i++, j++) {
+	    result[j] = a[i];
+	  }
+	  length = b.length;
+	  for (i = 0; i < length; i++, j++) {
+	    result[j] = b[i];
+	  }
+	  return result;
+	}
+
+	function circleShift(arr, distance) {
+	  var length = arr.length,
+	      result = new Array(length),
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    result[(i + distance) % length] = arr[i];
+	  }
+	  return result;
+	}
+
+	function find(arr, value) {
+	  var length = arr.length,
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    if (arr[i] === value) {
+	      return i;
+	    }
+	  }
+	  return -1;
+	}
+
+	function findByPred(arr, pred) {
+	  var length = arr.length,
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    if (pred(arr[i])) {
+	      return i;
+	    }
+	  }
+	  return -1;
+	}
+
+	function cloneArray(input) {
+	  var length = input.length,
+	      result = new Array(length),
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    result[i] = input[i];
+	  }
+	  return result;
+	}
+
+	function remove(input, index) {
+	  var length = input.length,
+	      result = undefined,
+	      i = undefined,
+	      j = undefined;
+	  if (index >= 0 && index < length) {
+	    if (length === 1) {
+	      return [];
+	    } else {
+	      result = new Array(length - 1);
+	      for (i = 0, j = 0; i < length; i++) {
+	        if (i !== index) {
+	          result[j] = input[i];
+	          j++;
+	        }
+	      }
+	      return result;
+	    }
+	  } else {
+	    return input;
+	  }
+	}
+
+	function removeByPred(input, pred) {
+	  return remove(input, findByPred(input, pred));
+	}
+
+	function map(input, fn) {
+	  var length = input.length,
+	      result = new Array(length),
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    result[i] = fn(input[i]);
+	  }
+	  return result;
+	}
+
+	function forEach(arr, fn) {
+	  var length = arr.length,
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    fn(arr[i]);
+	  }
+	}
+
+	function fillArray(arr, value) {
+	  var length = arr.length,
+	      i = undefined;
+	  for (i = 0; i < length; i++) {
+	    arr[i] = value;
+	  }
+	}
+
+	function contains(arr, value) {
+	  return find(arr, value) !== -1;
+	}
+
+	function slide(cur, next, max) {
+	  var length = Math.min(max, cur.length + 1),
+	      offset = cur.length - length + 1,
+	      result = new Array(length),
+	      i = undefined;
+	  for (i = offset; i < length; i++) {
+	    result[i - offset] = cur[i];
+	  }
+	  result[length - 1] = next;
+	  return result;
+	}
+
+	module.exports = {
+	  concat: concat,
+	  circleShift: circleShift,
+	  find: find,
+	  findByPred: findByPred,
+	  cloneArray: cloneArray,
+	  remove: remove,
+	  removeByPred: removeByPred,
+	  map: map,
+	  forEach: forEach,
+	  fillArray: fillArray,
+	  contains: contains,
+	  slide: slide
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var Observable = __webpack_require__(1);
+
+	function Stream() {
+	  Observable.call(this);
+	}
+
+	inherit(Stream, Observable, {
+
+	  _name: 'stream',
+
+	  getType: function getType() {
+	    return 'stream';
+	  }
+
+	});
+
+	module.exports = Stream;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var _require2 = __webpack_require__(3);
+
+	var VALUE = _require2.VALUE;
+	var ERROR = _require2.ERROR;
+	var END = _require2.END;
+
+	var _require3 = __webpack_require__(4);
+
+	var callSubscriber = _require3.callSubscriber;
+
+	var Observable = __webpack_require__(1);
+
+	function Property() {
+	  Observable.call(this);
+	  this._currentEvent = null;
+	}
+
+	inherit(Property, Observable, {
+
+	  _name: 'property',
+
+	  _emitValue: function _emitValue(value) {
+	    if (this._alive) {
+	      this._currentEvent = { type: VALUE, value: value };
+	      if (!this._activating) {
+	        this._dispatcher.dispatch({ type: VALUE, value: value });
+	      }
+	    }
+	  },
+
+	  _emitError: function _emitError(value) {
+	    if (this._alive) {
+	      this._currentEvent = { type: ERROR, value: value };
+	      if (!this._activating) {
+	        this._dispatcher.dispatch({ type: ERROR, value: value });
+	      }
+	    }
+	  },
+
+	  _emitEnd: function _emitEnd() {
+	    if (this._alive) {
+	      this._alive = false;
+	      if (!this._activating) {
+	        this._dispatcher.dispatch({ type: END });
+	      }
+	      this._clear();
+	    }
+	  },
+
+	  _on: function _on(type, fn) {
+	    if (this._alive) {
+	      this._dispatcher.add(type, fn);
+	      this._setActive(true);
+	    }
+	    if (this._currentEvent !== null) {
+	      callSubscriber(type, fn, this._currentEvent);
+	    }
+	    if (!this._alive) {
+	      callSubscriber(type, fn, { type: END });
+	    }
+	    return this;
+	  },
+
+	  getType: function getType() {
+	    return 'property';
+	  }
+
+	});
+
+	module.exports = Property;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Stream = __webpack_require__(6);
+
+	var neverS = new Stream();
+	neverS._emitEnd();
+	neverS._name = 'never';
+
+	module.exports = function never() {
+	  return neverS;
+	};
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var timeBased = __webpack_require__(10);
+
+	var S = timeBased({
+
+	  _name: 'later',
+
+	  _init: function _init(_ref) {
+	    var x = _ref.x;
+
+	    this._x = x;
+	  },
+
+	  _free: function _free() {
+	    this._x = null;
+	  },
+
+	  _onTick: function _onTick() {
+	    this._emitValue(this._x);
+	    this._emitEnd();
+	  }
+
+	});
+
+	module.exports = function later(wait, x) {
+	  return new S(wait, { x: x });
+	};
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var Stream = __webpack_require__(6);
+
+	module.exports = function timeBased(mixin) {
+
+	  function AnonymousStream(wait, options) {
+	    var _this = this;
+
+	    Stream.call(this);
+	    this._wait = wait;
+	    this._intervalId = null;
+	    this._$onTick = function () {
+	      return _this._onTick();
+	    };
+	    this._init(options);
+	  }
+
+	  inherit(AnonymousStream, Stream, {
+
+	    _init: function _init() {},
+	    _free: function _free() {},
+
+	    _onTick: function _onTick() {},
+
+	    _onActivation: function _onActivation() {
+	      this._intervalId = setInterval(this._$onTick, this._wait);
+	    },
+
+	    _onDeactivation: function _onDeactivation() {
+	      if (this._intervalId !== null) {
+	        clearInterval(this._intervalId);
+	        this._intervalId = null;
+	      }
+	    },
+
+	    _clear: function _clear() {
+	      Stream.prototype._clear.call(this);
+	      this._$onTick = null;
+	      this._free();
+	    }
+
+	  }, mixin);
+
+	  return AnonymousStream;
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var timeBased = __webpack_require__(10);
+
+	var S = timeBased({
+
+	  _name: 'interval',
+
+	  _init: function _init(_ref) {
+	    var x = _ref.x;
+
+	    this._x = x;
+	  },
+
+	  _free: function _free() {
+	    this._x = null;
+	  },
+
+	  _onTick: function _onTick() {
+	    this._emitValue(this._x);
+	  }
+
+	});
+
+	module.exports = function interval(wait, x) {
+	  return new S(wait, { x: x });
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var timeBased = __webpack_require__(10);
+
+	var _require = __webpack_require__(5);
+
+	var cloneArray = _require.cloneArray;
+
+	var never = __webpack_require__(8);
+
+	var S = timeBased({
+
+	  _name: 'sequentially',
+
+	  _init: function _init(_ref) {
+	    var xs = _ref.xs;
+
+	    this._xs = cloneArray(xs);
+	  },
+
+	  _free: function _free() {
+	    this._xs = null;
+	  },
+
+	  _onTick: function _onTick() {
+	    if (this._xs.length === 1) {
+	      this._emitValue(this._xs[0]);
+	      this._emitEnd();
+	    } else {
+	      this._emitValue(this._xs.shift());
+	    }
+	  }
+
+	});
+
+	module.exports = function sequentially(wait, xs) {
+	  return xs.length === 0 ? never() : new S(wait, { xs: xs });
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var timeBased = __webpack_require__(10);
+
+	var S = timeBased({
+
+	  _name: 'fromPoll',
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _onTick: function _onTick() {
+	    var fn = this._fn;
+	    this._emitValue(fn());
+	  }
+
+	});
+
+	module.exports = function fromPoll(wait, fn) {
+	  return new S(wait, { fn: fn });
+	};
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var timeBased = __webpack_require__(10);
+	var emitter = __webpack_require__(15);
+
+	var S = timeBased({
+
+	  _name: 'withInterval',
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	    this._emitter = emitter(this);
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	    this._emitter = null;
+	  },
+
+	  _onTick: function _onTick() {
+	    var fn = this._fn;
+	    fn(this._emitter);
+	  }
+
+	});
+
+	module.exports = function withInterval(wait, fn) {
+	  return new S(wait, { fn: fn });
+	};
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = function emitter(obs) {
+
+	  function value(x) {
+	    obs._emitValue(x);
+	    return obs._active;
+	  }
+
+	  function error(x) {
+	    obs._emitError(x);
+	    return obs._active;
+	  }
+
+	  function end() {
+	    obs._emitEnd();
+	    return obs._active;
+	  }
+
+	  function event(e) {
+	    obs._emit(e.type, e.value);
+	    return obs._active;
+	  }
+
+	  return { value: value, error: error, end: end, event: event, emit: value, emitEvent: event };
+	};
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var stream = __webpack_require__(17);
+
+	module.exports = function fromCallback(callbackConsumer) {
+
+	  var called = false;
+
+	  return stream(function (emitter) {
+
+	    if (!called) {
+	      callbackConsumer(function (x) {
+	        emitter.emit(x);
+	        emitter.end();
+	      });
+	      called = true;
+	    }
+	  }).setName('fromCallback');
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var Stream = __webpack_require__(6);
+	var emitter = __webpack_require__(15);
+
+	function S(fn) {
+	  Stream.call(this);
+	  this._fn = fn;
+	  this._unsubscribe = null;
+	}
+
+	inherit(S, Stream, {
+
+	  _name: 'stream',
+
+	  _onActivation: function _onActivation() {
+	    var fn = this._fn;
+	    var unsubscribe = fn(emitter(this));
+	    this._unsubscribe = typeof unsubscribe === 'function' ? unsubscribe : null;
+
+	    // fix https://github.com/rpominov/kefir/issues/35
+	    if (!this._active) {
+	      this._callUnsubscribe();
+	    }
+	  },
+
+	  _callUnsubscribe: function _callUnsubscribe() {
+	    if (this._unsubscribe !== null) {
+	      this._unsubscribe();
+	      this._unsubscribe = null;
+	    }
+	  },
+
+	  _onDeactivation: function _onDeactivation() {
+	    this._callUnsubscribe();
+	  },
+
+	  _clear: function _clear() {
+	    Stream.prototype._clear.call(this);
+	    this._fn = null;
+	  }
+
+	});
+
+	module.exports = function stream(fn) {
+	  return new S(fn);
+	};
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var stream = __webpack_require__(17);
+
+	module.exports = function fromNodeCallback(callbackConsumer) {
+
+	  var called = false;
+
+	  return stream(function (emitter) {
+
+	    if (!called) {
+	      callbackConsumer(function (error, x) {
+	        if (error) {
+	          emitter.error(error);
+	        } else {
+	          emitter.emit(x);
+	        }
+	        emitter.end();
+	      });
+	      called = true;
+	    }
+	  }).setName('fromNodeCallback');
+	};
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var fromSubUnsub = __webpack_require__(20);
+
+	var pairs = [['addEventListener', 'removeEventListener'], ['addListener', 'removeListener'], ['on', 'off']];
+
+	module.exports = function fromEvents(target, eventName, transformer) {
+	  var sub = undefined,
+	      unsub = undefined;
+
+	  for (var i = 0; i < pairs.length; i++) {
+	    if (typeof target[pairs[i][0]] === 'function' && typeof target[pairs[i][1]] === 'function') {
+	      sub = pairs[i][0];
+	      unsub = pairs[i][1];
+	      break;
+	    }
+	  }
+
+	  if (sub === undefined) {
+	    throw new Error('target don\'t support any of ' + 'addEventListener/removeEventListener, addListener/removeListener, on/off method pair');
+	  }
+
+	  return fromSubUnsub(function (handler) {
+	    return target[sub](eventName, handler);
+	  }, function (handler) {
+	    return target[unsub](eventName, handler);
+	  }, transformer).setName('fromEvents');
+	};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var stream = __webpack_require__(17);
+
+	var _require = __webpack_require__(21);
+
+	var apply = _require.apply;
+
+	module.exports = function fromSubUnsub(sub, unsub, transformer /* Function | falsey */) {
+	  return stream(function (emitter) {
+
+	    var handler = transformer ? function () {
+	      emitter.emit(apply(transformer, this, arguments));
+	    } : function (x) {
+	      emitter.emit(x);
+	    };
+
+	    sub(handler);
+	    return function () {
+	      return unsub(handler);
+	    };
+	  }).setName('fromSubUnsub');
+	};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	function spread(fn, length) {
+	  switch (length) {
+	    case 0:
+	      return function () {
+	        return fn();
+	      };
+	    case 1:
+	      return function (a) {
+	        return fn(a[0]);
+	      };
+	    case 2:
+	      return function (a) {
+	        return fn(a[0], a[1]);
+	      };
+	    case 3:
+	      return function (a) {
+	        return fn(a[0], a[1], a[2]);
+	      };
+	    case 4:
+	      return function (a) {
+	        return fn(a[0], a[1], a[2], a[3]);
+	      };
+	    default:
+	      return function (a) {
+	        return fn.apply(null, a);
+	      };
+	  }
+	}
+
+	function apply(fn, c, a) {
+	  var aLength = a ? a.length : 0;
+	  if (c == null) {
+	    switch (aLength) {
+	      case 0:
+	        return fn();
+	      case 1:
+	        return fn(a[0]);
+	      case 2:
+	        return fn(a[0], a[1]);
+	      case 3:
+	        return fn(a[0], a[1], a[2]);
+	      case 4:
+	        return fn(a[0], a[1], a[2], a[3]);
+	      default:
+	        return fn.apply(null, a);
+	    }
+	  } else {
+	    switch (aLength) {
+	      case 0:
+	        return fn.call(c);
+	      default:
+	        return fn.apply(c, a);
+	    }
+	  }
+	}
+
+	module.exports = { spread: spread, apply: apply };
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var Property = __webpack_require__(7);
+
+	// HACK:
+	//   We don't call parent Class constructor, but instead putting all necessary
+	//   properties into prototype to simulate ended Property
+	//   (see Propperty and Observable classes).
+
+	function P(value) {
+	  this._currentEvent = { type: 'value', value: value, current: true };
+	}
+
+	inherit(P, Property, {
+	  _name: 'constant',
+	  _active: false,
+	  _activating: false,
+	  _alive: false,
+	  _dispatcher: null,
+	  _logHandlers: null
+	});
+
+	module.exports = function constant(x) {
+	  return new P(x);
+	};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var Property = __webpack_require__(7);
+
+	// HACK:
+	//   We don't call parent Class constructor, but instead putting all necessary
+	//   properties into prototype to simulate ended Property
+	//   (see Propperty and Observable classes).
+
+	function P(value) {
+	  this._currentEvent = { type: 'error', value: value, current: true };
+	}
+
+	inherit(P, Property, {
+	  _name: 'constantError',
+	  _active: false,
+	  _activating: false,
+	  _alive: false,
+	  _dispatcher: null,
+	  _logHandlers: null
+	});
+
+	module.exports = function constantError(x) {
+	  return new P(x);
+	};
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createProperty = _require.createProperty;
+
+	var P = createProperty('toProperty', {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._getInitialCurrent = fn;
+	  },
+
+	  _onActivation: function _onActivation() {
+	    if (this._getInitialCurrent !== null) {
+	      var getInitial = this._getInitialCurrent;
+	      this._emitValue(getInitial());
+	    }
+	    this._source.onAny(this._$handleAny); // copied from patterns/one-source
+	  }
+
+	});
+
+	module.exports = function toProperty(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+
+	  if (fn !== null && typeof fn !== 'function') {
+	    throw new Error('You should call toProperty() with a function or no arguments.');
+	  }
+	  return new P(obs, { fn: fn });
+	};
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Stream = __webpack_require__(6);
+	var Property = __webpack_require__(7);
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var _require2 = __webpack_require__(3);
+
+	var VALUE = _require2.VALUE;
+	var ERROR = _require2.ERROR;
+	var END = _require2.END;
+
+	function createConstructor(BaseClass, name) {
+	  return function AnonymousObservable(source, options) {
+	    var _this = this;
+
+	    BaseClass.call(this);
+	    this._source = source;
+	    this._name = source._name + '.' + name;
+	    this._init(options);
+	    this._$handleAny = function (event) {
+	      return _this._handleAny(event);
+	    };
+	  };
+	}
+
+	function createClassMethods(BaseClass) {
+	  return {
+
+	    _init: function _init() {},
+	    _free: function _free() {},
+
+	    _handleValue: function _handleValue(x) {
+	      this._emitValue(x);
+	    },
+	    _handleError: function _handleError(x) {
+	      this._emitError(x);
+	    },
+	    _handleEnd: function _handleEnd() {
+	      this._emitEnd();
+	    },
+
+	    _handleAny: function _handleAny(event) {
+	      switch (event.type) {
+	        case VALUE:
+	          return this._handleValue(event.value);
+	        case ERROR:
+	          return this._handleError(event.value);
+	        case END:
+	          return this._handleEnd();
+	      }
+	    },
+
+	    _onActivation: function _onActivation() {
+	      this._source.onAny(this._$handleAny);
+	    },
+	    _onDeactivation: function _onDeactivation() {
+	      this._source.offAny(this._$handleAny);
+	    },
+
+	    _clear: function _clear() {
+	      BaseClass.prototype._clear.call(this);
+	      this._source = null;
+	      this._$handleAny = null;
+	      this._free();
+	    }
+
+	  };
+	}
+
+	function createStream(name, mixin) {
+	  var S = createConstructor(Stream, name);
+	  inherit(S, Stream, createClassMethods(Stream), mixin);
+	  return S;
+	}
+
+	function createProperty(name, mixin) {
+	  var P = createConstructor(Property, name);
+	  inherit(P, Property, createClassMethods(Property), mixin);
+	  return P;
+	}
+
+	module.exports = { createStream: createStream, createProperty: createProperty };
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+
+	var S = createStream('changes', {
+
+	  _handleValue: function _handleValue(x) {
+	    if (!this._activating) {
+	      this._emitValue(x);
+	    }
+	  },
+
+	  _handleError: function _handleError(x) {
+	    if (!this._activating) {
+	      this._emitError(x);
+	    }
+	  }
+
+	});
+
+	module.exports = function changes(obs) {
+	  return new S(obs);
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var stream = __webpack_require__(17);
+	var toProperty = __webpack_require__(24);
+
+	module.exports = function fromPromise(promise) {
+
+	  var called = false;
+
+	  var result = stream(function (emitter) {
+	    if (!called) {
+	      var onValue = function onValue(x) {
+	        emitter.emit(x);
+	        emitter.end();
+	      };
+	      var onError = function onError(x) {
+	        emitter.error(x);
+	        emitter.end();
+	      };
+	      var _promise = promise.then(onValue, onError);
+
+	      // prevent libraries like 'Q' or 'when' from swallowing exceptions
+	      if (_promise && typeof _promise.done === 'function') {
+	        _promise.done();
+	      }
+
+	      called = true;
+	    }
+	  });
+
+	  return toProperty(result, null).setName('fromPromise');
+	};
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function getGlodalPromise() {
+	  if (typeof Promise === 'function') {
+	    return Promise;
+	  } else {
+	    throw new Error('There isn\'t default Promise, use shim or parameter');
+	  }
+	}
+
+	module.exports = function (obs) {
+	  var Promise = arguments.length <= 1 || arguments[1] === undefined ? getGlodalPromise() : arguments[1];
+
+	  var last = null;
+	  return new Promise(function (resolve, reject) {
+	    obs.onAny(function (event) {
+	      if (event.type === 'end' && last !== null) {
+	        (last.type === 'value' ? resolve : reject)(last.value);
+	        last = null;
+	      } else {
+	        last = event;
+	      }
+	    });
+	  });
+	};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var stream = __webpack_require__(17);
+	var symbol = __webpack_require__(30)('observable');
+
+	module.exports = function fromESObservable(_observable) {
+	  var observable = _observable[symbol] ? _observable[symbol]() : _observable;
+	  return stream(function (emitter) {
+	    var unsub = observable.subscribe({
+	      error: function error(_error) {
+	        emitter.error(_error);
+	        emitter.end();
+	      },
+	      next: function next(value) {
+	        emitter.emit(value);
+	      },
+	      complete: function complete() {
+	        emitter.end();
+	      }
+	    });
+
+	    if (unsub.unsubscribe) {
+	      return function () {
+	        unsub.unsubscribe();
+	      };
+	    } else {
+	      return unsub;
+	    }
+	  }).setName('fromESObservable');
+	};
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function (key) {
+	  if (typeof Symbol !== 'undefined' && Symbol[key]) {
+	    return Symbol[key];
+	  } else if (typeof Symbol !== 'undefined' && typeof Symbol['for'] === 'function') {
+	    return Symbol['for'](key);
+	  } else {
+	    return '@@' + key;
+	  }
+	};
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _require = __webpack_require__(2);
+
+	var extend = _require.extend;
+
+	function ESObservable(observable) {
+	  this._observable = observable.takeErrors(1);
+	}
+
+	extend(ESObservable.prototype, {
+	  subscribe: function subscribe(observer) {
+	    var _this = this;
+
+	    var fn = function fn(event) {
+	      if (event.type === "value" && observer.next) {
+	        observer.next(event.value);
+	      } else if (event.type == "error" && observer.error) {
+	        observer.error(event.value);
+	      } else if (event.type === "end" && observer.complete) {
+	        observer.complete(event.value);
+	      }
+	    };
+
+	    this._observable.onAny(fn);
+	    return function () {
+	      return _this._observable.offAny(fn);
+	    };
+	  }
+	});
+
+	module.exports = function toESObservable() {
+	  return new ESObservable(this);
+	};
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    this._emitValue(fn(x));
+	  }
+
+	};
+
+	var S = createStream('map', mixin);
+	var P = createProperty('map', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function map(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    if (fn(x)) {
+	      this._emitValue(x);
+	    }
+	  }
+
+	};
+
+	var S = createStream('filter', mixin);
+	var P = createProperty('filter', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function filter(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var n = _ref.n;
+
+	    this._n = n;
+	    if (n <= 0) {
+	      this._emitEnd();
+	    }
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    this._n--;
+	    this._emitValue(x);
+	    if (this._n === 0) {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('take', mixin);
+	var P = createProperty('take', mixin);
+
+	module.exports = function take(obs, n) {
+	  return new (obs._ofSameType(S, P))(obs, { n: n });
+	};
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var n = _ref.n;
+
+	    this._n = n;
+	    if (n <= 0) {
+	      this._emitEnd();
+	    }
+	  },
+
+	  _handleError: function _handleError(x) {
+	    this._n--;
+	    this._emitError(x);
+	    if (this._n === 0) {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('takeErrors', mixin);
+	var P = createProperty('takeErrors', mixin);
+
+	module.exports = function takeErrors(obs, n) {
+	  return new (obs._ofSameType(S, P))(obs, { n: n });
+	};
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    if (fn(x)) {
+	      this._emitValue(x);
+	    } else {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('takeWhile', mixin);
+	var P = createProperty('takeWhile', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function takeWhile(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var NOTHING = _require2.NOTHING;
+
+	var mixin = {
+
+	  _init: function _init() {
+	    this._lastValue = NOTHING;
+	  },
+
+	  _free: function _free() {
+	    this._lastValue = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    this._lastValue = x;
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    if (this._lastValue !== NOTHING) {
+	      this._emitValue(this._lastValue);
+	    }
+	    this._emitEnd();
+	  }
+
+	};
+
+	var S = createStream('last', mixin);
+	var P = createProperty('last', mixin);
+
+	module.exports = function last(obs) {
+	  return new (obs._ofSameType(S, P))(obs);
+	};
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var n = _ref.n;
+
+	    this._n = Math.max(0, n);
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    if (this._n === 0) {
+	      this._emitValue(x);
+	    } else {
+	      this._n--;
+	    }
+	  }
+
+	};
+
+	var S = createStream('skip', mixin);
+	var P = createProperty('skip', mixin);
+
+	module.exports = function skip(obs, n) {
+	  return new (obs._ofSameType(S, P))(obs, { n: n });
+	};
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    if (this._fn !== null && !fn(x)) {
+	      this._fn = null;
+	    }
+	    if (this._fn === null) {
+	      this._emitValue(x);
+	    }
+	  }
+
+	};
+
+	var S = createStream('skipWhile', mixin);
+	var P = createProperty('skipWhile', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function skipWhile(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var NOTHING = _require2.NOTHING;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	    this._prev = NOTHING;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	    this._prev = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    if (this._prev === NOTHING || !fn(this._prev, x)) {
+	      this._prev = x;
+	      this._emitValue(x);
+	    }
+	  }
+
+	};
+
+	var S = createStream('skipDuplicates', mixin);
+	var P = createProperty('skipDuplicates', mixin);
+
+	var eq = function eq(a, b) {
+	  return a === b;
+	};
+
+	module.exports = function skipDuplicates(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? eq : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var NOTHING = _require2.NOTHING;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+	    var seed = _ref.seed;
+
+	    this._fn = fn;
+	    this._prev = seed;
+	  },
+
+	  _free: function _free() {
+	    this._prev = null;
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    if (this._prev !== NOTHING) {
+	      var fn = this._fn;
+	      this._emitValue(fn(this._prev, x));
+	    }
+	    this._prev = x;
+	  }
+
+	};
+
+	var S = createStream('diff', mixin);
+	var P = createProperty('diff', mixin);
+
+	function defaultFn(a, b) {
+	  return [a, b];
+	}
+
+	module.exports = function diff(obs, fn) {
+	  var seed = arguments.length <= 2 || arguments[2] === undefined ? NOTHING : arguments[2];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn || defaultFn, seed: seed });
+	};
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var ERROR = _require2.ERROR;
+	var NOTHING = _require2.NOTHING;
+
+	var P = createProperty('scan', {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+	    var seed = _ref.seed;
+
+	    this._fn = fn;
+	    this._seed = seed;
+	    if (seed !== NOTHING) {
+	      this._emitValue(seed);
+	    }
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	    this._seed = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    if (this._currentEvent === null || this._currentEvent.type === ERROR) {
+	      this._emitValue(this._seed === NOTHING ? x : fn(this._seed, x));
+	    } else {
+	      this._emitValue(fn(this._currentEvent.value, x));
+	    }
+	  }
+
+	});
+
+	module.exports = function scan(obs, fn) {
+	  var seed = arguments.length <= 2 || arguments[2] === undefined ? NOTHING : arguments[2];
+
+	  return new P(obs, { fn: fn, seed: seed });
+	};
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    var xs = fn(x);
+	    for (var i = 0; i < xs.length; i++) {
+	      this._emitValue(xs[i]);
+	    }
+	  }
+
+	};
+
+	var S = createStream('flatten', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function flatten(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new S(obs, { fn: fn });
+	};
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var END_MARKER = {};
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var _this = this;
+
+	    var wait = _ref.wait;
+
+	    this._wait = Math.max(0, wait);
+	    this._buff = [];
+	    this._$shiftBuff = function () {
+	      var value = _this._buff.shift();
+	      if (value === END_MARKER) {
+	        _this._emitEnd();
+	      } else {
+	        _this._emitValue(value);
+	      }
+	    };
+	  },
+
+	  _free: function _free() {
+	    this._buff = null;
+	    this._$shiftBuff = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    if (this._activating) {
+	      this._emitValue(x);
+	    } else {
+	      this._buff.push(x);
+	      setTimeout(this._$shiftBuff, this._wait);
+	    }
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    if (this._activating) {
+	      this._emitEnd();
+	    } else {
+	      this._buff.push(END_MARKER);
+	      setTimeout(this._$shiftBuff, this._wait);
+	    }
+	  }
+
+	};
+
+	var S = createStream('delay', mixin);
+	var P = createProperty('delay', mixin);
+
+	module.exports = function delay(obs, wait) {
+	  return new (obs._ofSameType(S, P))(obs, { wait: wait });
+	};
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var now = __webpack_require__(46);
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var _this = this;
+
+	    var wait = _ref.wait;
+	    var leading = _ref.leading;
+	    var trailing = _ref.trailing;
+
+	    this._wait = Math.max(0, wait);
+	    this._leading = leading;
+	    this._trailing = trailing;
+	    this._trailingValue = null;
+	    this._timeoutId = null;
+	    this._endLater = false;
+	    this._lastCallTime = 0;
+	    this._$trailingCall = function () {
+	      return _this._trailingCall();
+	    };
+	  },
+
+	  _free: function _free() {
+	    this._trailingValue = null;
+	    this._$trailingCall = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    if (this._activating) {
+	      this._emitValue(x);
+	    } else {
+	      var curTime = now();
+	      if (this._lastCallTime === 0 && !this._leading) {
+	        this._lastCallTime = curTime;
+	      }
+	      var remaining = this._wait - (curTime - this._lastCallTime);
+	      if (remaining <= 0) {
+	        this._cancelTrailing();
+	        this._lastCallTime = curTime;
+	        this._emitValue(x);
+	      } else if (this._trailing) {
+	        this._cancelTrailing();
+	        this._trailingValue = x;
+	        this._timeoutId = setTimeout(this._$trailingCall, remaining);
+	      }
+	    }
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    if (this._activating) {
+	      this._emitEnd();
+	    } else {
+	      if (this._timeoutId) {
+	        this._endLater = true;
+	      } else {
+	        this._emitEnd();
+	      }
+	    }
+	  },
+
+	  _cancelTrailing: function _cancelTrailing() {
+	    if (this._timeoutId !== null) {
+	      clearTimeout(this._timeoutId);
+	      this._timeoutId = null;
+	    }
+	  },
+
+	  _trailingCall: function _trailingCall() {
+	    this._emitValue(this._trailingValue);
+	    this._timeoutId = null;
+	    this._trailingValue = null;
+	    this._lastCallTime = !this._leading ? 0 : now();
+	    if (this._endLater) {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('throttle', mixin);
+	var P = createProperty('throttle', mixin);
+
+	module.exports = function throttle(obs, wait) {
+	  var _ref2 = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+	  var _ref2$leading = _ref2.leading;
+	  var leading = _ref2$leading === undefined ? true : _ref2$leading;
+	  var _ref2$trailing = _ref2.trailing;
+	  var trailing = _ref2$trailing === undefined ? true : _ref2$trailing;
+
+	  return new (obs._ofSameType(S, P))(obs, { wait: wait, leading: leading, trailing: trailing });
+	};
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = Date.now ? function () {
+	  return Date.now();
+	} : function () {
+	  return new Date().getTime();
+	};
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var now = __webpack_require__(46);
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var _this = this;
+
+	    var wait = _ref.wait;
+	    var immediate = _ref.immediate;
+
+	    this._wait = Math.max(0, wait);
+	    this._immediate = immediate;
+	    this._lastAttempt = 0;
+	    this._timeoutId = null;
+	    this._laterValue = null;
+	    this._endLater = false;
+	    this._$later = function () {
+	      return _this._later();
+	    };
+	  },
+
+	  _free: function _free() {
+	    this._laterValue = null;
+	    this._$later = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    if (this._activating) {
+	      this._emitValue(x);
+	    } else {
+	      this._lastAttempt = now();
+	      if (this._immediate && !this._timeoutId) {
+	        this._emitValue(x);
+	      }
+	      if (!this._timeoutId) {
+	        this._timeoutId = setTimeout(this._$later, this._wait);
+	      }
+	      if (!this._immediate) {
+	        this._laterValue = x;
+	      }
+	    }
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    if (this._activating) {
+	      this._emitEnd();
+	    } else {
+	      if (this._timeoutId && !this._immediate) {
+	        this._endLater = true;
+	      } else {
+	        this._emitEnd();
+	      }
+	    }
+	  },
+
+	  _later: function _later() {
+	    var last = now() - this._lastAttempt;
+	    if (last < this._wait && last >= 0) {
+	      this._timeoutId = setTimeout(this._$later, this._wait - last);
+	    } else {
+	      this._timeoutId = null;
+	      if (!this._immediate) {
+	        this._emitValue(this._laterValue);
+	        this._laterValue = null;
+	      }
+	      if (this._endLater) {
+	        this._emitEnd();
+	      }
+	    }
+	  }
+
+	};
+
+	var S = createStream('debounce', mixin);
+	var P = createProperty('debounce', mixin);
+
+	module.exports = function debounce(obs, wait) {
+	  var _ref2 = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+	  var _ref2$immediate = _ref2.immediate;
+	  var immediate = _ref2$immediate === undefined ? false : _ref2$immediate;
+
+	  return new (obs._ofSameType(S, P))(obs, { wait: wait, immediate: immediate });
+	};
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleError: function _handleError(x) {
+	    var fn = this._fn;
+	    this._emitError(fn(x));
+	  }
+
+	};
+
+	var S = createStream('mapErrors', mixin);
+	var P = createProperty('mapErrors', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function mapErrors(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleError: function _handleError(x) {
+	    var fn = this._fn;
+	    if (fn(x)) {
+	      this._emitError(x);
+	    }
+	  }
+
+	};
+
+	var S = createStream('filterErrors', mixin);
+	var P = createProperty('filterErrors', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function filterErrors(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? id : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+	  _handleValue: function _handleValue() {}
+	};
+
+	var S = createStream('ignoreValues', mixin);
+	var P = createProperty('ignoreValues', mixin);
+
+	module.exports = function ignoreValues(obs) {
+	  return new (obs._ofSameType(S, P))(obs);
+	};
+
+/***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+	  _handleError: function _handleError() {}
+	};
+
+	var S = createStream('ignoreErrors', mixin);
+	var P = createProperty('ignoreErrors', mixin);
+
+	module.exports = function ignoreErrors(obs) {
+	  return new (obs._ofSameType(S, P))(obs);
+	};
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+	  _handleEnd: function _handleEnd() {}
+	};
+
+	var S = createStream('ignoreEnd', mixin);
+	var P = createProperty('ignoreEnd', mixin);
+
+	module.exports = function ignoreEnd(obs) {
+	  return new (obs._ofSameType(S, P))(obs);
+	};
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    var fn = this._fn;
+	    this._emitValue(fn());
+	    this._emitEnd();
+	  }
+
+	};
+
+	var S = createStream('beforeEnd', mixin);
+	var P = createProperty('beforeEnd', mixin);
+
+	module.exports = function beforeEnd(obs, fn) {
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(5);
+
+	var slide = _require2.slide;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var min = _ref.min;
+	    var max = _ref.max;
+
+	    this._max = max;
+	    this._min = min;
+	    this._buff = [];
+	  },
+
+	  _free: function _free() {
+	    this._buff = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    this._buff = slide(this._buff, x, this._max);
+	    if (this._buff.length >= this._min) {
+	      this._emitValue(this._buff);
+	    }
+	  }
+
+	};
+
+	var S = createStream('slidingWindow', mixin);
+	var P = createProperty('slidingWindow', mixin);
+
+	module.exports = function slidingWindow(obs, max) {
+	  var min = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
+
+	  return new (obs._ofSameType(S, P))(obs, { min: min, max: max });
+	};
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+	    var flushOnEnd = _ref.flushOnEnd;
+
+	    this._fn = fn;
+	    this._flushOnEnd = flushOnEnd;
+	    this._buff = [];
+	  },
+
+	  _free: function _free() {
+	    this._buff = null;
+	  },
+
+	  _flush: function _flush() {
+	    if (this._buff !== null && this._buff.length !== 0) {
+	      this._emitValue(this._buff);
+	      this._buff = [];
+	    }
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    this._buff.push(x);
+	    var fn = this._fn;
+	    if (!fn(x)) {
+	      this._flush();
+	    }
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    if (this._flushOnEnd) {
+	      this._flush();
+	    }
+	    this._emitEnd();
+	  }
+
+	};
+
+	var S = createStream('bufferWhile', mixin);
+	var P = createProperty('bufferWhile', mixin);
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	module.exports = function bufferWhile(obs, fn) {
+	  var _ref2 = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+	  var _ref2$flushOnEnd = _ref2.flushOnEnd;
+	  var flushOnEnd = _ref2$flushOnEnd === undefined ? true : _ref2$flushOnEnd;
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn || id, flushOnEnd: flushOnEnd });
+	};
+
+/***/ },
+/* 56 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	function xformForObs(obs) {
+	  return {
+
+	    '@@transducer/step': function transducerStep(res, input) {
+	      obs._emitValue(input);
+	      return null;
+	    },
+
+	    '@@transducer/result': function transducerResult() {
+	      obs._emitEnd();
+	      return null;
+	    }
+
+	  };
+	}
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var transducer = _ref.transducer;
+
+	    this._xform = transducer(xformForObs(this));
+	  },
+
+	  _free: function _free() {
+	    this._xform = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    if (this._xform['@@transducer/step'](null, x) !== null) {
+	      this._xform['@@transducer/result'](null);
+	    }
+	  },
+
+	  _handleEnd: function _handleEnd() {
+	    this._xform['@@transducer/result'](null);
+	  }
+
+	};
+
+	var S = createStream('transduce', mixin);
+	var P = createProperty('transduce', mixin);
+
+	module.exports = function transduce(obs, transducer) {
+	  return new (obs._ofSameType(S, P))(obs, { transducer: transducer });
+	};
+
+/***/ },
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var emitter = __webpack_require__(15);
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._handler = fn;
+	    this._emitter = emitter(this);
+	  },
+
+	  _free: function _free() {
+	    this._handler = null;
+	    this._emitter = null;
+	  },
+
+	  _handleAny: function _handleAny(event) {
+	    this._handler(this._emitter, event);
+	  }
+
+	};
+
+	var S = createStream('withHandler', mixin);
+	var P = createProperty('withHandler', mixin);
+
+	module.exports = function withHandler(obs, fn) {
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 58 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Stream = __webpack_require__(6);
+
+	var _require = __webpack_require__(3);
+
+	var VALUE = _require.VALUE;
+	var ERROR = _require.ERROR;
+	var NOTHING = _require.NOTHING;
+
+	var _require2 = __webpack_require__(2);
+
+	var inherit = _require2.inherit;
+
+	var _require3 = __webpack_require__(5);
+
+	var concat = _require3.concat;
+	var fillArray = _require3.fillArray;
+
+	var _require4 = __webpack_require__(21);
+
+	var spread = _require4.spread;
+
+	var never = __webpack_require__(8);
+
+	function defaultErrorsCombinator(errors) {
+	  var latestError = undefined;
+	  for (var i = 0; i < errors.length; i++) {
+	    if (errors[i] !== undefined) {
+	      if (latestError === undefined || latestError.index < errors[i].index) {
+	        latestError = errors[i];
+	      }
+	    }
+	  }
+	  return latestError.error;
+	}
+
+	function Combine(active, passive, combinator) {
+	  var _this = this;
+
+	  Stream.call(this);
+	  this._activeCount = active.length;
+	  this._sources = concat(active, passive);
+	  this._combinator = combinator ? spread(combinator, this._sources.length) : function (x) {
+	    return x;
+	  };
+	  this._aliveCount = 0;
+	  this._latestValues = new Array(this._sources.length);
+	  this._latestErrors = new Array(this._sources.length);
+	  fillArray(this._latestValues, NOTHING);
+	  this._emitAfterActivation = false;
+	  this._endAfterActivation = false;
+	  this._latestErrorIndex = 0;
+
+	  this._$handlers = [];
+
+	  var _loop = function (i) {
+	    _this._$handlers.push(function (event) {
+	      return _this._handleAny(i, event);
+	    });
+	  };
+
+	  for (var i = 0; i < this._sources.length; i++) {
+	    _loop(i);
+	  }
+	}
+
+	inherit(Combine, Stream, {
+
+	  _name: 'combine',
+
+	  _onActivation: function _onActivation() {
+	    this._aliveCount = this._activeCount;
+
+	    // we need to suscribe to _passive_ sources before _active_
+	    // (see https://github.com/rpominov/kefir/issues/98)
+	    for (var i = this._activeCount; i < this._sources.length; i++) {
+	      this._sources[i].onAny(this._$handlers[i]);
+	    }
+	    for (var i = 0; i < this._activeCount; i++) {
+	      this._sources[i].onAny(this._$handlers[i]);
+	    }
+
+	    if (this._emitAfterActivation) {
+	      this._emitAfterActivation = false;
+	      this._emitIfFull();
+	    }
+	    if (this._endAfterActivation) {
+	      this._emitEnd();
+	    }
+	  },
+
+	  _onDeactivation: function _onDeactivation() {
+	    var length = this._sources.length,
+	        i = undefined;
+	    for (i = 0; i < length; i++) {
+	      this._sources[i].offAny(this._$handlers[i]);
+	    }
+	  },
+
+	  _emitIfFull: function _emitIfFull() {
+	    var hasAllValues = true;
+	    var hasErrors = false;
+	    var length = this._latestValues.length;
+	    var valuesCopy = new Array(length);
+	    var errorsCopy = new Array(length);
+
+	    for (var i = 0; i < length; i++) {
+	      valuesCopy[i] = this._latestValues[i];
+	      errorsCopy[i] = this._latestErrors[i];
+
+	      if (valuesCopy[i] === NOTHING) {
+	        hasAllValues = false;
+	      }
+
+	      if (errorsCopy[i] !== undefined) {
+	        hasErrors = true;
+	      }
+	    }
+
+	    if (hasAllValues) {
+	      var combinator = this._combinator;
+	      this._emitValue(combinator(valuesCopy));
+	    }
+	    if (hasErrors) {
+	      this._emitError(defaultErrorsCombinator(errorsCopy));
+	    }
+	  },
+
+	  _handleAny: function _handleAny(i, event) {
+
+	    if (event.type === VALUE || event.type === ERROR) {
+
+	      if (event.type === VALUE) {
+	        this._latestValues[i] = event.value;
+	        this._latestErrors[i] = undefined;
+	      }
+	      if (event.type === ERROR) {
+	        this._latestValues[i] = NOTHING;
+	        this._latestErrors[i] = {
+	          index: this._latestErrorIndex++,
+	          error: event.value
+	        };
+	      }
+
+	      if (i < this._activeCount) {
+	        if (this._activating) {
+	          this._emitAfterActivation = true;
+	        } else {
+	          this._emitIfFull();
+	        }
+	      }
+	    } else {
+	      // END
+
+	      if (i < this._activeCount) {
+	        this._aliveCount--;
+	        if (this._aliveCount === 0) {
+	          if (this._activating) {
+	            this._endAfterActivation = true;
+	          } else {
+	            this._emitEnd();
+	          }
+	        }
+	      }
+	    }
+	  },
+
+	  _clear: function _clear() {
+	    Stream.prototype._clear.call(this);
+	    this._sources = null;
+	    this._latestValues = null;
+	    this._latestErrors = null;
+	    this._combinator = null;
+	    this._$handlers = null;
+	  }
+
+	});
+
+	module.exports = function combine(active, passive, combinator) {
+	  if (passive === undefined) passive = [];
+
+	  if (typeof passive === 'function') {
+	    combinator = passive;
+	    passive = [];
+	  }
+	  return active.length === 0 ? never() : new Combine(active, passive, combinator);
+	};
+
+/***/ },
+/* 59 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Stream = __webpack_require__(6);
+
+	var _require = __webpack_require__(3);
+
+	var VALUE = _require.VALUE;
+	var ERROR = _require.ERROR;
+	var END = _require.END;
+
+	var _require2 = __webpack_require__(2);
+
+	var inherit = _require2.inherit;
+
+	var _require3 = __webpack_require__(5);
+
+	var map = _require3.map;
+	var cloneArray = _require3.cloneArray;
+
+	var _require4 = __webpack_require__(21);
+
+	var spread = _require4.spread;
+
+	var never = __webpack_require__(8);
+
+	var isArray = Array.isArray || function (xs) {
+	  return Object.prototype.toString.call(xs) === '[object Array]';
+	};
+
+	function Zip(sources, combinator) {
+	  var _this = this;
+
+	  Stream.call(this);
+
+	  this._buffers = map(sources, function (source) {
+	    return isArray(source) ? cloneArray(source) : [];
+	  });
+	  this._sources = map(sources, function (source) {
+	    return isArray(source) ? never() : source;
+	  });
+
+	  this._combinator = combinator ? spread(combinator, this._sources.length) : function (x) {
+	    return x;
+	  };
+	  this._aliveCount = 0;
+
+	  this._$handlers = [];
+
+	  var _loop = function (i) {
+	    _this._$handlers.push(function (event) {
+	      return _this._handleAny(i, event);
+	    });
+	  };
+
+	  for (var i = 0; i < this._sources.length; i++) {
+	    _loop(i);
+	  }
+	}
+
+	inherit(Zip, Stream, {
+
+	  _name: 'zip',
+
+	  _onActivation: function _onActivation() {
+
+	    // if all sources are arrays
+	    while (this._isFull()) {
+	      this._emit();
+	    }
+
+	    var length = this._sources.length;
+	    this._aliveCount = length;
+	    for (var i = 0; i < length && this._active; i++) {
+	      this._sources[i].onAny(this._$handlers[i]);
+	    }
+	  },
+
+	  _onDeactivation: function _onDeactivation() {
+	    for (var i = 0; i < this._sources.length; i++) {
+	      this._sources[i].offAny(this._$handlers[i]);
+	    }
+	  },
+
+	  _emit: function _emit() {
+	    var values = new Array(this._buffers.length);
+	    for (var i = 0; i < this._buffers.length; i++) {
+	      values[i] = this._buffers[i].shift();
+	    }
+	    var combinator = this._combinator;
+	    this._emitValue(combinator(values));
+	  },
+
+	  _isFull: function _isFull() {
+	    for (var i = 0; i < this._buffers.length; i++) {
+	      if (this._buffers[i].length === 0) {
+	        return false;
+	      }
+	    }
+	    return true;
+	  },
+
+	  _handleAny: function _handleAny(i, event) {
+	    if (event.type === VALUE) {
+	      this._buffers[i].push(event.value);
+	      if (this._isFull()) {
+	        this._emit();
+	      }
+	    }
+	    if (event.type === ERROR) {
+	      this._emitError(event.value);
+	    }
+	    if (event.type === END) {
+	      this._aliveCount--;
+	      if (this._aliveCount === 0) {
+	        this._emitEnd();
+	      }
+	    }
+	  },
+
+	  _clear: function _clear() {
+	    Stream.prototype._clear.call(this);
+	    this._sources = null;
+	    this._buffers = null;
+	    this._combinator = null;
+	    this._$handlers = null;
+	  }
+
+	});
+
+	module.exports = function zip(observables, combinator /* Function | falsey */) {
+	  return observables.length === 0 ? never() : new Zip(observables, combinator);
+	};
+
+/***/ },
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var AbstractPool = __webpack_require__(61);
+	var never = __webpack_require__(8);
+
+	function Merge(sources) {
+	  AbstractPool.call(this);
+	  this._addAll(sources);
+	  this._initialised = true;
+	}
+
+	inherit(Merge, AbstractPool, {
+
+	  _name: 'merge',
+
+	  _onEmpty: function _onEmpty() {
+	    if (this._initialised) {
+	      this._emitEnd();
+	    }
+	  }
+
+	});
+
+	module.exports = function merge(observables) {
+	  return observables.length === 0 ? never() : new Merge(observables);
+	};
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Stream = __webpack_require__(6);
+
+	var _require = __webpack_require__(3);
+
+	var VALUE = _require.VALUE;
+	var ERROR = _require.ERROR;
+
+	var _require2 = __webpack_require__(2);
+
+	var inherit = _require2.inherit;
+
+	var _require3 = __webpack_require__(5);
+
+	var concat = _require3.concat;
+	var forEach = _require3.forEach;
+	var findByPred = _require3.findByPred;
+	var find = _require3.find;
+	var remove = _require3.remove;
+	var cloneArray = _require3.cloneArray;
+
+	var id = function id(x) {
+	  return x;
+	};
+
+	function AbstractPool() {
+	  var _this = this;
+
+	  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	  var _ref$queueLim = _ref.queueLim;
+	  var queueLim = _ref$queueLim === undefined ? 0 : _ref$queueLim;
+	  var _ref$concurLim = _ref.concurLim;
+	  var concurLim = _ref$concurLim === undefined ? -1 : _ref$concurLim;
+	  var _ref$drop = _ref.drop;
+	  var drop = _ref$drop === undefined ? 'new' : _ref$drop;
+
+	  Stream.call(this);
+
+	  this._queueLim = queueLim < 0 ? -1 : queueLim;
+	  this._concurLim = concurLim < 0 ? -1 : concurLim;
+	  this._drop = drop;
+	  this._queue = [];
+	  this._curSources = [];
+	  this._$handleSubAny = function (event) {
+	    return _this._handleSubAny(event);
+	  };
+	  this._$endHandlers = [];
+	  this._currentlyAdding = null;
+
+	  if (this._concurLim === 0) {
+	    this._emitEnd();
+	  }
+	}
+
+	inherit(AbstractPool, Stream, {
+
+	  _name: 'abstractPool',
+
+	  _add: function _add(obj, toObs /* Function | falsey */) {
+	    toObs = toObs || id;
+	    if (this._concurLim === -1 || this._curSources.length < this._concurLim) {
+	      this._addToCur(toObs(obj));
+	    } else {
+	      if (this._queueLim === -1 || this._queue.length < this._queueLim) {
+	        this._addToQueue(toObs(obj));
+	      } else if (this._drop === 'old') {
+	        this._removeOldest();
+	        this._add(obj, toObs);
+	      }
+	    }
+	  },
+
+	  _addAll: function _addAll(obss) {
+	    var _this2 = this;
+
+	    forEach(obss, function (obs) {
+	      return _this2._add(obs);
+	    });
+	  },
+
+	  _remove: function _remove(obs) {
+	    if (this._removeCur(obs) === -1) {
+	      this._removeQueue(obs);
+	    }
+	  },
+
+	  _addToQueue: function _addToQueue(obs) {
+	    this._queue = concat(this._queue, [obs]);
+	  },
+
+	  _addToCur: function _addToCur(obs) {
+	    if (this._active) {
+
+	      // HACK:
+	      //
+	      // We have two optimizations for cases when `obs` is ended. We don't want
+	      // to add such observable to the list, but only want to emit events
+	      // from it (if it has some).
+	      //
+	      // Instead of this hacks, we could just did following,
+	      // but it would be 5-8 times slower:
+	      //
+	      //     this._curSources = concat(this._curSources, [obs]);
+	      //     this._subscribe(obs);
+	      //
+
+	      // #1
+	      // This one for cases when `obs` already ended
+	      // e.g., Kefir.constant() or Kefir.never()
+	      if (!obs._alive) {
+	        if (obs._currentEvent) {
+	          this._emit(obs._currentEvent.type, obs._currentEvent.value);
+	        }
+	        return;
+	      }
+
+	      // #2
+	      // This one is for cases when `obs` going to end synchronously on
+	      // first subscriber e.g., Kefir.stream(em => {em.emit(1); em.end()})
+	      this._currentlyAdding = obs;
+	      obs.onAny(this._$handleSubAny);
+	      this._currentlyAdding = null;
+	      if (obs._alive) {
+	        this._curSources = concat(this._curSources, [obs]);
+	        if (this._active) {
+	          this._subToEnd(obs);
+	        }
+	      }
+	    } else {
+	      this._curSources = concat(this._curSources, [obs]);
+	    }
+	  },
+
+	  _subToEnd: function _subToEnd(obs) {
+	    var _this3 = this;
+
+	    var onEnd = function onEnd() {
+	      return _this3._removeCur(obs);
+	    };
+	    this._$endHandlers.push({ obs: obs, handler: onEnd });
+	    obs.onEnd(onEnd);
+	  },
+
+	  _subscribe: function _subscribe(obs) {
+	    obs.onAny(this._$handleSubAny);
+
+	    // it can become inactive in responce of subscribing to `obs.onAny` above
+	    if (this._active) {
+	      this._subToEnd(obs);
+	    }
+	  },
+
+	  _unsubscribe: function _unsubscribe(obs) {
+	    obs.offAny(this._$handleSubAny);
+
+	    var onEndI = findByPred(this._$endHandlers, function (obj) {
+	      return obj.obs === obs;
+	    });
+	    if (onEndI !== -1) {
+	      obs.offEnd(this._$endHandlers[onEndI].handler);
+	      this._$endHandlers.splice(onEndI, 1);
+	    }
+	  },
+
+	  _handleSubAny: function _handleSubAny(event) {
+	    if (event.type === VALUE) {
+	      this._emitValue(event.value);
+	    } else if (event.type === ERROR) {
+	      this._emitError(event.value);
+	    }
+	  },
+
+	  _removeQueue: function _removeQueue(obs) {
+	    var index = find(this._queue, obs);
+	    this._queue = remove(this._queue, index);
+	    return index;
+	  },
+
+	  _removeCur: function _removeCur(obs) {
+	    if (this._active) {
+	      this._unsubscribe(obs);
+	    }
+	    var index = find(this._curSources, obs);
+	    this._curSources = remove(this._curSources, index);
+	    if (index !== -1) {
+	      if (this._queue.length !== 0) {
+	        this._pullQueue();
+	      } else if (this._curSources.length === 0) {
+	        this._onEmpty();
+	      }
+	    }
+	    return index;
+	  },
+
+	  _removeOldest: function _removeOldest() {
+	    this._removeCur(this._curSources[0]);
+	  },
+
+	  _pullQueue: function _pullQueue() {
+	    if (this._queue.length !== 0) {
+	      this._queue = cloneArray(this._queue);
+	      this._addToCur(this._queue.shift());
+	    }
+	  },
+
+	  _onActivation: function _onActivation() {
+	    for (var i = 0, sources = this._curSources; i < sources.length && this._active; i++) {
+	      this._subscribe(sources[i]);
+	    }
+	  },
+
+	  _onDeactivation: function _onDeactivation() {
+	    for (var i = 0, sources = this._curSources; i < sources.length; i++) {
+	      this._unsubscribe(sources[i]);
+	    }
+	    if (this._currentlyAdding !== null) {
+	      this._unsubscribe(this._currentlyAdding);
+	    }
+	  },
+
+	  _isEmpty: function _isEmpty() {
+	    return this._curSources.length === 0;
+	  },
+
+	  _onEmpty: function _onEmpty() {},
+
+	  _clear: function _clear() {
+	    Stream.prototype._clear.call(this);
+	    this._queue = null;
+	    this._curSources = null;
+	    this._$handleSubAny = null;
+	    this._$endHandlers = null;
+	  }
+
+	});
+
+	module.exports = AbstractPool;
+
+/***/ },
+/* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var repeat = __webpack_require__(63);
+
+	module.exports = function concat(observables) {
+	  return repeat(function (index) {
+	    return observables.length > index ? observables[index] : false;
+	  }).setName('concat');
+	};
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var Stream = __webpack_require__(6);
+
+	var _require2 = __webpack_require__(3);
+
+	var END = _require2.END;
+
+	function S(generator) {
+	  var _this = this;
+
+	  Stream.call(this);
+	  this._generator = generator;
+	  this._source = null;
+	  this._inLoop = false;
+	  this._iteration = 0;
+	  this._$handleAny = function (event) {
+	    return _this._handleAny(event);
+	  };
+	}
+
+	inherit(S, Stream, {
+
+	  _name: 'repeat',
+
+	  _handleAny: function _handleAny(event) {
+	    if (event.type === END) {
+	      this._source = null;
+	      this._getSource();
+	    } else {
+	      this._emit(event.type, event.value);
+	    }
+	  },
+
+	  _getSource: function _getSource() {
+	    if (!this._inLoop) {
+	      this._inLoop = true;
+	      var generator = this._generator;
+	      while (this._source === null && this._alive && this._active) {
+	        this._source = generator(this._iteration++);
+	        if (this._source) {
+	          this._source.onAny(this._$handleAny);
+	        } else {
+	          this._emitEnd();
+	        }
+	      }
+	      this._inLoop = false;
+	    }
+	  },
+
+	  _onActivation: function _onActivation() {
+	    if (this._source) {
+	      this._source.onAny(this._$handleAny);
+	    } else {
+	      this._getSource();
+	    }
+	  },
+
+	  _onDeactivation: function _onDeactivation() {
+	    if (this._source) {
+	      this._source.offAny(this._$handleAny);
+	    }
+	  },
+
+	  _clear: function _clear() {
+	    Stream.prototype._clear.call(this);
+	    this._generator = null;
+	    this._source = null;
+	    this._$handleAny = null;
+	  }
+
+	});
+
+	module.exports = function (generator) {
+	  return new S(generator);
+	};
+
+/***/ },
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var AbstractPool = __webpack_require__(61);
+
+	function Pool() {
+	  AbstractPool.call(this);
+	}
+
+	inherit(Pool, AbstractPool, {
+
+	  _name: 'pool',
+
+	  plug: function plug(obs) {
+	    this._add(obs);
+	    return this;
+	  },
+
+	  unplug: function unplug(obs) {
+	    this._remove(obs);
+	    return this;
+	  }
+
+	});
+
+	module.exports = Pool;
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(3);
+
+	var VALUE = _require.VALUE;
+	var ERROR = _require.ERROR;
+	var END = _require.END;
+
+	var _require2 = __webpack_require__(2);
+
+	var inherit = _require2.inherit;
+
+	var AbstractPool = __webpack_require__(61);
+
+	function FlatMap(source, fn, options) {
+	  var _this = this;
+
+	  AbstractPool.call(this, options);
+	  this._source = source;
+	  this._fn = fn;
+	  this._mainEnded = false;
+	  this._lastCurrent = null;
+	  this._$handleMain = function (event) {
+	    return _this._handleMain(event);
+	  };
+	}
+
+	inherit(FlatMap, AbstractPool, {
+
+	  _onActivation: function _onActivation() {
+	    AbstractPool.prototype._onActivation.call(this);
+	    if (this._active) {
+	      this._source.onAny(this._$handleMain);
+	    }
+	  },
+
+	  _onDeactivation: function _onDeactivation() {
+	    AbstractPool.prototype._onDeactivation.call(this);
+	    this._source.offAny(this._$handleMain);
+	    this._hadNoEvSinceDeact = true;
+	  },
+
+	  _handleMain: function _handleMain(event) {
+
+	    if (event.type === VALUE) {
+	      // Is latest value before deactivation survived, and now is 'current' on this activation?
+	      // We don't want to handle such values, to prevent to constantly add
+	      // same observale on each activation/deactivation when our main source
+	      // is a `Kefir.conatant()` for example.
+	      var sameCurr = this._activating && this._hadNoEvSinceDeact && this._lastCurrent === event.value;
+	      if (!sameCurr) {
+	        this._add(event.value, this._fn);
+	      }
+	      this._lastCurrent = event.value;
+	      this._hadNoEvSinceDeact = false;
+	    }
+
+	    if (event.type === ERROR) {
+	      this._emitError(event.value);
+	    }
+
+	    if (event.type === END) {
+	      if (this._isEmpty()) {
+	        this._emitEnd();
+	      } else {
+	        this._mainEnded = true;
+	      }
+	    }
+	  },
+
+	  _onEmpty: function _onEmpty() {
+	    if (this._mainEnded) {
+	      this._emitEnd();
+	    }
+	  },
+
+	  _clear: function _clear() {
+	    AbstractPool.prototype._clear.call(this);
+	    this._source = null;
+	    this._lastCurrent = null;
+	    this._$handleMain = null;
+	  }
+
+	});
+
+	module.exports = FlatMap;
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(3);
+
+	var VALUE = _require.VALUE;
+	var ERROR = _require.ERROR;
+	var END = _require.END;
+
+	var _require2 = __webpack_require__(2);
+
+	var inherit = _require2.inherit;
+
+	var FlatMap = __webpack_require__(65);
+
+	function FlatMapErrors(source, fn) {
+	  FlatMap.call(this, source, fn);
+	}
+
+	inherit(FlatMapErrors, FlatMap, {
+
+	  // Same as in FlatMap, only VALUE/ERROR flipped
+	  _handleMain: function _handleMain(event) {
+
+	    if (event.type === ERROR) {
+	      var sameCurr = this._activating && this._hadNoEvSinceDeact && this._lastCurrent === event.value;
+	      if (!sameCurr) {
+	        this._add(event.value, this._fn);
+	      }
+	      this._lastCurrent = event.value;
+	      this._hadNoEvSinceDeact = false;
+	    }
+
+	    if (event.type === VALUE) {
+	      this._emitValue(event.value);
+	    }
+
+	    if (event.type === END) {
+	      if (this._isEmpty()) {
+	        this._emitEnd();
+	      } else {
+	        this._mainEnded = true;
+	      }
+	    }
+	  }
+
+	});
+
+	module.exports = FlatMapErrors;
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(68);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var NOTHING = _require2.NOTHING;
+
+	var mixin = {
+
+	  _handlePrimaryValue: function _handlePrimaryValue(x) {
+	    if (this._lastSecondary !== NOTHING && this._lastSecondary) {
+	      this._emitValue(x);
+	    }
+	  },
+
+	  _handleSecondaryEnd: function _handleSecondaryEnd() {
+	    if (this._lastSecondary === NOTHING || !this._lastSecondary) {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('filterBy', mixin);
+	var P = createProperty('filterBy', mixin);
+
+	module.exports = function filterBy(primary, secondary) {
+	  return new (primary._ofSameType(S, P))(primary, secondary);
+	};
+
+/***/ },
+/* 68 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Stream = __webpack_require__(6);
+	var Property = __webpack_require__(7);
+
+	var _require = __webpack_require__(2);
+
+	var inherit = _require.inherit;
+
+	var _require2 = __webpack_require__(3);
+
+	var VALUE = _require2.VALUE;
+	var ERROR = _require2.ERROR;
+	var END = _require2.END;
+	var NOTHING = _require2.NOTHING;
+
+	function createConstructor(BaseClass, name) {
+	  return function AnonymousObservable(primary, secondary, options) {
+	    var _this = this;
+
+	    BaseClass.call(this);
+	    this._primary = primary;
+	    this._secondary = secondary;
+	    this._name = primary._name + '.' + name;
+	    this._lastSecondary = NOTHING;
+	    this._$handleSecondaryAny = function (event) {
+	      return _this._handleSecondaryAny(event);
+	    };
+	    this._$handlePrimaryAny = function (event) {
+	      return _this._handlePrimaryAny(event);
+	    };
+	    this._init(options);
+	  };
+	}
+
+	function createClassMethods(BaseClass) {
+	  return {
+	    _init: function _init() {},
+	    _free: function _free() {},
+
+	    _handlePrimaryValue: function _handlePrimaryValue(x) {
+	      this._emitValue(x);
+	    },
+	    _handlePrimaryError: function _handlePrimaryError(x) {
+	      this._emitError(x);
+	    },
+	    _handlePrimaryEnd: function _handlePrimaryEnd() {
+	      this._emitEnd();
+	    },
+
+	    _handleSecondaryValue: function _handleSecondaryValue(x) {
+	      this._lastSecondary = x;
+	    },
+	    _handleSecondaryError: function _handleSecondaryError(x) {
+	      this._emitError(x);
+	    },
+	    _handleSecondaryEnd: function _handleSecondaryEnd() {},
+
+	    _handlePrimaryAny: function _handlePrimaryAny(event) {
+	      switch (event.type) {
+	        case VALUE:
+	          return this._handlePrimaryValue(event.value);
+	        case ERROR:
+	          return this._handlePrimaryError(event.value);
+	        case END:
+	          return this._handlePrimaryEnd(event.value);
+	      }
+	    },
+	    _handleSecondaryAny: function _handleSecondaryAny(event) {
+	      switch (event.type) {
+	        case VALUE:
+	          return this._handleSecondaryValue(event.value);
+	        case ERROR:
+	          return this._handleSecondaryError(event.value);
+	        case END:
+	          this._handleSecondaryEnd(event.value);
+	          this._removeSecondary();
+	      }
+	    },
+
+	    _removeSecondary: function _removeSecondary() {
+	      if (this._secondary !== null) {
+	        this._secondary.offAny(this._$handleSecondaryAny);
+	        this._$handleSecondaryAny = null;
+	        this._secondary = null;
+	      }
+	    },
+
+	    _onActivation: function _onActivation() {
+	      if (this._secondary !== null) {
+	        this._secondary.onAny(this._$handleSecondaryAny);
+	      }
+	      if (this._active) {
+	        this._primary.onAny(this._$handlePrimaryAny);
+	      }
+	    },
+	    _onDeactivation: function _onDeactivation() {
+	      if (this._secondary !== null) {
+	        this._secondary.offAny(this._$handleSecondaryAny);
+	      }
+	      this._primary.offAny(this._$handlePrimaryAny);
+	    },
+
+	    _clear: function _clear() {
+	      BaseClass.prototype._clear.call(this);
+	      this._primary = null;
+	      this._secondary = null;
+	      this._lastSecondary = null;
+	      this._$handleSecondaryAny = null;
+	      this._$handlePrimaryAny = null;
+	      this._free();
+	    }
+
+	  };
+	}
+
+	function createStream(name, mixin) {
+	  var S = createConstructor(Stream, name);
+	  inherit(S, Stream, createClassMethods(Stream), mixin);
+	  return S;
+	}
+
+	function createProperty(name, mixin) {
+	  var P = createConstructor(Property, name);
+	  inherit(P, Property, createClassMethods(Property), mixin);
+	  return P;
+	}
+
+	module.exports = { createStream: createStream, createProperty: createProperty };
+
+/***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var combine = __webpack_require__(58);
+
+	var id2 = function id2(_, x) {
+	  return x;
+	};
+
+	module.exports = function sampledBy(passive, active, combinator) {
+	  var _combinator = combinator ? function (a, b) {
+	    return combinator(b, a);
+	  } : id2;
+	  return combine([active], [passive], _combinator).setName(passive, 'sampledBy');
+	};
+
+/***/ },
+/* 70 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(68);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var NOTHING = _require2.NOTHING;
+
+	var mixin = {
+
+	  _handlePrimaryValue: function _handlePrimaryValue(x) {
+	    if (this._lastSecondary !== NOTHING) {
+	      this._emitValue(x);
+	    }
+	  },
+
+	  _handleSecondaryEnd: function _handleSecondaryEnd() {
+	    if (this._lastSecondary === NOTHING) {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('skipUntilBy', mixin);
+	var P = createProperty('skipUntilBy', mixin);
+
+	module.exports = function skipUntilBy(primary, secondary) {
+	  return new (primary._ofSameType(S, P))(primary, secondary);
+	};
+
+/***/ },
+/* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(68);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _handleSecondaryValue: function _handleSecondaryValue() {
+	    this._emitEnd();
+	  }
+
+	};
+
+	var S = createStream('takeUntilBy', mixin);
+	var P = createProperty('takeUntilBy', mixin);
+
+	module.exports = function takeUntilBy(primary, secondary) {
+	  return new (primary._ofSameType(S, P))(primary, secondary);
+	};
+
+/***/ },
+/* 72 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(68);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init() {
+	    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	    var _ref$flushOnEnd = _ref.flushOnEnd;
+	    var flushOnEnd = _ref$flushOnEnd === undefined ? true : _ref$flushOnEnd;
+
+	    this._buff = [];
+	    this._flushOnEnd = flushOnEnd;
+	  },
+
+	  _free: function _free() {
+	    this._buff = null;
+	  },
+
+	  _flush: function _flush() {
+	    if (this._buff !== null) {
+	      this._emitValue(this._buff);
+	      this._buff = [];
+	    }
+	  },
+
+	  _handlePrimaryEnd: function _handlePrimaryEnd() {
+	    if (this._flushOnEnd) {
+	      this._flush();
+	    }
+	    this._emitEnd();
+	  },
+
+	  _onActivation: function _onActivation() {
+	    this._primary.onAny(this._$handlePrimaryAny);
+	    if (this._alive && this._secondary !== null) {
+	      this._secondary.onAny(this._$handleSecondaryAny);
+	    }
+	  },
+
+	  _handlePrimaryValue: function _handlePrimaryValue(x) {
+	    this._buff.push(x);
+	  },
+
+	  _handleSecondaryValue: function _handleSecondaryValue() {
+	    this._flush();
+	  },
+
+	  _handleSecondaryEnd: function _handleSecondaryEnd() {
+	    if (!this._flushOnEnd) {
+	      this._emitEnd();
+	    }
+	  }
+
+	};
+
+	var S = createStream('bufferBy', mixin);
+	var P = createProperty('bufferBy', mixin);
+
+	module.exports = function bufferBy(primary, secondary, options /* optional */) {
+	  return new (primary._ofSameType(S, P))(primary, secondary, options);
+	};
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(68);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var _require2 = __webpack_require__(3);
+
+	var NOTHING = _require2.NOTHING;
+
+	var mixin = {
+
+	  _init: function _init() {
+	    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	    var _ref$flushOnEnd = _ref.flushOnEnd;
+	    var flushOnEnd = _ref$flushOnEnd === undefined ? true : _ref$flushOnEnd;
+	    var _ref$flushOnChange = _ref.flushOnChange;
+	    var flushOnChange = _ref$flushOnChange === undefined ? false : _ref$flushOnChange;
+
+	    this._buff = [];
+	    this._flushOnEnd = flushOnEnd;
+	    this._flushOnChange = flushOnChange;
+	  },
+
+	  _free: function _free() {
+	    this._buff = null;
+	  },
+
+	  _flush: function _flush() {
+	    if (this._buff !== null) {
+	      this._emitValue(this._buff);
+	      this._buff = [];
+	    }
+	  },
+
+	  _handlePrimaryEnd: function _handlePrimaryEnd() {
+	    if (this._flushOnEnd) {
+	      this._flush();
+	    }
+	    this._emitEnd();
+	  },
+
+	  _handlePrimaryValue: function _handlePrimaryValue(x) {
+	    this._buff.push(x);
+	    if (this._lastSecondary !== NOTHING && !this._lastSecondary) {
+	      this._flush();
+	    }
+	  },
+
+	  _handleSecondaryEnd: function _handleSecondaryEnd() {
+	    if (!this._flushOnEnd && (this._lastSecondary === NOTHING || this._lastSecondary)) {
+	      this._emitEnd();
+	    }
+	  },
+
+	  _handleSecondaryValue: function _handleSecondaryValue(x) {
+	    if (this._flushOnChange && !x) {
+	      this._flush();
+	    }
+
+	    // from default _handleSecondaryValue
+	    this._lastSecondary = x;
+	  }
+
+	};
+
+	var S = createStream('bufferWhileBy', mixin);
+	var P = createProperty('bufferWhileBy', mixin);
+
+	module.exports = function bufferWhileBy(primary, secondary, options /* optional */) {
+	  return new (primary._ofSameType(S, P))(primary, secondary, options);
+	};
+
+/***/ },
+/* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var merge = __webpack_require__(60);
+	var map = __webpack_require__(32);
+	var skipDuplicates = __webpack_require__(40);
+	var toProperty = __webpack_require__(24);
+
+	var f = function f() {
+	  return false;
+	};
+	var t = function t() {
+	  return true;
+	};
+
+	module.exports = function awaiting(a, b) {
+	  var result = merge([map(a, t), map(b, f)]);
+	  result = skipDuplicates(result);
+	  result = toProperty(result, f);
+	  return result.setName(a, 'awaiting');
+	};
+
+/***/ },
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleValue: function _handleValue(x) {
+	    var fn = this._fn;
+	    var result = fn(x);
+	    if (result.convert) {
+	      this._emitError(result.error);
+	    } else {
+	      this._emitValue(x);
+	    }
+	  }
+
+	};
+
+	var S = createStream('valuesToErrors', mixin);
+	var P = createProperty('valuesToErrors', mixin);
+
+	var defFn = function defFn(x) {
+	  return { convert: true, error: x };
+	};
+
+	module.exports = function valuesToErrors(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? defFn : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 76 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _init: function _init(_ref) {
+	    var fn = _ref.fn;
+
+	    this._fn = fn;
+	  },
+
+	  _free: function _free() {
+	    this._fn = null;
+	  },
+
+	  _handleError: function _handleError(x) {
+	    var fn = this._fn;
+	    var result = fn(x);
+	    if (result.convert) {
+	      this._emitValue(result.value);
+	    } else {
+	      this._emitError(x);
+	    }
+	  }
+
+	};
+
+	var S = createStream('errorsToValues', mixin);
+	var P = createProperty('errorsToValues', mixin);
+
+	var defFn = function defFn(x) {
+	  return { convert: true, value: x };
+	};
+
+	module.exports = function errorsToValues(obs) {
+	  var fn = arguments.length <= 1 || arguments[1] === undefined ? defFn : arguments[1];
+
+	  return new (obs._ofSameType(S, P))(obs, { fn: fn });
+	};
+
+/***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(25);
+
+	var createStream = _require.createStream;
+	var createProperty = _require.createProperty;
+
+	var mixin = {
+
+	  _handleError: function _handleError(x) {
+	    this._emitError(x);
+	    this._emitEnd();
+	  }
+
+	};
+
+	var S = createStream('endOnError', mixin);
+	var P = createProperty('endOnError', mixin);
+
+	module.exports = function endOnError(obs) {
+	  return new (obs._ofSameType(S, P))(obs);
+	};
+
+/***/ }
+/******/ ])
+});
+;
+},{}],45:[function(require,module,exports){
+(function (global){
+// Copyright (c) Microsoft, Inc. All rights reserved. See License.txt in the project root for license information.
+
+;(function (factory) {
+  var objectTypes = {
+    'function': true,
+    'object': true
+  };
+
+  function checkGlobal(value) {
+    return (value && value.Object === Object) ? value : null;
+  }
+
+  var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType) ? exports : null;
+  var freeModule = (objectTypes[typeof module] && module && !module.nodeType) ? module : null;
+  var freeGlobal = checkGlobal(freeExports && freeModule && typeof global === 'object' && global);
+  var freeSelf = checkGlobal(objectTypes[typeof self] && self);
+  var freeWindow = checkGlobal(objectTypes[typeof window] && window);
+  var moduleExports = (freeModule && freeModule.exports === freeExports) ? freeExports : null;
+  var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
+  var root = freeGlobal || ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) || freeSelf || thisGlobal || Function('return this')();
+
+  // Because of build optimizers
+  if (typeof define === 'function' && define.amd) {
+    define(['rx'], function (Rx, exports) {
+      return factory(root, exports, Rx);
+    });
+  } else if (typeof module === 'object' && module && module.exports === freeExports) {
+    module.exports = factory(root, module.exports, require('rx'));
+  } else {
+    root.Rx = factory(root, {}, root.Rx);
+  }
+}.call(this, function (root, exp, Rx, undefined) {
+
+  var Observable = Rx.Observable,
+    ObservableBase = Rx.ObservableBase,
+    AbstractObserver = Rx.internals.AbstractObserver,
+    observerCreate = Rx.Observer.create,
+    observableCreate = Rx.Observable.create,
+    disposableCreate = Rx.Disposable.create,
+    Disposable = Rx.Disposable,
+    CompositeDisposable = Rx.CompositeDisposable,
+    BinaryDisposable = Rx.BinaryDisposable,
+    SingleAssignmentDisposable = Rx.SingleAssignmentDisposable,
+    Subject = Rx.Subject,
+    Scheduler = Rx.Scheduler,
+    dom = Rx.DOM = {},
+    hasOwnProperty = {}.hasOwnProperty,
+    noop = Rx.helpers.noop,
+    isFunction = Rx.helpers.isFunction,
+    inherits = Rx.internals.inherits;
+
+  var errorObj = {e: {}};
+
+  function tryCatcherGen(tryCatchTarget) {
+    return function tryCatcher() {
+      try {
+        return tryCatchTarget.apply(this, arguments);
+      } catch (e) {
+        errorObj.e = e;
+        return errorObj;
+      }
+    };
+  }
+
+  function tryCatch(fn) {
+    if (!isFunction(fn)) { throw new TypeError('fn must be a function'); }
+    return tryCatcherGen(fn);
+  }
+
+  function thrower(e) {
+    throw e;
+  }
+
+  function CreateListenerDisposable(element, name, handler, useCapture) {
+    this._e = element;
+    this._n = name;
+    this._fn = handler;
+    this._u = useCapture;
+    this._e.addEventListener(this._n, this._fn, this._u);
+    this.isDisposed = false;
+  }
+
+  CreateListenerDisposable.prototype.dispose = function () {
+    if (!this.isDisposed) {
+      this.isDisposed = true;
+      this._e.removeEventListener(this._n, this._fn, this._u);
+    }
+  };
+
+  function createListener (element, name, handler, useCapture) {
+    if (element.addEventListener) {
+      return new CreateListenerDisposable(element, name, handler, useCapture);
+    }
+    throw new Error('No listener found');
+  }
+
+  function createEventListener (el, eventName, handler, useCapture) {
+    var disposables = new CompositeDisposable();
+
+    // Asume NodeList or HTMLCollection
+    var toStr = Object.prototype.toString;
+    if (toStr.call(el) === '[object NodeList]' || toStr.call(el) === '[object HTMLCollection]') {
+      for (var i = 0, len = el.length; i < len; i++) {
+        disposables.add(createEventListener(el.item(i), eventName, handler, useCapture));
+      }
+    } else if (el) {
+      disposables.add(createListener(el, eventName, handler, useCapture));
+    }
+    return disposables;
+  }
+
+  var FromEventObservable = (function(__super__) {
+    inherits(FromEventObservable, __super__);
+    function FromEventObservable(element, eventName, selector, useCapture) {
+      this._e = element;
+      this._n = eventName;
+      this._fn = selector;
+      this._uc = useCapture;
+      __super__.call(this);
+    }
+
+    function createHandler(o, fn) {
+      return function handler() {
+        var results = arguments[0];
+        if (fn) {
+          results = tryCatch(fn).apply(null, arguments);
+          if (results === errorObj) { return o.onError(results.e); }
+        }
+        o.onNext(results);
+      };
+    }
+
+    FromEventObservable.prototype.subscribeCore = function (o) {
+      return createEventListener(
+        this._e,
+        this._n,
+        createHandler(o, this._fn),
+        this._uc);
+    };
+
+    return FromEventObservable;
+  }(ObservableBase));
+
+  /**
+   * Creates an observable sequence by adding an event listener to the matching DOMElement or each item in the NodeList.
+   * @param {Object} element The DOMElement or NodeList to attach a listener.
+   * @param {String} eventName The event name to attach the observable sequence.
+   * @param {Function} [selector] A selector which takes the arguments from the event handler to produce a single item to yield on next.
+   * @param {Boolean} [useCapture] If true, useCapture indicates that the user wishes to initiate capture. After initiating capture, all events of the specified type will be dispatched to the registered listener before being dispatched to any EventTarget beneath it in the DOM tree. Events which are bubbling upward through the tree will not trigger a listener designated to use capture
+   * @returns {Observable} An observable sequence of events from the specified element and the specified event.
+   */
+  var fromEvent = dom.fromEvent = function (element, eventName, selector, useCapture) {
+    var selectorFn = isFunction(selector) ? selector : null;
+    typeof selector === 'boolean' && (useCapture = selector);
+    typeof useCapture === 'undefined' && (useCapture = false);
+    return new FromEventObservable(element, eventName, selectorFn, useCapture).publish().refCount();
+  };
+
+  (function () {
+    var events = 'blur focus focusin focusout load resize scroll unload click dblclick ' +
+      'mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave ' +
+      'change select submit keydown keypress keyup error contextmenu input';
+
+    if (root.PointerEvent) {
+      events += ' pointerdown pointerup pointermove pointerover pointerout pointerenter pointerleave';
+    }
+
+    if (root.TouchEvent) {
+      events += ' touchstart touchend touchmove touchcancel';
+    }
+
+    events = events.split(' ');
+
+    for(var i = 0, len = events.length; i < len; i++) {
+      (function (e) {
+        dom[e] = function (element, selector, useCapture) {
+          return fromEvent(element, e, selector, useCapture);
+        };
+      }(events[i]))
+    }
+  }());
+
+  var ReadyObservable = (function (__super__) {
+    inherits(ReadyObservable, __super__);
+    function ReadyObservable() {
+      __super__.call(this);
+    }
+
+    function createHandler(o) {
+      return function handler() {
+        o.onNext();
+        o.onCompleted();
+      };
+    }
+
+    ReadyObservable.prototype.subscribeCore = function (o) {
+      return new ReadyDisposable(o, createHandler(o));
+    };
+
+    function ReadyDisposable(o, fn) {
+      this._o = o;
+      this._fn = fn;
+      this._addedHandlers = false;
+      this.isDisposed = false;
+
+      if (root.document.readyState === 'complete') {
+        setTimeout(this._fn, 0);
+      } else {
+        this._addedHandlers = true;
+        root.document.addEventListener( 'DOMContentLoaded', this._fn, false );
+      }
+    }
+
+    ReadyDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        root.document.removeEventListener( 'DOMContentLoaded', this._fn, false );
+      }
+    };
+
+    return ReadyObservable;
+  }(ObservableBase));
+
+  /**
+   * Creates an observable sequence when the DOM is loaded
+   * @returns {Observable} An observable sequence fired when the DOM is loaded
+   */
+  dom.ready = function () {
+    return new ReadyObservable();
+  };
+
+
+  // Gets the proper XMLHttpRequest for support for older IE
+  function getXMLHttpRequest() {
+    if (root.XMLHttpRequest) {
+      return new root.XMLHttpRequest();
+    } else {
+      var progId;
+      try {
+        var progIds = ['Msxml2.XMLHTTP', 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP.4.0'];
+        for(var i = 0; i < 3; i++) {
+          try {
+            progId = progIds[i];
+            if (new root.ActiveXObject(progId)) {
+              break;
+            }
+          } catch(e) { }
+        }
+        return new root.ActiveXObject(progId);
+      } catch (e) {
+        throw new Error('XMLHttpRequest is not supported by your browser');
+      }
+    }
+  }
+
+  // Get CORS support even for older IE
+  function getCORSRequest() {
+    var xhr = new root.XMLHttpRequest();
+    if ('withCredentials' in xhr) {
+      xhr.withCredentials = true;
+      return xhr;
+    } else if (!!root.XDomainRequest) {
+      return new XDomainRequest();
+    } else {
+      throw new Error('CORS is not supported by your browser');
+    }
+  }
+
+  function normalizeAjaxSuccessEvent(e, xhr, settings) {
+    var response = ('response' in xhr) ? xhr.response : xhr.responseText;
+    response = settings.responseType === 'json' ? JSON.parse(response) : response;
+    return {
+      response: response,
+      status: xhr.status,
+      responseType: xhr.responseType,
+      xhr: xhr,
+      originalEvent: e
+    };
+  }
+
+  function normalizeAjaxErrorEvent(e, xhr, type) {
+    return {
+      type: type,
+      status: xhr.status,
+      xhr: xhr,
+      originalEvent: e
+    };
+  }
+
+  var AjaxObservable = (function(__super__) {
+    inherits(AjaxObservable, __super__);
+    function AjaxObservable(settings) {
+      this._settings = settings;
+      __super__.call(this);
+    }
+
+    AjaxObservable.prototype.subscribeCore = function (o) {
+      var state = { isDone: false };
+      var xhr;
+
+      var settings = this._settings;
+      var normalizeError = settings.normalizeError;
+      var normalizeSuccess = settings.normalizeSuccess;
+
+      var processResponse = function(xhr, e){
+        var status = xhr.status === 1223 ? 204 : xhr.status;
+        if ((status >= 200 && status <= 300) || status === 0 || status === '') {
+          o.onNext(normalizeSuccess(e, xhr, settings));
+          o.onCompleted();
+        } else {
+          o.onError(settings.normalizeError(e, xhr, 'error'));
+        }
+        state.isDone = true;
+      };
+
+      try {
+        xhr = settings.createXHR();
+      } catch (err) {
+        return o.onError(err);
+      }
+
+      try {
+        if (settings.user) {
+          xhr.open(settings.method, settings.url, settings.async, settings.user, settings.password);
+        } else {
+          xhr.open(settings.method, settings.url, settings.async);
+        }
+
+        var headers = settings.headers;
+        for (var header in headers) {
+          if (hasOwnProperty.call(headers, header)) {
+            xhr.setRequestHeader(header, headers[header]);
+          }
+        }
+
+        xhr.timeout = settings.timeout;
+        xhr.ontimeout = function (e) {
+          settings.progressObserver && settings.progressObserver.onError(e);
+          o.onError(normalizeError(e, xhr, 'timeout'));
+        };
+
+        if(!!xhr.upload || (!('withCredentials' in xhr) && !!root.XDomainRequest)) {
+          xhr.onload = function(e) {
+            if(settings.progressObserver) {
+              settings.progressObserver.onNext(e);
+              settings.progressObserver.onCompleted();
+            }
+            processResponse(xhr, e);
+          };
+
+          if(settings.progressObserver) {
+            xhr.onprogress = function(e) {
+              settings.progressObserver.onNext(e);
+            };
+          }
+
+          xhr.onerror = function(e) {
+            settings.progressObserver && settings.progressObserver.onError(e);
+            o.onError(normalizeError(e, xhr, 'error'));
+            state.isDone = true;
+          };
+
+          xhr.onabort = function(e) {
+            settings.progressObserver && settings.progressObserver.onError(e);
+            o.onError(normalizeError(e, xhr, 'abort'));
+            state.isDone = true;
+          };
+        } else {
+          xhr.onreadystatechange = function (e) {
+            xhr.readyState === 4 && processResponse(xhr, e);
+          };
+        }
+
+        var contentType = settings.headers['Content-Type'] ||
+            settings.headers['Content-type'] ||
+            settings.headers['content-type'];
+        if (settings.hasContent && contentType === 'application/x-www-form-urlencoded' && typeof settings.body !== 'string') {
+          var newBody = [];
+          for (var prop in settings.body) {
+            if (hasOwnProperty.call(settings.body, prop)) {
+              newBody.push(prop + '=' + settings.body[prop]);
+            }
+          }
+          settings.body = newBody.join('&');
+        }
+
+        xhr.send(settings.hasContent && settings.body || null);
+      } catch (e) {
+        o.onError(e);
+      }
+
+      return new AjaxDisposable(state, xhr);
+    };
+
+    function AjaxDisposable(state, xhr) {
+      this._state = state;
+      this._xhr = xhr;
+      this.isDisposed = false;
+    }
+
+    AjaxDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        if (!this._state.isDone && this._xhr.readyState !== 4) { this._xhr.abort(); }
+      }
+    };
+
+    return AjaxObservable;
+  }(ObservableBase));
+
+  /**
+   * Creates an observable for an Ajax request with either a settings object with url, headers, etc or a string for a URL.
+   *
+   * @example
+   *   source = Rx.DOM.ajax('/products');
+   *   source = Rx.DOM.ajax( url: 'products', method: 'GET' });
+   *
+   * @param {Object} settings Can be one of the following:
+   *
+   *  A string of the URL to make the Ajax call.
+   *  An object with the following properties
+   *   - url: URL of the request
+   *   - body: The body of the request
+   *   - method: Method of the request, such as GET, POST, PUT, PATCH, DELETE
+   *   - async: Whether the request is async
+   *   - headers: Optional headers
+   *   - crossDomain: true if a cross domain request, else false
+   *
+   * @returns {Observable} An observable sequence containing the XMLHttpRequest.
+  */
+  var ajaxRequest = dom.ajax = function (options) {
+    var settings = {
+      method: 'GET',
+      crossDomain: false,
+      async: true,
+      headers: {},
+      responseType: 'text',
+      timeout: 0,
+      createXHR: function(){
+        return this.crossDomain ? getCORSRequest() : getXMLHttpRequest()
+      },
+      normalizeError: normalizeAjaxErrorEvent,
+      normalizeSuccess: normalizeAjaxSuccessEvent
+    };
+
+    if(typeof options === 'string') {
+      settings.url = options;
+    } else {
+      for(var prop in options) {
+        if(hasOwnProperty.call(options, prop)) {
+          settings[prop] = options[prop];
+        }
+      }
+    }
+
+    if (!settings.crossDomain && !settings.headers['X-Requested-With']) {
+      settings.headers['X-Requested-With'] = 'XMLHttpRequest';
+    }
+    settings.hasContent = settings.body !== undefined;
+
+    return new AjaxObservable(settings);
+  };
+
+  /**
+   * Creates an observable sequence from an Ajax POST Request with the body.
+   *
+   * @param {String} url The URL to POST
+   * @param {Object} body The body to POST
+   * @returns {Observable} The observable sequence which contains the response from the Ajax POST.
+   */
+  dom.post = function (url, body) {
+    var settings;
+    if (typeof url === 'string') {
+      settings = {url: url, body: body, method: 'POST' };
+    } else if (typeof url === 'object') {
+      settings = url;
+      settings.method = 'POST';
+    }
+    return ajaxRequest(settings);
+  };
+
+  /**
+   * Creates an observable sequence from an Ajax GET Request with the body.
+   *
+   * @param {String} url The URL to GET
+   * @returns {Observable} The observable sequence which contains the response from the Ajax GET.
+   */
+  dom.get = function (url) {
+    var settings;
+    if (typeof url === 'string') {
+      settings = {url: url };
+    } else if (typeof url === 'object') {
+      settings = url;
+    }
+    return ajaxRequest(settings);
+  };
+
+  /**
+   * Creates an observable sequence from JSON from an Ajax request
+   *
+   * @param {String} url The URL to GET
+   * @returns {Observable} The observable sequence which contains the parsed JSON.
+   */
+  dom.getJSON = function (url) {
+    if (!root.JSON && typeof root.JSON.parse !== 'function') { throw new TypeError('JSON is not supported in your runtime.'); }
+    return ajaxRequest({url: url, responseType: 'json'}).map(function (x) {
+      return x.response;
+    });
+  };
+
+  var destroy = (function () {
+    var trash = 'document' in root && root.document.createElement('div');
+    return function (element) {
+      trash.appendChild(element);
+      trash.innerHTML = '';
+    };
+  })();
+
+  var ScriptObservable = (function(__super__) {
+    inherits(ScriptObservable, __super__);
+    function ScriptObservable(settings) {
+      this._settings = settings;
+      __super__.call(this);
+    }
+
+    ScriptObservable.id = 0;
+
+    ScriptObservable.prototype.subscribeCore = function (o) {
+      var settings = {
+        jsonp: 'JSONPCallback',
+        async: true,
+        jsonpCallback: 'rxjsjsonpCallbacks' + 'callback_' + (ScriptObservable.id++).toString(36)
+      };
+
+      if(typeof this._settings === 'string') {
+        settings.url = this._settings;
+      } else {
+        for(var prop in this._settings) {
+          if(hasOwnProperty.call(this._settings, prop)) {
+            settings[prop] = this._settings[prop];
+          }
+        }
+      }
+
+      var script = root.document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = settings.async;
+      script.src = settings.url.replace(settings.jsonp, settings.jsonpCallback);
+
+      root[settings.jsonpCallback] = function(data) {
+        root[settings.jsonpCallback].called = true;
+        root[settings.jsonpCallback].data = data;
+      };
+
+      var handler = function(e) {
+        if(e.type === 'load' && !root[settings.jsonpCallback].called) {
+          e = { type: 'error' };
+        }
+        var status = e.type === 'error' ? 400 : 200;
+        var data = root[settings.jsonpCallback].data;
+
+        if(status === 200) {
+          o.onNext({
+            status: status,
+            responseType: 'jsonp',
+            response: data,
+            originalEvent: e
+          });
+
+          o.onCompleted();
+        }
+        else {
+          o.onError({
+            type: 'error',
+            status: status,
+            originalEvent: e
+          });
+        }
+      };
+
+      script.onload = script.onreadystatechanged = script.onerror = handler;
+
+      var head = root.document.getElementsByTagName('head')[0] || root.document.documentElement;
+      head.insertBefore(script, head.firstChild);
+
+      return new ScriptDisposable(script);
+    };
+
+    function ScriptDisposable(script) {
+      this._script = script;
+      this.isDisposed = false;
+    }
+
+    ScriptDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        this._script.onload = this._script.onreadystatechanged = this._script.onerror = null;
+        destroy(this._script);
+        this._script = null;
+      }
+    };
+
+    return ScriptObservable;
+  }(ObservableBase));
+
+  /**
+   * Creates an observable JSONP Request with the specified settings.
+   * @param {Object} settings Can be one of the following:
+   *
+   *  A string of the URL to make the JSONP call with the JSONPCallback=? in the url.
+   *  An object with the following properties
+   *   - url: URL of the request
+   *   - jsonp: The named callback parameter for the JSONP call
+   *   - jsonpCallback: Callback to execute. For when the JSONP callback can't be changed
+   *
+   * @returns {Observable} A cold observable containing the results from the JSONP call.
+   */
+   dom.jsonpRequest = function (settings) {
+     return new ScriptObservable(settings);
+   };
+
+  function socketClose(socket, closingObserver, code, reason) {
+    if (socket) {
+      if (closingObserver) {
+        closingObserver.onNext();
+        closingObserver.onCompleted();
+      }
+      if (!code) {
+        socket.close();
+      } else {
+        socket.close(code, reason);
+      }
+    }
+  }
+
+  var SocketObservable = (function (__super__) {
+    inherits(SocketObservable, __super__);
+    function SocketObservable(state, url, protocol, open, close) {
+      this._state = state;
+      this._url = url;
+      this._protocol = protocol;
+      this._open = open;
+      this._close = close;
+      __super__.call(this);
+    }
+
+    function createOpenHandler(open, socket) {
+      return function openHandler(e) {
+        open.onNext(e);
+        open.onCompleted();
+        socket.removeEventListener('open', openHandler, false);
+      };
+    }
+    function createMsgHandler(o) { return function msgHandler(e) { o.onNext(e); }; }
+    function createErrHandler(o) { return function errHandler(e) { o.onError(e); }; }
+    function createCloseHandler(o) {
+      return function closeHandler(e) {
+        if (e.code !== 1000 || !e.wasClean) { return o.onError(e); }
+        o.onCompleted();
+      };
+    }
+
+    function SocketDisposable(socket, msgFn, errFn, closeFn, close) {
+      this._socket = socket;
+      this._msgFn = msgFn;
+      this._errFn = errFn;
+      this._closeFn = closeFn;
+      this._close = close;
+      this.isDisposed = false;
+    }
+
+    SocketDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        socketClose(this._socket, this._close);
+
+        this._socket.removeEventListener('message', this._msgFn, false);
+        this._socket.removeEventListener('error', this._errFn, false);
+        this._socket.removeEventListener('close', this._closeFn, false);
+      }
+    };
+
+    SocketObservable.prototype.subscribeCore = function (o) {
+      this._state.socket = this._protocol ? new WebSocket(this._url, this._protocol) : new WebSocket(this._url);
+
+      var openHandler = createOpenHandler(this._open, this._state.socket);
+      var msgHandler = createMsgHandler(o);
+      var errHandler = createErrHandler(o);
+      var closeHandler = createCloseHandler(o);
+
+      this._open && this._state.socket.addEventListener('open', openHandler, false);
+      this._state.socket.addEventListener('message', msgHandler, false);
+      this._state.socket.addEventListener('error', errHandler, false);
+      this._state.socket.addEventListener('close', closeHandler, false);
+
+      return new SocketDisposable(this._state.socket, msgHandler, errHandler, closeHandler, this._close);
+    };
+
+    return SocketObservable;
+  }(ObservableBase));
+
+  var SocketObserver = (function (__super__) {
+    inherits(SocketObserver, __super__);
+    function SocketObserver(state, close) {
+      this._state = state;
+      this._close = close;
+      __super__.call(this);
+    }
+
+    SocketObserver.prototype.next = function (x) {
+      this._state.socket && this._state.socket.readyState === WebSocket.OPEN && this._state.socket.send(x);
+    };
+
+    SocketObserver.prototype.error = function (e) {
+      if (!e.code) {
+        throw new Error('no code specified. be sure to pass { code: ###, reason: "" } to onError()');
+      }
+      socketClose(this._state.socket, this._close, e.code, e.reason || '');
+    };
+
+    SocketObserver.prototype.completed = function () {
+      socketClose(this._state.socket, this._close, 1000, '');
+    };
+
+    return SocketObserver;
+  }(AbstractObserver));
+
+   /**
+   * Creates a WebSocket Subject with a given URL, protocol and an optional observer for the open event.
+   *
+   * @example
+   *  var socket = Rx.DOM.fromWebSocket('http://localhost:8080', 'stock-protocol', openObserver, closingObserver);
+   *
+   * @param {String} url The URL of the WebSocket.
+   * @param {String} protocol The protocol of the WebSocket.
+   * @param {Observer} [openObserver] An optional Observer to capture the open event.
+   * @param {Observer} [closingObserver] An optional Observer to capture the moment before the underlying socket is closed.
+   * @returns {Subject} An observable sequence wrapping a WebSocket.
+   */
+  dom.fromWebSocket = function (url, protocol, openObserver, closingObserver) {
+    if (!WebSocket) { throw new TypeError('WebSocket not implemented in your runtime.'); }
+    var state = { socket: null };
+    return Subject.create(
+      new SocketObserver(state, closingObserver),
+      new SocketObservable(state, url, protocol, openObserver, closingObserver)
+    );
+  };
+
+  var WorkerObserver = (function (__super__) {
+    inherits(WorkerObserver, __super__);
+    function WorkerObserver(state) {
+      this._state = state;
+      __super__.call(this);
+    }
+
+    WorkerObserver.prototype.next = function (x) { this._state.worker && this._state.worker.postMessage(x); };
+    WorkerObserver.prototype.error = function (e) { throw e; };
+    WorkerObserver.prototype.completed = function () { };
+
+    return WorkerObserver;
+  }(AbstractObserver));
+
+  var WorkerObservable = (function (__super__) {
+    inherits(WorkerObservable, __super__);
+    function WorkerObservable(state, url) {
+      this._state = state;
+      this._url = url;
+      __super__.call(this);
+    }
+
+    function createMessageHandler(o) { return function messageHandler (e) { o.onNext(e); }; }
+    function createErrHandler(o) { return function errHandler(e) { o.onError(e); }; }
+
+    function WorkerDisposable(w, msgFn, errFn) {
+      this._w = w;
+      this._msgFn = msgFn;
+      this._errFn = errFn;
+      this.isDisposed = false;
+    }
+
+    WorkerDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        this._w.terminate();
+        this._w.removeEventListener('message', this._msgFn, false);
+        this._w.removeEventListener('error', this._errFn, false);
+      }
+    };
+
+    WorkerObservable.prototype.subscribeCore = function (o) {
+      this._state.worker = new root.Worker(this._url);
+
+      var messageHandler = createMessageHandler(o);
+      var errHandler = createErrHandler(o);
+
+      this._state.worker.addEventListener('message', messageHandler, false);
+      this._state.worker.addEventListener('error', errHandler, false);
+
+      return new WorkerDisposable(this._state.worker, messageHandler, errHandler);
+    };
+
+    return WorkerObservable;
+  }(ObservableBase));
+
+  /**
+   * Creates a Web Worker with a given URL as a Subject.
+   *
+   * @example
+   * var worker = Rx.DOM.fromWebWorker('worker.js');
+   *
+   * @param {String} url The URL of the Web Worker.
+   * @returns {Subject} A Subject wrapping the Web Worker.
+   */
+  dom.fromWorker = function (url) {
+    if (!root.Worker) { throw new TypeError('Worker not implemented in your runtime.'); }
+    var state = { worker: null };
+    return Subject.create(new WorkerObserver(state), new WorkerObservable(state, url));
+  };
+
+  function getMutationObserver(next) {
+    var M = root.MutationObserver || root.WebKitMutationObserver;
+    return new M(next);
+  }
+
+  var MutationObserverObservable = (function (__super__) {
+    inherits(MutationObserverObservable, __super__);
+    function MutationObserverObservable(target, options) {
+      this._target = target;
+      this._options = options;
+      __super__.call(this);
+    }
+
+    function InnerDisposable(mutationObserver) {
+      this._m = mutationObserver;
+      this.isDisposed = false;
+    }
+
+    InnerDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        this._m.disconnect();
+      }
+    };
+
+    MutationObserverObservable.prototype.subscribeCore = function (o) {
+      var mutationObserver = getMutationObserver(function (e) { o.onNext(e); });
+      mutationObserver.observe(this._target, this._options);
+      return new InnerDisposable(mutationObserver);
+    };
+
+    return MutationObserverObservable;
+  }(ObservableBase));
+
+  /**
+   * Creates an observable sequence from a Mutation Observer.
+   * MutationObserver provides developers a way to react to changes in a DOM.
+   * @example
+   *  Rx.DOM.fromMutationObserver(document.getElementById('foo'), { attributes: true, childList: true, characterData: true });
+   *
+   * @param {Object} target The Node on which to obserave DOM mutations.
+   * @param {Object} options A MutationObserverInit object, specifies which DOM mutations should be reported.
+   * @returns {Observable} An observable sequence which contains mutations on the given DOM target.
+   */
+  dom.fromMutationObserver = function (target, options) {
+    if (!(root.MutationObserver || root.WebKitMutationObserver)) { throw new TypeError('MutationObserver not implemented in your runtime.'); }
+    return new MutationObserverObservable(target, options);
+  };
+
+  var CurrentPositionObservable = (function (__super__) {
+    inherits(CurrentPositionObservable, __super__);
+    function CurrentPositionObservable(opts) {
+      this._opts = opts;
+      __super__.call(this);
+    }
+
+    CurrentPositionObservable.prototype.subscribeCore = function (o) {
+      root.navigator.geolocation.getCurrentPosition(
+        function (data) {
+          o.onNext(data);
+          o.onCompleted();
+        },
+        function (e) { o.onError(e); },
+        this._opts);
+    };
+
+    return CurrentPositionObservable;
+  }(ObservableBase));
+
+  var WatchPositionObservable = (function (__super__) {
+    inherits(WatchPositionObservable, __super__);
+    function WatchPositionObservable(opts) {
+      this._opts = opts;
+      __super__.call(this);
+    }
+
+    function WatchPositionDisposable(id) {
+      this._id = id;
+      this.isDisposed = false;
+    }
+
+    WatchPositionDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        root.navigator.geolocation.clearWatch(this._id);
+      }
+    };
+
+    WatchPositionObservable.prototype.subscribeCore = function (o) {
+      var watchId = root.navigator.geolocation.watchPosition(
+        function (x) { o.onNext(x); },
+        function (e) { o.onError(e); },
+        this._opts);
+
+      return new WatchPositionDisposable(watchId);
+    };
+
+    return WatchPositionObservable;
+  }(ObservableBase));
+
+  Rx.DOM.geolocation = {
+    /**
+    * Obtains the geographic position, in terms of latitude and longitude coordinates, of the device.
+    * @param {Object} [geolocationOptions] An object literal to specify one or more of the following attributes and desired values:
+    *   - enableHighAccuracy: Specify true to obtain the most accurate position possible, or false to optimize in favor of performance and power consumption.
+    *   - timeout: An Integer value that indicates the time, in milliseconds, allowed for obtaining the position.
+    *              If timeout is Infinity, (the default value) the location request will not time out.
+    *              If timeout is zero (0) or negative, the results depend on the behavior of the location provider.
+    *   - maximumAge: An Integer value indicating the maximum age, in milliseconds, of cached position information.
+    *                 If maximumAge is non-zero, and a cached position that is no older than maximumAge is available, the cached position is used instead of obtaining an updated location.
+    *                 If maximumAge is zero (0), watchPosition always tries to obtain an updated position, even if a cached position is already available.
+    *                 If maximumAge is Infinity, any cached position is used, regardless of its age, and watchPosition only tries to obtain an updated position if no cached position data exists.
+    * @returns {Observable} An observable sequence with the geographical location of the device running the client.
+    */
+    getCurrentPosition: function (geolocationOptions) {
+      if (!root.navigator && !root.navigation.geolocation) { throw new TypeError('geolocation not available'); }
+      return new CurrentPositionObservable(geolocationOptions);
+    },
+
+    /**
+    * Begins listening for updates to the current geographical location of the device running the client.
+    * @param {Object} [geolocationOptions] An object literal to specify one or more of the following attributes and desired values:
+    *   - enableHighAccuracy: Specify true to obtain the most accurate position possible, or false to optimize in favor of performance and power consumption.
+    *   - timeout: An Integer value that indicates the time, in milliseconds, allowed for obtaining the position.
+    *              If timeout is Infinity, (the default value) the location request will not time out.
+    *              If timeout is zero (0) or negative, the results depend on the behavior of the location provider.
+    *   - maximumAge: An Integer value indicating the maximum age, in milliseconds, of cached position information.
+    *                 If maximumAge is non-zero, and a cached position that is no older than maximumAge is available, the cached position is used instead of obtaining an updated location.
+    *                 If maximumAge is zero (0), watchPosition always tries to obtain an updated position, even if a cached position is already available.
+    *                 If maximumAge is Infinity, any cached position is used, regardless of its age, and watchPosition only tries to obtain an updated position if no cached position data exists.
+    * @returns {Observable} An observable sequence with the current geographical location of the device running the client.
+    */
+    watchPosition: function (geolocationOptions) {
+      if (!root.navigator && !root.navigation.geolocation) { throw new TypeError('geolocation not available'); }
+      return new WatchPositionObservable(geolocationOptions).publish().refCount();
+    }
+  };
+
+  var FromReaderObservable = (function (__super__) {
+    inherits(FromReaderObservable, __super__);
+    function FromReaderObservable(readerFn, file, progressObserver, encoding) {
+      this._readerFn  = readerFn;
+      this._file = file;
+      this._progressObserver = progressObserver;
+      this._encoding = encoding;
+      __super__.call(this);
+    }
+
+    function createLoadHandler(o, p) {
+      return function loadHandler(e) {
+        p && p.onCompleted();
+        o.onNext(e.target.result);
+        o.onCompleted();
+      };
+    }
+
+    function createErrorHandler(o) { return function errorHandler (e) { o.onError(e.target.error); }; }
+    function createProgressHandler(o) { return function progressHandler (e) { o.onNext(e); }; }
+
+    function FromReaderDisposable(reader, progressObserver, loadHandler, errorHandler, progressHandler) {
+      this._r = reader;
+      this._po = progressObserver;
+      this._lFn = loadHandler;
+      this._eFn = errorHandler;
+      this._pFn = progressHandler;
+      this.isDisposed = false;
+    }
+
+    FromReaderDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this.isDisposed = true;
+        this._r.readyState === root.FileReader.LOADING && this._r.abort();
+        this._r.removeEventListener('load', this._lFn, false);
+        this._r.removeEventListener('error', this._eFn, false);
+        this._po && this._r.removeEventListener('progress', this._pFn, false);
+      }
+    };
+
+    FromReaderObservable.prototype.subscribeCore = function (o) {
+      var reader = new root.FileReader();
+
+      var loadHandler = createLoadHandler(o, this._progressObserver);
+      var errorHandler = createErrorHandler(o);
+      var progressHandler = createProgressHandler(this._progressObserver);
+
+      reader.addEventListener('load', loadHandler, false);
+      reader.addEventListener('error', errorHandler, false);
+      this._progressObserver && reader.addEventListener('progress', progressHandler, false);
+
+      reader[this._readerFn](this._file, this._encoding);
+
+      return new FromReaderDisposable(reader, this._progressObserver, loadHandler, errorHandler, progressHandler);
+    };
+
+    return FromReaderObservable;
+  }(ObservableBase));
+
+  /**
+   * The FileReader object lets web applications asynchronously read the contents of
+   * files (or raw data buffers) stored on the user's computer, using File or Blob objects
+   * to specify the file or data to read as an observable sequence.
+   * @param {String} file The file to read.
+   * @param {Observer} An observer to watch for progress.
+   * @returns {Object} An object which contains methods for reading the data.
+   */
+  dom.fromReader = function(file, progressObserver) {
+    if (!root.FileReader) { throw new TypeError('FileReader not implemented in your runtime.'); }
+
+    return {
+      /**
+       * This method is used to read the file as an ArrayBuffer as an Observable stream.
+       * @returns {Observable} An observable stream of an ArrayBuffer
+       */
+      asArrayBuffer : function() {
+        return new FromReaderObservable('readAsArrayBuffer', file, progressObserver);
+      },
+      /**
+       * This method is used to read the file as a binary data string as an Observable stream.
+       * @returns {Observable} An observable stream of a binary data string.
+       */
+      asBinaryString : function() {
+        return new FromReaderObservable('readAsBinaryString', file, progressObserver);
+      },
+      /**
+       * This method is used to read the file as a URL of the file's data as an Observable stream.
+       * @returns {Observable} An observable stream of a URL representing the file's data.
+       */
+      asDataURL : function() {
+        return new FromReaderObservable('readAsDataURL', file, progressObserver);
+      },
+      /**
+       * This method is used to read the file as a string as an Observable stream.
+       * @returns {Observable} An observable stream of the string contents of the file.
+       */
+      asText : function(encoding) {
+        return new FromReaderObservable('readAsText', file, progressObserver, encoding);
+      }
+    };
+  };
+
+  var EventSourceObservable = (function(__super__) {
+    inherits(EventSourceObservable, __super__);
+    function EventSourceObservable(url, open) {
+      this._url = url;
+      this._open = open;
+      __super__.call(this);
+    }
+
+    function createOnOpen(o, source) {
+      return function onOpen(e) {
+        o.onNext(e);
+        o.onCompleted();
+        source.removeEventListener('open', onOpen, false);
+      };
+    }
+
+    function createOnError(o) {
+      return function onError(e) {
+        if (e.readyState === EventSource.CLOSED) {
+          o.onCompleted();
+        } else {
+          o.onError(e);
+        }
+      };
+    }
+
+    function createOnMessage(o) { return function onMessage(e) { o.onNext(e.data); }; }
+
+    function EventSourceDisposable(s, errFn, msgFn) {
+      this._s = s;
+      this._errFn = errFn;
+      this._msgFn = msgFn;
+      this.isDisposed = false;
+    }
+
+    EventSourceDisposable.prototype.dispose = function () {
+      if (!this.isDisposed) {
+        this._s.removeEventListener('error', this._errFn, false);
+        this._s.removeEventListener('message', this._msgFn, false);
+        this._s.close();
+      }
+    };
+
+    EventSourceObservable.prototype.subscribeCore = function (o) {
+      var source = new EventSource(this._url);
+      var onOpen = createOnOpen(this._open, source);
+      var onError = createOnError(o);
+      var onMessage = createOnMessage(o);
+
+      this._open && source.addEventListener('open', onOpen, false);
+      source.addEventListener('error', onError, false);
+      source.addEventListener('message', onMessage, false);
+
+      return new EventSourceDisposable(source, onError, onMessage);
+    };
+
+    return EventSourceObservable;
+  }(ObservableBase));
+
+  /**
+   * This method wraps an EventSource as an observable sequence.
+   * @param {String} url The url of the server-side script.
+   * @param {Observer} [openObserver] An optional observer for the 'open' event for the server side event.
+   * @returns {Observable} An observable sequence which represents the data from a server-side event.
+   */
+  dom.fromEventSource = function (url, openObserver) {
+    if (!root.EventSource) { throw new TypeError('EventSource not implemented in your runtime.'); }
+    return new EventSourceObservable(url, openObserver);
+  };
+
+  var requestAnimFrame, cancelAnimFrame;
+  if (root.requestAnimationFrame) {
+    requestAnimFrame = root.requestAnimationFrame;
+    cancelAnimFrame = root.cancelAnimationFrame;
+  } else if (root.mozRequestAnimationFrame) {
+    requestAnimFrame = root.mozRequestAnimationFrame;
+    cancelAnimFrame = root.mozCancelAnimationFrame;
+  } else if (root.webkitRequestAnimationFrame) {
+    requestAnimFrame = root.webkitRequestAnimationFrame;
+    cancelAnimFrame = root.webkitCancelAnimationFrame;
+  } else if (root.msRequestAnimationFrame) {
+    requestAnimFrame = root.msRequestAnimationFrame;
+    cancelAnimFrame = root.msCancelAnimationFrame;
+  } else if (root.oRequestAnimationFrame) {
+    requestAnimFrame = root.oRequestAnimationFrame;
+    cancelAnimFrame = root.oCancelAnimationFrame;
+  } else {
+    requestAnimFrame = function(cb) { root.setTimeout(cb, 1000 / 60); };
+    cancelAnimFrame = root.clearTimeout;
+  }
+
+  /**
+   * Gets a scheduler that schedules schedules work on the requestAnimationFrame for immediate actions.
+   */
+  Scheduler.requestAnimationFrame = (function () {
+    var RequestAnimationFrameScheduler = (function (__super__) {
+      inherits(RequestAnimationFrameScheduler, __super__);
+      function RequestAnimationFrameScheduler() {
+        __super__.call(this);
+      }
+
+      function scheduleAction(disposable, action, scheduler, state) {
+        return function schedule() {
+          !disposable.isDisposed && disposable.setDisposable(Disposable._fixup(action(scheduler, state)));
+        };
+      }
+
+      function ClearDisposable(method, id) {
+        this._id = id;
+        this._method = method;
+        this.isDisposed = false;
+      }
+
+      ClearDisposable.prototype.dispose = function () {
+        if (!this.isDisposed) {
+          this.isDisposed = true;
+          this._method.call(null, this._id);
+        }
+      };
+
+      RequestAnimationFrameScheduler.prototype.schedule = function (state, action) {
+        var disposable = new SingleAssignmentDisposable(),
+            id = requestAnimFrame(scheduleAction(disposable, action, this, state));
+        return new BinaryDisposable(disposable, new ClearDisposable(cancelAnimFrame, id));
+      };
+
+      RequestAnimationFrameScheduler.prototype._scheduleFuture = function (state, dueTime, action) {
+        if (dueTime === 0) { return this.schedule(state, action); }
+        var disposable = new SingleAssignmentDisposable(),
+            id = root.setTimeout(scheduleAction(disposable, action, this, state), dueTime);
+        return new BinaryDisposable(disposable, new ClearDisposable(root.clearTimeout, id));
+      };
+
+      return RequestAnimationFrameScheduler;
+    }(Scheduler));
+
+    return new RequestAnimationFrameScheduler();
+  }());
+
+  /**
+   * Scheduler that uses a MutationObserver changes as the scheduling mechanism
+   */
+  Scheduler.microtask = (function () {
+
+    var nextHandle = 1, tasksByHandle = {}, currentlyRunning = false, scheduleMethod;
+
+    function clearMethod(handle) {
+      delete tasksByHandle[handle];
+    }
+
+    function runTask(handle) {
+      if (currentlyRunning) {
+        root.setTimeout(function () { runTask(handle) }, 0);
+      } else {
+        var task = tasksByHandle[handle];
+        if (task) {
+          currentlyRunning = true;
+          try {
+            task();
+          } catch (e) {
+            throw e;
+          } finally {
+            clearMethod(handle);
+            currentlyRunning = false;
+          }
+        }
+      }
+    }
+
+    function postMessageSupported () {
+      // Ensure not in a worker
+      if (!root.postMessage || root.importScripts) { return false; }
+      var isAsync = false, oldHandler = root.onmessage;
+      // Test for async
+      root.onmessage = function () { isAsync = true; };
+      root.postMessage('', '*');
+      root.onmessage = oldHandler;
+
+      return isAsync;
+    }
+
+    // Use in order, setImmediate, nextTick, postMessage, MessageChannel, script readystatechanged, setTimeout
+    var BrowserMutationObserver = root.MutationObserver || root.WebKitMutationObserver;
+    if (!!BrowserMutationObserver) {
+
+      var PREFIX = 'drainqueue_';
+
+      var observer = new BrowserMutationObserver(function(mutations) {
+        mutations.forEach(function (mutation) {
+          runTask(mutation.attributeName.substring(PREFIX.length));
+        })
+      });
+
+      var element = root.document.createElement('div');
+      observer.observe(element, { attributes: true });
+
+      // Prevent leaks
+      root.addEventListener('unload', function () {
+        observer.disconnect();
+        observer = null;
+      }, false);
+
+      scheduleMethod = function (action) {
+        var id = nextHandle++;
+        tasksByHandle[id] = action;
+        element.setAttribute(PREFIX + id, 'drainQueue');
+        return id;
+      };
+    } else if (typeof root.setImmediate === 'function') {
+      scheduleMethod = function (action) {
+        var id = nextHandle++;
+        tasksByHandle[id] = action;
+        root.setImmediate(function () { runTask(id); });
+
+        return id;
+      };
+    } else if (postMessageSupported()) {
+      var MSG_PREFIX = 'ms.rx.schedule' + Math.random();
+
+      function onGlobalPostMessage(event) {
+        // Only if we're a match to avoid any other global events
+        if (typeof event.data === 'string' && event.data.substring(0, MSG_PREFIX.length) === MSG_PREFIX) {
+          runTask(event.data.substring(MSG_PREFIX.length));
+        }
+      }
+
+      if (root.addEventListener) {
+        root.addEventListener('message', onGlobalPostMessage, false);
+      } else if (root.attachEvent){
+        root.attachEvent('onmessage', onGlobalPostMessage);
+      }
+
+      scheduleMethod = function (action) {
+        var id = nextHandle++;
+        tasksByHandle[id] = action;
+        root.postMessage(MSG_PREFIX + id, '*');
+        return id;
+      };
+    } else if (!!root.MessageChannel) {
+      var channel = new root.MessageChannel();
+
+      channel.port1.onmessage = function (event) {
+        runTask(event.data);
+      };
+
+      scheduleMethod = function (action) {
+        var id = nextHandle++;
+        tasksByHandle[id] = action;
+        channel.port2.postMessage(id);
+        return id;
+      };
+    } else if ('document' in root && 'onreadystatechange' in root.document.createElement('script')) {
+
+      scheduleMethod = function (action) {
+        var scriptElement = root.document.createElement('script');
+        var id = nextHandle++;
+        tasksByHandle[id] = action;
+
+        scriptElement.onreadystatechange = function () {
+          runTask(id);
+          scriptElement.onreadystatechange = null;
+          scriptElement.parentNode.removeChild(scriptElement);
+          scriptElement = null;
+        };
+        root.document.documentElement.appendChild(scriptElement);
+
+        return id;
+      };
+
+    } else {
+      scheduleMethod = function (action) {
+        var id = nextHandle++;
+        tasksByHandle[id] = action;
+        root.setTimeout(function () {
+          runTask(id);
+        }, 0);
+
+        return id;
+      };
+    }
+
+    var MicroTaskScheduler = (function (__super__) {
+      inherits(MicroTaskScheduler, __super__);
+      function MicroTaskScheduler() {
+        __super__.call(this);
+      }
+
+      function scheduleAction(disposable, action, scheduler, state) {
+        return function schedule() {
+          !disposable.isDisposed && disposable.setDisposable(Disposable._fixup(action(scheduler, state)));
+        };
+      }
+
+      function ClearDisposable(method, id) {
+        this._id = id;
+        this._method = method;
+        this.isDisposed = false;
+      }
+
+      ClearDisposable.prototype.dispose = function () {
+        if (!this.isDisposed) {
+          this.isDisposed = true;
+          this._method.call(null, this._id);
+        }
+      };
+
+      MicroTaskScheduler.prototype.schedule = function (state, action) {
+        var disposable = new SingleAssignmentDisposable(),
+            id = scheduleMethod(scheduleAction(disposable, action, this, state));
+        return new BinaryDisposable(disposable, new ClearDisposable(clearMethod, id));
+      };
+
+      MicroTaskScheduler.prototype._scheduleFuture = function (state, dueTime, action) {
+        if (dueTime === 0) { return this.schedule(state, action); }
+        var disposable = new SingleAssignmentDisposable(),
+            id = root.setTimeout(scheduleAction(disposable, action, this, state), dueTime);
+        return new BinaryDisposable(disposable, new ClearDisposable(root.clearTimeout, id));
+      };
+
+      return MicroTaskScheduler;
+    }(Scheduler));
+
+    return new MicroTaskScheduler();
+  }());
+
+  return Rx;
+}));
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"rx":47}],46:[function(require,module,exports){
+var Rx = require('rx');
+require('./dist/rx.dom');
+module.exports = Rx;
+},{"./dist/rx.dom":45,"rx":47}],47:[function(require,module,exports){
 (function (process,global){
 // Copyright (c) Microsoft, All rights reserved. See License.txt in the project root for license information.
 
@@ -29555,6 +35651,6 @@ var ReactiveTest = Rx.ReactiveTest = {
 }.call(this));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":35}],44:[function(require,module,exports){
-arguments[4][34][0].apply(exports,arguments)
-},{"dup":34}]},{},[2]);
+},{"_process":36}],48:[function(require,module,exports){
+arguments[4][35][0].apply(exports,arguments)
+},{"dup":35}]},{},[2]);

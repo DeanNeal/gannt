@@ -11,7 +11,8 @@ var gulp       = require('gulp'),
 	connect    = require('gulp-connect'),
 	uglify     = require('gulp-uglify'),
 	buffer     = require('vinyl-buffer'),
-	minifyCSS  = require('gulp-minify-css');
+	minifyCSS  = require('gulp-minify-css'),
+	sourcemaps = require('gulp-sourcemaps');
 
 var sourceFile  = 'app-browserify/app.js',
 	destFolder = 'build',
@@ -37,8 +38,10 @@ gulp.task('browserify', function(){
 			gutil.log(e);
 		})
 		.pipe(source(destFile))
-		.pipe(buffer())
+		// .pipe(buffer())
+		// .pipe(sourcemaps.init({loadMaps: true})) 
 		// .pipe(uglify())
+		// .pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(destFolder))
 		.pipe(connect.reload());
 });
