@@ -9,7 +9,15 @@
     margin: 0;
     box-sizing: border-box;
 }
+ul{
+	list-style: none;
+	li{
 
+		&:hover {
+			background: #ccc;
+		}
+	}
+}
 html,
 body {
     width: 100%;
