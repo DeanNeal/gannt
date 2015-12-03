@@ -1,11 +1,17 @@
-var Backbone = require('backbone'),
+var Backbone   = require('backbone'),
+    $          = require('jquery'),
     GlobalView = require('./views/globalview'),
-    Router = require('./router/router'),
-    Helpers = require('./Helpers');
+    Router     = require('./router/router'),
+    Helpers    = require('./Helpers'),
+    Api        = require('./api_lib');
+ 
 
+$.when( Api.getCatalog() ).then(function( data, textStatus, jqXHR ) {
+    var App = new GlobalView();
+    App.start();
+    Backbone.history.start();
+});
 
-var App = new GlobalView();
-App.start();
 
 var router = new Router();
 
@@ -27,4 +33,3 @@ router.on('route:defaultRoute', function(actions, args) {
     });
 });
 
-Backbone.history.start();

@@ -73,7 +73,7 @@ gulp.task('html', function () {
 
 
 gulp.task('watch', function() {
-    gulp.watch(['app-browserify/views/**/*.js', 'app-browserify/templates/**/*.tpl'], ['browserify']);
+    gulp.watch(['app-browserify/**/*.js', 'app-browserify/templates/**/*.tpl'], ['browserify']);
     gulp.watch('app-browserify/scss/**/*.scss', ['sass']);
     gulp.watch('app-browserify/less/**/*.less', ['less']);
     gulp.watch('index.html', ['html']);

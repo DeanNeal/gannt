@@ -32,9 +32,9 @@ var ContentView = RoutedView.extend({
     template: mainTpl,
     className: 'dashboard',
     routes: {
-        'tasks': tasksView,
+        'tasks'     : tasksView,
         'milestones': milestonesView,
-        'projects': projectsView
+        'projects'  : projectsView
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
