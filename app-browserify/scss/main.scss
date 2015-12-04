@@ -35,6 +35,30 @@ body {
 
     &_nav {
         display: inline-block;
+        margin-left: 20px;
+    }
+
+    .navbar-nav {
+        & > li {
+            & > a {
+                padding: 20px 15px;
+                font-size: 18px;
+                font-weight: 600;
+                font-family: "Open Sans", Arial;
+                color: #928f9a;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                text-decoration: none;
+
+                &:hover {
+                    color: #ffffff;
+                }
+
+                &[data-active="true"] {
+                    color: #ffffff;
+                }
+            }
+        }
     }
 
     &_controls {
@@ -43,12 +67,13 @@ body {
 
     .logo {
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
     }
 
     &-container {
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
+        margin-left: 7px;
     }
 }
 .global_container {
@@ -70,6 +95,13 @@ body {
     }
 }
 
+.flex {
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    flex: 1;
+}
+
 .content {
   // height: calc(100% - 60px);
   background: #b2c2dd;
@@ -87,20 +119,17 @@ body {
   flex: 1;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
 .left-block {
-    // display: inline-block;
-    // vertical-align: top;
-    // font-size: 0;
     float: left;
     width: 588px;
     margin-right: 10px;
-    @extend .full_height;
 }
 .right-block {
-    // display: inline-block;
-    // vertical-align: top;
-    // font-size: 0;
     float: left;
-    width: calc(100% - 598px); /*width of the left block + margin*/
-    @extend .full_height;
+    width: calc(100% - 598px);
 }

@@ -1,4 +1,4 @@
-<div class="full_height">
+<div class="full_height" style="display: flex; flex-direction: column;">
 	<div class="header">
 		<div>
 			<div class="header_nav">
@@ -81,5 +81,5 @@
 		</div>
 	</div> -->
 
-	<div class="bb-route-container full_height"></div>
+	<div class="bb-route-container full_height" style="display: flex; -webkit-flex-direction: column; flex-direction: column;  flex: 1;"></div>
 </div>
