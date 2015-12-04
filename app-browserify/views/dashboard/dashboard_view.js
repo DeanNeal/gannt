@@ -9,17 +9,14 @@ var BaseView         = require('views/baseview'),
 
 
 var dashboardLinks = [{
-    title: "tasks",
-    route: "dashboard/tasks",
-    name: "tasks"
+    name: "tasks",
+    id: "dashboard/tasks"
 }, {
-    title: "milestones",
-    route: "dashboard/milestones",
-    name: "milestones"
+    name: "milestones",
+    id: "dashboard/milestones"
 }, {
-    title: "projects",
-    route: "dashboard/projects",
-    name: "projects"
+    name: "projects",
+    id: "dashboard/projects"
 }];
 
 var SidebarLeftMenu = BaseListView.extend({

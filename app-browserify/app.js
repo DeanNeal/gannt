@@ -3,10 +3,12 @@ var Backbone   = require('backbone'),
     GlobalView = require('./views/globalview'),
     Router     = require('./router/router'),
     Helpers    = require('./Helpers'),
-    Api        = require('./api_lib');
+    Api        = require('api');
  
 
-$.when( Api.getCatalog() ).then(function( data, textStatus, jqXHR ) {
+var api = Api.getInstance('build/catalog.json')
+
+api.getCatalog().then(function() {
     var App = new GlobalView();
     App.start();
     Backbone.history.start();
@@ -18,7 +20,7 @@ var router = new Router();
 router.on('route:defaultRoute', function(actions, args) {
     
     if (!actions) {
-        router.navigate('dashboard/tasks', {
+        router.navigate('dashboard', {
             trigger: true
         });
         return;
