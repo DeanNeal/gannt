@@ -2889,7 +2889,7 @@ div#vakata-contextmenu:after{
   width: 47px;
   height: 47px;
   margin: 5px 20px 0 0;
-  background: url(/mimages/main/ico-top_add.png) center bottom no-repeat;
+  background: url(img/ico-top_add.png) center bottom no-repeat;
   cursor: pointer;
 }
 .top__add:hover {
