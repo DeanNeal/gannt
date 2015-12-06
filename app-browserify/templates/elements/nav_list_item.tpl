@@ -1,1 +1,1 @@
-<a class="menu-item" href="/#<%=route%>"><%=title%></a>
+<a class="menu-item" href="/#<%=id%>"><%=name%></a>

@@ -1,6 +1,7 @@
 var Backbone = require('backbone'),
     _        = require('underscore'),
-    $        = require('jquery');
+    $        = require('jquery'),
+    Api      = require('api');
 
 var BaseView = Backbone.View.extend({
 
@@ -19,7 +20,7 @@ var BaseView = Backbone.View.extend({
 
         //this.subscribes  = {};
 
-        //this.controller = Facade.getInstance();
+        this.api = Api.getInstance();
 
         this.contentInternal = this.$el;
 

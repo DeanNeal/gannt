@@ -17,43 +17,56 @@ var Helpers = {
 
 module.exports = Helpers;
 },{}],2:[function(require,module,exports){
-var $ = require('jquery');
+var $ = require('jquery'),
+	_ = require('underscore');
 
-var Api = {
-    getCatalog: function(){
-        return $.ajax({
-            url: 'http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + encodeURIComponent('linkin') + '&callback=JSONPCallback',
-            type: 'GET',
-            contentType: "application/json",
-            dataType: 'jsonp',
-            success: function(data){
+var Api = function(entryPoint) {
+	if(this.instance)
+	    throw new Error('You can not create more than one instance of API. Use Api.getInstance()');
+    this.entryPoint = entryPoint;
+    this.catalog = undefined;
+};
 
-            }
-        })
-    }, 
-    getUser: function(id) {
-        return $.ajax({
-            url: 'http://example.com/<<SECURITY_TOKEN>>/user/123345',
-            type: 'GET',
-            contentType: "application/json",
-            success: function(data){
+Api.getInstance = function(entryPoint) {
+	if(!Api.instance)
+	    Api.instance = new Api(entryPoint);
+	return Api.instance;
+};
 
-            }
-        })
-    }
+Api.prototype.getCatalog = function() {
+    var deffered = $.Deferred();
+
+    $.get(this.entryPoint, function(data){
+        this.catalog = data;
+        deffered.resolve(data);
+    }.bind(this));
+    return deffered.promise();
+};
+
+Api.prototype.getMenu = function() {
+    var url = _.findWhere(this.catalog.links, {id: 'menu'}).href,
+        deffered = $.Deferred();
+
+    $.get(url, function(data){
+        deffered.resolve(data);
+    }.bind(this));
+
+    return deffered.promise();
 };
 
 module.exports = Api;
-},{"jquery":42}],3:[function(require,module,exports){
+},{"jquery":42,"underscore":47}],3:[function(require,module,exports){
 var Backbone   = require('backbone'),
     $          = require('jquery'),
     GlobalView = require('./views/globalview'),
     Router     = require('./router/router'),
     Helpers    = require('./Helpers'),
-    Api        = require('./api_lib');
+    Api        = require('api');
  
 
-$.when( Api.getCatalog() ).then(function( data, textStatus, jqXHR ) {
+var api = Api.getInstance('build/catalog.json')
+
+api.getCatalog().then(function() {
     var App = new GlobalView();
     App.start();
     Backbone.history.start();
@@ -65,7 +78,7 @@ var router = new Router();
 router.on('route:defaultRoute', function(actions, args) {
     
     if (!actions) {
-        router.navigate('dashboard/tasks', {
+        router.navigate('dashboard', {
             trigger: true
         });
         return;
@@ -81,7 +94,7 @@ router.on('route:defaultRoute', function(actions, args) {
 });
 
 
-},{"./Helpers":1,"./api_lib":2,"./router/router":6,"./views/globalview":27,"backbone":33,"jquery":42}],4:[function(require,module,exports){
+},{"./Helpers":1,"./router/router":6,"./views/globalview":27,"api":2,"backbone":33,"jquery":42}],4:[function(require,module,exports){
 var MenuItem = require('../models/header_list_item'),
     Backbone = require('backbone'),
      _ = require('underscore');
@@ -143,7 +156,7 @@ module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\
 module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 task</li>\r\n\t\t<li>2 task</li>\r\n\t\t<li>3 task</li>\r\n\t\t<li>4 task</li>\r\n\t\t<li>5 task</li>\r\n\t\t<li>6 task</li>\r\n\t\t<li>7 task</li>\r\n\t\t<li>8 task</li>\r\n\t\t<li>9 task</li>\r\n\t\t<li>10 task</li>\r\n\t</ul>\t\r\n\t<div class=\"task-tabs\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],11:[function(require,module,exports){
-module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=title%></a>";
+module.exports = "<a class=\"menu-item\" href=\"/#<%=id%>\"><%=name%></a>";
 
 },{}],12:[function(require,module,exports){
 module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
@@ -169,7 +182,8 @@ module.exports = "<div class=\"submenu\">\r\n\tTree\r\n</div>\r\n";
 },{}],19:[function(require,module,exports){
 var Backbone = require('backbone'),
     _        = require('underscore'),
-    $        = require('jquery');
+    $        = require('jquery'),
+    Api      = require('api');
 
 var BaseView = Backbone.View.extend({
 
@@ -188,7 +202,7 @@ var BaseView = Backbone.View.extend({
 
         //this.subscribes  = {};
 
-        //this.controller = Facade.getInstance();
+        this.api = Api.getInstance();
 
         this.contentInternal = this.$el;
 
@@ -391,7 +405,7 @@ var BaseView = Backbone.View.extend({
 
 module.exports = BaseView;
 
-},{"backbone":33,"jquery":42,"underscore":47}],20:[function(require,module,exports){
+},{"api":2,"backbone":33,"jquery":42,"underscore":47}],20:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/dashboard/dashboard_milestones.tpl');
@@ -490,17 +504,14 @@ var BaseView         = require('views/baseview'),
 
 
 var dashboardLinks = [{
-    title: "tasks",
-    route: "dashboard/tasks",
-    name: "tasks"
+    name: "tasks",
+    id: "dashboard/tasks"
 }, {
-    title: "milestones",
-    route: "dashboard/milestones",
-    name: "milestones"
+    name: "milestones",
+    id: "dashboard/milestones"
 }, {
-    title: "projects",
-    route: "dashboard/projects",
-    name: "projects"
+    name: "projects",
+    id: "dashboard/projects"
 }];
 
 var SidebarLeftMenu = BaseListView.extend({
@@ -776,23 +787,23 @@ var Backbone = require('backbone'),
     navBarCollection = require('collections/header_list');
     mainTpl = require('templates/main.tpl');
   
-    var headerLinks = [{
-        route: "dashboard/tasks",
-        title: 'dashboard',
-        name: "dashboard"
-    }, {
-        route: "tree",
-        title: 'tree',
-        name: "tree"
-    }, {
-        route: 'stats',
-        title: 'stats',
-        name: "stats"
-    }, {
-        route: "finance/transactions",
-        title: 'finance',
-        name: "finance"
-    }];
+    // var headerLinks = [{
+    //     route: "dashboard",
+    //     title: 'dashboard',
+    //     name: "dashboard"
+    // }, {
+    //     route: "tree",
+    //     title: 'tree',
+    //     name: "tree"
+    // }, {
+    //     route: 'stats',
+    //     title: 'stats',
+    //     name: "stats"
+    // }, {
+    //     route: "finance/transactions",
+    //     title: 'finance',
+    //     name: "finance"
+    // }];
 
     var GlobalView = RoutedView.extend({
         tagName:'div',
@@ -806,8 +817,10 @@ var Backbone = require('backbone'),
              'finance'  : financeView
         },
         onInitialize : function (params) {
-            Backbone.on('change:page', this.changeStage, this);
-            this.addView(headerView, {collection: new navBarCollection(headerLinks)}, '.header-container');
+            this.api.getMenu().then(function(response){
+                Backbone.on('change:page', this.changeStage, this);
+                this.addView(headerView, {collection: new navBarCollection()}, '.header-container');
+            }.bind(this));
         },
         start: function(){
             document.body.appendChild(this.render().el);

@@ -9,23 +9,23 @@ var Backbone = require('backbone'),
     navBarCollection = require('collections/header_list');
     mainTpl = require('templates/main.tpl');
   
-    var headerLinks = [{
-        route: "dashboard/tasks",
-        title: 'dashboard',
-        name: "dashboard"
-    }, {
-        route: "tree",
-        title: 'tree',
-        name: "tree"
-    }, {
-        route: 'stats',
-        title: 'stats',
-        name: "stats"
-    }, {
-        route: "finance/transactions",
-        title: 'finance',
-        name: "finance"
-    }];
+    // var headerLinks = [{
+    //     route: "dashboard",
+    //     title: 'dashboard',
+    //     name: "dashboard"
+    // }, {
+    //     route: "tree",
+    //     title: 'tree',
+    //     name: "tree"
+    // }, {
+    //     route: 'stats',
+    //     title: 'stats',
+    //     name: "stats"
+    // }, {
+    //     route: "finance/transactions",
+    //     title: 'finance',
+    //     name: "finance"
+    // }];
 
     var GlobalView = RoutedView.extend({
         tagName:'div',
@@ -39,8 +39,10 @@ var Backbone = require('backbone'),
              'finance'  : financeView
         },
         onInitialize : function (params) {
-            Backbone.on('change:page', this.changeStage, this);
-            this.addView(headerView, {collection: new navBarCollection(headerLinks)}, '.header-container');
+            this.api.getMenu().then(function(response){
+                Backbone.on('change:page', this.changeStage, this);
+                this.addView(headerView, {collection: new navBarCollection()}, '.header-container');
+            }.bind(this));
         },
         start: function(){
             document.body.appendChild(this.render().el);
