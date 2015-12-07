@@ -1,0 +1,21 @@
+{
+    "links": [{
+        "id": "self",
+        "href": "http://example.com/catalog"
+    }, {
+        "id": "menu",
+        "href": "build/menu.json"
+    },{
+        "id": "user",
+        "href": "http://example.com/user"
+    }, {
+        "id": "projects",
+        "href": "http://example.com/projects"
+    }, {
+        "id": "milestones",
+        "href": "http://example.com/milestones"
+    }, {
+        "id": "milestones",
+        "href": "http://example.com/milestones"
+    }]
+}

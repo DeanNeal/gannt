@@ -1,0 +1,17 @@
+{
+    "data": [{
+        "id": "dashboard",
+        "name": "Dashboard",
+        "links": [{
+            "id": "menu",
+            "href": "http://localhost:3000/catalog/menu/1"
+        }]
+    }, {
+        "id": "tree",
+        "name": "Tree",
+        "links": [{
+            "id": "menu",
+            "href": "http://localhost:3000/catalog/menu/2"
+        }]
+    }]
+}
