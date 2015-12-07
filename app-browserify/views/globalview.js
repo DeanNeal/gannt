@@ -1,4 +1,5 @@
 var Backbone = require('backbone'),
+    $        = require('jquery'),
     BaseView = require('views/baseview'), 
     RoutedView  = require('views/routedview'),
     headerView = require('views/header/header_list_view'),
@@ -8,24 +9,6 @@ var Backbone = require('backbone'),
     financeView = require('views/finance/finance_view'),
     navBarCollection = require('collections/header_list');
     mainTpl = require('templates/main.tpl');
-  
-    // var headerLinks = [{
-    //     route: "dashboard",
-    //     title: 'dashboard',
-    //     name: "dashboard"
-    // }, {
-    //     route: "tree",
-    //     title: 'tree',
-    //     name: "tree"
-    // }, {
-    //     route: 'stats',
-    //     title: 'stats',
-    //     name: "stats"
-    // }, {
-    //     route: "finance/transactions",
-    //     title: 'finance',
-    //     name: "finance"
-    // }];
 
     var GlobalView = RoutedView.extend({
         tagName:'div',
@@ -39,10 +22,23 @@ var Backbone = require('backbone'),
              'finance'  : financeView
         },
         onInitialize : function (params) {
-            this.api.getMenu().then(function(response){
-                Backbone.on('change:page', this.changeStage, this);
-                this.addView(headerView, {collection: new navBarCollection()}, '.header-container');
-            }.bind(this));
+            Backbone.on('change:page', this.changeStage, this);
+        },
+        beforeChangeStage: function(currentStage, stagesArray){
+            var deferred = $.Deferred();
+
+            if(!this.menu){
+                this.api.getMenu().then(function(response){
+                    var collection = new navBarCollection(response.data);
+
+                    this.menu  = this.addView(headerView, {collection: collection});
+                    this.renderNestedView(this.menu, '.header-container');
+                    deferred.resolve(true);    
+                }.bind(this));
+            } else
+                deferred.resolve(true);   
+
+            return deferred.promise();
         },
         start: function(){
             document.body.appendChild(this.render().el);

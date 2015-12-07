@@ -1,0 +1,24 @@
+{
+    "data": [{
+        "id": "1",
+        "name": "task_1",
+        "links": [{
+            "id": "tasks",
+            "href": "http://localhost:3000/tasks/1"
+        }]
+    }, {
+        "id": "2",
+        "name": "task_2",
+        "links": [{
+            "id": "tasks",
+            "href": "http://localhost:3000/tasks/2"
+        }]
+    }, {
+        "id": "3",
+        "name": "task_3",
+        "links": [{
+            "id": "tasks",
+            "href": "http://localhost:3000/tasks/2"
+        }]
+    }]
+}

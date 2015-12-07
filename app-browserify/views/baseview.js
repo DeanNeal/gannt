@@ -193,30 +193,34 @@ var BaseView = Backbone.View.extend({
         Backbone.View.prototype.remove.call(this);
     },
     beforeChangeStage: function(currentStage) {
-        return true;
+        var deferred = $.Deferred();
+        setTimeout(function () {
+            deferred.resolve(true);                
+        });
+        return deferred.promise();
     },
     afterChangeStage: function(currentStage) {
         /*nothing to do*/
     },
     changeStage: function(params) {
-
         if (params.stagesArray[0] && this.router) {
-            if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
-                if (!this.beforeChangeStage(params.stagesArray[0])) {
-                    return;
-                };
-                if (this.nextStage) // if current view exist we have to remove it
-                    this.removeNestedView(this.nextStage);
-                var target = this.getContentInternal().find('.bb-route-container');
-                this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target);
-                this.renderNestedView(this.nextStage, target);
-            }
+            this.beforeChangeStage(params.stagesArray[0]).then(function(data) {
+                
+                if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
+                    if (this.nextStage) // if current view exist we have to remove it
+                        this.removeNestedView(this.nextStage);
+                    var target = this.getContentInternal().find('.bb-route-container');
+                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target);
+                    this.renderNestedView(this.nextStage, target);    
+                }
 
-            this.currentStage = params.stagesArray[0]; // save current stage
-            params.stagesArray.shift(); // remove current stage from stages array
+                this.currentStage = params.stagesArray[0]; // save current stage
+                params.stagesArray.shift(); // remove current stage from stages array
 
-            this.afterChangeStage(this.currentStage);
-            this.nextStage.changeStage(params); // start again without current stage
+                this.afterChangeStage(this.currentStage);
+                this.nextStage.changeStage(params); // start again without current stage
+
+            }.bind(this));
         }
     }
 });

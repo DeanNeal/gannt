@@ -86,16 +86,13 @@ var cashflowacntView = BaseView.extend({
 
 
 var financeLinks = [{
-    title: "transactions",
-    route: "finance/transactions",
+    id: "finance/transactions",
     name: "transactions"
 }, {
-    title: "chart of financial accaunts",
-    route: "finance/finacnt",
+    id: "finance/finacnt",
     name: "finacnt"
 }, {
-    title: "chart of cash flow accaunts",
-    route: "finance/cashflowacnt",
+    id: "finance/cashflowacnt",
     name: "cashflowacnt"
 }];
 
@@ -120,8 +117,7 @@ var ContentView = RoutedView.extend({
         }, '.finance_page__left');
     },
     onRender: function() {
-        this.getContentInternal().find('.navbar-nav').sortable();
-        this.getContentInternal().tooltip();
+
     }
 });
 

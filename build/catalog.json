@@ -15,7 +15,7 @@
         "id": "milestones",
         "href": "http://example.com/milestones"
     }, {
-        "id": "milestones",
-        "href": "http://example.com/milestones"
+        "id": "tasks",
+        "href": "build/tasks.json"
     }]
 }

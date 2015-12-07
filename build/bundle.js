@@ -54,6 +54,17 @@ Api.prototype.getMenu = function() {
     return deffered.promise();
 };
 
+Api.prototype.getTasks = function() {
+    var url = _.findWhere(this.catalog.links, {id: 'tasks'}).href,
+        deffered = $.Deferred();
+
+    $.get(url, function(data){
+        deffered.resolve(data);
+    }.bind(this));
+
+    return deffered.promise();
+};
+
 module.exports = Api;
 },{"jquery":42,"underscore":47}],3:[function(require,module,exports){
 var Backbone   = require('backbone'),
@@ -105,14 +116,6 @@ var MenuItemCollection = Backbone.Collection.extend({
         this.on('change:isSelected', this.onSelectedChanged, this);
 
         this.lastActive = undefined;
-
-        _.each(params, function(item, key) {
-            this.add({
-                title: item.title,
-                route: item.route,
-                isSelected: false
-            })
-        }, this);
     },
 
     onSelectedChanged: function(model) {
@@ -144,7 +147,7 @@ var Router = Backbone.Router.extend({
 
 module.exports = Router;
 },{"backbone":33}],7:[function(require,module,exports){
-module.exports = "<div class=\"full_height\" style=\"display: flex; flex-direction: row; flex: 1;\">\r\n\t<div class=\"left-block\" style=\"display: flex; flex-direction: column;\">\r\n\t\tLeft\r\n\t</div>\r\n\r\n\t<div class=\"right-block\" style=\"display: flex; flex-direction: column;\">\r\n\t\tRight\r\n\t\t<div class=\"dashboard-menu\"></div>\r\n\t\t<div class=\"bb-route-container\"></div>\r\n\t</div>\r\n</div>";
+module.exports = "<div class=\"full_height\" style=\"display: flex; flex-direction: row; flex: 1;\">\r\n\t<div class=\"left-block\" style=\"display: flex; flex-direction: column;\">\r\n\t\t<div class=\"left-block_top\">\r\n\t\t\tChoosle company\r\n\t\t</div>\r\n\r\n\t\t<!-- <div class=\"left-block_content\"> -->\r\n\t\t\t<div class=\"dshb_level\">\r\n                <h3>Level <span class=\"level-wrapper\">1</span></h3>\r\n\r\n                <div class=\"dshb_level__status\">\r\n                    <div class=\"dshb_level__prc\" style=\"width: 0%;\">\r\n                        <span>\r\n                            <i class=\"perc_value\">0</i>%\r\n                        </span>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"dshb_level__txt dshb_level__txt-in level-name\"></div>\r\n            </div>\r\n\r\n            <div class=\"dshb_table\">\r\n                <div class=\"dshb_rank\">\r\n                    <img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n                    <!--\r\n                    <div class=\"circle blue circle-small\">\r\n                        <div class=\"circle-title\">Company</div>\r\n\r\n                        <svg class=\"svg-circle main\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <defs>\r\n                                <linearGradient id=\"myLinearGradient1\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\" spreadMethod=\"pad\">\r\n                                    <stop offset=\"0%\" stop-color=\"#b9f4fd\" stop-opacity=\"1\"></stop>\r\n                                    <stop offset=\"100%\" stop-color=\"#63ddef\" stop-opacity=\"1\"></stop>\r\n                                </linearGradient>\r\n                            </defs>\r\n                            <path fill=\"transparent\" style=\"stroke:url(#myLinearGradient1)\" stroke-width=\"1\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <svg class=\"svg-circle outline\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <path fill=\"transparent\" stroke-width=\"0.2\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <div class=\"circle-date\">22 day</div>\r\n                    </div>\r\n\r\n                    <div class=\"circle blue\">\r\n                        <div class=\"circle-title\">Personal</div>\r\n\r\n                        <svg class=\"svg-circle main\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <defs>\r\n                                <linearGradient id=\"myLinearGradient2\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\" spreadMethod=\"pad\">\r\n                                    <stop offset=\"0%\" stop-color=\"#b9f4fd\" stop-opacity=\"1\"></stop>\r\n                                    <stop offset=\"100%\" stop-color=\"#63ddef\" stop-opacity=\"1\"></stop>\r\n                                </linearGradient>\r\n                            </defs>\r\n                            <path fill=\"transparent\" style=\"stroke:url(#myLinearGradient2)\" stroke-width=\"1\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <svg class=\"svg-circle outline\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <path fill=\"transparent\" stroke-width=\"0.2\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <div class=\"circle-date\">22 day</div>\r\n                    </div>\r\n\r\n                    <div class=\"circle blue circle-small\">\r\n                        <div class=\"circle-title\">Department</div>\r\n\r\n                        <svg class=\"svg-circle main\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <defs>\r\n                                <linearGradient id=\"myLinearGradient3\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\" spreadMethod=\"pad\">\r\n                                    <stop offset=\"0%\" stop-color=\"#b9f4fd\" stop-opacity=\"1\"></stop>\r\n                                    <stop offset=\"100%\" stop-color=\"#63ddef\" stop-opacity=\"1\"></stop>\r\n                                </linearGradient>\r\n                            </defs>\r\n                            <path fill=\"transparent\" style=\"stroke:url(#myLinearGradient3)\" stroke-width=\"1\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <svg class=\"svg-circle outline\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <path fill=\"transparent\" stroke-width=\"0.2\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <div class=\"circle-date\">22 day</div>\r\n                    </div>\r\n                    -->\r\n                </div>\r\n\r\n                <div class=\"dshb_eggs\">\r\n                    <ul>\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item1 egg-type-7\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item2 egg-type-5\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item3 egg-type-3\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item4 egg-type-0\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item5 egg-type-broken\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"scrollable\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            </div>\r\n\t\t<!-- </div> -->\r\n\t</div>\r\n\r\n\t<div class=\"right-block\" style=\"display: flex; flex-direction: column;\">\r\n\t\tRight\r\n\t\t<div class=\"dashboard-menu\"></div>\r\n\t\t<div class=\"bb-route-container\"></div>\r\n\t</div>\r\n</div>";
 
 },{}],8:[function(require,module,exports){
 module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 milestone</li>\r\n\t\t<li>2 milestone</li>\r\n\t\t<li>3 milestone</li>\r\n\t\t<li>4 milestone</li>\r\n\t\t<li>5 milestone</li>\r\n\t\t<li>6 milestone</li>\r\n\t\t<li>7 milestone</li>\r\n\t\t<li>8 milestone</li>\r\n\t\t<li>9 milestone</li>\r\n\t\t<li>10 milestone</li>\r\n\t</ul>\t\r\n</div>";
@@ -153,7 +156,7 @@ module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 milestone</li>\r\
 module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\t\t<li>2 project</li>\r\n\t\t<li>3 project</li>\r\n\t\t<li>4 project</li>\r\n\t\t<li>5 project</li>\r\n\t\t<li>6 project</li>\r\n\t\t<li>7 project</li>\r\n\t\t<li>8 project</li>\r\n\t\t<li>9 project</li>\r\n\t\t<li>10 project</li>\r\n\t</ul>\t\r\n</div>";
 
 },{}],10:[function(require,module,exports){
-module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 task</li>\r\n\t\t<li>2 task</li>\r\n\t\t<li>3 task</li>\r\n\t\t<li>4 task</li>\r\n\t\t<li>5 task</li>\r\n\t\t<li>6 task</li>\r\n\t\t<li>7 task</li>\r\n\t\t<li>8 task</li>\r\n\t\t<li>9 task</li>\r\n\t\t<li>10 task</li>\r\n\t</ul>\t\r\n\t<div class=\"task-tabs\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li><%=item.id%> - <%=item.name%></li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
 
 },{}],11:[function(require,module,exports){
 module.exports = "<a class=\"menu-item\" href=\"/#<%=id%>\"><%=name%></a>";
@@ -171,7 +174,7 @@ module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel l
 module.exports = "<div class=\"container-fluid\"> \r\n\r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t<div class=\"pull-left\"> Transactions</div>\r\n\r\n\r\n\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t</div>\r\n\t\t</header>\r\n  \r\n\t\t<div class=\"filters_controller\">\r\n\t\t\t<span class=\"comp_data\" data-name=\"eq\" data-label=\"Equal\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"gt\" data-label=\"Greater\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"lt\" data-label=\"Less\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"like\" data-label=\"Like\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"between\" data-label=\"Between\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"isnull\" data-label=\"Not set\"></span>\r\n\r\n\t\t\t<span class=\"field_data\" data-name=\"name\" data-label=\"Transaction\" data-type=\"text\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"date\" data-label=\"Date\" data-type=\"date\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"amount\" data-label=\"Amount\" data-type=\"text\" data-class=\"floatPositive\" data-sortable=\"1\" data-searchable=\"1\" data-width=\"150px\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"description\" data-label=\"Description\" data-type=\"text\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionreasonacnt.name\" data-label=\"Purporse\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionreasonacnt\" data-destmodelalias=\"kfinance.reasonacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncounterpartyacnt.name\" data-label=\"Payment from/to\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncounterpartyacnt\" data-destmodelalias=\"kfinance.counterpartyacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntdebit.name\" data-label=\"Debit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntdebit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntcredit.name\" data-label=\"Credit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntcredit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncashflowacnt.name\" data-label=\"Cashflow\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncashflowacnt\" data-destmodelalias=\"kfinance.cashflowacnt\"></span>\r\n\t\t</div>    \r\n\t\t</div>\r\n\t</section>\r\n\t\r\n</div>";
 
 },{}],16:[function(require,module,exports){
-module.exports = "<div class=\"full_height\">\r\n\t<div class=\"header\">\r\n\t\t<div>\r\n\t\t\t<div class=\"header_nav\">\r\n\t\t\t\t<div class=\"logo\">\r\n\t\t\t\t\t<a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"header-container\"></div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"header_controls pull-right\">\r\n\t\t\t\t<div class=\"right-user-area\">\r\n\t\t\t\t    <div class=\"user-nav-block\">\r\n\t\t\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t\t\t            <img src=\"\">\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t\t\t        \r\n\t\t\t\t        <div class=\"searchobjects\"></div>\r\n\t\t\t\t    </div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t\r\n\t<!-- <div id=\"header\">\r\n\t\t<span class=\"navbar-brand\" href=\"/\">\r\n\t\t   <div class=\"logo_holder\">\r\n\t\t        <a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t    </div>            \r\n\t\t</span>\r\n\r\n\t\t<div class=\"header-container\"></div>\r\n\r\n\t\t<div class=\"pull-right right-user-area\">\r\n\t\t    <div class=\"user-nav-block\">\r\n\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t            <img src=\"\">\r\n\t\t        </a>\r\n\t\t    </div>\r\n\t\t      \r\n\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t      \r\n\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t        </a>\r\n\t\t    </div>\r\n\r\n\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t    </div>\r\n\r\n\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t        \r\n\t\t        <div class=\"searchobjects\"></div>\r\n\t\t    </div>\r\n\t\t</div>\r\n\t</div> -->\r\n\r\n\t<div class=\"bb-route-container full_height\"></div>\r\n</div>";
+module.exports = "<div class=\"full_height\" style=\"display: flex; flex-direction: column;\">\r\n\t<div class=\"header\">\r\n\t\t<div>\r\n\t\t\t<div class=\"header_nav\">\r\n\t\t\t\t<div class=\"logo\">\r\n\t\t\t\t\t<a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"header-container\"></div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"header_controls pull-right\">\r\n\t\t\t\t<div class=\"right-user-area\">\r\n\t\t\t\t    <div class=\"user-nav-block\">\r\n\t\t\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t\t\t            <img src=\"\">\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t\t\t        \r\n\t\t\t\t        <div class=\"searchobjects\"></div>\r\n\t\t\t\t    </div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div class=\"bb-route-container full_height\" style=\"display: flex; -webkit-flex-direction: column; flex-direction: column;  flex: 1;\"></div>\r\n</div>";
 
 },{}],17:[function(require,module,exports){
 module.exports = "<div class=\"submenu\">\r\n\tStats\r\n</div>";
@@ -375,30 +378,34 @@ var BaseView = Backbone.View.extend({
         Backbone.View.prototype.remove.call(this);
     },
     beforeChangeStage: function(currentStage) {
-        return true;
+        var deferred = $.Deferred();
+        setTimeout(function () {
+            deferred.resolve(true);                
+        });
+        return deferred.promise();
     },
     afterChangeStage: function(currentStage) {
         /*nothing to do*/
     },
     changeStage: function(params) {
-
         if (params.stagesArray[0] && this.router) {
-            if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
-                if (!this.beforeChangeStage(params.stagesArray[0])) {
-                    return;
-                };
-                if (this.nextStage) // if current view exist we have to remove it
-                    this.removeNestedView(this.nextStage);
-                var target = this.getContentInternal().find('.bb-route-container');
-                this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target);
-                this.renderNestedView(this.nextStage, target);
-            }
+            this.beforeChangeStage(params.stagesArray[0]).then(function(data) {
+                
+                if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
+                    if (this.nextStage) // if current view exist we have to remove it
+                        this.removeNestedView(this.nextStage);
+                    var target = this.getContentInternal().find('.bb-route-container');
+                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {}, target);
+                    this.renderNestedView(this.nextStage, target);    
+                }
 
-            this.currentStage = params.stagesArray[0]; // save current stage
-            params.stagesArray.shift(); // remove current stage from stages array
+                this.currentStage = params.stagesArray[0]; // save current stage
+                params.stagesArray.shift(); // remove current stage from stages array
 
-            this.afterChangeStage(this.currentStage);
-            this.nextStage.changeStage(params); // start again without current stage
+                this.afterChangeStage(this.currentStage);
+                this.nextStage.changeStage(params); // start again without current stage
+
+            }.bind(this));
         }
     }
 });
@@ -435,64 +442,47 @@ var ContentView = BaseView.extend({
 module.exports = ContentView;
 },{"backbone":33,"templates/dashboard/dashboard_projects.tpl":9,"views/baseview":19}],22:[function(require,module,exports){
 var Backbone         = require('backbone'),
+    _                = require('underscore'),
     RoutedView       = require('views/routedview'),
     BaseView         = require('views/baseview'),
     BaseListView     = require('views/elements/base_list_view'),
     navBarCollection = require('collections/header_list'),
     tpl              = require('templates/dashboard/dashboard_tasks.tpl');
-    // taskItem1Tpl     = require('templates/dashboard/dashboard_task_item1.tpl'),
-    // taskItem2Tpl     = require('templates/dashboard/dashboard_task_item2.tpl');
-
-    // var taskItemView1 = BaseView.extend({
-    //     template: taskItem1Tpl,
-    //     className: 'task_item_view_1',
-    //     onInitialize: function(params) {
-    //         BaseView.prototype.onInitialize.call(this, params);
-    //     }
-    // });
-
-    // var taskItemView2 = BaseView.extend({
-    //     template: taskItem2Tpl,
-    //     className: 'task_item_view_2',
-    //     onInitialize: function(params) {
-    //         BaseView.prototype.onInitialize.call(this, params);
-    //     }
-    // });
-
-
-    var tabsLinks = [{
-        title: "Task view 1",
-        route: "dashboard/tasks/task_item_1",
-        name: "task_item_1"
-    }, {
-        title: "Task view 2",
-        route: "dashboard/tasks/task_item_2",
-        name: "task_item_2"
-    }];
 
     var navMenu = BaseListView.extend({
         tagName: 'ul',
         className: 'nav navbar-nav'
     });
 
+    var navMenu = BaseListView.extend({
+        tagName: 'ul',
+        className: 'nav navbar-nav'
+    });
 
-    var ContentView = BaseListView.extend({
+    var taskList = BaseView.extend({
         template: tpl,
+        className: 'task-list',
+        onInitialize: function(params){
+            BaseView.prototype.onInitialize.call(this, params);
+        },
+        serialize: function(){
+            this.data = _.clone({data: this.collection});
+        }
+    });
+
+    var ContentView = BaseView.extend({
         className: 'tasks',
-        // routes: {
-        //     'task_item_1': taskItemView1,
-        //     'task_item_2': taskItemView2
-        // },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
-            // this.addView(navMenu, {
-            //     collection: new navBarCollection(tabsLinks) 
-            // }, '.task-tabs');
+            this.api.getTasks().then(function(response){
+                this.taskList = this.addView(taskList, {collection: response.data});
+                this.renderNestedView(this.taskList);
+            }.bind(this));
         }
     });
 
 module.exports = ContentView;
-},{"backbone":33,"collections/header_list":4,"templates/dashboard/dashboard_tasks.tpl":10,"views/baseview":19,"views/elements/base_list_view":24,"views/routedview":29}],23:[function(require,module,exports){
+},{"backbone":33,"collections/header_list":4,"templates/dashboard/dashboard_tasks.tpl":10,"underscore":47,"views/baseview":19,"views/elements/base_list_view":24,"views/routedview":29}],23:[function(require,module,exports){
 var BaseView         = require('views/baseview'),
     RoutedView       = require('views/routedview'),
     BaseListView     = require('views/elements/base_list_view'),
@@ -589,7 +579,7 @@ var listView = BaseView.extend({
     },
     onChangeStage: function(currentStage) {
         this.collection.each(function(model) {
-            if (model.get('name') == currentStage)
+            if (model.get('name').toLowerCase() == currentStage)
                 model.set({
                     'isSelected': true
                 });
@@ -734,16 +724,13 @@ var cashflowacntView = BaseView.extend({
 
 
 var financeLinks = [{
-    title: "transactions",
-    route: "finance/transactions",
+    id: "finance/transactions",
     name: "transactions"
 }, {
-    title: "chart of financial accaunts",
-    route: "finance/finacnt",
+    id: "finance/finacnt",
     name: "finacnt"
 }, {
-    title: "chart of cash flow accaunts",
-    route: "finance/cashflowacnt",
+    id: "finance/cashflowacnt",
     name: "cashflowacnt"
 }];
 
@@ -768,8 +755,7 @@ var ContentView = RoutedView.extend({
         }, '.finance_page__left');
     },
     onRender: function() {
-        this.getContentInternal().find('.navbar-nav').sortable();
-        this.getContentInternal().tooltip();
+
     }
 });
 
@@ -777,6 +763,7 @@ module.exports = ContentView;
 
 },{"backbone":33,"collections/header_list":4,"jquery-ui/sortable":39,"jquery-ui/tooltip":40,"kefir":43,"rx-dom":45,"templates/elements/nav_list_item.tpl":11,"templates/finance/finance.tpl":12,"templates/finance/tabs/cashflowacnt.tpl":13,"templates/finance/tabs/finacnt.tpl":14,"templates/finance/tabs/transactions.tpl":15,"views/baseview":19,"views/elements/base_list_view":24,"views/finance/finance_rx":25,"views/routedview":29}],27:[function(require,module,exports){
 var Backbone = require('backbone'),
+    $        = require('jquery'),
     BaseView = require('views/baseview'), 
     RoutedView  = require('views/routedview'),
     headerView = require('views/header/header_list_view'),
@@ -786,24 +773,6 @@ var Backbone = require('backbone'),
     financeView = require('views/finance/finance_view'),
     navBarCollection = require('collections/header_list');
     mainTpl = require('templates/main.tpl');
-  
-    // var headerLinks = [{
-    //     route: "dashboard",
-    //     title: 'dashboard',
-    //     name: "dashboard"
-    // }, {
-    //     route: "tree",
-    //     title: 'tree',
-    //     name: "tree"
-    // }, {
-    //     route: 'stats',
-    //     title: 'stats',
-    //     name: "stats"
-    // }, {
-    //     route: "finance/transactions",
-    //     title: 'finance',
-    //     name: "finance"
-    // }];
 
     var GlobalView = RoutedView.extend({
         tagName:'div',
@@ -817,10 +786,23 @@ var Backbone = require('backbone'),
              'finance'  : financeView
         },
         onInitialize : function (params) {
-            this.api.getMenu().then(function(response){
-                Backbone.on('change:page', this.changeStage, this);
-                this.addView(headerView, {collection: new navBarCollection()}, '.header-container');
-            }.bind(this));
+            Backbone.on('change:page', this.changeStage, this);
+        },
+        beforeChangeStage: function(currentStage, stagesArray){
+            var deferred = $.Deferred();
+
+            if(!this.menu){
+                this.api.getMenu().then(function(response){
+                    var collection = new navBarCollection(response.data);
+
+                    this.menu  = this.addView(headerView, {collection: collection});
+                    this.renderNestedView(this.menu, '.header-container');
+                    deferred.resolve(true);    
+                }.bind(this));
+            } else
+                deferred.resolve(true);   
+
+            return deferred.promise();
         },
         start: function(){
             document.body.appendChild(this.render().el);
@@ -828,7 +810,7 @@ var Backbone = require('backbone'),
     });
 
 module.exports = GlobalView;
-},{"backbone":33,"collections/header_list":4,"templates/main.tpl":16,"views/baseview":19,"views/dashboard/dashboard_view":23,"views/finance/finance_view":26,"views/header/header_list_view":28,"views/routedview":29,"views/stats/stats_view":30,"views/tree/tree_view":31}],28:[function(require,module,exports){
+},{"backbone":33,"collections/header_list":4,"jquery":42,"templates/main.tpl":16,"views/baseview":19,"views/dashboard/dashboard_view":23,"views/finance/finance_view":26,"views/header/header_list_view":28,"views/routedview":29,"views/stats/stats_view":30,"views/tree/tree_view":31}],28:[function(require,module,exports){
 var BaseView     = require('views/baseview'),
     BaseListView = require('views/elements/base_list_view');
 

@@ -35,4 +35,15 @@ Api.prototype.getMenu = function() {
     return deffered.promise();
 };
 
+Api.prototype.getTasks = function() {
+    var url = _.findWhere(this.catalog.links, {id: 'tasks'}).href,
+        deffered = $.Deferred();
+
+    $.get(url, function(data){
+        deffered.resolve(data);
+    }.bind(this));
+
+    return deffered.promise();
+};
+
 module.exports = Api;

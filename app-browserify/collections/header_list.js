@@ -8,14 +8,6 @@ var MenuItemCollection = Backbone.Collection.extend({
         this.on('change:isSelected', this.onSelectedChanged, this);
 
         this.lastActive = undefined;
-
-        _.each(params, function(item, key) {
-            this.add({
-                title: item.title,
-                route: item.route,
-                isSelected: false
-            })
-        }, this);
     },
 
     onSelectedChanged: function(model) {
