@@ -13,7 +13,7 @@
         "href": "http://example.com/projects"
     }, {
         "id": "milestones",
-        "href": "http://example.com/milestones"
+        "href": "build/milestones.json"
     }, {
         "id": "tasks",
         "href": "build/tasks.json"

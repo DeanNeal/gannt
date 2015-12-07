@@ -1,4 +1,5 @@
 var BaseView         = require('views/baseview'),
+    Helpers          = require('Helpers'),
     RoutedView       = require('views/routedview'),
     BaseListView     = require('views/elements/base_list_view'),
     navBarCollection = require('collections/header_list'),
@@ -10,16 +11,16 @@ var BaseView         = require('views/baseview'),
 
 var dashboardLinks = [{
     name: "tasks",
-    id: "dashboard/tasks"
+    id: "tasks"
 }, {
     name: "milestones",
-    id: "dashboard/milestones"
+    id: "milestones"
 }, {
     name: "projects",
-    id: "dashboard/projects"
+    id: "projects"
 }];
 
-var SidebarLeftMenu = BaseListView.extend({
+var Menu = BaseListView.extend({
     tagName: 'ul',
     className: 'nav navbar-nav'
 });
@@ -35,10 +36,16 @@ var ContentView = RoutedView.extend({
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
-        this.addView(SidebarLeftMenu, {
+        
+        dashboardLinks = Helpers.createLinks(dashboardLinks, params.stage);
+        this.addView(Menu, {
             collection: new navBarCollection(dashboardLinks)
         }, '.dashboard-menu');
+    },
+    onRender: function(){
+        
     }
+
 });
 
 module.exports = ContentView;

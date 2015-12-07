@@ -1,5 +1,6 @@
-var Backbone = require('backbone'),
+var Backbone          = require('backbone'),
     //Rx = require('rx/dist/rx.lite'),
+    Helpers           = require('Helpers'),
     Rx                = require('rx-dom'),
     WikiRx            = require('views/finance/finance_rx');
 
@@ -86,13 +87,13 @@ var cashflowacntView = BaseView.extend({
 
 
 var financeLinks = [{
-    id: "finance/transactions",
+    id: "transactions",
     name: "transactions"
 }, {
-    id: "finance/finacnt",
+    id: "finacnt",
     name: "finacnt"
 }, {
-    id: "finance/cashflowacnt",
+    id: "cashflowacnt",
     name: "cashflowacnt"
 }];
 
@@ -112,6 +113,8 @@ var ContentView = RoutedView.extend({
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
+
+        financeLinks = Helpers.createLinks(financeLinks, params.stage);
         this.addView(SidebarLeftMenu, {
             collection: new navBarCollection(financeLinks)
         }, '.finance_page__left');

@@ -11,6 +11,12 @@ var Helpers = {
         }
 
         return vars;
+    },
+    createLinks: function(links, stage) {
+        links.map(function(item) {
+            item.id = stage + '/' + item.id;
+        });
+        return links;
     }
 };
 

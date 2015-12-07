@@ -13,7 +13,6 @@ Api.getInstance = function(entryPoint) {
 	    Api.instance = new Api(entryPoint);
 	return Api.instance;
 };
-
 Api.prototype.getCatalog = function() {
     var deffered = $.Deferred();
 
@@ -24,19 +23,8 @@ Api.prototype.getCatalog = function() {
     return deffered.promise();
 };
 
-Api.prototype.getMenu = function() {
-    var url = _.findWhere(this.catalog.links, {id: 'menu'}).href,
-        deffered = $.Deferred();
-
-    $.get(url, function(data){
-        deffered.resolve(data);
-    }.bind(this));
-
-    return deffered.promise();
-};
-
-Api.prototype.getTasks = function() {
-    var url = _.findWhere(this.catalog.links, {id: 'tasks'}).href,
+Api.prototype.getResousceFromCatalog = function(resourceName){
+    var url = _.findWhere(this.catalog.links, {id: resourceName}).href,
         deffered = $.Deferred();
 
     $.get(url, function(data){

@@ -20,7 +20,7 @@ var router = new Router();
 router.on('route:defaultRoute', function(actions, args) {
     
     if (!actions) {
-        router.navigate('dashboard', {
+        router.navigate('dashboard/tasks', {
             trigger: true
         });
         return;

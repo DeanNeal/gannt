@@ -24,13 +24,12 @@ var Backbone = require('backbone'),
         onInitialize : function (params) {
             Backbone.on('change:page', this.changeStage, this);
         },
-        beforeChangeStage: function(currentStage, stagesArray){
+        beforeChangeStage: function(){
             var deferred = $.Deferred();
 
             if(!this.menu){
-                this.api.getMenu().then(function(response){
+                this.api.getResousceFromCatalog('menu').then(function(response){
                     var collection = new navBarCollection(response.data);
-
                     this.menu  = this.addView(headerView, {collection: collection});
                     this.renderNestedView(this.menu, '.header-container');
                     deferred.resolve(true);    
