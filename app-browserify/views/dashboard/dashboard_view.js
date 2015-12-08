@@ -9,17 +9,6 @@ var BaseView         = require('views/baseview'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
 
 
-var dashboardLinks = [{
-    name: "tasks",
-    id: "tasks"
-}, {
-    name: "milestones",
-    id: "milestones"
-}, {
-    name: "projects",
-    id: "projects"
-}];
-
 var Menu = BaseListView.extend({
     tagName: 'ul',
     className: 'nav navbar-nav'
@@ -34,18 +23,24 @@ var ContentView = RoutedView.extend({
         'milestones': milestonesView,
         'projects'  : projectsView
     },
+    links: [{
+        name: "tasks",
+        id: "tasks"
+    }, {
+        name: "milestones",
+        id: "milestones"
+    }, {
+        name: "projects",
+        id: "projects"
+    }],
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
-        
-        dashboardLinks = Helpers.createLinks(dashboardLinks, params.stage);
-        this.addView(Menu, {
-            collection: new navBarCollection(dashboardLinks)
-        }, '.dashboard-menu');
-    },
-    onRender: function(){
-        
-    }
 
+        this.collection = Helpers.createLinks(this.links, params.stage);
+        this.addView(Menu, {
+            collection: new navBarCollection(this.collection)
+        }, '.dashboard-menu');
+    }
 });
 
 module.exports = ContentView;

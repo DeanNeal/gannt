@@ -84,19 +84,6 @@ var cashflowacntView = BaseView.extend({
     }
 });
 
-
-
-var financeLinks = [{
-    id: "transactions",
-    name: "transactions"
-}, {
-    id: "finacnt",
-    name: "finacnt"
-}, {
-    id: "cashflowacnt",
-    name: "cashflowacnt"
-}];
-
 var SidebarLeftMenu = BaseListView.extend({
     tagName: 'ul',
     className: 'nav navbar-nav'
@@ -107,16 +94,26 @@ var ContentView = RoutedView.extend({
     template: financeTpl,
     className: 'finance',
     routes: {
-        transactions: transactionsView,
-        finacnt: finacntView,
-        cashflowacnt: cashflowacntView
+        'transactions' : transactionsView,
+        'finacnt'      : finacntView,
+        'cashflowacnt' : cashflowacntView
     },
+    links: [{
+        id: "transactions",
+        name: "transactions"
+    }, {
+        id: "finacnt",
+        name: "finacnt"
+    }, {
+        id: "cashflowacnt",
+        name: "cashflowacnt"
+    }],
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
 
-        financeLinks = Helpers.createLinks(financeLinks, params.stage);
+        this.collection = Helpers.createLinks(this.links, params.stage);
         this.addView(SidebarLeftMenu, {
-            collection: new navBarCollection(financeLinks)
+            collection: new navBarCollection(this.collection)
         }, '.finance_page__left');
     },
     onRender: function() {

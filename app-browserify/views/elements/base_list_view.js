@@ -49,9 +49,7 @@ var listView = BaseView.extend({
     },
     onChangeStage: function(currentStage) {
         this.collection.each(function(model) {
-            // var stage  = model.get('id').split('/');
-            // if (stage[stage.length-1] == currentStage)
-            if (model.get('name').toLowerCase() == currentStage)
+            if (model.get('id') == currentStage)
                 model.set({
                     'isSelected': true
                 });

@@ -13,10 +13,30 @@ var Helpers = {
         return vars;
     },
     createLinks: function(links, stage) {
-        links.map(function(item) {
-            item.id = stage + '/' + item.id;
+        var array = [];
+        links.forEach(function(item, i) { 
+            array[i] = {
+               id: item.id,
+               route: stage + '/' + item.id,
+               name: item.name 
+            };
         });
-        return links;
+        return array;
+    },
+    createMenuLinks: function(menuLinks){
+        return menuLinks.map(function(item, i) { 
+            item.route = item.id;
+            switch (item.id){
+                case 'dashboard':
+                    item.route = item.id + '/tasks';
+                    break;
+                case 'finance':
+                    item.route = item.id + '/transactions';
+                    break;
+            }
+
+            return item;
+        });
     }
 };
 
