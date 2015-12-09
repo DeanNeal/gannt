@@ -50,16 +50,20 @@ var cashflowacntView = BaseView.extend({
         wikiRx.initialize();
 
         //KEFIR
-        var counter = this.getContentInternal().find('.counter'),
+        var counterUp = this.getContentInternal().find('.counterUp'),
+            counterDown = this.getContentInternal().find('.counterDown'),
             count = this.getContentInternal().find('.count'),
             outputElement = this.getContentInternal().find('.label');
 
-        var btnClicks = Kefir.fromEvents(counter, 'click');
+        var btnClicksUp = Kefir.fromEvents(counterUp, 'click');
+        var btnClicksDown = Kefir.fromEvents(counterDown, 'click');
+
         var inputValue = Kefir.fromEvents(count, 'keyup')
             .map(event =>  event.target.value);
 
 
-        var clicksCount = btnClicks.scan(sum => sum + 1, 0);
+        var clicksCountUp = btnClicksUp.scan(sum => sum + 1, 0);
+        var clicksCountDown = btnClicksDown.scan(sum => sum - 1, 0);
 
         // var inputNumber = inputValue.map(text => parseInt(text, 10));
 
@@ -67,18 +71,16 @@ var cashflowacntView = BaseView.extend({
         //     x => isNaN(x) ? Kefir.constantError('banana?') : Kefir.constant(x)
         // );
 
-        // var theResult = Kefir.combine([fixedInputNumber, clicksCount], (a, b) => a * b);
+        var theResult = Kefir.combine([clicksCountUp, clicksCountDown], (a, b) => a + b);
 
 
-        clicksCount
+        theResult
             .onValue(x => {
                 outputElement.html(x);
             })
             .onError(error => {
                 outputElement.html('<span style="color:red">' + error + '</span>');
             });
-        clicksCount.log()
-
 
 
     }
