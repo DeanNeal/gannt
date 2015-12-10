@@ -6,10 +6,6 @@ var Backbone = require('backbone'),
         tagName: 'div',
         template: tpl,
         className: 'stats',
-        router: true,
-        routes: {
-
-        },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
         }

@@ -178,7 +178,7 @@ module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=name%></a>";
 module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],13:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counter\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counterUp\">click</button>\r\n\t<button class=\"counterDown\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
 
 },{}],14:[function(require,module,exports){
 module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n</div>";
@@ -706,16 +706,20 @@ var cashflowacntView = BaseView.extend({
         wikiRx.initialize();
 
         //KEFIR
-        var counter = this.getContentInternal().find('.counter'),
+        var counterUp = this.getContentInternal().find('.counterUp'),
+            counterDown = this.getContentInternal().find('.counterDown'),
             count = this.getContentInternal().find('.count'),
             outputElement = this.getContentInternal().find('.label');
 
-        var btnClicks = Kefir.fromEvents(counter, 'click');
+        var btnClicksUp = Kefir.fromEvents(counterUp, 'click');
+        var btnClicksDown = Kefir.fromEvents(counterDown, 'click');
+
         var inputValue = Kefir.fromEvents(count, 'keyup')
             .map(event =>  event.target.value);
 
 
-        var clicksCount = btnClicks.scan(sum => sum + 1, 0);
+        var clicksCountUp = btnClicksUp.scan(sum => sum + 1, 0);
+        var clicksCountDown = btnClicksDown.scan(sum => sum - 1, 0);
 
         // var inputNumber = inputValue.map(text => parseInt(text, 10));
 
@@ -723,18 +727,16 @@ var cashflowacntView = BaseView.extend({
         //     x => isNaN(x) ? Kefir.constantError('banana?') : Kefir.constant(x)
         // );
 
-        // var theResult = Kefir.combine([fixedInputNumber, clicksCount], (a, b) => a * b);
+        var theResult = Kefir.combine([clicksCountUp, clicksCountDown], (a, b) => a + b);
 
 
-        clicksCount
+        theResult
             .onValue(x => {
                 outputElement.html(x);
             })
             .onError(error => {
                 outputElement.html('<span style="color:red">' + error + '</span>');
             });
-        clicksCount.log()
-
 
 
     }
@@ -836,12 +838,12 @@ var BaseView     = require('views/baseview'),
     BaseListView = require('views/elements/base_list_view');
 
 
-    var HeaderListView = BaseListView.extend({
-        tagName: 'ul',
-        className: 'nav navbar-nav'
-    });
+    // var HeaderListView = BaseListView.extend({
+    //     tagName: 'ul',
+    //     className: 'nav navbar-nav'
+    // });
 
-module.exports = HeaderListView;
+module.exports = BaseListView;
 },{"views/baseview":19,"views/elements/base_list_view":24}],29:[function(require,module,exports){
 var BaseView = require('views/baseview');
 
@@ -866,10 +868,6 @@ var Backbone = require('backbone'),
         tagName: 'div',
         template: tpl,
         className: 'stats',
-        router: true,
-        routes: {
-
-        },
         onInitialize: function(params) {
             BaseView.prototype.onInitialize.call(this, params);
         }
