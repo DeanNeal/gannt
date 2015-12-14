@@ -86,11 +86,6 @@ var cashflowacntView = BaseView.extend({
     }
 });
 
-var SidebarLeftMenu = BaseListView.extend({
-    tagName: 'ul',
-    className: 'nav navbar-nav'
-});
-
 var ContentView = RoutedView.extend({
     tagName: 'div',
     template: financeTpl,
@@ -114,7 +109,7 @@ var ContentView = RoutedView.extend({
         BaseView.prototype.onInitialize.call(this, params);
 
         this.collection = Helpers.createLinks(this.links, params.stage);
-        this.addView(SidebarLeftMenu, {
+        this.addView(BaseListView, {
             collection: new navBarCollection(this.collection)
         }, '.finance_page__left');
     },

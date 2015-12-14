@@ -211,7 +211,7 @@ var BaseView = Backbone.View.extend({
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
                         viewName = (params.query && this.params) ? (params.stagesArray[0] + '-edit'): params.stagesArray[0];
-                        debugger
+                        
                     this.nextStage = this.addView(this.routes[viewName], {stage: params.stagesArray[0]}, target);
                     this.renderNestedView(this.nextStage, target);    
                 }

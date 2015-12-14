@@ -121,7 +121,7 @@ router.on('route:defaultRoute', function(actions, args) {
 });
 
 
-},{"./Helpers":1,"./router/router":7,"./views/globalview":29,"api":2,"backbone":35,"jquery":44}],4:[function(require,module,exports){
+},{"./Helpers":1,"./router/router":7,"./views/globalview":30,"api":2,"backbone":35,"jquery":44}],4:[function(require,module,exports){
 var MenuItem = require('../models/header_list_item'),
     Backbone = require('backbone'),
      _ = require('underscore');
@@ -165,42 +165,45 @@ var Router = Backbone.Router.extend({
 
 module.exports = Router;
 },{"backbone":35}],8:[function(require,module,exports){
-module.exports = "<div class=\"full_height\" style=\"display: flex; flex-direction: row; flex: 1;\">\r\n\t<div class=\"left-block\" style=\"display: flex; flex-direction: column;\">\r\n\t\t<div class=\"left-block_top\">\r\n\t\t\tChoosle company\r\n\t\t</div>\r\n\r\n\t\t<!-- <div class=\"left-block_content\"> -->\r\n\t\t\t<div class=\"dshb_level\">\r\n                <h3>Level <span class=\"level-wrapper\">1</span></h3>\r\n\r\n                <div class=\"dshb_level__status\">\r\n                    <div class=\"dshb_level__prc\" style=\"width: 0%;\">\r\n                        <span>\r\n                            <i class=\"perc_value\">0</i>%\r\n                        </span>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"dshb_level__txt dshb_level__txt-in level-name\"></div>\r\n            </div>\r\n\r\n            <div class=\"dshb_table\">\r\n                <div class=\"dshb_rank\">\r\n                    <img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n                    <!--\r\n                    <div class=\"circle blue circle-small\">\r\n                        <div class=\"circle-title\">Company</div>\r\n\r\n                        <svg class=\"svg-circle main\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <defs>\r\n                                <linearGradient id=\"myLinearGradient1\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\" spreadMethod=\"pad\">\r\n                                    <stop offset=\"0%\" stop-color=\"#b9f4fd\" stop-opacity=\"1\"></stop>\r\n                                    <stop offset=\"100%\" stop-color=\"#63ddef\" stop-opacity=\"1\"></stop>\r\n                                </linearGradient>\r\n                            </defs>\r\n                            <path fill=\"transparent\" style=\"stroke:url(#myLinearGradient1)\" stroke-width=\"1\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <svg class=\"svg-circle outline\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <path fill=\"transparent\" stroke-width=\"0.2\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <div class=\"circle-date\">22 day</div>\r\n                    </div>\r\n\r\n                    <div class=\"circle blue\">\r\n                        <div class=\"circle-title\">Personal</div>\r\n\r\n                        <svg class=\"svg-circle main\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <defs>\r\n                                <linearGradient id=\"myLinearGradient2\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\" spreadMethod=\"pad\">\r\n                                    <stop offset=\"0%\" stop-color=\"#b9f4fd\" stop-opacity=\"1\"></stop>\r\n                                    <stop offset=\"100%\" stop-color=\"#63ddef\" stop-opacity=\"1\"></stop>\r\n                                </linearGradient>\r\n                            </defs>\r\n                            <path fill=\"transparent\" style=\"stroke:url(#myLinearGradient2)\" stroke-width=\"1\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <svg class=\"svg-circle outline\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <path fill=\"transparent\" stroke-width=\"0.2\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <div class=\"circle-date\">22 day</div>\r\n                    </div>\r\n\r\n                    <div class=\"circle blue circle-small\">\r\n                        <div class=\"circle-title\">Department</div>\r\n\r\n                        <svg class=\"svg-circle main\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <defs>\r\n                                <linearGradient id=\"myLinearGradient3\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\" spreadMethod=\"pad\">\r\n                                    <stop offset=\"0%\" stop-color=\"#b9f4fd\" stop-opacity=\"1\"></stop>\r\n                                    <stop offset=\"100%\" stop-color=\"#63ddef\" stop-opacity=\"1\"></stop>\r\n                                </linearGradient>\r\n                            </defs>\r\n                            <path fill=\"transparent\" style=\"stroke:url(#myLinearGradient3)\" stroke-width=\"1\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <svg class=\"svg-circle outline\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"53.5px\" height=\"53.5px\" viewBox=\"0 0 53.5 53.5\" enable-background=\"new 0 0 53.5 53.5\" xml:space=\"preserve\">\r\n                            <path fill=\"transparent\" stroke-width=\"0.2\" stroke-miterlimit=\"10\" d=\"M26.75,1C12.529,1,1,12.529,1,26.75 C1,40.972,12.529,52.5,26.75,52.5c14.222,0,25.75-11.528,25.75-25.75C52.5,12.529,40.972,1,26.75,1\"></path>\r\n                        </svg>\r\n\r\n                        <div class=\"circle-date\">22 day</div>\r\n                    </div>\r\n                    -->\r\n                </div>\r\n\r\n                <div class=\"dshb_eggs\">\r\n                    <ul>\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item1 egg-type-7\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item2 egg-type-5\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item3 egg-type-3\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item4 egg-type-0\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n\r\n                        <li>\r\n                            <div class=\"dshb_eggs__item dshb_eggs__item5 egg-type-broken\">\r\n                                <span class=\"hover\"></span>\r\n                                <span class=\"numb\">0</span>\r\n                            </div>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"scrollable\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            \t<img src=\"build/img/img-dshb_rank.png\" alt=\"\">\r\n            </div>\r\n\t\t<!-- </div> -->\r\n\t</div>\r\n\r\n\t<div class=\"right-block\" style=\"display: flex; flex-direction: column;\">\r\n\t\tRight\r\n\t\t<div class=\"dashboard-menu\"></div>\r\n\t\t<div class=\"bb-route-container\"></div>\r\n\t</div>\r\n</div>";
+module.exports = "<div class=\"full-size\">\r\n\t<div class=\"dashboard-menu\"></div>\r\n\t<div class=\"bb-route-container main-content\"></div>\r\n</div>";
 
 },{}],9:[function(require,module,exports){
-module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\t\t<li>2 project</li>\r\n\t\t<li>3 project</li>\r\n\t\t<li>4 project</li>\r\n\t\t<li>5 project</li>\r\n\t\t<li>6 project</li>\r\n\t\t<li>7 project</li>\r\n\t\t<li>8 project</li>\r\n\t\t<li>9 project</li>\r\n\t\t<li>10 project</li>\r\n\t</ul>\t\r\n</div>";
+module.exports = "<a class=\"menu-item <%=name%>\" href=\"/#<%=route%>\"><%=name%></a>";
 
 },{}],10:[function(require,module,exports){
-module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li><%=item.id%> - <%=item.name%></li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
+module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\t\t<li>2 project</li>\r\n\t\t<li>3 project</li>\r\n\t\t<li>4 project</li>\r\n\t\t<li>5 project</li>\r\n\t\t<li>6 project</li>\r\n\t\t<li>7 project</li>\r\n\t\t<li>8 project</li>\r\n\t\t<li>9 project</li>\r\n\t\t<li>10 project</li>\r\n\t</ul>\t\r\n</div>";
 
 },{}],11:[function(require,module,exports){
-module.exports = "<div>EDIT !!!!!!!!!!!!!!!!!!!!!</div>";
+module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li>\r\n\t\t\t<div class=\"id\"> #<%=item.id%></div>\r\n\t\t\t<div class=\"name\"><a href=\"#dashboard/tasks/?id=<%=item.id%>\"><%=item.name%></a></div>\r\n\t\t\t<div class=\"priority\"><%=item.priority%></div>\r\n\t\t\t<div class=\"status\"><%=item.status%></div>\r\n\t\t\t<div class=\"assignee\"><%=item.assignee%></div>\r\n\t\t\t<div class=\"date\"><%=item.date%></div>\r\n\t\t\t<div class=\"ago\"><%=item.ago%> ago</div>\r\n\t\t</li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
 
 },{}],12:[function(require,module,exports){
-module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=name%></a>";
+module.exports = "<div>EDIT !!!!!!!!!!!!!!!!!!!!!</div>";
 
 },{}],13:[function(require,module,exports){
-module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=name%></a>";
 
 },{}],14:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counterUp\">click</button>\r\n\t<button class=\"counterDown\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
+module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],15:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counterUp\">click</button>\r\n\t<button class=\"counterDown\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
 
 },{}],16:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t<div class=\"pull-left\"> Transactions</div>\r\n\r\n\r\n\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t</div>\r\n\t\t</header>\r\n  \r\n\t\t<div class=\"filters_controller\">\r\n\t\t\t<span class=\"comp_data\" data-name=\"eq\" data-label=\"Equal\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"gt\" data-label=\"Greater\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"lt\" data-label=\"Less\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"like\" data-label=\"Like\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"between\" data-label=\"Between\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"isnull\" data-label=\"Not set\"></span>\r\n\r\n\t\t\t<span class=\"field_data\" data-name=\"name\" data-label=\"Transaction\" data-type=\"text\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"date\" data-label=\"Date\" data-type=\"date\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"amount\" data-label=\"Amount\" data-type=\"text\" data-class=\"floatPositive\" data-sortable=\"1\" data-searchable=\"1\" data-width=\"150px\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"description\" data-label=\"Description\" data-type=\"text\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionreasonacnt.name\" data-label=\"Purporse\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionreasonacnt\" data-destmodelalias=\"kfinance.reasonacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncounterpartyacnt.name\" data-label=\"Payment from/to\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncounterpartyacnt\" data-destmodelalias=\"kfinance.counterpartyacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntdebit.name\" data-label=\"Debit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntdebit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntcredit.name\" data-label=\"Credit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntcredit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncashflowacnt.name\" data-label=\"Cashflow\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncashflowacnt\" data-destmodelalias=\"kfinance.cashflowacnt\"></span>\r\n\t\t</div>    \r\n\t\t</div>\r\n\t</section>\r\n\t\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n</div>";
 
 },{}],17:[function(require,module,exports){
-module.exports = "<div class=\"full_height\" style=\"display: flex; flex-direction: column;\">\r\n\t<div class=\"header\">\r\n\t\t<div>\r\n\t\t\t<div class=\"header_nav\">\r\n\t\t\t\t<div class=\"logo\">\r\n\t\t\t\t\t<a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"header-container\"></div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"header_controls pull-right\">\r\n\t\t\t\t<div class=\"right-user-area\">\r\n\t\t\t\t    <div class=\"user-nav-block\">\r\n\t\t\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t\t\t            <img src=\"\">\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t\t\t        \r\n\t\t\t\t        <div class=\"searchobjects\"></div>\r\n\t\t\t\t    </div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div class=\"bb-route-container full_height\" style=\"display: flex; -webkit-flex-direction: column; flex-direction: column;  flex: 1;\"></div>\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t<div class=\"pull-left\"> Transactions</div>\r\n\r\n\r\n\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t</div>\r\n\t\t</header>\r\n  \r\n\t\t<div class=\"filters_controller\">\r\n\t\t\t<span class=\"comp_data\" data-name=\"eq\" data-label=\"Equal\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"gt\" data-label=\"Greater\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"lt\" data-label=\"Less\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"like\" data-label=\"Like\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"between\" data-label=\"Between\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"isnull\" data-label=\"Not set\"></span>\r\n\r\n\t\t\t<span class=\"field_data\" data-name=\"name\" data-label=\"Transaction\" data-type=\"text\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"date\" data-label=\"Date\" data-type=\"date\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"amount\" data-label=\"Amount\" data-type=\"text\" data-class=\"floatPositive\" data-sortable=\"1\" data-searchable=\"1\" data-width=\"150px\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"description\" data-label=\"Description\" data-type=\"text\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionreasonacnt.name\" data-label=\"Purporse\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionreasonacnt\" data-destmodelalias=\"kfinance.reasonacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncounterpartyacnt.name\" data-label=\"Payment from/to\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncounterpartyacnt\" data-destmodelalias=\"kfinance.counterpartyacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntdebit.name\" data-label=\"Debit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntdebit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntcredit.name\" data-label=\"Credit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntcredit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncashflowacnt.name\" data-label=\"Cashflow\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncashflowacnt\" data-destmodelalias=\"kfinance.cashflowacnt\"></span>\r\n\t\t</div>    \r\n\t\t</div>\r\n\t</section>\r\n\t\r\n</div>";
 
 },{}],18:[function(require,module,exports){
-module.exports = "<div class=\"submenu\">\r\n\tStats\r\n</div>";
+module.exports = "<div class=\"full-size main-wrap\">\r\n\t<div class=\"main-top\">\r\n\t\t<div class=\"header\">\r\n\t\t\t<div class=\"header_nav\">\r\n\t\t\t\t<div class=\"logo\">\r\n\t\t\t\t\t<a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"header-container\"></div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<!-- <div class=\"header_controls pull-right\">\r\n\t\t\t\t<div class=\"right-user-area\">\r\n\t\t\t\t    <div class=\"user-nav-block\">\r\n\t\t\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t\t\t            <img src=\"\">\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t\t\t      \r\n\t\t\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t\t\t        </a>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t\t\t    </div>\r\n\r\n\t\t\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t\t\t        \r\n\t\t\t\t        <div class=\"searchobjects\"></div>\r\n\t\t\t\t    </div>\r\n\t\t\t\t</div>\r\n\t\t\t</div> -->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div class=\"bb-route-container full-size main-content\"></div>\r\n</div>";
 
 },{}],19:[function(require,module,exports){
-module.exports = "<div class=\"submenu\">\r\n\tTree\r\n</div>\r\n";
+module.exports = "<div class=\"submenu\">\r\n\tStats\r\n</div>";
 
 },{}],20:[function(require,module,exports){
+module.exports = "<div class=\"submenu\">\r\n\tTree\r\n</div>\r\n";
+
+},{}],21:[function(require,module,exports){
 var Backbone = require('backbone'),
     _        = require('underscore'),
     $        = require('jquery'),
@@ -414,7 +417,7 @@ var BaseView = Backbone.View.extend({
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
                         viewName = (params.query && this.params) ? (params.stagesArray[0] + '-edit'): params.stagesArray[0];
-                        debugger
+                        
                     this.nextStage = this.addView(this.routes[viewName], {stage: params.stagesArray[0]}, target);
                     this.renderNestedView(this.nextStage, target);    
                 }
@@ -432,7 +435,7 @@ var BaseView = Backbone.View.extend({
 
 module.exports = BaseView;
 
-},{"api":2,"backbone":35,"jquery":44,"underscore":49}],21:[function(require,module,exports){
+},{"api":2,"backbone":35,"jquery":44,"underscore":49}],22:[function(require,module,exports){
 var Backbone = require('backbone'),
 	_        = require('underscore'),
     BaseView = require('views/baseview'),
@@ -462,7 +465,7 @@ var ContentView =  BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_tasks.tpl":10,"underscore":49,"views/baseview":20}],22:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_tasks.tpl":11,"underscore":49,"views/baseview":21}],23:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/dashboard/dashboard_projects.tpl');
@@ -476,7 +479,7 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_projects.tpl":9,"views/baseview":20}],23:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_projects.tpl":10,"views/baseview":21}],24:[function(require,module,exports){
 var Backbone         = require('backbone'),
     _                = require('underscore'),
     BaseView         = require('views/baseview'),
@@ -506,7 +509,7 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_tasks_edit.tpl":11,"underscore":49,"views/baseview":20}],24:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_tasks_edit.tpl":12,"underscore":49,"views/baseview":21}],25:[function(require,module,exports){
 var Backbone         = require('backbone'),
     _                = require('underscore'),
     BaseView         = require('views/baseview'),
@@ -535,23 +538,18 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_tasks.tpl":10,"underscore":49,"views/baseview":20}],25:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_tasks.tpl":11,"underscore":49,"views/baseview":21}],26:[function(require,module,exports){
 var BaseView         = require('views/baseview'),
     Helpers          = require('Helpers'),
     RoutedView       = require('views/routedview'),
     BaseListView     = require('views/elements/base_list_view'),
     navBarCollection = require('collections/header_list'),
     mainTpl          = require('templates/dashboard/dashboard.tpl'),
+    dashboardListTpl = require('templates/dashboard/dashboard_list.tpl'),
     tasksView        = require('views/dashboard/dashboard_tasks_view'),
     tasksEditView    = require('views/dashboard/dashboard_tasks_edit_view'),
     milestonesView   = require('views/dashboard/dashboard_milestones_view'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
-
-
-var Menu = BaseListView.extend({
-    tagName: 'ul',
-    className: 'nav navbar-nav'
-});
 
 var ContentView = RoutedView.extend({
     tagName: 'div',
@@ -576,16 +574,19 @@ var ContentView = RoutedView.extend({
     }],
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
-
         this.collection = Helpers.createLinks(this.links, params.stage);
-        this.addView(Menu, {
+        this.addView(BaseListView, {
+            itemTpl: dashboardListTpl,
+            //if not set then will get default classes
+            // className: 'listClassName', //class name for <ul>
+            // itemClassName: 'itemClassName', // class name for <li>
             collection: new navBarCollection(this.collection)
         }, '.dashboard-menu');
     }
 });
 
 module.exports = ContentView;
-},{"Helpers":1,"collections/header_list":4,"templates/dashboard/dashboard.tpl":8,"views/baseview":20,"views/dashboard/dashboard_milestones_view":21,"views/dashboard/dashboard_projects_view":22,"views/dashboard/dashboard_tasks_edit_view":23,"views/dashboard/dashboard_tasks_view":24,"views/elements/base_list_view":26,"views/routedview":31}],26:[function(require,module,exports){
+},{"Helpers":1,"collections/header_list":4,"templates/dashboard/dashboard.tpl":8,"templates/dashboard/dashboard_list.tpl":9,"views/baseview":21,"views/dashboard/dashboard_milestones_view":22,"views/dashboard/dashboard_projects_view":23,"views/dashboard/dashboard_tasks_edit_view":24,"views/dashboard/dashboard_tasks_view":25,"views/elements/base_list_view":27,"views/routedview":31}],27:[function(require,module,exports){
 var Backbone       = require('backbone'),
      _             = require('underscore'),
     BaseView       = require('views/baseview'),
@@ -630,7 +631,9 @@ var listView = BaseView.extend({
         BaseView.prototype.onInitialize.call(this, params);
         this.collection.each(function(model) {
             self.addView(listItemView, {
-                model: model
+                model: model,
+                template: params.itemTpl,
+                className: params.itemClassName
             });
         });
         this.listenTo(this.parent, 'change:stage', this.onChangeStage, this);
@@ -647,7 +650,7 @@ var listView = BaseView.extend({
 
 
 module.exports = listView;
-},{"backbone":35,"backbone.modelbinder":34,"templates/elements/nav_list_item.tpl":12,"underscore":49,"views/baseview":20}],27:[function(require,module,exports){
+},{"backbone":35,"backbone.modelbinder":34,"templates/elements/nav_list_item.tpl":13,"underscore":49,"views/baseview":21}],28:[function(require,module,exports){
 var Rx = require('rx-dom');
 
     var WikiRx = function($input, $results){
@@ -693,7 +696,7 @@ var Rx = require('rx-dom');
 
 module.exports = WikiRx;
 
-},{"rx-dom":47}],28:[function(require,module,exports){
+},{"rx-dom":47}],29:[function(require,module,exports){
 var Backbone          = require('backbone'),
     //Rx = require('rx/dist/rx.lite'),
     Helpers           = require('Helpers'),
@@ -782,11 +785,6 @@ var cashflowacntView = BaseView.extend({
     }
 });
 
-var SidebarLeftMenu = BaseListView.extend({
-    tagName: 'ul',
-    className: 'nav navbar-nav'
-});
-
 var ContentView = RoutedView.extend({
     tagName: 'div',
     template: financeTpl,
@@ -810,7 +808,7 @@ var ContentView = RoutedView.extend({
         BaseView.prototype.onInitialize.call(this, params);
 
         this.collection = Helpers.createLinks(this.links, params.stage);
-        this.addView(SidebarLeftMenu, {
+        this.addView(BaseListView, {
             collection: new navBarCollection(this.collection)
         }, '.finance_page__left');
     },
@@ -821,13 +819,13 @@ var ContentView = RoutedView.extend({
 
 module.exports = ContentView;
 
-},{"Helpers":1,"backbone":35,"collections/header_list":4,"jquery-ui/sortable":41,"jquery-ui/tooltip":42,"kefir":45,"rx-dom":47,"templates/elements/nav_list_item.tpl":12,"templates/finance/finance.tpl":13,"templates/finance/tabs/cashflowacnt.tpl":14,"templates/finance/tabs/finacnt.tpl":15,"templates/finance/tabs/transactions.tpl":16,"views/baseview":20,"views/elements/base_list_view":26,"views/finance/finance_rx":27,"views/routedview":31}],29:[function(require,module,exports){
+},{"Helpers":1,"backbone":35,"collections/header_list":4,"jquery-ui/sortable":41,"jquery-ui/tooltip":42,"kefir":45,"rx-dom":47,"templates/elements/nav_list_item.tpl":13,"templates/finance/finance.tpl":14,"templates/finance/tabs/cashflowacnt.tpl":15,"templates/finance/tabs/finacnt.tpl":16,"templates/finance/tabs/transactions.tpl":17,"views/baseview":21,"views/elements/base_list_view":27,"views/finance/finance_rx":28,"views/routedview":31}],30:[function(require,module,exports){
 var Backbone         = require('backbone'),
     $                = require('jquery'),
     Helpers          = require('helpers'),
     BaseView         = require('views/baseview'),
     RoutedView       = require('views/routedview'),
-    headerView       = require('views/header/header_list_view'),
+    BaseListView     = require('views/elements/base_list_view'),
     dashboardView    = require('views/dashboard/dashboard_view'),
     treeView         = require('views/tree/tree_view'),
     statsView        = require('views/stats/stats_view'),
@@ -838,8 +836,7 @@ var Backbone         = require('backbone'),
 var GlobalView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
-    className: 'main',
-    id: 'content',
+    className: 'main full-size',
     routes: {
         'dashboard': dashboardView,
         'tree'     : treeView,
@@ -855,7 +852,7 @@ var GlobalView = RoutedView.extend({
         if (!this.menu) {
             this.api.getResousceFromCatalog('menu').then(function(response) {
                 this.collection = Helpers.createMenuLinks(response.data);
-                this.menu = this.addView(headerView, {
+                this.menu = this.addView(BaseListView, {
                     collection: new navBarCollection(this.collection)
                 });
                 this.renderNestedView(this.menu, '.header-container');
@@ -873,18 +870,7 @@ var GlobalView = RoutedView.extend({
 
 module.exports = GlobalView;
 
-},{"backbone":35,"collections/header_list":4,"helpers":5,"jquery":44,"templates/main.tpl":17,"views/baseview":20,"views/dashboard/dashboard_view":25,"views/finance/finance_view":28,"views/header/header_list_view":30,"views/routedview":31,"views/stats/stats_view":32,"views/tree/tree_view":33}],30:[function(require,module,exports){
-var BaseView     = require('views/baseview'),
-    BaseListView = require('views/elements/base_list_view');
-
-
-    // var HeaderListView = BaseListView.extend({
-    //     tagName: 'ul',
-    //     className: 'nav navbar-nav'
-    // });
-
-module.exports = BaseListView;
-},{"views/baseview":20,"views/elements/base_list_view":26}],31:[function(require,module,exports){
+},{"backbone":35,"collections/header_list":4,"helpers":5,"jquery":44,"templates/main.tpl":18,"views/baseview":21,"views/dashboard/dashboard_view":26,"views/elements/base_list_view":27,"views/finance/finance_view":29,"views/routedview":31,"views/stats/stats_view":32,"views/tree/tree_view":33}],31:[function(require,module,exports){
 var BaseView = require('views/baseview');
 
 var RoutedView = BaseView.extend({
@@ -899,7 +885,7 @@ var RoutedView = BaseView.extend({
 });
 
 module.exports = RoutedView;
-},{"views/baseview":20}],32:[function(require,module,exports){
+},{"views/baseview":21}],32:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/stats/submenu.tpl');
@@ -915,7 +901,7 @@ var Backbone = require('backbone'),
 
 module.exports = ContentView;
 
-},{"backbone":35,"templates/stats/submenu.tpl":18,"views/baseview":20}],33:[function(require,module,exports){
+},{"backbone":35,"templates/stats/submenu.tpl":19,"views/baseview":21}],33:[function(require,module,exports){
 var BaseView = require('views/baseview'), 
     tpl      = require('templates/tree/submenu.tpl');
 
@@ -929,7 +915,7 @@ var BaseView = require('views/baseview'),
 
 
 module.exports = treeView;
-},{"templates/tree/submenu.tpl":19,"views/baseview":20}],34:[function(require,module,exports){
+},{"templates/tree/submenu.tpl":20,"views/baseview":21}],34:[function(require,module,exports){
 // Backbone.ModelBinder v1.1.0
 // (c) 2015 Bart Wood
 // Distributed Under MIT License
