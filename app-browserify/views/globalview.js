@@ -14,8 +14,7 @@ var Backbone         = require('backbone'),
 var GlobalView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
-    className: 'main',
-    id: 'content',
+    className: 'main full-size',
     routes: {
         'dashboard': dashboardView,
         'tree'     : treeView,
