@@ -5,6 +5,7 @@ var BaseView         = require('views/baseview'),
     navBarCollection = require('collections/header_list'),
     mainTpl          = require('templates/dashboard/dashboard.tpl'),
     tasksView        = require('views/dashboard/dashboard_tasks_view'),
+    tasksEditView    = require('views/dashboard/dashboard_tasks_edit_view'),
     milestonesView   = require('views/dashboard/dashboard_milestones_view'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
 
@@ -20,9 +21,11 @@ var ContentView = RoutedView.extend({
     className: 'dashboard full_height content',
     routes: {
         'tasks'     : tasksView,
+        'tasks-edit': tasksEditView,
         'milestones': milestonesView,
         'projects'  : projectsView
     },
+    params : true,
     links: [{
         name: "tasks",
         id: "tasks"

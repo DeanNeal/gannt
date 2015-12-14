@@ -205,12 +205,14 @@ var BaseView = Backbone.View.extend({
     changeStage: function(params) {
         if (params.stagesArray[0] && this.router) {
             this.beforeChangeStage(params.stagesArray[0]).then(function(data) {
-                
+
                 if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
                     if (this.nextStage) // if current view exist we have to remove it
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
-                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {stage: params.stagesArray[0]}, target);
+                        viewName = (params.query && this.params) ? (params.stagesArray[0] + '-edit'): params.stagesArray[0];
+                        debugger
+                    this.nextStage = this.addView(this.routes[viewName], {stage: params.stagesArray[0]}, target);
                     this.renderNestedView(this.nextStage, target);    
                 }
 
