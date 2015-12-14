@@ -17,7 +17,7 @@ var Menu = BaseListView.extend({
 var ContentView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
-    className: 'dashboard full_height content',
+    className: 'dashboard full-size',
     routes: {
         'tasks'     : tasksView,
         'milestones': milestonesView,

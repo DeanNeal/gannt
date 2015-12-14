@@ -5,10 +5,6 @@
   font-weight: normal;
   font-style: normal;
 }
-html {
-  /*    min-width: 980px;*/
-  overflow-x: scroll;
-}
 
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
@@ -3437,33 +3433,6 @@ body.auth .auth_box__forms .inp-style:-webkit-autofill {
   display: inline;
 }
 /* Take from public style.css */
-html {
-  background-color: #d6d6d6;
-  position: relative;
-  min-height: 100%;
-  overflow-x: hidden;
-}
-body {
-  background-color: transparent;
-  color: #484a4d;
-  font-size: 13px;
-  overflow-x: hidden;
-}
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  font-family: Arial, Helvetica, 'Open Sans', "HelveticaNeue", "Helvetica Neue", sans-serif;
-}
 a {
   color: #3a5a7a;
 }
@@ -4798,9 +4767,6 @@ textarea {
   width: auto;
 }
 /*content*/
-#content {
-  position: relative;
-}
 .page-title {
   background: #eaedef;
   border-bottom: 1px solid #d3d6d9;
@@ -5640,9 +5606,6 @@ body.auth {
   src: url('../../fonts/gothaproreg.eot?#iefix') format('embedded-opentype'), url('../../fonts/gothaproreg.woff2') format('woff2'), url('../../fonts/gothaproreg.woff') format('woff'), url('../../fonts/gothaproreg.ttf') format('truetype'), url('../../fonts/gothaproreg.svg#gotham_proregular') format('svg');
   font-weight: normal;
   font-style: normal;
-}
-body {
-  min-height: 300px;
 }
 .configure-div > div {
   margin-top: 4px;
@@ -7386,9 +7349,6 @@ body.iframe textarea.form-control,
 }
 .page-header div.popover {
   min-width: 200px;
-}
-body {
-  overflow: visible;
 }
 .modal {
   width: 560px;
