@@ -34,6 +34,7 @@ body {
 
 .header {
     background-color: $header-bgcolor;
+    padding: 4px 0 3px 0;
     position: absolute;
     left: 0;
     right: 0;
@@ -47,8 +48,9 @@ body {
     .navbar-nav {
         & > li {
             float: left;
+
             & > a {
-                padding: 20px 15px;
+                padding: 0 15px;
                 font-size: 18px;
                 font-weight: 600;
                 font-family: "Open Sans", Arial;
@@ -85,10 +87,16 @@ body {
     }
 }
 
+.right-user-area {
+    &_unit {
+        float: left;
+    }
+}
+
 .main {
     &-wrap {
         position: relative;
-        padding-top: 53px;
+        padding-top: 60px;
     }
 
     &-content {

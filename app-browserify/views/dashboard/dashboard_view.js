@@ -5,9 +5,9 @@ var BaseView         = require('views/baseview'),
     navBarCollection = require('collections/header_list'),
     mainTpl          = require('templates/dashboard/dashboard.tpl'),
     dashboardListTpl = require('templates/dashboard/dashboard_list.tpl'),
-    tasksView        = require('views/dashboard/dashboard_tasks_view'),
-    tasksEditView    = require('views/dashboard/dashboard_tasks_edit_view'),
-    milestonesView   = require('views/dashboard/dashboard_milestones_view'),
+    tasksView        = require('views/dashboard/tasks/dashboard_tasks_view'),
+    tasksEditView    = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
+    milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
 
 var ContentView = RoutedView.extend({
