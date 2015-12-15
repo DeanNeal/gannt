@@ -17,11 +17,8 @@ var Helpers = {
     createLinks: function(links, stage) {
         var array = [];
         links.forEach(function(item, i) { 
-            array[i] = {
-               id: item.id,
-               route: stage + '/' + item.id,
-               name: item.name 
-            };
+            array[i] = item;
+            array[i].route = stage + '/' + item.id;
         });
         return array;
     },

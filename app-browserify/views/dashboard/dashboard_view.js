@@ -20,13 +20,16 @@ var ContentView = RoutedView.extend({
     },
     links: [{
         name: "tasks",
-        id: "tasks"
+        id: "tasks",
+        iconClass: 'qwewqe'
     }, {
         name: "milestones",
-        id: "milestones"
+        id: "milestones",
+        iconClass: 'qwewqe'
     }, {
         name: "projects",
-        id: "projects"
+        id: "projects",
+        iconClass: 'qwewqe'
     }],
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
