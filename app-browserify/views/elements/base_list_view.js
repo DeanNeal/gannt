@@ -42,7 +42,9 @@ var listView = BaseView.extend({
         BaseView.prototype.onInitialize.call(this, params);
         this.collection.each(function(model) {
             self.addView(listItemView, {
-                model: model
+                model: model,
+                template: params.itemTpl,
+                className: params.itemClassName
             });
         });
         this.listenTo(this.parent, 'change:stage', this.onChangeStage, this);

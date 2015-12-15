@@ -1,16 +1,18 @@
 var Helpers = {
     getUrlVars: function(args) {
         if(!args) return null;
+        var params = {}, queries, temp, i, l;
         
-        var vars = {},
-            hash, hashes = args.split('&');
-
-        for (var i = 0; i < hashes.length; i++) {
-            hash = hashes[i].split('=');
-            vars[hash[i]] = hash[i+1];
+        // Split into key/value pairs
+        queries = args.split("&");
+        
+        // Convert the array of strings into an object
+        for ( i = 0, l = queries.length; i < l; i++ ) {
+            temp = queries[i].split('=');
+            params[temp[0]] = temp[1];
         }
-
-        return vars;
+        
+        return params;
     },
     createLinks: function(links, stage) {
         var array = [];

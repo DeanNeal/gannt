@@ -3,7 +3,7 @@ var Backbone         = require('backbone'),
     Helpers          = require('helpers'),
     BaseView         = require('views/baseview'),
     RoutedView       = require('views/routedview'),
-    headerView       = require('views/header/header_list_view'),
+    BaseListView     = require('views/elements/base_list_view'),
     dashboardView    = require('views/dashboard/dashboard_view'),
     treeView         = require('views/tree/tree_view'),
     statsView        = require('views/stats/stats_view'),
@@ -30,7 +30,7 @@ var GlobalView = RoutedView.extend({
         if (!this.menu) {
             this.api.getResousceFromCatalog('menu').then(function(response) {
                 this.collection = Helpers.createMenuLinks(response.data);
-                this.menu = this.addView(headerView, {
+                this.menu = this.addView(BaseListView, {
                     collection: new navBarCollection(this.collection)
                 });
                 this.renderNestedView(this.menu, '.header-container');
