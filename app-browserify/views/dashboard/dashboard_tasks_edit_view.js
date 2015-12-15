@@ -19,10 +19,13 @@ var ContentView = BaseView.extend({
     template: tpl,
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
-        // this.api.getResousceFromCatalog('tasks').then(function(response){
+        // this.api.getResousceFromCatalog('task-id').then(function(response){
         //     this.taskList = this.addView(taskList, {collection: response.data});
         //     this.renderNestedView(this.taskList);
         // }.bind(this));
+    },
+    onRender: function () {
+        this.parent.getElement('.bb-route-container').addClass('active-task');
     }
 });
 

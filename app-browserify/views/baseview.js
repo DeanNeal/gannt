@@ -83,7 +83,7 @@ var BaseView = Backbone.View.extend({
     },
     getElement: function(el) {
         if (typeof el === 'string') {
-            return $(this.$el, el);
+            return this.$el.find(el);
         } else {
             return el;
         }
@@ -210,10 +210,9 @@ var BaseView = Backbone.View.extend({
                     if (this.nextStage) // if current view exist we have to remove it
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
-                       // viewName = (params.query && this.params) ? (params.stagesArray[0] + '-edit'): params.stagesArray[0];
-                        
+
                     this.nextStage = this.addView(this.routes[params.stagesArray[0]], {stage: params.stagesArray[0], query: params.query }, target);
-                    this.renderNestedView(this.nextStage, target);    
+                    this.renderNestedView(this.nextStage, target);
                 }
 
                 this.currentStage = params.stagesArray[0]; // save current stage
