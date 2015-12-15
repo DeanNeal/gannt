@@ -14,6 +14,7 @@ var ContentView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
     className: 'dashboard full-size',
+    qwe: this,
     routes: {
         'tasks'     : tasksView,
         'tasks-edit': tasksEditView,
