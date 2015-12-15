@@ -445,7 +445,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
   font-weight: bold;
 }
 .right-user-area .user-nav-block {
-  float: right;
+  /*float: right;*/
   height: 60px;
   position: relative;
 }
@@ -2150,7 +2150,7 @@ form.model-document.ajaxcreate.editable .section-modulerelation_documentfinacntc
 }
 
 .panel_message {
-  float: right;
+  /*float: right;*/
   display: block;
   margin: 14px 25px 0 0;
   cursor: pointer;
@@ -2166,7 +2166,7 @@ form.model-document.ajaxcreate.editable .section-modulerelation_documentfinacntc
 }
 .search_block {
   position: relative;
-  float: right;
+  /*float: right;*/
   margin: 0px 20px 0 0px;
 }
 .search_block > input {
