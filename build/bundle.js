@@ -174,10 +174,10 @@ module.exports = "<a class=\"menu-item <%=name%>\" href=\"/#<%=route%>\"><%=name
 module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\t\t<li>2 project</li>\r\n\t\t<li>3 project</li>\r\n\t\t<li>4 project</li>\r\n\t\t<li>5 project</li>\r\n\t\t<li>6 project</li>\r\n\t\t<li>7 project</li>\r\n\t\t<li>8 project</li>\r\n\t\t<li>9 project</li>\r\n\t\t<li>10 project</li>\r\n\t</ul>\t\r\n</div>";
 
 },{}],11:[function(require,module,exports){
-module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li>\r\n\t\t\t<div class=\"id\"> #<%=item.id%></div>\r\n\t\t\t<div class=\"name\"><a href=\"#dashboard/tasks/?id=<%=item.id%>\"><%=item.name%></a></div>\r\n\t\t\t<div class=\"priority\"><%=item.priority%></div>\r\n\t\t\t<div class=\"status\"><%=item.status%></div>\r\n\t\t\t<div class=\"assignee\"><%=item.assignee%></div>\r\n\t\t\t<div class=\"date\"><%=item.date%></div>\r\n\t\t\t<div class=\"ago\"><%=item.ago%> ago</div>\r\n\t\t</li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
+module.exports = "<div>EDIT !!!!!!!!!!!!!!!!!!!!!</div>";
 
 },{}],12:[function(require,module,exports){
-module.exports = "<div>EDIT !!!!!!!!!!!!!!!!!!!!!</div>";
+module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li>\r\n\t\t\t<div class=\"id\"> #<%=item.id%></div>\r\n\t\t\t<div class=\"name\"><a href=\"#dashboard/tasks/?id=<%=item.id%>\"><%=item.name%></a></div>\r\n\t\t\t<div class=\"priority\"><%=item.priority%></div>\r\n\t\t\t<div class=\"status\"><%=item.status%></div>\r\n\t\t\t<div class=\"assignee\"><%=item.assignee%></div>\r\n\t\t\t<div class=\"date\"><%=item.date%></div>\r\n\t\t\t<div class=\"ago\"><%=item.ago%> ago</div>\r\n\t\t</li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
 
 },{}],13:[function(require,module,exports){
 module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=name%></a>";
@@ -416,9 +416,9 @@ var BaseView = Backbone.View.extend({
                     if (this.nextStage) // if current view exist we have to remove it
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
-                        viewName = (params.query && this.params) ? (params.stagesArray[0] + '-edit'): params.stagesArray[0];
+                       // viewName = (params.query && this.params) ? (params.stagesArray[0] + '-edit'): params.stagesArray[0];
                         
-                    this.nextStage = this.addView(this.routes[viewName], {stage: params.stagesArray[0]}, target);
+                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {stage: params.stagesArray[0], query: params.query }, target);
                     this.renderNestedView(this.nextStage, target);    
                 }
 
@@ -439,7 +439,7 @@ module.exports = BaseView;
 var Backbone = require('backbone'),
 	_        = require('underscore'),
     BaseView = require('views/baseview'),
-    tpl      = require('templates/dashboard/dashboard_tasks.tpl');
+    tpl      = require('templates/dashboard/dashboard_tasks_list.tpl');
 
 var milestonesList = BaseView.extend({
     template: tpl,
@@ -465,7 +465,7 @@ var ContentView =  BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_tasks.tpl":11,"underscore":49,"views/baseview":21}],23:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_tasks_list.tpl":12,"underscore":49,"views/baseview":21}],23:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/dashboard/dashboard_projects.tpl');
@@ -497,7 +497,7 @@ var Backbone         = require('backbone'),
 // });
 
 var ContentView = BaseView.extend({
-    className: 'tasks',
+    className: 'tasks-edit',
     template: tpl,
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
@@ -509,11 +509,11 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_tasks_edit.tpl":12,"underscore":49,"views/baseview":21}],25:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_tasks_edit.tpl":11,"underscore":49,"views/baseview":21}],25:[function(require,module,exports){
 var Backbone         = require('backbone'),
     _                = require('underscore'),
     BaseView         = require('views/baseview'),
-    tpl              = require('templates/dashboard/dashboard_tasks.tpl');
+    tpl              = require('templates/dashboard/dashboard_tasks_list.tpl');
 
 var taskList = BaseView.extend({
     template: tpl,
@@ -538,7 +538,7 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":35,"templates/dashboard/dashboard_tasks.tpl":11,"underscore":49,"views/baseview":21}],26:[function(require,module,exports){
+},{"backbone":35,"templates/dashboard/dashboard_tasks_list.tpl":12,"underscore":49,"views/baseview":21}],26:[function(require,module,exports){
 var BaseView         = require('views/baseview'),
     Helpers          = require('Helpers'),
     RoutedView       = require('views/routedview'),
@@ -555,6 +555,7 @@ var ContentView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
     className: 'dashboard full_height content',
+    qwe: this,
     routes: {
         'tasks'     : tasksView,
         'tasks-edit': tasksEditView,

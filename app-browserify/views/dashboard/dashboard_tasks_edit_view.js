@@ -15,7 +15,7 @@ var Backbone         = require('backbone'),
 // });
 
 var ContentView = BaseView.extend({
-    className: 'tasks',
+    className: 'tasks-edit',
     template: tpl,
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);

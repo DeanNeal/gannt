@@ -1,7 +1,7 @@
 var Backbone = require('backbone'),
 	_        = require('underscore'),
     BaseView = require('views/baseview'),
-    tpl      = require('templates/dashboard/dashboard_tasks.tpl');
+    tpl      = require('templates/dashboard/dashboard_tasks_list.tpl');
 
 var milestonesList = BaseView.extend({
     template: tpl,
