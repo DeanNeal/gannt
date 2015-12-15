@@ -6,7 +6,6 @@ var BaseView         = require('views/baseview'),
     mainTpl          = require('templates/dashboard/dashboard.tpl'),
     dashboardListTpl = require('templates/dashboard/dashboard_list.tpl'),
     tasksView        = require('views/dashboard/tasks/dashboard_tasks_view'),
-    tasksEditView    = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
     milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
 
@@ -14,14 +13,11 @@ var ContentView = RoutedView.extend({
     tagName: 'div',
     template: mainTpl,
     className: 'dashboard full-size',
-    qwe: this,
     routes: {
         'tasks'     : tasksView,
-        'tasks-edit': tasksEditView,
         'milestones': milestonesView,
         'projects'  : projectsView
     },
-    params : true,
     links: [{
         name: "tasks",
         id: "tasks"

@@ -12,6 +12,9 @@ var listItemView = BaseView.extend({
         'click': 'onClick'
     },
     onInitialize: function(params) {
+        if(params.template)
+            this.template = _.template(params.template);
+
         BaseView.prototype.onInitialize.call(this, params);
         this.modelBinder = new Backbone.ModelBinder();
     },
