@@ -15,7 +15,7 @@ var taskList = BaseView.extend({
 });
 
 var ContentView = BaseView.extend({
-    className: 'tasks',
+    className: 'tasks scroll',
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
         this.api.getResousceFromCatalog('tasks').then(function(response){

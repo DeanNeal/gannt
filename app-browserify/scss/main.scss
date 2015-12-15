@@ -34,6 +34,10 @@ body {
 
 .header {
     background-color: $header-bgcolor;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
 
     &_nav {
         display: inline-block;
@@ -84,18 +88,12 @@ body {
 .main {
     &-wrap {
         position: relative;
-        padding-top: 159px;
-    }
-
-    &-top {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
+        padding-top: 53px;
     }
 
     &-content {
-        @extend .scroll;
+        position: relative;
+        padding-top: 32px;
     }
 }
 

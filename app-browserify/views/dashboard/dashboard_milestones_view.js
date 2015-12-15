@@ -15,7 +15,7 @@ var milestonesList = BaseView.extend({
 });
 
 var ContentView =  BaseView.extend({
-    className : 'milestones',
+    className : 'milestones scroll',
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
 

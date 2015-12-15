@@ -3,7 +3,7 @@ var Backbone = require('backbone'),
     tpl      = require('templates/dashboard/dashboard_projects.tpl');
 
 var ContentView = BaseView.extend({
-    className : 'projects',
+    className : 'projects scroll',
     template  : tpl,
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
