@@ -2,7 +2,7 @@ var Backbone         = require('backbone'),
     _                = require('underscore'),
     BaseView         = require('views/baseview'),
     RoutedView       = require('views/routedview'),
-    TaskEditView     = require('views/dashboard/dashboard_tasks_edit_view'),
+    TaskEditView     = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
     dashboardTpl     = require('templates/dashboard/dashboard_tasks.tpl'),
     dashboardTasksListTpl              = require('templates/dashboard/dashboard_tasks_list.tpl');
 

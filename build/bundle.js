@@ -82,7 +82,7 @@ Api.prototype.getResousceFromCatalog = function(resourceName){
 };
 
 module.exports = Api;
-},{"jquery":44,"underscore":49}],3:[function(require,module,exports){
+},{"jquery":46,"underscore":51}],3:[function(require,module,exports){
 var Backbone   = require('backbone'),
     $          = require('jquery'),
     GlobalView = require('./views/globalview'),
@@ -121,7 +121,7 @@ router.on('route:defaultRoute', function(actions, args) {
 });
 
 
-},{"./Helpers":1,"./router/router":7,"./views/globalview":31,"api":2,"backbone":36,"jquery":44}],4:[function(require,module,exports){
+},{"./Helpers":1,"./router/router":7,"./views/globalview":33,"api":2,"backbone":38,"jquery":46}],4:[function(require,module,exports){
 var MenuItem = require('../models/header_list_item'),
     Backbone = require('backbone'),
      _ = require('underscore');
@@ -143,7 +143,7 @@ var MenuItemCollection = Backbone.Collection.extend({
 });
 
 module.exports = MenuItemCollection;
-},{"../models/header_list_item":6,"backbone":36,"underscore":49}],5:[function(require,module,exports){
+},{"../models/header_list_item":6,"backbone":38,"underscore":51}],5:[function(require,module,exports){
 arguments[4][1][0].apply(exports,arguments)
 },{"dup":1}],6:[function(require,module,exports){
 var Backbone = require('backbone');
@@ -154,7 +154,7 @@ var MenuItem = Backbone.Model.extend({
 });
 
 module.exports = MenuItem;
-},{"backbone":36}],7:[function(require,module,exports){
+},{"backbone":38}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var Router = Backbone.Router.extend({
@@ -164,7 +164,7 @@ var Router = Backbone.Router.extend({
 });
 
 module.exports = Router;
-},{"backbone":36}],8:[function(require,module,exports){
+},{"backbone":38}],8:[function(require,module,exports){
 module.exports = "<div class=\"full-size\">\r\n\t<div class=\"dashboard-menu\"></div>\r\n\t<div class=\"bb-route-container full-size\"></div>\r\n</div>";
 
 },{}],9:[function(require,module,exports){
@@ -174,39 +174,42 @@ module.exports = "<a class=\"menu-item <%=name%>\" href=\"/#<%=route%>\"><%=name
 module.exports = "<div class=\"tasks\">\r\n\t<ul>\r\n\t\t<li>1 project</li>\r\n\t\t<li>2 project</li>\r\n\t\t<li>3 project</li>\r\n\t\t<li>4 project</li>\r\n\t\t<li>5 project</li>\r\n\t\t<li>6 project</li>\r\n\t\t<li>7 project</li>\r\n\t\t<li>8 project</li>\r\n\t\t<li>9 project</li>\r\n\t\t<li>10 project</li>\r\n\t</ul>\t\r\n</div>";
 
 },{}],11:[function(require,module,exports){
-module.exports = "<div>\r\n\t<div class=\"task-list\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+module.exports = "<div>Description</div>";
 
 },{}],12:[function(require,module,exports){
-module.exports = "<div>EDIT !!!!!!!!!!!!!!!!!!!!!</div>";
+module.exports = "<div>\r\n\t<div class=\"task-list\"></div>\r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],13:[function(require,module,exports){
-module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li>\r\n\t\t\t<div class=\"id\"> #<%=item.id%></div>\r\n\t\t\t<div class=\"name\"><a href=\"#dashboard/tasks/edit/?id=<%=item.id%>\"><%=item.name%></a></div>\r\n\t\t\t<div class=\"priority\"><%=item.priority%></div>\r\n\t\t\t<div class=\"status\"><%=item.status%></div>\r\n\t\t\t<div class=\"assignee\"><%=item.assignee%></div>\r\n\t\t\t<div class=\"date\"><%=item.date%></div>\r\n\t\t\t<div class=\"ago\"><%=item.ago%> ago</div>\r\n\t\t</li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
+module.exports = "<div>\r\n    <span>EDIT !!!!!!!!!!!!!!!!!!!!!</span>\r\n    <div class=\"task-description\"></div>\r\n</div>";
 
 },{}],14:[function(require,module,exports){
-module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=name%></a>";
+module.exports = "<ul>\r\n\t<% _.each(data, function(item){ %>\r\n\t\t<li>\r\n\t\t\t<div class=\"id\"> #<%=item.id%></div>\r\n\t\t\t<div class=\"name\"><a href=\"#dashboard/tasks/edit/?id=<%=item.id%>\"><%=item.name%></a></div>\r\n\t\t\t<div class=\"priority\"><%=item.priority%></div>\r\n\t\t\t<div class=\"status\"><%=item.status%></div>\r\n\t\t\t<div class=\"assignee\"><%=item.assignee%></div>\r\n\t\t\t<div class=\"date\"><%=item.date%></div>\r\n\t\t\t<div class=\"ago\"><%=item.ago%> ago</div>\r\n\t\t</li>\r\n\t<% }); %>\r\n</ul>\t\r\n";
 
 },{}],15:[function(require,module,exports){
-module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
+module.exports = "<a class=\"menu-item\" href=\"/#<%=route%>\"><%=name%></a>";
 
 },{}],16:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counterUp\">click</button>\r\n\t<button class=\"counterDown\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
+module.exports = "<div class=\"full_height\">\r\n\t<div class=\"finance_page__left scroller\">\r\n\t</div> \r\n\t<div class=\"bb-route-container\"></div>\r\n</div>";
 
 },{}],17:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\" title=\"Example title\"> Chart of Cashflow Accounts:</div>\r\n\t\t</header>\r\n\t</section>\r\n\r\n\t<h1>RX JS test</h1>\r\n\t<h1>Wiki example</h1>\r\n\t<input type=\"text\" class=\"input\">\r\n\t<ul class=\"results\"></ul>\r\n\r\n\t<button class=\"counterUp\">click</button>\r\n\t<button class=\"counterDown\">click</button>\r\n\t<input type=\"text\" class=\"count\">\r\n\t<span class=\"label\" style=\"color: #333\"></span>\r\n</div>";
 
 },{}],18:[function(require,module,exports){
-module.exports = "<div class=\"container-fluid\"> \r\n\r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t<div class=\"pull-left\"> Transactions</div>\r\n\r\n\r\n\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t</div>\r\n\t\t</header>\r\n  \r\n\t\t<div class=\"filters_controller\">\r\n\t\t\t<span class=\"comp_data\" data-name=\"eq\" data-label=\"Equal\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"gt\" data-label=\"Greater\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"lt\" data-label=\"Less\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"like\" data-label=\"Like\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"between\" data-label=\"Between\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"isnull\" data-label=\"Not set\"></span>\r\n\r\n\t\t\t<span class=\"field_data\" data-name=\"name\" data-label=\"Transaction\" data-type=\"text\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"date\" data-label=\"Date\" data-type=\"date\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"amount\" data-label=\"Amount\" data-type=\"text\" data-class=\"floatPositive\" data-sortable=\"1\" data-searchable=\"1\" data-width=\"150px\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"description\" data-label=\"Description\" data-type=\"text\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionreasonacnt.name\" data-label=\"Purporse\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionreasonacnt\" data-destmodelalias=\"kfinance.reasonacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncounterpartyacnt.name\" data-label=\"Payment from/to\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncounterpartyacnt\" data-destmodelalias=\"kfinance.counterpartyacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntdebit.name\" data-label=\"Debit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntdebit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntcredit.name\" data-label=\"Credit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntcredit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncashflowacnt.name\" data-label=\"Cashflow\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncashflowacnt\" data-destmodelalias=\"kfinance.cashflowacnt\"></span>\r\n\t\t</div>    \r\n\t\t</div>\r\n\t</section>\r\n\t\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t\t<div class=\"pull-left\"> Chart of Finance Accounts:</div>\r\n\r\n\r\n\t\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t\t</div>\r\n\t\t</header>\r\n\t</section>\r\n</div>";
 
 },{}],19:[function(require,module,exports){
-module.exports = "<div class=\"full-size main-wrap\">\r\n\t<div class=\"header\">\r\n\t\t<div class=\"header_nav\">\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"header-container\"></div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <div class=\"header_controls pull-right\">\r\n\t\t\t<div class=\"right-user-area\">\r\n\t\t\t    <div class=\"user-nav-block\">\r\n\t\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t\t            <img src=\"\">\r\n\t\t\t        </a>\r\n\t\t\t    </div>\r\n\t\t\t      \r\n\t\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t\t      \r\n\t\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t\t        </a>\r\n\t\t\t    </div>\r\n\r\n\t\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t\t    </div>\r\n\r\n\t\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t\t        \r\n\t\t\t        <div class=\"searchobjects\"></div>\r\n\t\t\t    </div>\r\n\t\t\t</div>\r\n\t\t</div> -->\r\n\t</div>\r\n\r\n\t<div class=\"bb-route-container full-size main-content\"></div>\r\n</div>";
+module.exports = "<div class=\"container-fluid\"> \r\n\r\n\t<section class=\"panel list\">\r\n\t\t<div class=\"table-controls-wrapper table-wrapper hide_adv_sett hidden_sett\" data-alias=\"kfinance.transaction\">\r\n\t\t<header class=\"panel-heading\">\r\n\t\t<div class=\"pull-left\"> Transactions</div>\r\n\r\n\r\n\t\t<div class=\"pull-right group-left-controls\">\r\n\r\n\t\t<i class=\"tpc_head__btns-gbtn filters_switcher\" data-title=\"Filters\"></i>                \r\n\t\t<a href=\"#\" class=\"tpc_head__btns-export\" data-title=\"To Excel\">Export</a>\r\n\t\t</div>\r\n\t\t</header>\r\n  \r\n\t\t<div class=\"filters_controller\">\r\n\t\t\t<span class=\"comp_data\" data-name=\"eq\" data-label=\"Equal\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"gt\" data-label=\"Greater\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"lt\" data-label=\"Less\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"like\" data-label=\"Like\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"between\" data-label=\"Between\"></span>\r\n\t\t\t<span class=\"comp_data\" data-name=\"isnull\" data-label=\"Not set\"></span>\r\n\r\n\t\t\t<span class=\"field_data\" data-name=\"name\" data-label=\"Transaction\" data-type=\"text\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"date\" data-label=\"Date\" data-type=\"date\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"amount\" data-label=\"Amount\" data-type=\"text\" data-class=\"floatPositive\" data-sortable=\"1\" data-searchable=\"1\" data-width=\"150px\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"description\" data-label=\"Description\" data-type=\"text\" data-searchable=\"1\" data-isrelated=\"\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionreasonacnt.name\" data-label=\"Purporse\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionreasonacnt\" data-destmodelalias=\"kfinance.reasonacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncounterpartyacnt.name\" data-label=\"Payment from/to\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncounterpartyacnt\" data-destmodelalias=\"kfinance.counterpartyacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntdebit.name\" data-label=\"Debit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntdebit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactionfinacntcredit.name\" data-label=\"Credit\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactionfinacntcredit\" data-destmodelalias=\"kfinance.finacnt\"></span>\r\n\t\t\t<span class=\"field_data\" data-name=\"transactioncashflowacnt.name\" data-label=\"Cashflow\" data-sortable=\"1\" data-searchable=\"1\" data-isrelated=\"1\" data-relationalias=\"transactioncashflowacnt\" data-destmodelalias=\"kfinance.cashflowacnt\"></span>\r\n\t\t</div>    \r\n\t\t</div>\r\n\t</section>\r\n\t\r\n</div>";
 
 },{}],20:[function(require,module,exports){
-module.exports = "<div class=\"submenu\">\r\n\tStats\r\n</div>";
+module.exports = "<div class=\"full-size main-wrap\">\r\n\t<div class=\"header\">\r\n\t\t<div class=\"header_nav\">\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<a href=\"/#\"><img src=\"build/img/logo.png\"></a>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"header-container\"></div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <div class=\"header_controls pull-right\">\r\n\t\t\t<div class=\"right-user-area\">\r\n\t\t\t    <div class=\"user-nav-block\">\r\n\t\t\t        <div class=\"nav-current-user pull-right\"></div>\r\n\r\n\t\t\t        <a class=\"user-icon\" href = \"#\">\r\n\t\t\t            <img src=\"\">\r\n\t\t\t        </a>\r\n\t\t\t    </div>\r\n\t\t\t      \r\n\t\t\t    <div class=\"add_new_block top__add pull-right\"></div>\r\n\t\t\t      \r\n\t\t\t    <div class=\"m-t m-b-small pull-right\" id=\"panel-notifications\" data-title=\"Notifications\">\r\n\t\t\t        <a href=\"#\" class=\"dropdown-toggle notifications-btn\" data-target=\"notification\">\r\n\t\t\t            <b class=\"badge badge-notes bg-danger count-n\">0</b>\r\n\t\t\t            <i class=\"bell-icon text-default\"></i>\r\n\t\t\t        </a>\r\n\t\t\t    </div>\r\n\r\n\t\t\t    <div class=\"panel_message\" data-title=\"Messages\">\r\n\t\t\t        <div class=\"panel_message__ico\" data-target=\"message\"></div>\r\n\t\t\t    </div>\r\n\r\n\t\t\t    <div class=\"search_block\" data-title=\"Search\">\r\n\t\t\t        <input class=\"search-field\" placeholder=\"Search\">\r\n\t\t\t        \r\n\t\t\t        <div class=\"searchobjects\"></div>\r\n\t\t\t    </div>\r\n\t\t\t</div>\r\n\t\t</div> -->\r\n\t</div>\r\n\r\n\t<div class=\"bb-route-container full-size main-content\"></div>\r\n</div>";
 
 },{}],21:[function(require,module,exports){
-module.exports = "<div class=\"submenu\">\r\n\tTree\r\n</div>\r\n";
+module.exports = "<div class=\"submenu\">\r\n\tStats\r\n</div>";
 
 },{}],22:[function(require,module,exports){
+module.exports = "<div class=\"submenu\">\r\n\tTree\r\n</div>\r\n";
+
+},{}],23:[function(require,module,exports){
 var Backbone = require('backbone'),
     _        = require('underscore'),
     $        = require('jquery'),
@@ -437,37 +440,7 @@ var BaseView = Backbone.View.extend({
 
 module.exports = BaseView;
 
-},{"api":2,"backbone":36,"jquery":44,"underscore":49}],23:[function(require,module,exports){
-var Backbone = require('backbone'),
-	_        = require('underscore'),
-    BaseView = require('views/baseview'),
-    tpl      = require('templates/dashboard/dashboard_tasks_list.tpl');
-
-var milestonesList = BaseView.extend({
-    template: tpl,
-    className: 'task-list',
-    onInitialize: function(params){
-        BaseView.prototype.onInitialize.call(this, params);
-    },
-    serialize: function(){
-        this.data = _.clone({data: this.collection});
-    }
-});
-
-var ContentView =  BaseView.extend({
-    className : 'milestones scroll',
-    onInitialize: function(params) {
-        BaseView.prototype.onInitialize.call(this, params);
-
-        this.api.getResousceFromCatalog('milestones').then(function(response){
-            this.milestonesList = this.addView(milestonesList, {collection: response.data});
-            this.renderNestedView(this.milestonesList);
-        }.bind(this));
-    }
-});
-
-module.exports = ContentView;
-},{"backbone":36,"templates/dashboard/dashboard_tasks_list.tpl":13,"underscore":49,"views/baseview":22}],24:[function(require,module,exports){
+},{"api":2,"backbone":38,"jquery":46,"underscore":51}],24:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/dashboard/dashboard_projects.tpl');
@@ -481,76 +454,7 @@ var ContentView = BaseView.extend({
 });
 
 module.exports = ContentView;
-},{"backbone":36,"templates/dashboard/dashboard_projects.tpl":10,"views/baseview":22}],25:[function(require,module,exports){
-var Backbone         = require('backbone'),
-    _                = require('underscore'),
-    BaseView         = require('views/baseview'),
-    tpl              = require('templates/dashboard/dashboard_tasks_edit.tpl');
-
-// var taskList = BaseView.extend({
-//     template: tpl,
-//     className: 'task-edit',
-//     onInitialize: function(params){
-//         BaseView.prototype.onInitialize.call(this, params);
-//     },
-//     serialize: function(){
-//         this.data = _.clone({data: this.collection});
-//     }
-// });
-
-var ContentView = BaseView.extend({
-    className: 'tasks-edit',
-    template: tpl,
-    onInitialize: function(params) {
-        BaseView.prototype.onInitialize.call(this, params);
-        // this.api.getResousceFromCatalog('task-id').then(function(response){
-        //     this.taskList = this.addView(taskList, {collection: response.data});
-        //     this.renderNestedView(this.taskList);
-        // }.bind(this));
-    },
-    onRender: function () {
-        this.parent.getElement('.bb-route-container').addClass('active-task');
-    }
-});
-
-module.exports = ContentView;
-},{"backbone":36,"templates/dashboard/dashboard_tasks_edit.tpl":12,"underscore":49,"views/baseview":22}],26:[function(require,module,exports){
-var Backbone         = require('backbone'),
-    _                = require('underscore'),
-    BaseView         = require('views/baseview'),
-    RoutedView       = require('views/routedview'),
-    TaskEditView     = require('views/dashboard/dashboard_tasks_edit_view'),
-    dashboardTpl     = require('templates/dashboard/dashboard_tasks.tpl'),
-    dashboardTasksListTpl              = require('templates/dashboard/dashboard_tasks_list.tpl');
-
-var TaskList = BaseView.extend({
-    template: dashboardTasksListTpl,
-    className: 'task-list',
-    onInitialize: function(params){
-        BaseView.prototype.onInitialize.call(this, params);
-    },
-    serialize: function(){
-        this.data = _.clone({data: this.collection});
-    }
-});
-
-var ContentView = RoutedView.extend({
-    className: 'tasks scroll',
-    template: dashboardTpl,
-    routes: {
-        'edit': TaskEditView
-    },
-    onInitialize: function(params) {
-        BaseView.prototype.onInitialize.call(this, params);
-        this.api.getResousceFromCatalog('tasks').then(function(response){
-            this.taskList = this.addView(TaskList, {collection: response.data});
-            this.renderNestedView(this.taskList, '.task-list');
-        }.bind(this));
-    }
-});
-
-module.exports = ContentView;
-},{"backbone":36,"templates/dashboard/dashboard_tasks.tpl":11,"templates/dashboard/dashboard_tasks_list.tpl":13,"underscore":49,"views/baseview":22,"views/dashboard/dashboard_tasks_edit_view":25,"views/routedview":32}],27:[function(require,module,exports){
+},{"backbone":38,"templates/dashboard/dashboard_projects.tpl":10,"views/baseview":23}],25:[function(require,module,exports){
 var BaseView         = require('views/baseview'),
     Helpers          = require('Helpers'),
     RoutedView       = require('views/routedview'),
@@ -558,9 +462,9 @@ var BaseView         = require('views/baseview'),
     navBarCollection = require('collections/header_list'),
     mainTpl          = require('templates/dashboard/dashboard.tpl'),
     dashboardListTpl = require('templates/dashboard/dashboard_list.tpl'),
-    tasksView        = require('views/dashboard/dashboard_tasks_view'),
-    tasksEditView    = require('views/dashboard/dashboard_tasks_edit_view'),
-    milestonesView   = require('views/dashboard/dashboard_milestones_view'),
+    tasksView        = require('views/dashboard/tasks/dashboard_tasks_view'),
+    tasksEditView    = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
+    milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
 
 var ContentView = RoutedView.extend({
@@ -599,7 +503,127 @@ var ContentView = RoutedView.extend({
 });
 
 module.exports = ContentView;
-},{"Helpers":1,"collections/header_list":4,"templates/dashboard/dashboard.tpl":8,"templates/dashboard/dashboard_list.tpl":9,"views/baseview":22,"views/dashboard/dashboard_milestones_view":23,"views/dashboard/dashboard_projects_view":24,"views/dashboard/dashboard_tasks_edit_view":25,"views/dashboard/dashboard_tasks_view":26,"views/elements/base_list_view":28,"views/routedview":32}],28:[function(require,module,exports){
+},{"Helpers":1,"collections/header_list":4,"templates/dashboard/dashboard.tpl":8,"templates/dashboard/dashboard_list.tpl":9,"views/baseview":23,"views/dashboard/dashboard_projects_view":24,"views/dashboard/milestones/dashboard_milestones_view":26,"views/dashboard/tasks/dashboard_tasks_edit_view":27,"views/dashboard/tasks/dashboard_tasks_view":28,"views/elements/base_list_view":30,"views/routedview":34}],26:[function(require,module,exports){
+var Backbone = require('backbone'),
+	_        = require('underscore'),
+    BaseView = require('views/baseview'),
+    tpl      = require('templates/dashboard/dashboard_tasks_list.tpl');
+
+var milestonesList = BaseView.extend({
+    template: tpl,
+    className: 'task-list',
+    onInitialize: function(params){
+        BaseView.prototype.onInitialize.call(this, params);
+    },
+    serialize: function(){
+        this.data = _.clone({data: this.collection});
+    }
+});
+
+var ContentView =  BaseView.extend({
+    className : 'milestones scroll',
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+
+        this.api.getResousceFromCatalog('milestones').then(function(response){
+            this.milestonesList = this.addView(milestonesList, {collection: response.data});
+            this.renderNestedView(this.milestonesList);
+        }.bind(this));
+    }
+});
+
+module.exports = ContentView;
+},{"backbone":38,"templates/dashboard/dashboard_tasks_list.tpl":14,"underscore":51,"views/baseview":23}],27:[function(require,module,exports){
+var Backbone            = require('backbone'),
+    _                   = require('underscore'),
+    BaseView            = require('views/baseview'),
+    TaskDescriptionView = require('views/dashboard/tasks/task_description_view'),
+    tpl                 = require('templates/dashboard/dashboard_tasks_edit.tpl');
+
+// var taskList = BaseView.extend({
+//     template: tpl,
+//     className: 'task-edit',
+//     onInitialize: function(params){
+//         BaseView.prototype.onInitialize.call(this, params);
+//     },
+//     serialize: function(){
+//         this.data = _.clone({data: this.collection});
+//     }
+// });
+
+var ContentView = BaseView.extend({
+	className: 'tasks-edit',
+	template: tpl,
+	onInitialize: function (params) {
+		BaseView.prototype.onInitialize.call(this, params);
+		// this.api.getResousceFromCatalog('task-id').then(function(response){
+		this.taskDescription = this.addView(TaskDescriptionView, '.description');
+		this.renderNestedView(this.taskDescription);
+		console.log(params);
+		// }.bind(this));
+	},
+	onRender: function () {
+		this.parent.getElement('.bb-route-container').addClass('active-task');
+	}
+});
+
+module.exports = ContentView;
+},{"backbone":38,"templates/dashboard/dashboard_tasks_edit.tpl":13,"underscore":51,"views/baseview":23,"views/dashboard/tasks/task_description_view":29}],28:[function(require,module,exports){
+var Backbone         = require('backbone'),
+    _                = require('underscore'),
+    BaseView         = require('views/baseview'),
+    RoutedView       = require('views/routedview'),
+    TaskEditView     = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
+    dashboardTpl     = require('templates/dashboard/dashboard_tasks.tpl'),
+    dashboardTasksListTpl              = require('templates/dashboard/dashboard_tasks_list.tpl');
+
+var TaskList = BaseView.extend({
+    template: dashboardTasksListTpl,
+    className: 'task-list',
+    onInitialize: function(params){
+        BaseView.prototype.onInitialize.call(this, params);
+    },
+    serialize: function(){
+        this.data = _.clone({data: this.collection});
+    }
+});
+
+var ContentView = RoutedView.extend({
+    className: 'tasks scroll',
+    template: dashboardTpl,
+    routes: {
+        'edit': TaskEditView
+    },
+    onInitialize: function(params) {
+        BaseView.prototype.onInitialize.call(this, params);
+        this.api.getResousceFromCatalog('tasks').then(function(response){
+            this.taskList = this.addView(TaskList, {collection: response.data});
+            this.renderNestedView(this.taskList, '.task-list');
+        }.bind(this));
+    }
+});
+
+module.exports = ContentView;
+},{"backbone":38,"templates/dashboard/dashboard_tasks.tpl":12,"templates/dashboard/dashboard_tasks_list.tpl":14,"underscore":51,"views/baseview":23,"views/dashboard/tasks/dashboard_tasks_edit_view":27,"views/routedview":34}],29:[function(require,module,exports){
+var Backbone = require('backbone'),
+    _        = require('underscore'),
+    BaseView = require('views/baseview'),
+    tpl      = require('templates/dashboard/dashboard_task_description.tpl');
+
+var ContentView = BaseView.extend({
+	className: 'tasks-edit',
+	template: tpl,
+	onInitialize: function (params) {
+		BaseView.prototype.onInitialize.call(this, params);
+		//this.api.getResousceFromCatalog('task-id').then(function (response) {
+		//	this.taskList = this.addView(taskList, {collection: response.data});
+		//	this.renderNestedView(this.taskList);
+		//}.bind(this));
+	}
+});
+
+module.exports = ContentView;
+},{"backbone":38,"templates/dashboard/dashboard_task_description.tpl":11,"underscore":51,"views/baseview":23}],30:[function(require,module,exports){
 var Backbone       = require('backbone'),
      _             = require('underscore'),
     BaseView       = require('views/baseview'),
@@ -663,7 +687,7 @@ var listView = BaseView.extend({
 
 
 module.exports = listView;
-},{"backbone":36,"backbone.modelbinder":35,"templates/elements/nav_list_item.tpl":14,"underscore":49,"views/baseview":22}],29:[function(require,module,exports){
+},{"backbone":38,"backbone.modelbinder":37,"templates/elements/nav_list_item.tpl":15,"underscore":51,"views/baseview":23}],31:[function(require,module,exports){
 var Rx = require('rx-dom');
 
     var WikiRx = function($input, $results){
@@ -709,7 +733,7 @@ var Rx = require('rx-dom');
 
 module.exports = WikiRx;
 
-},{"rx-dom":47}],30:[function(require,module,exports){
+},{"rx-dom":49}],32:[function(require,module,exports){
 var Backbone          = require('backbone'),
     //Rx = require('rx/dist/rx.lite'),
     Helpers           = require('Helpers'),
@@ -832,7 +856,7 @@ var ContentView = RoutedView.extend({
 
 module.exports = ContentView;
 
-},{"Helpers":1,"backbone":36,"collections/header_list":4,"jquery-ui/sortable":41,"jquery-ui/tooltip":42,"kefir":45,"rx-dom":47,"templates/elements/nav_list_item.tpl":14,"templates/finance/finance.tpl":15,"templates/finance/tabs/cashflowacnt.tpl":16,"templates/finance/tabs/finacnt.tpl":17,"templates/finance/tabs/transactions.tpl":18,"views/baseview":22,"views/elements/base_list_view":28,"views/finance/finance_rx":29,"views/routedview":32}],31:[function(require,module,exports){
+},{"Helpers":1,"backbone":38,"collections/header_list":4,"jquery-ui/sortable":43,"jquery-ui/tooltip":44,"kefir":47,"rx-dom":49,"templates/elements/nav_list_item.tpl":15,"templates/finance/finance.tpl":16,"templates/finance/tabs/cashflowacnt.tpl":17,"templates/finance/tabs/finacnt.tpl":18,"templates/finance/tabs/transactions.tpl":19,"views/baseview":23,"views/elements/base_list_view":30,"views/finance/finance_rx":31,"views/routedview":34}],33:[function(require,module,exports){
 var Backbone         = require('backbone'),
     $                = require('jquery'),
     Helpers          = require('helpers'),
@@ -883,7 +907,7 @@ var GlobalView = RoutedView.extend({
 
 module.exports = GlobalView;
 
-},{"backbone":36,"collections/header_list":4,"helpers":5,"jquery":44,"templates/main.tpl":19,"views/baseview":22,"views/dashboard/dashboard_view":27,"views/elements/base_list_view":28,"views/finance/finance_view":30,"views/routedview":32,"views/stats/stats_view":33,"views/tree/tree_view":34}],32:[function(require,module,exports){
+},{"backbone":38,"collections/header_list":4,"helpers":5,"jquery":46,"templates/main.tpl":20,"views/baseview":23,"views/dashboard/dashboard_view":25,"views/elements/base_list_view":30,"views/finance/finance_view":32,"views/routedview":34,"views/stats/stats_view":35,"views/tree/tree_view":36}],34:[function(require,module,exports){
 var BaseView = require('views/baseview');
 
 var RoutedView = BaseView.extend({
@@ -898,7 +922,7 @@ var RoutedView = BaseView.extend({
 });
 
 module.exports = RoutedView;
-},{"views/baseview":22}],33:[function(require,module,exports){
+},{"views/baseview":23}],35:[function(require,module,exports){
 var Backbone = require('backbone'),
     BaseView = require('views/baseview'),
     tpl      = require('templates/stats/submenu.tpl');
@@ -914,7 +938,7 @@ var Backbone = require('backbone'),
 
 module.exports = ContentView;
 
-},{"backbone":36,"templates/stats/submenu.tpl":20,"views/baseview":22}],34:[function(require,module,exports){
+},{"backbone":38,"templates/stats/submenu.tpl":21,"views/baseview":23}],36:[function(require,module,exports){
 var BaseView = require('views/baseview'), 
     tpl      = require('templates/tree/submenu.tpl');
 
@@ -928,7 +952,7 @@ var BaseView = require('views/baseview'),
 
 
 module.exports = treeView;
-},{"templates/tree/submenu.tpl":21,"views/baseview":22}],35:[function(require,module,exports){
+},{"templates/tree/submenu.tpl":22,"views/baseview":23}],37:[function(require,module,exports){
 // Backbone.ModelBinder v1.1.0
 // (c) 2015 Bart Wood
 // Distributed Under MIT License
@@ -1507,7 +1531,7 @@ module.exports = treeView;
 
 }));
 
-},{"backbone":36,"jquery":44,"underscore":49}],36:[function(require,module,exports){
+},{"backbone":38,"jquery":46,"underscore":51}],38:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -3405,7 +3429,7 @@ module.exports = treeView;
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":44,"underscore":49}],37:[function(require,module,exports){
+},{"jquery":46,"underscore":51}],39:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -3498,7 +3522,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*!
@@ -3822,7 +3846,7 @@ $.extend( $.ui, {
 
 })( jQuery );
 
-},{"jquery":44}],39:[function(require,module,exports){
+},{"jquery":46}],41:[function(require,module,exports){
 var jQuery = require('jquery');
 require('./widget');
 
@@ -3996,7 +4020,7 @@ $.widget("ui.mouse", {
 
 })(jQuery);
 
-},{"./widget":43,"jquery":44}],40:[function(require,module,exports){
+},{"./widget":45,"jquery":46}],42:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*!
@@ -4501,7 +4525,7 @@ $.ui.position = {
 
 }( jQuery ) );
 
-},{"jquery":44}],41:[function(require,module,exports){
+},{"jquery":46}],43:[function(require,module,exports){
 var jQuery = require('jquery');
 require('./core');
 require('./mouse');
@@ -5797,7 +5821,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 })(jQuery);
 
-},{"./core":38,"./mouse":39,"./widget":43,"jquery":44}],42:[function(require,module,exports){
+},{"./core":40,"./mouse":41,"./widget":45,"jquery":46}],44:[function(require,module,exports){
 var jQuery = require('jquery');
 require('./core');
 require('./widget');
@@ -6206,7 +6230,7 @@ $.widget( "ui.tooltip", {
 
 }( jQuery ) );
 
-},{"./core":38,"./position":40,"./widget":43,"jquery":44}],43:[function(require,module,exports){
+},{"./core":40,"./position":42,"./widget":45,"jquery":46}],45:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*!
@@ -6731,7 +6755,7 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
 
 })( jQuery );
 
-},{"jquery":44}],44:[function(require,module,exports){
+},{"jquery":46}],46:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -15943,7 +15967,7 @@ return jQuery;
 
 }));
 
-},{}],45:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /*! Kefir.js v3.2.0
  *  https://github.com/rpominov/kefir
  */
@@ -20762,7 +20786,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-},{}],46:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 (function (global){
 // Copyright (c) Microsoft, Inc. All rights reserved. See License.txt in the project root for license information.
 
@@ -22151,11 +22175,11 @@ return /******/ (function(modules) { // webpackBootstrap
   return Rx;
 }));
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"rx":48}],47:[function(require,module,exports){
+},{"rx":50}],49:[function(require,module,exports){
 var Rx = require('rx');
 require('./dist/rx.dom');
 module.exports = Rx;
-},{"./dist/rx.dom":46,"rx":48}],48:[function(require,module,exports){
+},{"./dist/rx.dom":48,"rx":50}],50:[function(require,module,exports){
 (function (process,global){
 // Copyright (c) Microsoft, All rights reserved. See License.txt in the project root for license information.
 
@@ -34354,7 +34378,7 @@ var ReactiveTest = Rx.ReactiveTest = {
 }.call(this));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":37}],49:[function(require,module,exports){
+},{"_process":39}],51:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
