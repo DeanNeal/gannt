@@ -52,7 +52,7 @@ var BaseView = Backbone.View.extend({
         this.onInitialize(params);
         //this.setSubscribes();
         //this.setMiddlewares();
-        this.serialize();
+        this.serialize(params);
         this.afterInitialize(params);
 
     },
@@ -67,7 +67,7 @@ var BaseView = Backbone.View.extend({
      * This method must be override by child classes for
      * custom serialization
      */
-    serialize: function() {
+    serialize: function(params) {
         /** nothing to do **/
     },
     /**

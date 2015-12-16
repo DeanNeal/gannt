@@ -47,15 +47,12 @@ Api.prototype.getResource = function (resourceName, parentResource) {
 
 Api.prototype.getResourceFromUrl = function(collection, id){
     var url = _.findWhere(collection, {id: id}).links[0].href,
-        deffered = $.Deferred();
-
-	debugger
-
+        deferred = $.Deferred();
     $.get(url, function(data){
-        deffered.resolve(data);
+        deferred.resolve(data);
     }.bind(this));
 
-    return deffered.promise();
+    return deferred.promise();
 };
 
 
