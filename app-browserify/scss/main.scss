@@ -14,12 +14,6 @@
 
 ul {
 	list-style: none;
-
-	li {
-		&:hover {
-			background: #ccc;
-		}
-	}
 }
 
 html,
@@ -49,7 +43,7 @@ body {
         & > li {
             float: left;
 
-            & > a {
+            a {
                 padding: 0 15px;
                 font-size: 18px;
                 font-weight: 600;
@@ -87,6 +81,72 @@ body {
     }
 }
 
+.dashboard {
+    &-header {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: #3f3b4a;
+        height: 65px;
+    }
+
+    &-header_menu{
+        $base-width: 1437;
+        $one-unit: $base-width / 100;
+        $ul-width: 568 / $one-unit * 1%;
+        
+        width: calc(#{$ul-width});
+        height: 100%;
+        
+        .navbar-nav {
+            height: 100%;
+            li {
+                height: 100%;
+                display: inline-block;
+                width: calc(100% / 4);
+                a {
+                    display: block;
+                    padding: 5px;
+                    text-decoration: none;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    &-header_dropdown {
+        color: #fff;
+        background-color: #393543;
+        padding: 7px 20px;
+    }
+
+    &-header_progress {
+        width: 350px;
+        color: #fff;
+        background-color: #393543;
+        padding: 0 20px;
+    }
+
+    &-header_unit {
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        // line-height: 63px;
+    }
+
+    &-menu_btn {
+        color: #fff;
+        text-align: center;
+        height: 100%;
+        padding: 5px;
+
+        &[data-active="true"] {
+            box-shadow: 0 4px 0 0 #3f3b4a;
+        }
+    }
+}
+
 .right-user-area {
     $self: right-user-area;
 
@@ -109,7 +169,7 @@ body {
 
     &-content {
         position: relative;
-        padding-top: 32px;
+        padding-top: 60px;
     }
 }
 
