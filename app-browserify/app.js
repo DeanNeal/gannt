@@ -6,7 +6,7 @@ var Backbone   = require('backbone'),
     Api        = require('api');
  
 
-var api = Api.getInstance('build/catalog.json')
+var api = Api.getInstance('build/api/catalog.json');
 
 api.getCatalog().then(function() {
     var App = new GlobalView();

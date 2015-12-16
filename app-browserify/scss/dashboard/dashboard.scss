@@ -20,29 +20,6 @@
         float: right;
         width: 65%;
     }
-    .dashboard-menu{
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        
-        .navbar-nav {
-            background: #221d2f;
-            overflow: hidden;
-            li {
-                float: left;
-                a {
-                    color: #fff;
-                    display: block;
-                    padding: 5px;
-                    &[data-active="true"] {
-                        background: #fff;
-                        color: #999;
-                    }
-                }
-            }
-        }
-    }
     .active-task {
         position: absolute;
         top: 0;

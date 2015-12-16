@@ -19,15 +19,19 @@ var ContentView = RoutedView.extend({
         'projects'  : projectsView
     },
     links: [{
-        name: "tasks",
+        name: "Pulse",
+        id: "pulse",
+        iconClass: 'qwewqe'
+    }, {
+        name: "Tasks",
         id: "tasks",
         iconClass: 'qwewqe'
     }, {
-        name: "milestones",
+        name: "Milestones",
         id: "milestones",
         iconClass: 'qwewqe'
     }, {
-        name: "projects",
+        name: "Projects",
         id: "projects",
         iconClass: 'qwewqe'
     }],
@@ -40,7 +44,7 @@ var ContentView = RoutedView.extend({
             // className: 'listClassName', //class name for <ul>
             // itemClassName: 'itemClassName', // class name for <li>
             collection: new navBarCollection(this.collection)
-        }, '.dashboard-menu');
+        }, '.dashboard-header_menu');
     }
 });
 
