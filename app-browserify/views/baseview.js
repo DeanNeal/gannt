@@ -1,7 +1,8 @@
 var Backbone = require('backbone'),
     _        = require('underscore'),
     $        = require('jquery'),
-    Api      = require('api');
+    Api      = require('api'),
+    apiNew   = require('apiNew');
 
 var BaseView = Backbone.View.extend({
 
@@ -21,6 +22,7 @@ var BaseView = Backbone.View.extend({
         //this.subscribes  = {};
 
         this.api = Api.getInstance();
+        this.apiNew = apiNew;
 
         this.contentInternal = this.$el;
 
@@ -192,7 +194,7 @@ var BaseView = Backbone.View.extend({
         // remove view
         Backbone.View.prototype.remove.call(this);
     },
-    beforeChangeStage: function(currentStage) {
+    beforeChangeStage: function() {
         var deferred = $.Deferred();
         setTimeout(function () {
             deferred.resolve(true);                
@@ -203,8 +205,8 @@ var BaseView = Backbone.View.extend({
         /*nothing to do*/
     },
     changeStage: function(params) {
-        if (params.stagesArray[0] && this.router) {
-            this.beforeChangeStage(params.stagesArray[0]).then(function(data) {
+        if (params.stagesArray[0]) {
+            this.beforeChangeStage().then(function(data) {
 
                 if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
                     if (this.nextStage) // if current view exist we have to remove it
@@ -219,8 +221,15 @@ var BaseView = Backbone.View.extend({
                 params.stagesArray.shift(); // remove current stage from stages array
 
                 this.afterChangeStage(this.currentStage);
-                this.nextStage.changeStage(params); // start again without current stage
 
+                if(this.nextStage.beforeLoad && !this.nextStage.loaded){
+                    this.nextStage.loaded = true;
+                    this.nextStage.beforeLoad().then(function(){
+                        this.nextStage.changeStage(params); // start again without current stage
+                    }.bind(this));
+                } else {
+                    this.nextStage.changeStage(params); // start again without current stage
+                 } 
             }.bind(this));
         }
     }

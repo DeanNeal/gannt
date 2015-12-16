@@ -9,7 +9,8 @@ var Backbone         = require('backbone'),
     statsView        = require('views/stats/stats_view'),
     financeView      = require('views/finance/finance_view'),
     navBarCollection = require('collections/header_list');
-    mainTpl          = require('templates/main.tpl');
+    mainTpl          = require('templates/main.tpl'),
+    apiNew           = require('apiNew');
 
 var GlobalView = RoutedView.extend({
     tagName: 'div',

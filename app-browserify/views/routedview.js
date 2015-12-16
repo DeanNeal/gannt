@@ -1,7 +1,6 @@
 var BaseView = require('views/baseview');
 
 var RoutedView = BaseView.extend({
-	router: true,
 	routes: {},
 	onInitialize: function(params) {
 	    BaseView.prototype.onInitialize.call(this, params);
