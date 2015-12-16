@@ -29,16 +29,6 @@ var GlobalView = RoutedView.extend({
         var deferred = $.Deferred();
 
         if (!this.menu) {
-
-            
-
-            // apiNew.create('build/catalog.json').then(function(catalog){
-
-            //     catalog.getTasks().then(function(tasks){
-                    
-            //     })
-            // })
-
             this.api.getResousceFromCatalog('menu').then(function(response) {
                 this.collection = Helpers.createMenuLinks(response.data);
                 this.menu = this.addView(BaseListView, {

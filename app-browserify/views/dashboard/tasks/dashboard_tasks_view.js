@@ -26,11 +26,6 @@ var ContentView = RoutedView.extend({
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
-        // this.api.getResousceFromCatalog('tasks').then(function(response){
-        //     this.tasksCollection = response;
-        //     this.taskList = this.addView(TaskList, {collection: response.data});
-        //     this.renderNestedView(this.taskList, '.task-list');
-        // }.bind(this));
     },
     beforeChangeStage: function(){
         var deferred = $.Deferred();
