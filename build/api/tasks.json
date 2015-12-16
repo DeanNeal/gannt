@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "task_1",
+      "priority": "high",
+      "status": "open",
+      "assignee": "dean_neal",
+      "date": "12.12.2015",
+      "ago": "2 days",
+      "links": [
+        {
+          "id": "tasks",
+          "href": "build/api/task.json"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "task_2",
+      "priority": "high",
+      "status": "open",
+      "assignee": "dean_neal",
+      "date": "12.12.2015",
+      "ago": "2 days",
+      "links": [
+        {
+          "id": "tasks",
+          "href": "build/api/task.json"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "task_3",
+      "priority": "high",
+      "status": "open",
+      "assignee": "dean_neal",
+      "date": "12.12.2015",
+      "ago": "2 days",
+      "links": [
+        {
+          "id": "tasks",
+          "href": "build/api/task.json"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "links": [
+    {
+      "id": "self",
+      "href": "http://example.com/catalog"
+    },
+    {
+      "id": "menu",
+      "href": "build/api/menu.json"
+    },
+    {
+      "id": "user",
+      "href": "http://example.com/user"
+    },
+    {
+      "id": "projects",
+      "href": "http://example.com/projects"
+    },
+    {
+      "id": "milestones",
+      "href": "build/api/milestones.json"
+    },
+    {
+      "id": "tasks",
+      "href": "build/api/tasks.json"
+    }
+  ]
+}
