@@ -1,3 +1,5 @@
 <div>
-    wqwqeqwewqe
+    <%=id%>
+    <%=name%>
+    <%=priority%>
 </div>

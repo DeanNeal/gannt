@@ -1,17 +1,21 @@
-var Backbone            = require('backbone'),
-    _                   = require('underscore'),
-    BaseView            = require('views/baseview'),
-    TaskDescriptionView = require('views/dashboard/tasks/task_description_view'),
-    tpl                 = require('templates/dashboard/dashboard_tasks_edit.tpl');
+var Backbone             = require('backbone'),
+    _                    = require('underscore'),
+    BaseView             = require('views/baseview'),
+    TaskDescriptionView  = require('views/dashboard/tasks/task_description_view'),
+    TaskDescriptionModel = require('models/dashboard/task_description_model'),
+    tpl                  = require('templates/dashboard/dashboard_tasks_edit.tpl');
 
 var ContentView = BaseView.extend({
 	className: 'tasks-edit',
 	template: tpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		this.addView(TaskDescriptionView, {data: {}});debugger
+		//this.addView(TaskDescriptionView, {data: {}});
 		this.api.getResourceFromUrl(this.parent.tasksCollection, params.query.id).then(function (response) {
-			//this.addView(TaskDescriptionView, {data: response});debugger
+			var model = new TaskDescriptionModel(response.data);
+	
+			this.descriptionView = this.addView(TaskDescriptionView, {model: model});
+			this.renderNestedView(this.descriptionView, '.task-description');
 		}.bind(this));
 	},
 	onRender: function () {
