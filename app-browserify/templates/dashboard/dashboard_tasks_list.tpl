@@ -1,40 +1,42 @@
 <table class="dashboard-table">
 	<% _.each(data, function(item){ %>
 		<tr>
-			<td>
+			<!-- <td>
 				<div class="id"> #<%=item.id%></div>
-			</td>
+			</td> -->
 
-			<td>
-				<div class="name">
-					<a href="#dashboard/tasks/edit/?id=<%=item.id%>">
-						<%=item.name%>
-					</a>
+			<td class="name">
+				<div class="">
+					<div class="">
+						<a href="#dashboard/tasks/edit/?id=<%=item.id%>">
+							#<%=item.id%>: <%=item.name%>
+						</a>
+					</div>
 				</div>
 			</td>
 
-			<td>
-				<div class="priority"><%=item.priority%></div>
+			<td class="priority">
+				<div><%=item.priority%></div>
 			</td>
 
-			<td>
-				<div class="status"><%=item.status%></div>
+			<td class="status">
+				<div><%=item.status%></div>
 			</td>
 
-			<td>
-				<div class="assignee"><%=item.assignee%></div>
+			<td class="assignee">
+				<div><%=item.assignee%></div>
 			</td>
 
-			<td>
-				<div class="milestone">Milestone</div>
+			<td class="milestone">
+				<div>Milestone</div>
 			</td>
 
-			<td>
-				<div class="date"><%=item.date%></div>
+			<td class="date">
+				<div><%=item.date%></div>
 			</td>
 
-			<td>
-				<div class="ago"><%=item.ago%> ago</div>
+			<td class="ago">
+				<div><%=item.ago%> ago</div>
 			</td>
 		</tr>
 	<% }); %>

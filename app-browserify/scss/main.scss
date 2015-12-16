@@ -160,6 +160,49 @@ body {
 
     &-table {
         width: 100%;
+        border-collapse: collapse;
+
+        & > tbody {
+            & > tr {
+                border-bottom: 1px solid #ccc;
+            }
+            
+            & td {
+                display: table-cell;
+                vertical-align: top;
+                padding: 7px 10px;
+            }
+        }
+
+        .name {
+            width: 250px;
+        }
+
+        .priority {
+            width: 20px;
+            text-align: center;
+        }
+
+        .status {
+            width: 80px;
+            text-align: center;
+        }
+
+        .assignee {
+            width: 150px;
+        }
+
+        .milestone {
+            width: 150px;
+        }
+
+        .date {
+            width: 105px;
+        }
+
+        .ago {
+            width: 105px;
+        }
     }
 }
 
