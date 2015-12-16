@@ -34,11 +34,21 @@ Api.prototype.getResousceFromCatalog = function (resourceName) {
 	return deferred.promise();
 };
 
+Api.prototype.getResource = function (resourceName, parentResource) {
+	var url      = _.findWhere(parentResource.links, {id: resourceName}).href,
+	    deferred = $.Deferred();
+
+	$.get(url, function (data) {
+		deferred.resolve(data);
+	}.bind(this));
+
+	return deferred.promise();
+};
+
 Api.prototype.getResourceFromUrl = function(collection, id){
     var url = _.findWhere(collection, {id: id}).links[0].href,
         deferred = $.Deferred();
-
-    $.get(url, function (data) {
+    $.get(url, function(data){
         deferred.resolve(data);
     }.bind(this));
 
