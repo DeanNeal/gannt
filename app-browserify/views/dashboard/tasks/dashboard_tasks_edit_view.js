@@ -10,6 +10,7 @@ var ContentView = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.api.getResourceFromUrl(this.parent.tasksCollection, params.query.id).then(function(response){
+			debugger
 			this.taskDescription = this.addView(TaskDescriptionView, {data: response});
 			this.renderNestedView(this.taskDescription, '.description');
 		}.bind(this));

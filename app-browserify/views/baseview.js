@@ -222,7 +222,7 @@ var BaseView = Backbone.View.extend({
 
                 this.afterChangeStage(this.currentStage);
 
-                if(this.nextStage.beforeLoad && !this.nextStage.loaded){
+                if(this.nextStage.beforeLoad && !this.nextStage.loaded){ //if we want to expect data from parent
                     this.nextStage.loaded = true;
                     this.nextStage.beforeLoad().then(function(){
                         this.nextStage.changeStage(params); // start again without current stage
