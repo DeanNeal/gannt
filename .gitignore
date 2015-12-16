@@ -1,4 +1,4 @@
 node_modules/
-bower_components/
+build/bundle.js
 **/.sass-cache
 .idea
