@@ -27,17 +27,17 @@ var ContentView = RoutedView.extend({
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
     },
-    beforeChangeStage: function(){
+    beforeLoad: function(){
         var deferred = $.Deferred();
 
         this.api.getResousceFromCatalog('tasks').then(function(response){
-            this.collection = response.data;
-            this.taskList = this.addView(TaskList, {collection: this.collection});
-            this.renderNestedView(this.taskList, '.task-list');
-            deferred.resolve(true);
+           this.tasksCollection = response.data;
+           this.taskList = this.addView(TaskList, {collection: this.tasksCollection});
+           this.renderNestedView(this.taskList, '.task-list');
+           deferred.resolve(true);
         }.bind(this));
 
-        return deferred.promise();
+        return deferred.promise(); 
     }
 });
 
