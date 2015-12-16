@@ -8,10 +8,14 @@ var ContentView = BaseView.extend({
 	template: tpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
+		console.log(params);
 		//this.api.getResousceFromCatalog('task-id').then(function (response) {
-		//	this.taskList = this.addView(taskList, {collection: response.data});
-		//	this.renderNestedView(this.taskList);
+		//	this.addView(taskList, {collection: response.data});
 		//}.bind(this));
+	},
+	serialize: function(params) {
+		console.log(this, params);
+		//this.data = _.clone(params.data);
 	}
 });
 
