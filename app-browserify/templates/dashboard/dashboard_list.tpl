@@ -1,4 +1,8 @@
 <div class="dashboard-menu_btn menu-item">
-	<i class="<%=iconClass%>">i</i>	
-	<a class="<%=name%>" href="/#<%=route%>"><%=name%></a>
+	<a class="<%=name%>" href="/#<%=route%>">
+		<div>
+			<i class="<%=iconClass%>">i</i>
+		</div>
+		<%=name%>
+	</a>
 </div>

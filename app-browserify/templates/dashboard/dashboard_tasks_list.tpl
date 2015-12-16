@@ -26,6 +26,10 @@
 			</td>
 
 			<td>
+				<div class="milestone">Milestone</div>
+			</td>
+
+			<td>
 				<div class="date"><%=item.date%></div>
 			</td>
 
