@@ -25,6 +25,13 @@ var ContentView = BaseView.extend({
 		this.renderNestedView(this.taskDescription);
 		console.log(params);
 		// }.bind(this));
+
+	
+		this.api.getResousceFromUrl(this.collection, params.query.id).then(function(response){
+			debugger
+		});
+		
+
 	},
 	onRender: function () {
 		this.parent.getElement('.bb-route-container').addClass('active-task');
