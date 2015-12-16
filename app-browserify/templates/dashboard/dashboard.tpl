@@ -1,6 +1,7 @@
 <div class="full-size">
 	<div class="dashboard-header">
 		<div class="dashboard-header_menu dashboard-header_unit"></div>
+		
 		<div class="dashboard-header_info dashboard-header_unit">
 			<div class="dashboard-header_dropdown dashboard-header_unit">
 				<div class="" style="display: inline-block; vertical-align: middle;">
