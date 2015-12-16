@@ -88,8 +88,16 @@ body {
 }
 
 .right-user-area {
+    $self: right-user-area;
+
     &_unit {
         float: left;
+
+        + .#{$self} {
+            &_unit {
+                margin-left: 20px;
+            }
+        }
     }
 }
 
