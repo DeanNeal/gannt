@@ -30,16 +30,24 @@ var ContentView = RoutedView.extend({
 
 		this.addView(TasksFiltersView, {}, '.filters-container');
 	},
-	beforeLoad: function () {
+	beforeLoad: function (params) {
 		var deferred = $.Deferred();
 
 		this.api.getResousceFromCatalog('tasks').then(function (response) {
 			this.tasksCollection = response.data;
-			this.taskList = this.addView(TaskList, {collection: this.tasksCollection});
+			this.taskList = this.addView(TaskList, {collection: response.data});
 			this.renderNestedView(this.taskList, '.task-list');
 			deferred.resolve(true);
 		}.bind(this));
 
+		return deferred.promise();
+	},
+	beforeChangeStage: function (params) {
+		var deferred = $.Deferred();
+		this.serviceData = {
+			href: this.api.getUrl(this.tasksCollection, params.query ? params.query.id : null)
+		};
+		deferred.resolve(true);
 		return deferred.promise();
 	}
 });
