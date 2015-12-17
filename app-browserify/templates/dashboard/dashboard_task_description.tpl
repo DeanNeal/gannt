@@ -1,6 +1,6 @@
 <div>
 	<div class="description">
-		<span>#<%=id%>: <%=name%></span>
+		<span><span class="icon-radio-unchecked"></span>#<%=id%>: <%=name%></span>
 		<p name="description"></p>
 
 		<a class="close-icon" href="#dashboard/tasks">
@@ -18,7 +18,9 @@
 				<ul class="details-table">
 					<li>
 						<span class="details-table_term">Priority:</span>
-						<span class="details-table_description"><%=priority%></span>
+						<span class="details-table_description">
+							<span class="icon-arrow-up"></span> <%=priority%>
+						</span>
 					</li>
 					<li>
 						<span class="details-table_term">Status:</span>
@@ -38,11 +40,15 @@
 					</li>
 					<li>
 						<span class="details-table_term">Start:</span>
-						<span class="details-table_description"><%=date_create%></span>
+						<span class="details-table_description">
+							<span class="icon-calendar"></span> <%=date_create%>
+						</span>
 					</li>
 					<li>
 						<span class="details-table_term">Deadline:</span>
-						<span class="details-table_description"><%=date_finish%></span>
+						<span class="details-table_description">
+							<span class="icon-calendar"></span> <%=date_finish%>
+						</span>
 					</li>
 					<li>
 						<span class="details-table_term">Watchers:</span>
