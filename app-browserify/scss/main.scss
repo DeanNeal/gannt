@@ -155,9 +155,22 @@ body {
         color: #fff;
         text-align: center;
         height: 100%;
-
+        position: relative;
+        -webkit-transition: all 200ms ease;
+        -moz-transition: all 200ms ease;
+        -ms-transition: all 200ms ease;
+        -o-transition: all 200ms ease;
         &[data-active="true"] {
-            box-shadow: 0 4px 0 0 #3f3b4a;
+            box-shadow: 0 0 20px -7px #000;
+            &:after{
+                content: '';
+                position: absolute;
+                height: 5px;
+                background: rgba(63, 59, 74, 0.74);
+                width: 100%;
+                left: 0;
+                z-index: 1000;
+            }
         }
     }
 
@@ -301,8 +314,8 @@ body {
 
     &-content {
         position: relative;
-        padding-top: 70px;
-        background-color: #d9d9db;
+        padding-top: 65px;
+        background-color: #f3f3f5;
     }
 }
 

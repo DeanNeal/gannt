@@ -22,8 +22,8 @@ var ContentView = BaseView.extend({
 		this.data = _.clone(this.model.attributes);
 	},
 	testPutQuery: function () {
-		console.log(arguments);
-		this.api.updateResourceByUrl(this.link, {data: 'testData'}).then(function (response) {
+		console.log(_.clone(this.model.attributes));
+		this.api.updateResourceByUrl(this.link, {data: _.clone(this.model.attributes)}).then(function (response) {
 			console.log(response);
 		})
 	}
