@@ -206,14 +206,18 @@ var BaseView = Backbone.View.extend({
     },
     changeStage: function(params) {
         if (params.stagesArray[0]) {
-            this.beforeChangeStage().then(function(data) {
+            this.beforeChangeStage(params).then(function(data) {
 
                 if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
                     if (this.nextStage) // if current view exist we have to remove it
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
 
-                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {stage: params.stagesArray[0], query: params.query }, target);
+                    this.nextStage = this.addView(this.routes[params.stagesArray[0]], {
+                        stage: params.stagesArray[0],
+                        query: params.query,
+                        serviceData: this.serviceData
+                    }, target);
                     this.renderNestedView(this.nextStage, target);
                 }
 
@@ -224,12 +228,12 @@ var BaseView = Backbone.View.extend({
 
                 if(this.nextStage.beforeLoad && !this.nextStage.loaded){
                     this.nextStage.loaded = true;
-                    this.nextStage.beforeLoad().then(function(){
+                    this.nextStage.beforeLoad({query: params.query}).then(function(){
                         this.nextStage.changeStage(params); // start again without current stage
                     }.bind(this));
-                } else {
+                } else
                     this.nextStage.changeStage(params); // start again without current stage
-                 } 
+
             }.bind(this));
         }
     }
