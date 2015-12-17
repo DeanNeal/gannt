@@ -34,26 +34,49 @@ Api.prototype.getResousceFromCatalog = function (resourceName) {
 	return deferred.promise();
 };
 
-Api.prototype.getResource = function (resourceName, parentResource) {
-	var url      = _.findWhere(parentResource.links, {id: resourceName}).href,
-	    deferred = $.Deferred();
+Api.prototype.getUrl = function (collection, id) {
+	var model = _.findWhere(collection, {id: id});
+	return (model) ? model.links[0].href : '';
+};
 
-	$.get(url, function (data) {
+function generateQuery(data) {
+	var deferred = $.Deferred();
+
+	$.ajax(data).done(function (data) {
 		deferred.resolve(data);
-	}.bind(this));
+	});
 
 	return deferred.promise();
+}
+
+Api.prototype.getResourceByUrl = function (url) {
+	return generateQuery({
+		method: 'get',
+		url: url
+	});
 };
 
-Api.prototype.getResourceFromUrl = function(collection, id){
-    var url = _.findWhere(collection, {id: id}).links[0].href,
-        deferred = $.Deferred();
-    $.get(url, function(data){
-        deferred.resolve(data);
-    }.bind(this));
-
-    return deferred.promise();
+Api.prototype.createResourceByUrl = function (url, data) {
+	return generateQuery({
+		method: 'post',
+		url: url,
+		data: data
+	});
 };
 
+Api.prototype.updateResourceByUrl = function (url, data) {
+	return generateQuery({
+		method: 'put',
+		url: url,
+		data: data
+	});
+};
+
+Api.prototype.deleteResourceByUrl = function (url) {
+	return generateQuery({
+		method: 'delete',
+		url: url
+	});
+};
 
 module.exports = Api;
