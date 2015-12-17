@@ -1,4 +1,5 @@
-<div>
-	<div class="task-list"></div>
+<div class="full-size">
+	<div class="filters-container"></div>
+	<div class="task-list scroll"></div>
 	<div class="bb-route-container"></div>
 </div>

@@ -229,7 +229,22 @@ body {
     &-content {
         position: relative;
         padding-top: 70px;
+        background-color: #ccc;
     }
+}
+
+.have-filter {
+    position: relative;
+    padding-top: 70px;
+}
+
+.filters-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    height: 70px;
 }
 
 .bb-route-container {
