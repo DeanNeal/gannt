@@ -2,7 +2,8 @@
 	<% _.each(data, function(item){ %>
 		<tr>
 			<td class="name">
-				<div class="icon-radio-unchecked">
+				<div>
+					<i class="icon-radio-unchecked"></i>
 					<a href="#dashboard/tasks/edit/?id=<%=item.id%>">
 						#<%=item.id%>: <%=item.name%>
 					</a>
@@ -14,7 +15,7 @@
 			</td>
 
 			<td class="status">
-				<div><%=item.status%></div>
+				<div data-status="<%=item.status%>"><%=item.status%></div>
 			</td>
 
 			<td class="assignee">

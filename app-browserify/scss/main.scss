@@ -168,16 +168,18 @@ body {
             & > tr {
                 border-bottom: 1px solid #E2E2E4;
                 position: relative;
-                border-left: 8px solid #F2F3F5;
+             //   border-left: 8px solid #F2F3F5;
+                display: block;
                 &:hover{
-                    border-left: 8px solid #fff;
+              //      border-left: 8px solid #fff;
                     background: #fff;
+                    box-shadow: 0 0 5px -2px #777;
                 }
             }
             
             & td {
                 display: inline-block;
-                vertical-align: top;
+               // vertical-align: top;
                 padding: 7px 10px;
                 a{
                     text-decoration: none;
@@ -189,6 +191,10 @@ body {
 
         .name {
             width: 25%;
+            .icon-radio-unchecked{
+                color: #68ADF3;
+                font-size: 13px;
+            }
         }
 
         .priority {
@@ -199,6 +205,34 @@ body {
         .status {
             width: 8%;
             text-align: center;
+            div{
+                border: 1px solid;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 1px 5px;
+                font-size: 12px;
+                &[data-status="new"]{
+                    color: #7545A5;
+                    border-color: #7545A5;
+                }
+                &[data-status="send back"]{
+                    color: #999;
+                    border-color: #999;
+                }
+                &[data-status="completed"]{
+                    color: brown;
+                    border-color: brown;
+                }
+                &[data-status="done"]{
+                    color: #45B3AB;
+                    border-color: #45B3AB;
+                }
+                &[data-status="on hold"]{
+                    color: #EFB730;
+                    border-color: #EFB730;
+                }
+
+            }
         }
 
         .assignee {
@@ -242,7 +276,22 @@ body {
     &-content {
         position: relative;
         padding-top: 70px;
+        background-color: #ccc;
     }
+}
+
+.have-filter {
+    position: relative;
+    padding-top: 70px;
+}
+
+.filters-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    height: 70px;
 }
 
 .bb-route-container {

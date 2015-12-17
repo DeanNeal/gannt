@@ -4,7 +4,7 @@
       "id": "1",
       "name": "task_1",
       "priority": "high",
-      "status": "open",
+      "status": "new",
       "assignee": "dean_neal",
       "date": "12.12.2015",
       "ago": "2 days",
@@ -19,7 +19,7 @@
       "id": "2",
       "name": "task_2",
       "priority": "high",
-      "status": "open",
+      "status": "send back",
       "assignee": "dean_neal",
       "date": "12.12.2015",
       "ago": "2 days",
@@ -34,7 +34,50 @@
       "id": "3",
       "name": "task_3",
       "priority": "high",
-      "status": "open",
+      "status": "completed",
+      "assignee": "dean_neal",
+      "date": "12.12.2015",
+      "ago": "2 days",
+      "links": [
+        {
+          "id": "tasks",
+          "href": "build/api/task.json"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "task_4",
+      "priority": "high",
+      "status": "done",
+      "assignee": "dean_neal",
+      "date": "12.12.2015",
+      "ago": "2 days",
+      "links": [
+        {
+          "id": "tasks",
+          "href": "build/api/task.json"
+        }
+      ]
+    },    {
+      "id": "5",
+      "name": "task_5",
+      "priority": "high",
+      "status": "on hold",
+      "assignee": "dean_neal",
+      "date": "12.12.2015",
+      "ago": "2 days",
+      "links": [
+        {
+          "id": "tasks",
+          "href": "build/api/task.json"
+        }
+      ]
+    },    {
+      "id": "6",
+      "name": "task_6",
+      "priority": "high",
+      "status": "new",
       "assignee": "dean_neal",
       "date": "12.12.2015",
       "ago": "2 days",
