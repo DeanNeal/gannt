@@ -25,6 +25,7 @@ body {
 body {
     line-height: normal;
     font-family: "Open Sans", Arial;
+    background: #F2F3F5;
 }
 
 .header {
@@ -165,13 +166,24 @@ body {
 
         & > tbody {
             & > tr {
-                border-bottom: 1px solid #ccc;
+                border-bottom: 1px solid #E2E2E4;
+                position: relative;
+                border-left: 8px solid #F2F3F5;
+                &:hover{
+                    border-left: 8px solid #fff;
+                    background: #fff;
+                }
             }
             
             & td {
                 display: inline-block;
                 vertical-align: top;
                 padding: 7px 10px;
+                a{
+                    text-decoration: none;
+                    color: #000;
+                    font-family: "Open Sans", Arial;
+                }
             }
         }
 
