@@ -30,7 +30,7 @@ body {
 
 .header {
     background-color: $header-bgcolor;
-    padding: 4px 0 3px 0;
+    // padding: 4px 0 3px 0;
     position: absolute;
     left: 0;
     right: 0;
@@ -39,6 +39,7 @@ body {
     &_nav {
         display: inline-block;
         margin-left: 20px;
+        padding: 4px 0;
     }
 
     .navbar-nav {
@@ -271,12 +272,23 @@ body {
     $self: right-user-area;
 
     &_unit {
-        float: left;
+        display: inline-block;
+        vertical-align: middle;
 
         + .#{$self} {
             &_unit {
                 margin-left: 20px;
             }
+        }
+
+        i {
+            color: #fff;
+        }
+
+        .current-user {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
         }
     }
 }

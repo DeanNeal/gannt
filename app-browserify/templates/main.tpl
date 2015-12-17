@@ -8,43 +8,33 @@
 			<div class="header-container"></div>
 		</div>
 
-		<!-- <div class="header_controls">
+		<div class="header_controls">
 			<div class="right-user-area">
-				<div class="search_block right-user-area_unit">
-			        <input class="search-field" placeholder="Search">
-			        
-			        <div class="searchobjects"></div>
+				<div class="right-user-area_unit">
+					<i class="icon-radio-unchecked"></i>
 			    </div>
 
-			    <div class="panel_message right-user-area_unit">
-			        <div class="panel_message__ico" data-target="message"></div>
+			    <div class="right-user-area_unit">
+			        <i class="icon-radio-unchecked"></i>
 			    </div>
 
-			    <div class="m-t m-b-small right-user-area_unit">
-			        <a href="#" class="dropdown-toggle notifications-btn" data-target="notification">
-			            <b class="badge badge-notes bg-danger count-n">0</b>
-			            <i class="bell-icon text-default"></i>
-			        </a>
+			    <div class="right-user-area_unit">
+			        <i class="icon-radio-unchecked"></i>
 			    </div>
 
-			    <div class="m-t m-b-small right-user-area_unit">
-			        <a href="#" class="dropdown-toggle notifications-btn" data-target="notification">
-			            <b class="badge badge-notes bg-danger count-n">0</b>
-			            <i class="bell-icon text-default"></i>
-			        </a>
+			    <div class="right-user-area_unit">
+			        <i class="icon-radio-unchecked"></i>
 			    </div>
 
-			    <div class="add_new_block top__add right-user-area_unit"></div>
+			    <div class="right-user-area_unit">
+			    	<i class="icon-radio-unchecked"></i>
+			    </div>
 
-			    <div class="user-nav-block right-user-area_unit">
-			        <div class="nav-current-user"></div>
-
-			        <a class="user-icon" href = "#">
-			            <img src="">
-			        </a>
+			    <div class="right-user-area_unit">
+			        <div class="current-user"></div>
 			    </div>
 			</div>
-		</div> -->
+		</div>
 	</div>
 
 	<div class="bb-route-container full-size main-content"></div>
