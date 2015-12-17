@@ -276,7 +276,7 @@ body {
     &-content {
         position: relative;
         padding-top: 70px;
-        background-color: #ccc;
+        background-color: #f1f2f4;
     }
 }
 
@@ -292,6 +292,47 @@ body {
     top: 0;
     background-color: #fff;
     height: 70px;
+    padding: 20px 15px;
+
+    .btn-add-new,
+    .base-filters {
+        // float: left;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .btn-add-new {
+        padding: 5px 25px;
+        border: 1px solid #9a9a9a;
+        border-radius: 20px;
+        text-decoration: none;
+        color: #9a9a9a;
+    }
+
+    .base-filters {
+        margin-left: 20px;
+
+        li {
+            display: inline-block;
+            vertical-align: middle;
+
+            &[data-active="true"] {
+                a {
+                    color: #000;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        a {
+            color: #9a9a9a;
+            text-decoration: none;
+        }
+
+        li + li {
+            margin-left: 10px;
+        }
+    }
 }
 
 .bb-route-container {
