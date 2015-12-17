@@ -230,7 +230,7 @@ body {
     &-content {
         position: relative;
         padding-top: 70px;
-        background-color: #f1f2f4;
+        background-color: #d9d9db;
     }
 }
 
@@ -244,13 +244,20 @@ body {
     left: 0;
     right: 0;
     top: 0;
-    background-color: #fff;
+    background-color: #f3f3f5;
     height: 70px;
     padding: 20px 15px;
+    border-bottom: 1px solid #e3e3e5;
 
-    .btn-add-new,
-    .base-filters {
-        // float: left;
+    .left-filters {
+        float: left;
+    }
+
+    .right-filters {
+        float: right;
+    }
+
+    .btn-add-new {
         display: inline-block;
         vertical-align: middle;
     }
@@ -263,13 +270,24 @@ body {
         color: #9a9a9a;
     }
 
-    .base-filters {
-        margin-left: 20px;
+    ul {
+        display: inline-block;
+        vertical-align: middle;
 
         li {
             display: inline-block;
             vertical-align: middle;
+        }
 
+        li + li {
+            margin-left: 10px;
+        }
+    }
+
+    .base-filters {
+        margin-left: 20px;
+
+        li {
             &[data-active="true"] {
                 a {
                     color: #000;
@@ -282,10 +300,10 @@ body {
             color: #9a9a9a;
             text-decoration: none;
         }
+    }
 
-        li + li {
-            margin-left: 10px;
-        }
+    .custom-filters {
+        margin-right: 20px;
     }
 }
 

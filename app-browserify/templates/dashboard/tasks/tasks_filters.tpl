@@ -1,5 +1,5 @@
 <div>
-	<div class="">
+	<div class="left-filters">
 		<a class="btn-add-new" href="">+</a>
 
 		<ul class="base-filters">
@@ -15,5 +15,19 @@
 				<a href="">My tasks</a>
 			</li>
 		</ul>
+	</div>
+
+	<div class="right-filters">
+		<ul class="custom-filters">
+			<li>
+				<a href="">Milestone</a>
+			</li>
+
+			<li>
+				<a href="">Major</a>
+			</li>
+		</ul>
+
+		<a class="btn-add-new" href="">+</a>
 	</div>
 </div>
