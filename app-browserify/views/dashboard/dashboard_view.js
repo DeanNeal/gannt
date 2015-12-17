@@ -5,6 +5,7 @@ var BaseView         = require('views/baseview'),
     navBarCollection = require('collections/header_list'),
     mainTpl          = require('templates/dashboard/dashboard.tpl'),
     dashboardListTpl = require('templates/dashboard/dashboard_list.tpl'),
+    PulseView        = require('views/dashboard/pulse/dashboard_pulse_view'),
     tasksView        = require('views/dashboard/tasks/dashboard_tasks_view'),
     milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view'),
     projectsView     = require('views/dashboard/dashboard_projects_view');
@@ -14,6 +15,7 @@ var ContentView = RoutedView.extend({
     template: mainTpl,
     className: 'dashboard full-size',
     routes: {
+        'pulse'     : PulseView,
         'tasks'     : tasksView,
         'milestones': milestonesView,
         'projects'  : projectsView

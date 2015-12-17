@@ -1,18 +1,14 @@
 <table class="dashboard-table">
 	<% _.each(data, function(item){ %>
 		<tr>
-			<!-- <td>
-				<div class="id"> #<%=item.id%></div>
-			</td> -->
-
 			<td class="name">
-				<div class="">
+				<!-- <div class=""> -->
 					<div class="">
 						<a href="#dashboard/tasks/edit/?id=<%=item.id%>">
 							#<%=item.id%>: <%=item.name%>
 						</a>
 					</div>
-				</div>
+				<!-- </div> -->
 			</td>
 
 			<td class="priority">
