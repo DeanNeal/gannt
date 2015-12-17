@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:url('../fonts/icomoon.eot?j0cgfi');
-  src:url('../fonts/icomoon.eot?j0cgfi#iefix') format('embedded-opentype'),
-  url('../fonts/icomoon.ttf?j0cgfi') format('truetype'),
-  url('../fonts/icomoon.woff?j0cgfi') format('woff'),
-  url('../fonts/icomoon.svg?j0cgfi#icomoon') format('svg');
+  src:url('../fonts/icomoon.eot?3h7798');
+  src:url('../fonts/icomoon.eot?3h7798#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?3h7798') format('truetype'),
+  url('../fonts/icomoon.woff?3h7798') format('woff'),
+  url('../fonts/icomoon.svg?3h7798#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -36,6 +36,18 @@
 .icon-bin:before {
   content: "\e903";
 }
+.icon-notification:before {
+  content: "\e907";
+}
+.icon-question:before {
+  content: "\e908";
+}
+.icon-cross:before {
+  content: "\e909";
+}
+.icon-checkmark:before {
+  content: "\e90a";
+}
 .icon-arrow-up:before {
   content: "\e904";
 }
@@ -45,3 +57,4 @@
 .icon-radio-unchecked:before {
   content: "\e906";
 }
+
