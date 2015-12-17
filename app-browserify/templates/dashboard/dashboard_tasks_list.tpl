@@ -19,6 +19,7 @@
 			</td>
 
 			<td class="assignee">
+				<img class="avatar" src="build/img/avatar.png" alt="">
 				<div><%=item.assignee%></div>
 			</td>
 
