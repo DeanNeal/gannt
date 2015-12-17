@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 
-var TaskDescriptionModel = Backbone.Model.extend({
+var MenuItem = Backbone.Model.extend({
       title: 'Default Title'
 });
 
-module.exports = TaskDescriptionModel;
+module.exports = MenuItem;

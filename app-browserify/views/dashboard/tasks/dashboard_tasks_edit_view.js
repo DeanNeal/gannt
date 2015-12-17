@@ -10,12 +10,10 @@ var ContentView = BaseView.extend({
 	template: tpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		//this.addView(TaskDescriptionView, {data: {}});
 		this.api.getResourceFromUrl(this.parent.tasksCollection, params.query.id).then(function (response) {
 			var model = new TaskDescriptionModel(response.data);
-	
-			this.descriptionView = this.addView(TaskDescriptionView, {model: model});
-			this.renderNestedView(this.descriptionView, '.task-description');
+			this.descr = this.addView(TaskDescriptionView, {model: model});
+			this.renderNestedView(this.descr, '.task-description')
 		}.bind(this));
 	},
 	onRender: function () {

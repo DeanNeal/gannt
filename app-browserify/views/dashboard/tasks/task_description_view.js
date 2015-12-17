@@ -9,8 +9,8 @@ var ContentView = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 	},
-	serialize: function() {
-	    this.data = _.clone(this.model.attributes);
+	serialize: function(params) {
+		this.data = _.clone(this.model.attributes);
 	}
 });
 
