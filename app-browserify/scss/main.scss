@@ -168,40 +168,40 @@ body {
             }
             
             & td {
-                display: table-cell;
+                display: inline-block;
                 vertical-align: top;
                 padding: 7px 10px;
             }
         }
 
         .name {
-            width: 250px;
+            width: 25%;
         }
 
         .priority {
-            width: 20px;
+            width: 5%;
             text-align: center;
         }
 
         .status {
-            width: 80px;
+            width: 8%;
             text-align: center;
         }
 
         .assignee {
-            width: 150px;
+            width: 15%;
         }
 
         .milestone {
-            width: 150px;
+            width: 15%;
         }
 
         .date {
-            width: 105px;
+            width: 10%;
         }
 
         .ago {
-            width: 105px;
+            width: 10%;
         }
     }
 }
