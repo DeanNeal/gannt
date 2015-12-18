@@ -208,6 +208,9 @@ var BaseView = Backbone.View.extend({
     beforeModelUpdate: function(params){
         /*nothing to do*/
     },
+    beforeChangeParams: function(params){
+        /*nothing to do*/
+    },
     changeStage: function(params) {
         if (params.stagesArray[0]) {
             this.beforeChangeStage(params).then(function(data) {
@@ -225,6 +228,7 @@ var BaseView = Backbone.View.extend({
                     this.renderNestedView(this.nextStage, target);
                 }
 
+
                 this.currentStage = params.stagesArray[0]; // save current stage
                 params.stagesArray.shift(); // remove current stage from stages array
 
@@ -233,10 +237,13 @@ var BaseView = Backbone.View.extend({
                 if(this.nextStage.beforeLoad && !this.nextStage.loaded){ //if we want to expect data from parent
                     this.nextStage.loaded = true;
                     this.nextStage.beforeLoad({query: params.query}).then(function(){
-                        this.nextStage.changeStage(params); // start again without current stage
+                        this.nextStage.changeStage(params);
+                        this.nextStage.beforeChangeParams(params);
                     }.bind(this));
-                } else
-                    this.nextStage.changeStage(params); // start again without current stage
+                } else {
+                    this.nextStage.changeStage(params);
+                    this.nextStage.beforeChangeParams(params);
+                }
                     
             }.bind(this));
         }

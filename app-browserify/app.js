@@ -6,6 +6,9 @@ var Backbone   = require('backbone'),
     Api        = require('api');
  
 
+
+
+
 var api = Api.getInstance('build/api/catalog.json');
 
 api.getCatalog().then(function() {

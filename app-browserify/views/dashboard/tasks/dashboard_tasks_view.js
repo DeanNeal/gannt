@@ -28,7 +28,6 @@ var ContentView = BaseView.extend({
 		this.params = params;
 
 		this.addView(TasksFiltersView, {}, '.filters-container');
-		Backbone.on('change:page', this.onPageChange, this);
 	},
 	beforeLoad: function (params) {
 		var deferred = $.Deferred();
@@ -42,7 +41,7 @@ var ContentView = BaseView.extend({
 
 		return deferred.promise();
 	},
-	onPageChange: function(params){
+	beforeChangeParams: function(params){
 		this.beforeModelUpdate(params);
 	},
 	beforeModelUpdate: function(params){
@@ -53,7 +52,6 @@ var ContentView = BaseView.extend({
 				this.editView = this.addView(TaskEditView, {href: href});
 				this.renderNestedView(this.editView,  '.edit-block');
 			}
-			
 			this.editView.updateModel(href);
 		}
 
