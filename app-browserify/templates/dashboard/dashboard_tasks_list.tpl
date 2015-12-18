@@ -24,7 +24,12 @@
 			</td>
 
 			<td class="milestone">
-				<div>Milestone</div>
+				<i class="icon-radio-unchecked"></i>
+
+				<div class="info">
+					<span>Milestone</span>
+					<span class="deadline">Deadline: 18.01.16</span>
+				</div>
 			</td>
 
 			<td class="date">

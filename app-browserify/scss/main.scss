@@ -28,62 +28,6 @@ body {
     background: #F2F3F5;
 }
 
-.header {
-    background-color: $header-bgcolor;
-    // padding: 4px 0 3px 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-
-    &_nav {
-        display: inline-block;
-        margin-left: 20px;
-        padding: 4px 0;
-    }
-
-    .navbar-nav {
-        & > li {
-            float: left;
-
-            a {
-                padding: 0 15px;
-                font-size: 18px;
-                font-weight: 600;
-                font-family: "Open Sans", Arial;
-                color: #928f9a;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-                text-decoration: none;
-
-                &:hover {
-                    color: #ffffff;
-                }
-
-                &[data-active="true"] {
-                    color: #ffffff;
-                }
-            }
-        }
-    }
-
-    &_controls {
-        display: inline-block;
-        float: right;
-    }
-
-    .logo {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    &-container {
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 7px;
-    }
-}
-
 .dashboard {
     $base-width: 1437;
     $one-unit: $base-width / 100;
@@ -139,7 +83,31 @@ body {
         width: 350px;
         color: #fff;
         background-color: #393543;
-        padding: 0 20px;
+        padding: 5px 20px;
+
+        .progress {
+            margin-top: 3px;
+            width: 100%;
+            background: #ccc;
+            height: 5px;
+            border-radius: 5px;
+
+            span {
+                border-radius: 5px;
+                display: block;
+                height: 100%;
+                width: 75%;
+                background-color: green;
+            }
+        }
+
+        .lvl {
+            font-size: 14px;
+
+            span {
+                font-size: 18px;
+            }
+        }
     }
 
     &-header_unit {
@@ -213,7 +181,8 @@ body {
         .name {
             width: 25%;
             margin-left: 10px;
-            .icon-radio-unchecked{
+
+            .icon-radio-unchecked {
                 color: #68ADF3;
                 font-size: 13px;
             }
@@ -235,7 +204,24 @@ body {
         }
 
         .milestone {
-            width: 15%;
+            width: 20%;
+
+            i {
+                display: inline-block;
+            }
+
+            .info {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            span {
+                display: block;
+            }
+
+            .deadline {
+                font-size: 12px;
+            }
         }
 
         .date {
@@ -249,40 +235,40 @@ body {
 }
 
 .status {
-    width: 8%;
+    width: 10%;
     text-align: center;
+
     [data-status] {
         border: 1px solid;
         border-radius: 5px;
         display: inline-block;
-        padding: 0 10px;
+        padding: 1px 5px;
         font-size: 12px;
-        font-weight: 600;
-        line-height: 17px;
-        &:first-letter{
-            text-transform: uppercase;
-        }
-        &[data-status="new"]{
+
+        &[data-status="new"] {
             color: #7545A5;
             border-color: #7545A5;
         }
-        &[data-status="send back"]{
+
+        &[data-status="send back"] {
             color: #999;
             border-color: #999;
         }
-        &[data-status="completed"]{
+
+        &[data-status="completed"] {
             color: brown;
             border-color: brown;
         }
-        &[data-status="done"]{
+
+        &[data-status="done"] {
             color: #45B3AB;
             border-color: #45B3AB;
         }
-        &[data-status="on hold"]{
+
+        &[data-status="on hold"] {
             color: #EFB730;
             border-color: #EFB730;
         }
-
     }
 }
 
@@ -362,6 +348,10 @@ body {
 
     .right-filters {
         float: right;
+
+        ul {
+            margin-right: 20px;
+        }
     }
 
     .btn-add-new {
@@ -410,7 +400,11 @@ body {
     }
 
     .custom-filters {
-        margin-right: 20px;
+        border-bottom: 1px solid #b8b8ba;
+
+        i {
+            font-size: 12px;
+        }
     }
 }
 

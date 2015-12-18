@@ -23,19 +23,19 @@ var ContentView = RoutedView.extend({
     links: [{
         name: "Pulse",
         id: "pulse",
-        iconClass: 'qwewqe'
+        iconClass: 'icon-radio-unchecked'
     }, {
         name: "Tasks",
         id: "tasks",
-        iconClass: 'qwewqe'
+        iconClass: 'icon-radio-unchecked'
     }, {
         name: "Milestones",
         id: "milestones",
-        iconClass: 'qwewqe'
+        iconClass: 'icon-radio-unchecked'
     }, {
         name: "Projects",
         id: "projects",
-        iconClass: 'qwewqe'
+        iconClass: 'icon-radio-unchecked'
     }],
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
