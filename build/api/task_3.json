@@ -1,0 +1,30 @@
+{
+  "data": {
+    "_id": "56740a1f277f398acdeac40f",
+    "id": 104,
+    "index": 2,
+    "name": "amet voluptate",
+    "picture": "http://placehold.it/32x32",
+    "priority": "low",
+    "date_create": "Sunday, August 2, 2015 7:39 AM",
+    "date_finish": "Tuesday, December 16, 2014 9:40 AM",
+    "status": "completed",
+    "assignee": "Lynch Anthony",
+    "date": "Wednesday, June 24, 2015 11:11 AM",
+    "description": "Magna est sint laborum tempor consectetur nostrud consectetur irure ex consequat proident tempor. Ullamco excepteur elit irure consectetur. Reprehenderit quis aute magna tempor adipisicing mollit do. Consectetur incididunt dolore et consectetur. Dolor ut amet do ea enim sit. Consequat enim eiusmod voluptate et in minim dolore proident mollit nisi dolore incididunt reprehenderit labore."
+  },
+  "links": [
+    {
+      "id": "self",
+      "href": "http://app.cubegg.com/business/task/1"
+    },
+    {
+      "id": "approve",
+      "href": "http://app.cubegg.com/business/task/1/approve"
+    },
+    {
+      "id": "send_back",
+      "href": "http://app.cubegg.com/business/task/1/sendback"
+    }
+  ]
+}

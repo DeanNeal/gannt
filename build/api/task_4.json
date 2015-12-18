@@ -1,0 +1,30 @@
+{
+  "data": {
+    "_id": "56740a1ffc72b2666a2d8171",
+    "id": 232,
+    "index": 3,
+    "name": "culpa pariatur",
+    "picture": "http://placehold.it/32x32",
+    "priority": "high",
+    "date_create": "Saturday, May 16, 2015 2:17 PM",
+    "date_finish": "Monday, April 7, 2014 1:05 PM",
+    "status": "on hold",
+    "assignee": "Hartman Whitfield",
+    "date": "Tuesday, October 14, 2014 2:47 PM",
+    "description": "Aliquip officia consectetur labore magna in id nulla. Reprehenderit in laboris qui ipsum aliquip. Tempor occaecat pariatur sit occaecat ad nostrud commodo velit aute adipisicing duis ipsum elit. Sint voluptate dolore veniam officia aliquip eu fugiat laborum elit quis veniam eiusmod do. Pariatur adipisicing exercitation labore fugiat sunt laboris excepteur aliqua sunt deserunt duis."
+  },
+  "links": [
+    {
+      "id": "self",
+      "href": "http://app.cubegg.com/business/task/1"
+    },
+    {
+      "id": "approve",
+      "href": "http://app.cubegg.com/business/task/1/approve"
+    },
+    {
+      "id": "send_back",
+      "href": "http://app.cubegg.com/business/task/1/sendback"
+    }
+  ]
+}
