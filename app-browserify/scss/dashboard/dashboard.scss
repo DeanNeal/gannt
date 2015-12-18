@@ -69,6 +69,7 @@
             display: flex;
             justify-content: center;
             flex: 1;
+            padding: 6px 0;
             & > span {
                 flex: 1;
                 display: flex;
@@ -80,6 +81,23 @@
             justify-content: flex-end;
             font-weight: 700;
             color: #545457;
+        }
+        .details-table_description {
+            color: #7A7A80;
+        }
+    }
+    .date-icon {
+        &:before {
+            font-family: 'icomoon' !important;
+            content: "\e901";
+            padding-right: 4px;
+            vertical-align: middle;
+        }
+        &.start:before {
+            color: #555659;
+        }
+        &.finish:before {
+            color: #FF7078;
         }
     }
     .active-task {

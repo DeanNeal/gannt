@@ -224,39 +224,6 @@ body {
             text-align: center;
         }
 
-        .status {
-            width: 8%;
-            text-align: center;
-            div{
-                border: 1px solid;
-                border-radius: 5px;
-                display: inline-block;
-                padding: 1px 5px;
-                font-size: 12px;
-                &[data-status="new"]{
-                    color: #7545A5;
-                    border-color: #7545A5;
-                }
-                &[data-status="send back"]{
-                    color: #999;
-                    border-color: #999;
-                }
-                &[data-status="completed"]{
-                    color: brown;
-                    border-color: brown;
-                }
-                &[data-status="done"]{
-                    color: #45B3AB;
-                    border-color: #45B3AB;
-                }
-                &[data-status="on hold"]{
-                    color: #EFB730;
-                    border-color: #EFB730;
-                }
-
-            }
-        }
-
         .assignee {
             width: 15%;
             .avatar{
@@ -277,6 +244,56 @@ body {
 
         .ago {
             width: 10%;
+        }
+    }
+}
+
+.status {
+    width: 8%;
+    text-align: center;
+    [data-status] {
+        border: 1px solid;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 1px 5px;
+        font-size: 12px;
+        &[data-status="new"]{
+            color: #7545A5;
+            border-color: #7545A5;
+        }
+        &[data-status="send back"]{
+            color: #999;
+            border-color: #999;
+        }
+        &[data-status="completed"]{
+            color: brown;
+            border-color: brown;
+        }
+        &[data-status="done"]{
+            color: #45B3AB;
+            border-color: #45B3AB;
+        }
+        &[data-status="on hold"]{
+            color: #EFB730;
+            border-color: #EFB730;
+        }
+
+    }
+}
+
+.priority {
+    [data-priority] {
+        display: inline-block;
+        padding: 1px 5px;
+        font-size: 12px;
+        font-family: 'icomoon' !important;
+        &[data-priority="high"]:before {
+            content: "\e904";
+            color: brown;
+        }
+        &[data-priority="low"]:before {
+            content: "\e905";
+            color: #45B3AB;
         }
     }
 }

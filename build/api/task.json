@@ -4,7 +4,7 @@
     "name": "task_1",
     "date_create": "01.01.2015",
     "date_finish": "01.01.2016",
-    "status": 1,
+    "status": "completed",
     "priority": "high",
     "assignee": "dean_neal",
     "date": "12.12.2015",
