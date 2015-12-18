@@ -21,6 +21,14 @@
 
 			<div class="dashboard-header_progress dashboard-header_unit">
 				<div>Senior developer</div>
+
+				<div class="progress">
+					<span></span>
+				</div>
+
+				<div class="lvl">
+					Level <span>23</span>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -83,7 +83,31 @@ body {
         width: 350px;
         color: #fff;
         background-color: #393543;
-        padding: 0 20px;
+        padding: 5px 20px;
+
+        .progress {
+            margin-top: 3px;
+            width: 100%;
+            background: #ccc;
+            height: 5px;
+            border-radius: 5px;
+
+            span {
+                border-radius: 5px;
+                display: block;
+                height: 100%;
+                width: 75%;
+                background-color: green;
+            }
+        }
+
+        .lvl {
+            font-size: 14px;
+            
+            span {
+                font-size: 18px;
+            }
+        }
     }
 
     &-header_unit {
