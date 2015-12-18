@@ -255,8 +255,13 @@ body {
         border: 1px solid;
         border-radius: 5px;
         display: inline-block;
-        padding: 1px 5px;
+        padding: 0 10px;
         font-size: 12px;
+        font-weight: 600;
+        line-height: 17px;
+        &:first-letter{
+            text-transform: uppercase;
+        }
         &[data-status="new"]{
             color: #7545A5;
             border-color: #7545A5;

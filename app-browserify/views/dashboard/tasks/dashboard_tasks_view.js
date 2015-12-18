@@ -22,11 +22,13 @@ var TaskList = BaseView.extend({
 var ContentView = RoutedView.extend({
 	className: 'tasks full-size have-filter',
 	template: dashboardTpl,
-	routes: {
-		'edit': TaskEditView
+	events: {
+		'click .task-item' : 'onItemClick'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
+		
+		this.params = params;
 
 		this.addView(TasksFiltersView, {}, '.filters-container');
 	},
@@ -42,13 +44,21 @@ var ContentView = RoutedView.extend({
 
 		return deferred.promise();
 	},
-	beforeChangeStage: function (params) {
-		var deferred = $.Deferred();
-		this.serviceData = {
-			href: this.api.getUrl(this.tasksCollection, params.query ? params.query.id : null)
-		};
-		deferred.resolve(true);
-		return deferred.promise();
+	onItemClick: function(){
+		this.beforeModelUpdate(this.params);
+	},
+	beforeModelUpdate: function(params){
+		
+		if(params.query){
+			var href =  this.api.getUrl(this.tasksCollection, params.query ? params.query.id : null);
+			if(!this.editView){
+				this.editView = this.addView(TaskEditView, {href: href});
+				this.renderNestedView(this.editView,  '.edit-block');
+			}
+			
+			this.editView.updateModel(href);
+		}
+			
 	}
 });
 

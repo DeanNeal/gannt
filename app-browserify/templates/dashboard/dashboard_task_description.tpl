@@ -1,8 +1,8 @@
 <div>
 	<div class="description">
-		<span><span class="icon-radio-unchecked"></span> #<%=id%>: <%=name%></span>
-		<p name="description"></p>
-
+		<span class="name"><span class="icon-radio-unchecked"></span> #<%=id%>: <%=name%></span>
+		<p name="description"></p><a href="">See more</a>
+		
 		<a class="close-icon" href="#dashboard/tasks">
 			<span class="icon-cross"></span>
 		</a>

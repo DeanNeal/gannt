@@ -26,6 +26,9 @@ var ContentView = BaseView.extend({
 		this.api.updateResourceByUrl(this.link, {data: _.clone(this.model.attributes)}).then(function (response) {
 			console.log(response);
 		})
+	},
+	updateModel: function(model){
+		this.model.set(model);
 	}
 });
 

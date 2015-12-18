@@ -11,16 +11,19 @@ var ContentView = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 
-		this.link = params.serviceData.href;
-
-		this.api.getResourceByUrl(this.link).then(function (response) {
+		this.api.getResourceByUrl(params.href).then(function (response) {
 			var model = new TaskDescriptionModel(response.data);
 			this.descr = this.addView(TaskDescriptionView, {model: model});
 			this.renderNestedView(this.descr, '.task-description')
 		}.bind(this));
 	},
 	onRender: function () {
-		this.parent.getElement('.bb-route-container').addClass('active-task');
+
+	},
+	updateModel: function(href){
+		this.api.getResourceByUrl(href).then(function (response) {
+			this.descr.updateModel(response.data);
+		}.bind(this));
 	}
 });
 

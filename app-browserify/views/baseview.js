@@ -22,7 +22,6 @@ var BaseView = Backbone.View.extend({
         //this.subscribes  = {};
 
         this.api = Api.getInstance();
-        this.apiNew = apiNew;
 
         this.contentInternal = this.$el;
 
@@ -204,11 +203,14 @@ var BaseView = Backbone.View.extend({
     afterChangeStage: function(currentStage) {
         /*nothing to do*/
     },
+    beforeModelUpdate: function(params){
+        /*nothing to do*/
+    },
     changeStage: function(params) {
         if (params.stagesArray[0]) {
             this.beforeChangeStage(params).then(function(data) {
 
-                if (this.currentStage !== params.stagesArray[0] || !params.stagesArray[1]) { // if current stage is already rendered and next stage doesn't exist
+                if (this.currentStage !== params.stagesArray[0]/* || !params.stagesArray[1]*/) { // if current stage is already rendered and next stage doesn't exist
                     if (this.nextStage) // if current view exist we have to remove it
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
@@ -230,9 +232,18 @@ var BaseView = Backbone.View.extend({
                     this.nextStage.loaded = true;
                     this.nextStage.beforeLoad({query: params.query}).then(function(){
                         this.nextStage.changeStage(params); // start again without current stage
+
+                        this.nextStage.beforeModelUpdate(params);
+
                     }.bind(this));
                 } else
                     this.nextStage.changeStage(params); // start again without current stage
+
+
+
+
+
+
 
             }.bind(this));
         }

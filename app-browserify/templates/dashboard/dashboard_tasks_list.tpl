@@ -4,7 +4,7 @@
 			<td class="name">
 				<div>
 					<i class="icon-radio-unchecked"></i>
-					<a href="#dashboard/tasks/edit/?id=<%=item.id%>">
+					<a class="task-item" href="#dashboard/tasks/?id=<%=item.id%>">
 						#<%=item.id%>: <%=item.name%>
 					</a>
 				</div>

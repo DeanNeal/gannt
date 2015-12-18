@@ -1,24 +1,73 @@
 {
     "data": [{
-        "id": "1",
-        "name": "milestones_1",
-        "links": [{
-            "id": "milestones",
-            "href": "http://localhost:3000/milestones/1"
-        }]
-    }, {
-        "id": "2",
-        "name": "milestones_2",
-        "links": [{
-            "id": "milestones",
-            "href": "http://localhost:3000/milestones/2"
-        }]
-    }, {
-        "id": "3",
-        "name": "milestones_3",
-        "links": [{
-            "id": "milestones",
-            "href": "http://localhost:3000/milestones/3"
-        }]
+      "id": "1",
+      "name": "milestones_1",
+      "priority": "high",
+      "status": "new",
+      "assignee": "Dean Neal",
+      "date": "12/12/2015",
+      "ago": "5 days",
+      "links": [
+        {
+          "id": "milestones",
+          "href": "build/api/mileston.json"
+        }
+      ]
+    },{
+      "id": "2",
+      "name": "milestones_2",
+      "priority": "high",
+      "status": "new",
+      "assignee": "Dean Neal",
+      "date": "12/12/2015",
+      "ago": "5 days",
+      "links": [
+        {
+          "id": "milestones",
+          "href": "build/api/mileston.json"
+        }
+      ]
+    },{
+      "id": "3",
+      "name": "milestones_3",
+      "priority": "high",
+      "status": "new",
+      "assignee": "Dean Neal",
+      "date": "12/12/2015",
+      "ago": "5 days",
+      "links": [
+        {
+          "id": "milestones",
+          "href": "build/api/mileston.json"
+        }
+      ]
+    },{
+      "id": "4",
+      "name": "milestones_4",
+      "priority": "high",
+      "status": "new",
+      "assignee": "Dean Neal",
+      "date": "12/12/2015",
+      "ago": "5 days",
+      "links": [
+        {
+          "id": "milestones",
+          "href": "build/api/mileston.json"
+        }
+      ]
+    },{
+      "id": "5",
+      "name": "milestones_5",
+      "priority": "high",
+      "status": "new",
+      "assignee": "Dean Neal",
+      "date": "12/12/2015",
+      "ago": "5 days",
+      "links": [
+        {
+          "id": "milestones",
+          "href": "build/api/mileston.json"
+        }
+      ]
     }]
 }
