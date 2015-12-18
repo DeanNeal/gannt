@@ -103,7 +103,7 @@ body {
 
         .lvl {
             font-size: 14px;
-            
+
             span {
                 font-size: 18px;
             }
@@ -348,6 +348,10 @@ body {
 
     .right-filters {
         float: right;
+
+        ul {
+            margin-right: 20px;
+        }
     }
 
     .btn-add-new {
@@ -396,7 +400,11 @@ body {
     }
 
     .custom-filters {
-        margin-right: 20px;
+        border-bottom: 1px solid #b8b8ba;
+
+        i {
+            font-size: 12px;
+        }
     }
 }
 

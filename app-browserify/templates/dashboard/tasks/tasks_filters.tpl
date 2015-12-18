@@ -18,13 +18,17 @@
 	</div>
 
 	<div class="right-filters">
-		<ul class="custom-filters">
+		<ul class="">
 			<li>
-				<a href="">Milestone</a>
+				<div class="custom-filters">
+					Milestone <i class="icon-radio-unchecked"></i>
+				</div>
 			</li>
 
 			<li>
-				<a href="">Major</a>
+				<div class="custom-filters">
+					Major <i class="icon-radio-unchecked"></i>
+				</div>
 			</li>
 		</ul>
 
