@@ -232,19 +232,10 @@ var BaseView = Backbone.View.extend({
                     this.nextStage.loaded = true;
                     this.nextStage.beforeLoad({query: params.query}).then(function(){
                         this.nextStage.changeStage(params); // start again without current stage
-
-                        this.nextStage.beforeModelUpdate(params);
-
                     }.bind(this));
                 } else
                     this.nextStage.changeStage(params); // start again without current stage
-
-
-
-
-
-
-
+                    
             }.bind(this));
         }
     }

@@ -14,7 +14,7 @@ var ContentView = BaseView.extend({
 		this.api.getResourceByUrl(params.href).then(function (response) {
 			var model = new TaskDescriptionModel(response.data);
 			this.descr = this.addView(TaskDescriptionView, {model: model});
-			this.renderNestedView(this.descr, '.task-description')
+			this.renderNestedView(this.descr, '.task-description');
 		}.bind(this));
 	},
 	onRender: function () {

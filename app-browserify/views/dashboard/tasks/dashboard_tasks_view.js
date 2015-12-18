@@ -19,18 +19,16 @@ var TaskList = BaseView.extend({
 	}
 });
 
-var ContentView = RoutedView.extend({
+var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter',
 	template: dashboardTpl,
-	events: {
-		'click .task-item' : 'onItemClick'
-	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		
 		this.params = params;
 
 		this.addView(TasksFiltersView, {}, '.filters-container');
+		Backbone.on('change:page', this.onPageChange, this);
 	},
 	beforeLoad: function (params) {
 		var deferred = $.Deferred();
@@ -44,8 +42,8 @@ var ContentView = RoutedView.extend({
 
 		return deferred.promise();
 	},
-	onItemClick: function(){
-		this.beforeModelUpdate(this.params);
+	onPageChange: function(params){
+		this.beforeModelUpdate(params);
 	},
 	beforeModelUpdate: function(params){
 		
@@ -58,8 +56,13 @@ var ContentView = RoutedView.extend({
 			
 			this.editView.updateModel(href);
 		}
-			
+
+		if(!params.query && this.editView){
+			this.editView.remove();
+			this.editView = undefined;
+		}
 	}
+	
 });
 
 module.exports = ContentView;
