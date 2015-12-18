@@ -100,6 +100,8 @@ var BaseView = Backbone.View.extend({
     /**
      * Method adds new nested view
      * @param view
+     * @param params object
+     * @param targetElement
      */
     addView: function(view, params, targetElement) {
         params = params || {};
