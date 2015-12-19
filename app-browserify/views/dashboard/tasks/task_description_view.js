@@ -28,6 +28,7 @@ var ContentView = BaseView.extend({
 		})
 	},
 	updateModel: function(model){
+		console.log(model);
 		this.model.set(model);
 	}
 });

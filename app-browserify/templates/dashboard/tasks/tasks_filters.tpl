@@ -2,23 +2,23 @@
 	<div class="left-filters">
 		<a class="btn-add-new" href="">+</a>
 
-		<ul class="base-filters">
+<!-- 		<ul class="base-filters">
 			<li data-active="true">
-				<a href="">All</a>
+				<a href="#dashboard/tasks/?filter=all">All</a>
 			</li>
 
 			<li>
-				<a href="">To Do</a>
+				<a href="#dashboard/tasks/?filter=todo">To Do</a>
 			</li>
 
 			<li>
-				<a href="">My tasks</a>
+				<a href="#dashboard/tasks/?filter=my_tasks">My tasks</a>
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 
 	<div class="right-filters">
-		<ul class="">
+<!-- 		<ul class="">
 			<li>
 				<div class="custom-filters">
 					Milestone <i class="icon-radio-unchecked"></i>
@@ -30,7 +30,18 @@
 					Major <i class="icon-radio-unchecked"></i>
 				</div>
 			</li>
-		</ul>
+		</ul> -->
+
+		<select>
+			<option value="">Milestone</option>
+			<option value="">2</option>
+			<option value="">3</option>
+		</select>
+		<select>
+			<option value="">Major</option>
+			<option value="">2</option>
+			<option value="">3</option>
+		</select>
 
 		<a class="btn-add-new" href="">+</a>
 	</div>

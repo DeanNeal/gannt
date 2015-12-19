@@ -46,7 +46,7 @@ var ContentView = BaseView.extend({
 	},
 	beforeModelUpdate: function(params){
 		
-		if(params.query){
+		if(params.query && params.query.id){
 			var href =  this.api.getUrl(this.tasksCollection, params.query ? params.query.id : null);
 			if(!this.editView){
 				this.editView = this.addView(TaskEditView, {href: href});
