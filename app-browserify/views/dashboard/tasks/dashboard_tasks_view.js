@@ -32,9 +32,6 @@ var ContentView = BaseView.extend({
 	template: dashboardTpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		
-		this.params = params;
-
 		this.addView(TasksFiltersView, {}, '.filters-container');
 	},
 	beforeLoad: function (params) {

@@ -29,6 +29,8 @@ var BaseView = Backbone.View.extend({
 
         this.isRendered = false;
 
+        this.stage = params ? params.stage : null;
+
         this.data = {};
 
         this.nestedViews = [];
@@ -222,8 +224,7 @@ var BaseView = Backbone.View.extend({
 
                     this.nextStage = this.addView(this.routes[params.stagesArray[0]], {
                         stage: params.stagesArray[0],
-                        query: params.query,
-                        serviceData: this.serviceData
+                        query: params.query
                     }, target);
                     this.renderNestedView(this.nextStage, target);
                 }

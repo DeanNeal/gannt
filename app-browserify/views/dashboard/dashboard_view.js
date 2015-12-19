@@ -8,7 +8,7 @@ var BaseView         = require('views/baseview'),
     PulseView        = require('views/dashboard/pulse/dashboard_pulse_view'),
     tasksView        = require('views/dashboard/tasks/dashboard_tasks_view'),
     milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view'),
-    projectsView     = require('views/dashboard/dashboard_projects_view');
+    projectsView     = require('views/dashboard/projects/dashboard_projects_view');
 
 var ContentView = RoutedView.extend({
     tagName: 'div',

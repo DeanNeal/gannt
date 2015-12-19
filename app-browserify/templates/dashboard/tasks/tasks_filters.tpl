@@ -18,15 +18,15 @@
 	</div>
 
 	<div class="right-filters">
-		<select>
+		<select class="type">
 			<option value="">Milestone</option>
 			<option value="">2</option>
 			<option value="">3</option>
 		</select>
-		<select>
-			<option value="">Major</option>
-			<option value="">Critical</option>
-			<option value="">Minor</option>
+		<select class="priority">
+			<option value="#dashboard/tasks/?priority=major">Major</option>
+			<option value="#dashboard/tasks/?priority=critical">Critical</option>
+			<option value="#dashboard/tasks/?priority=minor">Minor</option>
 		</select>
 
 		<a class="btn-add-new" href="">+</a>
