@@ -13,11 +13,11 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		this.taskDescrModel = new TaskDescriptionModel();
 	},
-	updateModel: function(href){
-		this.api.getResourceByUrl(href).then(function (response) {
+	updateModel: function(link){
+		this.api.getResourceByUrl(link).then(function (response) {
 			if(!this.descr){			
 				this.taskDescrModel.set(response.data);
-				this.descr = this.addView(TaskDescriptionView, {model: this.taskDescrModel});
+				this.descr = this.addView(TaskDescriptionView, {model: this.taskDescrModel, link: link});
 				this.renderNestedView(this.descr, '.task-description');
 			} else
 				this.descr.updateModel(response.data);

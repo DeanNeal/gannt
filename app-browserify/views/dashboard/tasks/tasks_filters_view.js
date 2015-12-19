@@ -40,6 +40,7 @@ var ContentView =  BaseView.extend({
     changeFilter: function(e){
     	e.preventDefault();
 
+        //Backbone.history.navigate(url, { trigger: true });
     }
 });
 

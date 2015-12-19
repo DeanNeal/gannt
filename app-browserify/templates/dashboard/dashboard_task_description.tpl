@@ -1,8 +1,10 @@
 <div>
 	<div class="description">
 		<span class="name"><span class="icon-radio-unchecked"></span> #<%=id%>: <%=name%></span>
-		<p name="description"></p><a href="">See more</a>
-		
+		<p name="description"></p>
+		<div>
+			<a href="">See more</a>
+		</div>
 		<a class="close-icon" href="#dashboard/tasks">
 			<span class="icon-cross"></span>
 		</a>
@@ -19,18 +21,18 @@
 					<li>
 						<span class="details-table_term">Priority:</span>
 						<span class="details-table_description priority">
-							<span data-priority="<%=priority%>"></span> <%=priority%>
+							<span data-priority name="priority"></span>
 						</span>
 					</li>
 					<li>
 						<span class="details-table_term">Status:</span>
 						<span class="details-table_description status">
-							<span data-status="<%=status%>"><%=status%></span>
+							<span data-status name="status"></span>
 						</span>
 					</li>
 					<li>
 						<span class="details-table_term">Assignee:</span>
-						<span class="details-table_description"><%=assignee%></span>
+						<span class="details-table_description" name="assignee"></span>
 					</li>
 					<li>
 						<span class="details-table_term">Type:</span>
@@ -43,13 +45,13 @@
 					<li>
 						<span class="details-table_term">Start:</span>
 						<span class="details-table_description">
-							<span class="date-icon start"><%=date_create%></span>
+							<span class="date-icon start" name="date_create"></span>
 						</span>
 					</li>
 					<li>
 						<span class="details-table_term">Deadline:</span>
 						<span class="details-table_description">
-							<span class="date-icon finish"><%=date_finish%></span>
+							<span class="date-icon finish" name="date_finish"></span>
 						</span>
 					</li>
 					<li>
@@ -62,7 +64,8 @@
 					</li>
 				</ul>
 
-				<!--<button>Update</button>-->
+				<button class="save">Save</button>
+				<button class="delete">Delete</button>
 			</div>
 		</div>
 	</div>

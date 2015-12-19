@@ -1,9 +1,10 @@
-var Backbone   = require('backbone'),
-    $          = require('jquery'),
-    GlobalView = require('./views/globalview'),
-    Router     = require('./router/router'),
-    Helpers    = require('./Helpers'),
-    Api        = require('api');
+var Backbone       = require('backbone'),
+    $              = require('jquery'),
+    GlobalView     = require('./views/globalview'),
+    Router         = require('./router/router'),
+    Helpers        = require('./Helpers'),
+    Api            = require('api'),
+    ModelBinder    = require('backbone.modelbinder');
  
 
 

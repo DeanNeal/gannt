@@ -11,11 +11,19 @@ var Backbone              = require('backbone'),
 var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	className: 'task-list',
+	events: {
+		'click tr': 'changeTask'
+	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
+	},
+	changeTask: function(e){
+		var url = $(e.currentTarget).data('href');
+		
+		Backbone.history.navigate(url, { trigger: true });
 	}
 });
 

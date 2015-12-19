@@ -1,8 +1,7 @@
 var Backbone       = require('backbone'),
      _             = require('underscore'),
     BaseView       = require('views/baseview'),
-    navListItemTpl = require('templates/elements/nav_list_item.tpl'),
-    ModelBinder    = require('backbone.modelbinder');
+    navListItemTpl = require('templates/elements/nav_list_item.tpl');
 
 var listItemView = BaseView.extend({
     tagName: 'li',

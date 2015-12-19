@@ -151,6 +151,7 @@ body {
                 border-bottom: 1px solid #E2E2E4;
                 position: relative;
                 display: block;
+                cursor: pointer;
                 &:hover{
                     background: #fff;
                     box-shadow: 0 0 5px -2px #777;
@@ -170,11 +171,11 @@ body {
                 display: inline-block;
                // vertical-align: top;
                 padding: 3px 10px;
-                a{
-                    text-decoration: none;
-                    color: #000;
-                    font-family: "Open Sans", Arial;
-                }
+                // a{
+                //     text-decoration: none;
+                //     color: #000;
+                //     font-family: "Open Sans", Arial;
+                // }
             }
         }
 
@@ -244,6 +245,7 @@ body {
         display: inline-block;
         padding: 1px 5px;
         font-size: 12px;
+        font-weight: 600;
 
         &[data-status="new"] {
             color: #7545A5;

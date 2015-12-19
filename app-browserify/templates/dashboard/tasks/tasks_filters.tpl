@@ -18,20 +18,6 @@
 	</div>
 
 	<div class="right-filters">
-<!-- 		<ul class="">
-			<li>
-				<div class="custom-filters">
-					Milestone <i class="icon-radio-unchecked"></i>
-				</div>
-			</li>
-
-			<li>
-				<div class="custom-filters">
-					Major <i class="icon-radio-unchecked"></i>
-				</div>
-			</li>
-		</ul> -->
-
 		<select>
 			<option value="">Milestone</option>
 			<option value="">2</option>
@@ -39,8 +25,8 @@
 		</select>
 		<select>
 			<option value="">Major</option>
-			<option value="">2</option>
-			<option value="">3</option>
+			<option value="">Critical</option>
+			<option value="">Minor</option>
 		</select>
 
 		<a class="btn-add-new" href="">+</a>
