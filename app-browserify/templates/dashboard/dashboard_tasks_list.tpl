@@ -1,6 +1,6 @@
 <table class="dashboard-table">
 	<% _.each(data, function(item){ %>
-		<tr data-href="#dashboard/tasks/?id=<%=item.id%>">
+		<tr data-href="#dashboard/tasks?id=<%=item.id%>">
 			<td class="name">
 				<div>
 					<i class="icon-radio-unchecked"></i>

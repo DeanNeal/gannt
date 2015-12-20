@@ -108,11 +108,11 @@
             height: 100%;
             box-shadow: 0 0 56px -5px #000;
 
-            // -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
-            //    -moz-animation: fadein 0.5s; /* Firefox < 16 */
-            //     -ms-animation: fadein 0.5s; /* Internet Explorer */
-            //      -o-animation: fadein 0.5s; /* Opera < 12.1 */
-            //         animation: fadein 0.5s;
+            -webkit-animation: fadein 0.8s; /* Safari, Chrome and Opera > 12.1 */
+               -moz-animation: fadein 0.8s; /* Firefox < 16 */
+                -ms-animation: fadein 0.8s; /* Internet Explorer */
+                 -o-animation: fadein 0.8s; /* Opera < 12.1 */
+                    animation: fadein 0.8s;
 
             .close-icon {
                 color: #817E81;
@@ -140,30 +140,30 @@
 
 
 @keyframes fadein {
-    from { top: -3000px; }
-    to   { top: 0 }
+    from { right: -3000px; }
+    to   { right: 0 }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { top: -3000px; }
-    to   { top: 0 }
+    from { right: -3000px; }
+    to   { right: 0 }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { top: -3000px; }
-    to   { top: 0 }
+    from { right: -3000px; }
+    to   { right: 0 }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { top: -3000px; }
-    to   { top: 0 }
+    from { right: -3000px; }
+    to   { right: 0 }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { top: -3000px; }
-    to   { top: 0 }
+    from { right: -3000px; }
+    to   { right: 0 }
 }

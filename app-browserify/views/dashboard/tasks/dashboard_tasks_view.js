@@ -24,6 +24,12 @@ var TaskList = BaseView.extend({
 		var url = $(e.currentTarget).data('href');
 		
 		Backbone.history.navigate(url, { trigger: true });
+	},
+	updateTaskList: function(query){
+		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
+			this.collection = response.data;
+			this.render(true);
+		}.bind(this));
 	}
 });
 
@@ -36,8 +42,8 @@ var ContentView = BaseView.extend({
 	},
 	beforeLoad: function (params) {
 		var deferred = $.Deferred();
-
-		this.api.getResousceFromCatalog('tasks').then(function (response) {
+		
+		this.api.getResousceFromCatalog('tasks', params.query).then(function (response) {
 			this.tasksCollection = response.data;
 			this.taskList = this.addView(TaskList, {collection: response.data});
 			this.renderNestedView(this.taskList, '.task-list');
@@ -47,10 +53,6 @@ var ContentView = BaseView.extend({
 		return deferred.promise();
 	},
 	beforeChangeParams: function(params){
-		this.beforeModelUpdate(params);
-	},
-	beforeModelUpdate: function(params){
-		
 		if(params.query && params.query.id){
 			var href =  this.api.getUrl(this.tasksCollection, params.query ? params.query.id : null);
 			if(!this.editView){
@@ -59,6 +61,10 @@ var ContentView = BaseView.extend({
 			}
 			this.editView.updateModel(href);
 		}
+
+		if(params.query && (params.query.filter || params.query.sort))
+			this.taskList.updateTaskList(params.query);
+
 
 		if(!params.query && this.editView){
 			this.editView.remove();

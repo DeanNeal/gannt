@@ -19,6 +19,7 @@ ul {
 
 html,
 body {
+    overflow: hidden;
     @extend .full-size;
 }
 

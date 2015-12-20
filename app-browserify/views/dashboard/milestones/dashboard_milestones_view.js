@@ -5,7 +5,7 @@ var Backbone = require('backbone'),
 
 var milestonesList = BaseView.extend({
     template: tpl,
-    className: 'task-list',
+    className: 'milestones-list',
     onInitialize: function(params){
         BaseView.prototype.onInitialize.call(this, params);
     },

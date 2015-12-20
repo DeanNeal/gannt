@@ -14,6 +14,7 @@ var ContentView = BaseView.extend({
 		this.taskDescrModel = new TaskDescriptionModel();
 	},
 	updateModel: function(link){
+		
 		this.api.getResourceByUrl(link).then(function (response) {
 			if(!this.descr){			
 				this.taskDescrModel.set(response.data);

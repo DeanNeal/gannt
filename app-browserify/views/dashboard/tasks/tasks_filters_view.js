@@ -13,15 +13,15 @@ var ContentView =  BaseView.extend({
     leftFilter: [{
         name: "All",
         id: "all",
-        route: "dashboard/tasks/?filter=all"
+        route: "filter=all"
     }, {
         name: "To Do",
         id: "todo",
-        route: "dashboard/tasks/?filter=todo"
+        route: "filter=todo"
     }, {
         name: "My tasks",
         id: "my_tasks",
-        route: "dashboard/tasks/?filter=my_tasks"
+        route: "filter=my_tasks"
     }],
     events: {
     	'click .menu-item': 'changeFilter',
@@ -31,19 +31,23 @@ var ContentView =  BaseView.extend({
         BaseView.prototype.onInitialize.call(this, params);
         this.leftFilters = this.leftFilter;
 
+        this.route = location.hash.split('?')[0] + '?';
+
         this.addView(BaseListView, {
             itemTpl: leftFilterItemTpl,
             className: 'base-filters',
             collection: new navBarCollection(this.leftFilters)
         }, '.left-filters');
     },
-
+    getRouteWithParams: function(){
+        return this.route + this.getElement('[data-active="true"]').attr('href') + "&" + this.getElement('.priority').val();
+    },
     changeFilter: function(e){
     	e.preventDefault();
-        Backbone.history.navigate($(e.currentTarget).attr('href'), { trigger: true });
+        Backbone.history.navigate(this.getRouteWithParams(), { trigger: true });
     },
     changePriority: function(e){
-        Backbone.history.navigate($(e.currentTarget).val(), { trigger: true });
+        Backbone.history.navigate(this.getRouteWithParams(), { trigger: true });
     }
 });
 

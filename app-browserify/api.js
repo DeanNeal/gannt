@@ -23,11 +23,11 @@ Api.prototype.getCatalog = function () {
 	return deferred.promise();
 };
 
-Api.prototype.getResousceFromCatalog = function (resourceName) {
+Api.prototype.getResousceFromCatalog = function (resourceName, data) {
 	var url      = _.findWhere(this.catalog.links, {id: resourceName}).href,
 	    deferred = $.Deferred();
 
-	$.get(url, function (data) {
+	$.get(url, data, function (data) {
 		deferred.resolve(data);
 	}.bind(this));
 
@@ -37,6 +37,10 @@ Api.prototype.getResousceFromCatalog = function (resourceName) {
 Api.prototype.getUrl = function (collection, id) {
 	var model = _.findWhere(collection, {id: id});
 	return (model) ? model.links[0].href : '';
+};
+
+Api.prototype.getUrlFromCatalog = function (resourceName) {
+	return _.findWhere(this.catalog.links, {id: resourceName}).href;
 };
 
 function generateQuery(data) {
@@ -49,10 +53,11 @@ function generateQuery(data) {
 	return deferred.promise();
 }
 
-Api.prototype.getResourceByUrl = function (url) {
+Api.prototype.getResourceByUrl = function (url , data) {
 	return generateQuery({
 		method: 'get',
-		url: url
+		url: url,
+		data: data
 	});
 };
 
