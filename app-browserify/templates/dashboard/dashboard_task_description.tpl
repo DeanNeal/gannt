@@ -5,9 +5,6 @@
 		<div>
 			<a href="">See more</a>
 		</div>
-		<a class="close-icon" href="#dashboard/tasks">
-			<span class="icon-cross"></span>
-		</a>
 	</div>
 	<div class="info-container">
 		<div class="info">

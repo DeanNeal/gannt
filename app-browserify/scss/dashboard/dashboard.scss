@@ -108,11 +108,11 @@
             height: 100%;
             box-shadow: 0 0 56px -5px #000;
 
-            -webkit-animation: fadein 0.8s; /* Safari, Chrome and Opera > 12.1 */
-               -moz-animation: fadein 0.8s; /* Firefox < 16 */
-                -ms-animation: fadein 0.8s; /* Internet Explorer */
-                 -o-animation: fadein 0.8s; /* Opera < 12.1 */
-                    animation: fadein 0.8s;
+            // -webkit-animation: fadein 0.8s; /* Safari, Chrome and Opera > 12.1 */
+            //    -moz-animation: fadein 0.8s; /* Firefox < 16 */
+            //     -ms-animation: fadein 0.8s; /* Internet Explorer */
+            //      -o-animation: fadein 0.8s; /* Opera < 12.1 */
+            //         animation: fadein 0.8s;
 
             .close-icon {
                 color: #817E81;
@@ -120,6 +120,8 @@
                 position: absolute;
                 top: 10px;
                 right: 10px;
+                z-index: 100;
+                cursor: pointer;
             }
             .description {
                 padding: 20px 20px;

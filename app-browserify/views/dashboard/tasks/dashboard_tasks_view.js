@@ -11,19 +11,11 @@ var Backbone              = require('backbone'),
 var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	className: 'task-list',
-	events: {
-		'click tr': 'changeTask'
-	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
-	},
-	changeTask: function(e){
-		var url = $(e.currentTarget).data('href');
-		
-		Backbone.history.navigate(url, { trigger: true });
 	},
 	updateTaskList: function(query){
 		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
@@ -36,6 +28,10 @@ var TaskList = BaseView.extend({
 var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter',
 	template: dashboardTpl,
+	events: {
+		'click .dashboard-table tr'         : 'changeTask',
+		'click .close-icon'                 : 'closeEdit'
+	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.addView(TasksFiltersView, {}, '.filters-container');
@@ -53,23 +49,23 @@ var ContentView = BaseView.extend({
 		return deferred.promise();
 	},
 	beforeChangeParams: function(params){
-		if(params.query && params.query.id){
-			var href =  this.api.getUrl(this.tasksCollection, params.query ? params.query.id : null);
-			if(!this.editView){
-				this.editView = this.addView(TaskEditView, {href: href});
-				this.renderNestedView(this.editView,  '.edit-block');
-			}
-			this.editView.updateModel(href);
-		}
-
 		if(params.query && (params.query.filter || params.query.sort))
 			this.taskList.updateTaskList(params.query);
-
-
-		if(!params.query && this.editView){
-			this.editView.remove();
-			this.editView = undefined;
+	},
+	changeTask: function(e){
+		var id   = $(e.currentTarget).data('id'),
+			href = this.api.getUrl(this.tasksCollection, id);
+		
+		if(!this.editView){
+			this.editView = this.addView(TaskEditView, {href: href});
+			this.renderNestedView(this.editView, '.edit-block');
 		}
+
+		this.editView.updateModel(href);
+	},
+	closeEdit: function(){
+		this.removeNestedView(this.editView);
+		this.editView = undefined;
 	}
 	
 });

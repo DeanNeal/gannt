@@ -7,9 +7,6 @@ var Backbone       = require('backbone'),
     ModelBinder    = require('backbone.modelbinder');
  
 
-
-
-
 var api = Api.getInstance('build/api/catalog.json');
 
 api.getCatalog().then(function() {
