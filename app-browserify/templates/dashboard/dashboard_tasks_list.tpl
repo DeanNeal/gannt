@@ -8,6 +8,10 @@
 				</div>
 			</td>
 
+			<td class="no-name">
+				<div>Pupkin</div>
+			</td>
+
 			<td class="priority">
 				<div><%=item.priority%></div>
 			</td>
