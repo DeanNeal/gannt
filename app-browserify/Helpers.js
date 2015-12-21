@@ -14,6 +14,13 @@ var Helpers = {
         
         return params;
     },
+    serializeModel: function(model) {
+        if(!model) return null;
+
+        return Object.keys(model).map(function(key){ 
+            return encodeURIComponent(key) + '=' + encodeURIComponent(model[key]);
+        }).join('&');
+    },
     createLinks: function(links, stage) {
         var array = [];
         links.forEach(function(item, i) { 

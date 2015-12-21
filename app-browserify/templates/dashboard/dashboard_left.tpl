@@ -1,1 +1,0 @@
-<h1>Left side of the dashboard</h1>

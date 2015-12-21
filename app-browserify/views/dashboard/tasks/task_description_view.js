@@ -34,6 +34,10 @@ var ContentView = BaseView.extend({
     },
     updateModel: function(model) {
         this.model.set(model);
+    },
+    remove : function () {
+        this.modelBinder.unbind();
+        BaseView.prototype.remove.call(this);
     }
 });
 

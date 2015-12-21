@@ -2,7 +2,7 @@ var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
     TaskDescriptionView  = require('views/dashboard/tasks/task_description_view'),
-    TaskDescriptionModel = require('models/dashboard/task_description_model'),
+    TaskDescriptionModel = require('models/dashboard/tasks_description_model'),
     tpl                  = require('templates/dashboard/dashboard_tasks_edit.tpl'),
     $                    = require('jquery');
 
@@ -13,8 +13,7 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		this.taskDescrModel = new TaskDescriptionModel();
 	},
-	updateModel: function(link){
-		
+	updateModel: function(link){		
 		this.api.getResourceByUrl(link).then(function (response) {
 			if(!this.descr){			
 				this.taskDescrModel.set(response.data);

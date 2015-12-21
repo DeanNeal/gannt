@@ -1,10 +1,15 @@
 <table class="dashboard-table">
 	<% _.each(data, function(item){ %>
-		<tr data-href="#dashboard/tasks?id=<%=item.id%>">
+		<tr data-id="<%=item.id%>">
 			<td class="name">
 				<div>
 					<i class="icon-radio-unchecked"></i>
 					<span>#<%=item.id%>: <%=item.name%></span>
+					<div class="tags">
+						<% _.each(item.tags.split(','), function(tag) { %>
+								<span><%=tag%></span>
+						<% }); %>
+					</div>
 				</div>
 			</td>
 

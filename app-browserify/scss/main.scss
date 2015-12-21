@@ -142,7 +142,55 @@ body {
             }
         }
     }
+    &-table-header{
+        width: 100%;
+        border-collapse: collapse;
+        & > tbody {
+            & > tr {
+                margin: 15px 0 0;
+                display: block;
+                box-shadow: 0 0 5px -1px #B7B7B7;
+                background: #e3e4e6;
+                border-top: 1px solid #D0D0D0;
+                border-bottom: 1px solid #DAD7D7;
+                padding: 10px 0;
+                td{
+                    display: inline-block;
+                    font-weight: 600;
+                    padding: 0 10px;
+                    cursor:pointer;
+                    .icon-arrow-down{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .name {
+            width: 25%;
+            margin-left: 10px;
+        }
 
+        .priority {
+            width: 5%;
+            text-align: center;
+        }
+
+        .assignee {
+            width: 15%;
+        }
+
+        .milestone {
+            width: 20%;
+        }
+
+        .date {
+            width: 10%;
+        }
+
+        .ago {
+            width: 10%;
+        }
+    }
     &-table {
         width: 100%;
         border-collapse: collapse;
@@ -170,13 +218,7 @@ body {
             
             & td {
                 display: inline-block;
-               // vertical-align: top;
                 padding: 3px 10px;
-                // a{
-                //     text-decoration: none;
-                //     color: #000;
-                //     font-family: "Open Sans", Arial;
-                // }
             }
         }
 
@@ -192,6 +234,12 @@ body {
                 color: #68ADF3;
                 font-size: 12px;
                 margin-right: 5px;
+            }
+            .tags{
+                display: inline-block;
+                span{
+                    font-size: 14px;
+                }
             }
         }
 
@@ -349,25 +397,26 @@ body {
 
 .have-filter {
     position: relative;
-    padding-top: 70px;
+    // padding-top: 108px;
 }
 
 .filters-container {
-    position: absolute;
+    // position: absolute;
     left: 0;
     right: 0;
     top: 0;
     background-color: #f3f3f5;
-    height: 70px;
-    padding: 20px 15px;
-    border-bottom: 1px solid #e3e3e5;
-
+    // height: 70px;
+    padding: 20px 0 10px;
+    // border-bottom: 1px solid #e3e3e5;
     .left-filters {
         float: left;
+        padding-left: 15px;
     }
 
     .right-filters {
         float: right;
+        padding-right: 15px;
 
         ul {
             margin-right: 20px;
@@ -403,17 +452,30 @@ body {
 
     .base-filters {
         margin-left: 20px;
-
-        li {
-            a {
-                color: #9a9a9a;
-                text-decoration: none;
-                &[data-active="true"] {
-                        color: #000;
-                        text-decoration: underline;
-                }
+        display: inline-block; 
+        span{
+            color: #9a9a9a;
+            cursor: pointer;
+        }
+        &[data-active="all"]{
+            [data-filter="all"]{
+                color: #000;
+                text-decoration: underline;
             }
         }
+        &[data-active="todo"]{
+            [data-filter="todo"]{
+                color: #000;
+                text-decoration: underline;
+            }
+        }
+        &[data-active="my_tasks"]{
+            [data-filter="my_tasks"]{
+                color: #000;
+                text-decoration: underline;
+            }
+        }
+
     }
 
     .custom-filters {
@@ -426,5 +488,8 @@ body {
 }
 
 .bb-route-container {
-    position: relative;
+}
+
+.overflow{
+    overflow: hidden;
 }
