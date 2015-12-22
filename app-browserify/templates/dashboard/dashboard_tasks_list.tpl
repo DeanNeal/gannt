@@ -3,7 +3,7 @@
 		<tr data-id="<%=item.id%>">
 			<td class="name">
 				<div>
-					<i class="icon-radio-unchecked"></i>
+					<i class="fa fa-bug"></i>
 					<span>#<%=item.id%>: <%=item.name%></span>
 					<div class="tags">
 						<% _.each(item.tags.split(','), function(tag) { %>

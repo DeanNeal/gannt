@@ -30,13 +30,13 @@
 	<table class="dashboard-table-header">
 		<tbody>
 			<tr>
-				<td class="name">Title <i class="icon-arrow-down"></i> </td>
-				<td class="priority">Priority <i class="icon-arrow-down"></i> </td>
-				<td class="status">Status <i class="icon-arrow-down"></i> </td>
-				<td class="assignee">Assignee <i class="icon-arrow-down"></i> </td>
-				<td class="milestone">Milestone <i class="icon-arrow-down"></i> </td>
-				<td class="date">Date <i class="icon-arrow-down"></i> </td>
-				<td class="ago">Ago <i class="icon-arrow-down"></i> </td>
+				<td class="name">Title <i class="fa fa-arrow-down"></i> </td>
+				<td class="priority">Priority <i class="fa fa-arrow-down"></i> </td>
+				<td class="status">Status <i class="fa fa-arrow-down"></i> </td>
+				<td class="assignee">Assignee <i class="fa fa-arrow-down"></i> </td>
+				<td class="milestone">Milestone <i class="fa fa-arrow-down"></i> </td>
+				<td class="date">Date <i class="fa fa-arrow-down"></i> </td>
+				<td class="ago">Ago <i class="fa fa-arrow-down"></i> </td>
 			</tr>
 		</tbody>
 	</table>

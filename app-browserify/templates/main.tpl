@@ -11,23 +11,23 @@
 		<div class="header_controls">
 			<div class="right-user-area">
 				<div class="right-user-area_unit">
-					<i class="icon-radio-unchecked"></i>
+					<i class="fa fa-search"></i>
 			    </div>
 
 			    <div class="right-user-area_unit">
-			        <i class="icon-radio-unchecked"></i>
+			        <i class="fa fa-envelope-o"></i>
 			    </div>
 
 			    <div class="right-user-area_unit">
-			        <i class="icon-radio-unchecked"></i>
+			        <i class="fa fa-bell-o"></i>
 			    </div>
 
 			    <div class="right-user-area_unit">
-			        <i class="icon-radio-unchecked"></i>
+			        <i class="fa fa-lock"></i>
 			    </div>
 
 			    <div class="right-user-area_unit">
-			    	<i class="icon-radio-unchecked"></i>
+			    	<i class="fa fa-plus-circle"></i>
 			    </div>
 
 			    <div class="right-user-area_unit">
