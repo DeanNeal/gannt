@@ -145,6 +145,8 @@ body {
     &-table-header{
         width: 100%;
         border-collapse: collapse;
+        display: none;
+
         & > tbody {
             & > tr {
                 margin: 15px 0 0;
@@ -395,9 +397,16 @@ body {
     }
 }
 
-.have-filter {
+.tasks {
     position: relative;
-    padding-top: 64px;
+
+    &.have-filter {
+        padding-top: 64px;
+    }
+    
+    &.have-sort {
+        padding-top: 145px;
+    }
 }
 
 .filters-container {
@@ -407,16 +416,16 @@ body {
     top: 0;
     background-color: #f3f3f5;
     // height: 70px;
-    padding: 20px 0 10px;
     // border-bottom: 1px solid #e3e3e5;
+
     .left-filters {
         float: left;
-        padding-left: 15px;
+        padding: 20px 0 10px 15px;
     }
 
     .right-filters {
-        float: right;
-        padding-right: 15px;
+        float: right;        
+        padding: 20px 15px 10px 0;
 
         ul {
             margin-right: 20px;

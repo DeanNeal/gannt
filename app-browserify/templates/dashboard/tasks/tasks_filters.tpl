@@ -1,4 +1,4 @@
-<div class="overflow">
+<div class="clearfix">
 	<div class="left-filters">
 		<a class="btn-add-new" href="">+</a>
 		<div class="base-filters" name="filter">
