@@ -33,7 +33,7 @@
 		<table>
 			<tbody>
 				<tr>
-					<td class="title list-item" data-sort="name">Title <i class="fa fa-arrow-down"></i> </td>
+					<td class="title list-item" data-sort="title">Title <i class="fa fa-arrow-down"></i> </td>
 					<td class="projects list-item" data-sort="projects">Projects <i class="fa fa-arrow-down"></i></td>
 					<td class="priority list-item" data-sort="priority">Priority <i class="fa fa-arrow-down"></i> </td>
 					<td class="status list-item" data-sort="status">Status <i class="fa fa-arrow-down"></i> </td>

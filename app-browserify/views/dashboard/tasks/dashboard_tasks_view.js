@@ -51,10 +51,10 @@ var ContentView = BaseView.extend({
 		return deferred.promise();
 	},
 	beforeChangeParams: function(params){
-		if(params.query){			
+		if(params.query)		
 			this.taskList.updateTaskList(params.query);
-			this.filter.updateFilterModel(params.query);
-		}
+
+		this.filter.updateFilterModel(params.query);
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

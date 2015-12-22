@@ -30,11 +30,17 @@ var ContentView = BaseView.extend({
 	},
 	updateFilterModel: function (model) {
 		this.model.set(model);
+		this.filterList.highlight();
+		this.sortList.highlight();
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
-		Plugins.setActiveStateAtList(this.getElement('.base-filters'),'filter');
-		Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'),'sort');
+
+		this.filterList = new Plugins(this.getElement('.base-filters'), 'filter');
+		this.sortList = new Plugins(this.getElement('.dashboard-table-header'), 'sort');
+
+		// Plugins.setActiveStateAtList(this.getElement('.base-filters'),'filter');
+		// Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'),'sort');
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
