@@ -12,8 +12,7 @@ var ContentView =  BaseView.extend({
     className : 'filters',
     events: {
     	'click .menu-item'   : 'changeFilter',
-        'change .priority'   : 'changePriority',
-        'click .open-filter' : 'toggleFilter'
+        'change .priority'   : 'changePriority'
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
@@ -50,10 +49,6 @@ var ContentView =  BaseView.extend({
     },
     changePriority: function(e){
         Backbone.history.navigate(this.getRouteWithParams(), { trigger: true });
-    },
-    toggleFilter: function(e){
-        e.preventDefault();
-        this.getElement('.dashboard-table-header').toggle().toggleClass('active');
     },
     remove : function () {
         this.modelBinder.unbind();

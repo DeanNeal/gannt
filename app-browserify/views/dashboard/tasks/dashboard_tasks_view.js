@@ -30,7 +30,8 @@ var ContentView = BaseView.extend({
 	template: dashboardTpl,
 	events: {
 		'click .dashboard-table tr'         : 'changeTask',
-		'click .close-icon'                 : 'closeEdit'
+		'click .close-icon'                 : 'closeEdit',
+		'click .open-filter'			 	:'toggleFilter'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -66,6 +67,11 @@ var ContentView = BaseView.extend({
 	closeEdit: function(){
 		this.removeNestedView(this.editView);
 		this.editView = undefined;
+	},
+	toggleFilter: function(e){
+	    e.preventDefault();
+	    this.getElement('.dashboard-table-header').toggle().toggleClass('active');
+	    this.$el.toggleClass('have-sort');
 	}
 	
 });
