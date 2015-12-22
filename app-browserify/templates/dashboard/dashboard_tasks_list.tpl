@@ -1,7 +1,7 @@
 <table class="dashboard-table">
 	<% _.each(data, function(item){ %>
 		<tr data-id="<%=item.id%>">
-			<td class="name">
+			<td class="title">
 				<div>
 					<i class="fa fa-bug"></i>
 					<span>#<%=item.id%>: <%=item.name%></span>
@@ -13,7 +13,7 @@
 				</div>
 			</td>
 
-			<td class="no-name">
+			<td class="projects">
 				<div>Pupkin</div>
 			</td>
 
@@ -39,11 +39,11 @@
 				</div>
 			</td>
 
-			<td class="date">
+			<td class="created">
 				<div><%=item.date%></div>
 			</td>
 
-			<td class="ago">
+			<td class="updated">
 				<div><%=item.ago%> ago</div>
 			</td>
 		</tr>

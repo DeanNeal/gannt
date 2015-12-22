@@ -1,27 +1,28 @@
 var $ = require('jquery');
 
-function highlight($this, $input) {
+function highlight($this, $input, param) {
 	$this.
-	     find('[data-filter="' + $input.val() + '"]').
+	     find('[data-'+param+'="' + $input.val() + '"]').
 	     addClass('active').
 	     siblings().
 	     removeClass('active');
 }
 
 var Plugins = {
-	setActiveStateAtList: function (elem) {
-		var $elem  = $(elem),
-		    $input = $elem.find('input');
+	setActiveStateAtList: function (wrapper, param) {
+		var $wrapper  = $(wrapper),
+		    $input = $wrapper.find('input');
 
-		highlight($elem, $input);
+		highlight($wrapper, $input, param);
 
-		$elem.on('click', 'span', function () {
-			$input.val($(this).data('filter')).change();
-			highlight($elem, $input);
+		$wrapper.on('click', '.list-item', function () {
+			$input.val($(this).data(param)).change();
+			highlight($wrapper, $input, param);
 		});
 
-		return $elem;
+		return $wrapper;
 	}
+
 };
 
 module.exports = Plugins;

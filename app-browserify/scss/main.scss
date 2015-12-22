@@ -144,54 +144,64 @@ body {
     }
 
     &-table-header{
-        width: 100%;
-        border-collapse: collapse;
         display: none;
-
-        & > tbody {
-            & > tr {
-                margin: 15px 0 0;
-                display: block;
-                box-shadow: 0 0 5px -1px #B7B7B7;
-                background: #e3e4e6;
-                border-top: 1px solid #D0D0D0;
-                border-bottom: 1px solid #DAD7D7;
-                padding: 10px 0;
-                td{
-                    display: inline-block;
-                    font-weight: 600;
-                    padding: 0 10px;
-                    cursor:pointer;
-                    .icon-arrow-down{
-                        font-size: 12px;
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            & > tbody {
+                & > tr {
+                    margin: 15px 0 0;
+                    display: block;
+                    box-shadow: 0 0 5px -1px #B7B7B7;
+                    background: #e3e4e6;
+                    border-top: 1px solid #D0D0D0;
+                    border-bottom: 1px solid #DAD7D7;
+                    padding: 10px 0;
+                    display: flex; 
+                    td{
+                        display: inline-block;
+                        font-weight: 600;
+                        // padding: 0 10px;
+                        cursor:pointer;
+                        &.active{
+                            i{
+                                display: block;
+                            }
+                        }
+                        i{
+                            display: none;
+                            font-size: 12px;
+                        }
                     }
                 }
             }
-        }
-        .name {
-            width: 25%;
-            margin-left: 10px;
-        }
+            .title {
+                width: 12.5%;
+                margin-left: 10px;
+            }
+            .projects{
+                width: 12.5%;
+            }
+            .priority {
+                width: 12.5%;
+                text-align: center;
+            }
 
-        .priority {
-            width: 5%;
-            text-align: center;
-        }
+            .assignee {
+                width: 12.5%;
+            }
 
-        .assignee {
-            width: 15%;
-        }
+            .milestone {
+                width: 12.5%;
+            }
 
-        .milestone {
-            width: 20%;
-        }
+            .created {
+                width: 12.5%;
+            }
 
-        .date {
-            width: 10%;
-        }
-
-        .ago {
-            width: 10%;
+            .updated {
+                width: 12.5%;
+            }
         }
     }
 
@@ -228,8 +238,8 @@ body {
             }
         }
 
-        .name {
-            width: 20%;
+        .title {
+            width: 25%;
             margin-left: 10px;
             color: #000;
             font-family: "OpenSans", sans-serif;
@@ -249,15 +259,16 @@ body {
             }
         }
 
-        .no-name {
+        .projects {
             font-family: "OpenSans", sans-serif;
             font-size: 12px;
             font-weight: bold;
             color: #6a6a6b;
+            width: 10%;
         }
 
         .priority {
-            width: 5%;
+            width: 10%;
             text-align: center;
         }
 
@@ -292,11 +303,11 @@ body {
             }
         }
 
-        .date {
+        .created {
             width: 10%;
         }
 
-        .ago {
+        .updated {
             width: 10%;
         }
     }
