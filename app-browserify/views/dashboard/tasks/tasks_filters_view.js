@@ -19,10 +19,7 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		this.route = location.hash.split('?')[0] + '?';
 
-		this.model = new FilterModel({
-			priority: 'critical',
-			filter: 'all'
-		});
+		this.model = new FilterModel(params.query);
 		this.modelBinder = new Backbone.ModelBinder();
 		this.model.on('change', this.onModelChange, this);
 	},

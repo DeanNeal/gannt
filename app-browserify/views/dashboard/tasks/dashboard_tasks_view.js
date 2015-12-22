@@ -35,7 +35,6 @@ var ContentView = BaseView.extend({
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		this.filter = this.addView(TasksFiltersView, {}, '.filters-container');
 	},
 	beforeLoad: function (params) {
 		var deferred = $.Deferred();
@@ -44,6 +43,8 @@ var ContentView = BaseView.extend({
 			this.tasksCollection = response.data;
 			this.taskList = this.addView(TaskList, {collection: response.data});
 			this.renderNestedView(this.taskList, '.task-list');
+			this.filter = this.addView(TasksFiltersView, {query: params.query});
+			this.renderNestedView(this.filter, '.filters-container');
 			deferred.resolve(true);
 		}.bind(this));
 
