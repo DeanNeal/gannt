@@ -19,7 +19,7 @@ api.getCatalog().then(function() {
 var router = new Router();
 
 router.on('route:cubeggRoute', function(actions, args) {
-    
+
     if (!actions) {
         router.navigate('dashboard/tasks', {
             trigger: true

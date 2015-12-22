@@ -35,7 +35,7 @@ var ContentView = BaseView.extend({
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		this.addView(TasksFiltersView, {}, '.filters-container');
+		this.filter = this.addView(TasksFiltersView, {}, '.filters-container');
 	},
 	beforeLoad: function (params) {
 		var deferred = $.Deferred();
@@ -50,8 +50,10 @@ var ContentView = BaseView.extend({
 		return deferred.promise();
 	},
 	beforeChangeParams: function(params){
-		if(params.query && (params.query.filter || params.query.sort))
+		if(params.query){			
 			this.taskList.updateTaskList(params.query);
+			this.filter.updateFilterModel(params.query);
+		}
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

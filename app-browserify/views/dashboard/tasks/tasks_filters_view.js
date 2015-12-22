@@ -23,32 +23,22 @@ var ContentView =  BaseView.extend({
             filter: 'all'
         });
         this.modelBinder = new Backbone.ModelBinder();
+        this.model.on('change', this.onModelChange, this);
+    },
+    onModelChange: function(){
+        Backbone.history.navigate(this.getRouteWithParams(), { trigger: true });
+    },
+    updateFilterModel: function(model){
+        this.model.set(model);
     },
     onRender: function() {
-        var bindings = {
-            filter: {
-                selector: '.base-filters',
-                elAttribute: 'data-active'
-            },
-            priority: { selector: '.right-filters .priority'}
-        };
-        this.modelBinder.bind(this.model, this.el, bindings);
+        this.modelBinder.bind(this.model, this.el);
     },
     serialize: function(){
         this.data = _.clone(this.model.attributes);
     },
     getRouteWithParams: function(){
         return this.route + Helpers.serializeModel(this.model.toJSON());
-    },
-    changeFilter: function(e){
-    	e.preventDefault();
-
-        this.model.set('filter', $(e.currentTarget).data('filter'));
-
-        Backbone.history.navigate(this.getRouteWithParams(), { trigger: true });
-    },
-    changePriority: function(e){
-        Backbone.history.navigate(this.getRouteWithParams(), { trigger: true });
     },
     remove : function () {
         this.modelBinder.unbind();
