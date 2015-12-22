@@ -465,6 +465,7 @@ body {
         span{
             color: #9a9a9a;
             cursor: pointer;
+            margin-right: 10px;
         }
         &[data-active="all"]{
             [data-filter="all"]{
@@ -522,6 +523,7 @@ body {
         tr {
             display: flex;
             flex: 1;
+            align-items: center;
         }
     }
 }
