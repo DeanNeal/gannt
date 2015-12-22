@@ -1,4 +1,4 @@
 <div>
-	<span class="icon-cross close-icon"></span>
+	<i class="fa fa-times close-icon"></i>	
     <div class="task-description"></div>
 </div>

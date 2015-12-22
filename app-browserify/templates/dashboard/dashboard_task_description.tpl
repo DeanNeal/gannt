@@ -1,9 +1,13 @@
 <div>
 	<div class="description">
-		<span class="name"><span class="icon-radio-unchecked"></span> #<%=id%>: <%=name%></span>
-		<p name="description"></p>
-		<div>
-			<a href="">See more</a>
+		<span class="name">
+			<i class="fa fa-circle-o"></i>
+			#<%=id%>: <%=name%>
+			<i class="fa fa-pencil"></i>
+		</span>
+		<div class="description-text">
+			<span name="description"></span>
+			<a href="" class="see_more">See more</a>
 		</div>
 	</div>
 	<div class="info-container">
