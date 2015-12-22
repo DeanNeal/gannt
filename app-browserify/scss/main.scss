@@ -142,6 +142,7 @@ body {
             }
         }
     }
+
     &-table-header{
         width: 100%;
         border-collapse: collapse;
@@ -193,6 +194,7 @@ body {
             width: 10%;
         }
     }
+
     &-table {
         width: 100%;
         border-collapse: collapse;
@@ -203,9 +205,11 @@ body {
                 position: relative;
                 display: block;
                 cursor: pointer;
+
                 &:hover{
                     background: #fff;
                     box-shadow: 0 0 5px -2px #777;
+
                     &:before{
                         content: '';
                         position: absolute;
@@ -220,7 +224,7 @@ body {
             
             & td {
                 display: inline-block;
-                padding: 3px 10px;
+                padding: 2px 10px;
             }
         }
 
@@ -399,6 +403,7 @@ body {
 
 .tasks {
     position: relative;
+    padding-bottom: 40px;
 
     &.have-filter {
         padding-top: 64px;
