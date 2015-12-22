@@ -3,9 +3,9 @@ var $ = require('jquery');
 function highlight($this, $input) {
 	$this.
 	     find('[data-filter="' + $input.val() + '"]').
-	     addClass('data-active').
+	     addClass('active').
 	     siblings().
-	     removeClass('data-active');
+	     removeClass('active');
 }
 
 var Plugins = {

@@ -8,7 +8,7 @@ var ContentView = BaseView.extend({
     template: tpl,
     events: {
         'click .save'  : "testPutQuery",
-        'click .delete': "testDeleteQuery",
+        'click .delete': "testDeleteQuery"
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);

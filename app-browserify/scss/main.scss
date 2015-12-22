@@ -471,26 +471,11 @@ body {
             color: #9a9a9a;
             cursor: pointer;
             margin-right: 10px;
-        }
-        &[data-active="all"]{
-            [data-filter="all"]{
+            &.active {
                 color: #000;
                 text-decoration: underline;
             }
         }
-        &[data-active="todo"]{
-            [data-filter="todo"]{
-                color: #000;
-                text-decoration: underline;
-            }
-        }
-        &[data-active="my_tasks"]{
-            [data-filter="my_tasks"]{
-                color: #000;
-                text-decoration: underline;
-            }
-        }
-
     }
 
     .custom-filters {
