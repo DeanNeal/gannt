@@ -1,27 +1,50 @@
 var $ = require('jquery');
 
-function highlight($this, $input) {
-	$this.
-	     find('[data-filter="' + $input.val() + '"]').
-	     addClass('active').
-	     siblings().
-	     removeClass('active');
-}
+// function highlight($this, $input, param) {
+// 	$this.
+// 	     find('[data-'+param+'="' + $input.val() + '"]').
+// 	     addClass('active').
+// 	     siblings().
+// 	     removeClass('active');
+// }
 
-var Plugins = {
-	setActiveStateAtList: function (elem) {
-		var $elem  = $(elem),
-		    $input = $elem.find('input');
+// var Plugins = {
+// 	setActiveStateAtList: function (wrapper, param) {
+// 		var $wrapper  = $(wrapper),
+// 		    $input = $wrapper.find('input');
 
-		highlight($elem, $input);
+// 		highlight($wrapper, $input, param);
 
-		$elem.on('click', 'span', function () {
-			$input.val($(this).data('filter')).change();
-			highlight($elem, $input);
-		});
+// 		$wrapper.on('click', '.list-item', function () {
+// 			$input.val($(this).data(param)).change();
+// 			highlight($wrapper, $input, param);
+// 		});
 
-		return $elem;
-	}
+// 		return $wrapper;
+// 	}
+
+// };
+
+
+
+var Plugin = function(wrapper, param){
+	var self = this;
+	this.wrapper  = $(wrapper),
+	this.input = this.wrapper.find('input');
+	this.param = param;
+
+	this.wrapper.on('click', '.list-item', function () {
+		self.input.val($(this).data(self.param)).change();
+		self.highlight();
+	});
 };
 
-module.exports = Plugins;
+Plugin.prototype.highlight = function() {
+    this.wrapper.
+	    find('[data-' + this.param + '="' + this.input.val() + '"]').
+	    addClass('active').
+	    siblings().
+	    removeClass('active');
+};
+
+module.exports = Plugin;

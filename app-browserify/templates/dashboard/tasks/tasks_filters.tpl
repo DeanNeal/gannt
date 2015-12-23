@@ -3,9 +3,9 @@
 		<a class="btn-add-new" href="">+</a>
 		<div class="base-filters">
 			<input type="hidden" name="filter">
-			<span data-filter="all" class="menu-item">All</a></span>
-			<span data-filter="todo" class="menu-item">To Do</a></span>
-			<span data-filter="my_tasks" class="menu-item">My tasks</a></span>
+			<span data-filter="all" class="list-item">All</a></span>
+			<span data-filter="todo" class="list-item">To Do</a></span>
+			<span data-filter="my_tasks" class="list-item">My tasks</a></span>
 		</div>
 	</div>
 
@@ -27,19 +27,23 @@
 		</select>
 		<a class="btn-add-new open-filter" href="">+</a>
 	</div>
-
-	<table class="dashboard-table-header">
-		<tbody>
-			<tr>
-				<td class="name">Title <i class="fa fa-arrow-down"></i> </td>
-				<td class="priority">Priority <i class="fa fa-arrow-down"></i> </td>
-				<td class="status">Status <i class="fa fa-arrow-down"></i> </td>
-				<td class="assignee">Assignee <i class="fa fa-arrow-down"></i> </td>
-				<td class="milestone">Milestone <i class="fa fa-arrow-down"></i> </td>
-				<td class="date">Date <i class="fa fa-arrow-down"></i> </td>
-				<td class="ago">Ago <i class="fa fa-arrow-down"></i> </td>
-			</tr>
-		</tbody>
-	</table>
+	
+	<div class="dashboard-table-header">	
+		<input type="hidden" name="sort">
+		<table>
+			<tbody>
+				<tr>
+					<td class="title list-item" data-sort="title">Title <i class="fa fa-arrow-down"></i> </td>
+					<td class="projects list-item" data-sort="projects">Projects <i class="fa fa-arrow-down"></i></td>
+					<td class="priority list-item" data-sort="priority">Priority <i class="fa fa-arrow-down"></i> </td>
+					<td class="status list-item" data-sort="status">Status <i class="fa fa-arrow-down"></i> </td>
+					<td class="assignee list-item" data-sort="assignee">Assignee <i class="fa fa-arrow-down"></i> </td>
+					<td class="milestone list-item" data-sort="milestone">Milestone <i class="fa fa-arrow-down"></i> </td>
+					<td class="created list-item" data-sort="created">Created <i class="fa fa-arrow-down"></i> </td>
+					<td class="updated list-item" data-sort="updated">Updated <i class="fa fa-arrow-down"></i> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 </div>
