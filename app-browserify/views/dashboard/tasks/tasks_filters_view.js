@@ -36,8 +36,8 @@ var ContentView = BaseView.extend({
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
 
-		this.filterList = new Plugins(this.getElement('.base-filters'), 'filter');
-		this.sortList = new Plugins(this.getElement('.dashboard-table-header'), 'sort');
+		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
+		this.sortList = new Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'), 'sort');
 
 		// Plugins.setActiveStateAtList(this.getElement('.base-filters'),'filter');
 		// Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'),'sort');

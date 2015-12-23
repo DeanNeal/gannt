@@ -27,7 +27,7 @@ var $ = require('jquery');
 
 
 
-var Plugin = function(wrapper, param){
+var SetActiveStateAtList = function(wrapper, param){
 	var self = this;
 	this.wrapper  = $(wrapper),
 	this.input = this.wrapper.find('input');
@@ -39,7 +39,7 @@ var Plugin = function(wrapper, param){
 	});
 };
 
-Plugin.prototype.highlight = function() {
+SetActiveStateAtList.prototype.highlight = function() {
     this.wrapper.
 	    find('[data-' + this.param + '="' + this.input.val() + '"]').
 	    addClass('active').
@@ -47,4 +47,10 @@ Plugin.prototype.highlight = function() {
 	    removeClass('active');
 };
 
-module.exports = Plugin;
+
+
+var Plugins = {
+	setActiveStateAtList: SetActiveStateAtList
+};
+
+module.exports = Plugins;

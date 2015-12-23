@@ -165,7 +165,7 @@ body {
                         cursor:pointer;
                         &.active{
                             i{
-                                display: block;
+                                display: initial;
                             }
                         }
                         i{
