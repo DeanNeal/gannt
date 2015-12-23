@@ -39,6 +39,7 @@ var ContentView = BaseView.extend({
 		this.modelBinder.bind(this.model, this.el);
 		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'), 'sort');
+		
 		this.getElement('.custom-select').customSelect();
 	},
 	serialize: function () {

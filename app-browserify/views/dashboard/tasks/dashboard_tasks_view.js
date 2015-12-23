@@ -31,7 +31,7 @@ var ContentView = BaseView.extend({
 	events: {
 		'click .dashboard-table tr'         : 'changeTask',
 		'click .close-icon'                 : 'closeEdit',
-		'click .open-filter'			 	:'toggleFilter'
+		'click .open-filter'			 	: 'toggleFilter'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
