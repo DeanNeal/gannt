@@ -1,6 +1,6 @@
 var Backbone          = require('backbone'),
     //Rx = require('rx/dist/rx.lite'),
-    Helpers           = require('Helpers'),
+    Helpers           = require('helpers'),
     Rx                = require('rx-dom'),
     WikiRx            = require('views/finance/finance_rx');
 

@@ -1,5 +1,5 @@
 var BaseView         = require('views/baseview'),
-    Helpers          = require('Helpers'),
+    Helpers          = require('helpers'),
     RoutedView       = require('views/routedview'),
     BaseListView     = require('views/elements/base_list_view'),
     navBarCollection = require('collections/header_list'),
