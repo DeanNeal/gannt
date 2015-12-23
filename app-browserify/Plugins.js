@@ -47,11 +47,12 @@ $.fn.customSelect = function() {
         });
         wrapper.append(tpl);
 
+        //set current value or placeholder
+        wrapper.find('.custom-select-value').text(select.val() || data.placeholder);
 
         wrapper.on('click', function() {
             wrapper.find('.custom-select-dropdown').toggle();
         });
-
 
         wrapper.on('click', '.custom-select-dropdown li', function() {
             wrapper.find('.custom-select-value').text($(this).text());
