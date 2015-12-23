@@ -6,6 +6,7 @@
 @import "tree/tree";
 @import "stats/stats";
 @import "finance/finance";
+@import "selectric.scss";
 
 * {
     padding: 0;
@@ -471,8 +472,6 @@ body {
     right: 0;
     top: 0;
     background-color: #f3f3f5;
-    // height: 70px;
-    // border-bottom: 1px solid #e3e3e5;
 
     .left-filters {
         float: left;
@@ -483,8 +482,9 @@ body {
         float: right;
         padding: 20px 15px 10px 0;
 
-        ul {
-            margin-right: 20px;
+        .selectric-wrapper {
+            float: left;
+            margin-right: 10px;
         }
     }
 
@@ -499,20 +499,6 @@ body {
         border-radius: 20px;
         text-decoration: none;
         color: #9a9a9a;
-    }
-
-    ul {
-        display: inline-block;
-        vertical-align: middle;
-
-        li {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        li + li {
-            margin-left: 10px;
-        }
     }
 
     .base-filters {
@@ -581,6 +567,32 @@ body {
             display: flex;
             flex: 1;
             align-items: center;
+        }
+    }
+}
+
+
+
+.custom-select{
+    width: 100px;
+    position: relative;
+    float: left;
+    &-value{
+        padding: 5px;
+    }
+    &-dropdown{
+        position: absolute;
+        background: #f0f0f1;
+        left: 0;
+        top: 25px;
+        box-shadow: 0 0 4px 0px #A5A5A5;
+        z-index: 100;
+        li{
+            padding: 5px;
+            cursor: pointer;
+            &:hover{
+                background: #fcfcfd;
+            }
         }
     }
 }
