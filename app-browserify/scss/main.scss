@@ -597,15 +597,7 @@ body {
     text-align: center;
     cursor: pointer;
     border-bottom: 1px solid #bbb;
-    // &:hover{
-    //     .custom-select-dropdown{
-    //         display: block;
-    //     }
-    // }
-    &-value{
-        // padding: 5px;
-    }
-    &-dropdown{
+    &-dropdown{ 
         position: absolute;
         background: #f0f0f1;
         left: 0;

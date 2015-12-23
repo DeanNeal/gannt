@@ -33,6 +33,7 @@ $.fn.customSelect = function() {
             items = [],
             data = wrapper.data();
 
+        customSelectArray.push(wrapper);
         select.hide();
 
         select.find('option').each(function() {
@@ -51,6 +52,9 @@ $.fn.customSelect = function() {
         wrapper.find('.custom-select-value').text(select.val() || data.placeholder);
 
         wrapper.on('click', function() {
+            customSelectArray.each(function(i, item){
+            	item.find('.custom-select-dropdown').toggle();
+            });
             wrapper.find('.custom-select-dropdown').toggle();
         });
 
