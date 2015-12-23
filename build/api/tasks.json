@@ -7,7 +7,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_1.json"
@@ -20,7 +20,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_2.json"
@@ -33,7 +33,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_3.json"
@@ -46,7 +46,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_4.json"
@@ -59,7 +59,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_5.json"
@@ -72,7 +72,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
@@ -85,7 +85,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
@@ -98,7 +98,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
@@ -111,7 +111,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
@@ -124,7 +124,7 @@
         "assignee": "Dean Neal",
         "date": "12/12/2015",
         "ago": "5 days",
-        "tags": "tag1,tag2,tag3",
+        "tags": "tag1,tag2,tag3,tag3,tag3",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"

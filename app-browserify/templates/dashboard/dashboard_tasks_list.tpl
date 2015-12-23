@@ -5,11 +5,14 @@
 				<div>
 					<i class="fa fa-bug"></i>
 					<span>#<%=item.id%>: <%=item.name%></span>
-					<div class="tags">
+					<% _.each(item.tags.split(','), function(tag) { %>
+						<span class="tag"><%=tag%></span>
+					<% }); %>
+					<!-- <div class="tags">
 						<% _.each(item.tags.split(','), function(tag) { %>
 								<span><%=tag%></span>
 						<% }); %>
-					</div>
+					</div> -->
 				</div>
 			</td>
 
