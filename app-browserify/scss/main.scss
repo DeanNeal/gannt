@@ -474,11 +474,11 @@ body {
     padding-bottom: 40px;
 
     &.have-filter {
-        padding-top: 64px;
+        padding-top: 77px;
     }
 
     &.have-sort {
-        padding-top: 115px;
+        padding-top: 122px;
     }
 }
 
@@ -486,17 +486,17 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
+    top: 7px;
     background-color: #f3f3f5;
 
     .left-filters {
         float: left;
-        padding: 20px 0 10px 15px;
+        padding: 20px 0 16px 15px;
     }
 
     .right-filters {
         float: right;
-        padding: 20px 15px 10px 0;
+        padding: 20px 15px 16px 0;
 
         .selectric-wrapper {
             float: left;
