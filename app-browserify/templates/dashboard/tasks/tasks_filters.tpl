@@ -10,31 +10,27 @@
 	</div>
 
 	<div class="right-filters">
-<!-- 		<div class="custom-select">
-			<input class="custom-select-input" type="hidden" name="project">
-			<span class="custom-select-value">Project1</span>
-			<ul class="custom-select-dropdown">
-				<li>Project1</li>
-				<li>Project2</li>
-				<li>Project3</li>
-			</ul>
-		</div> -->
-
-		<select class="selectric type" name="project">
-			<option value="project1">Project1</option>
-			<option value="project2">Project2</option>
-			<option value="project3">Project3</option>
-		</select>
-		<select class="selectric type" name="milestone">
-			<option value="milestone1">Milestone1</option>
-			<option value="milestone2">Milestone2</option>
-			<option value="milestone3">Milestone3</option>
-		</select>
-		<select class="selectric priority" name="priority">
-			<option value="major">Major</option>
-			<option value="critical">Critical</option>
-			<option value="minor">Minor</option>
-		</select>
+		<div class="custom-select" data-search>
+			<select class="project-select" name="project">
+				<option value="project1">Project1</option>
+				<option value="project2">Project2</option>
+				<option value="project3">Project3</option>
+			</select>
+		</div>
+		<div class="custom-select" data-search>
+			<select class="milestone-select" name="milestone">
+				<option value="milestone1">Milestone1</option>
+				<option value="milestone2">Milestone2</option>
+				<option value="milestone3">Milestone3</option>
+			</select>
+		</div>
+		<div class="custom-select">
+			<select class="priority-select" name="priority">
+				<option value="major">Major</option>
+				<option value="critical">Critical</option>
+				<option value="minor">Minor</option>
+			</select>
+		</div>
 		<a class="btn-add-new open-filter" href="">+</a>
 	</div>
 	
