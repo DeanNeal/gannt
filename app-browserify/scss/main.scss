@@ -172,6 +172,15 @@ body {
                             }
                         }
 
+                        &[data-active="asc"]{
+                            background: red;
+                        }
+
+
+                        &[data-active="desc"]{
+                            background: green;
+                        }
+
                         i {
                             display: none;
                             font-size: 12px;

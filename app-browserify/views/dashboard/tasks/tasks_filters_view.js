@@ -34,12 +34,12 @@ var ContentView = BaseView.extend({
 		this.model.set(model);
 		this.filterList.highlight();
 		this.sortList.highlight();
+		//this.getElement('.custom-select').customSelect('refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
 		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
-		this.sortList = new Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'), 'sort');
-		
+		this.sortList = new Plugins.setActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 		this.getElement('.custom-select').customSelect();
 	},
 	serialize: function () {
