@@ -52,9 +52,9 @@ $.fn.customSelect = function() {
         wrapper.find('.custom-select-value').text(select.val() || data.placeholder);
 
         wrapper.on('click', function() {
-            customSelectArray.each(function(i, item){
-            	item.find('.custom-select-dropdown').toggle();
-            });
+            // customSelectArray.each(function(i, item){
+            // 	item.find('.custom-select-dropdown').toggle();
+            // });
             wrapper.find('.custom-select-dropdown').toggle();
         });
 
