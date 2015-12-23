@@ -33,8 +33,6 @@
     "path": "^0.12.7",
     "rx": "^4.0.7",
     "rx-dom": "^7.0.3",
-    "select2": "^4.0.1",
-    "selectric": "^1.9.4",
     "stringify": "^3.1.0",
     "underscore": "^1.8.3",
     "vinyl-buffer": "^1.0.0",

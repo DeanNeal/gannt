@@ -1,9 +1,6 @@
 var Backbone     = require('backbone'),
     Helpers      = require('helpers'),
     Plugins      = require('plugins'),
-    select2      = require('select2')
-    // jQuery            = require('jquery'),
-    // chosen           = require('drmonty-chosen'),
     _            = require('underscore'),
     BaseView     = require('views/baseview'),
     BaseListView = require('views/elements/base_list_view'),
