@@ -222,27 +222,31 @@ body {
             color: #000;
             font-weight: bold;
 
+            & > div {
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
             .icon-radio-unchecked {
                 color: #68ADF3;
                 font-size: 12px;
                 margin-right: 5px;
             }
 
-            .tags {
+            .tag {
                 display: inline-block;
                 margin-left: 5px;
+                font-size: 12px;
+                font-weight: normal;
+                border: 1px solid #d0d0d0;
+                color: #9a9a9a;
+                padding: 0 5px;
+                @include border-radius(4px);
 
-                span + span {
+                & + .tag {
                     margin-left: 5px;
-                }
-
-                span {
-                    font-size: 12px;
-                    font-weight: normal;
-                    border: 1px solid #d0d0d0;
-                    color: #9a9a9a;
-                    padding: 0 5px;
-                    @include border-radius(4px);
                 }
             }
         }
@@ -309,6 +313,62 @@ body {
         .updated {
             width: 10%;
         }
+
+        .status {
+            width: 10%;
+            text-align: center;
+
+            [data-status] {
+                border: 1px solid;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 1px 5px;
+                font-size: 12px;
+                font-weight: 600;
+
+                &[data-status="new"] {
+                    color: #7545A5;
+                    border-color: #7545A5;
+                }
+
+                &[data-status="send back"] {
+                    color: #999;
+                    border-color: #999;
+                }
+
+                &[data-status="completed"] {
+                    color: brown;
+                    border-color: brown;
+                }
+
+                &[data-status="done"] {
+                    color: #45B3AB;
+                    border-color: #45B3AB;
+                }
+
+                &[data-status="on hold"] {
+                    color: #EFB730;
+                    border-color: #EFB730;
+                }
+            }
+        }
+
+        .priority {
+            [data-priority] {
+                display: inline-block;
+                padding: 1px 5px;
+                font-size: 12px;
+                font-family: 'icomoon' !important;
+                &[data-priority="high"]:before {
+                    content: "\e904";
+                    color: brown;
+                }
+                &[data-priority="low"]:before {
+                    content: "\e905";
+                    color: #45B3AB;
+                }
+            }
+        }
     }
 
     &-table-header,
@@ -345,62 +405,6 @@ body {
 
         .updated {
             width: 10%;
-        }
-    }
-}
-
-.status {
-    width: 10%;
-    text-align: center;
-
-    [data-status] {
-        border: 1px solid;
-        border-radius: 5px;
-        display: inline-block;
-        padding: 1px 5px;
-        font-size: 12px;
-        font-weight: 600;
-
-        &[data-status="new"] {
-            color: #7545A5;
-            border-color: #7545A5;
-        }
-
-        &[data-status="send back"] {
-            color: #999;
-            border-color: #999;
-        }
-
-        &[data-status="completed"] {
-            color: brown;
-            border-color: brown;
-        }
-
-        &[data-status="done"] {
-            color: #45B3AB;
-            border-color: #45B3AB;
-        }
-
-        &[data-status="on hold"] {
-            color: #EFB730;
-            border-color: #EFB730;
-        }
-    }
-}
-
-.priority {
-    [data-priority] {
-        display: inline-block;
-        padding: 1px 5px;
-        font-size: 12px;
-        font-family: 'icomoon' !important;
-        &[data-priority="high"]:before {
-            content: "\e904";
-            color: brown;
-        }
-        &[data-priority="low"]:before {
-            content: "\e905";
-            color: #45B3AB;
         }
     }
 }
