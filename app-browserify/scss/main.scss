@@ -224,16 +224,23 @@ body {
             font-weight: bold;
 
             & > div {
-                max-width: 100%;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+                display: flex;
             }
 
             .icon-radio-unchecked {
                 color: #68ADF3;
                 font-size: 12px;
                 margin-right: 5px;
+            }
+
+            .tags {
+                display: flex;
+                flex-direction: column;
+                flex: none;
+
+                @media(max-width: 1024px) {
+                    display: none;
+                }
             }
 
             .tag {
@@ -245,6 +252,8 @@ body {
                 color: #9a9a9a;
                 padding: 0 5px;
                 @include border-radius(4px);
+                @extend .text-overflow;
+                max-width: 50px;
 
                 & + .tag {
                     margin-left: 5px;
@@ -270,7 +279,8 @@ body {
         }
 
         .assignee {
-            width: 15%;
+            width: 5%;
+
             .avatar{
                 width: 35px;
                 float: left;
@@ -398,7 +408,7 @@ body {
         }
 
         .assignee {
-            width: 15%;
+            width: 5%;
         }
 
         .milestone {
@@ -449,7 +459,8 @@ body {
     &-content {
         position: relative;
         padding-top: 65px;
-        // background-color: #f3f3f5;
+        // background-image: url(../img/bg-content.jpg);
+        // background-repeat: no-repeat;
         background: #f0edee;
         background: -moz-radial-gradient(center, ellipse cover,  #f0edee 50%, #cecfd3 100%);
         background: -webkit-radial-gradient(center, ellipse cover,  #f0edee 50%,#cecfd3 100%);

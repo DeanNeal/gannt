@@ -2,17 +2,19 @@
 	<% _.each(data, function(item){ %>
 		<tr data-id="<%=item.id%>">
 			<td class="title">
-				<div>
-					<i class="fa fa-bug"></i>
-					<span>#<%=item.id%>: <%=item.name%></span>
-					<% _.each(item.tags.split(','), function(tag) { %>
-						<span class="tag"><%=tag%></span>
-					<% }); %>
-					<!-- <div class="tags">
-						<% _.each(item.tags.split(','), function(tag) { %>
-								<span><%=tag%></span>
-						<% }); %>
-					</div> -->
+				<div style="display: flex; flex-direction: row;">
+					<div style="display: flex; flex-direction: column; flex: 1;">
+						<!-- <i class="fa fa-bug"></i> -->
+						<span class="text-overflow" title="#<%=item.id%>: <%=item.name%>">#<%=item.id%>: <%=item.name%></span>
+					</div>
+
+					<div class="tags">
+						<div style="display: flex; flex-direction: row;">
+							<% _.each(item.tags.split(','), function(tag) { %>
+								<span class="tag" title="<%=tag%>"><%=tag%></span>
+							<% }); %>
+						</div>
+					</div>
 				</div>
 			</td>
 
@@ -30,17 +32,17 @@
 
 			<td class="assignee">
 				<img class="avatar" src="build/img/avatar.png" alt="">
-				<div><%=item.assignee%></div>
+				<!-- <div><%=item.assignee%></div> -->
 			</td>
 
 			<td class="milestone">
-				<svg class="icon icon-trash-example">
+				<!-- <svg class="icon icon-trash-example">
 					<use class="symbol" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash-example"></use>
 				</svg>
 
 				<svg class="icon icon-trash">
 					<use class="symbol" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-				</svg>
+				</svg> -->
 
 				<i class="icon-radio-unchecked"></i>
 
