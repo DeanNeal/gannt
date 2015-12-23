@@ -31,6 +31,14 @@
 			</td>
 
 			<td class="milestone">
+				<!-- <svg class="icon icon-trash-example">
+					<use class="symbol" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash-example"></use>
+				</svg>
+
+				<svg class="icon icon-trash">
+					<use class="symbol" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+				</svg> -->
+
 				<i class="icon-radio-unchecked"></i>
 
 				<div class="info">

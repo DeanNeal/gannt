@@ -275,6 +275,13 @@ body {
         .milestone {
             width: 20%;
 
+            .icon {
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                font-size: 40px;
+            }
+
             i {
                 display: inline-block;
             }
