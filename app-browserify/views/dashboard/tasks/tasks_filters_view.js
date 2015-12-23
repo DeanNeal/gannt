@@ -1,9 +1,9 @@
 var Backbone     = require('backbone'),
     Helpers      = require('helpers'),
     Plugins      = require('plugins'),
+    select2      = require('select2')
     // jQuery            = require('jquery'),
     // chosen           = require('drmonty-chosen'),
-    selectric    = require('selectric'),
     _            = require('underscore'),
     BaseView     = require('views/baseview'),
     BaseListView = require('views/elements/base_list_view'),
@@ -34,16 +34,12 @@ var ContentView = BaseView.extend({
 		this.model.set(model);
 		this.filterList.highlight();
 		this.sortList.highlight();
-
-		this.getElement('.selectric').selectric('.refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
-
 		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'), 'sort');
-
-		this.getElement('.selectric').selectric();
+		this.getElement('.custom-select').customSelect();
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
