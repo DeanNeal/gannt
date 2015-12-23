@@ -1,13 +1,15 @@
 var Backbone     = require('backbone'),
     Helpers      = require('helpers'),
     Plugins      = require('plugins'),
-    $            = require('jquery'),
+    // jQuery            = require('jquery'),
+    // chosen           = require('drmonty-chosen'),
+    selectric    = require('selectric'),
     _            = require('underscore'),
     BaseView     = require('views/baseview'),
     BaseListView = require('views/elements/base_list_view'),
     FilterModel  = require('models/dashboard/tasks_filter_model'),
     tpl          = require('templates/dashboard/tasks/tasks_filters.tpl');
-
+ 
 var ContentView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
@@ -32,6 +34,8 @@ var ContentView = BaseView.extend({
 		this.model.set(model);
 		this.filterList.highlight();
 		this.sortList.highlight();
+
+		this.getElement('.selectric').selectric('.refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
@@ -39,8 +43,7 @@ var ContentView = BaseView.extend({
 		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'), 'sort');
 
-		// Plugins.setActiveStateAtList(this.getElement('.base-filters'),'filter');
-		// Plugins.setActiveStateAtList(this.getElement('.dashboard-table-header'),'sort');
+		this.getElement('.selectric').selectric();
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);

@@ -1,5 +1,7 @@
+window.jQuery = require("jquery");
+
 var Backbone       = require('backbone'),
-    $              = require('jquery'),
+    // $              = require('jquery'),
     GlobalView     = require('./views/globalview'),
     Router         = require('./router/router'),
     Helpers        = require('./Helpers'),
