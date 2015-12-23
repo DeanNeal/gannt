@@ -254,12 +254,17 @@ body {
 
             .tags {
                 display: inline-block;
+                margin-left: 5px;
+
+                span + span {
+                    margin-left: 5px;
+                }
 
                 span {
                     font-size: 12px;
                     font-weight: normal;
                     border: 1px solid #d0d0d0;
-                    color: #b6b6b6;
+                    color: #9a9a9a;
                     padding: 0 5px;
                     @include border-radius(4px);
                 }
