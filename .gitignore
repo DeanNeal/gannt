@@ -1,4 +1,5 @@
 node_modules/
 build/bundle.js
+build/css-browserify/styles.css
 **/.sass-cache
 .idea
