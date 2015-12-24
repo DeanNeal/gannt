@@ -101,7 +101,7 @@ $.fn.customSelect = function(method) {
 	        $wrapper.on('click', '.custom-select-value', function() {
 	            customSelectArray.forEach(function(item) {
 	                if (!$wrapper.is(item))
-	                    item.find('.custom-select-dropdown').hide();
+	                	item.removeClass('custom-select-open').find('.custom-select-dropdown').hide(); 
 	            });
 
 	            $dropdown.toggle();
