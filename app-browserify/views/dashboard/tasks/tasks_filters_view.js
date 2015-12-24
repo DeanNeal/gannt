@@ -32,7 +32,7 @@ var ContentView = BaseView.extend({
 		this.filterList.highlight();
 		this.sortList.highlight();
 
-//		this.getElement('.custom-select').customSelect('refresh');
+		this.getElement('.custom-select').customSelect('refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);

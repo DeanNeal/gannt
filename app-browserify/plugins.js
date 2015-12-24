@@ -66,13 +66,12 @@ $.fn.customSelect = function(method) {
 
         if(method == 'refresh'){
         	//set current value or placeholder
-        	$wrapper.find('.custom-select-value').text($input.val() || data.placeholder);
+        	$wrapper.find('.custom-select-value').text($input.data('text') || $input.val() || data.placeholder);
         }
 
         if(!method){    	
 	        customSelectArray.push($wrapper);
 	        $select.hide();
-	        $input.hide();
 
 	        $select.find('option').each(function() {
 	            items.push(this.value);
@@ -114,8 +113,10 @@ $.fn.customSelect = function(method) {
 	        });
 
 	        $wrapper.on('click', '.custom-select-dropdown li', function() {
-	        	$value.text($(this).text() || data.placeholder);
-	            $input.val($(this).data('id')).change();
+	            $input
+		            .val($(this).data('id'))
+		            .data('text', $(this).text())
+		            .change();
 
 	            //hide all
 	            customSelectArray.forEach(function(item) {
