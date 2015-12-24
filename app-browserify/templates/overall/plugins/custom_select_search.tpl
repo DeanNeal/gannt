@@ -2,13 +2,10 @@
 	<span class="custom-select-value"><%=value%></span>
 
 	<div class="custom-select-dropdown">
-		<% if (search) { %>
-				<input class="custom-select-dropdown-search" type="text" placeholder="Search <%=placeholder%>">
-		<% } %>
-
+		<input class="custom-select-dropdown-search" type="text" placeholder="Search project">
 		<ul>
 			<% _.each(items, function(item) { %>
-				<li data-id="<%=item%>"><%=item%></li>
+				<li data-value=""><%=item%></li>
 			<% }); %>
 		</ul>
 	</div>

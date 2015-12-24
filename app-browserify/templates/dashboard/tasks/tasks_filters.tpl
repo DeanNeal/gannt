@@ -11,26 +11,20 @@
 
 	<div class="right-filters">
 		<div class="custom-select" data-search data-placeholder="Project">
-			<select class="project-select" name="project">
-				<option value="project1">Project1</option>
-				<option value="project2">Project2</option>
-				<option value="project3">Project3</option>
-			</select>
+			<input type="hidden" name="project">
 		</div>
 
 		<div class="custom-select" data-search data-placeholder="Milestone">
-			<select class="milestone-select" name="milestone">
-				<option value="milestone1">Milestone1</option>
-				<option value="milestone2">Milestone2</option>
-				<option value="milestone3">Milestone3</option>
-			</select>
+			<input type="hidden" name="milestone">
 		</div>
 
 		<div class="custom-select" data-placeholder="Hight">
-			<select class="priority-select" name="priority">
-				<option value="major">Major</option>
+			<input type="hidden" name="priority">
+			<select>
 				<option value="critical">Critical</option>
-				<option value="minor">Minor</option>
+				<option value="high">High</option>
+				<option value="medium">Medium</option>
+				<option value="low">Low</option>
 			</select>
 		</div>
 		
