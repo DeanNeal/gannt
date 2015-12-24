@@ -547,6 +547,21 @@ body {
             font-size: 12px;
         }
     }
+
+    .table-search {
+        width: 360px;
+        float: right;
+        padding: 17px 15px 16px 0;
+
+        input {
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid #d4d4d4;
+            background: transparent;
+            outline: none;
+            width: 100%;
+        }
+    }
 }
 
 .bb-route-container {

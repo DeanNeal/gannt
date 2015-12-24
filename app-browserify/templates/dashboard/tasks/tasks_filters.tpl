@@ -13,9 +13,11 @@
 		<div class="custom-select" data-search data-placeholder="Project">
 			<input type="hidden" name="project">
 		</div>
+
 		<div class="custom-select" data-search data-placeholder="Milestone">
 			<input type="hidden" name="milestone">
 		</div>
+
 		<div class="custom-select" data-placeholder="Hight">
 			<input type="hidden" name="priority">
 			<select>
@@ -25,7 +27,12 @@
 				<option value="low">Low</option>
 			</select>
 		</div>
+		
 		<a class="btn-add-new open-filter" href="">+</a>
+	</div>
+
+	<div class="table-search">
+		<input type="text" placeholder="Search">
 	</div>
 	
 	<div class="dashboard-table-header">	
