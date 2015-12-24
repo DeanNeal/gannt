@@ -37,8 +37,8 @@
 		<a class="btn-add-new open-filter" href="">+</a>
 	</div>
 
-	<div class="table-search" style="float: right;">
-		<input type="text">
+	<div class="table-search">
+		<input type="text" placeholder="Search">
 	</div>
 	
 	<div class="dashboard-table-header">	
