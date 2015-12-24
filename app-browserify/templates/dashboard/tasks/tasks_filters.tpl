@@ -17,6 +17,7 @@
 				<option value="project3">Project3</option>
 			</select>
 		</div>
+
 		<div class="custom-select" data-search data-placeholder="Milestone">
 			<select class="milestone-select" name="milestone">
 				<option value="milestone1">Milestone1</option>
@@ -24,6 +25,7 @@
 				<option value="milestone3">Milestone3</option>
 			</select>
 		</div>
+
 		<div class="custom-select" data-placeholder="Hight">
 			<select class="priority-select" name="priority">
 				<option value="major">Major</option>
@@ -31,7 +33,12 @@
 				<option value="minor">Minor</option>
 			</select>
 		</div>
+		
 		<a class="btn-add-new open-filter" href="">+</a>
+	</div>
+
+	<div class="table-search" style="float: right;">
+		<input type="text">
 	</div>
 	
 	<div class="dashboard-table-header">	
