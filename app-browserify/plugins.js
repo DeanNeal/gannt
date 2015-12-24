@@ -64,12 +64,17 @@ $.fn.customSelect = function(method) {
             data = $wrapper.data();
 
 
+        //set current value or placeholder
         if(method == 'refresh'){
-        	//set current value or placeholder
         	$wrapper.find('.custom-select-value').text($input.data('text') || $input.val() || data.placeholder);
         }
 
-        if(!method){    	
+        //clear custom selects and destroy them
+        if(method == 'destroy'){
+        	customSelectArray = [];
+        }
+
+        if(!method){
 	        customSelectArray.push($wrapper);
 	        $select.hide();
 

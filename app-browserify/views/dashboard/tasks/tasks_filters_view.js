@@ -48,6 +48,7 @@ var ContentView = BaseView.extend({
 	},
 	remove: function () {
 		this.modelBinder.unbind();
+		this.getElement('.custom-select').customSelect('destroy');
 		BaseView.prototype.remove.call(this);
 	}
 });
