@@ -1,7 +1,7 @@
 {
     "data": [{
         "id": 1,
-        "name": "Some really long task name an some other_1",
+        "name": "Task_1",
         "priority": "high",
         "status": "new",
         "assignee": "Dean Neal",

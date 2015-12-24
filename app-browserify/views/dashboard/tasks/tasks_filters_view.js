@@ -21,7 +21,7 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		this.route = location.hash.split('?')[0] + '?';
 
-		var initialState = _.extend({filter: 'all'}, params.query);
+		var initialState = _.extend({filter: 'all', sort: 'title'}, params.query);
 
 		this.model = new FilterModel(initialState);
 		this.modelBinder = new Backbone.ModelBinder();
@@ -34,7 +34,8 @@ var ContentView = BaseView.extend({
 		this.model.set(model);
 		this.filterList.highlight();
 		this.sortList.highlight();
-		//this.getElement('.custom-select').customSelect('refresh');
+
+//		this.getElement('.custom-select').customSelect('refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
