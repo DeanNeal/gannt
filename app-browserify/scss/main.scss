@@ -301,13 +301,6 @@ body {
         .milestone {
             width: 20%;
 
-            .icon {
-                display: inline-block;
-                width: 1em;
-                height: 1em;
-                font-size: 40px;
-            }
-
             i {
                 display: inline-block;
             }
@@ -611,7 +604,62 @@ body {
     }
 }
 
+.pagination {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    background: #e0e1e5;
+    text-align: center;
+    padding: 8px 0;
 
+    &_unit {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &_pages {
+        margin: 0 10px;
+    }
+
+    li {
+        display: inline-block;
+        vertical-align: top;
+
+        &:nth-child(1n+10) {
+            display: none;
+        }
+
+        &:last-child {
+            display: inline-block;
+        }
+
+        & + li {
+            margin-left: 5px;
+        }
+
+        &[data-active="true"] {
+            a {
+                color: #4e4e4f;
+                font-weight: bold;
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: #7d7d80;
+        font-size: 12px;
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: 40px;
+}
 
 .custom-select{
     position: relative;
