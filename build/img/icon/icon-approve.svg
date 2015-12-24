@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512px" height="512px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 512 512"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path fill="#E6E6E6" fill-opacity="0.501961" d="M256 -1c142,0 256,115 256,256 0,142 -114,256 -256,256 -141,0 -256,-114 -256,-256 0,-141 115,-256 256,-256z"/>
+  <path fill="#33CC66" d="M256 64c106,0 192,86 192,191 0,106 -86,192 -192,192 -105,0 -191,-86 -191,-192 0,-105 86,-191 191,-191z"/>
+  <path fill="white" d="M178 218l69 69 104 -103c10,-11 28,-11 38,0l0 0c11,10 11,28 0,38l-123 124c-11,10 -28,10 -39,0 -29,-29 -58,-60 -87,-89 -11,-11 -11,-28 0,-39l0 0c10,-11 28,-11 38,0z"/>
+ </g>
+</svg>
