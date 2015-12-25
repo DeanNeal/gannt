@@ -1,10 +1,9 @@
 <div class="full-size">
 	<div class="filters-container"></div>
 	<div class="task-list full-size"></div>
-	<div class="edit-block"></div>
 	<div class="pagination">
 		<div class="pagination_left pagination_unit">
-			<a href=""><</a>
+			<a href=""></a>
 		</div>
 
 		<ul class="pagination_pages pagination_unit">

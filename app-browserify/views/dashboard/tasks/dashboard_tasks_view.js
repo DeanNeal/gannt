@@ -11,6 +11,10 @@ var Backbone              = require('backbone'),
 var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	className: 'task-list',
+	events: {
+	    'click .dashboard-table tr'         : 'changeTask',
+	    'click .close-icon'                 : 'closeEdit'
+	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 	},
@@ -22,47 +26,14 @@ var TaskList = BaseView.extend({
 			this.collection = response.data;
 			this.render(true);
 		}.bind(this));
-	}
-});
-
-var ContentView = BaseView.extend({
-	className: 'tasks full-size have-filter',
-	template: dashboardTpl,
-	events: {
-		'click .dashboard-table tr'         : 'changeTask',
-		'click .close-icon'                 : 'closeEdit',
-		'click .open-filter'			 	: 'toggleFilter'
-	},
-	onInitialize: function (params) {
-		BaseView.prototype.onInitialize.call(this, params);
-	},
-	beforeLoad: function (params) {
-		var deferred = $.Deferred();
-		
-		this.api.getResousceFromCatalog('tasks', params.query).then(function (response) {
-			this.tasksCollection = response.data;
-			this.taskList = this.addView(TaskList, {collection: response.data});
-			this.renderNestedView(this.taskList, '.task-list');
-			this.filter = this.addView(TasksFiltersView, {query: params.query});
-			this.renderNestedView(this.filter, '.filters-container');
-			deferred.resolve(true);
-		}.bind(this));
-
-		return deferred.promise();
-	},
-	beforeChangeParams: function(params){
-		if(params.query)		
-			this.taskList.updateTaskList(params.query);
-
-		this.filter.updateFilterModel(params.query);
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
-			href = this.api.getUrl(this.tasksCollection, id);
+			href = this.api.getUrl(this.collection, id);
 		
 		if(!this.editView){
 			this.editView = this.addView(TaskEditView, {href: href});
-			this.renderNestedView(this.editView, '.edit-block');
+			this.renderNestedView(this.editView);
 		}
 
 		this.editView.updateModel(href);
@@ -70,6 +41,23 @@ var ContentView = BaseView.extend({
 	closeEdit: function(){
 		this.removeNestedView(this.editView);
 		this.editView = undefined;
+	}
+});
+
+var ContentView = BaseView.extend({
+	className: 'tasks full-size have-filter',
+	template: dashboardTpl,
+	events: {
+		'click .open-filter'			 	: 'toggleFilter'
+	},
+	onInitialize: function (params) {
+		BaseView.prototype.onInitialize.call(this, params);
+		this.taskList = this.addView(TaskList, {collection: {}}, '.task-list');
+		this.filter = this.addView(TasksFiltersView, {query: params.query}, '.filters-container');
+	},
+	onChangeParams: function(params){
+		this.taskList.updateTaskList(params.query);
+		this.filter.updateFilterModel(params.query);
 	},
 	toggleFilter: function(e){
 	    e.preventDefault();
