@@ -661,7 +661,9 @@ body {
     font-size: 40px;
 }
 
-.custom-select{
+.custom-select {
+    $self: custom-select;
+
     position: relative;
     float: left;
     margin-right: 10px;
@@ -685,50 +687,45 @@ body {
         }
     }
 
-    &.priotity {
-        & > div {
-            background: url(../img/icon/icon-critical-small.svg);
+    &.priority {
+        .custom-select-container {
+            text-transform: capitalize;
+            background-repeat: no-repeat;
+            background-position: 5px 4px;
+
+            &[data-selected="critical"] {
+                background-image: url(../img/icon/icon-critical-small.svg);
+            }
+            
+            &[data-selected="high"] {
+                background-image: url(../img/icon/icon-high-small.svg);
+            }
+
+            &[data-selected="medium"] {
+                background-image: url(../img/icon/icon-medium-small.svg);
+            }
+
+            &[data-selected="low"] {
+                background-image: url(../img/icon/icon-low-small.svg);
+            }
+        }
+
+        .#{$self} {
+            &-value {
+                padding: 0 25px;
+            }
         }
     }
 
-    &:after{
-        content: "";
-        background: red;
-        width: 10px;
-        height: 10px;
-        color: #000;
-        font-size: 18px;
-        position: absolute;
-        top: 7px;
-        display: block;
-        right: 0;
-    }
-    
-    &.custom-select-open{
-        &:after{
-            content: "";
-            background: green;
-            width: 10px;
-            height: 10px;
-            color: #000;
-            font-size: 18px;
-            position: absolute;
-            top: 7px;
-            display: block;
-            right: 0;
-        }
-    }
-    &
-    -value{
+    &-value{
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
         display: inline-block;
         text-overflow: ellipsis;
-        padding-right: 15px;
     }
 
-    &-dropdown{ 
+    &-dropdown {
         position: absolute;
         background: #f0f0f1;
         right: 0;
@@ -738,7 +735,8 @@ body {
         width: 100%;
         display: none;
         max-width: 300px;
-        &-search{
+
+        &-search {
             border: none;
             padding: 8px;
             background: none;
@@ -749,23 +747,29 @@ body {
             font-size: 16px;
             font-family: "Open Sans", Arial;
         }
-        .fa-search{
+
+        .fa-search {
             color: #777;
         }
-        ul{ 
+
+        ul { 
             max-height: 250px;
             overflow-y: auto;  
-            li{
+
+            li {
                 padding: 8px 5px;
                 cursor: pointer;
                 font-size: 14px;
-                &.active{
+
+                &.active {
                     background: #fcfcfd;
                 }
-                &:hover{
+
+                &:hover {
                     background: #fcfcfd;
                 }
-                .title{
+
+                .title {
                     font-weight: 600;
                     font-size: 16px;
                     overflow: hidden;
