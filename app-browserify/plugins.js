@@ -71,7 +71,9 @@ $.fn.customSelect = function(method) {
 
         //set current value or placeholder
         if(method == 'refresh'){
-        	$wrapper.find('.custom-select-value').text($input.data('text') || $input.val() || data.placeholder);
+        	$wrapper.find('.custom-select-value').text($input.val() || data.placeholder);
+        	if (!$wrapper[0].hasAttribute('data-search'))
+        		$wrapper.find('.custom-select-container').attr('data-selected', $input.val() || data.placeholder.toLowerCase());
         }
 
         //clear custom selects and destroy them
