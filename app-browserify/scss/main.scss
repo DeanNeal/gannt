@@ -710,6 +710,27 @@ body {
             }
         }
 
+        li {
+            background-repeat: no-repeat;
+            background-position: 5px 10px;
+
+            &[data-id="critical"] {
+                background-image: url(../img/icon/icon-critical-small.svg);
+            }
+
+            &[data-id="high"] {
+                background-image: url(../img/icon/icon-high-small.svg);
+            }
+
+            &[data-id="medium"] {
+                background-image: url(../img/icon/icon-medium-small.svg);
+            }
+
+            &[data-id="low"] {
+                background-image: url(../img/icon/icon-low-small.svg);
+            }
+        }
+
         .#{$self} {
             &-value {
                 padding: 0 25px;
@@ -765,9 +786,9 @@ body {
                     background: #fcfcfd;
                 }
 
-                &:hover {
-                    background: #fcfcfd;
-                }
+                // &:hover {
+                //     background: #fcfcfd;
+                // }
 
                 .title {
                     font-weight: 600;
