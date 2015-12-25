@@ -6,6 +6,8 @@ var Api                 = require('api');
 
 var api = Api.getInstance('build/api/catalog.json');
 
+var Helpers = require('helpers');
+
 require('malihu-custom-scrollbar-plugin')($);
 
 
@@ -95,9 +97,11 @@ $.fn.customSelect = function(method) {
 
 	        $wrapper.append(tpl);
 
-	        var $value =  $wrapper.find('.custom-select-value'),
-	        	$dropdown = $wrapper.find('.custom-select-dropdown'),
-	        	$container = $wrapper.find('.custom-select-container');
+	        var $value     = $wrapper.find('.custom-select-value'),
+	        	$list      = $wrapper.find('.custom-select-dropdown-list'),
+	        	$dropdown  = $wrapper.find('.custom-select-dropdown'),
+	        	$container = $wrapper.find('.custom-select-container'),
+	        	$search    = $wrapper.find('.custom-select-dropdown-search');
 
 	        //set current value or placeholder
 	        $value.text($input.val() || data.placeholder);
@@ -114,8 +118,8 @@ $.fn.customSelect = function(method) {
 	            if ($wrapper[0].hasAttribute('data-search') && $dropdown.is(':visible')) {
 	                api.getResousceFromCatalog('tasks').then(function(response) {
 	                	var tpl = _.template(customSelectListTpl)(response);
-	                	$wrapper.find('ul').html(tpl);
-	                	//$wrapper.find('ul').mCustomScrollbar();
+	                	$list.html(tpl);
+	                	//$list.mCustomScrollbar();
 	                });
 	            }
 	        });
@@ -134,6 +138,13 @@ $.fn.customSelect = function(method) {
 	               	item.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
 	            });
 	        });
+
+	        $search.on('keyup', function(){
+	            var searchstr = $(this).val().toLowerCase();
+	            Helpers.searchEngine(searchstr, $list, 2);
+	        });
+
+
         }
 
     });

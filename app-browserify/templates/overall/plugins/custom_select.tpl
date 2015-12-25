@@ -7,7 +7,7 @@
 				<i class="fa fa-search"></i>
 		<% } %>
 
-		<ul>
+		<ul class="custom-select-dropdown-list">
 			<% _.each(items, function(item) { %>
 				<li data-id="<%=item%>"><%=item%></li>
 			<% }); %>

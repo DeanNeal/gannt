@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 var Helpers = {
     getUrlVars: function(args) {
         if(!args) return null;
@@ -43,7 +45,20 @@ var Helpers = {
 
             return item;
         });
-    }
+    },
+    searchEngine: function(str, list, startCount) {
+         var valueWords = str.split(" ").join(")(?=.*"),
+             end = ').*',
+             pattern = new RegExp("(?=.*" + valueWords + end, 'ig');
+
+         if (str.length > (startCount ? startCount : 0)) {
+             list.find('li').map(function(i, item) {
+                var testVal = $(item).text().replace(/\s\s+/g, ' ');
+                $(item).toggleClass('hide', !pattern.test(testVal));
+             });
+         } else
+            list.find('li').removeClass('hide');
+     }
 };
 
 module.exports = Helpers;
