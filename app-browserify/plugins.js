@@ -1,8 +1,12 @@
-var $                   = require('jquery');
-var _                   = require('underscore');
-var customSelectTpl     = require('templates/overall/plugins/custom_select.tpl');
-var customSelectListTpl = require('templates/overall/plugins/custom_select_list.tpl');
-var Api                 = require('api');
+var $                         = require('jquery');
+var _                         = require('underscore');
+var customSelectTpl           = require('templates/overall/plugins/custom_select.tpl');
+var Api                       = require('api');
+
+var templates = {
+	customSelectListTpl       : require('templates/overall/plugins/custom_select_list.tpl'),
+	customSelectListPriority  : require('templates/overall/plugins/custom_select_list_priority.tpl')
+};
 
 var api = Api.getInstance('build/api/catalog.json');
 
@@ -81,7 +85,7 @@ $.fn.customSelect = function(options) {
 
         //set current value or placeholder
         if(settings.method == 'refresh'){
-        	$wrapper.find('.custom-select-value').text($input.val() || data.placeholder);
+        	$wrapper.find('.custom-select-value').text($input.data('text') || $input.val() || data.placeholder);
         	if (!$wrapper[0].hasAttribute('data-search'))
         		$wrapper.find('.custom-select-container').attr('data-selected', $input.val() || data.placeholder.toLowerCase());
         }
@@ -127,9 +131,9 @@ $.fn.customSelect = function(options) {
 	            $dropdown.toggle();
 	            $wrapper.toggleClass('custom-select-open');
 
-	            if ($wrapper[0].hasAttribute('data-search') && $dropdown.is(':visible')) {
+	            if ($dropdown.is(':visible')) {
 	                api.getResourceByUrl(settings.url).then(function(response) {
-	                	var tpl = _.template(customSelectListTpl)(response);
+	                	var tpl = _.template(templates[settings.template])(response);
 	                	$list.html(tpl);
 	                	//$list.mCustomScrollbar();
 	                });
@@ -137,13 +141,14 @@ $.fn.customSelect = function(options) {
 	        });
 
 	        $wrapper.on('click', '.custom-select-dropdown li', function() {
+
 	            $input
-		            .val($(this).data('id'))
-		            .data('text', $(this).text())
+		            .val($(this).data('text'))
+		            .data('text', $(this).data('text'))
 		            .change();
 
 		        if (!$wrapper[0].hasAttribute('data-search'))
-		        	$container.attr('data-selected', $(this).text());
+		        	$container.attr('data-selected', $(this).data('text'));
 
 	            //hide all
 	            customSelectArray.forEach(function(item) {
@@ -164,7 +169,6 @@ $.fn.customSelect = function(options) {
 
 $.fn.customSelect.defaults = {
 	url: '',
-
 };
 
 

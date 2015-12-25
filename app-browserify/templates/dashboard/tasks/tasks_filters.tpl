@@ -10,23 +10,17 @@
 	</div>
 
 	<div class="right-filters">
-		<div id="projects-select" class="custom-select" data-search data-placeholder="Project">
+		<div id="projects-select" class="custom-select projects" data-search data-placeholder="Project">
 			<input type="hidden" name="project">
 		</div>
 
-		<div id="milestones-select" class="custom-select" data-search data-placeholder="Milestone">
+		<div id="milestones-select" class="custom-select milestones" data-search data-placeholder="Milestone">
 			<input type="hidden" name="milestone">
 		</div>
 
 		<div id="priorities-select" class="custom-select priority" data-placeholder="High">
 			<input type="hidden" name="priority">
-			<select>
-				<option value="critical">Critical</option>
-				<option value="high">High</option>
-				<option value="medium">Medium</option>
-				<option value="low">Low</option>
-			</select>
-		</div>
+ 		</div>
 		
 		<a class="btn-add-new open-filter" href="">+</a>
 	</div>

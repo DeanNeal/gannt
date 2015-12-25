@@ -3,14 +3,9 @@
 
 	<div class="custom-select-dropdown">
 		<% if (search) { %>
-				<input class="custom-select-dropdown-search" type="text" placeholder="Search <%=placeholder%>">
-				<i class="fa fa-search"></i>
+			<input class="custom-select-dropdown-search" type="text" placeholder="Search <%=placeholder%>">
+			<i class="fa fa-search"></i>
 		<% } %>
-
-		<ul class="custom-select-dropdown-list">
-			<% _.each(items, function(item) { %>
-				<li data-id="<%=item%>"><%=item%></li>
-			<% }); %>
-		</ul>
+		<ul class="custom-select-dropdown-list"></ul>
 	</div>
 </div>

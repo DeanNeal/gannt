@@ -663,20 +663,19 @@ body {
 
 .custom-select {
     $self: custom-select;
-
+    text-align: center;
     position: relative;
     float: left;
     margin-right: 10px;
     min-width: 80px;
     max-width: 200px;
-    text-align: center;
     cursor: pointer;
     border-bottom: 1px solid #bbb;
 
     &[data-search]{
         .custom-select-dropdown{
             padding: 10px 10px 20px 10px;
-            width: initial;
+            width: 250px;
             ul{
                 margin-top: 10px;
                 li{
@@ -686,12 +685,19 @@ body {
             }
         }
     }
-
+    // &.projects{
+    //     min-width: 150px;
+    // }
+    // &.milestones{
+    //     min-width: 150px;
+    // }
     &.priority {
+        width: 100px;
+        text-align: left;
         .custom-select-container {
             text-transform: capitalize;
             background-repeat: no-repeat;
-            background-position: 5px 4px;
+            background-position: 8px 4px;
 
             &[data-selected="critical"] {
                 background-image: url(../img/icon/icon-critical-small.svg);
@@ -713,27 +719,35 @@ body {
         li {
             background-repeat: no-repeat;
             background-position: 5px 10px;
-
-            &[data-id="critical"] {
-                background-image: url(../img/icon/icon-critical-small.svg);
+            &:before{
+                content: '';
+                background: red;
+                width: 15px;
+                height: 15px;
+                display: inline-block;
+                margin-right: 5px;
+                float: left;
+            }
+            &[data-id="critical"]:before {
+                background: url(../img/icon/icon-critical-small.svg);
             }
 
-            &[data-id="high"] {
-                background-image: url(../img/icon/icon-high-small.svg);
+            &[data-id="high"]:before {
+                 background: url(../img/icon/icon-high-small.svg);
             }
 
-            &[data-id="medium"] {
-                background-image: url(../img/icon/icon-medium-small.svg);
+            &[data-id="medium"]:before {
+                background: url(../img/icon/icon-medium-small.svg);
             }
 
-            &[data-id="low"] {
-                background-image: url(../img/icon/icon-low-small.svg);
+            &[data-id="low"]:before {
+                background: url(../img/icon/icon-low-small.svg);
             }
         }
 
         .#{$self} {
             &-value {
-                padding: 0 25px;
+                padding-left:28px;
             }
         }
     }
@@ -778,7 +792,7 @@ body {
             overflow-y: auto;  
 
             li {
-                padding: 8px 5px;
+                padding: 8px;
                 cursor: pointer;
                 font-size: 14px;
 
@@ -786,9 +800,9 @@ body {
                     background: #fcfcfd;
                 }
 
-                // &:hover {
-                //     background: #fcfcfd;
-                // }
+                &:hover {
+                    background: #fcfcfd;
+                }
 
                 .title {
                     font-weight: 600;
