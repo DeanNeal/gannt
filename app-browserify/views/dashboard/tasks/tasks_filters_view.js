@@ -38,7 +38,19 @@ var ContentView = BaseView.extend({
 		this.modelBinder.bind(this.model, this.el);
 		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new Plugins.setActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
-		this.getElement('.custom-select').customSelect();
+
+
+		this.getElement('#projects-select').customSelect({
+			url: this.api.getUrlFromCatalog('projects')
+		});
+
+		this.getElement('#milestones-select').customSelect({
+			url: this.api.getUrlFromCatalog('milestones')
+		});
+
+		this.getElement('#priorities-select').customSelect({
+			url: 'build/api/priorities.json'
+		});
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);

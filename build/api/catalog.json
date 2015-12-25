@@ -10,11 +10,11 @@
     },
     {
       "id": "user",
-      "href": "http://example.com/user"
+      "href": "build/api/user"
     },
     {
       "id": "projects",
-      "href": "http://example.com/projects"
+      "href": "build/api/projects.json"
     },
     {
       "id": "milestones",
@@ -23,6 +23,10 @@
     {
       "id": "tasks",
       "href": "build/api/tasks.json"
+    },
+    {
+      "id": "priorities",
+      "href": "build/api/priorities.json"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
     "data": [{
       "id": "1",
-      "name": "milestone_1",
+      "name": "project_1",
       "priority": "high",
       "status": "new",
       "assignee": "Dean Neal",
@@ -10,13 +10,13 @@
       "tags": "tag1,tag2,tag3",
       "links": [
         {
-          "id": "milestones",
-          "href": "build/api/mileston.json"
+          "id": "projects",
+          "href": "build/api/project.json"
         }
       ]
     },{
       "id": "2",
-      "name": "milestone_2",
+      "name": "project_2",
       "priority": "high",
       "status": "new",
       "assignee": "Dean Neal",
@@ -25,13 +25,13 @@
       "tags": "tag1,tag2,tag3",
       "links": [
         {
-          "id": "milestones",
-          "href": "build/api/mileston.json"
+          "id": "projects",
+          "href": "build/api/project.json"
         }
       ]
     },{
       "id": "3",
-      "name": "milestone_3",
+      "name": "project_3",
       "priority": "high",
       "status": "new",
       "assignee": "Dean Neal",
@@ -40,13 +40,13 @@
       "tags": "tag1,tag2,tag3",
       "links": [
         {
-          "id": "milestones",
-          "href": "build/api/mileston.json"
+          "id": "projects",
+          "href": "build/api/project.json"
         }
       ]
     },{
       "id": "4",
-      "name": "milestone_4",
+      "name": "project_4",
       "priority": "high",
       "status": "new",
       "assignee": "Dean Neal",
@@ -55,13 +55,13 @@
       "tags": "tag1,tag2,tag3",
       "links": [
         {
-          "id": "milestones",
-          "href": "build/api/mileston.json"
+          "id": "projects",
+          "href": "build/api/project.json"
         }
       ]
     },{
       "id": "5",
-      "name": "milestone_5",
+      "name": "project_5",
       "priority": "high",
       "status": "new",
       "assignee": "Dean Neal",
@@ -70,8 +70,8 @@
       "tags": "tag1,tag2,tag3",
       "links": [
         {
-          "id": "milestones",
-          "href": "build/api/mileston.json"
+          "id": "projects",
+          "href": "build/api/project.json"
         }
       ]
     }]

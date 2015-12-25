@@ -57,9 +57,19 @@ SetActiveStateAtTable.prototype.highlight = function() {
 
 var customSelectArray = [];
 
-$.fn.customSelect = function(method) {
+$.fn.customSelect = function(options) {
 
-	var method = method;
+	// var method = method;
+
+	if(typeof options === 'object')
+		options = options;
+	if(typeof options === 'string'){
+		options = {
+			method: options
+		};
+	}
+
+	var settings = $.extend(true, {}, $.fn.customSelect.defaults, options);
 
     return this.each(function() {
         var $wrapper = $(this),
@@ -70,18 +80,18 @@ $.fn.customSelect = function(method) {
 
 
         //set current value or placeholder
-        if(method == 'refresh'){
+        if(settings.method == 'refresh'){
         	$wrapper.find('.custom-select-value').text($input.val() || data.placeholder);
         	if (!$wrapper[0].hasAttribute('data-search'))
         		$wrapper.find('.custom-select-container').attr('data-selected', $input.val() || data.placeholder.toLowerCase());
         }
 
         //clear custom selects and destroy them
-        if(method == 'destroy'){
+        if(settings.method == 'destroy'){
         	customSelectArray = [];
         }
 
-        if(!method){
+        if(!settings.method){
 	        customSelectArray.push($wrapper);
 	        $select.hide();
 
@@ -118,7 +128,7 @@ $.fn.customSelect = function(method) {
 	            $wrapper.toggleClass('custom-select-open');
 
 	            if ($wrapper[0].hasAttribute('data-search') && $dropdown.is(':visible')) {
-	                api.getResousceFromCatalog('tasks').then(function(response) {
+	                api.getResourceByUrl(settings.url).then(function(response) {
 	                	var tpl = _.template(customSelectListTpl)(response);
 	                	$list.html(tpl);
 	                	//$list.mCustomScrollbar();
@@ -146,12 +156,16 @@ $.fn.customSelect = function(method) {
 	            Helpers.searchEngine(searchstr, $list, 2);
 	        });
 
-
         }
 
     });
 };
 
+
+$.fn.customSelect.defaults = {
+	url: '',
+
+};
 
 
 var Plugins = {

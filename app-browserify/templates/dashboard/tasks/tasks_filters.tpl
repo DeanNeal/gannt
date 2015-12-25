@@ -10,15 +10,15 @@
 	</div>
 
 	<div class="right-filters">
-		<div class="custom-select" data-search data-placeholder="Project">
+		<div id="projects-select" class="custom-select" data-search data-placeholder="Project">
 			<input type="hidden" name="project">
 		</div>
 
-		<div class="custom-select" data-search data-placeholder="Milestone">
+		<div id="milestones-select" class="custom-select" data-search data-placeholder="Milestone">
 			<input type="hidden" name="milestone">
 		</div>
 
-		<div class="custom-select priority" data-placeholder="High">
+		<div id="priorities-select" class="custom-select priority" data-placeholder="High">
 			<input type="hidden" name="priority">
 			<select>
 				<option value="critical">Critical</option>
