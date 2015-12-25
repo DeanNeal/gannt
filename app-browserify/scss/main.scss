@@ -670,21 +670,31 @@ body {
     text-align: center;
     cursor: pointer;
     border-bottom: 1px solid #bbb;
+
     &[data-search]{
         .custom-select-dropdown{
             width: initial;
         }
     }
+
+    &.priotity {
+        & > div {
+            background: url(../img/icon/icon-critical-small.svg);
+        }
+    }
+
     &.custom-select-open{
 
     }
-    &-value{
+    &
+    -value{
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
         display: inline-block;
         text-overflow: ellipsis;
     }
+
     &-dropdown{ 
         position: absolute;
         background: #f0f0f1;

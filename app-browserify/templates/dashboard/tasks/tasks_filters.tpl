@@ -18,13 +18,13 @@
 			<input type="hidden" name="milestone">
 		</div>
 
-		<div class="custom-select" data-placeholder="Hight">
+		<div class="custom-select priotity" data-placeholder="Hight">
 			<input type="hidden" name="priority">
 			<select>
-				<option value="critical">Critical</option>
-				<option value="high">High</option>
-				<option value="medium">Medium</option>
-				<option value="low">Low</option>
+				<option value="Critical">Critical</option>
+				<option value="High">High</option>
+				<option value="Medium">Medium</option>
+				<option value="Low">Low</option>
 			</select>
 		</div>
 		
