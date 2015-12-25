@@ -4,6 +4,7 @@
 	<div class="custom-select-dropdown">
 		<% if (search) { %>
 				<input class="custom-select-dropdown-search" type="text" placeholder="Search <%=placeholder%>">
+				<i class="fa fa-search"></i>
 		<% } %>
 
 		<ul>

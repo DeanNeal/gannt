@@ -1,9 +1,12 @@
-var $               = require('jquery');
-var _               = require('underscore');
-var customSelectTpl = require('templates/overall/plugins/custom_select.tpl');
-var Api             = require('api');
+var $                   = require('jquery');
+var _                   = require('underscore');
+var customSelectTpl     = require('templates/overall/plugins/custom_select.tpl');
+var customSelectListTpl = require('templates/overall/plugins/custom_select_list.tpl');
+var Api                 = require('api');
 
 var api = Api.getInstance('build/api/catalog.json');
+
+require('malihu-custom-scrollbar-plugin')($);
 
 
 
@@ -108,11 +111,15 @@ $.fn.customSelect = function(method) {
 	            $wrapper.toggleClass('custom-select-open');
 
 	            if ($wrapper[0].hasAttribute('data-search') && $dropdown.is(':visible')) {
-	                $wrapper.find('ul').empty();
+	                //$wrapper.find('ul').empty();
 	                api.getResousceFromCatalog('tasks').then(function(response) {
-	                    response.data.forEach(function(item) {
-	                        $wrapper.find('ul').append('<li data-id="' + item.id + '">' + item.name + '</li>')
-	                    });
+	                	var tpl = _.template(customSelectListTpl)(response);
+
+	                	$wrapper.find('ul').html(tpl);
+	                	$wrapper.find('ul').mCustomScrollbar();
+	                    // response.data.forEach(function(item) {
+	                    //     $wrapper.find('ul').append('<li data-id="' + item.id + '">' + item.name + '</li>')
+	                    // });
 	                });
 	            }
 	        });
@@ -125,7 +132,7 @@ $.fn.customSelect = function(method) {
 
 	            //hide all
 	            customSelectArray.forEach(function(item) {
-	               	item.find('.custom-select-dropdown').hide();
+	               	item.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
 	            });
 	        });
         }
