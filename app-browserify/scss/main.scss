@@ -670,6 +670,7 @@ body {
     text-align: center;
     cursor: pointer;
     border-bottom: 1px solid #bbb;
+
     &[data-search]{
         .custom-select-dropdown{
             padding: 10px 10px 20px 10px;
@@ -683,6 +684,13 @@ body {
             }
         }
     }
+
+    &.priotity {
+        & > div {
+            background: url(../img/icon/icon-critical-small.svg);
+        }
+    }
+
     &:after{
         content: "";
         background: red;
@@ -695,6 +703,7 @@ body {
         display: block;
         right: 0;
     }
+    
     &.custom-select-open{
         &:after{
             content: "";
@@ -709,7 +718,8 @@ body {
             right: 0;
         }
     }
-    &-value{
+    &
+    -value{
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
@@ -717,6 +727,7 @@ body {
         text-overflow: ellipsis;
         padding-right: 15px;
     }
+
     &-dropdown{ 
         position: absolute;
         background: #f0f0f1;
