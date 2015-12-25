@@ -1,4 +1,4 @@
-<div>
+<div class="custom-select-container">
 	<span class="custom-select-value"><%=value%></span>
 
 	<div class="custom-select-dropdown">

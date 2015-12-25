@@ -96,7 +96,8 @@ $.fn.customSelect = function(method) {
 	        $wrapper.append(tpl);
 
 	        var $value =  $wrapper.find('.custom-select-value'),
-	        	$dropdown = $wrapper.find('.custom-select-dropdown');
+	        	$dropdown = $wrapper.find('.custom-select-dropdown'),
+	        	$container = $wrapper.find('.custom-select-container');
 
 	        //set current value or placeholder
 	        $value.text($input.val() || data.placeholder);
@@ -111,15 +112,10 @@ $.fn.customSelect = function(method) {
 	            $wrapper.toggleClass('custom-select-open');
 
 	            if ($wrapper[0].hasAttribute('data-search') && $dropdown.is(':visible')) {
-	                //$wrapper.find('ul').empty();
 	                api.getResousceFromCatalog('tasks').then(function(response) {
 	                	var tpl = _.template(customSelectListTpl)(response);
-
 	                	$wrapper.find('ul').html(tpl);
-	                	$wrapper.find('ul').mCustomScrollbar();
-	                    // response.data.forEach(function(item) {
-	                    //     $wrapper.find('ul').append('<li data-id="' + item.id + '">' + item.name + '</li>')
-	                    // });
+	                	//$wrapper.find('ul').mCustomScrollbar();
 	                });
 	            }
 	        });
@@ -129,6 +125,9 @@ $.fn.customSelect = function(method) {
 		            .val($(this).data('id'))
 		            .data('text', $(this).text())
 		            .change();
+
+		        if (!$wrapper[0].hasAttribute('data-search'))
+		        	$container.attr('data-selected', $(this).text());
 
 	            //hide all
 	            customSelectArray.forEach(function(item) {
