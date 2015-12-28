@@ -14,7 +14,7 @@
         }]
     }, {
         "id": 2,
-        "name": "Some really long task name an some other_2",
+        "name": "Some",
         "priority": "high",
         "status": "send back",
         "assignee": "Dean Neal",
@@ -27,7 +27,7 @@
         }]
     }, {
         "id": 3,
-        "name": "Some really long task name an some other_3",
+        "name": "Some really",
         "priority": "high",
         "status": "completed",
         "assignee": "Dean Neal",
@@ -40,7 +40,7 @@
         }]
     }, {
         "id": 4,
-        "name": "Some really long task name an some other_4",
+        "name": "Some really long",
         "priority": "high",
         "status": "done",
         "assignee": "Dean Neal",
@@ -53,7 +53,7 @@
         }]
     }, {
         "id": 5,
-        "name": "Some really long task name an some other_5",
+        "name": "Some really long task",
         "priority": "high",
         "status": "on hold",
         "assignee": "Dean Neal",
@@ -66,7 +66,7 @@
         }]
     }, {
         "id": 6,
-        "name": "Some really long task name an some other_6",
+        "name": "Some really long task name",
         "priority": "high",
         "status": "new",
         "assignee": "Dean Neal",
@@ -79,7 +79,7 @@
         }]
     },{
         "id": 7,
-        "name": "Some really long task name an some other_7",
+        "name": "Some really long task name an",
         "priority": "high",
         "status": "new",
         "assignee": "Dean Neal",
@@ -92,7 +92,7 @@
         }]
     },{
         "id": 8,
-        "name": "Some really long task name an some other_8",
+        "name": "Some really long task name an some",
         "priority": "high",
         "status": "new",
         "assignee": "Dean Neal",
@@ -105,7 +105,7 @@
         }]
     },{
         "id": 9,
-        "name": "Some really long task name an some other_9",
+        "name": "Some really long task name an some other",
         "priority": "high",
         "status": "new",
         "assignee": "Dean Neal",
@@ -118,7 +118,7 @@
         }]
     },{
         "id": 10,
-        "name": "Some really long task name an some other_10",
+        "name": "Some really long task name an some other_10 Some really long task name an some other_10",
         "priority": "high",
         "status": "new",
         "assignee": "Dean Neal",

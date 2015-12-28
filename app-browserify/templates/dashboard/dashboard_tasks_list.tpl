@@ -2,19 +2,18 @@
 	<% _.each(data, function(item){ %>
 		<tr data-id="<%=item.id%>">
 			<td class="title">
-				<div style="display: flex; flex-direction: row;">
-					<div style="display: flex; flex-direction: column; flex: 1;">
-						<!-- <i class="fa fa-bug"></i> -->
-						<span class="text-overflow" title="#<%=item.id%>: <%=item.name%>">#<%=item.id%>: <%=item.name%></span>
-					</div>
+				<div class="task-name">
+					<svg class="icon icon-trash">
+			        	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+			    	</svg>
 
-					<div class="tags">
-						<div style="display: flex; flex-direction: row;">
-							<% _.each(item.tags.split(','), function(tag) { %>
-								<span class="tag" title="<%=tag%>"><%=tag%></span>
-							<% }); %>
-						</div>
-					</div>
+					<span class="" title="#<%=item.id%>: <%=item.name%>">#<%=item.id%>: <%=item.name%></span>
+				</div>
+
+				<div class="tags">
+					<% _.each(item.tags.split(','), function(tag) { %>
+						<span class="tag" title="<%=tag%>"><%=tag%></span>
+					<% }); %>
 				</div>
 			</td>
 
@@ -23,7 +22,9 @@
 			</td>
 
 			<td class="priority">
-				<div><%=item.priority%></div>
+				<svg class="icon icon-critical">
+		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-critical"></use>
+		        </svg>
 			</td>
 
 			<td class="status">
@@ -37,13 +38,24 @@
 
 			<td class="milestone">
 				<div class="info">
-					<span>Milestone</span>
-					<span class="deadline">Deadline: 18.01.16</span>
+					<svg class="icon icon-trash">
+				        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+				    </svg>
+
+				    <div>
+						<span>Design </span>
+						<span class="deadline">Deadline: 18.01.16</span>
+				    </div>
 				</div>
 			</td>
 
 			<td class="created">
-				<div><%=item.date%></div>
+				<div>
+					<svg class="icon icon-trash">
+				        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+				    </svg>
+				    <%=item.date%>
+				</div>
 			</td>
 
 			<td class="updated">
