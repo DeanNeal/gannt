@@ -1,6 +1,11 @@
 <div class="clearfix">
 	<div class="left-filters">
-		<a class="btn-add-new" href="">+</a>
+		<a class="btn-add-new" href="">
+			<svg class="icon icon-add">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
+	        </svg>
+		</a>
+
 		<div class="base-filters">
 			<input type="hidden" name="filter">
 			<span data-filter="all" class="list-item">All</a></span>
@@ -22,7 +27,11 @@
 			<input type="hidden" name="priority">
  		</div>
 		
-		<a class="btn-add-new open-filter" href="">+</a>
+		<a class="btn-show-sort open-filter" href="">
+			<svg class="icon icon-add">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
+	        </svg>
+		</a>
 	</div>
 
 	<div class="table-search">
