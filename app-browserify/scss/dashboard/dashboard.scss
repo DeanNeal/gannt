@@ -11,6 +11,7 @@
         top: 0;
         background: #3f3b4a;
         height: 65px;
+        z-index: 10;
     }
     
     // .dashboard-header_menu
@@ -134,42 +135,29 @@
     //     }
     // }
 
-    .tasks-description > div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .tasks-description {
+        position: relative;
+        padding-top: 128px;
 
-        display: flex;
-        flex-flow: column;
-        height: 100%;
         .description {
-            flex: 0 1 auto;
-        }
-        .info-container {
-            position: relative;
-            flex: 1 1 auto;
-        }
-        .info {
             position: absolute;
-            top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            display: flex;
+            top: 0;
+        }
+
+        .tabs-view,
+        .details-view {
+            float: left;
             height: 100%;
-            flex-direction: row;
-            padding: 10px 20px;
-            .tabs-view, .details-view {
-                height: 100%;
-            }
-            .tabs-view {
-                flex: 1 60%;
-            }
-            .details-view {
-                flex: 1 40%;
-            }
+        }
+
+        .tabs-view {
+            width: 592px;
+        }
+
+        .details-view {
+            width: calc(100% - 592px);
         }
     }
 
@@ -219,17 +207,12 @@
             background: -webkit-linear-gradient(-45deg,  #d8d7dc 0%,#e2dbdf 100%);
             background: linear-gradient(135deg,  #d8d7dc 0%,#e2dbdf 100%);
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8d7dc', endColorstr='#e2dbdf',GradientType=1 );
-            width: 70%;
+            width: 990px;
             top: 0;
             right: 0;
-            height: 100%;
+            bottom: 0;
             border-left: 1px solid #B5B5B5;
             z-index: 100;
-            // -webkit-animation: fadein 0.8s; /* Safari, Chrome and Opera > 12.1 */
-            //    -moz-animation: fadein 0.8s; /* Firefox < 16 */
-            //     -ms-animation: fadein 0.8s; /* Internet Explorer */
-            //      -o-animation: fadein 0.8s; /* Opera < 12.1 */
-            //         animation: fadein 0.8s;
 
             .close-icon {
                 color: #817E81;
@@ -241,28 +224,36 @@
                 cursor: pointer;
                 font-size: 20px;
             }
+
             .description {
                 padding: 20px 20px;
                 background: #E0DFE4;
-                p{
+
+                p {
                     float: left;
                 }
-                .name{
+
+                .name {
                     font-weight: 600;
-                    .icon-radio-unchecked{
+
+                    .icon-radio-unchecked {
                         font-size: 14px;
                     }
+
                     .fa-pencil {
                         font-size: 18px;
                         cursor: pointer;
                     }
                 }
-                &-text{
-                    span{
+                
+                // .description-text
+                &-text {
+                    span {
                         color: #6B6A6A;
                         font-size: 14px;
                     }
-                    .see_more{
+
+                    .see_more {
                         margin-left: 5px;
                         color: #000;
                         text-decoration: none;
@@ -432,6 +423,20 @@
             .icon {
                 font-size: 17px;
             }
+
+            [data-priority] {
+                display: inline-block;
+                padding: 1px 5px;
+                font-size: 12px;
+                
+                &[data-priority="high"]:before {
+                    /**/
+                }
+
+                &[data-priority="low"]:before {
+                    /**/
+                }
+            }
         }
 
         .status {
@@ -482,8 +487,6 @@
         }
 
         .milestone {
-            width: 20%;
-
             .icon {
                 font-size: 15px;
             }
@@ -515,27 +518,6 @@
                 font-size: 15px;
             }
         }
-
-        .updated {
-            width: 10%;
-        }
-
-        .priority {
-            [data-priority] {
-                display: inline-block;
-                padding: 1px 5px;
-                font-size: 12px;
-                font-family: 'icomoon' !important;
-                &[data-priority="high"]:before {
-                    content: "\e904";
-                    color: brown;
-                }
-                &[data-priority="low"]:before {
-                    content: "\e905";
-                    color: #45B3AB;
-                }
-            }
-        }
     }
 
     // .dashboard-table-header
@@ -548,7 +530,7 @@
         }
 
         .projects {
-            width: 10%;
+            width: 5%;
 
             @media(max-width: 1024px) {
                 display: none;

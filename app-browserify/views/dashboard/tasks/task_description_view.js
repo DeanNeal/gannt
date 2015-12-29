@@ -4,7 +4,7 @@ var Backbone    = require('backbone'),
     tpl         = require('templates/dashboard/dashboard_task_description.tpl');
 
 var ContentView = BaseView.extend({
-    className: 'tasks-description',
+    className: 'tasks-description full-size',
     template: tpl,
     events: {
         'click .save'  : "testPutQuery",
