@@ -1,10 +1,14 @@
 <div class="full-size">
 	<div class="description">
-		<span class="name">
-			<i class="fa fa-circle-o"></i>
-			#<%=id%>: <%=name%>
-			<i class="fa fa-pencil"></i>
-		</span>
+		<div>
+			<i class="fa fa-times close-icon"></i>
+
+			<span class="name">
+				<i class="fa fa-circle-o"></i>
+				#<%=id%>: <%=name%>
+				<i class="fa fa-pencil"></i>
+			</span>
+		</div>
 
 		<div class="description-text">
 			<span name="description"></span>
