@@ -2,7 +2,7 @@
   "name": "cubegg",
   "version": "1.0.0",
   "description": "cubegg project",
-  "main": "index.js",
+  "main": "./build/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,8 @@
     "browserify-compile-templates": "^0.2.0",
     "browserify-shim": "^3.8.11",
     "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
     "gulp-less": "^3.0.5",
@@ -26,8 +28,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
-    "jquery": "^2.1.4",
-    "jquery-ui": "^1.10.5",
     "jstify": "^0.13.0",
     "kefir": "^3.1.0",
     "malihu-custom-scrollbar-plugin": "^3.1.3",
@@ -39,5 +39,20 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1"
+  },
+  "browser": {
+    "jquery": "./bower_components/jquery/dist/jquery.min.js",
+    "jquery-ui": "./bower_components/jquery-ui/jquery-ui.min.js",
+    "custom-scrollbar": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "jquery-ui": {"depends": "jquery:$"},
+    "custom-scrollbar": {"depends": "jquery:$"}
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }

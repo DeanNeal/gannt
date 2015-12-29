@@ -1,82 +1,110 @@
 var gulp       = require('gulp'),
-	concat     = require('gulp-concat'),
-	gutil      = require('gulp-util'),
-	watchify   = require('watchify'),
-	source     = require('vinyl-source-stream'),
-	browserify = require('browserify'),
-	less       = require('gulp-less'),
-	sass       = require('gulp-sass'),
-	path       = require('path'),
-	stringify  = require('stringify'),
-	connect    = require('gulp-connect'),
-	uglify     = require('gulp-uglify'),
-	buffer     = require('vinyl-buffer'),
-	minifyCSS  = require('gulp-minify-css'),
-	sourcemaps = require('gulp-sourcemaps');
+    gutil      = require('gulp-util'),
 
-var sourceFile  = 'app-browserify/app.js',
-	destFolder = 'build',
-	destFile = 'bundle.js';
+    watchify   = require('watchify'),
+    source     = require('vinyl-source-stream'),
+    browserify = require('browserify'),
+    sass       = require('gulp-sass'),
+    path       = require('path'),
+    stringify  = require('stringify'),
+    connect    = require('gulp-connect'),
+    uglify     = require('gulp-uglify'),
+    buffer     = require('vinyl-buffer'),
+    sourceMaps = require("gulp-sourcemaps"),
+    babel      = require("gulp-babel"),
+    concat     = require("gulp-concat"),
+    clean      = require('gulp-clean');
 
-gulp.task('connect', function() {
-    connect.server({
-        root: '',
-        livereload: true
-    });
+var projectPath = {
+	dev: './dev',
+	assets: './dev/assets',
+	source: './dev/src',
+	build: './build',
+	modules: './node_modules',
+	vendors: './bower_components'
+};
+
+gulp.task('connect', function () {
+	connect.server({
+		root: '',
+		livereload: true
+	});
 });
 
+gulp.task('clean-scripts', function () {
+	return gulp.src(projectPath.build + '/app', {read: false})
+	           .pipe(clean());
+});
 
-gulp.task('browserify', function(){
+gulp.task('copy-api', ['clean-scripts'], function () {
+	return gulp.src(projectPath.dev + '/api/**')
+	           .pipe(gulp.dest(projectPath.build + '/api'))
+});
+
+gulp.task("babel", function () {
+	return gulp.src(projectPath.source + "/**/*.js")
+	           .pipe(sourceMaps.init())
+	           .pipe(babel())
+	           .pipe(sourceMaps.write("."))
+	           .pipe(gulp.dest(projectPath.dev + '/es5'));
+});
+
+var scripts = function() {
 	return browserify({
-	        entries: [sourceFile],
-	        // extensions: ['.jsx'],
-	        paths: ['./node_modules','./app-browserify']
-    	})
-		.transform(stringify(['.tpl']))
-		.bundle()
-		.on('error', function(e){
-			gutil.log(e);
-		})
-		.pipe(source(destFile))
-		// .pipe(buffer())
-		// .pipe(sourcemaps.init({loadMaps: true})) 
-		// .pipe(uglify())
-		// .pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(destFolder))
-		.pipe(connect.reload());
+		entries: [projectPath.dev + '/es5/app.js'],
+		paths: [projectPath.modules, projectPath.source]
+	})
+			.transform(stringify(['.tpl']))
+			.bundle()
+			.on('error', function (e) {
+				gutil.log(e);
+			})
+			.pipe(source('app.js'))
+			.pipe(gulp.dest(projectPath.build + '/app'))
+			.pipe(connect.reload());
+};
+
+
+gulp.task('scripts', ['copy-api', 'babel'], scripts);
+gulp.task('scripts-watch', ['babel'], scripts);
+
+gulp.task('clean-styles', function () {
+	return gulp.src(projectPath.build + '/styles', {read: false})
+	           .pipe(clean());
 });
 
-gulp.task('less', function () {
-  return gulp.src('app-browserify/less/main.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(less().on('error', gutil.log))
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('build/css-browserify'))
-    .pipe(connect.reload());
-
+gulp.task('copy-fonts', ['clean-styles'], function () {
+	return gulp.src(projectPath.assets + '/fonts/**')
+	           .pipe(gulp.dest(projectPath.build + '/styles/fonts'));
 });
 
-gulp.task('sass', function () {
-  gulp.src('app-browserify/scss/main.scss')
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(concat('styles.css'))
-    .pipe(gulp.dest('build/css-browserify'))
-    .pipe(connect.reload());
+gulp.task('copy-images', ['copy-fonts'], function () {
+	return gulp.src(projectPath.assets + '/img/**')
+	           .pipe(gulp.dest(projectPath.build + '/img'));
 });
 
-gulp.task('html', function () {
-   gulp.src('index.html')
-       .pipe(connect.reload());
+var styles = function () {
+	return gulp.src(projectPath.assets + '/scss/main.scss')
+	           .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	           .pipe(concat('style.css'))
+	           .pipe(gulp.dest(projectPath.build + '/styles'))
+	           .pipe(connect.reload());
+};
+
+gulp.task('styles', ['copy-images'], styles);
+gulp.task('styles-watch', styles);
+
+var html = function () {
+	return gulp.src('index.html')
+	           .pipe(connect.reload());
+};
+
+gulp.task('html-watch', html);
+
+gulp.task('watch', function () {
+	gulp.watch([projectPath.source + '/**/*.js', projectPath.source + '/templates/**/*.tpl'], ['scripts-watch']);
+	gulp.watch(projectPath.assets + '/scss/**/*.scss', ['styles-watch']);
+	gulp.watch(projectPath.source + 'index.html', ['html-watch']);
 });
 
-
-gulp.task('watch', function() {
-    gulp.watch(['app-browserify/**/*.js', 'app-browserify/templates/**/*.tpl'], ['browserify']);
-    gulp.watch('app-browserify/scss/**/*.scss', ['sass']);
-    gulp.watch('app-browserify/less/**/*.less', ['less']);
-    gulp.watch('index.html', ['html']);
-});
-
-gulp.task('default', ['connect', 'sass', 'less', 'browserify', 'watch']);
+gulp.task('default', ['connect', 'styles', 'scripts', 'watch']);
