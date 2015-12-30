@@ -20,60 +20,76 @@
 		<div class="tabs-view"></div>
 
 		<div class="details-view">
-			<h3>Task Info</h3>
-
 			<ul class="details-table">
 				<li>
-					<span class="details-table_term">Priority:</span>
-					<span class="details-table_description priority">
+					<div class="details-table_term">Project:</div>
+
+					<div class="details-table_desc">
+						<div class="project-name">Pumpkin2 project</div>
+						<div class="company-name">Company: Pepsi</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="details-table_term">Priority:</div>
+
+					<div class="details-table_desc priority">
 						<span data-priority name="priority"></span>
-					</span>
+					</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Status:</span>
-					<span class="details-table_description status">
-						<span data-status name="status"></span>
-					</span>
+					<div class="details-table_term">Status:</div>
+
+					<div class="details-table_desc status">
+						<span data-status="" name="status"></span>
+					</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Assignee:</span>
-					<span class="details-table_description" name="assignee"></span>
+					<div class="details-table_term">Assignee:</div>
+					<div class="details-table_desc">
+						<img src="picture" alt="">
+						<span name="assignee"></span>
+						<!-- <div>
+							<span class="assignee-name">Maksim Shevchenko</span>
+							<span class="assignee-status">Project owner</span>
+						</div> -->
+					</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Type:</span>
-					<span class="details-table_description">Task</span>
+					<div class="details-table_term">Type:</div>
+					<div class="details-table_desc">Task</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Milestones:</span>
-					<span class="details-table_description">Abra Kadabra</span>
+					<div class="details-table_term">Milestones:</div>
+					<div class="details-table_desc">Abra Kadabra</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Start:</span>
-					<span class="details-table_description">
+					<div class="details-table_term">Start:</div>
+					<div class="details-table_desc">
 						<span class="date-icon start" name="date_create"></span>
-					</span>
+					</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Deadline:</span>
-					<span class="details-table_description">
+					<div class="details-table_term">Deadline:</div>
+					<div class="details-table_desc">
 						<span class="date-icon finish" name="date_finish"></span>
-					</span>
+					</div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Watchers:</span>
-					<span class="details-table_description"></span>
+					<div class="details-table_term">Watchers:</div>
+					<div class="details-table_desc"></div>
 				</li>
 
 				<li>
-					<span class="details-table_term">Spent hours:</span>
-					<span class="details-table_description">22</span>
+					<div class="details-table_term">Spent hours:</div>
+					<div class="details-table_desc">22</div>
 				</li>
 			</ul>
 
