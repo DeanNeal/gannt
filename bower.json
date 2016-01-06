@@ -1,0 +1,21 @@
+{
+  "name": "cubegg",
+  "description": "cubegg project",
+  "main": "index.js",
+  "authors": [
+    "DeanNeal timofeymelnik"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "cubegg"
+  ],
+  "homepage": "https://github.com/DeanNeal/gannt",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "private": true,
+  "dependencies": {
+    "malihu-custom-scrollbar-plugin": "~3.1.3"
+  }
+}

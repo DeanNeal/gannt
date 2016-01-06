@@ -1,12 +1,11 @@
 //window.jQuery = require("jquery");
-var Backbone       = require('backbone'),
-    $              = require('jquery'),
-    GlobalView     = require('views/globalview'),
-    Router         = require('router/router'),
-    Helpers        = require('helpers'),
-    Api            = require('api'),
-    ModelBinder    = require('backbone.modelbinder');
- 
+var Backbone       = require('backbone');
+var $              = require('jquery');
+var GlobalView     = require('views/globalview');
+var Router         = require('router/router');
+var Helpers        = require('base/helpers');
+var Api            = require('base/api');
+var ModelBinder    = require('base/backbone.modelbinder');
 
 var api = Api.getInstance('build/api/catalog.json');
 

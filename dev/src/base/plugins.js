@@ -1,7 +1,8 @@
 var $ = require('jquery');
 var _ = require('underscore');
+var Api = require('base/api');
+var Helpers = require('base/helpers');
 var customSelectTpl = require('templates/overall/plugins/custom_select.tpl');
-var Api = require('api');
 
 var templates = {
 	customSelectListTpl: require('templates/overall/plugins/custom_select_list.tpl'),
@@ -9,8 +10,6 @@ var templates = {
 };
 
 var api = Api.getInstance('build/api/catalog.json');
-
-var Helpers = require('helpers');
 
 require('custom-scrollbar');
 

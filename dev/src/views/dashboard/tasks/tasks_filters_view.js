@@ -1,11 +1,11 @@
-var Backbone     = require('backbone'),
-    Helpers      = require('helpers'),
-    Plugins      = require('plugins'),
-    _            = require('underscore'),
-    BaseView     = require('views/baseview'),
-    BaseListView = require('views/elements/base_list_view'),
-    FilterModel  = require('models/dashboard/tasks_filter_model'),
-    tpl          = require('templates/dashboard/tasks/tasks_filters.tpl');
+var Backbone     = require('backbone');
+var _            = require('underscore');
+var Helpers      = require('base/helpers');
+var Plugins      = require('base/plugins');
+var BaseView     = require('views/baseview');
+var BaseListView = require('views/elements/base_list_view');
+var FilterModel  = require('models/dashboard/tasks_filter_model');
+var tpl          = require('templates/dashboard/tasks/tasks_filters.tpl');
  
 var ContentView = BaseView.extend({
 	template: tpl,

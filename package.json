@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "aliasify": "^1.8.1",
+    "babelify": "^7.2.0",
     "backbone": "^1.2.3",
     "browserify": "^12.0.1",
     "browserify-compile-templates": "^0.2.0",
@@ -21,17 +23,22 @@
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
-    "gulp-less": "^3.0.5",
     "gulp-livereload": "^3.8.1",
     "gulp-minify-css": "^1.2.1",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
+    "jasmine-core": "^2.4.1",
     "jstify": "^0.13.0",
+    "karma": "^0.13.16",
+    "karma-browserify": "^4.4.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.2",
+    "karma-spec-reporter": "0.0.23",
     "kefir": "^3.1.0",
-    "malihu-custom-scrollbar-plugin": "^3.1.3",
     "path": "^0.12.7",
+    "phantomjs": "^1.9.19",
     "rx": "^4.0.7",
     "rx-dom": "^7.0.3",
     "stringify": "^3.1.0",
@@ -47,12 +54,33 @@
   },
   "browserify-shim": {
     "jquery": "$",
-    "jquery-ui": {"depends": "jquery:$"},
-    "custom-scrollbar": {"depends": "jquery:$"}
+    "jquery-ui": {
+      "depends": "jquery:$"
+    },
+    "custom-scrollbar": {
+      "depends": "jquery:$"
+    },
+
+    "base": "./dev/src/base",
+    "collections": "./dev/src/collections",
+    "models": "./dev/src/models",
+    "router": "./dev/src/router",
+    "templates": "./dev/src/templates",
+    "views": "./dev/src/views"
   },
   "browserify": {
     "transform": [
       "browserify-shim"
     ]
+  },
+  "aliasify": {
+    "aliases": {
+      "base": "./dev/src/base",
+      "collections": "./dev/src/collections",
+      "models": "./dev/src/models",
+      "router": "./dev/src/router",
+      "templates": "./dev/src/templates",
+      "views": "./dev/src/views"
+    }
   }
 }

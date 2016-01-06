@@ -1,15 +1,15 @@
-var Backbone         = require('backbone'),
-    $                = require('jquery'),
-    Helpers          = require('helpers'),
-    BaseView         = require('views/baseview'),
-    RoutedView       = require('views/routedview'),
-    BaseListView     = require('views/elements/base_list_view'),
-    dashboardView    = require('views/dashboard/dashboard_view'),
-    treeView         = require('views/tree/tree_view'),
-    statsView        = require('views/stats/stats_view'),
-    financeView      = require('views/finance/finance_view'),
-    navBarCollection = require('collections/header_list'),
-    mainTpl          = require('templates/main.tpl');
+var Backbone         = require('backbone');
+var $                = require('jquery');
+var Helpers          = require('base/helpers');
+var BaseView         = require('views/baseview');
+var RoutedView       = require('views/routedview');
+var BaseListView     = require('views/elements/base_list_view');
+var dashboardView    = require('views/dashboard/dashboard_view');
+var treeView         = require('views/tree/tree_view');
+var statsView        = require('views/stats/stats_view');
+var financeView      = require('views/finance/finance_view');
+var navBarCollection = require('collections/header_list');
+var mainTpl          = require('templates/main.tpl');
 
 var GlobalView = RoutedView.extend({
     tagName: 'div',

@@ -1,8 +1,7 @@
-var Backbone = require('backbone'),
-    _        = require('underscore'),
-    $        = require('jquery'),
-    Api      = require('api'),
-    apiNew   = require('apiNew');
+var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
+var Api = require('base/api');
 
 var BaseView = Backbone.View.extend({
 
@@ -15,7 +14,7 @@ var BaseView = Backbone.View.extend({
     /**
      * Methods provides basic initialization functionality
      */
-    initialize: function(params) {
+    initialize: function (params) {
 
         //this.middlewares = {};
 
@@ -58,17 +57,17 @@ var BaseView = Backbone.View.extend({
 
     },
 
-    getId: function() {
+    getId: function () {
         return this.id;
     },
-    getContentInternal: function() {
+    getContentInternal: function () {
         return $(this.contentInternal);
     },
     /**
      * This method must be override by child classes for
      * custom serialization
      */
-    serialize: function(params) {
+    serialize: function (params) {
         /** nothing to do **/
     },
     /**
@@ -77,21 +76,21 @@ var BaseView = Backbone.View.extend({
      * call the parent onInitialize method in inheritance
      * chain.
      */
-    onInitialize: function(params) {
+    onInitialize: function (params) {
         /** nothing to do **/
     },
 
-    afterInitialize: function(params) {
+    afterInitialize: function (params) {
         /** nothing to do **/
     },
-    getElement: function(el) {
+    getElement: function (el) {
         if (typeof el === 'string') {
             return this.$el.find(el);
         } else {
             return el;
         }
     },
-    toggleClassNames: function() {
+    toggleClassNames: function () {
         var parent = this.parent;
         while (parent) {
             this.$el.toggleClass(parent.className);
@@ -105,7 +104,7 @@ var BaseView = Backbone.View.extend({
      * @param params object
      * @param targetElement
      */
-    addView: function(view, params, targetElement) {
+    addView: function (view, params, targetElement) {
         params = params || {};
         params.parent = this;
         view = new view(params);
@@ -115,14 +114,14 @@ var BaseView = Backbone.View.extend({
         });
         return view;
     },
-    renderNestedView: function(view, targetElement) {
+    renderNestedView: function (view, targetElement) {
         var el = this.$el;
         if (targetElement)
             el = (typeof targetElement === 'string') ? this.$el.find(targetElement) : targetElement;
         el.append(view.render().el);
     },
 
-    getTemplate: function(name, model) {
+    getTemplate: function (name, model) {
         var temp = 'text!templates/' + name + '.tpl',
             template = require(temp);
         return _.template(template)(model ? model : {});
@@ -132,7 +131,7 @@ var BaseView = Backbone.View.extend({
      * all render methods in child classes
      * @returns {BaseView}
      */
-    render: function(redraw) {
+    render: function (redraw) {
 
         this.serialize();
 
@@ -157,7 +156,7 @@ var BaseView = Backbone.View.extend({
             this.isRendered = true;
         }
 
-        _(this.nestedViews).forEach(function(currentElement) {
+        _(this.nestedViews).forEach(function (currentElement) {
             this.renderNestedView(currentElement.view, currentElement.targetElement);
         }, this);
 
@@ -166,16 +165,16 @@ var BaseView = Backbone.View.extend({
         return this;
     },
 
-    onRender: function(params) {
+    onRender: function (params) {
         /** nothing to do **/
     },
     /**
      * Removes nested view
      * @param view
      */
-    removeNestedView: function(view) {
+    removeNestedView: function (view) {
         this.stopListening(view);
-        this.nestedViews = this.nestedViews.filter(function(value) {
+        this.nestedViews = this.nestedViews.filter(function (value) {
             return value.view != view;
         }.bind(this));
         view.remove();
@@ -183,11 +182,11 @@ var BaseView = Backbone.View.extend({
     /**
      * Removes view
      */
-    remove: function() {
+    remove: function () {
         // view is removed
         this.isRendered = false;
         // removes all nested views
-        _.each(this.nestedViews, function(value) {
+        _.each(this.nestedViews, function (value) {
             this.removeNestedView(value.view);
         }, this);
         // clear all listeners
@@ -197,25 +196,25 @@ var BaseView = Backbone.View.extend({
         // remove view
         Backbone.View.prototype.remove.call(this);
     },
-    beforeChangeStage: function() {
+    beforeChangeStage: function () {
         var deferred = $.Deferred();
         setTimeout(function () {
-            deferred.resolve(true);                
+            deferred.resolve(true);
         });
         return deferred.promise();
     },
-    afterChangeStage: function(currentStage) {
+    afterChangeStage: function (currentStage) {
         /*nothing to do*/
     },
-    beforeModelUpdate: function(params){
+    beforeModelUpdate: function (params) {
         /*nothing to do*/
     },
-    onChangeParams: function(params){
+    onChangeParams: function (params) {
         /*nothing to do*/
     },
-    changeStage: function(params) {
+    changeStage: function (params) {
         if (params.stagesArray[0]) {
-            this.beforeChangeStage(params).then(function(data) {
+            this.beforeChangeStage(params).then(function (data) {
 
                 if (this.currentStage !== params.stagesArray[0]) { // if current stage is already rendered and next stage doesn't exist
                     if (this.nextStage) // if current view exist we have to remove it
@@ -239,6 +238,9 @@ var BaseView = Backbone.View.extend({
 
             }.bind(this));
         }
+    },
+    testCase: function() {
+        return true;
     }
 });
 

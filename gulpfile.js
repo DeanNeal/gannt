@@ -15,6 +15,15 @@ var gulp       = require('gulp'),
     concat     = require("gulp-concat"),
     clean      = require('gulp-clean');
 
+var Server = require('karma').Server;
+
+gulp.task('test', function (done) {
+	new Server({
+		configFile: __dirname + '/karma.conf.js',
+		singleRun: true
+	}, done).start();
+});
+
 var projectPath = {
 	dev: './dev',
 	assets: './dev/assets',
@@ -36,22 +45,25 @@ gulp.task('clean-scripts', function () {
 	           .pipe(clean());
 });
 
-gulp.task('copy-api', ['clean-scripts'], function () {
+gulp.task('clean-tmp', function () {
+	return gulp.src(projectPath.dev + '/tmp', {read: false})
+	           .pipe(clean());
+});
+
+gulp.task('copy-api', ['clean-scripts', 'clean-tmp'], function () {
 	return gulp.src(projectPath.dev + '/api/**')
 	           .pipe(gulp.dest(projectPath.build + '/api'))
 });
 
 gulp.task("babel", function () {
 	return gulp.src(projectPath.source + "/**/*.js")
-	           .pipe(sourceMaps.init())
 	           .pipe(babel())
-	           .pipe(sourceMaps.write("."))
-	           .pipe(gulp.dest(projectPath.dev + '/es5'));
+	           .pipe(gulp.dest(projectPath.dev + '/tmp'));
 });
 
 var scripts = function() {
 	return browserify({
-		entries: [projectPath.dev + '/es5/app.js'],
+		entries: [projectPath.dev + '/tmp/app.js'],
 		paths: [projectPath.modules, projectPath.source]
 	})
 			.transform(stringify(['.tpl']))
