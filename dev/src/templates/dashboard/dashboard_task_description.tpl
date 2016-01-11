@@ -20,44 +20,141 @@
 		<div class="tabs-view">
 			<div class="tabs-view_header">
 				<ul>
-					<li>Comments</li>
-					<li>Status reports</li>
+					<li data-active="true">
+						<a href="">Comments</a>
+					</li>
+
+					<li>
+						<a href="">Status reports</a>
+					</li>
 				</ul>
 			</div>
 
 			<div class="tabs-view_content full-size">
 				<div class="tabs-view_comments full-size scroll">
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
-					<div>Status reports</div>
+					<div class="tabs-view_comments-unit">
+						<div class="comment clearfix">
+							<div class="comment-left">
+								<img src="build/img/avatar.png" alt="">
+
+								<div class="files">
+									<span class="files-count">8</span>
+									<div>Files</div>
+								</div>
+							</div>
+
+							<div class="comment-right">
+								<div class="clearfix">
+									<div class="name">Peter Simon</div>
+									<div class="date">16:15 2015-15-15</div>
+								</div>
+
+								<div class="text">
+									Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
+								</div>
+
+								<div class="controls">
+									<i>i</i>
+									<i>i</i>
+									<i>i</i>
+								</div>
+							</div>
+						</div>
+
+						<div class="tabs-view_comments-unit">
+							<div class="comment clearfix">
+								<div class="comment-left">
+									<img src="build/img/avatar.png" alt="">
+
+									<div class="files">
+										<span class="files-count">8</span>
+										<div>Files</div>
+									</div>
+								</div>
+
+								<div class="comment-right">
+									<div class="clearfix">
+										<div class="name">Peter Simon</div>
+										<div class="date">16:15 2015-15-15</div>
+									</div>
+
+									<div class="text">
+										Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
+									</div>
+
+									<div class="controls">
+										<i>i</i>
+										<i>i</i>
+										<i>i</i>
+									</div>
+								</div>
+							</div>
+
+							<div class="tabs-view_comments-unit">
+								<div class="comment clearfix">
+									<div class="comment-left">
+										<img src="build/img/avatar.png" alt="">
+
+										<div class="files">
+											<span class="files-count">8</span>
+											<div>Files</div>
+										</div>
+									</div>
+
+									<div class="comment-right">
+										<div class="clearfix">
+											<div class="name">Peter Simon</div>
+											<div class="date">16:15 2015-15-15</div>
+										</div>
+
+										<div class="text">
+											Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
+										</div>
+
+										<div class="controls">
+											<i>i</i>
+											<i>i</i>
+											<i>i</i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tabs-view_comments-unit">
+						<div class="comment clearfix">
+							<div class="comment-left">
+								<img src="build/img/avatar.png" alt="">
+
+								<div class="files">
+									<span class="files-count">8</span>
+									<div>Files</div>
+								</div>
+							</div>
+
+							<div class="comment-right">
+								<div class="clearfix">
+									<div class="name">Peter Simon</div>
+									<div class="date">16:15 2015-15-15</div>
+								</div>
+
+								<div class="text">
+									Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
+								</div>
+
+								<div class="controls">
+									<i>i</i>
+									<i>i</i>
+									<i>i</i>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div class="tabs-view_add-comment-form">
-					<textarea name="" id="" cols="30" rows="10"></textarea>
+					<textarea name="" id="" placeholder="Comment"></textarea>
 				</div>
 			</div>
 		</div>

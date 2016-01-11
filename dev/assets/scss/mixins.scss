@@ -35,6 +35,12 @@ $vba-box-shadow: 0px 1px 1px rgba(0, 0, 0, .05);
     text-overflow: ellipsis;
 }
 
+.select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
 .display-flex {
     display: -webkit-box;   
     display: -moz-box;         
