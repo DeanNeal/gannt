@@ -44,6 +44,8 @@ var TaskList = BaseView.extend({
 
 		  }
 		};
+		let MF = ModelFactory('build/api/catalog.json');
+		console.log(MF.url);
 
 
 		// this.api.getResousceFromCatalog('tasks', query).then(function (response) {

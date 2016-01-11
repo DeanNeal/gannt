@@ -1,110 +1,137 @@
 'use strict';
 
-const $ = require('jquery');
-const _ = require('underscore');
-const Backbone = require('backbone');
+import * as Backbone from 'backbone';
 
-function $http(url){
- 
-  // A small example of object
-  let core = {
+function $http(url) {
 
-    // Method that performs the ajax request
-    ajax : function (method, url, args) {
+	// A small example of object
+	let core = {
 
-      // Creating a promise
-      let promise = new Promise( function (resolve, reject) {
+		// Method that performs the ajax request
+		ajax: function (method, url, args) {
 
-        // Instantiates the XMLHttpRequest
-        var client = new XMLHttpRequest();
-        var uri = url;
+			// Creating a promise
+			return new Promise(function (resolve, reject) {
 
-        if (args /*&& (method === 'POST' || method === 'PUT' || method === 'GET')*/) {
-          uri += '?';
-          var argcount = 0;
-          for (var key in args) {
-            if (args.hasOwnProperty(key)) {
-              if (argcount++) {
-                uri += '&';
-              }
-              uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
-            }
-          }
-        }
+				// Instantiates the XMLHttpRequest
+				var client = new XMLHttpRequest();
+				var uri = url;
 
-        client.open(method, uri);
-        client.send();
+				if (args /*&& (method === 'POST' || method === 'PUT' || method === 'GET')*/) {
+					uri += '?';
+					var argcount = 0;
+					for (var key in args) {
+						if (args.hasOwnProperty(key)) {
+							if (argcount++) {
+								uri += '&';
+							}
+							uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
+						}
+					}
+				}
 
-        client.onload = function () {
-          if (this.status >= 200 && this.status < 300) {
-            // Performs the function "resolve" when this.status is equal to 2xx
-            resolve(this.response);
-          } else {
-            // Performs the function "reject" when this.status is different than 2xx
-            reject(this.statusText);
-          }
-        };
-        client.onerror = function () {
-          reject(this.statusText);
-        };
-      });
+				client.open(method, uri);
+				client.send();
 
-      // Return the promise
-      return promise;
-    }
-  };
+				client.onload = function () {
+					if (this.status >= 200 && this.status < 300) {
+						// Performs the function "resolve" when this.status is equal to 2xx
+						resolve(this.response);
+					} else {
+						// Performs the function "reject" when this.status is different than 2xx
+						reject(this.statusText);
+					}
+				};
+				client.onerror = function () {
+					reject(this.statusText);
+				};
+			});
+		}
+	};
 
-  // Adapter pattern
-  return {
-    'get' : function(args) {
-      return core.ajax('GET', url, args);
-    },
-    'post' : function(args) {
-      return core.ajax('POST', url, args);
-    },
-    'put' : function(args) {
-      return core.ajax('PUT', url, args);
-    },
-    'delete' : function(args) {
-      return core.ajax('DELETE', url, args);
-    }
-  };
-};
-
-class ModelFactory extends Backbone.Model {
-    constructor () {
-        super();
-        //this.url = 'qweqw';
-    }
-
-    static parse() {
-        console.log(1);
-    }
-
-    test() {
-        console.log('test');
-    }
+	// Adapter pattern
+	return {
+		'get': function (args) {
+			return core.ajax('GET', url, args);
+		},
+		'post': function (args) {
+			return core.ajax('POST', url, args);
+		},
+		'put': function (args) {
+			return core.ajax('PUT', url, args);
+		},
+		'delete': function (args) {
+			return core.ajax('DELETE', url, args);
+		}
+	};
 }
 
-/*var mdnAPI = 'https://developer.mozilla.org/en-US/search.json';
-var payload = {
-  'topic' : 'js',
-  'q'     : 'Promise'
-};
+function generateLinkedMethods(options) {
+	/*links.forEach(method)*/
+}
 
-var callback = {
-  success : function(data){
-     console.log(1, 'success', JSON.parse(data));
-  },
-  error : function(data){
-     console.log(2, 'error', JSON.parse(data));
-  }
-};*/
+export default class LinkedModel extends Backbone.Model {
+	constructor() {
+		super();
+	}
+
+	/*post*/
+	/*put*/
+	/*delete*/
+
+	/*generateLinkedMethods*/
+}
+
+export default class LinkedCollection extends Backbone.Collection {
+	constructor() {
+		super();
+	}
+
+	/*post*/
+	/*delete*/
+
+	/*generateLinkedMethods*/
+}
+
+export default class ModelFactory {
+	constructor (url) {
+		/*this.type = model || collection*/
+	}
+
+	getResourceType (options) {
+		let resourceType = null;
+
+		if (this.type === 'model') {
+			resourceType = LinkedModel
+		} else if (this.type === 'collection') {
+			resourceType = LinkedCollection
+		}
+
+		return new resoresourceType(options);
+	}
+}
+
+//let taskModel = new ModelFactory()
+//taskModel.getResourceType -- model || collection
+
+
+/*var mdnAPI = 'https://developer.mozilla.org/en-US/search.json';
+ var payload = {
+ 'topic' : 'js',
+ 'q'     : 'Promise'
+ };
+
+ var callback = {
+ success : function(data){
+ console.log(1, 'success', JSON.parse(data));
+ },
+ error : function(data){
+ console.log(2, 'error', JSON.parse(data));
+ }
+ };*/
 
 // Executes the method call but an alternative way (1) to handle Promise Reject case 
 /*$http(mdnAPI) 
-  .get(payload) 
-  .then(callback.success, callback.error);
-*/
-
-export default ModelFactory;
+ .get(payload)
+ .then(callback.success, callback.error);
+ */

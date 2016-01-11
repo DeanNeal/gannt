@@ -6,7 +6,9 @@ var BaseView     = require('views/baseview');
 var BaseListView = require('views/elements/base_list_view');
 var FilterModel  = require('models/dashboard/tasks_filter_model');
 var tpl          = require('templates/dashboard/tasks/tasks_filters.tpl');
- 
+
+import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins';
+
 var ContentView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
@@ -29,15 +31,15 @@ var ContentView = BaseView.extend({
 	},
 	updateFilterModel: function (model) {
 		this.model.set(model);
-		this.filterList.highlight();
-		this.sortList.highlight();
+		this.filterList.highLight();
+		this.sortList.highLight();
 
 		this.getElement('.custom-select').customSelect('refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
-		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
-		this.sortList = new Plugins.setActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
+		this.filterList = new SetActiveStateAtList(this.getElement('.base-filters'), 'filter');
+		this.sortList = new SetActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 
 		this.getElement('#projects-select').customSelect({
 			template: 'customSelectListTpl',
