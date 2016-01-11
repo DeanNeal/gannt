@@ -10,7 +10,6 @@ var gulp       = require('gulp'),
     connect    = require('gulp-connect'),
     uglify     = require('gulp-uglify'),
     buffer     = require('vinyl-buffer'),
-    sourceMaps = require("gulp-sourcemaps"),
     babel      = require("gulp-babel"),
     concat     = require("gulp-concat"),
     clean      = require('gulp-clean');
@@ -33,6 +32,11 @@ var projectPath = {
 	vendors: './bower_components'
 };
 
+var onError = function (err) {
+	gutil.log(util.colors.red.bold('[ERROR LESS]:'),util.colors.bgRed(err.message));
+	this.emit('end');
+};
+
 gulp.task('connect', function () {
 	connect.server({
 		root: '',
@@ -40,17 +44,17 @@ gulp.task('connect', function () {
 	});
 });
 
-gulp.task('clean-scripts', function () {
-	return gulp.src(projectPath.build + '/app', {read: false})
-	           .pipe(clean());
-});
-
 gulp.task('clean-tmp', function () {
-	return gulp.src(projectPath.dev + '/tmp', {read: false})
+	var filesToMove = [
+		projectPath.dev + '/tmp',
+		projectPath.build + '/app'
+	];
+
+	return gulp.src(filesToMove, {read: false, base: './'})
 	           .pipe(clean());
 });
 
-gulp.task('copy-api', ['clean-scripts', 'clean-tmp'], function () {
+gulp.task('copy-api', ['clean-tmp'], function () {
 	return gulp.src(projectPath.dev + '/api/**')
 	           .pipe(gulp.dest(projectPath.build + '/api'))
 });
@@ -58,6 +62,7 @@ gulp.task('copy-api', ['clean-scripts', 'clean-tmp'], function () {
 gulp.task("babel", function () {
 	return gulp.src(projectPath.source + "/**/*.js")
 	           .pipe(babel())
+	           .on('error', onError)
 	           .pipe(gulp.dest(projectPath.dev + '/tmp'));
 });
 
@@ -68,9 +73,7 @@ var scripts = function() {
 	})
 			.transform(stringify(['.tpl']))
 			.bundle()
-			.on('error', function (e) {
-				gutil.log(e);
-			})
+			.on('error', onError)
 			.pipe(source('app.js'))
 			.pipe(gulp.dest(projectPath.build + '/app'))
 			.pipe(connect.reload());
@@ -98,6 +101,7 @@ gulp.task('copy-images', ['copy-fonts'], function () {
 var styles = function () {
 	return gulp.src(projectPath.assets + '/scss/main.scss')
 	           .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	           .on('error', onError)
 	           .pipe(concat('style.css'))
 	           .pipe(gulp.dest(projectPath.build + '/styles'))
 	           .pipe(connect.reload());

@@ -30,6 +30,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
     "jasmine-core": "^2.4.1",
+    "jquery": "^2.2.0",
     "jstify": "^0.13.0",
     "karma": "^0.13.16",
     "karma-browserify": "^4.4.2",
@@ -53,20 +54,13 @@
     "custom-scrollbar": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
   },
   "browserify-shim": {
-    "jquery": "$",
+    "jquery": "global:$",
     "jquery-ui": {
       "depends": "jquery:$"
     },
     "custom-scrollbar": {
       "depends": "jquery:$"
-    },
-
-    "base": "./dev/src/base",
-    "collections": "./dev/src/collections",
-    "models": "./dev/src/models",
-    "router": "./dev/src/router",
-    "templates": "./dev/src/templates",
-    "views": "./dev/src/views"
+    }
   },
   "browserify": {
     "transform": [

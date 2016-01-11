@@ -56,6 +56,7 @@ SetActiveStateAtTable.prototype.highlight = function () {
 
 var customSelectArray = [];
 
+
 $.fn.customSelect = function (options) {
 
 	// var method = method;
