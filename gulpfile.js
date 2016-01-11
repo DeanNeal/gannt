@@ -61,14 +61,12 @@ gulp.task('copy-api', ['clean-tmp'], function () {
 
 gulp.task("babel", function () {
 	return gulp.src(projectPath.source + "/**/*.js")
-	           .pipe(babel())
-	           //.on('error', onError)
+	           .pipe(babel()).on('error', onError)
 	           .pipe(gulp.dest(projectPath.dev + '/tmp'));
 });
 
 var scripts = function() {
 	return browserify({
-		insertGlobals : true,
 		entries: [projectPath.dev + '/tmp/app.js'],
 		paths: [projectPath.modules, projectPath.source]
 	})
