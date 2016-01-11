@@ -32,27 +32,27 @@ var ContentView = BaseView.extend({
 		this.filterList.highlight();
 		this.sortList.highlight();
 
-		//this.getElement('.custom-select').customSelect('refresh');
+		this.getElement('.custom-select').customSelect('refresh');
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
 		this.filterList = new Plugins.setActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new Plugins.setActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 
-		//this.getElement('#projects-select').customSelect({
-		//	template: 'customSelectListTpl',
-		//	url: this.api.getUrlFromCatalog('projects')
-		//});
-		//
-		//this.getElement('#milestones-select').customSelect({
-		//	url: this.api.getUrlFromCatalog('milestones'),
-		//	template: 'customSelectListTpl'
-		//});
-		//
-		//this.getElement('#priorities-select').customSelect({
-		//	url: this.api.getUrlFromCatalog('priorities'),
-		//	template: 'customSelectListPriority'
-		//});
+		this.getElement('#projects-select').customSelect({
+			template: 'customSelectListTpl',
+			url: this.api.getUrlFromCatalog('projects')
+		});
+		
+		this.getElement('#milestones-select').customSelect({
+			url: this.api.getUrlFromCatalog('milestones'),
+			template: 'customSelectListTpl'
+		});
+		
+		this.getElement('#priorities-select').customSelect({
+			url: this.api.getUrlFromCatalog('priorities'),
+			template: 'customSelectListPriority'
+		});
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
@@ -62,7 +62,7 @@ var ContentView = BaseView.extend({
 	},
 	remove: function () {
 		this.modelBinder.unbind();
-		//this.getElement('.custom-select').customSelect('destroy');
+		this.getElement('.custom-select').customSelect('destroy');
 		BaseView.prototype.remove.call(this);
 	}
 });
