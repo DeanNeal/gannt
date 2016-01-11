@@ -8,6 +8,10 @@ var Backbone              = require('backbone'),
     dashboardTpl          = require('templates/dashboard/dashboard_tasks.tpl'),
     dashboardTasksListTpl = require('templates/dashboard/dashboard_tasks_list.tpl');
 
+
+
+import ModelFactory from 'base/apiNew';
+
 var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	className: 'task-list',
@@ -22,10 +26,30 @@ var TaskList = BaseView.extend({
 		this.data = _.clone({data: this.collection});
 	},
 	updateTaskList: function(query){
-		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
-			this.collection = response.data;
-			this.render(true);
-		}.bind(this));
+
+		var callback = {
+		  success : function(response){
+		  	 var response = JSON.parse(response);
+		     // debugger
+		     // if(Array.isArray(response.data))
+		     		//collection
+		     // else
+		         	//model
+
+		     this.collection = response.data;
+		     this.render(true);
+
+		  }.bind(this),
+		  error : function(data){
+
+		  }
+		};
+
+
+		// this.api.getResousceFromCatalog('tasks', query).then(function (response) {
+		// 	this.collection = response.data;
+		// 	this.render(true);
+		// }.bind(this));
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
