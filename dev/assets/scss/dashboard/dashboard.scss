@@ -138,7 +138,7 @@
                         display: inline-block;
                         vertical-align: middle;
                         padding: 0 5px;
-                        font-size: 12px;
+                        font-size: 14px;
                         font-weight: 600;
                         cursor: pointer;
 
@@ -148,8 +148,16 @@
                             }
                         }
 
+                        .icon {
+                            color: #bebdbe;
+                            font-size: 12px;
+                            @include rotate(90deg);
+                        }
+
                         &[data-active="true"]{
-                            background: green;
+                            .icon {
+                                @include rotate(-90deg);       
+                            }
                         }
 
                         i {
@@ -455,6 +463,38 @@
 
     .tabs-view {
         width: 592px;
+        position: relative;
+        padding-top: 40px;
+
+        // .tabs-view_header
+        &_header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        // .tabs-view_content
+        &_content {
+            position: relative;
+            background-color: #f3f3f5;
+            padding-bottom: 90px;
+            // background: #f1f2f3;
+            // background: -moz-linear-gradient(top,  #f1f2f3 0%, #f3f3f5 100%);
+            // background: -webkit-linear-gradient(top,  #f1f2f3 0%,#f3f3f5 100%);
+            // background: linear-gradient(to bottom,  #f1f2f3 0%,#f3f3f5 100%);
+            // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f2f3', endColorstr='#f3f3f5',GradientType=0 );
+        }
+
+        // .tabs-view_comments
+        &_comments {
+            /**/
+        }
+
+        &_add-comment-form {
+            position: absolute;
+            bottom: 0;
+        }
     }
 
     .details-view {
