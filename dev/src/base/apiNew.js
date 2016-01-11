@@ -12,7 +12,7 @@ var Node = function(data) {
 };
 
 Node.create = function(url) {
-    var deffered = $.Deferred();
+    let deffered = $.Deferred();
     $.get(url, function(data) {
         deffered.resolve(new Node(data));
     }.bind(this));
