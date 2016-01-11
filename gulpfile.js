@@ -12,7 +12,8 @@ var gulp       = require('gulp'),
     buffer     = require('vinyl-buffer'),
     babel      = require("gulp-babel"),
     concat     = require("gulp-concat"),
-    clean      = require('gulp-clean');
+    clean      = require('gulp-clean'),
+    babelify   = require('babelify');
 
 var Server = require('karma').Server;
 
@@ -68,9 +69,10 @@ gulp.task("babel", function () {
 var scripts = function() {
 	return browserify({
 		entries: [projectPath.dev + '/tmp/app.js'],
-		paths: [projectPath.modules, projectPath.source]
+		paths: [projectPath.modules, projectPath.source],
+		transform: [babelify, stringify(['.tpl'])]
 	})
-			.transform(stringify(['.tpl']))
+			// .transform(stringify(['.tpl']))
 			.bundle()
 			.on('error', onError)
 			.pipe(source('app.js'))

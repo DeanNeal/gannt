@@ -20,12 +20,5 @@
             "id": "menu",
             "href": "http://localhost:3000/catalog/menu/3"
         }]
-    }, {
-        "id": "finance",
-        "name": "Finance",
-        "links": [{
-            "id": "menu",
-            "href": "http://localhost:3000/catalog/menu/4"
-        }]
     }]
 }
