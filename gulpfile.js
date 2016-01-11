@@ -33,7 +33,7 @@ var projectPath = {
 };
 
 var onError = function (err) {
-	gutil.log(util.colors.red.bold('[ERROR LESS]:'),util.colors.bgRed(err.message));
+	gutil.log(gutil.colors.red.bold('[ERROR]:'), gutil.colors.bgRed(err.message));
 	this.emit('end');
 };
 
@@ -62,12 +62,13 @@ gulp.task('copy-api', ['clean-tmp'], function () {
 gulp.task("babel", function () {
 	return gulp.src(projectPath.source + "/**/*.js")
 	           .pipe(babel())
-	           .on('error', onError)
+	           //.on('error', onError)
 	           .pipe(gulp.dest(projectPath.dev + '/tmp'));
 });
 
 var scripts = function() {
 	return browserify({
+		insertGlobals : true,
 		entries: [projectPath.dev + '/tmp/app.js'],
 		paths: [projectPath.modules, projectPath.source]
 	})

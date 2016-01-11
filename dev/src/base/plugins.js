@@ -4,6 +4,9 @@ var Api = require('base/api');
 var Helpers = require('base/helpers');
 var customSelectTpl = require('templates/overall/plugins/custom_select.tpl');
 
+console.log(_);
+console.log($);
+
 var templates = {
 	customSelectListTpl: require('templates/overall/plugins/custom_select_list.tpl'),
 	customSelectListPriority: require('templates/overall/plugins/custom_select_list_priority.tpl')

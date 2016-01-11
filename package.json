@@ -49,12 +49,10 @@
     "watchify": "^3.6.1"
   },
   "browser": {
-    "jquery": "./bower_components/jquery/dist/jquery.min.js",
     "jquery-ui": "./bower_components/jquery-ui/jquery-ui.min.js",
     "custom-scrollbar": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
   },
   "browserify-shim": {
-    "jquery": "global:$",
     "jquery-ui": {
       "depends": "jquery:$"
     },
