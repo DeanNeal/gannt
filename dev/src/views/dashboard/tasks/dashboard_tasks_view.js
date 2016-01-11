@@ -31,8 +31,8 @@ var TaskList = BaseView.extend({
 			this.render(true);
 		}.bind(this));
 
-		let MF = ModelFactory('build/api/catalog.json');
-		console.log(MF.url);
+		// let MF = ModelFactory('build/api/catalog.json');
+		// console.log(MF.url);
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
