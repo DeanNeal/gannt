@@ -43,6 +43,12 @@ $vba-box-shadow: 0px 1px 1px rgba(0, 0, 0, .05);
     display: flex;
 }
 
+@mixin rotate($value) {
+    -moz-transform: rotate($value);
+    -webkit-transform: rotate($value);
+    transform: rotate($value);
+}
+
 @mixin border-radius($value) {
     -moz-border-radius: $value;
     -webkit-border-radius: $value;

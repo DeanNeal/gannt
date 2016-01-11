@@ -42,7 +42,7 @@
 		<input type="hidden" name="sort">
 		<table>
 			<tbody>
-				<tr>
+				<!-- <tr>
 					<td class="title list-item" data-sort="title">Title <i class="fa fa-arrow-down"></i> </td>
 					<td class="projects list-item" data-sort="projects">Projects <i class="fa fa-arrow-down"></i></td>
 					<td class="priority list-item" data-sort="priority">Priority <i class="fa fa-arrow-down"></i> </td>
@@ -51,6 +51,63 @@
 					<td class="milestone list-item" data-sort="milestone">Milestone <i class="fa fa-arrow-down"></i> </td>
 					<td class="created list-item" data-sort="created">Created <i class="fa fa-arrow-down"></i> </td>
 					<td class="updated list-item" data-sort="updated">Updated <i class="fa fa-arrow-down"></i> </td>
+				</tr> -->
+				<tr>
+					<td class="title list-item" data-sort="title">
+						Title
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="projects list-item" data-sort="projects">
+						Projects
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="priority list-item" data-sort="priority">
+						Priority
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="status list-item" data-sort="status">
+						Status
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="assignee list-item" data-sort="assignee">
+						Assignee
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="milestone list-item" data-sort="milestone">
+						Milestone
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="created list-item" data-sort="created">
+						Created
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
+
+					<td class="updated list-item" data-sort="updated">
+						Updated
+						<svg class="icon icon-rotation">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
+				        </svg>
+					</td>
 				</tr>
 			</tbody>
 		</table>

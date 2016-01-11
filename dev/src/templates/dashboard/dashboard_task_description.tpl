@@ -17,7 +17,50 @@
 	</div>
 
 	<div class="info-container full-size">
-		<div class="tabs-view"></div>
+		<div class="tabs-view">
+			<div class="tabs-view_header">
+				<ul>
+					<li>Comments</li>
+					<li>Status reports</li>
+				</ul>
+			</div>
+
+			<div class="tabs-view_content full-size">
+				<div class="tabs-view_comments full-size scroll">
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+					<div>Status reports</div>
+				</div>
+
+				<div class="tabs-view_add-comment-form">
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+		</div>
 
 		<div class="details-view">
 			<ul class="details-table">
