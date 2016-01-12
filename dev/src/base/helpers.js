@@ -31,20 +31,25 @@ var Helpers = {
         });
         return array;
     },
-    createMenuLinks: function(menuLinks){
-        return menuLinks.map(function(item, i) { 
-            item.route = item.id;
-            switch (item.id){
-                case 'dashboard':
-                    item.route = item.id + '/tasks';
-                    break;
-                case 'finance':
-                    item.route = item.id + '/transactions';
-                    break;
-            }
+    // createMenuLinks: function(menuLinks){
+    //     return menuLinks.map(function(item, i) { 
+    //         item.route = item.id;
+    //         switch (item.id){
+    //             case 'dashboard':
+    //                 item.route = item.id + '/tasks';
+    //                 break;
+    //             case 'finance':
+    //                 item.route = item.id + '/transactions';
+    //                 break;
+    //         }
 
-            return item;
-        });
+    //         return item;
+    //     });
+    // },
+    findById: function (collection, id) {
+        var model = collection.find(function(model) { return model.get('id') == id; });
+        
+        return model;
     },
     searchEngine: function(str, list, startCount) {
          var valueWords = str.split(" ").join(")(?=.*"),

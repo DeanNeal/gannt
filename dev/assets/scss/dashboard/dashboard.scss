@@ -185,44 +185,43 @@
         flex-direction: column;
         flex: 1;
 
-        & > tbody {
+        .row {
             @extend .display-flex;
-            flex-direction: column;
             flex: 1;
-
-            & > tr {
-                @extend .display-flex;
-                flex: 1;
-                align-items: center;
-                border-bottom: 1px solid #dbdbdc;
-                position: relative;
-                cursor: pointer;
-
-                &:hover {
-                    background: #fff;
-                    @include box-shadow(0 0 5px -2px #777);
-
-                    &:before {
-                        content: '';
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        bottom: 0;
-                        width: 10px;
-                        background: #FFFFFF;
-                        @include box-shadow(0 0 21px -2px #000);
-                    }
-                }
-
-                & > td {
-                    display: inline-block;
-                    vertical-align: middle;
-                    padding: 0 5px;
-                    font-size: 12px;
-                }
-            }
+            align-items: center;
+            border-bottom: 1px solid #dbdbdc;
+            cursor: pointer;
         }
 
+        .task-list-item {
+            @extend .display-flex;
+            flex: 1;
+            position: relative;
+
+            &:hover {
+                background: #fff;
+                @include box-shadow(0 0 5px -2px #777);
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 10px;
+                    background: #FFFFFF;
+                    @include box-shadow(0 0 21px -2px #000);
+                }
+            }
+
+            .col {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0 5px;
+                font-size: 12px;
+            }
+        }
+        
         .title {
             color: #565656;
             font-weight: bold;

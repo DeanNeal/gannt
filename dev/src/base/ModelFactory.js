@@ -13,14 +13,13 @@ let ModelFactory = {
                 super(_.extend(srcObj.data, options));
 
                 // methods set
-                if (srcObj.links) {
+                if(srcObj.links) {   
                     srcObj.links.map(link => {
                         this['get_' + link.id] = () => this.getResource(link.href)
                     });
                 }
             }
         }
-
         return new Model(response);
     },
     getCollection: function (response) {
@@ -29,8 +28,10 @@ let ModelFactory = {
                 // attributes set
                 super(options);
 
+                console.log(srcObj);
+
                 // methods set
-                if (srcObj.links) {
+                if(srcObj.links) {                    
                     srcObj.links.map(link => {
                         this['get_' + link.id] = () => this.getResource(link.href)
                     });
@@ -44,8 +45,9 @@ let ModelFactory = {
         let success = function(response) {
             if (response.data instanceof Array) {
                 let collection = self.getCollection(response);
+                
                 response.data.map(model => {
-                    collection.add(this.getModel(model));
+                    collection.add(self.getModel(model));
                 });
                 return collection;
             } else if (typeof response.data == 'object') {

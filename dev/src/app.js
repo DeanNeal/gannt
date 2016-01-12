@@ -7,12 +7,26 @@ var Helpers        = require('base/helpers');
 var Api            = require('base/api');
 var ModelBinder    = require('base/backbone.modelbinder');
 
+import ModelFactory from 'base/ModelFactory';
+
+
 var api = Api.getInstance('build/api/catalog.json');
 
-api.getCatalog().then(function() {
+var tasksModel = new Backbone.Model();
+tasksModel.getResource('/api/v1/system/catalog').then(function(catalog) {
+    
+ // catalog.get_current_user();
+
     var App = new GlobalView();
     App.start();
     Backbone.history.start();
+}.bind(this));
+
+
+api.getCatalog().then(function() {
+    // var App = new GlobalView();
+    // App.start();
+    // Backbone.history.start();
 });
 
 

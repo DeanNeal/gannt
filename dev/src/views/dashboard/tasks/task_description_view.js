@@ -39,7 +39,7 @@ var ContentView = BaseView.extend({
     	})
     },
     updateModel: function(model) {
-        this.model.set(model);
+        this.model.set(model.attributes);
         this.getElement('.custom-select').customSelect('refresh');
     },
     remove : function () {
