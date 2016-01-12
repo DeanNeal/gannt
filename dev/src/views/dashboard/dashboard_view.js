@@ -21,19 +21,19 @@ var ContentView = RoutedView.extend({
         'projects'  : projectsView
     },
     links: [{
-        name: "pulse",
+        name: "Pulse",
         id: "pulse",
         iconClass: 'fa fa-exclamation-triangle'
     }, {
-        name: "tasks",
+        name: "Tracker",
         id: "tasks",
         iconClass: 'fa fa-circle-o'
-    }, {
+    },/* {
         name: "milestones",
         id: "milestones",
         iconClass: 'fa fa-circle-o'
-    }, {
-        name: "projects",
+    },*/ {
+        name: "Projects",
         id: "projects",
         iconClass: 'fa fa-circle-o'
     }],
