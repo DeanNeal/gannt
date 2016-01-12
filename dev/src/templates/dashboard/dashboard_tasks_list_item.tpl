@@ -25,7 +25,7 @@
 
 	<div class="col assignee">
 		<img class="avatar" src="build/img/avatar.png" alt="">
-		<div>Assignie</div>
+		<!-- <div>Assignie</div> -->
 	</div>
 
 	<div class="col milestone">

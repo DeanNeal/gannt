@@ -14,7 +14,7 @@ var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
 	className: 'task-list-item',
 	events: {
-	    'click .dashboard-table tr'         : 'changeTask',
+	    'click .dashboard-table task-list-item'         : 'changeTask',
 	    'click .close-icon'                 : 'closeEdit'
 	},
 	onInitialize: function (params) {
@@ -30,9 +30,9 @@ var TaskList = BaseView.extend({
 	// template: dashboardTasksListTpl,
 	// className: 'task-list',
 	className: 'dashboard-table',
-	tagName: 'table',
+	tagName: 'div',
 	events: {
-	    'click .dashboard-table tr'         : 'changeTask',
+	    'click .dashboard-table task-list-item'         : 'changeTask',
 	    'click .close-icon'                 : 'closeEdit'
 	},
 	onInitialize: function (params) {
