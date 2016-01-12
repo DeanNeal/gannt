@@ -173,9 +173,14 @@
 				<li>
 					<div class="details-table_term">Priority:</div>
 
-					<div class="details-table_desc priority">
+<!-- 					<div class="details-table_desc priority">
 						<span data-priority name="priority"></span>
 					</div>
+ -->
+
+					<div id="priorities-select" class="custom-select priority" data-placeholder="High">
+						<input type="hidden" name="priority">
+			 		</div>
 				</li>
 
 				<li>

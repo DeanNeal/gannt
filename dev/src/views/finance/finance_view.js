@@ -1,10 +1,10 @@
-var Backbone = require('backbone'),
-    Kefir = require('kefir'),
-//Rx = require('rx/dist/rx.lite'),
-    Rx = require('rx-dom');
+var Backbone = require('backbone');
+//     Kefir = require('kefir'),
+// //Rx = require('rx/dist/rx.lite'),
+//     Rx = require('rx-dom');
 
 var Helpers = require('base/helpers');
-var WikiRx = require('views/finance/finance_rx');
+// var WikiRx = require('views/finance/finance_rx');
 var BaseView = require('views/baseview');
 var RoutedView = require('views/routedview');
 var BaseListView = require('views/elements/base_list_view');
@@ -41,20 +41,20 @@ var cashflowacntView = BaseView.extend({
         BaseView.prototype.onInitialize.call(this, params);
     },
     onRender: function () {
-        var $input = this.getContentInternal().find('.input'),
-            $results = this.getContentInternal().find('.results');
+        // var $input = this.getContentInternal().find('.input'),
+        //     $results = this.getContentInternal().find('.results');
 
-        var wikiRx = new WikiRx($input, $results);
-        wikiRx.initialize();
+        // var wikiRx = new WikiRx($input, $results);
+        // wikiRx.initialize();
 
-        //KEFIR
-        var counterUp = this.getContentInternal().find('.counterUp'),
-            counterDown = this.getContentInternal().find('.counterDown'),
-            count = this.getContentInternal().find('.count'),
-            outputElement = this.getContentInternal().find('.label');
+        // //KEFIR
+        // var counterUp = this.getContentInternal().find('.counterUp'),
+        //     counterDown = this.getContentInternal().find('.counterDown'),
+        //     count = this.getContentInternal().find('.count'),
+        //     outputElement = this.getContentInternal().find('.label');
 
-        var btnClicksUp = Kefir.fromEvents(counterUp, 'click');
-        var btnClicksDown = Kefir.fromEvents(counterDown, 'click');
+        // var btnClicksUp = Kefir.fromEvents(counterUp, 'click');
+        // var btnClicksDown = Kefir.fromEvents(counterDown, 'click');
 
         //var inputValue = Kefir.fromEvents(count, 'keyup')
         //                      .map(event = > event.target.value

@@ -26,30 +26,13 @@ var TaskList = BaseView.extend({
 		this.data = _.clone({data: this.collection});
 	},
 	updateTaskList: function(query){
+		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
+			this.collection = response.data;
+			this.render(true);
+		}.bind(this));
 
-		var callback = {
-		  success : function(response){
-		  	 var response = JSON.parse(response);
-		     // debugger
-		     // if(Array.isArray(response.data))
-		     		//collection
-		     // else
-		         	//model
-
-		     this.collection = response.data;
-		     this.render(true);
-
-		  }.bind(this),
-		  error : function(data){
-
-		  }
-		};
-
-
-		// this.api.getResousceFromCatalog('tasks', query).then(function (response) {
-		// 	this.collection = response.data;
-		// 	this.render(true);
-		// }.bind(this));
+		// let MF = ModelFactory('build/api/catalog.json');
+		// console.log(MF.url);
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

@@ -11,47 +11,41 @@ var templates = {
 
 var api = Api.getInstance('build/api/catalog.json');
 
-require('custom-scrollbar');
+//require('custom-scrollbar');
 
+class SetActiveState {
+	constructor(wrapper, param) {
+		var self = this;
+		this.wrapper = $(wrapper);
+		this.input = this.wrapper.find('input');
+		this.param = param;
 
-var SetActiveStateAtList = function (wrapper, param) {
-	var self = this;
-	this.wrapper = $(wrapper);
-	this.input = this.wrapper.find('input');
-	this.param = param;
+		this.wrapper.on('click', '.list-item', function () {
+			self.input.val($(this).data(self.param)).change();
+		});
+	}
 
-	this.wrapper.on('click', '.list-item', function () {
-		self.input.val($(this).data(self.param)).change();
-	});
-};
+	highLight() {}
+}
 
-SetActiveStateAtList.prototype.highlight = function () {
-	this.wrapper.
-	find('[data-' + this.param + '="' + this.input.val() + '"]').
-	    addClass('active').
-	    siblings().
-	    removeClass('active');
-};
+class SetActiveStateAtList extends SetActiveState {
+	static highLight() {
+		this.wrapper.
+		find('[data-' + this.param + '="' + this.input.val() + '"]').
+		    addClass('active').
+		    siblings().
+		    removeClass('active');
+	}
+}
 
+class SetActiveStateAtTable extends SetActiveState {
+	static highLight() {
+		var item = this.wrapper.find('[data-' + this.param + '="' + this.input.val() + '"]');
 
-var SetActiveStateAtTable = function (wrapper, param) {
-	var self = this;
-	this.wrapper = $(wrapper);
-	this.input = this.wrapper.find('input');
-	this.param = param;
-
-	this.wrapper.on('click', '.list-item', function () {
-		self.input.val($(this).data(self.param)).change();
-	});
-};
-
-
-SetActiveStateAtTable.prototype.highlight = function () {
-	var item = this.wrapper.find('[data-' + this.param + '="' + this.input.val() + '"]');
-
-	item.siblings().removeAttr('data-active');
-	item.attr('data-active', true);
-};
+		item.siblings().removeAttr('data-active');
+		item.attr('data-active', true);
+	}
+}
 
 
 var customSelectArray = [];
@@ -167,10 +161,4 @@ $.fn.customSelect.defaults = {
 	url: ''
 };
 
-
-var Plugins = {
-	setActiveStateAtList: SetActiveStateAtList,
-	setActiveStateAtTable: SetActiveStateAtTable
-};
-
-module.exports = Plugins;
+export {SetActiveStateAtList, SetActiveStateAtTable};
