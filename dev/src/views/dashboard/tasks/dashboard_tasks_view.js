@@ -34,8 +34,9 @@ var TaskList = BaseView.extend({
 				this.closeEdit();
 		}.bind(this));
 
-		// let MF = ModelFactory('build/api/catalog.json');
-		// console.log(MF.url);
+		// let MF = ModelFactory();
+		var startModel = new Backbone.Model();
+		console.log(startModel);
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

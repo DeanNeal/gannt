@@ -1,6 +1,8 @@
 'use strict';
 
 import * as Backbone from 'backbone';
+import * as _ from 'underscore';
+import * as $ from 'jquery';
 
 function $http(url) {
 
@@ -144,8 +146,8 @@ var ModelFactory = {
 		return new Collection(response);
 	},
 	getResource : function (url) {
-		var deferred = jQuery.Deferred();
-		jQuery.ajax(url, {
+		var deferred = $.Deferred();
+		$.ajax(url, {
 			method: 'GET',
 			success : function (response) {
 				if(response.data instanceof Array) {
