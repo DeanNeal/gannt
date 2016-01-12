@@ -79,11 +79,11 @@
     // .right-user-area_unit
     &_unit {
         display: inline-block;
-        vertical-align: middle;
+        vertical-align: top;
         
         + .#{$self} {
             &_unit {
-                // margin-left: 10px;
+                margin-left: 20px;
             }
         }
 
@@ -94,22 +94,18 @@
 
         .icon-plus-in-circle {
             font-size: 28px;
-            margin-left: 12px;
         }
 
         .icon-lock {
             font-size: 19px;
-            margin-left: 22px;
         }
 
         .icon-bell {
             font-size: 21px;
-            margin-left: 25px;
         }
 
         .icon-envelope {
             font-size: 20px;
-            margin-left: 25px;
         }
     }
 }
