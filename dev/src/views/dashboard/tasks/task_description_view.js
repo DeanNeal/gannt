@@ -23,6 +23,7 @@ var ContentView = BaseView.extend({
             url: this.api.getUrlFromCatalog('priorities'),
             template: 'customSelectListPriority'
         });
+        this.getElement('.custom-select').customSelect('refresh');
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);

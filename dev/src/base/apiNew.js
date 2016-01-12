@@ -1,6 +1,8 @@
 'use strict';
 
 import * as Backbone from 'backbone';
+import * as _ from 'underscore';
+import * as $ from 'jquery';
 
 function $http(url) {
 
@@ -65,51 +67,131 @@ function $http(url) {
 		}
 	};
 }
+//function generateLinkedMethods(options) {
+//	/*links.forEach(method)*/
+//}
+//
+//export default class LinkedModel extends Backbone.Model {
+//	constructor() {
+//		super();
+//	}
+//
+//	/*post*/
+//	/*put*/
+//	/*delete*/
+//
+//	/*generateLinkedMethods*/
+//}
+//
+//export default class LinkedCollection extends Backbone.Collection {
+//	constructor() {
+//		super();
+//	}
+//
+//	/*post*/
+//	/*delete*/
+//
+//	/*generateLinkedMethods*/
+//}
+//
+//export default class ModelFactory {
+//	constructor (url) {
+//		/*this.type = model || collection*/
+//	}
+//
+//	getResourceType (options) {
+//		let resourceType = null;
+//
+//		if (this.type === 'model') {
+//			resourceType = LinkedModel
+//		} else if (this.type === 'collection') {
+//			resourceType = LinkedCollection
+//		}
+//
+//		return new resoresourceType(options);
+//	}
+//}
 
-function generateLinkedMethods(options) {
-	/*links.forEach(method)*/
-}
-
-export default class LinkedModel extends Backbone.Model {
-	constructor() {
-		super();
+var ModelFactory = {
+	getModel : function (response) {
+		var Model = Backbone.Model.extend({
+			constructor : function (srcObj, options) {
+				// attributes set
+				Backbone.Model.prototype.constructor.call(this, srcObj.data, options);
+				// methods set
+				_.each(srcObj.links, function (link) {
+					// add additional methods
+					this['get_' + link.id] = function () {
+						return this.getResource(link.href);
+					}
+				}.bind(this));
+			}
+		});
+		return new Model(response);
+	},
+	getCollection : function (response) {
+		var Collection = Backbone.Collection.extend({
+			constructor : function (srcObj, options) {
+				Backbone.Collection.prototype.constructor.call(this, null, options);
+				// methods set
+				_.each(srcObj.links, function (link) {
+					// add additional methods
+					this['get_' + link.id] = function () {
+						return this.getResource(link.href);
+					}
+				}.bind(this));
+			}
+		});
+		return new Collection(response);
+	},
+	getResource : function (url) {
+		var deferred = $.Deferred();
+		$.ajax(url, {
+			method: 'GET',
+			success : function (response) {
+				if(response.data instanceof Array) {
+					var collection = this.getCollection(response);
+					_.each(response.data, function (model) {
+						collection.add(this.getModel(model));
+					}.bind(this));
+					deferred.resolve(collection);
+				} else if (typeof response.data == 'object'){
+					deferred.resolve(this.getModel(response));
+				}
+			}.bind(this)
+		});
+		return deferred.promise();
 	}
+};
 
-	/*post*/
-	/*put*/
-	/*delete*/
+_.extend(Backbone.Model.prototype, ModelFactory);
 
-	/*generateLinkedMethods*/
-}
 
-export default class LinkedCollection extends Backbone.Collection {
-	constructor() {
-		super();
-	}
+// export default ModelFactory;
 
-	/*post*/
-	/*delete*/
+// var startModel = new Backbone.Model();
 
-	/*generateLinkedMethods*/
-}
+// // model example
+// startModel.getResource('json/person1.json').then(function(person) {
+// 	console.log(person);
+// 	return person.get_address();
+// }).then(function(address){
+// 	//console.log(address);
+// });
 
-export default class ModelFactory {
-	constructor (url) {
-		/*this.type = model || collection*/
-	}
+// // collection example
+// startModel.getResource('json/personsCollection.json').then(function(persons) {
+// 	console.log(persons);
+// 	return persons.get(1).get_address();
+// }).then(function(address){
+// 	//console.log(address);
+// });
 
-	getResourceType (options) {
-		let resourceType = null;
 
-		if (this.type === 'model') {
-			resourceType = LinkedModel
-		} else if (this.type === 'collection') {
-			resourceType = LinkedCollection
-		}
 
-		return new resoresourceType(options);
-	}
-}
+
+
+
 
 //let taskModel = new ModelFactory()
 //taskModel.getResourceType -- model || collection

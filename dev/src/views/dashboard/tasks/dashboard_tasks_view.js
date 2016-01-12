@@ -29,10 +29,20 @@ var TaskList = BaseView.extend({
 		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
 			this.collection = response.data;
 			this.render(true);
+
+			if(this.editView)
+				this.closeEdit();
 		}.bind(this));
 
-		// let MF = ModelFactory('build/api/catalog.json');
-		// console.log(MF.url);
+		// let MF = ModelFactory();
+		var startModel = new Backbone.Model();
+		startModel.getResource('json/person1.json').then(function(person) {
+			console.log(person);
+			return person.get_address();
+		}).then(function(address){
+			//console.log(address);
+		});
+
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
