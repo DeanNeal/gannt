@@ -185,23 +185,17 @@
         flex-direction: column;
         flex: 1;
 
-        .task-list-item {
-            
-        }
-
         .row {
             @extend .display-flex;
             flex: 1;
             align-items: center;
             border-bottom: 1px solid #dbdbdc;
+            cursor: pointer;
         }
 
         .task-list-item {
             @extend .display-flex;
             flex: 1;
-            // align-items: center;
-            // cursor: pointer;
-            // border-bottom: 1px solid #dbdbdc;
             position: relative;
 
             &:hover {
@@ -227,13 +221,7 @@
                 font-size: 12px;
             }
         }
-
-        & > tbody {
-            @extend .display-flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
+        
         .title {
             color: #565656;
             font-weight: bold;
