@@ -186,7 +186,22 @@
         flex: 1;
 
         .task-list-item {
+            
+        }
+
+        .row {
+            @extend .display-flex;
+            flex: 1;
+            align-items: center;
             border-bottom: 1px solid #dbdbdc;
+        }
+
+        .task-list-item {
+            @extend .display-flex;
+            flex: 1;
+            // align-items: center;
+            // cursor: pointer;
+            // border-bottom: 1px solid #dbdbdc;
             position: relative;
 
             &:hover {
@@ -204,19 +219,6 @@
                     @include box-shadow(0 0 21px -2px #000);
                 }
             }
-        }
-
-        .row {
-            @extend .display-flex;
-            flex: 1;
-            align-items: center;
-        }
-
-        .task-list-item {
-            @extend .display-flex;
-            flex: 1;
-            align-items: center;
-            cursor: pointer;
 
             .col {
                 display: inline-block;
