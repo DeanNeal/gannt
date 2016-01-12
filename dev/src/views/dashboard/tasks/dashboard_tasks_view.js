@@ -29,6 +29,9 @@ var TaskList = BaseView.extend({
 		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
 			this.collection = response.data;
 			this.render(true);
+
+			if(this.editView)
+				this.closeEdit();
 		}.bind(this));
 
 		// let MF = ModelFactory('build/api/catalog.json');

@@ -194,7 +194,7 @@
 				<li>
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc">
-						<img src="picture" alt="">
+						<img src="build/img/avatar.png" alt="" width="20">
 						<span name="assignee"></span>
 						<!-- <div>
 							<span class="assignee-name">Maksim Shevchenko</span>

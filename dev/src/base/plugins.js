@@ -82,7 +82,10 @@ $.fn.customSelect = function (options) {
 
 		//clear custom selects and destroy them
 		if (settings.method == 'destroy') {
-			customSelectArray = [];
+			customSelectArray.forEach(function (dropdown, i) {
+				if(dropdown.is($wrapper))
+					customSelectArray.splice(i, 1);
+			});
 		}
 
 		if (!settings.method) {
@@ -136,6 +139,8 @@ $.fn.customSelect = function (options) {
 					.val($(this).data('text'))
 					.data('text', $(this).data('text'))
 					.change();
+
+				$value.text($(this).data('text'));
 
 				if (!$wrapper[0].hasAttribute('data-search'))
 					$container.attr('data-selected', $(this).data('text'));
