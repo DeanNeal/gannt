@@ -14,13 +14,23 @@ var ContentView = BaseView.extend({
 		this.taskDescrModel = new TaskDescriptionModel();
 	},
 	updateModel: function(link){		
-		this.api.getResourceByUrl(link).then(function (response) {
+		// this.api.getResourceByUrl(link).then(function (response) {
+		// 	if(!this.descr){			
+		// 		this.taskDescrModel.set(response.data);
+		// 		this.descr = this.addView(TaskDescriptionView, {model: this.taskDescrModel, link: link});
+		// 		this.renderNestedView(this.descr, '.task-description');
+		// 	} else
+		// 		this.descr.updateModel(response.data);
+		// }.bind(this));
+
+		var startModel = new Backbone.Model();
+		startModel.getResource(link).then(function(task) {
 			if(!this.descr){			
-				this.taskDescrModel.set(response.data);
+				this.taskDescrModel = task;
 				this.descr = this.addView(TaskDescriptionView, {model: this.taskDescrModel, link: link});
 				this.renderNestedView(this.descr, '.task-description');
 			} else
-				this.descr.updateModel(response.data);
+				this.descr.updateModel(task);
 		}.bind(this));
 	}
 });

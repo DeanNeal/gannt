@@ -7,6 +7,9 @@ var Helpers        = require('base/helpers');
 var Api            = require('base/api');
 var ModelBinder    = require('base/backbone.modelbinder');
 
+import ModelFactory from 'base/apiNew';
+
+
 var api = Api.getInstance('build/api/catalog.json');
 
 api.getCatalog().then(function() {

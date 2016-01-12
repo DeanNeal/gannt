@@ -134,6 +134,7 @@ var ModelFactory = {
 			constructor : function (srcObj, options) {
 				Backbone.Collection.prototype.constructor.call(this, null, options);
 				// methods set
+				debugger
 				_.each(srcObj.links, function (link) {
 					// add additional methods
 					this['get_' + link.id] = function () {
@@ -150,7 +151,8 @@ var ModelFactory = {
 			method: 'GET',
 			success : function (response) {
 				if(response.data instanceof Array) {
-					var collection = this.getCollection(response);
+					var collection = this.getCollection(response.data);
+					
 					_.each(response.data, function (model) {
 						collection.add(this.getModel(model));
 					}.bind(this));

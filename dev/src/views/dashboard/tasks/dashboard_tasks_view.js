@@ -1,20 +1,39 @@
-var Backbone              = require('backbone'),
-    $                     = require('jquery'),
-    _                     = require('underscore'),
-    BaseView              = require('views/baseview'),
-    RoutedView            = require('views/routedview'),
-    TasksFiltersView      = require('views/dashboard/tasks/tasks_filters_view.js'),
-    TaskEditView          = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
-    dashboardTpl          = require('templates/dashboard/dashboard_tasks.tpl'),
-    dashboardTasksListTpl = require('templates/dashboard/dashboard_tasks_list.tpl');
+var Backbone              	  = require('backbone'),
+    $                     	  = require('jquery'),
+    _                     	  = require('underscore'),
+    BaseView              	  = require('views/baseview'),
+    RoutedView            	  = require('views/routedview'),
+    TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
+    TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
+    dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
+    // dashboardTasksListTpl 	  = require('templates/dashboard/dashboard_tasks_list.tpl'),
+    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
 
 
 
-import ModelFactory from 'base/apiNew';
+
+var TaskListItem = BaseView.extend({
+	template: dashboardTasksListItemTpl,
+	className: 'task-list',
+	events: {
+	    'click .dashboard-table tr'         : 'changeTask',
+	    'click .close-icon'                 : 'closeEdit'
+	},
+	onInitialize: function (params) {
+		BaseView.prototype.onInitialize.call(this, params);
+	},
+	serialize: function () {
+		this.data = _.clone({data: this.collection});
+	}
+});
+
+
 
 var TaskList = BaseView.extend({
-	template: dashboardTasksListTpl,
-	className: 'task-list',
+	// template: dashboardTasksListTpl,
+	// className: 'task-list',
+	className: 'dashboard-table',
+	tagName: 'table',
 	events: {
 	    'click .dashboard-table tr'         : 'changeTask',
 	    'click .close-icon'                 : 'closeEdit'
@@ -26,22 +45,25 @@ var TaskList = BaseView.extend({
 		this.data = _.clone({data: this.collection});
 	},
 	updateTaskList: function(query){
-		this.api.getResousceFromCatalog('tasks', query).then(function (response) {
-			this.collection = response.data;
-			this.render(true);
+		// this.api.getResousceFromCatalog('tasks', query).then(function (response) {
+		// 	this.collection = response.data;
+		// 	this.render(true);
 
-			if(this.editView)
-				this.closeEdit();
+		// 	if(this.editView)
+		// 		this.closeEdit();
+		// }.bind(this));
+
+		var tasksModel = new Backbone.Model();
+		tasksModel.getResource('build/api/tasks.json').then(function(tasks) {
+			this.collection = tasks;
+			// this.render(true);
+
+			debugger
+			this.collection.each(function(model) {
+			    this.addView(TaskListItem, {model: model});
+			}.bind(this));
+
 		}.bind(this));
-
-		// let MF = ModelFactory();
-		var startModel = new Backbone.Model();
-		startModel.getResource('json/person1.json').then(function(person) {
-			console.log(person);
-			return person.get_address();
-		}).then(function(address){
-			//console.log(address);
-		});
 
 	},
 	changeTask: function(e){
