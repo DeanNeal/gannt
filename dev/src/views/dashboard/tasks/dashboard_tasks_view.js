@@ -41,7 +41,7 @@ var TaskList = BaseView.extend({
 
 		var tasksModel = new Backbone.Model();
 
-	//	this.api.getTasks(query)
+	//	this.api.getTasks(query).then
 
 		tasksModel.getResource('build/api/tasks.json', query).then(function(tasks) {
 			this.collection = tasks;

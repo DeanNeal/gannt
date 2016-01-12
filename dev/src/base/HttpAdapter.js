@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 export default function $http(url) {
 
     // A small example of object
