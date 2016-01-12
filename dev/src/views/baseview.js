@@ -173,11 +173,20 @@ var BaseView = Backbone.View.extend({
      * @param view
      */
     removeNestedView: function (view) {
-        this.stopListening(view);
-        this.nestedViews = this.nestedViews.filter(function (value) {
-            return value.view != view;
-        }.bind(this));
-        view.remove();
+        if(view){
+            this.stopListening(view);
+            this.nestedViews = this.nestedViews.filter(function (value) {
+                return value.view != view;
+            }.bind(this));
+            view.remove();
+        } else {
+            this.nestedViews = [];
+        }
+    },
+
+    removeAllNestedView: function () {
+        this.stopListening();
+        this.nestedViews = [];
     },
     /**
      * Removes view

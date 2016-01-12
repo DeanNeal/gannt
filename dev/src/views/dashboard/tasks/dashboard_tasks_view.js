@@ -7,7 +7,6 @@ var Backbone              	  = require('backbone'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
     TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
     dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
-    //dashboardTasksListTpl 	  = require('templates/dashboard/dashboard_tasks_list.tpl'),
     dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
 
 
@@ -24,8 +23,6 @@ var TaskListItem = BaseView.extend({
 
 
 var TaskList = BaseView.extend({
-	// template: dashboardTasksListTpl,
-	// className: 'task-list',
 	className: 'dashboard-table',
 	tagName: 'div',
 	events: {
@@ -39,21 +36,22 @@ var TaskList = BaseView.extend({
 		this.data = _.clone({data: this.collection});
 	},
 	updateTaskList: function(query){
-		// this.api.getResousceFromCatalog('tasks', query).then(function (response) {
-		// 	this.collection = response.data;
-		// 	this.render(true);
-
-		// 	if(this.editView)
-		// 		this.closeEdit();
-		// }.bind(this));
+		if(this.editView)
+			this.closeEdit();
 
 		var tasksModel = new Backbone.Model();
-		tasksModel.getResource('build/api/tasks.json').then(function(tasks) {
+
+	//	this.api.getTasks(query)
+
+		tasksModel.getResource('build/api/tasks.json', query).then(function(tasks) {
 			this.collection = tasks;
+
+			this.removeNestedView();
 
 			this.collection.each(function(model) {
 			    this.addView(TaskListItem, {model: model});
 			}.bind(this));
+
 			this.render(true);
 
 		}.bind(this));
@@ -62,12 +60,8 @@ var TaskList = BaseView.extend({
 		var id   = $(e.currentTarget).data('id'),
 			model = Helpers.findById(this.collection, id);
 
-		// model.get_tasks().then(function(task){
-		// 	debugger
-		// });
-
 		if(!this.editView){
-			this.editView = this.addView(TaskEditView/*, {model: model}*/);
+			this.editView = this.addView(TaskEditView);
 			this.renderNestedView(this.editView);
 		}
 

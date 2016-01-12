@@ -24,9 +24,6 @@ tasksModel.getResource('/api/v1/system/catalog').then(function(catalog) {
 
 
 api.getCatalog().then(function() {
-    // var App = new GlobalView();
-    // App.start();
-    // Backbone.history.start();
 });
 
 
