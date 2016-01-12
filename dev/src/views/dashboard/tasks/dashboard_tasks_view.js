@@ -10,7 +10,7 @@ var Backbone              = require('backbone'),
 
 
 
-import ModelFactory from 'base/apiNew';
+import ModelFactory from 'base/ModelFactory';
 
 var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
@@ -34,15 +34,13 @@ var TaskList = BaseView.extend({
 				this.closeEdit();
 		}.bind(this));
 
-		// let MF = ModelFactory();
 		var startModel = new Backbone.Model();
-		startModel.getResource('json/person1.json').then(function(person) {
-			console.log(person);
-			return person.get_address();
+		startModel.getResource('/build/api/task_1.json').then(function(data) {
+			console.log(arguments);
+			//return data.get_approve();
 		}).then(function(address){
 			//console.log(address);
 		});
-
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
