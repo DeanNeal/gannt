@@ -13,7 +13,7 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		///this.taskDescrModel = new TaskDescriptionModel();
 	},
-	updateModel: function(link){		
+	updateModel: function(model){		
 		// this.api.getResourceByUrl(link).then(function (response) {
 		// 	if(!this.descr){			
 		// 		this.taskDescrModel.set(response.data);
@@ -23,11 +23,21 @@ var ContentView = BaseView.extend({
 		// 		this.descr.updateModel(response.data);
 		// }.bind(this));
 
-		var startModel = new Backbone.Model();
-		startModel.getResource(link).then(function(task) {
+	
+		// startModel.getResource(link).then(function(task) {
+		// 	if(!this.descr){			
+		// 	//	this.taskDescrModel = task;
+		// 		this.descr = this.addView(TaskDescriptionView, {model: task, link: link});
+		// 		this.renderNestedView(this.descr, '.task-description');
+		// 	} else
+		// 		this.descr.updateModel(task);
+		// }.bind(this));
+
+	// var startModel = new Backbone.Model();		
+		model.get_tasks().then(function(task){
 			if(!this.descr){			
 			//	this.taskDescrModel = task;
-				this.descr = this.addView(TaskDescriptionView, {model: task, link: link});
+				this.descr = this.addView(TaskDescriptionView, {model: task/*, link: link*/});
 				this.renderNestedView(this.descr, '.task-description');
 			} else
 				this.descr.updateModel(task);

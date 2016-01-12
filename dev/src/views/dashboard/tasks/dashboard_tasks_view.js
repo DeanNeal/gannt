@@ -1,4 +1,5 @@
 var Backbone              	  = require('backbone'),
+    Helpers                   = require('base/helpers'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
     BaseView              	  = require('views/baseview'),
@@ -59,14 +60,18 @@ var TaskList = BaseView.extend({
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
-			href = this.api.getUrl(this.collection, id);
+			model = Helpers.findById(this.collection, id);
+
+		// model.get_tasks().then(function(task){
+		// 	debugger
+		// });
 
 		if(!this.editView){
-			this.editView = this.addView(TaskEditView, {href: href});
+			this.editView = this.addView(TaskEditView/*, {model: model}*/);
 			this.renderNestedView(this.editView);
 		}
 
-		this.editView.updateModel(href);
+		this.editView.updateModel(model);
 	},
 	closeEdit: function(){
 		this.removeNestedView(this.editView);

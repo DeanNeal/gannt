@@ -46,6 +46,11 @@ var Helpers = {
     //         return item;
     //     });
     // },
+    findById: function (collection, id) {
+        var model = collection.find(function(model) { return model.get('id') == id; });
+        
+        return model;
+    },
     searchEngine: function(str, list, startCount) {
          var valueWords = str.split(" ").join(")(?=.*"),
              end = ').*',
