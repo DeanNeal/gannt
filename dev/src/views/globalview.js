@@ -21,26 +21,43 @@ var GlobalView = RoutedView.extend({
         'stats'    : statsView,
         'finance'  : financeView
     },
+    links: [{
+        name: "Dashboard",
+        id: "dashboard",
+        route: "dashboard/tasks"
+    }, {
+        name: "Tree",
+        id: "tree",
+        route: "tree"
+    }, {
+        name: "Stats",
+        id: "stats",
+        route: "stats"
+    }],
     onInitialize: function(params) {
         Backbone.on('change:page', this.changeStage, this);
-    },
-    beforeChangeStage: function() {
-        var deferred = $.Deferred();
 
-        if (!this.menu) {
-            this.api.getResousceFromCatalog('menu').then(function(response) {
-                this.collection = Helpers.createMenuLinks(response.data);
-                this.menu = this.addView(BaseListView, {
-                    collection: new navBarCollection(this.collection)
-                });
-                this.renderNestedView(this.menu, '.header-container');
-                deferred.resolve(true);
-            }.bind(this));
-        } else
-            deferred.resolve(true);
-
-        return deferred.promise();
+        this.addView(BaseListView, {
+            collection: new navBarCollection(this.links)
+        }, '.header-container');
     },
+    // beforeChangeStage: function() {
+    //     var deferred = $.Deferred();
+
+    //     if (!this.menu) {
+    //         this.api.getResousceFromCatalog('menu').then(function(response) {
+    //             this.collection = Helpers.createMenuLinks(response.data);
+    //             this.menu = this.addView(BaseListView, {
+    //                 collection: new navBarCollection(this.collection)
+    //             });
+    //             this.renderNestedView(this.menu, '.header-container');
+    //             deferred.resolve(true);
+    //         }.bind(this));
+    //     } else
+    //         deferred.resolve(true);
+
+    //     return deferred.promise();
+    // },
     start: function() {
         document.body.appendChild(this.render().el);
     }

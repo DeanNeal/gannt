@@ -45,12 +45,10 @@ let ModelFactory = {
         let success = function(response) {
             if (response.data instanceof Array) {
                 let collection = self.getCollection(response);
-                console.log(collection);
+                
                 response.data.map(model => {
                     collection.add(self.getModel(model));
                 });
-                    
-
                 return collection;
             } else if (typeof response.data == 'object') {
                 return self.getModel(response);
