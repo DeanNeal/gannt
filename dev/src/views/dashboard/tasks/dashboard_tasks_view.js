@@ -13,10 +13,6 @@ var Backbone              	  = require('backbone'),
 var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
 	className: 'task-list-item',
-	events: {
-	    'click .dashboard-table task-list-item'         : 'changeTask',
-	    'click .close-icon'                 : 'closeEdit'
-	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 	},
@@ -32,8 +28,8 @@ var TaskList = BaseView.extend({
 	className: 'dashboard-table',
 	tagName: 'div',
 	events: {
-	    'click .dashboard-table task-list-item'         : 'changeTask',
-	    'click .close-icon'                 : 'closeEdit'
+	    'click .task-list-item .row'                     : 'changeTask',
+	    'click .close-icon'                              : 'closeEdit'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -64,7 +60,7 @@ var TaskList = BaseView.extend({
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
 			href = this.api.getUrl(this.collection, id);
-		
+
 		if(!this.editView){
 			this.editView = this.addView(TaskEditView, {href: href});
 			this.renderNestedView(this.editView);
