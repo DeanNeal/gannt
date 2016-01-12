@@ -166,23 +166,32 @@ var ModelFactory = {
 
 _.extend(Backbone.Model.prototype, ModelFactory);
 
-var startModel = new Backbone.Model();
 
-// model example
-startModel.getResource('json/person1.json').then(function(person) {
-	console.log(person);
-	return person.get_address();
-}).then(function(address){
-	//console.log(address);
-});
+// export default ModelFactory;
 
-// collection example
-startModel.getResource('json/personsCollection.json').then(function(persons) {
-	console.log(persons);
-	return persons.get(1).get_address();
-}).then(function(address){
-	//console.log(address);
-});
+// var startModel = new Backbone.Model();
+
+// // model example
+// startModel.getResource('json/person1.json').then(function(person) {
+// 	console.log(person);
+// 	return person.get_address();
+// }).then(function(address){
+// 	//console.log(address);
+// });
+
+// // collection example
+// startModel.getResource('json/personsCollection.json').then(function(persons) {
+// 	console.log(persons);
+// 	return persons.get(1).get_address();
+// }).then(function(address){
+// 	//console.log(address);
+// });
+
+
+
+
+
+
 
 //let taskModel = new ModelFactory()
 //taskModel.getResourceType -- model || collection

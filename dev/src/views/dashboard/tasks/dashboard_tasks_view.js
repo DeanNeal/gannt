@@ -36,7 +36,13 @@ var TaskList = BaseView.extend({
 
 		// let MF = ModelFactory();
 		var startModel = new Backbone.Model();
-		console.log(startModel);
+		startModel.getResource('json/person1.json').then(function(person) {
+			console.log(person);
+			return person.get_address();
+		}).then(function(address){
+			//console.log(address);
+		});
+
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
