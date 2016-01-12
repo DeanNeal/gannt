@@ -12,7 +12,7 @@ var Backbone              	  = require('backbone'),
 
 var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
-	className: 'task-list',
+	className: 'task-list-item',
 	events: {
 	    'click .dashboard-table tr'         : 'changeTask',
 	    'click .close-icon'                 : 'closeEdit'
@@ -51,7 +51,7 @@ var TaskList = BaseView.extend({
 		// }.bind(this));
 
 		var tasksModel = new Backbone.Model();
-		tasksModel.getResource('http://195.138.79.46/api/v1/dashboard/task/collection/current///0/').then(function(tasks) {
+		tasksModel.getResource('build/api/tasks.json').then(function(tasks) {
 			this.collection = tasks;
 
 			this.collection.each(function(model) {
