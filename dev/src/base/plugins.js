@@ -11,7 +11,7 @@ var templates = {
 
 var api = Api.getInstance('build/api/catalog.json');
 
-require('custom-scrollbar');
+//require('custom-scrollbar');
 
 class SetActiveState {
 	constructor(wrapper, param) {
