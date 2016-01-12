@@ -6,10 +6,8 @@ var Backbone              	  = require('backbone'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
     TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
     dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
-    // dashboardTasksListTpl 	  = require('templates/dashboard/dashboard_tasks_list.tpl'),
+    //dashboardTasksListTpl 	  = require('templates/dashboard/dashboard_tasks_list.tpl'),
     dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
-
-
 
 
 var TaskListItem = BaseView.extend({
@@ -23,10 +21,9 @@ var TaskListItem = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 	},
 	serialize: function () {
-		this.data = _.clone({data: this.collection});
+		this.data = _.clone(this.model.attributes);
 	}
 });
-
 
 
 var TaskList = BaseView.extend({
@@ -54,17 +51,15 @@ var TaskList = BaseView.extend({
 		// }.bind(this));
 
 		var tasksModel = new Backbone.Model();
-		tasksModel.getResource('build/api/tasks.json').then(function(tasks) {
+		tasksModel.getResource('http://195.138.79.46/api/v1/dashboard/task/collection/current///0/').then(function(tasks) {
 			this.collection = tasks;
-			// this.render(true);
 
-			debugger
 			this.collection.each(function(model) {
 			    this.addView(TaskListItem, {model: model});
 			}.bind(this));
+			this.render(true);
 
 		}.bind(this));
-
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

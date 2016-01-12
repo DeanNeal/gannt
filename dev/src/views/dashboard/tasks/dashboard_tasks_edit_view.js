@@ -11,7 +11,7 @@ var ContentView = BaseView.extend({
 	template: tpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		this.taskDescrModel = new TaskDescriptionModel();
+		///this.taskDescrModel = new TaskDescriptionModel();
 	},
 	updateModel: function(link){		
 		// this.api.getResourceByUrl(link).then(function (response) {
@@ -26,8 +26,8 @@ var ContentView = BaseView.extend({
 		var startModel = new Backbone.Model();
 		startModel.getResource(link).then(function(task) {
 			if(!this.descr){			
-				this.taskDescrModel = task;
-				this.descr = this.addView(TaskDescriptionView, {model: this.taskDescrModel, link: link});
+			//	this.taskDescrModel = task;
+				this.descr = this.addView(TaskDescriptionView, {model: task, link: link});
 				this.renderNestedView(this.descr, '.task-description');
 			} else
 				this.descr.updateModel(task);

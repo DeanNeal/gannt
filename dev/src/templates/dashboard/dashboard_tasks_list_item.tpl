@@ -1,15 +1,15 @@
-<tr data-id="<%=item.id%>">
+<tr data-id="<%=id%>">
 	<td class="title">
 		<div class="task-name">
 			<svg class="icon icon-trash">
 	        	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 	    	</svg>
 
-			<span class="" title="#<%=item.id%>: <%=item.name%>">#<%=item.id%>: <%=item.name%></span>
+			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>
 		</div>
 
 		<div class="tags">
-			<% _.each(item.tags.split(','), function(tag) { %>
+			<% _.each(tags.split(','), function(tag) { %>
 				<span class="tag" title="<%=tag%>"><%=tag%></span>
 			<% }); %>
 		</div>
@@ -26,12 +26,12 @@
 	</td>
 
 	<td class="status">
-		<div data-status="<%=item.status%>"><%=item.status%></div>
+		<div data-status="<%=status%>"><%=status%></div>
 	</td>
 
 	<td class="assignee">
 		<img class="avatar" src="build/img/avatar.png" alt="">
-		<!-- <div><%=item.assignee%></div> -->
+		<!-- <div><%=assignee%></div> -->
 	</td>
 
 	<td class="milestone">
@@ -52,11 +52,11 @@
 			<svg class="icon icon-trash">
 		        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 		    </svg>
-		    <%=item.date%>
+		    <%=date%>
 		</div>
 	</td>
 
 	<td class="updated">
-		<div><%=item.ago%> ago</div>
+		<div><%=ago%> ago</div>
 	</td>
 </tr>
