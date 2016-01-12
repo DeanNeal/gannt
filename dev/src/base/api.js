@@ -33,7 +33,6 @@ Api.prototype.getResousceFromCatalog = function (resourceName, data) {
 
 	return deferred.promise();
 };
-
 Api.prototype.getUrl = function (collection, id) {
 	var model = _.findWhere(collection, {id: id});
 	return (model) ? model.links[0].href : '';

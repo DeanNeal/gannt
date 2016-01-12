@@ -61,11 +61,14 @@ gulp.task('copy-api', ['clean-tmp'], function () {
 	           .pipe(gulp.dest(projectPath.build + '/api'))
 });
 
-gulp.task("babel", ['copy-api'], function () {
+var babelBuild = function() {
 	return gulp.src(projectPath.source + "/**/*.js")
-	           .pipe(babel()).on('error', onError)
-	           .pipe(gulp.dest(projectPath.dev + '/tmp'));
-});
+			.pipe(babel()).on('error', onError)
+			.pipe(gulp.dest(projectPath.dev + '/tmp'));
+};
+
+gulp.task("babel-build", ['copy-api'], babelBuild);
+gulp.task("babel", babelBuild);
 
 var scripts = function() {
 	return browserify({
@@ -81,8 +84,7 @@ var scripts = function() {
 			.pipe(connect.reload());
 };
 
-
-gulp.task('scripts', ['babel'], scripts);
+gulp.task('scripts', ['babel-build'], scripts);
 gulp.task('scripts-watch', ['babel'], scripts);
 
 gulp.task('clean-styles', function () {
@@ -126,4 +128,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connect', 'styles', 'scripts', 'watch']);
-gulp.task('clean', ['clean-tmp'])
+gulp.task('clean', ['clean-tmp']);

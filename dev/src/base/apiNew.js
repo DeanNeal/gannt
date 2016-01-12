@@ -67,7 +67,6 @@ function $http(url) {
 		}
 	};
 }
-
 //function generateLinkedMethods(options) {
 //	/*links.forEach(method)*/
 //}
