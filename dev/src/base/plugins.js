@@ -29,7 +29,7 @@ class SetActiveState {
 }
 
 class SetActiveStateAtList extends SetActiveState {
-	static highLight() {
+	highLight() {
 		this.wrapper.
 		find('[data-' + this.param + '="' + this.input.val() + '"]').
 		    addClass('active').
@@ -39,7 +39,7 @@ class SetActiveStateAtList extends SetActiveState {
 }
 
 class SetActiveStateAtTable extends SetActiveState {
-	static highLight() {
+	highLight() {
 		var item = this.wrapper.find('[data-' + this.param + '="' + this.input.val() + '"]');
 
 		item.siblings().removeAttr('data-active');
