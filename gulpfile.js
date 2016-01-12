@@ -47,12 +47,13 @@ gulp.task('connect', function () {
 
 gulp.task('clean-tmp', function () {
 	var filesToMove = [
-		projectPath.dev + '/tmp',
+		projectPath.dev + '/tmp/**/*.*',
+        projectPath.dev + '/tmp',
 		projectPath.build + '/app'
 	];
 
 	return gulp.src(filesToMove, {read: false, base: './'})
-	           .pipe(clean());
+	           .pipe(clean({force:true}));
 });
 
 gulp.task('copy-api', ['clean-tmp'], function () {
@@ -125,3 +126,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connect', 'styles', 'scripts', 'watch']);
+gulp.task('clean', ['clean-tmp'])

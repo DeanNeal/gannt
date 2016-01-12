@@ -19,6 +19,7 @@
     "browserify": "^12.0.1",
     "browserify-compile-templates": "^0.2.0",
     "browserify-shim": "^3.8.11",
+    "es6-promise": "^3.0.2",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
     "gulp-clean": "^0.3.1",
