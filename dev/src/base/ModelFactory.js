@@ -10,12 +10,14 @@ let ModelFactory = {
         class Model extends Backbone.Model {
             constructor(srcObj, options) {
                 // attributes set
-                super(Object.assign(srcObj.data, options));
+                super(_.extend(srcObj.data, options));
 
                 // methods set
-                srcObj.links.map(link => {
-                    this['get_' + link.id] = () => this.getResource(link.href)
-                });
+                if (srcObj.links) {
+                    srcObj.links.map(link => {
+                        this['get_' + link.id] = () => this.getResource(link.href)
+                    });
+                }
             }
         }
 
@@ -28,9 +30,11 @@ let ModelFactory = {
                 super(options);
 
                 // methods set
-                srcObj.links.map(link => {
-                    this['get_' + link.id] = () => this.getResource(link.href)
-                });
+                if (srcObj.links) {
+                    srcObj.links.map(link => {
+                        this['get_' + link.id] = () => this.getResource(link.href)
+                    });
+                }
             }
         }
         return new Collection(response);
@@ -55,4 +59,4 @@ let ModelFactory = {
     }
 };
 
-Object.assign(Backbone.Model.prototype, ModelFactory);
+_.extend(Backbone.Model.prototype, ModelFactory);

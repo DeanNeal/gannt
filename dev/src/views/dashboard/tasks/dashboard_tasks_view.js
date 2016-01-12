@@ -35,7 +35,7 @@ var TaskList = BaseView.extend({
 		}.bind(this));
 
 		var startModel = new Backbone.Model();
-		startModel.getResource('/build/api/task_1.json').then(function(data) {
+		startModel.getResource('http://195.138.79.46/api/v1/dashboard/task/collection/current///0/').then(function(data) {
 			console.log(arguments);
 			//return data.get_approve();
 		}).then(function(address){

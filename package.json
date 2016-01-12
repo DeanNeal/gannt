@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "aliasify": "^1.8.1",
+    "babel-polyfill": "^6.3.14",
     "babel-preset-es2015": "^6.3.13",
     "babelify": "^7.2.0",
     "backbone": "^1.2.3",
@@ -29,6 +30,7 @@
     "gulp-minify-css": "^1.2.1",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
     "jasmine-core": "^2.4.1",
@@ -52,14 +54,18 @@
   },
   "browser": {
     "jquery-ui": "./bower_components/jquery-ui/jquery-ui.min.js",
-    "custom-scrollbar": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+    "custom-scrollbar": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    "jquery-mousewheel": "./bower_components/jquery-mousewheel/jquery.mousewheel.min.js"
   },
   "browserify-shim": {
     "jquery-ui": {
       "depends": "jquery:$"
     },
     "custom-scrollbar": {
-      "depends": "jquery:$"
+      "depends": [
+        "jquery:$",
+        "jquery-mousewheel"
+      ]
     }
   },
   "browserify": {
@@ -69,12 +75,17 @@
   },
   "aliasify": {
     "aliases": {
-      "base": "./dev/src/base",
-      "collections": "./dev/src/collections",
-      "models": "./dev/src/models",
-      "router": "./dev/src/router",
-      "templates": "./dev/src/templates",
-      "views": "./dev/src/views"
+      "base": "./dev/tmp/base",
+      "collections": "./dev/tmp/collections",
+      "models": "./dev/tmp/models",
+      "router": "./dev/tmp/router",
+      "templates": "./dev/tmp/templates",
+      "views": "./dev/tmp/views"
     }
+  },
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3",
+    "backbone": "^1.2.3"
   }
 }
