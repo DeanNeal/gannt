@@ -13,7 +13,7 @@
 					<span class="tag" title="<%=tag%>"><%=tag%></span>
 				<% }); %>
 			<% }  else { %>
-				<span class="tag" title="DummyTag>">DummyTag></span>
+				<span class="tag" title="DummyTag>">DummyTag</span>
 			<% } %>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="col status">
-		<div data-processingName name="processingName" data-status="<%=processingName%>"><%=processingName%></div>
+		<div name="processingName" data-status="<%=processingName%>"><%=processingName%></div>
 	</div>
 
 	<div class="col assignee">

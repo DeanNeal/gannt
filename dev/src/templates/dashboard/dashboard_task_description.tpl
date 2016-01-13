@@ -114,29 +114,25 @@
 					<div class="details-table_term">Project:</div>
 
 					<div class="details-table_desc">
-						<div class="project-name">Pumpkin2 project</div>
-						<div class="company-name">Company: Pepsi</div>
+						<div class="project-name" name="taskmaintagName">Pumpkin2 project</div>
+						<div class="company-name">Company: Dummy</div>
 					</div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Priority:</div>
 
-<!-- 					<div class="details-table_desc priority">
-						<span data-priority name="priority"></span>
-					</div>
- -->
-
-					<div id="priorities-select" class="custom-select priority" data-placeholder="High">
+					<div class="details-table_desc priority" data-priority name="priorityName"></div>
+	<!-- 				<div id="priorities-select" class="custom-select priority" data-placeholder="High">
 						<input type="hidden" name="priority">
-			 		</div>
+			 		</div> -->
 				</li>
 
 				<li>
 					<div class="details-table_term">Status:</div>
 
 					<div class="details-table_desc status">
-						<span data-status="" name="processingName"></span>
+						<span data-processingame name="processingName"></span>
 					</div>
 				</li>
 
@@ -144,7 +140,7 @@
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc">
 						<img src="build/img/avatar.png" alt="" width="20">
-						<span name="assignee"></span>
+						<span name="taskuserName"></span>
 						<!-- <div>
 							<span class="assignee-name">Maksim Shevchenko</span>
 							<span class="assignee-status">Project owner</span>
@@ -159,31 +155,48 @@
 
 				<li>
 					<div class="details-table_term">Milestones:</div>
-					<div class="details-table_desc" data-id="<%=milestone_id%>"><%=milestone_name%></div>
+					<div class="details-table_desc" name="milestoneName"></div>
 				</li>
 
 				<li>
-					<div class="details-table_term">Start:</div>
+					<div class="details-table_term">Date:</div>
 					<div class="details-table_desc">
-						<span class="date-icon start" name="date_create"></span>
-					</div>
-				</li>
-
-				<li>
-					<div class="details-table_term">Deadline:</div>
-					<div class="details-table_desc">
-						<span class="date-icon finish" name="date_finish"></span>
+<!-- 						<span class="date-icon start" name="date_create"></span> -->
+						<input type="text" name="date_start">
+						<input type="text" name="date_finish">
 					</div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Watchers:</div>
-					<div class="details-table_desc"></div>
+					<div class="details-table_desc">
+						<img src="build/img/avatar.png" alt="" width="20">
+						<img src="build/img/avatar.png" alt="" width="20">
+						<img src="build/img/avatar.png" alt="" width="20">
+						<img src="build/img/avatar.png" alt="" width="20">
+						<img src="build/img/avatar.png" alt="" width="20">
+					</div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Spent hours:</div>
-					<div class="details-table_desc">22</div>
+					<div class="details-table_desc">
+						<input type="text">
+						<input type="text">
+					</div>
+				</li>
+
+				<li>
+					<div class="details-table_term">Tags:</div>
+					<div class="details-table_desc">
+						<% if(tasktagName) { %>
+							<% _.each(tasktagName.split(','), function(tag) { %>
+								<span class="tag" title="<%=tag%>"><%=tag%></span>
+							<% }); %>
+						<% }  else { %>
+							<span class="tag" title="DummyTag>">DummyTag</span>
+						<% } %>
+					</div>
 				</li>
 			</ul>
 
