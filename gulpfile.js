@@ -79,10 +79,13 @@ gulp.task('clean-tmp', function () {
         .pipe(clean({force: true}));
 });
 
-gulp.task('copy-templates', function () {
+var copyTemplates = function() {
     gulp.src(projectPath.source + '/templates/**/*.tpl')
         .pipe(gulp.dest(projectPath.dev + '/tmp/templates'));
-});
+};
+
+gulp.task('copy-templates-build', ['clean-tmp'], copyTemplates);
+gulp.task('copy-templates', copyTemplates);
 
 gulp.task('copy-api', ['clean-tmp'], function () {
     gulp.src(projectPath.dev + '/api/**')
@@ -95,7 +98,7 @@ var babelBuild = function () {
         .pipe(gulp.dest(projectPath.dev + '/tmp'));
 };
 
-gulp.task("babel-build", ['copy-templates', 'copy-api', 'build-vendor'], babelBuild);
+gulp.task("babel-build", ['copy-templates-build', 'copy-api', 'build-vendor'], babelBuild);
 gulp.task("babel", ['copy-templates'], babelBuild);
 
 gulp.task('build-vendor', function () {
