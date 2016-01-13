@@ -17,6 +17,7 @@ import "babel-polyfill";
  *
  * @return {Object} core crud methods
  * */
+
 let testPath = 'http://195.138.79.46';
 
 export default function $http(url) {
@@ -27,7 +28,7 @@ export default function $http(url) {
         let client = new XMLHttpRequest();
         // TODO uncomment on production
         // let uri = options.url;
-        
+
         // Dummy code REMOVE on production
         let uri = testPath + options.url;
 
@@ -43,6 +44,7 @@ export default function $http(url) {
                 }
             }
         }
+
         client.withCredentials = true;
 
         client.open(options.method, uri, true);
