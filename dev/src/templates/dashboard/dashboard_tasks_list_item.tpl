@@ -12,6 +12,8 @@
 				<% _.each(tasktagName.split(','), function(tag) { %>
 					<span class="tag" title="<%=tag%>"><%=tag%></span>
 				<% }); %>
+			<% }  else { %>
+				<span class="tag" title="DummyTag>">DummyTag></span>
 			<% } %>
 		</div>
 	</div>
