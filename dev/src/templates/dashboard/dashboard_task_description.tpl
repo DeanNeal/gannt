@@ -135,7 +135,7 @@
 					<div class="details-table_term">Status:</div>
 
 					<div class="details-table_desc status">
-						<span data-status="" name="status"></span>
+						<span data-status="" name="processingName"></span>
 					</div>
 				</li>
 
@@ -158,7 +158,7 @@
 
 				<li>
 					<div class="details-table_term">Milestones:</div>
-					<div class="details-table_desc">Abra Kadabra</div>
+					<div class="details-table_desc" data-id="<%=milestone_id%>"><%=milestone_name%></div>
 				</li>
 
 				<li>

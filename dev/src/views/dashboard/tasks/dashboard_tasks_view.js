@@ -42,7 +42,8 @@ var TaskList = BaseView.extend({
 		var tasksModel = new Backbone.Model();
 
 	//	this.api.getTasks(query).then
-
+///api/v1/dashboard/task/collection/current///0/
+//build/api/tasks.json
 		tasksModel.getResource('/api/v1/dashboard/task/collection/current///0/', query).then(function(tasks) {
 			this.collection = tasks;
 

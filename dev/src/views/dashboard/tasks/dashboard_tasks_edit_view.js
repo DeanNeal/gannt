@@ -13,7 +13,7 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 	},
 	updateModel: function(model){			
-		model.get_tasks().then(function(task){
+		model.get_self().then(function(task){
 			if(!this.descr){			
 				this.descr = this.addView(TaskDescriptionView, {model: task});
 				this.renderNestedView(this.descr, '.task-description');

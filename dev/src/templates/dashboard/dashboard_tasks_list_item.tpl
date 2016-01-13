@@ -7,24 +7,32 @@
 
 			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>
 		</div>
+		<div class="tags">
+			<% if(taskmaintag_name) { %>
+				<% _.each(taskmaintag_name.split(','), function(tag) { %>
+					<span class="tag" title="<%=tag%>"><%=tag%></span>
+				<% }); %>
+			<% } %>
+		</div>
 	</div>
 
 	<div class="col projects">
 		<div>Pupkin</div>
 	</div>
 
-	<div class="col priority">
+	<div class="col priority" data-priority="<%=priorityName%>">
 		<svg class="icon icon-critical">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-critical"></use>
         </svg>
 	</div>
 
 	<div class="col status">
-		<div>Status</div>
+		<div data-processingName name="processingName" data-status="<%=processingName%>"><%=processingName%></div>
 	</div>
 
 	<div class="col assignee">
 		<img class="avatar" src="build/img/avatar.png" alt="">
+		<span name="taskmaintag.name"></span>
 		<!-- <div>Assignie</div> -->
 	</div>
 
@@ -46,7 +54,7 @@
 			<svg class="icon icon-trash">
 		        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 		    </svg>
-		    <%=date%>
+		    <%=date_finish%>
 		</div>
 	</div>
 

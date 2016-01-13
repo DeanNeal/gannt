@@ -1,153 +1,540 @@
 {
-    "data": [{
-        "data": {
-            "id": 1,
-            "name": "Task_1",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+    "request": {
+        "context": "dashboard",
+        "model": "task",
+        "action": "collection",
+        "filter_name": "current",
+        "filter_value": "",
+        "limit": "",
+        "offset": "0",
+        "module": "apiv1",
+        "controller": "models",
+        "filter": "todo",
+        "sort": "title",
+        "priority": "high"
+    },
+    "router": "apiModelFiltersRoute",
+    "result": true,
+    "data": [
+        {
+            "data": {
+                "processingName": "new",
+                "priorityName": "low",
+                "id": "4116",
+                "name": "1111",
+                "date_finish": "2015-12-20 00:00:00",
+                "processing": "0",
+                "date_start": "2015-12-11 00:00:00",
+                "description": "1111",
+                "create": "2015-12-11 09:40:40",
+                "taskmaintag.name": null,
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/4116"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_1.json"
-        }]
-    }, {
-        "data": {
-            "id": 2,
-            "name": "Some",
-            "priority": "high",
-            "status": "send back",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "new",
+                "priorityName": "low",
+                "id": "4087",
+                "name": "Исследовать API Viber & WhatsUp",
+                "date_finish": "2015-12-30 00:00:00",
+                "processing": "0",
+                "date_start": "2015-12-16 00:00:00",
+                "description": "",
+                "create": "2015-12-09 08:26:20",
+                "taskmaintag.name": "linkin park",
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/4087"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_2.json"
-        }]
-    }, {
-        "data": {
-            "id": 3,
-            "name": "Some really",
-            "priority": "high",
-            "status": "completed",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "new",
+                "priorityName": "low",
+                "id": "4039",
+                "name": "Оценить примерную стоимость разработки",
+                "date_finish": "2016-01-16 00:00:00",
+                "processing": "0",
+                "date_start": "2016-01-09 00:00:00",
+                "description": "",
+                "create": "2015-11-25 11:09:49",
+                "taskmaintag.name": "TEST",
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/4039"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_3.json"
-        }]
-    }, {
-        "data": {
-            "id": 4,
-            "name": "Some really long",
-            "priority": "high",
-            "status": "done",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3942",
+                "name": "Assign responsible teammate",
+                "date_finish": "2015-11-11 00:00:00",
+                "processing": "10",
+                "date_start": "2015-11-10 00:00:00",
+                "description": "",
+                "create": "2015-11-06 17:06:13",
+                "taskmaintag.name": "Test Master Target",
+                "priority": "0",
+                "taskuser.name": "Vycheslav demchuk",
+                "taskuser.id": "271"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3942"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_4.json"
-        }]
-    }, {
-        "data": {
-            "id": 5,
-            "name": "Some really long task",
-            "priority": "high",
-            "status": "on hold",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3771",
+                "name": "Some test task",
+                "date_finish": "2015-10-31 00:00:00",
+                "processing": "10",
+                "date_start": "2015-10-28 00:00:00",
+                "description": "withour descr",
+                "create": "2015-10-28 16:25:23",
+                "taskmaintag.name": "InCube release",
+                "priority": "0",
+                "taskuser.name": "Vycheslav demchuk",
+                "taskuser.id": "271"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3771"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_5.json"
-        }]
-    }, {
-        "data": {
-            "id": 6,
-            "name": "Some really long task name",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3766",
+                "name": "Task name here 5",
+                "date_finish": "2015-11-11 00:00:00",
+                "processing": "10",
+                "date_start": "2015-11-09 00:00:00",
+                "description": "",
+                "create": "2015-10-28 11:50:50",
+                "taskmaintag.name": "Epick e-commerce solution",
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3766"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_6.json"
-        }]
-    },{
-        "data": {
-            "id": 7,
-            "name": "Some really long task name an",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3763",
+                "name": "test task)",
+                "date_finish": "2015-12-07 00:00:00",
+                "processing": "10",
+                "date_start": "2015-12-07 00:00:00",
+                "description": "testing",
+                "create": "2015-10-28 11:29:50",
+                "taskmaintag.name": "InCube release",
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3763"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_6.json"
-        }]
-    },{
-        "data": {
-            "id": 8,
-            "name": "Some really long task name an some",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "new",
+                "priorityName": "low",
+                "id": "3710",
+                "name": "fac-test",
+                "date_finish": "2015-10-30 00:00:00",
+                "processing": "0",
+                "date_start": "2015-10-14 00:00:00",
+                "description": "",
+                "create": "2015-10-14 15:12:33",
+                "taskmaintag.name": null,
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3710"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_6.json"
-        }]
-    },{
-        "data": {
-            "id": 9,
-            "name": "Some really long task name an some other",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3705",
+                "name": "Test related without milestone 1",
+                "date_finish": "2015-10-30 00:00:00",
+                "processing": "10",
+                "date_start": "2015-10-28 00:00:00",
+                "description": "",
+                "create": "2015-10-07 11:07:45",
+                "taskmaintag.name": "InCube release",
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3705"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_6.json"
-        }]
-    },{
-        "data": {
-            "id": 10,
-            "name": "Some really long task name an some other_10 Some really long task name an some other_10",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
+        {
+            "data": {
+                "processingName": "new",
+                "priorityName": "low",
+                "id": "3703",
+                "name": "task_test",
+                "date_finish": "2015-10-16 00:00:00",
+                "processing": "0",
+                "date_start": "2015-10-01 00:00:00",
+                "description": "task dedscription",
+                "create": "2015-10-01 13:18:25",
+                "taskmaintag.name": null,
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3703"
+                }
+            ]
         },
-        "links": [{
-            "id": "tasks",
-            "href": "build/api/task_6.json"
-        }]
-    }]
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3545",
+                "name": "User Profile & Company Profile",
+                "date_finish": "2015-08-24 00:00:00",
+                "processing": "10",
+                "date_start": "2015-07-15 00:00:00",
+                "description": "",
+                "create": "2015-05-04 16:47:04",
+                "taskmaintag.name": "InCube release",
+                "priority": "0",
+                "taskuser.name": " ",
+                "taskuser.id": "10"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3545"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3531",
+                "name": "Model Approval Chain",
+                "date_finish": "2015-09-18 00:00:00",
+                "processing": "10",
+                "date_start": "2015-08-23 00:00:00",
+                "description": "",
+                "create": "2015-05-04 14:05:04",
+                "taskmaintag.name": "InCube release",
+                "priority": "0",
+                "taskuser.name": " ",
+                "taskuser.id": "10"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3531"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3530",
+                "name": "Финансовые настройки",
+                "date_finish": "2015-10-16 00:00:00",
+                "processing": "10",
+                "date_start": "2015-10-02 00:00:00",
+                "description": "",
+                "create": "2015-05-04 13:58:57",
+                "taskmaintag.name": "InCube release",
+                "priority": "0",
+                "taskuser.name": "O Machekhin",
+                "taskuser.id": "8"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3530"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "3392",
+                "name": "task for Machekhin",
+                "date_finish": "2014-12-13 00:00:00",
+                "processing": "10",
+                "date_start": "2014-12-12 00:00:00",
+                "description": "",
+                "create": "2015-04-10 16:54:23",
+                "taskmaintag.name": "oils",
+                "priority": "0",
+                "taskuser.name": "O Machekhin",
+                "taskuser.id": "8"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/3392"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "2882",
+                "name": "Sign contracts",
+                "date_finish": "2015-01-02 00:00:00",
+                "processing": "10",
+                "date_start": "2015-01-01 00:00:00",
+                "description": "",
+                "create": "2015-02-25 17:26:17",
+                "taskmaintag.name": "Fuel contract",
+                "priority": "0",
+                "taskuser.name": "silencacs@gmail.com",
+                "taskuser.id": "250"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/2882"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "2799",
+                "name": "дизайн",
+                "date_finish": "2015-06-06 00:00:00",
+                "processing": "10",
+                "date_start": "2015-05-04 00:00:00",
+                "description": "",
+                "create": "2015-02-16 12:44:07",
+                "taskmaintag.name": "Epick e-commerce solution",
+                "priority": "0",
+                "taskuser.name": " ",
+                "taskuser.id": "10"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/2799"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "2798",
+                "name": "составление договора",
+                "date_finish": "2015-02-21 00:00:00",
+                "processing": "10",
+                "date_start": "2015-02-17 00:00:00",
+                "description": "",
+                "create": "2015-02-16 12:37:15",
+                "taskmaintag.name": "Epick e-commerce solution",
+                "priority": "0",
+                "taskuser.name": "balagura",
+                "taskuser.id": "135"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/2798"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "990",
+                "name": "Operations: Logistic\n",
+                "date_finish": "2015-01-01 00:00:00",
+                "processing": "10",
+                "date_start": "2014-12-31 00:00:00",
+                "description": "",
+                "create": "2014-12-25 15:26:07",
+                "taskmaintag.name": "Test 16",
+                "priority": "0",
+                "taskuser.name": null,
+                "taskuser.id": null
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/990"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "new",
+                "priorityName": "low",
+                "id": "976",
+                "name": "Sell side counterparty: Contract",
+                "date_finish": "2015-01-07 00:00:00",
+                "processing": "0",
+                "date_start": "2015-01-06 00:00:00",
+                "description": "",
+                "create": "2014-12-25 15:09:34",
+                "taskmaintag.name": "Test 14",
+                "priority": "0",
+                "taskuser.name": "Admin",
+                "taskuser.id": "2"
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/976"
+                }
+            ]
+        },
+        {
+            "data": {
+                "processingName": "complete",
+                "priorityName": "low",
+                "id": "880",
+                "name": "Sell side: Basic info",
+                "date_finish": "2014-12-16 00:00:00",
+                "processing": "10",
+                "date_start": "2014-12-16 00:00:00",
+                "description": "",
+                "create": "2014-12-16 18:58:23",
+                "taskmaintag.name": "Fuel contract",
+                "priority": "0",
+                "taskuser.name": null,
+                "taskuser.id": null
+            },
+            "links": [
+                {
+                    "id": "self",
+                    "href": "/api/v1/dashboard/task/880"
+                }
+            ]
+        }
+    ],
+    "current_auth_user": {
+        "id": "2",
+        "name": "Admin"
+    },
+    "links": [
+        {
+            "id": "next",
+            "href": "/api/v1/dashboard/task/collection/current///20/"
+        },
+        {
+            "id": "prev",
+            "href": null
+        },
+        {
+            "id": "self",
+            "href": "/api/v1/dashboard/task/collection/current///0/"
+        }
+    ],
+    "event_counter": 242,
+    "profiler": {
+        "1": [
+            "connect",
+            "SELECT `system_settings`.* FROM `system_settings` WHERE (active = 1) AND (extend like \"|home.settings|%\")",
+            "SELECT `roles`.* FROM `roles` WHERE (((`roles`.`id` = 3)))",
+            "SELECT `roles`.* FROM `roles` WHERE (level = 50) AND (type = 3) ORDER BY `id` desc LIMIT 1",
+            "SELECT `auth_setting`.* FROM `auth_setting` WHERE (((`auth_setting`.`id` = 19)))",
+            "SELECT `crm_task`.`id` FROM `crm_task`\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE ((((crm_task.active = '1' AND crm_task.archived = '0' AND (((crm_task.processing not in  (\"10\", \"50\")) AND taskuser__auth_users.id = '2') OR ((crm_task.processing  in  (\"10\")) AND taskusercreator__auth_users.id = '2')))))) GROUP BY `crm_task`.`id` ORDER BY `crm_task`.`id` desc LIMIT 20",
+            "SELECT `crm_task`.`id`, `crm_task`.`name`, `crm_task`.`date_finish`, `crm_task`.`processing`, `crm_task`.`date_start`, `crm_task`.`description`, `crm_task`.`create`, `taskmaintag__kcomments_tag`.`name` AS `taskmaintag.name`, `crm_task`.`priority`, `taskuser__auth_users`.`name` AS `taskuser.name`, `taskuser__auth_users`.`id` AS `taskuser.id` FROM `crm_task`\n LEFT JOIN `crm_task_main_tag` AS `taskmaintag__crm_task_main_tag` ON crm_task.id = taskmaintag__crm_task_main_tag.task_id\n LEFT JOIN `kcomments_tag` AS `taskmaintag__kcomments_tag` ON taskmaintag__crm_task_main_tag.tag_id = taskmaintag__kcomments_tag.id\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE (crm_task.id in (4116,4087,4039,3942,3771,3766,3763,3710,3705,3703,3545,3531,3530,3392,2882,2799,2798,990,976,880)) GROUP BY `crm_task`.`id` ORDER BY `crm_task`.`id` desc",
+            "SELECT count(distinct(crm_task.id)) AS `c` FROM `crm_task`\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE (crm_task.active = 1)",
+            "SELECT count(distinct(crm_task.id)) AS `c` FROM `crm_task`\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE ((((crm_task.active = '1' AND crm_task.archived = '0' AND (((crm_task.processing not in  (\"10\", \"50\")) AND taskuser__auth_users.id = '2') OR ((crm_task.processing  in  (\"10\")) AND taskusercreator__auth_users.id = '2')))))) AND (crm_task.active = 1)"
+        ]
+    },
+    "getQueryProfiles": [
+        "connect",
+        "SELECT `system_settings`.* FROM `system_settings` WHERE (active = 1) AND (extend like \"|home.settings|%\")",
+        "SELECT `roles`.* FROM `roles` WHERE (((`roles`.`id` = 3)))",
+        "SELECT `roles`.* FROM `roles` WHERE (level = 50) AND (type = 3) ORDER BY `id` desc LIMIT 1",
+        "SELECT `auth_setting`.* FROM `auth_setting` WHERE (((`auth_setting`.`id` = 19)))",
+        "SELECT `crm_task`.`id` FROM `crm_task`\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE ((((crm_task.active = '1' AND crm_task.archived = '0' AND (((crm_task.processing not in  (\"10\", \"50\")) AND taskuser__auth_users.id = '2') OR ((crm_task.processing  in  (\"10\")) AND taskusercreator__auth_users.id = '2')))))) GROUP BY `crm_task`.`id` ORDER BY `crm_task`.`id` desc LIMIT 20",
+        "SELECT `crm_task`.`id`, `crm_task`.`name`, `crm_task`.`date_finish`, `crm_task`.`processing`, `crm_task`.`date_start`, `crm_task`.`description`, `crm_task`.`create`, `taskmaintag__kcomments_tag`.`name` AS `taskmaintag.name`, `crm_task`.`priority`, `taskuser__auth_users`.`name` AS `taskuser.name`, `taskuser__auth_users`.`id` AS `taskuser.id` FROM `crm_task`\n LEFT JOIN `crm_task_main_tag` AS `taskmaintag__crm_task_main_tag` ON crm_task.id = taskmaintag__crm_task_main_tag.task_id\n LEFT JOIN `kcomments_tag` AS `taskmaintag__kcomments_tag` ON taskmaintag__crm_task_main_tag.tag_id = taskmaintag__kcomments_tag.id\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE (crm_task.id in (4116,4087,4039,3942,3771,3766,3763,3710,3705,3703,3545,3531,3530,3392,2882,2799,2798,990,976,880)) GROUP BY `crm_task`.`id` ORDER BY `crm_task`.`id` desc",
+        "SELECT count(distinct(crm_task.id)) AS `c` FROM `crm_task`\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE (crm_task.active = 1)",
+        "SELECT count(distinct(crm_task.id)) AS `c` FROM `crm_task`\n LEFT JOIN `crm_taskuser` AS `taskuser__crm_taskuser` ON crm_task.id = taskuser__crm_taskuser.task_id\n LEFT JOIN `auth_users` AS `taskuser__auth_users` ON taskuser__crm_taskuser.user_id = taskuser__auth_users.id\n LEFT JOIN `crm_task_user_creator` AS `taskusercreator__crm_task_user_creator` ON crm_task.id = taskusercreator__crm_task_user_creator.task_id\n LEFT JOIN `auth_users` AS `taskusercreator__auth_users` ON taskusercreator__crm_task_user_creator.user_id = taskusercreator__auth_users.id WHERE ((((crm_task.active = '1' AND crm_task.archived = '0' AND (((crm_task.processing not in  (\"10\", \"50\")) AND taskuser__auth_users.id = '2') OR ((crm_task.processing  in  (\"10\")) AND taskusercreator__auth_users.id = '2')))))) AND (crm_task.active = 1)"
+    ],
+    "benchmark": {
+        "0: after zend application && autoloader": "0.00 (delta: 0.000)",
+        "1: start memory:; full memory:": "0.00 (delta: 0.000)",
+        "2: before module foreach": "0.12 (delta: -0.123)",
+        "3: after module init": "0.18 (delta: -0.058)",
+        "4: before calcs and relations": "0.21 (delta: -0.024)",
+        "5: after rels": "0.21 (delta: -0.002)",
+        "6: before acl build": "0.22 (delta: -0.009)",
+        "7: after calcs": "0.22 (delta: 0.000)",
+        "8: cache": "0.28 (delta: -0.060)",
+        "9: after bootstrap acl": "0.30 (delta: -0.024)",
+        "10: after acl build": "0.30 (delta: 0.000)",
+        "11: after bootstrap request & router": "0.31 (delta: -0.007)",
+        "12: after set default translator": "0.31 (delta: -0.005)",
+        "13: before dispatch": "0.36 (delta: -0.048)",
+        "14: postDispatch -- \"/models/collection/context/dashboard/model/task/filter_name/current/filter_value//limit//offset/0/filter/todo/sort/title/priority/high\"": "0.61 (delta: -0.251)"
+    }
 }

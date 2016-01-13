@@ -4,7 +4,7 @@ var RoutedView       = require('views/routedview');
 var BaseListView     = require('views/elements/base_list_view');
 var PulseView        = require('views/dashboard/pulse/dashboard_pulse_view');
 var tasksView        = require('views/dashboard/tasks/dashboard_tasks_view');
-var milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view');
+// var milestonesView   = require('views/dashboard/milestones/dashboard_milestones_view');
 var projectsView     = require('views/dashboard/projects/dashboard_projects_view');
 var navBarCollection = require('collections/header_list');
 var mainTpl          = require('templates/dashboard/dashboard.tpl');
@@ -17,7 +17,7 @@ var ContentView = RoutedView.extend({
     routes: {
         'pulse'     : PulseView,
         'tasks'     : tasksView,
-        'milestones': milestonesView,
+        // 'milestones': milestonesView,
         'projects'  : projectsView
     },
     links: [{
