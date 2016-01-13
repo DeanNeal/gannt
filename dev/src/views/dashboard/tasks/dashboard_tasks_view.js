@@ -43,7 +43,7 @@ var TaskList = BaseView.extend({
 
 	//	this.api.getTasks(query).then
 
-		tasksModel.getResource('build/api/tasks.json', query).then(function(tasks) {
+		tasksModel.getResource('/api/v1/dashboard/task/collection/current///0/', query).then(function(tasks) {
 			this.collection = tasks;
 
 			this.removeNestedView();
