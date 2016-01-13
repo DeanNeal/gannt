@@ -1,12 +1,13 @@
 <div class="row" data-id="<%=id%>">
 	<div class="col title">
-		<div class="task-name">
-			<svg class="icon icon-trash">
-	        	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-	    	</svg>
+		<svg class="icon icon-trash">
+        	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+    	</svg>
 
+		<div class="task-name">
 			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>
 		</div>
+
 		<div class="tags">
 			<% if(tasktagName) { %>
 				<% _.each(tasktagName.split(','), function(tag) { %>
@@ -19,17 +20,42 @@
 	</div>
 
 	<div class="col projects">
-		<div><%=taskmaintagName%></div>
+		<div title="<%=taskmaintagName%>"><%=taskmaintagName%></div>
 	</div>
 
-	<div class="col priority" data-priority="<%=priorityName%>">
-		<svg class="icon icon-critical">
+	<div class="col priority">
+		<!-- <svg class="icon icon-critical">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-critical"></use>
-        </svg>
+        </svg> -->
+        <div data-priority="<%=priorityName%>"></div>
 	</div>
 
 	<div class="col status">
-		<div name="processingName" data-status="<%=processingName%>"><%=processingName%></div>
+		<div data-processingName name="processingName"><%=processingName%></div>
+
+		<div class="status-select">
+			<ul>
+				<li>
+					<div data-status="send">Send back</div>		
+				</li>
+
+				<li>
+					<div data-status="done">Done</div>		
+				</li>
+
+				<li>
+					<div data-status="completed">Completed</div>		
+				</li>
+
+				<li>
+					<div data-status="hold">On hold</div>
+				</li>
+
+				<li>
+					<div data-status="new">New</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 	<div class="col assignee">
