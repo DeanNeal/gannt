@@ -208,6 +208,10 @@
                     background: #FFFFFF;
                     @include box-shadow(0 0 21px -2px #000);
                 }
+
+                .row {
+                    border-color: transparent;
+                }
             }
         }
 
@@ -293,6 +297,10 @@
             font-weight: bold;
             color: #565656;
 
+            div {
+                @extend .text-overflow;
+            }
+
             @media(max-width: 1024px) {
                 display: none;
             }
@@ -305,15 +313,25 @@
 
             [data-priority] {
                 display: inline-block;
-                padding: 1px 5px;
-                font-size: 12px;
-                
-                &[data-priority="high"]:before {
-                    /**/
+                // padding: 1px 5px;
+                // font-size: 12px;
+                width: 15px;
+                height: 15px;
+
+                &[data-priority="low"] {
+                    background: url(../img/icon/icon-low-small.svg);
                 }
 
-                &[data-priority="low"]:before {
-                    /**/
+                &[data-priority="medium"] {
+                    background: url(../img/icon/icon-medium-small.svg);
+                }
+                
+                &[data-priority="high"] {
+                    background: url(../img/icon/icon-high-small.svg);
+                }
+
+                &[data-priority="critical"] {
+                    background: url(../img/icon/icon-critical-small.svg);
                 }
             }
         }
