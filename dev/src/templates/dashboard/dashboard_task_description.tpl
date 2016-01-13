@@ -9,7 +9,8 @@
 				<svg class="icon icon-trash">
 		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 		        </svg>
-				#<%=id%>: <%=name%>
+				
+				#<span name="id"></span>: <span name="name"></span>
 				<svg class="icon icon-trash">
 		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 		        </svg>

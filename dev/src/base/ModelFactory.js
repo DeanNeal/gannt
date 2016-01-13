@@ -26,7 +26,7 @@ let ModelFactory = {
         class Collection extends Backbone.Collection {
             constructor (srcObj, options) {
                 // attributes set
-                super(options);
+                super([], options);
 
                 // methods set
                 if(srcObj.links) {                    
@@ -53,7 +53,6 @@ let ModelFactory = {
             }
         };
 
-        console.log($http('http://195.138.79.46/api/v1/system/catalog').client('GET'));
         return $http(url).get(args).then(success, function(e) {
             console.log(e);
         });

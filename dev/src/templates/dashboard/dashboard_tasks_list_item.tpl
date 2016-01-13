@@ -32,8 +32,7 @@
 
 	<div class="col assignee">
 		<img class="avatar" src="build/img/avatar.png" alt="">
-		<span name="taskmaintag.name"></span>
-		<!-- <div>Assignie</div> -->
+		<span name="taskuser_name"></span>
 	</div>
 
 	<div class="col milestone">
@@ -54,7 +53,7 @@
 			<svg class="icon icon-trash">
 		        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 		    </svg>
-		    <%=date_finish%>
+		    <%=date_start%>
 		</div>
 	</div>
 
