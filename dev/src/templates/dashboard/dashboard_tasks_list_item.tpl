@@ -78,6 +78,6 @@
 	</div>
 
 	<div class="col updated">
-		<div>10.20.2016</div>
+		<div><%= Helpers.timeDifference(obj['timestamp']) %></div>
 	</div> 
 </div>

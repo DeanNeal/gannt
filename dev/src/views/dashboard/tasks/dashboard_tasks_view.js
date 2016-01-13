@@ -31,6 +31,7 @@ var TaskListItem = BaseView.extend({
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
+		this.data.Helpers = Helpers;
 	},
 	remove : function () {
 	    this.modelBinder.unbind();

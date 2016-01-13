@@ -189,9 +189,14 @@
 					</div>
 				</li>
 			</ul>
-
-			<button class="save">Save</button>
-			<button class="delete">Delete</button>
+			
+			<div>
+				<span>Duplicate</span>
+				<span>Extend</span>
+				<span>Delete</span>
+			</div>
+<!-- 			<button class="save">Save</button>
+			<button class="delete">Delete</button> -->
 		</div>
 	</div>
 </div>
