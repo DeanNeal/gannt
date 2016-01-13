@@ -1,150 +1,130 @@
 {
     "data": [{
-        "data": {
-            "id": 1,
-            "name": "Task_1",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 1,
+        "name": "Task_1",
+        "priority": "high",
+        "status": "new",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_1.json"
         }]
     }, {
-        "data": {
-            "id": 2,
-            "name": "Some",
-            "priority": "high",
-            "status": "send back",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 2,
+        "name": "Some",
+        "priority": "high",
+        "status": "send back",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_2.json"
         }]
     }, {
-        "data": {
-            "id": 3,
-            "name": "Some really",
-            "priority": "high",
-            "status": "completed",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 3,
+        "name": "Some really",
+        "priority": "high",
+        "status": "completed",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_3.json"
         }]
     }, {
-        "data": {
-            "id": 4,
-            "name": "Some really long",
-            "priority": "high",
-            "status": "done",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 4,
+        "name": "Some really long",
+        "priority": "high",
+        "status": "done",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_4.json"
         }]
     }, {
-        "data": {
-            "id": 5,
-            "name": "Some really long task",
-            "priority": "high",
-            "status": "on hold",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 5,
+        "name": "Some really long task",
+        "priority": "high",
+        "status": "on hold",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_5.json"
         }]
     }, {
-        "data": {
-            "id": 6,
-            "name": "Some really long task name",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 6,
+        "name": "Some really long task name",
+        "priority": "high",
+        "status": "new",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
         }]
     },{
-        "data": {
-            "id": 7,
-            "name": "Some really long task name an",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 7,
+        "name": "Some really long task name an",
+        "priority": "high",
+        "status": "new",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
         }]
     },{
-        "data": {
-            "id": 8,
-            "name": "Some really long task name an some",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 8,
+        "name": "Some really long task name an some",
+        "priority": "high",
+        "status": "new",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
         }]
     },{
-        "data": {
-            "id": 9,
-            "name": "Some really long task name an some other",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 9,
+        "name": "Some really long task name an some other",
+        "priority": "high",
+        "status": "new",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
         }]
     },{
-        "data": {
-            "id": 10,
-            "name": "Some really long task name an some other_10 Some really long task name an some other_10",
-            "priority": "high",
-            "status": "new",
-            "assignee": "Dean Neal",
-            "date": "12/12/2015",
-            "ago": "5 days",
-            "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard"
-        },
+        "id": 10,
+        "name": "Some really long task name an some other_10 Some really long task name an some other_10",
+        "priority": "high",
+        "status": "new",
+        "assignee": "Dean Neal",
+        "date": "12/12/2015",
+        "ago": "5 days",
+        "tags": "Dashboard, Dashboard, Dashboard, Dashboard, Dashboard",
         "links": [{
             "id": "tasks",
             "href": "build/api/task_6.json"
