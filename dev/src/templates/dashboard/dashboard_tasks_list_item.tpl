@@ -32,6 +32,30 @@
 
 	<div class="col status">
 		<div data-processingName name="processingName" data-status="<%=processingName%>"><%=processingName%></div>
+
+		<div class="status-select">
+			<ul>
+				<li>
+					<div data-status="send">Send back</div>		
+				</li>
+
+				<li>
+					<div data-status="done">Done</div>		
+				</li>
+
+				<li>
+					<div data-status="completed">Completed</div>		
+				</li>
+
+				<li>
+					<div data-status="hold">On hold</div>
+				</li>
+
+				<li>
+					<div data-status="new">New</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 	<div class="col assignee">

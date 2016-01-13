@@ -337,6 +337,8 @@
         }
 
         .status {
+            position: relative;
+
             [data-status] {
                 border: 1px solid;
                 border-radius: 5px;
@@ -370,6 +372,33 @@
                 &[data-status="on hold"] {
                     color: #e7a765;
                     border-color: #e7a765;
+                }
+            }
+            
+            // .status-select
+            &-select {
+                position: absolute;
+                top: 19px;
+                background-color: #f1f1f2;
+                display: none;
+                z-index: 9999;
+                left: 0;
+                right: 0;
+
+                ul {
+                    padding: 4px 0;
+                }
+
+                li {
+                    padding: 4px 0;
+
+                    &:hover {
+                        background-color: #fff;
+                    }
+
+                    // & + li {
+                    //     margin-top: 8px;
+                    // }
                 }
             }
         }
