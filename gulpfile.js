@@ -79,7 +79,7 @@ gulp.task('clean-tmp', function () {
         .pipe(clean({force: true}));
 });
 
-gulp.task('copy-templates', function () {
+gulp.task('copy-templates', ['clean-tmp'], function () {
     gulp.src(projectPath.source + '/templates/**/*.tpl')
         .pipe(gulp.dest(projectPath.dev + '/tmp/templates'));
 });

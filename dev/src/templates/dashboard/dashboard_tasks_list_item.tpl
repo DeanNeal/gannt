@@ -44,8 +44,8 @@
 		    </svg>
 
 		    <div>
-				<span>Design </span>
-				<span class="deadline">Deadline: 18.01.16</span>
+				<span><%=milestoneName%></span>
+				<span class="deadline">Deadline: <%=milestoneDateFinish%></span>
 		    </div>
 		</div>
 	</div>
