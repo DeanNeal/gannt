@@ -2,6 +2,7 @@ var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
+    // PreloaderView             = require('views/preloader'),
     BaseView              	  = require('views/baseview'),
     RoutedView            	  = require('views/routedview'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
@@ -13,11 +14,26 @@ var Backbone              	  = require('backbone'),
 var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
 	className: 'task-list-item',
+	events: {
+	    'click .col.status'                     : 'toggleStatusWindow'
+	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
+		this.modelBinder = new Backbone.ModelBinder();
+	},
+	onRender: function() {
+	    this.modelBinder.bind(this.model, this.el);
+	},
+	toggleStatusWindow: function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$(e.currentTarget).find('.status-select').toggle();
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
+	},
+	remove : function () {
+	    this.modelBinder.unbind();
 	}
 });
 
@@ -39,11 +55,10 @@ var TaskList = BaseView.extend({
 		if(this.editView)
 			this.closeEdit();
 
+
+
 		var tasksModel = new Backbone.Model();
 
-	//	this.api.getTasks(query).then
-///api/v1/dashboard/task/collection/current///0/
-//build/api/tasks.json
 		tasksModel.getResource('/api/v1/dashboard/task/collection/current///0/', query).then(function(tasks) {
 			this.collection = tasks;
 
@@ -54,6 +69,8 @@ var TaskList = BaseView.extend({
 			}.bind(this));
 
 			this.render(true);
+
+		
 
 		}.bind(this));
 	},

@@ -114,25 +114,20 @@
 					<div class="details-table_term">Project:</div>
 
 					<div class="details-table_desc">
-						<div class="project-name" name="taskmaintagName">Pumpkin2 project</div>
+						<div class="project-name" name="taskmaintagname">Pumpkin2 project</div>
 						<div class="company-name">Company: Dummy</div>
 					</div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Priority:</div>
-
-					<div class="details-table_desc priority" data-priority name="priorityName"></div>
-	<!-- 				<div id="priorities-select" class="custom-select priority" data-placeholder="High">
-						<input type="hidden" name="priority">
-			 		</div> -->
+					<div class="details-table_desc priority" data-priority-name name="priority-name"></div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Status:</div>
-
 					<div class="details-table_desc status">
-						<span data-processingame name="processingName"></span>
+						<span data-processing-name name="processing-name"></span>
 					</div>
 				</li>
 
@@ -140,11 +135,7 @@
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc">
 						<img src="build/img/avatar.png" alt="" width="20">
-						<span name="taskuserName"></span>
-						<!-- <div>
-							<span class="assignee-name">Maksim Shevchenko</span>
-							<span class="assignee-status">Project owner</span>
-						</div> -->
+						<span name="taskusername"></span>
 					</div>
 				</li>
 
@@ -155,15 +146,14 @@
 
 				<li>
 					<div class="details-table_term">Milestones:</div>
-					<div class="details-table_desc" name="milestoneName"></div>
+					<div class="details-table_desc" name="milestonename"></div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Date:</div>
 					<div class="details-table_desc">
-<!-- 						<span class="date-icon start" name="date_create"></span> -->
-						<input type="text" name="date_start">
-						<input type="text" name="date_finish">
+						<input type="text" name="date-start">
+						<input type="text" name="date-finish">
 					</div>
 				</li>
 
@@ -189,8 +179,8 @@
 				<li>
 					<div class="details-table_term">Tags:</div>
 					<div class="details-table_desc">
-						<% if(tasktagName) { %>
-							<% _.each(tasktagName.split(','), function(tag) { %>
+						<% if(obj['tasktagname']) { %>
+							<% _.each(obj['tasktagname'].split(','), function(tag) { %>
 								<span class="tag" title="<%=tag%>"><%=tag%></span>
 							<% }); %>
 						<% }  else { %>

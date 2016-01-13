@@ -9,8 +9,8 @@
 		</div>
 
 		<div class="tags">
-			<% if(tasktagName) { %>
-				<% _.each(tasktagName.split(','), function(tag) { %>
+			<% if(obj['tasktag-name']) { %>
+				<% _.each(obj['tasktag-name'].split(','), function(tag) { %>
 					<span class="tag" title="<%=tag%>"><%=tag%></span>
 				<% }); %>
 			<% }  else { %>
@@ -20,37 +20,29 @@
 	</div>
 
 	<div class="col projects">
-		<div title="<%=taskmaintagName%>"><%=taskmaintagName%></div>
+		<div title="<%=obj['taskmaintagname']%>"><%=obj['taskmaintagname']%></div>
 	</div>
 
 	<div class="col priority">
-		<!-- <svg class="icon icon-critical">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-critical"></use>
-        </svg> -->
-        <div data-priority="<%=priorityName%>"></div>
+        <div data-priority-name name="priority-name"></div>
 	</div>
 
 	<div class="col status">
-		<div data-processingName name="processingName"><%=processingName%></div>
-
+		<div data-processing-name name="processing-name"><%=obj['processing-name']%></div>
 		<div class="status-select">
 			<ul>
 				<li>
 					<div data-status="send">Send back</div>		
 				</li>
-
 				<li>
 					<div data-status="done">Done</div>		
 				</li>
-
 				<li>
 					<div data-status="completed">Completed</div>		
 				</li>
-
 				<li>
 					<div data-status="hold">On hold</div>
 				</li>
-
 				<li>
 					<div data-status="new">New</div>
 				</li>
@@ -59,18 +51,18 @@
 	</div>
 
 	<div class="col assignee">
-		<img class="avatar" src="build/img/avatar.png" alt="" title="<%=taskuserName%>">
+		<img class="avatar" src="build/img/avatar.png" alt="" title="<%=obj['taskusername']%>">
 	</div>
 
 	<div class="col milestone">
 		<div class="info">
-			<% if(milestoneName) { %>
+			<% if(obj['milestonename']) { %>
 				<svg class="icon icon-trash">
 			        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 			    </svg>
 			    <div>
-					<span><%=milestoneName%></span>
-					<span class="deadline">Deadline: <%=milestoneDateFinish%></span>
+					<span><%=obj['milestonename']%></span>
+					<span class="deadline">Deadline: <%=obj['milestonedatefinish']%></span>
 			    </div>
 		    <% } %>
 		</div>
@@ -81,7 +73,7 @@
 			<svg class="icon icon-trash">
 		        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 		    </svg>
-		    <%=date_start%>
+		    <%=obj['date-start']%>
 		</div>
 	</div>
 
