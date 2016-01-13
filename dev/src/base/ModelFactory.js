@@ -28,19 +28,17 @@ let ModelFactory = {
                 // attributes set
                 super(options);
 
-                console.log(srcObj);
-
                 // methods set
                 if(srcObj.links) {                    
                     srcObj.links.map(link => {
-                        this['get_' + link.id] = () => this.getResource(link.href)
+                        this['get_' + link.id] = (args) => this.getResource(link.href, args)
                     });
                 }
             }
         }
         return new Collection(response);
     },
-    getResource: function (url) {
+    getResource: function (url, args = {}) {
         let self = this;
         let success = function(response) {
             if (response.data instanceof Array) {
@@ -56,8 +54,7 @@ let ModelFactory = {
         };
 
         console.log($http('http://195.138.79.46/api/v1/system/catalog').client('GET'));
-
-        return $http(url).get().then(success, function(e) {
+        return $http(url).get(args).then(success, function(e) {
             console.log(e);
         });
     }
