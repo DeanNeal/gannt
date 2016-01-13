@@ -228,20 +228,24 @@
         }
 
         .title {
+            display: flex;
             color: #565656;
             font-weight: bold;
             overflow: hidden;
 
             .task-name {
-                display: inline-block;
-                vertical-align: middle;
-                width: calc(100% - 300px);
-                max-width: calc(100% - 300px);
+                display: flex;
+                flex: 1;
 
-                @media(max-width: 1024px) {
-                    width: 100%;
-                    max-width: 100%;
-                }
+                // display: inline-block;
+                // vertical-align: middle;
+                // width: calc(100% - 300px);
+                // max-width: calc(100% - 300px);
+
+                // @media(max-width: 1024px) {
+                //     width: 100%;
+                //     max-width: 100%;
+                // }
 
                 span {
                     display: block;
@@ -256,9 +260,11 @@
             }
 
             .tags {
-                display: inline-block;
-                vertical-align: middle;
-                width: 295px;
+                display: flex;
+
+                // display: inline-block;
+                // vertical-align: middle;
+                // width: 295px;
 
                 @media(max-width: 1024px) {
                     display: none;
