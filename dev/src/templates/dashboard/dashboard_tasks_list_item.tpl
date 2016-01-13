@@ -35,20 +35,20 @@
 	</div>
 
 	<div class="col assignee">
-		<img class="avatar" src="build/img/avatar.png" alt="">
-		<span name="taskuser_name"></span>
+		<img class="avatar" src="build/img/avatar.png" alt="" title="<%=taskuserName%>">
 	</div>
 
 	<div class="col milestone">
 		<div class="info">
-			<svg class="icon icon-trash">
-		        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-		    </svg>
-
-		    <div>
-				<span>Design </span>
-				<span class="deadline">Deadline: 18.01.16</span>
-		    </div>
+			<% if(milestoneName) { %>
+				<svg class="icon icon-trash">
+			        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+			    </svg>
+			    <div>
+					<span><%=milestoneName%></span>
+					<span class="deadline">Deadline: <%=milestoneDateFinish%></span>
+			    </div>
+		    <% } %>
 		</div>
 	</div>
 
@@ -63,5 +63,5 @@
 
 	<div class="col updated">
 		<div>10.20.2016</div>
-	</div>
+	</div> 
 </div>
