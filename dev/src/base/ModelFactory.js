@@ -53,6 +53,7 @@ let ModelFactory = {
             }
         };
 
+        console.log($http('http://195.138.79.46/api/v1/system/catalog').client('GET'));
         return $http(url).get(args).then(success, function(e) {
             console.log(e);
         });
