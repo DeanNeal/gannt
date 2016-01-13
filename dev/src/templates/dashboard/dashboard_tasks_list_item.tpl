@@ -8,8 +8,8 @@
 			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>
 		</div>
 		<div class="tags">
-			<% if(taskmaintag_name) { %>
-				<% _.each(taskmaintag_name.split(','), function(tag) { %>
+			<% if(tasktagName) { %>
+				<% _.each(tasktagName.split(','), function(tag) { %>
 					<span class="tag" title="<%=tag%>"><%=tag%></span>
 				<% }); %>
 			<% } %>
@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="col projects">
-		<div>Pupkin</div>
+		<div><%=taskmaintagName%></div>
 	</div>
 
 	<div class="col priority" data-priority="<%=priorityName%>">
