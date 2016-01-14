@@ -8,8 +8,26 @@ var Backbone              	  = require('backbone'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
     TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
     dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
-    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
+    dashboardTasksListTpl     = require('templates/dashboard/dashboard_tasks_list.tpl'),
+    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');/*,
+    dashboardTasksPagination  = require('templates/dashboard/dashboard_tasks_pagination.tpl');*/
 
+// var PaginationView = BaseView.extend({
+// 	template: dashboardTasksPagination,
+// 	className: 'pagination',
+// 	events: {
+
+// 	},
+// 	onInitialize: function (params) {
+// 		BaseView.prototype.onInitialize.call(this, params);
+// 	},
+// 	serialize: function () {
+// 		//this.data = _.clone(this.model.attributes);
+// 	},
+// 	update: function(tasks){
+// 		debugger
+// 	}
+// });
 
 var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
@@ -41,13 +59,17 @@ var TaskListItem = BaseView.extend({
 
 var TaskList = BaseView.extend({
 	className: 'dashboard-table',
+    template: dashboardTasksListTpl,
 	tagName: 'div',
 	events: {
 	    'click .task-list-item .row'                     : 'changeTask',
-	    'click .close-icon'                              : 'closeEdit'
+	    'click .close-icon'                              : 'closeEdit',
+	    'click .pagination_left'                         : 'prevClick'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
+
+		//this.paginationView = this.addView(PaginationView, {}, '.pagination');
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
@@ -61,14 +83,18 @@ var TaskList = BaseView.extend({
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
 			this.collection = tasks;
 
-			this.removeNestedView();
+			if(this.taskItemView){			
+				this.$el.empty();
+				this.removeNestedView();
+				this.taskItemView.remove();
+			}
 
 			this.collection.each(function(model) {
-			    this.addView(TaskListItem, {model: model});
+				this.taskItemView = this.addView(TaskListItem, {model: model});
+			    this.renderNestedView(this.taskItemView/*, '.task-wrapper'*/);
 			}.bind(this));
 
-			this.render(true);
-
+			//this.paginationView.update(tasks);
  		}.bind(this));
 	},
 	changeTask: function(e){
@@ -82,6 +108,14 @@ var TaskList = BaseView.extend({
 
 		this.editView.updateModel(model);
 	},
+	// updatePagination: function(){
+	// 	//this.pagination
+	// },
+	// prevClick: function(){
+	// 	this.collection.get_next().then(function(data){
+			
+	//     });
+	// },
 	closeEdit: function(){
 		this.removeNestedView(this.editView);
 		this.editView = undefined;

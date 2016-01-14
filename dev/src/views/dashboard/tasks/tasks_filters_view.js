@@ -6,8 +6,31 @@ var BaseView     = require('views/baseview');
 var BaseListView = require('views/elements/base_list_view');
 var FilterModel  = require('models/dashboard/tasks_filter_model');
 var tpl          = require('templates/dashboard/tasks/tasks_filters.tpl');
+var dashboardTasksPagination  = require('templates/dashboard/dashboard_tasks_pagination.tpl');
 
 import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins';
+
+
+
+
+var PaginationView = BaseView.extend({
+	template: dashboardTasksPagination,
+	className: 'pagination',
+	events: {
+
+	},
+	onInitialize: function (params) {
+		BaseView.prototype.onInitialize.call(this, params);
+	},
+	serialize: function () {
+		//this.data = _.clone(this.model.attributes);
+	},
+	update: function(tasks){
+		debugger
+	}
+});
+
+
 
 var ContentView = BaseView.extend({
 	template: tpl,
@@ -25,6 +48,9 @@ var ContentView = BaseView.extend({
 		this.model = new FilterModel(initialState);
 		this.modelBinder = new Backbone.ModelBinder();
 		this.model.on('change', this.onModelChange, this);
+
+
+		this.paginationView = this.addView(PaginationView, {}, '.pagination');
 	},
 	onModelChange: function () {
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
