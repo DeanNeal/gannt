@@ -133,9 +133,9 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="details-table_assignee">
 					<div class="details-table_term">Assignee:</div>
-					<div class="details-table_desc assignee-desc">
+					<div class="details-table_desc">
 						<img src="build/img/avatar.png" alt="" width="32" height="32">
 
 						<div class="info">
@@ -145,17 +145,17 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="details-table_task">
 					<div class="details-table_term">Type:</div>
 					<div class="details-table_desc">Task</div>
 				</li>
 
-				<li>
+				<li class="details-table_milestone">
 					<div class="details-table_term">Milestones:</div>
 					<div class="details-table_desc" name="milestonename"></div>
 				</li>
 
-				<li>
+				<li class="details-table_date">
 					<div class="details-table_term">Date:</div>
 					<div class="details-table_desc">
 						<input type="text" name="date-start">
@@ -163,26 +163,35 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="details-table_watchers">
 					<div class="details-table_term">Watchers:</div>
 					<div class="details-table_desc">
-						<img src="build/img/avatar.png" alt="" width="20">
-						<img src="build/img/avatar.png" alt="" width="20">
-						<img src="build/img/avatar.png" alt="" width="20">
-						<img src="build/img/avatar.png" alt="" width="20">
-						<img src="build/img/avatar.png" alt="" width="20">
+						<img src="build/img/avatar.png" alt="" width="32" height="32">
+						<img src="build/img/avatar.png" alt="" width="32" height="32">
+						<img src="build/img/avatar.png" alt="" width="32" height="32">
+						<img src="build/img/avatar.png" alt="" width="32" height="32">
+						<img src="build/img/avatar.png" alt="" width="32" height="32">
 					</div>
 				</li>
 
-				<li>
+				<li class="details-table_hours">
 					<div class="details-table_term">Spent hours:</div>
 					<div class="details-table_desc">
 						<input type="text">
+
+						<svg class="icon icon-request">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-request"></use>
+				        </svg>
+
 						<input type="text">
+
+						<svg class="icon icon-approve">
+				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-approve"></use>
+				        </svg>
 					</div>
 				</li>
 
-				<li>
+				<li class="details-table_tags">
 					<div class="details-table_term">Tags:</div>
 					<div class="details-table_desc">
 						<% if(obj['tasktagname']) { %>
@@ -190,19 +199,37 @@
 								<span class="tag" title="<%=tag%>"><%=tag%></span>
 							<% }); %>
 						<% }  else { %>
-							<span class="tag" title="DummyTag>">DummyTag</span>
+							<span class="tag" title="DummyTag">DummyTag</span>
 						<% } %>
 					</div>
 				</li>
 			</ul>
 			
-			<div>
-				<span>Duplicate</span>
-				<span>Extend</span>
-				<span>Delete</span>
+			<div class="details-table_controls">
+				<div>
+					<svg class="icon icon-duplicate">
+			            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-duplicate"></use>
+			        </svg>
+
+			        <span>Duplicate</span>
+				</div>
+
+				<div>
+					<svg class="icon icon-extend">
+			            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-extend"></use>
+			        </svg>
+
+			        <span>Extend</span>
+				</div>
+				
+				<div>
+					<svg class="icon icon-trash">
+            			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+        			</svg>
+
+					<span>Delete</span>
+				</div>
 			</div>
-<!-- 			<button class="save">Save</button>
-			<button class="delete">Delete</button> -->
 		</div>
 	</div>
 </div>

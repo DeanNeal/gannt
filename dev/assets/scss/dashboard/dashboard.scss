@@ -772,11 +772,6 @@
             & + li {
                 margin-top: 10px;
             }
-
-            & > div {
-                display: inline-block;
-                vertical-align: top;
-            }
         }
 
         // .details-table_project
@@ -850,6 +845,150 @@
                 }
             }
         }
+        
+        // .details-table_assignee
+        &_assignee {
+            img {
+                float: left;
+                @include border-radius(3px);
+            }
+
+            & > div {
+                vertical-align: middle;
+            }
+
+            .info {
+                float: left;
+                margin-top: 2px;
+                margin-left: 5px;
+            }
+
+            span {
+                color: #25212d;
+                font-size: 12px;
+                display: block;
+                line-height: 14px;
+            }
+            
+            .name {
+                font-weight: 700;
+            }
+        }
+        
+        // .details-table_date
+        &_date {
+            input {
+                width: 80px;
+                border: none;
+                outline: none;
+                background: transparent;
+                opacity: .7;
+                color: #25212d;
+                font-size: 12px;
+                font-weight: 600;
+                font-family: "Open Sans", Arial;
+            }
+        }
+        
+        // .details-table_watchers
+        &_watchers {
+            & > div {
+                vertical-align: middle;
+            }
+
+            img {
+                float: left;
+                @include border-radius(3px);
+
+                & + img {
+                    margin-left: 1px;
+                }
+            }
+        }
+        
+        // .details-table_hours
+        &_hours {
+            .#{$self}_term {
+                vertical-align: middle;
+            }
+
+            .icon,
+            input {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            input {
+                text-align: center;
+                width: 50px;
+                border-left: none;
+                border-top: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(99, 87, 161, 0.15);
+                outline: none;
+                background: transparent;
+                opacity: .7;
+                color: #25212d;
+                font-size: 12px;
+                font-weight: 600;
+                font-family: "Open Sans", Arial;
+            }
+
+            .icon {
+                font-size: 30px;
+            }
+        }
+        
+        // .details-table_tags
+        &_tags {
+            .tag {
+                display: inline-block;
+                margin-left: 5px;
+                font-size: 12px;
+                font-weight: normal;
+                border: 1px solid #d0d0d0;
+                color: #9a9a9a;
+                padding: 0 5px;
+                @include border-radius(4px);
+                @extend .text-overflow;
+                max-width: 50px;
+            }
+        }
+        
+        // .details-table_controls
+        &_controls {
+            text-align: center;
+            font-size: 0;
+
+            & > div {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 15px;
+                min-width: 90px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.29);
+                    @include box-shadow(0 1px 9px rgba(0,0,0,.4));
+                }
+
+                & + div {
+                    border-left: 1px solid rgba(101, 99, 109, 0.15);
+                }
+            }
+
+            .icon {
+                font-size: 20px;
+            }
+
+            span {
+                display: block;
+                color: #000;
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+
 
         .project-name {
             color: #000;
@@ -869,6 +1008,8 @@
         
         // .details-table_term
         &_term {
+            display: inline-block;
+            vertical-align: top;
             text-align: right;
             width: 138px;
             color: #49494a;
@@ -879,33 +1020,10 @@
 
         // .details-table_desc
         &_desc {
-            // color: #7A7A80;
+            display: inline-block;
+            vertical-align: top;
             font-size: 13px;
             color: #49494a;
-
-            &.assignee-desc {
-                img {
-                    float: left;
-                    @include border-radius(3px);
-                }
-
-                .info {
-                    float: left;
-                    margin-top: 2px;
-                    margin-left: 5px;
-                }
-
-                span {
-                    color: #25212d;
-                    font-size: 12px;
-                    display: block;
-                    line-height: 14px;
-                }
-                
-                .name {
-                    font-weight: 700;
-                }
-            }
         }
     }
 
