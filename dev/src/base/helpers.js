@@ -61,7 +61,7 @@ var Helpers = {
         var msPerYear = msPerDay * 365;
         
         var elapsed = new Date() - new Date(date);
-        
+
         if (elapsed < msPerMinute) {
              return Math.round(elapsed/1000) + ' seconds ago';   
         }

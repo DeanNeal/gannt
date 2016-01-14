@@ -20,12 +20,6 @@ var ContentView = BaseView.extend({
     },
     onRender: function() {
         this.modelBinder.bind(this.model, this.el);
-
-        this.getElement('#priorities-select').customSelect({
-            url: this.api.getUrlFromCatalog('priorities'),
-            template: 'customSelectListPriority'
-        });
-        this.getElement('.custom-select').customSelect('refresh');
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
@@ -45,11 +39,9 @@ var ContentView = BaseView.extend({
     },
     updateModel: function(model) {
         this.model.set(model.attributes);
-        this.getElement('.custom-select').customSelect('refresh');
     },
     remove : function () {
         this.modelBinder.unbind();
-        this.getElement('.custom-select').customSelect('destroy');
         BaseView.prototype.remove.call(this);
     }
 });

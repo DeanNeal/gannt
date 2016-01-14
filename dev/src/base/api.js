@@ -1,5 +1,6 @@
-var $ = require('jquery'),
-    _ = require('underscore');
+var $              = require('jquery');
+var _              = require('underscore');
+var Backbone       = require('backbone');
 
 var Api = function (entryPoint) {
 	if (this.instance)
@@ -16,10 +17,16 @@ Api.getInstance = function (entryPoint) {
 Api.prototype.getCatalog = function () {
 	var deferred = $.Deferred();
 
-	$.get(this.entryPoint, function (data) {
-		this.catalog = data;
-		deferred.resolve(data);
+	var catalogModel = new Backbone.Model();
+	catalogModel.getResource(this.entryPoint).then(function(catalog){
+		this.catalog = catalog;
+		deferred.resolve(catalog);
 	}.bind(this));
+
+	// $.get(this.entryPoint, function (data) {
+	// 	this.catalog = data;
+	// 	deferred.resolve(data);
+	// }.bind(this));
 	return deferred.promise();
 };
 

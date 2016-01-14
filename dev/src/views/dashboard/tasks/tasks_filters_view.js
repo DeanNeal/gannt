@@ -43,16 +43,16 @@ var ContentView = BaseView.extend({
 
 		this.getElement('#projects-select').customSelect({
 			template: 'customSelectListTpl',
-			url: this.api.getUrlFromCatalog('projects')
+			//url: this.api.getUrlFromCatalog('projects')
 		});
 		
 		this.getElement('#milestones-select').customSelect({
-			url: this.api.getUrlFromCatalog('milestones'),
+			//url: this.api.getUrlFromCatalog('milestones'),
 			template: 'customSelectListTpl'
 		});
 		
 		this.getElement('#priorities-select').customSelect({
-			url: this.api.getUrlFromCatalog('priorities'),
+		//	url: this.api.getUrlFromCatalog('priorities'),
 			template: 'customSelectListPriority'
 		});
 	},
