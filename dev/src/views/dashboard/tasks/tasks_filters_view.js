@@ -17,16 +17,14 @@ var PaginationView = BaseView.extend({
 	template: dashboardTasksPagination,
 	className: 'pagination',
 	events: {
-
+		'click .pagination_left'   : 'prevClick',
+		'click .pagination_right'  : 'nextClick'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 	},
 	serialize: function () {
 		//this.data = _.clone(this.model.attributes);
-	},
-	update: function(tasks){
-		debugger
 	}
 });
 
@@ -36,19 +34,23 @@ var ContentView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
 	events: {
-		'click .menu-item': 'changeFilter',
-		'change .priority': 'changePriority'
+		'click .pagination_left'   : 'prevClick',
+		'click .pagination_right'  : 'nextClick'
+	},
+	defaults: {
+		filter: 'all',
+	 	sort: 'title',
+	 	page: '1'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.route = location.hash.split('?')[0] + '?';
 
-		var initialState = _.extend({filter: 'all', sort: 'title'}, params.query);
+		var initialState = _.extend({}, params.query);
 
 		this.model = new FilterModel(initialState);
 		this.modelBinder = new Backbone.ModelBinder();
 		this.model.on('change', this.onModelChange, this);
-
 
 		this.paginationView = this.addView(PaginationView, {}, '.pagination');
 	},
@@ -56,11 +58,28 @@ var ContentView = BaseView.extend({
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
 	},
 	updateFilterModel: function (model) {
-		this.model.set(model);
+		if(!model)
+		 	this.model.set(this.defaults);
+		else
+			this.model.set(model);
+
 		this.filterList.highLight();
 		this.sortList.highLight();
 
+
 		this.getElement('.custom-select').customSelect('refresh');
+	},
+	prevClick: function(tasks){
+		var page = parseInt(this.model.get('page') || 1);
+
+		if (page > 1)
+			page -= 1;
+		this.model.set('page', page);
+	},
+	nextClick: function(tasks){
+		var page = parseInt(this.model.get('page') || 1);
+		page += 1;
+		this.model.set('page', page);
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);

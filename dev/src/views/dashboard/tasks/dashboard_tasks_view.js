@@ -63,8 +63,8 @@ var TaskList = BaseView.extend({
 	tagName: 'div',
 	events: {
 	    'click .task-list-item .row'                     : 'changeTask',
-	    'click .close-icon'                              : 'closeEdit',
-	    'click .pagination_left'                         : 'prevClick'
+	    'click .close-icon'                              : 'closeEdit'
+	    // 'click .pagination_left'                         : 'prevClick'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -108,14 +108,6 @@ var TaskList = BaseView.extend({
 
 		this.editView.updateModel(model);
 	},
-	// updatePagination: function(){
-	// 	//this.pagination
-	// },
-	// prevClick: function(){
-	// 	this.collection.get_next().then(function(data){
-			
-	//     });
-	// },
 	closeEdit: function(){
 		this.removeNestedView(this.editView);
 		this.editView = undefined;
