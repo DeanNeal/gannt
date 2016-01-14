@@ -41,18 +41,18 @@ var ContentView = BaseView.extend({
 		this.filterList = new SetActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new SetActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 
-		this.getElement('#projects-select').customSelect({
-			template: 'customSelectListTpl',
-			url: this.api.getUrlFromCatalog('projects')
-		});
+		// this.getElement('#projects-select').customSelect({
+		// 	template: 'customSelectListTpl',
+		// 	url: this.api.catalog.get_dashboard_milestones()
+		// });
 		
 		this.getElement('#milestones-select').customSelect({
-			url: this.api.getUrlFromCatalog('milestones'),
+			url: this.api.catalog.get_dashboard_milestones(),
 			template: 'customSelectListTpl'
 		});
 		
 		this.getElement('#priorities-select').customSelect({
-			url: this.api.getUrlFromCatalog('priorities'),
+			url: this.api.catalog.get_list_task_priority(),
 			template: 'customSelectListPriority'
 		});
 	},

@@ -1,5 +1,6 @@
-var $ = require('jquery'),
-    _ = require('underscore');
+var $              = require('jquery');
+var _              = require('underscore');
+var Backbone       = require('backbone');
 
 var Api = function (entryPoint) {
 	if (this.instance)
@@ -16,71 +17,13 @@ Api.getInstance = function (entryPoint) {
 Api.prototype.getCatalog = function () {
 	var deferred = $.Deferred();
 
-	$.get(this.entryPoint, function (data) {
-		this.catalog = data;
-		deferred.resolve(data);
-	}.bind(this));
-	return deferred.promise();
-};
-
-Api.prototype.getResousceFromCatalog = function (resourceName, data) {
-	var url      = _.findWhere(this.catalog.links, {id: resourceName}).href,
-	    deferred = $.Deferred();
-
-	$.get(url, data, function (data) {
-		deferred.resolve(data);
+	var catalogModel = new Backbone.Model();
+	catalogModel.getResource(this.entryPoint).then(function(catalog){
+		this.catalog = catalog;
+		deferred.resolve(catalog);
 	}.bind(this));
 
 	return deferred.promise();
-};
-Api.prototype.getUrl = function (collection, id) {
-	var model = _.findWhere(collection, {id: id});
-	return (model) ? model.links[0].href : '';
-};
-
-Api.prototype.getUrlFromCatalog = function (resourceName) {
-	return _.findWhere(this.catalog.links, {id: resourceName}).href;
-};
-
-function generateQuery(data) {
-	var deferred = $.Deferred();
-
-	$.ajax(data).done(function (data) {
-		deferred.resolve(data);
-	});
-
-	return deferred.promise();
-}
-
-Api.prototype.getResourceByUrl = function (url , data) {
-	return generateQuery({
-		method: 'get',
-		url: url,
-		data: data
-	});
-};
-
-Api.prototype.createResourceByUrl = function (url, data) {
-	return generateQuery({
-		method: 'post',
-		url: url,
-		data: data
-	});
-};
-
-Api.prototype.updateResourceByUrl = function (url, data) {
-	return generateQuery({
-		method: 'put',
-		url: url,
-		data: data
-	});
-};
-
-Api.prototype.deleteResourceByUrl = function (url) {
-	return generateQuery({
-		method: 'delete',
-		url: url
-	});
 };
 
 module.exports = Api;

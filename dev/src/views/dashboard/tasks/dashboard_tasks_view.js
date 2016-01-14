@@ -56,11 +56,9 @@ var TaskList = BaseView.extend({
 		if(this.editView)
 			this.closeEdit();
 
-
-
 		var tasksModel = new Backbone.Model();
 
-		tasksModel.getResource('/api/v1/dashboard/task/collection/current///0/', query).then(function(tasks) {
+ 		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
 			this.collection = tasks;
 
 			this.removeNestedView();
@@ -71,9 +69,7 @@ var TaskList = BaseView.extend({
 
 			this.render(true);
 
-		
-
-		}.bind(this));
+ 		}.bind(this));
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

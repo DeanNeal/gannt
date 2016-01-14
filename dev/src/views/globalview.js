@@ -1,5 +1,6 @@
 var Backbone         = require('backbone');
 var $                = require('jquery');
+var _                = require('underscore');
 var Helpers          = require('base/helpers');
 var BaseView         = require('views/baseview');
 var RoutedView       = require('views/routedview');
@@ -10,6 +11,19 @@ var statsView        = require('views/stats/stats_view');
 var financeView      = require('views/finance/finance_view');
 var navBarCollection = require('collections/header_list');
 var mainTpl          = require('templates/main.tpl');
+var avatarTpl        = require('templates/overall/avatar.tpl')
+
+var AvatarView = BaseView.extend({
+    tagName:'div',
+    className   : 'avatar',
+    template: avatarTpl,
+    onInitialize: function (params) {
+        BaseView.prototype.onInitialize.call(this, params);
+    },
+    serialize: function(){
+        this.data = _.clone(this.model.attributes);
+    }
+});
 
 var GlobalView = RoutedView.extend({
     tagName: 'div',
@@ -40,24 +54,12 @@ var GlobalView = RoutedView.extend({
         this.addView(BaseListView, {
             collection: new navBarCollection(this.links)
         }, '.header-container');
+
+        this.api.catalog.get_current_user().then(function(user){
+            var avatarView =  this.addView(AvatarView, {model: user});
+            this.renderNestedView(avatarView, '.current-user');
+        }.bind(this));
     },
-    // beforeChangeStage: function() {
-    //     var deferred = $.Deferred();
-
-    //     if (!this.menu) {
-    //         this.api.getResousceFromCatalog('menu').then(function(response) {
-    //             this.collection = Helpers.createMenuLinks(response.data);
-    //             this.menu = this.addView(BaseListView, {
-    //                 collection: new navBarCollection(this.collection)
-    //             });
-    //             this.renderNestedView(this.menu, '.header-container');
-    //             deferred.resolve(true);
-    //         }.bind(this));
-    //     } else
-    //         deferred.resolve(true);
-
-    //     return deferred.promise();
-    // },
     start: function() {
         document.body.appendChild(this.render().el);
     }

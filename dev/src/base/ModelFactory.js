@@ -15,7 +15,7 @@ let ModelFactory = {
                 // methods set
                 if(srcObj.links) {   
                     srcObj.links.map(link => {
-                        this['get_' + link.id] = () => this.getResource(link.href)
+                        this['get_' + link.id] = (args) => this.getResource(link.href, args)
                     });
                 }
             }

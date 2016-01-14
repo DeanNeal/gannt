@@ -9,7 +9,7 @@ var templates = {
 	customSelectListPriority: require('templates/overall/plugins/custom_select_list_priority.tpl')
 };
 
-var api = Api.getInstance('build/api/catalog.json');
+var api = Api.getInstance('/api/v1/system/catalog');
 
 //require('custom-scrollbar');
 
@@ -125,7 +125,8 @@ $.fn.customSelect = function (options) {
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
-					api.getResourceByUrl(settings.url).then(function (response) {
+					
+					settings.url.then(function (response) {
 						var tpl = _.template(templates[settings.template])(response);
 						$list.html(tpl);
 						//$list.mCustomScrollbar();

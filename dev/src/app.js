@@ -10,20 +10,12 @@ var ModelBinder    = require('base/backbone.modelbinder');
 import ModelFactory from 'base/ModelFactory';
 
 
-var api = Api.getInstance('build/api/catalog.json');
+var api = Api.getInstance('/api/v1/system/catalog');
 
-var tasksModel = new Backbone.Model();
-tasksModel.getResource('/api/v1/system/catalog').then(function(catalog) {
-    
- // catalog.get_current_user();
-
+api.getCatalog().then(function() {
     var App = new GlobalView();
     App.start();
     Backbone.history.start();
-}.bind(this));
-
-
-api.getCatalog().then(function() {
 });
 
 
