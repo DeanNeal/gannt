@@ -1,6 +1,6 @@
-<% _.each(data, function(item) { %>
-	<li data-id="<%=item.id%>" data-text="<%=item.name%>">
-		<div class="title"><%=item.name%></div>
-		<span><%=item.assignee%> > <%=item.priority%></span>
+<% _.each(models, function(model) { %>
+	<li data-id="<%=model.get('id')%>" data-text="<%=model.get('name')%>">
+		<div class="title"><%=model.get('name')%></div>
+		<span></span>
 	</li>
 <% }); %>

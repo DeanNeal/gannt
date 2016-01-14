@@ -125,11 +125,12 @@ $.fn.customSelect = function (options) {
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
-					// api.getResourceByUrl(settings.url).then(function (response) {
-					// 	var tpl = _.template(templates[settings.template])(response);
-					// 	$list.html(tpl);
-					// 	//$list.mCustomScrollbar();
-					// });
+					
+					settings.url.then(function (response) {
+						var tpl = _.template(templates[settings.template])(response);
+						$list.html(tpl);
+						//$list.mCustomScrollbar();
+					});
 				}
 			});
 
