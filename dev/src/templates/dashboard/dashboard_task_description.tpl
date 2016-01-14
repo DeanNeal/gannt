@@ -110,7 +110,7 @@
 
 		<div class="details-view">
 			<ul class="details-table">
-				<li>
+				<li class="details-table_project">
 					<div class="details-table_term">Project:</div>
 
 					<div class="details-table_desc">
@@ -119,23 +119,27 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="details-table_priority">
 					<div class="details-table_term">Priority:</div>
-					<div class="details-table_desc priority" data-priority-name name="priority-name"></div>
+					<div class="details-table_desc" data-priority-name name="priority-name"></div>
 				</li>
 
-				<li>
+				<li class="details-table_status">
 					<div class="details-table_term">Status:</div>
-					<div class="details-table_desc status">
+					<div class="details-table_desc">
 						<span data-processing-name name="processing-name"></span>
 					</div>
 				</li>
 
 				<li>
 					<div class="details-table_term">Assignee:</div>
-					<div class="details-table_desc">
-						<img src="build/img/avatar.png" alt="" width="20">
-						<span name="taskusername"></span>
+					<div class="details-table_desc assignee-desc">
+						<img src="build/img/avatar.png" alt="" width="32" height="32">
+
+						<div class="info">
+							<span class="name" name="taskusername"></span>
+							<span name="taskusername"></span>
+						</div>
 					</div>
 				</li>
 

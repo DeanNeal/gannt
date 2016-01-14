@@ -32,19 +32,19 @@
 		<div class="status-select">
 			<ul>
 				<li>
-					<div data-status="send">Send back</div>		
+					<div data-processing-name="send">Send back</div>		
 				</li>
 				<li>
-					<div data-status="done">Done</div>		
+					<div data-processing-name="done">Done</div>		
 				</li>
 				<li>
-					<div data-status="completed">Completed</div>		
+					<div data-processing-name="complete">Completed</div>		
 				</li>
 				<li>
-					<div data-status="hold">On hold</div>
+					<div data-processing-name="hold">On hold</div>
 				</li>
 				<li>
-					<div data-status="new">New</div>
+					<div data-processing-name="new">New</div>
 				</li>
 			</ul>
 		</div>
