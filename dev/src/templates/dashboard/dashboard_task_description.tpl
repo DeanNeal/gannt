@@ -21,7 +21,7 @@
 				<% if(obj['tasktagname']) { %>
 					<span name="description"></span>
 				<% } %>
-				<a href="" class="see_more">See more</a>
+				<span class="see_more">See more</span>
 			</div>
 	</div>
 

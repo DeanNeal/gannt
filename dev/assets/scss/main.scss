@@ -422,6 +422,7 @@ body {
 .see-more-panel {
     position: absolute;
     padding-top: 60px;
+    padding-bottom: 100px;
     width: 450px;
     top: 0;
     bottom: 0;
@@ -433,7 +434,7 @@ body {
     background-image: -webkit-linear-gradient(49deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%); /* gradient overlay */
     background-image: linear-gradient(41deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%); /* gradient overlay */
 
-    .close-icon {
+    .close-see-more {
         color: #817E81;
         text-decoration: none;
         float: right;
@@ -460,7 +461,26 @@ body {
     
     // .see-more-panel_full-desc
     &_full-desc {
-        /**/
+        p {
+            opacity: .76;
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+
+            & + p {
+                margin-top: 15px;
+            }
+        }
+    }
+    
+    // .see-more-panel_footer
+    &_footer {
+        background-color: #e5e7eb;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
     }
 }
 
