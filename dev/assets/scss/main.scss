@@ -268,9 +268,11 @@ body {
         .custom-select-dropdown{
             padding: 10px 10px 20px 10px;
             width: 250px;
-            ul{
+
+            ul {
                 margin-top: 10px;
-                li{
+
+                li {
                     padding: 10px 20px;
                     border-bottom: 1px solid #ddd;
                 }
@@ -280,8 +282,14 @@ body {
 
     &.projects,
     &.milestones {
-        max-width: 80px;
+        max-width: 100px;
     }
+    
+    // &.milestones {
+    //     .custom-select-container {
+    //         @extend .text-overflow;
+    //     }
+    // }
 
     &.priority {
         width: 100px;
@@ -360,7 +368,8 @@ body {
     
     // .custom-select-value
     &-value {
-        // display: block;
+        display: block;
+        @extend .text-overflow;
         // overflow: hidden;
         // white-space: nowrap;
         // text-overflow: ellipsis;

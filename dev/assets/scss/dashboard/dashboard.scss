@@ -738,7 +738,7 @@
         // .tabs-view_add-comment-form
         &_add-comment-form {
             position: absolute;
-            bottom: 0;
+            bottom: 10px;
             left: 20px;
             right: 20px;
 
@@ -765,6 +765,8 @@
                 outline: none;
                 font-family: "Open Sans", Arial;
                 padding: 5px;
+                display: block;
+                border: 1px solid #d6d6d6;
             }
         }
     }
