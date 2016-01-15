@@ -51,6 +51,9 @@ var TaskList = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 
 		this.preloaderView = this.addView(PreloaderView);
+
+		this.listenTo(this, 'disable:change', this.onDisableStage, this);
+		this.listenTo(this, 'enable:change', this.onEnableStage, this);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
@@ -91,6 +94,12 @@ var TaskList = BaseView.extend({
 		}
 
 		this.editView.updateModel(model);
+	},
+	onDisableStage: function(){
+
+	},
+	onEnableStage: function(){
+
 	},
 	closeEdit: function(){
 		this.removeNestedView(this.editView);

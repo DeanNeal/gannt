@@ -13,14 +13,18 @@ var ContentView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 	},
 	updateModel: function(model){
-		this.parent.preloaderView.show();
+		//this.parent.preloaderView.show();
+
+		this.parent.trigger('disable:change');
 		model.get_self().then(function(task){
 			if(!this.descr){			
 				this.descr = this.addView(TaskDescriptionView, {model: task});
 				this.renderNestedView(this.descr, '.task-description');
 			} else
 				this.descr.updateModel(task);
-			this.parent.preloaderView.hide();
+
+		//	this.parent.preloaderView.hide();
+			this.parent.trigger('enable:change');
 		}.bind(this));
 	}
 });

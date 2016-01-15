@@ -14,14 +14,9 @@ var PaginationView = BaseView.extend({
         	currentPage: 1
         }
     },
-   //  serialize: function () {
-   // //     this.data = _.clone(this.model.attributes);
-   //      this.data.pageCount = 8;
-   //      this.data.currentPage = 2;
-   //  },
     update: function(count, page){
 		this.data = {
-			pageCount: 8,
+			pageCount: 20,
 			currentPage: page
 		};
 		this.serialize(); 
