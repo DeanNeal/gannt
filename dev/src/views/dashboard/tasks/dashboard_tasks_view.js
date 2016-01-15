@@ -45,7 +45,7 @@ var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                     : 'changeTask',
-	    'click .close-icon'                              : 'closeEdit'
+	    'click .close-panel'                              : 'closeEdit'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
