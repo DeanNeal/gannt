@@ -53,7 +53,7 @@
 	</div>
 
 	<div class="col assignee">
-		<img class="avatar" src="build/img/avatar.png" alt="" title="<%=obj['taskusername']%>">
+		<img class="avatar" src="http://195.138.79.46<%=obj['avatar']%>" alt="" title="<%=obj['taskusername']%>">
 	</div>
 
 	<div class="col milestone">
