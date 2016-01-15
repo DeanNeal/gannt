@@ -61,7 +61,8 @@ var TasksFilterView = BaseView.extend({
 	},
 	nextClick: function(tasks){
 		var page = parseInt(this.model.get('page') || 1);
-		page += 1;
+		if(page < this.pagesCount)
+			page += 1;
 		this.model.set('page', page);
 	},
 	changePage: function(e){
@@ -69,9 +70,9 @@ var TasksFilterView = BaseView.extend({
 		this.model.set('page', pageId);
 	},
 	updatePagination: function(countModel){
-		var pages = Math.ceil(countModel.get('count') / countModel.get('perpage'));
+		this.pagesCount = Math.ceil(countModel.get('count') / countModel.get('perpage'));
 
-		this.paginationView.update(pages, this.model.get('page'));
+		this.paginationView.update(this.pagesCount, this.model.get('page'));
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
