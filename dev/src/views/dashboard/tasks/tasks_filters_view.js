@@ -78,10 +78,10 @@ var TasksFilterView = BaseView.extend({
 		this.filterList = new SetActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new SetActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 
-		// this.getElement('#projects-select').customSelect({
-		// 	template: 'customSelectListTpl',
-		// 	url: this.api.catalog.get_dashboard_milestones()
-		// });
+		this.getElement('#projects-select').customSelect({
+			template: 'customSelectListTpl',
+			url: this.api.catalog.get_dashboard_product()
+		});
 		
 		this.getElement('#milestones-select').customSelect({
 			url: this.api.catalog.get_dashboard_milestones(),
