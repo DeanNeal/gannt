@@ -58,9 +58,7 @@ var TaskList = BaseView.extend({
 	updateTaskList: function(query){
 		if(this.editView)
 			this.closeEdit();
-
-		var tasksModel = new Backbone.Model();
-
+		
 		this.preloaderView.show();
 
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){

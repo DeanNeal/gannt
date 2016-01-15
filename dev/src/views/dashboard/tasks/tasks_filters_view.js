@@ -1,4 +1,5 @@
 var Backbone       = require('backbone');
+var $              = require('jquery');
 var _              = require('underscore');
 var Helpers        = require('base/helpers');
 var Plugins        = require('base/plugins');
@@ -14,8 +15,9 @@ var TasksFilterView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
 	events: {
-		'click .pagination_left'   : 'prevClick',
-		'click .pagination_right'  : 'nextClick'
+		'click .pagination_left'    : 'prevClick',
+		'click .pagination_right'   : 'nextClick',
+		'click .pagination_pages span' : "changePage"
 	},
 	defaults: {
 		filter: 'all',
@@ -60,6 +62,10 @@ var TasksFilterView = BaseView.extend({
 		var page = parseInt(this.model.get('page') || 1);
 		page += 1;
 		this.model.set('page', page);
+	},
+	changePage: function(e){
+		var pageId = $(e.currentTarget).data('page-id');
+		this.model.set('page', pageId);
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);

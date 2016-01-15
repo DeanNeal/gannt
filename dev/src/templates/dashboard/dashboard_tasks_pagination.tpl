@@ -4,9 +4,9 @@
 	</div>
 
 	<ul class="pagination_pages pagination_unit">
-		<li data-active="true"><a href="">1</a></li>
- 		<li><a href="">2</a></li>
-		<li><a href="">3</a></li>
+		<% for(var i=1; i <= pageCount; i++) { %>
+			<li><span <%if (currentPage == i) { %> data-active="true" <% } %> data-page-id="<%=i%>"><%=i%></span></li>
+		<% } %>
 	</ul>
 
 	<div class="pagination_right pagination_unit">

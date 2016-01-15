@@ -9,11 +9,11 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click .save'           : "testPutQuery",
-        'click .delete'         : "testDeleteQuery",
-        'click .files'          : "toggleFiles",
-        'click .see_more'       : "openSeeMorePanel",
-        'click .close-see-more' : "closeSeeMorePanel"
+        'click .save'               : "testPutQuery",
+        'click .delete'             : "testDeleteQuery",
+        'click .files'              : "toggleFiles",
+        'click .see_more'           : "openSeeMorePanel",
+        'click .close-see-more'     : "closeSeeMorePanel"
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
