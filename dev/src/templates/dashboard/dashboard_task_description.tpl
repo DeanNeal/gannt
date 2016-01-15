@@ -1,9 +1,9 @@
 <div class="full-size">
 	<div class="description">
 		<div>
-			<svg class="icon icon-trash close-icon">
-	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-	        </svg>
+			<svg class="icon icon-close close-panel">
+            	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+        	</svg>
 
 			<span class="name">
 				<svg class="icon icon-trash">
