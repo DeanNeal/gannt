@@ -114,5 +114,4 @@
 	</div>
 	
 	<div class="pagination"></div>
-			
 </div>

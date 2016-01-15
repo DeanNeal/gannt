@@ -55,7 +55,7 @@
 
 		    <div class="current-user"></div>
 		</div>
-	</div>
+	</div>	
 
 	<div class="bb-route-container full-size main-content"></div>
 </div>

@@ -185,7 +185,7 @@ body {
 }
 
 .pagination {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -418,3 +418,49 @@ body {
 .hide{
     display: none;
 }
+
+.see-more-panel {
+    position: absolute;
+    padding-top: 60px;
+    width: 450px;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: #fff; /* layer fill content */
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSIxMi45NzgxMDA2NDQzNjk5JSIgeTE9IjkyLjU4ODgyMzM5NDAzMjclIiB4Mj0iODcuMDIxODk5MzU1NjMwMSUiIHkyPSI3LjQxMTE3NjYwNTk2NzI4JSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlN2U3ZWEiIHN0b3Atb3BhY2l0eT0iMSIvPgo8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iI2ViZTllOSIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U3ZTllYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+); /* gradient overlay */
+    background-image: -moz-linear-gradient(49deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%); /* gradient overlay */
+    background-image: -o-linear-gradient(49deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%); /* gradient overlay */
+    background-image: -webkit-linear-gradient(49deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%); /* gradient overlay */
+    background-image: linear-gradient(41deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%); /* gradient overlay */
+
+    .close-icon {
+        color: #817E81;
+        text-decoration: none;
+        float: right;
+        font-size: 20px;
+        margin-top: -10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    
+    // .see-more-panel_header
+    &_header {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
+    
+    // .see-more-panel_title
+    &_title {
+        color: #000;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    // .see-more-panel_full-desc
+    &_full-desc {
+        /**/
+    }
+}
+

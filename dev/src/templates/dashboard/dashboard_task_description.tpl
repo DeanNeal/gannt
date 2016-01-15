@@ -17,12 +17,12 @@
 			</span>
 		</div>
 		
-		<% if(obj['tasktagname']) { %>
 			<div class="description-text">
-				<span name="description"></span>
+				<% if(obj['tasktagname']) { %>
+					<span name="description"></span>
+				<% } %>
 				<a href="" class="see_more">See more</a>
 			</div>
-		<% } %>
 	</div>
 
 	<div class="info-container full-size">

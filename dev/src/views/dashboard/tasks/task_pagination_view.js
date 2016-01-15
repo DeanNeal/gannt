@@ -6,7 +6,7 @@ var dashboardTasksPagination  = require('templates/dashboard/dashboard_tasks_pag
 
 var PaginationView = BaseView.extend({
     template: dashboardTasksPagination,
-    className: 'pagination',
+    className: 'pagination-wrap',
     onInitialize: function (params) {
         BaseView.prototype.onInitialize.call(this, params);
     },
