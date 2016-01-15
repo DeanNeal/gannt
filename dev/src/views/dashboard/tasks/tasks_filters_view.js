@@ -1,36 +1,16 @@
-var Backbone     = require('backbone');
-var _            = require('underscore');
-var Helpers      = require('base/helpers');
-var Plugins      = require('base/plugins');
-var BaseView     = require('views/baseview');
-var BaseListView = require('views/elements/base_list_view');
-var FilterModel  = require('models/dashboard/tasks_filter_model');
-var tpl          = require('templates/dashboard/tasks/tasks_filters.tpl');
-var dashboardTasksPagination  = require('templates/dashboard/dashboard_tasks_pagination.tpl');
+var Backbone       = require('backbone');
+var _              = require('underscore');
+var Helpers        = require('base/helpers');
+var Plugins        = require('base/plugins');
+var BaseView       = require('views/baseview');
+var BaseListView   = require('views/elements/base_list_view');
+var PaginationView = require('views/dashboard/tasks/task_pagination_view');
+var FilterModel    = require('models/dashboard/tasks_filter_model');
+var tpl            = require('templates/dashboard/tasks/tasks_filters.tpl');
 
 import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins';
 
-
-
-
-var PaginationView = BaseView.extend({
-	template: dashboardTasksPagination,
-	className: 'pagination',
-	events: {
-		'click .pagination_left'   : 'prevClick',
-		'click .pagination_right'  : 'nextClick'
-	},
-	onInitialize: function (params) {
-		BaseView.prototype.onInitialize.call(this, params);
-	},
-	serialize: function () {
-		//this.data = _.clone(this.model.attributes);
-	}
-});
-
-
-
-var ContentView = BaseView.extend({
+var TasksFilterView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
 	events: {
@@ -114,4 +94,4 @@ var ContentView = BaseView.extend({
 	}
 });
 
-module.exports = ContentView;
+module.exports = TasksFilterView;
