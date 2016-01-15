@@ -136,7 +136,7 @@
 				<li class="details-table_assignee">
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc">
-						<img src="build/img/avatar.png" alt="" width="32" height="32">
+						<img src="http://195.138.79.46<%=avatar%>" alt="" width="32" height="32">
 
 						<div class="info">
 							<span class="name" name="taskusername"></span>
