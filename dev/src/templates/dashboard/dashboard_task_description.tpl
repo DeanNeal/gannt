@@ -158,8 +158,8 @@
 				<li class="details-table_date">
 					<div class="details-table_term">Date:</div>
 					<div class="details-table_desc">
-						<input type="text" name="date-start">
-						<input type="text" name="date-finish">
+						<input type="text" name="date-start" value="22">
+						<input type="text" name="date-finish" value="22">
 					</div>
 				</li>
 
