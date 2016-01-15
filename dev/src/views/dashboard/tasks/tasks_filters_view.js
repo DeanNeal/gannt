@@ -35,6 +35,8 @@ var TasksFilterView = BaseView.extend({
 		this.model.on('change', this.onModelChange, this);
 
 		this.paginationView = this.addView(PaginationView, {}, '.pagination');
+
+		this.listenTo(this.parent, 'pagination:update', this.updatePagination, this);
 	},
 	onModelChange: function () {
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
@@ -66,8 +68,10 @@ var TasksFilterView = BaseView.extend({
 		var pageId = $(e.currentTarget).data('page-id');
 		this.model.set('page', pageId);
 	},
-	updatePagination: function(count){
-		this.paginationView.update(count, this.model.get('page'));
+	updatePagination: function(countModel){
+		var pages = Math.ceil(countModel.get('count') / countModel.get('perpage'));
+
+		this.paginationView.update(pages, this.model.get('page'));
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);

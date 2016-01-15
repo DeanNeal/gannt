@@ -60,5 +60,6 @@ let ModelFactory = {
 };
 
 _.extend(Backbone.Model.prototype, ModelFactory);
+_.extend(Backbone.Collection.prototype, ModelFactory);
 
 export default ModelFactory;

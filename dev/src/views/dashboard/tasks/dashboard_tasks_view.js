@@ -2,7 +2,6 @@ var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
-    PreloaderView             = require('views/preloader'),
     BaseView              	  = require('views/baseview'),
     RoutedView            	  = require('views/routedview'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
@@ -44,13 +43,11 @@ var TaskList = BaseView.extend({
 	tagName: 'div',
 	template: dashboardTasksListTpl,
 	events: {
-	    'click .task-list-item .row'                     : 'changeTask',
+	    'click .task-list-item .row'                      : 'changeTask',
 	    'click .close-panel'                              : 'closeEdit'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-
-		this.preloaderView = this.addView(PreloaderView);
 
 		this.listenTo(this, 'disable:change', this.onDisableStage, this);
 		this.listenTo(this, 'enable:change', this.onEnableStage, this);
@@ -59,30 +56,29 @@ var TaskList = BaseView.extend({
 		this.data = _.clone({data: this.collection});
 	},
 	updateTaskList: function(query){
+		var self = this;
 		if(this.editView)
 			this.closeEdit();
 		
-		this.preloaderView.show();
-
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
-			this.collection = tasks;
+			self.collection = tasks;
 
-			if(this.taskItemView){			
-				this.getElement('.task-wrapper').empty();
-				this.removeNestedView();
-				this.taskItemView.remove();
+			if(self.taskItemView){			
+				self.getElement('.task-wrapper').empty();
+				self.removeNestedView();
+				self.taskItemView.remove();
 			}
 
-			this.collection.each(function(model) {
-				this.taskItemView = this.addView(TaskListItem, {model: model});
-			    this.renderNestedView(this.taskItemView, '.task-wrapper');
-			}.bind(this));
+			self.collection.each(function(model) {
+				self.taskItemView = self.addView(TaskListItem, {model: model});
+			    self.renderNestedView(self.taskItemView, '.task-wrapper');
+			});
 
+			tasks.get_count().then(function(data){
+				self.parent.trigger('pagination:update', data);
+			});
 
-			this.parent.filter.updatePagination();
-
-			this.preloaderView.hide();
- 		}.bind(this));
+ 		});
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
@@ -96,10 +92,12 @@ var TaskList = BaseView.extend({
 		this.editView.updateModel(model);
 	},
 	onDisableStage: function(){
-
+		this.events["click .task-list-item .row"] = undefined;
+		this.delegateEvents(this.events);
 	},
 	onEnableStage: function(){
-
+		this.events["click .task-list-item .row"] = "changeTask";
+		this.delegateEvents(this.events);
 	},
 	closeEdit: function(){
 		this.removeNestedView(this.editView);
@@ -111,7 +109,7 @@ var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter',
 	template: dashboardTpl,
 	events: {
-		'click .open-filter'			 	: 'toggleFilter'
+		'click .open-filter': 'toggleFilter'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);

@@ -16,7 +16,7 @@ var PaginationView = BaseView.extend({
     },
     update: function(count, page){
 		this.data = {
-			pageCount: 20,
+			pageCount: count,
 			currentPage: page
 		};
 		this.serialize(); 
