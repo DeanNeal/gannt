@@ -75,6 +75,9 @@ var TaskList = BaseView.extend({
 			    this.renderNestedView(this.taskItemView, '.task-wrapper');
 			}.bind(this));
 
+
+			this.parent.filter.updatePagination();
+
 			this.preloaderView.hide();
  		}.bind(this));
 	},

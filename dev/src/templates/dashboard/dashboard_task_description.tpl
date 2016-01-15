@@ -158,8 +158,8 @@
 				<li class="details-table_date">
 					<div class="details-table_term">Date:</div>
 					<div class="details-table_desc">
-						<input type="text" name="date-start" value="22">
-						<input type="text" name="date-finish" value="22">
+						<input type="text" name="date-start">
+						<input type="text" name="date-finish">
 					</div>
 				</li>
 
@@ -177,13 +177,13 @@
 				<li class="details-table_hours">
 					<div class="details-table_term">Spent hours:</div>
 					<div class="details-table_desc">
-						<input type="text">
+						<input type="text"  value="22">
 
 						<svg class="icon icon-request">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-request"></use>
 				        </svg>
 
-						<input type="text">
+						<input type="text"  value="22">
 
 						<svg class="icon icon-approve">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-approve"></use>

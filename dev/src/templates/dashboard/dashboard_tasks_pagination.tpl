@@ -1,4 +1,5 @@
 <div>
+	<% if(pageCount) { %>
 	<div class="pagination_left pagination_unit">
 		<span href="">Prev</span>
 	</div>
@@ -12,4 +13,5 @@
 	<div class="pagination_right pagination_unit">
 		<span href="">Next</span> 
 	</div>
+	<% } %>
 </div>

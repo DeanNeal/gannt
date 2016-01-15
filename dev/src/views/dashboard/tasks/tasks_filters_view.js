@@ -48,7 +48,6 @@ var TasksFilterView = BaseView.extend({
 		this.filterList.highLight();
 		this.sortList.highLight();
 
-
 		this.getElement('.custom-select').customSelect('refresh');
 	},
 	prevClick: function(tasks){
@@ -66,6 +65,9 @@ var TasksFilterView = BaseView.extend({
 	changePage: function(e){
 		var pageId = $(e.currentTarget).data('page-id');
 		this.model.set('page', pageId);
+	},
+	updatePagination: function(count){
+		this.paginationView.update(count, this.model.get('page'));
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
