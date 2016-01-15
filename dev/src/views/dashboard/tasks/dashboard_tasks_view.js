@@ -42,6 +42,7 @@ var TaskListItem = BaseView.extend({
 var TaskList = BaseView.extend({
 	className: 'dashboard-table',
 	tagName: 'div',
+	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                     : 'changeTask',
 	    'click .close-icon'                              : 'closeEdit'
@@ -66,14 +67,14 @@ var TaskList = BaseView.extend({
 			this.collection = tasks;
 
 			if(this.taskItemView){			
-				this.$el.empty();
+				this.getElement('.task-wrapper').empty();
 				this.removeNestedView();
 				this.taskItemView.remove();
 			}
 
 			this.collection.each(function(model) {
 				this.taskItemView = this.addView(TaskListItem, {model: model});
-			    this.renderNestedView(this.taskItemView);
+			    this.renderNestedView(this.taskItemView, '.task-wrapper');
 			}.bind(this));
 
 			this.preloaderView.hide();
