@@ -2,38 +2,20 @@ var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
-    // PreloaderView             = require('views/preloader'),
+    PreloaderView             = require('views/preloader'),
     BaseView              	  = require('views/baseview'),
     RoutedView            	  = require('views/routedview'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
     TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
     dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
     dashboardTasksListTpl     = require('templates/dashboard/dashboard_tasks_list.tpl'),
-    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');/*,
-    dashboardTasksPagination  = require('templates/dashboard/dashboard_tasks_pagination.tpl');*/
-
-// var PaginationView = BaseView.extend({
-// 	template: dashboardTasksPagination,
-// 	className: 'pagination',
-// 	events: {
-
-// 	},
-// 	onInitialize: function (params) {
-// 		BaseView.prototype.onInitialize.call(this, params);
-// 	},
-// 	serialize: function () {
-// 		//this.data = _.clone(this.model.attributes);
-// 	},
-// 	update: function(tasks){
-// 		debugger
-// 	}
-// });
+    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
 
 var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
 	className: 'task-list-item',
 	events: {
-	    'click .col.status'                     : 'toggleStatusWindow'
+	    'click .col.status': 'toggleStatusWindow'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -59,17 +41,16 @@ var TaskListItem = BaseView.extend({
 
 var TaskList = BaseView.extend({
 	className: 'dashboard-table',
-    template: dashboardTasksListTpl,
 	tagName: 'div',
+	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                     : 'changeTask',
 	    'click .close-icon'                              : 'closeEdit'
-	    // 'click .pagination_left'                         : 'prevClick'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 
-		//this.paginationView = this.addView(PaginationView, {}, '.pagination');
+		this.preloaderView = this.addView(PreloaderView);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
@@ -80,21 +61,23 @@ var TaskList = BaseView.extend({
 
 		var tasksModel = new Backbone.Model();
 
+		this.preloaderView.show();
+
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
 			this.collection = tasks;
 
 			if(this.taskItemView){			
-				this.$el.empty();
+				this.getElement('.task-wrapper').empty();
 				this.removeNestedView();
 				this.taskItemView.remove();
 			}
 
 			this.collection.each(function(model) {
 				this.taskItemView = this.addView(TaskListItem, {model: model});
-			    this.renderNestedView(this.taskItemView/*, '.task-wrapper'*/);
+			    this.renderNestedView(this.taskItemView, '.task-wrapper');
 			}.bind(this));
 
-			//this.paginationView.update(tasks);
+			this.preloaderView.hide();
  		}.bind(this));
 	},
 	changeTask: function(e){

@@ -1,10 +1,10 @@
-var BaseView = requare('views/baseview');
-var tpl = requare('templates/preloader.tpl');
+var BaseView = require('views/baseview');
+var tpl      = require('templates/preloader.tpl');
 
 module.exports = BaseView.extend({
     tagName:'div',
     className   : 'preloader',
-    template: tpl,
+    // template: tpl,
     onInitialize: function (params) {
         BaseView.prototype.onInitialize.call(this, params);
     },
