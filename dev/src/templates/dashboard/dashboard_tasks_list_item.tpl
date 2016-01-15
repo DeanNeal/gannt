@@ -1,8 +1,10 @@
 <div class="row" data-id="<%=id%>">
 	<div class="col title">
-		<svg class="icon icon-trash">
+		<!-- <svg class="icon icon-trash">
         	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-    	</svg>
+    	</svg> -->
+
+    	<span class="icon-round"></span>
 
 		<div class="task-name">
 			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>

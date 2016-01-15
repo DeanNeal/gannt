@@ -188,7 +188,6 @@
         @extend .display-flex;
         flex-direction: column;
         flex: 1;
-        position: relative;
 
         .task-wrapper {
             @extend .display-flex;
@@ -219,6 +218,10 @@
                 .row {
                     border-color: transparent;
                 }
+
+                .title {
+                    color: #000;
+                }
             }
         }
 
@@ -238,11 +241,21 @@
             font-size: 12px;
         }
 
+        .icon-round {
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            @include border-radius(50%);
+            border: 2px solid;
+            margin-right: 5px;
+        }
+
         .title {
             display: flex;
             color: #565656;
             font-weight: bold;
             overflow: hidden;
+            align-items: center;
 
             .task-name {
                 display: flex;
@@ -316,6 +329,7 @@
         .priority {
             [data-priority-name] {
                 display: inline-block;
+                vertical-align: middle;
                 // padding: 1px 5px;
                 // font-size: 12px;
                 font-size: 0;
