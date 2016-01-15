@@ -71,7 +71,6 @@ var TasksFilterView = BaseView.extend({
 	},
 	updatePagination: function(countModel){
 		this.pagesCount = Math.ceil(countModel.get('count') / countModel.get('perpage'));
-
 		this.paginationView.update(this.pagesCount, this.model.get('page'));
 	},
 	onRender: function () {

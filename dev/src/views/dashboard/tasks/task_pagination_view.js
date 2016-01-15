@@ -9,10 +9,6 @@ var PaginationView = BaseView.extend({
     className: 'pagination-wrap',
     onInitialize: function (params) {
         BaseView.prototype.onInitialize.call(this, params);
-        // this.data = {
-        // 	pageCount : 1,
-        // 	currentPage: 1
-        // }
     },
     update: function(count, page){
 		this.data = {

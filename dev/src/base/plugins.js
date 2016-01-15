@@ -113,7 +113,9 @@ $.fn.customSelect = function (options) {
 			    $search    = $wrapper.find('.custom-select-dropdown-search');
 
 			//set current value or placeholder
-			$value.text($input.val() || data.placeholder);
+			$value
+				.text($input.val() || data.placeholder)
+				.attr('title', $input.val() || data.placeholder); 
 
 			$wrapper.on('click', '.custom-select-value', function () {
 				customSelectArray.forEach(function (item) {
@@ -141,7 +143,9 @@ $.fn.customSelect = function (options) {
 					.data('text', $(this).data('text'))
 					.change();
 
-				$value.text($(this).data('text'));
+				$value
+					.text($(this).data('text'))
+					.attr('title', $(this).data('text'));
 
 				if (!$wrapper[0].hasAttribute('data-search'))
 					$container.attr('data-selected', $(this).data('text'));
