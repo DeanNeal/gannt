@@ -188,14 +188,13 @@
         @extend .display-flex;
         flex-direction: column;
         flex: 1;
-        .preloader{
-            position: absolute;
-            background: rgba(0,0,0,0.3);
-            width: 199%;
-            height: 100%;
-            z-index: 100;
-            top: 0;
+
+        .task-wrapper {
+            @extend .display-flex;
+            flex-direction: column;
+            flex: 1;            
         }
+
         .task-list-item {
             @extend .display-flex;
             flex: 1;

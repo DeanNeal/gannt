@@ -3,8 +3,8 @@ var tpl      = require('templates/preloader.tpl');
 
 module.exports = BaseView.extend({
     tagName:'div',
-    className   : 'preloader',
-    // template: tpl,
+    className   : 'loader-wrapper',
+    template: tpl,
     onInitialize: function (params) {
         BaseView.prototype.onInitialize.call(this, params);
     },

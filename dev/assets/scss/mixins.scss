@@ -71,7 +71,12 @@ $vba-box-shadow: 0px 1px 1px rgba(0, 0, 0, .05);
     -moz-box-shadow: $value;
     -webkit-box-shadow: $value;
     box-shadow: $value;
+}
 
+@mixin animation ($name, $duration: 300ms, $delay: 0, $ease: ease) {
+    -webkit-animation: $name $duration $delay $ease;
+    -moz-animation:    $name $duration $delay $ease;
+    -ms-animation:     $name $duration $delay $ease;
 }
 
 $type-scale: (
