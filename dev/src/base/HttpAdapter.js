@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 /**
  * HttpAdapter
  * send ajax to passed url and return a promise
@@ -18,26 +16,28 @@ import "babel-polyfill";
  * @return {Object} core crud methods
  * */
 
+import * as _ from 'underscore';
+
 let testPath = 'http://195.138.79.46';
 
-export default function $http(url) {
+export default function (url) {
 
     function client(options, resolve, reject) {
 
         // Instantiates the XMLHttpRequest
         let client = new XMLHttpRequest();
         // TODO uncomment on production
-        // let uri = options.url;
+         let uri = options.url;
 
         // Dummy code REMOVE on production
-        let uri = testPath + options.url;
+        //let uri = testPath + options.url;
 
         if (options.args) {
             uri += '?';
-            let argcount = 0;
+            let argCount = 0;
             for (let key in options.args) {
                 if (options.args.hasOwnProperty(key)) {
-                    if (argcount++) {
+                    if (argCount++) {
                         uri += '&';
                     }
                     uri += encodeURIComponent(key) + '=' + encodeURIComponent(options.args[key]);
@@ -71,10 +71,8 @@ export default function $http(url) {
     let core = {
 
         // Method that performs the ajax promise request
-        client: function(method, url, args = {}, callbacks) {
-            let options = Object.assign({}, {method: method, url: url, args: args});
-            let resolve = (callbacks && callbacks.resolve) ? callbacks.resolve : (success) => console.log(success);
-            let reject = (callbacks && callbacks.reject) ? callbacks.reject : (error) => console.log(error);
+        client: function (method, url, args = {}, callbacks) {
+            let options = _.extend({}, {method: method, url: url, args: args});
 
             return client(options, resolve, reject);
         },
@@ -82,7 +80,7 @@ export default function $http(url) {
         // Method that performs the ajax promise request
         promise: function (method, url, args = {}) {
 
-            let options = Object.assign({}, {method: method, url: url, args: args});
+            let options = _.extend({}, {method: method, url: url, args: args});
 
             // Creating a promise
             return new Promise((resolve, reject) => client(options, resolve, reject));
@@ -103,7 +101,7 @@ export default function $http(url) {
         'delete': function (args) {
             return core.promise('DELETE', url, args);
         },
-        client: function(method, args, callbacks = {}) {
+        client: function (method, args, callbacks = {}) {
             return core.client(method, url, args, callbacks)
         }
     };

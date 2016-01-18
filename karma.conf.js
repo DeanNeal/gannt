@@ -17,7 +17,7 @@ module.exports = function (config) {
 
         browserify: {
             debug: true,
-            transform: ['aliasify', 'babelify', 'stringify']
+            transform: ['babelify', 'aliasify', 'stringify']
         },
 
         browsers: ['PhantomJS'],
