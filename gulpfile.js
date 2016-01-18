@@ -7,6 +7,7 @@ var gulp         = require('gulp'),
     browserify   = require('browserify'),
     sass         = require('gulp-sass'),
     path         = require('path'),
+    sourcemaps   = require("gulp-sourcemaps"),
     stringify    = require('stringify'),
     connect      = require('gulp-connect'),
     uglify       = require('gulp-uglify'),
@@ -79,7 +80,7 @@ gulp.task('clean-tmp', function () {
         .pipe(clean({force: true}));
 });
 
-var copyTemplates = function() {
+var copyTemplates = function () {
     gulp.src(projectPath.source + '/templates/**/*.tpl')
         .pipe(gulp.dest(projectPath.dev + '/tmp/templates'));
 };
@@ -94,7 +95,9 @@ gulp.task('copy-api', ['clean-tmp'], function () {
 
 var babelBuild = function () {
     return gulp.src(projectPath.source + "/**/*.js")
+        .pipe(sourcemaps.init())
         .pipe(babel()).on('error', onError)
+        .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(projectPath.dev + '/tmp'));
 };
 
@@ -137,8 +140,11 @@ var scripts = function () {
     });
 
     return b.bundle()
-        .on('error', onError)
         .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(uglify()).on('error', onError)
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(projectPath.build + '/app'))
         .pipe(connect.reload());
 };

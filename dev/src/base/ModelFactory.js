@@ -13,23 +13,24 @@ let ModelFactory = {
                 super(_.extend(srcObj.data, options));
 
                 // methods set
-                if(srcObj.links) {   
+                if (srcObj.links) {
                     srcObj.links.map(link => {
                         this['get_' + link.id] = (args) => this.getResource(link.href, args)
                     });
                 }
             }
         }
+
         return new Model(response);
     },
     getCollection: function (response) {
         class Collection extends Backbone.Collection {
-            constructor (srcObj, options) {
+            constructor(srcObj, options) {
                 // attributes set
                 super([], options);
 
                 // methods set
-                if(srcObj.links) {                    
+                if (srcObj.links) {
                     srcObj.links.map(link => {
                         this['get_' + link.id] = (args) => this.getResource(link.href, args)
                     });
@@ -40,10 +41,10 @@ let ModelFactory = {
     },
     getResource: function (url, args = {}) {
         let self = this;
-        let success = function(response) {
+        let success = function (response) {
             if (response.data instanceof Array) {
                 let collection = self.getCollection(response);
-                
+
                 response.data.map(model => {
                     collection.add(self.getModel(model));
                 });
@@ -53,8 +54,9 @@ let ModelFactory = {
             }
         };
 
-        return $http(url).get(args).then(success, function(e) {
-            console.log(e);
+        return $http(url).get(args).then(success).catch(function (err) {
+            console.log(err.message);
+            console.log(err.stack);
         });
     }
 };
