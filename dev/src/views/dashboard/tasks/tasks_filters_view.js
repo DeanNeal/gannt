@@ -28,9 +28,7 @@ var TasksFilterView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		this.route = location.hash.split('?')[0] + '?';
 
-		var initialState = _.extend(this.defaults, params.query);
-
-		this.model = new FilterModel(initialState);
+		this.model = new FilterModel(params.query);
 		this.modelBinder = new Backbone.ModelBinder();
 		this.model.on('change', this.onModelChange, this);
 
@@ -39,14 +37,11 @@ var TasksFilterView = BaseView.extend({
 		this.listenTo(this.parent, 'pagination:update', this.updatePagination, this);
 	},
 	onModelChange: function () {
-		console.log(this.getRouteWithParams());
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
 	},
 	updateFilterModel: function (model) {
-		// if(!model)
-		//  	this.model.set(this.defaults);
-		// else
-			this.model.set(model);
+		this.model.clear({silent : true}).set(model || this.defaults);
+		this.modelBinder.bind(this.model, this.el);
 
 		this.filterList.highLight();
 		this.sortList.highLight();

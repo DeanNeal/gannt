@@ -27,10 +27,10 @@ export default function (url) {
         // Instantiates the XMLHttpRequest
         let client = new XMLHttpRequest();
         // TODO uncomment on production
-         let uri = options.url;
+        //let uri = options.url;
 
         // Dummy code REMOVE on production
-        //let uri = testPath + options.url;
+        let uri = testPath + options.url;
 
         if (options.args) {
             uri += '?';

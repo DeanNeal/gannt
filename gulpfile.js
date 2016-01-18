@@ -143,7 +143,7 @@ var scripts = function () {
         .pipe(source('app.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify()).on('error', onError)
+     //   .pipe(uglify()).on('error', onError)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(projectPath.build + '/app'))
         .pipe(connect.reload());

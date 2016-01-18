@@ -75,7 +75,7 @@ $.fn.customSelect = function (options) {
 
 		//set current value or placeholder
 		if (settings.method == 'refresh') {
-			$wrapper.find('.custom-select-value').text($input.val() || $input.data('text') || data.placeholder);
+			$wrapper.find('.custom-select-value').text($input.val() || data.placeholder);
 			if (!$wrapper[0].hasAttribute('data-search'))
 				$wrapper.find('.custom-select-container').attr('data-selected', $input.val() || data.placeholder.toLowerCase());
 		}
@@ -139,12 +139,10 @@ $.fn.customSelect = function (options) {
 			$wrapper.on('click', '.custom-select-dropdown li', function () {
 
 				$input
-					.val($(this).data('text'))
-					.data('text', $(this).data('text'))
+					.val($(this).data('id')) 
 					.change();
 
 				$value
-					.text($(this).data('text'))
 					.attr('title', $(this).data('text'));
 
 				if (!$wrapper[0].hasAttribute('data-search'))
