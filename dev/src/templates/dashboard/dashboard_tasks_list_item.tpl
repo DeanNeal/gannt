@@ -12,7 +12,9 @@
 					<span class="tag" title="<%=tag%>"><%=tag%></span>
 				<% }); %>
 			<% }  else { %>
-				<span class="tag" title="DummyTag>">DummyTag</span>
+				<span class="tag" title="DummyTag>">Tag 1</span>
+				<span class="tag" title="DummyTag>">Tag 2</span>
+				<span class="tag" title="DummyTag>">Tag 3</span>
 			<% } %>
 		</div>
 	</div>
