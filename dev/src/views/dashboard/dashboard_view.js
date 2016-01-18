@@ -14,37 +14,37 @@ var ContentView = RoutedView.extend({
     template: mainTpl,
     className: 'dashboard full-size',
     routes: {
-        'pulse'     : PulseView,
-        'tasks'     : tasksView,
-        'projects'  : projectsView
+        // 'pulse'     : PulseView,
+        'tasks'     : tasksView
+        // 'projects'  : projectsView
     },
     links: [{
         name: "Pulse",
         route: "pulse",
         iconClass: 'fa fa-exclamation-triangle',
-        prevent: true
+        disabled: true
     }, {
         name: "Tracker",
         route: "dashboard/tasks",
-        iconClass: 'fa fa-circle-o'
+        iconClass: 'fa fa-circle-o',
+        disabled: false
     },{
         name: "Projects",
         route: "projects",
         iconClass: 'fa fa-circle-o',
-        prevent: true
+        disabled: true
     },{
         name: "Timetable",
         route: "timetable",
         iconClass: 'fa fa-circle-o',
-        prevent: true
+        disabled: true
     },
     {
         name: "Kanban",
         route: "kanban",
         iconClass: 'fa fa-circle-o',
-        prevent: true
-    }
-    ],
+        disabled: true
+    }],
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
         this.addView(BaseListView, {
