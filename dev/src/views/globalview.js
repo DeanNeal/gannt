@@ -38,15 +38,18 @@ var GlobalView = RoutedView.extend({
     links: [{
         name: "Dashboard",
         id: "dashboard",
-        route: "dashboard/tasks"
+        route: "dashboard/tracker",
+        disabled: false
     }, {
         name: "Tree",
         id: "tree",
-        route: "tree"
+        route: "tree",
+        disabled: true
     }, {
         name: "Stats",
         id: "stats",
-        route: "stats"
+        route: "stats",
+        disabled: true
     }],
     onInitialize: function(params) {
         Backbone.on('change:page', this.changeStage, this);
