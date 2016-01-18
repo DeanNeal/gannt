@@ -38,7 +38,7 @@ var GlobalView = RoutedView.extend({
     links: [{
         name: "Dashboard",
         id: "dashboard",
-        route: "dashboard/tasks",
+        route: "dashboard/tracker",
         disabled: false
     }, {
         name: "Tree",

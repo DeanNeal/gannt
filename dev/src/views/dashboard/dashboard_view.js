@@ -15,33 +15,38 @@ var ContentView = RoutedView.extend({
     className: 'dashboard full-size',
     routes: {
         // 'pulse'     : PulseView,
-        'tasks'     : tasksView
+        'tracker'     : tasksView
         // 'projects'  : projectsView
     },
     links: [{
         name: "Pulse",
         route: "pulse",
+        id: "pulse",
         iconClass: 'fa fa-exclamation-triangle',
         disabled: true
     }, {
         name: "Tracker",
-        route: "dashboard/tasks",
+        route: "dashboard/tracker",
+        id: "tracker",
         iconClass: 'fa fa-circle-o',
         disabled: false
     },{
         name: "Projects",
         route: "projects",
+        id: "projects",
         iconClass: 'fa fa-circle-o',
         disabled: true
     },{
         name: "Timetable",
         route: "timetable",
+        id: "timetable",
         iconClass: 'fa fa-circle-o',
         disabled: true
     },
     {
         name: "Kanban",
         route: "kanban",
+        id: "kanban",
         iconClass: 'fa fa-circle-o',
         disabled: true
     }],
