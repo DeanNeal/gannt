@@ -35,7 +35,7 @@
 					</li>
 
 					<li>
-						<a href="">Status reports</a>
+						<a href="javascript:void(0)">Status reports</a>
 					</li>
 				</ul>
 			</div>
