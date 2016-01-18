@@ -229,6 +229,9 @@ var BaseView = Backbone.View.extend({
                     if (this.nextStage) // if current view exist we have to remove it
                         this.removeNestedView(this.nextStage);
                     var target = this.getContentInternal().find('.bb-route-container');
+                    
+                    if(!this.routes[params.stagesArray[0]])
+                        window.location.href = '404.html';
 
                     this.nextStage = this.addView(this.routes[params.stagesArray[0]], {
                         stage: params.stagesArray[0],
