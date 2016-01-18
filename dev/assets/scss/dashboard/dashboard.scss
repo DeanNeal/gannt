@@ -30,7 +30,7 @@
                 height: 100%;
                 display: inline-block;
                 // width: calc(100% / 5);
-                padding: 0 10px;
+                padding: 0 15px;
 
                 a {
                     width: 100%;
@@ -242,15 +242,6 @@
             font-size: 12px;
         }
 
-        .icon-round {
-            width: 12px;
-            height: 12px;
-            display: inline-block;
-            @include border-radius(50%);
-            border: 2px solid;
-            margin-right: 5px;
-        }
-
         .title {
             display: flex;
             color: #565656;
@@ -279,9 +270,8 @@
                 }
             }
 
-            .icon {
-                font-size: 15px;
-                float: left;
+            .icon-round {
+                margin-right: 5px;
             }
 
             .tags {
@@ -432,10 +422,6 @@
         }
 
         .milestone {
-            .icon {
-                font-size: 15px;
-            }
-
             .info {
                 display: inline-block;
                 vertical-align: top;
@@ -445,11 +431,11 @@
                 & > div {
                     display: inline-block;
                     vertical-align: top;
-                }
-            }
 
-            span {
-                display: block;
+                    span {
+                        display: block;
+                    }
+                }
             }
 
             .deadline {
@@ -461,6 +447,12 @@
         .created {
             .icon {
                 font-size: 15px;
+                margin-right: 2px;
+            }
+
+            span {
+                display: inline-block;
+                vertical-align: middle;
             }
         }
     }
@@ -623,6 +615,7 @@
         .comment {
             padding: 0 20px 0 20px;
             position: relative;
+            margin-bottom: 20px;
 
             // .comment-left
             &-left {
@@ -733,6 +726,7 @@
 
             .icon {
                 font-size: 15px;
+                cursor: pointer;
             }
         }
         
@@ -892,8 +886,34 @@
             }
         }
         
+        // .details-table_task
+        &_task {
+            .#{$self}_term {
+                vertical-align: middle;
+            }
+
+            .#{$self}_desc{
+                vertical-align: middle;
+            }
+
+            .desc {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        
         // .details-table_date
         &_date {
+            .icon {
+                font-size: 15px;
+            }
+
+            .#{$self}_desc{
+                & > div {
+                    float: left;
+                }
+            }
+
             input {
                 width: 80px;
                 border: none;
@@ -1062,10 +1082,19 @@
             font-weight: bold;
             color: #211d2f;
             letter-spacing: 0.001em;
+
+            .task-name {
+                display: inline-block;
+                vertical-align: middle;
+            }
             
             .icon {
                 font-size: 15px;
-            }            
+            }
+
+            .icon-edit {
+                cursor: pointer;
+            }
         }
         
         // .description-text

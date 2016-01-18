@@ -190,7 +190,8 @@ body {
     right: 0;
     bottom: 0;
     height: 40px;
-    background: #e0e1e5;
+    background-color: #dfe1e5;
+    @include box-shadow(0 1px 10px rgba(0,0,0,.31));
     text-align: center;
     padding: 4px 0;
     z-index: 998;
@@ -536,6 +537,24 @@ body {
             }
         }
     }
+}
+
+.icon-round {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    @include border-radius(50%);
+    border: 2px solid;
+    vertical-align: middle;
+}
+
+.icon-round-full {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    background-color: blue;
+    @include border-radius(50%);
+    margin-right: 5px;
 }
 
 .loader-wrapper {

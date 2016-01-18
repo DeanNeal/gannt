@@ -1,9 +1,5 @@
 <div class="row" data-id="<%=id%>">
 	<div class="col title">
-		<!-- <svg class="icon icon-trash">
-        	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-    	</svg> -->
-
     	<span class="icon-round"></span>
 
 		<div class="task-name">
@@ -59,9 +55,12 @@
 	<div class="col milestone">
 		<div class="info">
 			<% if(obj['milestonename']) { %>
-				<svg class="icon icon-trash">
+				<!-- <svg class="icon icon-trash">
 			        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-			    </svg>
+			    </svg> -->
+
+			    <span class="icon-round-full"></span>
+
 			    <div>
 					<span><%=obj['milestonename']%></span>
 					<span class="deadline">Deadline: <%=obj['milestonedatefinish']%></span>
@@ -72,10 +71,13 @@
 
 	<div class="col created">
 		<div>
-			<svg class="icon icon-trash">
-		        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-		    </svg>
-		    <%= Helpers.formatDate(obj['date-start']) %>
+			<svg class="icon icon-calendar">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
+	        </svg>
+
+	        <span>
+		    	<%= Helpers.formatDate(obj['date-start']) %>
+	        </span>
 		</div>
 	</div>
 

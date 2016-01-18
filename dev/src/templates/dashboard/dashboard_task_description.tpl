@@ -5,16 +5,17 @@
             	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
         	</svg>
 
-			<span class="name">
-				<svg class="icon icon-trash">
-		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-		        </svg>
+			<div class="name">
+				<span class="icon-round"></span>
 				
-				#<span name="id"></span>: <span name="name"></span>
-				<svg class="icon icon-trash">
-		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-		        </svg>
-			</span>
+				<div class="task-name">
+					#<span name="id"></span>: <span name="name"></span>
+				</div>
+
+				<svg class="icon icon-edit">
+            		<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-edit"></use>
+        		</svg>
+			</div>
 		</div>
 		
 			<div class="description-text">
@@ -80,12 +81,122 @@
 								</div>
 
 								<div class="controls">
-									<svg class="icon icon-trash">
-							            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+									<svg class="icon icon-dialog">
+							            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dialog"></use>
+							        </svg>
+
+							        <svg class="icon icon-edit">
+							            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-edit"></use>
 							        </svg>
 
 							        <svg class="icon icon-trash">
 							            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+							        </svg>
+								</div>
+							</div>
+						</div>
+
+						<div class="tabs-view_comments-unit">
+							<div class="comment clearfix">
+								<div class="comment-left">
+									<img class="avatar" src="build/img/avatar.png" alt="">
+
+									<div class="files">
+										<div class="count-wrap">
+											<span>8</span>
+										</div>
+
+										<div class="files-preview">
+											<div class="files-preview_close">
+												<svg class="icon icon-trash">
+										            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+										        </svg>
+											</div>
+											<img src="build/img/avatar.png" alt="">
+											<img src="build/img/avatar.png" alt="">
+											<img src="build/img/avatar.png" alt="">
+											<img src="build/img/avatar.png" alt="">
+											<img src="build/img/avatar.png" alt="">
+											<img src="build/img/avatar.png" alt="">
+										</div>
+
+										<div class="files-desc">Files</div>
+									</div>
+								</div>
+
+								<div class="comment-right">
+									<div class="clearfix">
+										<div class="name">Peter Simon</div>
+										<div class="date">16:15 2015-15-15</div>
+									</div>
+
+									<div class="text">
+										Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
+									</div>
+
+									<div class="controls">
+										<svg class="icon icon-dialog">
+								            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dialog"></use>
+								        </svg>
+
+								        <svg class="icon icon-edit">
+								            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-edit"></use>
+								        </svg>
+
+								        <svg class="icon icon-trash">
+								            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+								        </svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tabs-view_comments-unit">
+						<div class="comment clearfix">
+							<div class="comment-left">
+								<img class="avatar" src="build/img/avatar.png" alt="">
+
+								<div class="files">
+									<div class="count-wrap">
+										<span>8</span>
+									</div>
+
+									<div class="files-preview">
+										<div class="files-preview_close">
+											<svg class="icon icon-trash">
+									            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+									        </svg>
+										</div>
+										<img src="build/img/avatar.png" alt="">
+										<img src="build/img/avatar.png" alt="">
+										<img src="build/img/avatar.png" alt="">
+										<img src="build/img/avatar.png" alt="">
+										<img src="build/img/avatar.png" alt="">
+										<img src="build/img/avatar.png" alt="">
+									</div>
+
+									<div class="files-desc">Files</div>
+								</div>
+							</div>
+
+							<div class="comment-right">
+								<div class="clearfix">
+									<div class="name">Peter Simon</div>
+									<div class="date">16:15 2015-15-15</div>
+								</div>
+
+								<div class="text">
+									Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
+								</div>
+
+								<div class="controls">
+									<svg class="icon icon-dialog">
+							            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dialog"></use>
+							        </svg>
+
+							        <svg class="icon icon-edit">
+							            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-edit"></use>
 							        </svg>
 
 							        <svg class="icon icon-trash">
@@ -147,19 +258,37 @@
 
 				<li class="details-table_task">
 					<div class="details-table_term">Type:</div>
-					<div class="details-table_desc">Task</div>
+					<div class="details-table_desc">
+						<span class="icon-round"></span>
+						<span class="desc">Task</span>
+					</div>
 				</li>
 
 				<li class="details-table_milestone">
 					<div class="details-table_term">Milestones:</div>
-					<div class="details-table_desc" name="milestonename"></div>
+					<div class="details-table_desc" name="milestonename">
+						<span class="icon-round-full"></span>
+					</div>
 				</li>
 
 				<li class="details-table_date">
 					<div class="details-table_term">Date:</div>
 					<div class="details-table_desc">
-						<input type="text" name="date-start">
-						<input type="text" name="date-finish">
+						<div>
+							<svg class="icon icon-calendar">
+					            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
+					        </svg>
+
+							<input type="text" name="date-start">
+						</div>
+						
+						<div>
+							<svg class="icon icon-calendar">
+					            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
+					        </svg>
+
+							<input type="text" name="date-finish">
+						</div>
 					</div>
 				</li>
 
