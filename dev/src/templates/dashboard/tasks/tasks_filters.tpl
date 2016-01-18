@@ -1,7 +1,7 @@
 <div>
 	<div class="clearfix">
 		<div class="left-filters">
-			<a class="btn-add-new" href="">
+			<a class="btn-add-new" href="javascript:void(0)">
 				<svg class="icon icon-add">
 		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
 		        </svg>
