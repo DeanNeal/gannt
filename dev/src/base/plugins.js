@@ -128,7 +128,7 @@ $.fn.customSelect = function (options) {
 
 				if ($dropdown.is(':visible')) {
 					
-					settings.url.then(function (response) {
+					settings.url().then(function (response) {
 						var tpl = _.template(templates[settings.template])(response);
 						$list.html(tpl);
 						//$list.mCustomScrollbar();
