@@ -41,7 +41,6 @@ var Helpers = {
          } else
             list.find('li').removeClass('hide');
      },
-
     timeDifference: function(date) {
         var msPerMinute = 60 * 1000;
         var msPerHour = msPerMinute * 60;
@@ -49,7 +48,7 @@ var Helpers = {
         var msPerMonth = msPerDay * 30;
         var msPerYear = msPerDay * 365;
         
-        var elapsed = new Date() - new Date(date);
+        var elapsed = new Date() - new Date(date.replace(' ', 'T'));
 
         if (elapsed < msPerMinute) {
              return Math.round(elapsed/1000) + ' seconds ago';   
@@ -76,7 +75,7 @@ var Helpers = {
         }
     },
     formatDate: function(date) {
-        var date = new Date(date);
+        var date = new Date(date.replace(' ', 'T'));
         return date.toLocaleDateString('en-GB');
     }
 
