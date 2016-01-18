@@ -30,9 +30,11 @@ var listItemView = BaseView.extend({
         this.data = _.clone(this.model.attributes);
     },
     onClick: function() {
-        this.model.set({
-            'isSelected': true
-        });
+        if(this.model.get('disabled') == false){
+            this.model.set({
+                'isSelected': true
+            });
+        }
     }
 });
 

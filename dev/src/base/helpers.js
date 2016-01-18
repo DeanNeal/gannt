@@ -23,14 +23,6 @@ var Helpers = {
             return encodeURIComponent(key) + '=' + encodeURIComponent(model[key]);
         }).join('&');
     },
-    createLinks: function(links, stage) {
-        var array = [];
-        links.forEach(function(item, i) { 
-            array[i] = item;
-            array[i].route = stage + '/' + item.id;
-        });
-        return array;
-    },
     findById: function (collection, id) {
         var model = collection.find(function(model) { return model.get('id') == id; });
         
