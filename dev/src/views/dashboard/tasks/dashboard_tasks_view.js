@@ -6,6 +6,7 @@ var Backbone              	  = require('backbone'),
     RoutedView            	  = require('views/routedview'),
     TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
     TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
+    TaskCreateView            = require('views/dashboard/tasks/dashboard_tasks_add_task_view'),
     dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
     dashboardTasksListTpl     = require('templates/dashboard/dashboard_tasks_list.tpl'),
     dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
@@ -44,8 +45,7 @@ var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                      : 'changeTask',
-	    'click .close-panel'                              : 'closeEdit',
-	    'click .btn-add-new'                              : 'openCreateTask'
+	    'click .close-panel'                              : 'closeEdit'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -91,9 +91,6 @@ var TaskList = BaseView.extend({
 
 		this.editView.updateModel(model);
 	},
-	openCreateTask: function(){
-
-	},
 	onDisableStage: function(){
 		this.events["click .task-list-item .row"] = undefined;
 		this.delegateEvents(this.events);
@@ -112,7 +109,8 @@ var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter have-sort',
 	template: dashboardTpl,
 	events: {
-		'click .open-filter': 'toggleFilter'
+		'click .open-filter': 'toggleFilter',
+		'click .btn-add-new': 'openCreateTask'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -127,6 +125,12 @@ var ContentView = BaseView.extend({
 	    e.preventDefault();
 	    this.getElement('.dashboard-table-header').toggle().toggleClass('active');
 	    this.$el.toggleClass('have-sort');
+	},
+	openCreateTask: function(){
+		if(!this.createView){
+			this.createView = this.addView(TaskCreateView);
+			this.renderNestedView(this.createView);
+		}
 	}
 	
 });
