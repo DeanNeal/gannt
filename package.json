@@ -56,12 +56,16 @@
   },
   "browser": {
     "jquery-ui": "./bower_components/jquery-ui/jquery-ui.min.js",
+    "datepicker": "./bower_components/jquery-ui/ui/datepicker.js",
     "custom-scrollbar": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
     "jquery-mousewheel": "./bower_components/jquery-mousewheel/jquery.mousewheel.min.js"
   },
   "browserify-shim": {
     "jquery-ui": {
-      "depends": "jquery:$"
+      "depends": "jquery:jQuery"
+    },
+    "datepicker": {
+      "depends": "jquery:jQuery"
     },
     "custom-scrollbar": {
       "depends": [

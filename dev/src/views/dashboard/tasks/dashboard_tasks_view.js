@@ -44,7 +44,8 @@ var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                      : 'changeTask',
-	    'click .close-panel'                              : 'closeEdit'
+	    'click .close-panel'                              : 'closeEdit',
+	    'click .btn-add-new'                              : 'openCreateTask'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -89,6 +90,9 @@ var TaskList = BaseView.extend({
 		}
 
 		this.editView.updateModel(model);
+	},
+	openCreateTask: function(){
+
 	},
 	onDisableStage: function(){
 		this.events["click .task-list-item .row"] = undefined;

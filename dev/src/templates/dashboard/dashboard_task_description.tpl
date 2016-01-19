@@ -275,16 +275,14 @@
 							<svg class="icon icon-calendar">
 					            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
 					        </svg>
-
-							<input type="text" name="date-start">
+							<input type="text" id="task-date-start" class="datepicker" name="date-start">
 						</div>
 						
 						<div>
 							<svg class="icon icon-calendar">
 					            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
 					        </svg>
-
-							<input type="text" name="date-finish">
+							<input type="text" id="task-date-finish" class="datepicker" name="date-finish">
 						</div>
 					</div>
 				</li>

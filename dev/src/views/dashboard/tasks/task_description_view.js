@@ -1,5 +1,6 @@
 var Backbone         = require('backbone'),
     $                = require('jquery'),
+    datepicker       = require('datepicker'),
     _                = require('underscore'),
     BaseView         = require('views/baseview'),
     tpl              = require('templates/dashboard/dashboard_task_description.tpl'),
@@ -23,6 +24,7 @@ var ContentView = BaseView.extend({
     },
     onRender: function() {
         this.modelBinder.bind(this.model, this.el);
+        this.getElement('.datepicker').datepicker();
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
