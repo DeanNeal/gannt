@@ -84,7 +84,7 @@ $.fn.customSelect = function (options) {
 			customSelectArray.forEach(function (dropdown, i) {
 				if(dropdown.is($wrapper)){
 				//	dropdown.toggle();
-					$wrapper.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
+					$wrapper.removeClass('custom-select-open');
 				}
 			});
 		}
@@ -128,10 +128,9 @@ $.fn.customSelect = function (options) {
 			$wrapper.on('click', '.custom-select-value', function () {
 				customSelectArray.forEach(function (item) {
 					if (!$wrapper.is(item))
-						item.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
+						item.removeClass('custom-select-open');
 				});
-
-				$dropdown.toggle();
+				
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
@@ -157,7 +156,7 @@ $.fn.customSelect = function (options) {
 
 				//hide all
 				customSelectArray.forEach(function (item) {
-					item.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
+					item.removeClass('custom-select-open');
 				});
 			});
 

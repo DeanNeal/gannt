@@ -273,6 +273,9 @@ body {
                 @include rotate(270deg);
             }
         }
+        .custom-select-dropdown{
+            display: block;
+        }
     }
 
     &[data-search]{
