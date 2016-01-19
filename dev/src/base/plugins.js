@@ -83,6 +83,7 @@ $.fn.customSelect = function (options) {
 		if (settings.method == 'hide') {
 			customSelectArray.forEach(function (dropdown, i) {
 				if(dropdown.is($wrapper)){
+				//	dropdown.toggle();
 					$wrapper.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
 				}
 			});
@@ -134,7 +135,6 @@ $.fn.customSelect = function (options) {
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
-					
 					settings.url().then(function (response) {
 						var tpl = _.template(templates[settings.template])(response);
 						$list.html(tpl);

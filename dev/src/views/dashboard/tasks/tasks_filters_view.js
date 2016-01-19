@@ -104,6 +104,7 @@ var TasksFilterView = BaseView.extend({
 	remove: function () {
 		this.modelBinder.unbind();
 		this.getElement('.custom-select').customSelect('destroy');
+		Backbone.off('global:click', this.onGlobalClick, this);
 		BaseView.prototype.remove.call(this);
 	}
 });

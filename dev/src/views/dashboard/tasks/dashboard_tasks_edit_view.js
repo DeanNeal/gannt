@@ -30,13 +30,13 @@ var ContentView = BaseView.extend({
 			this.parent.trigger('enable:change');
 		}.bind(this));
 	},
-	onGlobalClick: function(e) {console.log(213);
+	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
 		 if(!currentEl.parents().hasClass('tasks-edit') && !currentEl.parents().hasClass('task-list-item'))
 		 	this.parent.trigger('taskView:close');
 	},
 	remove: function(){
-		Backbone.off('global:click');
+		Backbone.off('global:click', this.onGlobalClick, this);
 		BaseView.prototype.remove.call(this);
 	}
 });
