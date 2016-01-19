@@ -51,6 +51,7 @@ var TaskList = BaseView.extend({
 
 		this.listenTo(this, 'disable:change', this.onDisableStage, this);
 		this.listenTo(this, 'enable:change', this.onEnableStage, this);
+		this.listenTo(this, 'taskView:close', this.closeEdit, this);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});

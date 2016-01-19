@@ -13,6 +13,7 @@ var ContentView = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.preloaderView = this.addView(PreloaderView);
+		Backbone.on('global:click', this.onGlobalClick, this);
 	},
 	updateModel: function(model){
 		this.preloaderView.show();
@@ -28,6 +29,15 @@ var ContentView = BaseView.extend({
 			this.preloaderView.hide();
 			this.parent.trigger('enable:change');
 		}.bind(this));
+	},
+	onGlobalClick: function(e) {
+		var currentEl = $(e.target);
+		 if(!currentEl.parents().hasClass('tasks-edit') && !currentEl.parents().hasClass('task-list-item'))
+		 	this.parent.trigger('taskView:close');
+	},
+	remove: function(){
+		Backbone.off('global:click');
+		BaseView.prototype.remove.call(this);
 	}
 });
 

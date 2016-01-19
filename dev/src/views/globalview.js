@@ -51,6 +51,9 @@ var GlobalView = RoutedView.extend({
         route: "stats",
         disabled: true
     }],
+    events: {
+        'click': 'onGlobalClick'
+    },
     onInitialize: function(params) {
         Backbone.on('change:page', this.changeStage, this);
 
@@ -65,6 +68,9 @@ var GlobalView = RoutedView.extend({
     },
     start: function() {
         document.body.appendChild(this.render().el);
+    },
+    onGlobalClick: function(e) {
+        Backbone.trigger("global:click", e);
     }
 });
 
