@@ -106,7 +106,7 @@ var TaskList = BaseView.extend({
 });
 
 var ContentView = BaseView.extend({
-	className: 'tasks full-size have-filter',
+	className: 'tasks full-size have-filter have-sort',
 	template: dashboardTpl,
 	events: {
 		'click .open-filter': 'toggleFilter'
