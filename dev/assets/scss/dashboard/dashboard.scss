@@ -30,7 +30,6 @@
                 height: 100%;
                 display: inline-block;
                 // width: calc(100% / 5);
-                padding: 0 15px;
 
                 a {
                     width: 100%;
@@ -111,8 +110,11 @@
         -moz-transition: all 200ms ease;
         -ms-transition: all 200ms ease;
         -o-transition: all 200ms ease;
+        padding: 0 15px;
+
         &[data-active="true"] {
-            box-shadow: 0 0 20px -7px #000;
+            @include box-shadow(0 0 20px -7px #000);
+
             &:after{
                 content: '';
                 position: absolute;
@@ -127,7 +129,7 @@
 
     // .dashboard-table-header
     &-table-header {
-        display: none;
+        // display: none;
 
         table {
             width: 100%;
