@@ -35,6 +35,7 @@ var TasksFilterView = BaseView.extend({
 		this.paginationView = this.addView(PaginationView, {}, '.pagination');
 
 		this.listenTo(this.parent, 'pagination:update', this.updatePagination, this);
+		Backbone.on('global:click', this.onGlobalClick, this);
 	},
 	onModelChange: function () {
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
@@ -94,6 +95,11 @@ var TasksFilterView = BaseView.extend({
 	},
 	getRouteWithParams: function () {
 		return this.route + Helpers.serializeModel(this.model.toJSON());
+	},
+	onGlobalClick: function(e) {
+		var currentEl = $(e.target);
+		 if(!currentEl.parents().hasClass('custom-select'))
+		 	this.getElement('.custom-select').customSelect('hide');
 	},
 	remove: function () {
 		this.modelBinder.unbind();

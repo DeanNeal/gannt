@@ -80,6 +80,13 @@ $.fn.customSelect = function (options) {
 				$wrapper.find('.custom-select-container').attr('data-selected', $input.val() || data.placeholder.toLowerCase());
 		}
 
+		if (settings.method == 'hide') {
+			customSelectArray.forEach(function (dropdown, i) {
+				if(dropdown.is($wrapper)){
+					$wrapper.removeClass('custom-select-open').find('.custom-select-dropdown').hide();
+				}
+			});
+		}
 		//clear custom selects and destroy them
 		if (settings.method == 'destroy') {
 			customSelectArray.forEach(function (dropdown, i) {

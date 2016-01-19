@@ -58,9 +58,7 @@ var TaskList = BaseView.extend({
 	},
 	updateTaskList: function(query){
 		var self = this;
-		if(this.editView)
-			this.closeEdit();
-		
+
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
 			self.collection = tasks;
 
