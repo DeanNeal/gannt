@@ -1,4 +1,6 @@
 //window.jQuery = require("jquery");
+import "babel-polyfill";
+
 var Backbone       = require('backbone');
 var $              = require('jquery');
 var GlobalView     = require('views/globalview');

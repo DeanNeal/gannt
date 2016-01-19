@@ -28,9 +28,7 @@ var TasksFilterView = BaseView.extend({
 		BaseView.prototype.onInitialize.call(this, params);
 		this.route = location.hash.split('?')[0] + '?';
 
-		var initialState = _.extend({}, params.query);
-
-		this.model = new FilterModel(initialState);
+		this.model = new FilterModel(params.query);
 		this.modelBinder = new Backbone.ModelBinder();
 		this.model.on('change', this.onModelChange, this);
 
@@ -42,10 +40,8 @@ var TasksFilterView = BaseView.extend({
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
 	},
 	updateFilterModel: function (model) {
-		if(!model)
-		 	this.model.set(this.defaults);
-		else
-			this.model.set(model);
+		this.model.clear({silent : true}).set(model || this.defaults);
+		this.modelBinder.bind(this.model, this.el);
 
 		this.filterList.highLight();
 		this.sortList.highLight();
@@ -79,17 +75,17 @@ var TasksFilterView = BaseView.extend({
 		this.sortList = new SetActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 
 		this.getElement('#projects-select').customSelect({
-			template: 'customSelectListTpl',
-			url: this.api.catalog.get_dashboard_product()
+			url: this.api.catalog.get_dashboard_product,
+			template: 'customSelectListTpl'
 		});
 		
 		this.getElement('#milestones-select').customSelect({
-			url: this.api.catalog.get_dashboard_milestones(),
+			url: this.api.catalog.get_dashboard_milestones,
 			template: 'customSelectListTpl'
 		});
 		
 		this.getElement('#priorities-select').customSelect({
-			url: this.api.catalog.get_list_task_priority(),
+			url: this.api.catalog.get_list_task_priority,
 			template: 'customSelectListPriority'
 		});
 	},

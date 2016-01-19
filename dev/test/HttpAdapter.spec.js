@@ -9,16 +9,16 @@ function getPromise(callbacks, config) {
     $http(config.url).get().then(callbacks.success, callbacks.error);
 }
 
-function getClient () {
-
+function getClient(callbacks, config) {
+    $http(config.url).client('GET').then(callbacks.success, callbacks.error);
 }
 
 describe("Ajax Tests", function() {
     let configuration = {url: "ProductData.json"};
 
     it("should make an Ajax request to the correct URL", function() {
-        spyOn($http, "client");
-        getPromise(undefined, configuration);
-        expect($.ajax.mostRecentCall.args[0]["url"]).toEqual(configuration.url);
+        spyOn($http(configuration.url), "get");
+        let client = getClient(undefined, configuration);
+        expect(client).toEqual(configuration.url);
     });
 });
