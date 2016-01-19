@@ -19,9 +19,7 @@
 		</div>
 		
 			<div class="description-text">
-				<% if(obj['tasktagname']) { %>
-					<span name="description"></span>
-				<% } %>
+				<span name="description"></span>
 				<span class="see_more">See more</span>
 			</div>
 	</div>
