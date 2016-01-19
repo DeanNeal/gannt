@@ -5,6 +5,20 @@ import * as _ from 'underscore';
 import * as $ from 'jquery';
 import $http from 'base/HttpAdapter';
 
+const methods = [{
+    method: 'get',
+    alias: 'get'
+},{
+    method: 'put',
+    alias: 'update'
+},{
+    method: 'post',
+    alias: 'create'
+},{
+    method: 'delete',
+    alias: 'delete'
+}]; 
+
 let ModelFactory = {
     getModel: function (response) {
         class Model extends Backbone.Model {
@@ -15,7 +29,9 @@ let ModelFactory = {
                 // methods set
                 if (srcObj.links) {
                     srcObj.links.map(link => {
-                        this['get_' + link.id] = (args) => this.getResource(link.href, args)
+                        methods.forEach(item=> {
+                            this[item.alias + '_' + link.id] = (args) => this.makeRequest(item.method, link.href, args)
+                        });
                     });
                 }
             }
@@ -32,14 +48,16 @@ let ModelFactory = {
                 // methods set
                 if (srcObj.links) {
                     srcObj.links.map(link => {
-                        this['get_' + link.id] = (args) => this.getResource(link.href, args)
+                        methods.forEach(item=> {
+                            this[item.alias + '_' + link.id] = (args) => this.makeRequest(item.method, link.href, args)
+                        });
                     });
                 }
             }
         }
         return new Collection(response);
     },
-    getResource: function (url, args = {}) {
+    makeRequest: function (method, url, args = {}) {
         let self = this;
         let success = function (response) {
             if (response.data instanceof Array) {
@@ -54,7 +72,7 @@ let ModelFactory = {
             }
         };
 
-        return $http(url).get(args).then(success).catch(function (err) {
+        return $http(url)[method](args).then(success).catch(function (err) {
             console.log(err.message);
             console.log(err.stack);
         });

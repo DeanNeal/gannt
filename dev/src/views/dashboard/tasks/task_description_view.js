@@ -10,8 +10,6 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click .save'               : "testPutQuery",
-        'click .delete'             : "testDeleteQuery",
         'click .files'              : "toggleFiles",
         'click .see_more'           : "openSeeMorePanel",
         'click .close-see-more'     : "closeSeeMorePanel"
@@ -21,23 +19,21 @@ var ContentView = BaseView.extend({
 
         this.link = params.link;
         this.modelBinder = new Backbone.ModelBinder();
+
+        this.model.on('change', this.onChange, this);
     },
     onRender: function() {
         this.modelBinder.bind(this.model, this.el);
-        this.getElement('.datepicker').datepicker();
+        this.getElement('.datepicker').datepicker({
+            dateFormat: "yy-mm-dd"
+        });
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
     },
-    testPutQuery: function() {
-        this.api.updateResourceByUrl(this.link, {data: _.clone(this.model.attributes)}).then(function(response) {
-            console.log(response);
-        })
-    },
-    testDeleteQuery: function() {
-    	this.api.deleteResourceByUrl(this.link).then(function(response) {
-    	    console.log(response);
-    	})
+    onChange: function(){
+        this.model.update_self().then(function(){
+        });
     },
     toggleFiles: function(e) {
         $(e.currentTarget).find('.files-preview').toggle();

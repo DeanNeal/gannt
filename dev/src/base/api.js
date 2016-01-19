@@ -18,7 +18,7 @@ Api.prototype.getCatalog = function () {
 	var deferred = $.Deferred();
 
 	var catalogModel = new Backbone.Model();
-	catalogModel.getResource(this.entryPoint).then(function(catalog){
+	catalogModel.makeRequest('get', this.entryPoint).then(function(catalog){
 		this.catalog = catalog;
 		deferred.resolve(catalog);
 	}.bind(this));
