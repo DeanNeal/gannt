@@ -184,16 +184,19 @@
     
     // .dashboard-table
     &-table {
-        width: 100%;
         border-collapse: collapse;
-        @extend .display-flex;
-        flex-direction: column;
-        flex: 1;
+        @extend .full-size;
+        // @extend .display-flex;
+        // flex-direction: column;
+        // flex: 1;
 
         .task-wrapper {
-            @extend .display-flex;
-            flex-direction: column;
-            flex: 1;            
+            // @extend .display-flex;
+            // flex-direction: column;
+            // flex: 1;
+            @extend .full-size;
+            @extend .scroll;
+            padding: 1px 0;
         }
 
         .task-list-item {
@@ -202,8 +205,8 @@
             position: relative;
 
             &:hover {
-                background: #fff;
-                @include box-shadow(0 0 5px -2px #777);
+                background-color: rgba(255, 255, 255, 0.55);
+                @include box-shadow(0 0 10px rgba(0,0,0,.21));
 
                 &:before {
                     content: '';
@@ -238,13 +241,13 @@
         .col {
             display: inline-block;
             vertical-align: middle;
-            padding: 0 5px;
+            padding: 4px 5px 3px 5px;
             font-size: 12px;
         }
 
         .title {
             display: flex;
-            color: #565656;
+            color: rgba(0, 0, 0, 0.9);
             font-weight: bold;
             overflow: hidden;
             align-items: center;
@@ -252,16 +255,6 @@
             .task-name {
                 display: flex;
                 flex: 1;
-
-                // display: inline-block;
-                // vertical-align: middle;
-                // width: calc(100% - 300px);
-                // max-width: calc(100% - 300px);
-
-                // @media(max-width: 1024px) {
-                //     width: 100%;
-                //     max-width: 100%;
-                // }
 
                 span {
                     display: block;
@@ -276,10 +269,6 @@
 
             .tags {
                 display: flex;
-
-                // display: inline-block;
-                // vertical-align: middle;
-                // width: 295px;
 
                 @media(max-width: 1024px) {
                     display: none;
@@ -305,8 +294,9 @@
         }
 
         .projects {
-            font-weight: bold;
-            color: #565656;
+            font-weight: 600;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.7);
 
             div {
                 @extend .text-overflow;
@@ -352,7 +342,7 @@
                 border: 1px solid;
                 border-radius: 5px;
                 display: inline-block;
-                padding: 1px 10px;
+                padding: 2px 10px;
                 font-size: 10px;
                 text-transform: capitalize;
                 font-weight: bold;
@@ -418,6 +408,8 @@
                 height: 32px;
                 // float: left;
                 border-radius: 4px;
+                display: inline-block;
+                vertical-align: middle;
             }
         }
 
