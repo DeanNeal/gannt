@@ -426,6 +426,8 @@
             }
             else if(el.is('input') || el.is('select') || el.is('textarea')){
                 el.val(convertedValue || (convertedValue === 0 ? '0' : ''));
+            } else if(el.is('img')) {
+                el.attr('src', (el.data('host') || '') + convertedValue);
             }
             else {
             	//bind data-attr

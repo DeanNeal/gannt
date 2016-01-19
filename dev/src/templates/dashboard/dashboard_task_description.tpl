@@ -245,8 +245,7 @@
 				<li class="details-table_assignee">
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc">
-						<img src="http://195.138.79.46<%=avatar%>" alt="" width="32" height="32">
-
+						<img src="" alt="" width="32" height="32" data-host="http://134.249.143.42:84" name="avatar">
 						<div class="info">
 							<span class="name" name="taskusername"></span>
 							<span name="taskusername"></span>
@@ -321,13 +320,9 @@
 				<li class="details-table_tags">
 					<div class="details-table_term">Tags:</div>
 					<div class="details-table_desc">
-						<% if(obj['tasktagname']) { %>
-							<% _.each(obj['tasktagname'].split(','), function(tag) { %>
-								<span class="tag" title="<%=tag%>"><%=tag%></span>
-							<% }); %>
-						<% }  else { %>
-							<span class="tag" title="DummyTag">DummyTag</span>
-						<% } %>
+						<span class="tag" title="DummyTag">DummyTag</span>
+						<span class="tag" title="DummyTag">DummyTag</span>
+						<span class="tag" title="DummyTag">DummyTag</span>
 					</div>
 				</li>
 			</ul>
