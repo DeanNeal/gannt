@@ -23,9 +23,22 @@ var ContentView = BaseView.extend({
         this.model.on('change', this.onChange, this);
     },
     onRender: function() {
+        var self = this;
         this.modelBinder.bind(this.model, this.el);
-        this.getElement('.datepicker').datepicker({
-            dateFormat: "yy-mm-dd"
+        this.getElement('#task-date-start').datepicker({
+            dateFormat: "yy-mm-dd",
+            maxDate: this.model.get('date-finish'),
+            onSelect: function(selected) {
+                self.getElement('#task-date-finish').datepicker("option","minDate", selected)
+            }
+
+        });
+        this.getElement('#task-date-finish').datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: this.model.get('date-start'),
+            onSelect: function(selected) {
+                self.getElement('#task-date-start').datepicker("option","maxDate", selected)
+            }
         });
     },
     serialize: function(params) {
