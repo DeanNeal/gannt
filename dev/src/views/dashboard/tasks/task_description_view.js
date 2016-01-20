@@ -33,24 +33,22 @@ var ContentView = BaseView.extend({
             dateFormat: "yy-mm-dd",
             maxDate: this.model.get('date-finish'),
             onSelect: function(selected) {
+                $(this).change(); 
                 self.getElement('#task-date-finish').datepicker("option","minDate", selected)
             }
 
-        });
+        }).change();
         this.getElement('#task-date-finish').datepicker({
             dateFormat: "yy-mm-dd",
             minDate: this.model.get('date-start'),
             onSelect: function(selected) {
+                $(this).change(); 
                 self.getElement('#task-date-start').datepicker("option","maxDate", selected)
             }
         });
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
-    },
-    onChange: function(){
-        this.model.update_self().then(function(){
-        });
     },
     toggleFiles: function(e) {
         $(e.currentTarget).find('.files-preview').toggle();
@@ -78,7 +76,13 @@ var ContentView = BaseView.extend({
         this.getElement('.status-select').hide(); 
     },
     updateModel: function(model) {
-        this.model.set(model.attributes);
+        this.model = model;
+        this.model.on('change', this.onChange, this);
+        this.modelBinder.bind(this.model, this.el);
+    },
+    onChange: function(){
+        this.model.update_self().then(function(){
+        });
     },
     remove : function () {
         this.modelBinder.unbind();
