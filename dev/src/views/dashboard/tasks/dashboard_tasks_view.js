@@ -60,7 +60,7 @@ var TaskList = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 
-		this.preloaderView = this.addView(PreloaderView);
+		this.preloaderView = this.addView(PreloaderView, {}, '.preloader');
 
 		this.listenTo(this, 'disable:change', this.onDisableStage, this);
 		this.listenTo(this, 'enable:change', this.onEnableStage, this);
@@ -77,14 +77,14 @@ var TaskList = BaseView.extend({
 			self.collection = tasks;
 
 			if(self.taskItemView){			
-				self.getElement('.task-wrapper').empty();
+				self.getElement('.tasks-container').empty();
 				self.removeNestedView();
 				self.taskItemView.remove();
 			}
 
 			self.collection.each(function(model) {
 				self.taskItemView = self.addView(TaskListItem, {model: model});
-			    self.renderNestedView(self.taskItemView, '.task-wrapper');
+			    self.renderNestedView(self.taskItemView, '.tasks-container');
 			});
 
 			tasks.get_count().then(function(data){
