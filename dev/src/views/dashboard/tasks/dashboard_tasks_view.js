@@ -20,6 +20,7 @@ var TaskListItem = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.modelBinder = new Backbone.ModelBinder();
+		Backbone.on('global:click', this.onGlobalClick, this);
 	},
 	onRender: function() {
 	    this.modelBinder.bind(this.model, this.el);
@@ -27,13 +28,20 @@ var TaskListItem = BaseView.extend({
 	toggleStatusWindow: function (e) {
 		e.preventDefault();
 		e.stopPropagation();
+		
 		$(e.currentTarget).find('.status-select').toggle();
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
 		this.data.Helpers = Helpers;
 	},
+	onGlobalClick: function(e) {
+		var currentEl = $(e.target);
+		 if(!currentEl.parents().hasClass('status'))
+		 	this.getElement('.status-select').hide();
+	},
 	remove : function () {
+		Backbone.off('global:click', this.onGlobalClick, this);
 	    this.modelBinder.unbind();
 	}
 });

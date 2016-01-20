@@ -238,7 +238,26 @@
 				<li class="details-table_status">
 					<div class="details-table_term">Status:</div>
 					<div class="details-table_desc">
-						<span data-processing-name name="processing-name"></span>
+						<span class="details-table_desc_status" data-processing-name name="processing-name"></span>
+						<div class="status-select">
+							<ul>
+								<li>
+									<div class="status-select-item" data-processing-name="new">New</div>		
+								</li>
+								<li>
+									<div class="status-select-item" data-processing-name="proccesing">Proccesing</div>		
+								</li>
+								<li>
+									<div class="status-select-item" data-processing-name="send-back">Send Back</div>		
+								</li>
+								<li>
+									<div class="status-select-item" data-processing-name="completed">Completed</div>
+								</li>
+								<li>
+									<div class="status-select-item" data-processing-name="done">Done</div>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</li>
 
