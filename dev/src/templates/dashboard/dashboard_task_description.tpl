@@ -25,8 +25,8 @@
 	</div>
 
 	<div class="info-container full-size">
-		<div class="tabs-view">
-			<div class="tabs-view_header">
+		<div class="left-view">
+			<div class="left-view_header">
 				<ul>
 					<li data-active="true">
 						<a href="">Comments</a>
@@ -38,9 +38,9 @@
 				</ul>
 			</div>
 
-			<div class="tabs-view_content full-size">
-				<div class="tabs-view_comments full-size scroll">
-					<div class="tabs-view_comments-unit">
+			<div class="left-view_content full-size">
+				<div class="left-view_comments full-size scroll">
+					<div class="left-view_comments-unit">
 						<div class="comment clearfix">
 							<div class="comment-left">
 								<img class="avatar" src="build/img/avatar.png" alt="">
@@ -94,7 +94,7 @@
 							</div>
 						</div>
 
-						<div class="tabs-view_comments-unit">
+						<div class="left-view_comments-unit">
 							<div class="comment clearfix">
 								<div class="comment-left">
 									<img class="avatar" src="build/img/avatar.png" alt="">
@@ -150,7 +150,7 @@
 						</div>
 					</div>
 
-					<div class="tabs-view_comments-unit">
+					<div class="left-view_comments-unit">
 						<div class="comment clearfix">
 							<div class="comment-left">
 								<img class="avatar" src="build/img/avatar.png" alt="">
@@ -206,7 +206,7 @@
 					</div>
 				</div>
 
-				<div class="tabs-view_add-comment-form">
+				<div class="left-view_add-comment-form">
 					<svg class="icon icon-trash add-file">
 			            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
 			        </svg>
@@ -219,7 +219,7 @@
 			</div>
 		</div>
 
-		<div class="details-view">
+		<div class="right-view">
 			<ul class="details-table">
 				<li class="details-table_project">
 					<div class="details-table_term">Project:</div>

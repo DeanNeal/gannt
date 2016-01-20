@@ -694,3 +694,30 @@ body {
         transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
     }
 }
+
+.status-select {
+    position: absolute;
+    text-align: center;
+    top: 19px;
+    background-color: #f1f1f2;
+    display: none;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+
+    ul {
+        padding: 4px 0;
+    }
+
+    li {
+        padding: 4px 0;
+
+        &:hover {
+            background-color: #fff;
+        }
+
+        // & + li {
+        //     margin-top: 8px;
+        // }
+    }
+}

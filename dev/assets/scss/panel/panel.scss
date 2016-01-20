@@ -22,23 +22,47 @@
         margin-right: 10px;
         cursor: pointer;
     }
-}
 
-.tasks-edit {
-    .tabs-view,
-    .details-view {
+    .left-view,
+    .right-view {
         float: left;
         height: 100%;
     }
 
-    .tabs-view {
-        $self: tabs-view;
-
+    .left-view {
         width: 592px;
+    }
+
+    .right-view {
+        width: calc(100% - 592px);
+    }
+}
+
+.add-task-panel {
+    .left-view {
+        background-color: rgba(255, 255, 255, 0.22);
+
+        input,
+        textarea {
+            background-color: rgba(0, 0, 0, 0.07);
+            @include border-radius(3px);
+            outline: none;
+            border: 1px solid #d6d6d6;
+            @include box-shadow(none);
+            width: 100%;
+            font-family: "Open Sans", Arial;
+        }
+    }
+}
+
+.tasks-edit {
+    .left-view {
+        $self: left-view;
+
         position: relative;
         padding-top: 59px;
 
-        // .tabs-view_header
+        // .left-view_header
         &_header {
             position: absolute;
             top: 20px;
@@ -72,7 +96,7 @@
             }
         }
         
-        // .tabs-view_content
+        // .left-view_content
         &_content {
             position: relative;
             background-color: rgba(255, 255, 255, 0.5);
@@ -81,12 +105,12 @@
             border-right: 1px solid rgba(0, 0, 0, 0.14);
         }
 
-        // .tabs-view_comments
+        // .left-view_comments
         &_comments {
             /**/
         }
 
-        // .tabs-view_comments-unit
+        // .left-view_comments-unit
         &_comments-unit {
             .#{$self} {
                 &_comments-unit {
@@ -213,7 +237,7 @@
             }
         }
         
-        // .tabs-view_add-comment-form
+        // .left-view_add-comment-form
         &_add-comment-form {
             position: absolute;
             bottom: 10px;
@@ -249,17 +273,13 @@
         }
     }
 
-    .details-view {
-        width: calc(100% - 592px);
-    }
-
     .details-table {
         $self: details-table;
 
         width: 100%;
         padding: 61px 0 10px 0;
 
-        li {
+        & > li {
             display: inline-block;
             width: 100%;
 
@@ -337,6 +357,11 @@
                     color: #e7a765;
                     border-color: #e7a765;
                 }
+            }
+
+            .#{$self}_desc {
+                position: relative;
+                width: 95px;
             }
         }
         
