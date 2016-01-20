@@ -23,8 +23,8 @@
 		<div class="header_controls">
 			<div class="right-user-area">
 				<div class="right-user-area_unit">
-					<svg class="icon icon-envelope">
-			            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-envelope"></use>
+					<svg class="icon icon-search">
+			            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use>
 			        </svg>
 			    </div>
 

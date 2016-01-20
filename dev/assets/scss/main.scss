@@ -1,8 +1,9 @@
 @import "mixins";
 @import "variables";
+@import "dashboard/dashboard";
 @import "fonts/font-awesome";
 @import "header/header";
-@import "dashboard/dashboard";
+@import "panel/panel";
 @import "tree/tree";
 @import "stats/stats";
 @import "finance/finance";
