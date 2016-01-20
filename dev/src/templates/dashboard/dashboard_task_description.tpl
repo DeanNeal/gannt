@@ -232,7 +232,23 @@
 
 				<li class="details-table_priority">
 					<div class="details-table_term">Priority:</div>
-					<div class="details-table_desc" data-priority-name name="priority-name"></div>
+					<span class="details-table_desc_priority" data-priority-name name="priority-name"></span>
+					<div class="priority-select" style="display: none">
+						<ul>
+							<li>
+								<div class="priority-select-item" data-priority-name="critical">Critical</div>		
+							</li>
+							<li>
+								<div class="priority-select-item" data-priority-name="major">Major</div>		
+							</li>
+							<li>
+								<div class="priority-select-item" data-priority-name="minor">Minor</div>		
+							</li>
+							<li>
+								<div class="priority-select-item" data-priority-name="trivial">Trivial</div>
+							</li>
+						</ul>
+					</div>
 				</li>
 
 				<li class="details-table_status">

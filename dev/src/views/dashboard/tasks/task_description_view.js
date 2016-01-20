@@ -10,11 +10,13 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click .files'                     : "toggleFiles",
-        'click .see_more'                  : "openSeeMorePanel",
-        'click .close-see-more'            : "closeSeeMorePanel",
-        'click .details-table_desc_status' : "openStatus",
-        'click .status-select-item'        : "changeStatus"
+        'click .files'                       : "toggleFiles",
+        'click .see_more'                    : "openSeeMorePanel",
+        'click .close-see-more'              : "closeSeeMorePanel",
+        'click .details-table_desc_priority' : "openPriority",
+        'click .priority-select-item'        : "changePriority",
+        'click .details-table_desc_status'   : "openStatus",
+        'click .status-select-item'          : "changeStatus" 
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
@@ -60,6 +62,13 @@ var ContentView = BaseView.extend({
     closeSeeMorePanel: function() {
         this.removeNestedView(this.seeMoreView);
         this.seeMoreView = undefined;
+    },
+    openPriority: function(){
+        this.getElement('.priority-select').show();
+    },
+    changePriority: function(e){
+        this.model.set('priority-name', $(e.currentTarget).data('priority-name'));
+        this.getElement('.priority-select').hide(); 
     },
     openStatus: function(){
         this.getElement('.status-select').show();
