@@ -9,7 +9,9 @@ var Backbone              	  = require('backbone'),
     TaskCreateView            = require('views/dashboard/tasks/dashboard_tasks_add_task_view'),
     dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
     dashboardTasksListTpl     = require('templates/dashboard/dashboard_tasks_list.tpl'),
-    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl');
+    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl'),
+    PreloaderView             = require('views/preloader');
+
 
 var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
@@ -58,6 +60,8 @@ var TaskList = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 
+		this.preloaderView = this.addView(PreloaderView);
+
 		this.listenTo(this, 'disable:change', this.onDisableStage, this);
 		this.listenTo(this, 'enable:change', this.onEnableStage, this);
 		this.listenTo(this, 'taskView:close', this.closeEdit, this);
@@ -68,6 +72,7 @@ var TaskList = BaseView.extend({
 	updateTaskList: function(query){
 		var self = this;
 
+		this.preloaderView.show();
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
 			self.collection = tasks;
 
@@ -84,6 +89,7 @@ var TaskList = BaseView.extend({
 
 			tasks.get_count().then(function(data){
 				self.parent.trigger('pagination:update', data);
+				self.preloaderView.hide();
 			});
 
  		});

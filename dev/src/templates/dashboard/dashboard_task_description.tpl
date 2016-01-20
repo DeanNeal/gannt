@@ -280,7 +280,7 @@
 				<li class="details-table_assignee">
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc">
-						<img src="" alt="" width="32" height="32" data-host="http://134.249.143.42:84" name="avatar">
+						<img src="" alt="" width="32" height="32" data-host="http://195.138.79.46/" name="avatar">
 						<div class="info">
 							<span class="name" name="taskusername"></span>
 							<span name="taskusername"></span>
@@ -334,7 +334,7 @@
 				</li>
 
 				<li class="details-table_hours">
-					<div class="details-table_term">Spent hours:</div>
+					<div class="details-table_term">Estimated hours:</div>
 					<div class="details-table_desc">
 						<input type="text"  value="22">
 

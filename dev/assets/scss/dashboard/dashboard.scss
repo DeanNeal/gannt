@@ -187,6 +187,7 @@
     // .dashboard-table
     &-table {
         border-collapse: collapse;
+        position: relative;
         @extend .full-size;
         // @extend .display-flex;
         // flex-direction: column;
