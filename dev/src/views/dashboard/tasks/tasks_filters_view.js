@@ -22,7 +22,7 @@ var TasksFilterView = BaseView.extend({
 	defaults: {
 		filter: 'all',
 	 	sort: 'title',
-	 	page: '1'
+	    offset: 0
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -49,26 +49,28 @@ var TasksFilterView = BaseView.extend({
 
 		this.getElement('.custom-select').customSelect('refresh');
 	},
-	prevClick: function(tasks){
-		var page = parseInt(this.model.get('page') || 1);
+	prevClick: function(){
+		var offset = parseInt(this.model.get('offset') || 0);
 
-		if (page > 1)
-			page -= 1;
-		this.model.set('page', page);
+		if (offset >= this.countModel.get('perpage'))
+			offset -= parseInt(this.countModel.get('perpage'));
+		this.model.set('offset', offset);
 	},
-	nextClick: function(tasks){
-		var page = parseInt(this.model.get('page') || 1);
-		if(page < this.pagesCount)
-			page += 1;
-		this.model.set('page', page);
+	nextClick: function(){
+		var offset = parseInt(this.model.get('offset') || 0);
+
+ 	 	if(offset < (this.pagesCount - 1) * this.countModel.get('perpage'))
+			offset += parseInt(this.countModel.get('perpage'));
+		this.model.set('offset', offset);
 	},
 	changePage: function(e){
 		var pageId = $(e.currentTarget).data('page-id');
-		this.model.set('page', pageId);
+		this.model.set('offset', (pageId - 1) * this.countModel.get('perpage'));
 	},
 	updatePagination: function(countModel){
+		this.countModel = countModel;
 		this.pagesCount = Math.ceil(countModel.get('count') / countModel.get('perpage'));
-		this.paginationView.update(this.pagesCount, this.model.get('page'));
+		this.paginationView.update(this.pagesCount, Math.round(this.model.get('offset') / countModel.get('perpage') + 1));
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
