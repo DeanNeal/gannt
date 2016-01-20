@@ -1,9 +1,11 @@
 <div>
 	<div class="clearfix">
 		<div class="left-filters">
-			<svg class="btn-add-new icon icon-add">
-	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
-	        </svg>
+			<div class="btn-add-new">
+				<svg class="icon icon-add">
+		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
+		        </svg>
+			</div>
 
 			<div class="base-filters">
 				<input type="hidden" name="filter">

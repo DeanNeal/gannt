@@ -4,7 +4,7 @@ var Backbone             = require('backbone'),
     $                    = require('jquery');
 
 var ContentView = BaseView.extend({
-	className: 'panel add-task-panel',
+	className: 'panel',
 	template: tpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);

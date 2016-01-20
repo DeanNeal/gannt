@@ -7,7 +7,7 @@ var Backbone             = require('backbone'),
     PreloaderView        = require('views/preloader');
 
 var ContentView = BaseView.extend({
-	className: 'tasks-edit',
+	className: 'tasks-edit panel',
 	template: tpl,
 	events: {
 		'click .remove-btn'         : "deleteTask"
