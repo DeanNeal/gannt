@@ -283,7 +283,7 @@ body {
     &[data-search]{
         .custom-select-dropdown{
             padding: 10px 10px 20px 10px;
-            width: 250px;
+            width: 255px;
 
             ul {
                 margin-top: 10px;
@@ -293,6 +293,10 @@ body {
                     border-bottom: 1px solid #ddd;
                 }
             }
+        }
+
+        .icon {
+            font-size: 20px;
         }
     }
 
