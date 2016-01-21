@@ -265,7 +265,7 @@ body {
     max-width: 200px;
     cursor: pointer;
     border-bottom: 1px solid #bbb;
-    color: #b7b6b8;
+    color: rgba(0, 0, 0, 0.75);
     font-size: 14px;
 
     &-open {
@@ -422,6 +422,7 @@ body {
         width: 100%;
         display: none;
         max-width: 300px;
+        color: #000;
         
         // .custom-select-dropdown-search
         &-search {
