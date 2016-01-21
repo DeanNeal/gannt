@@ -16,11 +16,40 @@
 		</div>
 
 		<div class="tags">
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
 		</div>
 
 		<div class="left-view_control">
@@ -40,28 +69,20 @@
 			</li>
 
 			<li class="details-table_priority">
-				<span class="details-table_desc_priority" data-priority-name name="priority-name">Major</span>
+				<span class="details-table_desc_priority" data-priority-name="major" name="priority-name">Major</span>
 				<div class="priority-select" style="display: none">
 					<ul>
-						<li>
-							<div class="priority-select-item" data-priority-name="critical">Critical</div>		
-						</li>
-						<li>
-							<div class="priority-select-item" data-priority-name="major">Major</div>		
-						</li>
-						<li>
-							<div class="priority-select-item" data-priority-name="minor">Minor</div>		
-						</li>
-						<li>
-							<div class="priority-select-item" data-priority-name="trivial">Trivial</div>
-						</li>
+						<li><div class="priority-select-item" data-priority-name="critical">Critical</div></li>
+						<li><div class="priority-select-item" data-priority-name="major">Major</div></li>
+						<li><div class="priority-select-item" data-priority-name="minor">Minor</div></li>
+						<li><div class="priority-select-item" data-priority-name="trivial">Trivial</div></li>
 					</ul>
 				</div>
 			</li>
 
 			<li class="details-table_status">
 				<div class="details-table_desc">
-					<span class="details-table_desc_status" data-processing-name name="processing-name"></span>
+					<span class="details-table_desc_status" data-processing-name="new" name="processing-name">New</span>
 					<div class="status-select">
 						<ul>
 							<li>
