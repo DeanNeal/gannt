@@ -232,15 +232,15 @@
 
 				<li class="details-table_priority">
 					<div class="details-table_term">Priority:</div>
-					<div class="details-table_desc priorities-select custom-select" data-placeholder="High">
-						<input type="hidden" name="priority-name">
+					<div class="details-table_desc priorities-select custom-select priority">
+						<input class="custom-select-value" type="text" readOnly name="priority-name">
 			 		</div>
 				</li>
 
 				<li class="details-table_status">
 					<div class="details-table_term">Status:</div>
-					<div class="status-select custom-select" data-placeholder="New">
-						<input type="hidden" name="processing-name">
+					<div class="details-table_desc status-select custom-select">
+						<input class="custom-select-value" type="text" readOnly name="processing-name">
 			 		</div>
 				</li>
 

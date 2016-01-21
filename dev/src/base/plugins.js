@@ -67,25 +67,20 @@ $.fn.customSelect = function (options) {
 
 	return this.each(function () {
 		var $wrapper = $(this),
-		    $select  = $wrapper.find('select'),
-		    $input   = $wrapper.find('input'),
+		    $input   = $wrapper.find('.custom-select-value'),
 		    items    = [],
 		    data     = $wrapper.data();
 
-
 		//set current value or placeholder
 		if (settings.method == 'refresh') {
-			$wrapper.find('.custom-select-value').text($input.val() || data.placeholder);
-			if (!$wrapper[0].hasAttribute('data-search'))
-				$wrapper.find('.custom-select-container').attr('data-selected', $input.val() || data.placeholder.toLowerCase());
+			if($input.val())
+				$wrapper.attr('data-selected', $input.val());
 		}
 
 		if (settings.method == 'hide') {
 			customSelectArray.forEach(function (dropdown, i) {
-				if(dropdown.is($wrapper)){
-				//	dropdown.toggle();
+				if(dropdown.is($wrapper))
 					$wrapper.removeClass('custom-select-open');
-				}
 			});
 		}
 		//clear custom selects and destroy them
@@ -98,34 +93,26 @@ $.fn.customSelect = function (options) {
 
 		if (!settings.method) {
 			customSelectArray.push($wrapper);
-			$select.hide();
-
-			$select.find('option').each(function () {
-				items.push(this.value);
-			});
 
 			var tpl = _.template(customSelectTpl)({
 				value: $input.val(),
 				items: items,
 				name: $input.data('name'),
 				search: $wrapper[0].hasAttribute('data-search') || false,
-				placeholder: data.placeholder.toLowerCase()
+				placeholder: $input.attr('placeholder') ? $input.attr('placeholder').toLowerCase() : ''
 			});
 
 			$wrapper.append(tpl);
 
-			var $value     = $wrapper.find('.custom-select-value'),
-			    $list      = $wrapper.find('.custom-select-dropdown-list'),
+			var $list      = $wrapper.find('.custom-select-dropdown-list'),
 			    $dropdown  = $wrapper.find('.custom-select-dropdown'),
 			    $container = $wrapper.find('.custom-select-container'),
 			    $search    = $wrapper.find('.custom-select-dropdown-search');
 
-			//set current value or placeholder
-			$value
-				.text($input.val() || data.placeholder)
-				.attr('title', $input.val() || data.placeholder); 
+			if($input.val())
+			 	$wrapper.attr('data-selected', $input.val());
 
-			$wrapper.on('click', '.custom-select-value', function () {
+			$wrapper.on('click', 'input', function () {
 				customSelectArray.forEach(function (item) {
 					if (!$wrapper.is(item))
 						item.removeClass('custom-select-open');
@@ -145,15 +132,11 @@ $.fn.customSelect = function (options) {
 			$wrapper.on('click', '.custom-select-dropdown li', function () {
 
 				$input
-					.val($(this).data('id')) 
+					.val($(this).data('id'))
+					.attr('title', $(this).data('id'))
 					.change();
 
-				$value
-					.attr('title', $(this).data('text'));
-
-				if (!$wrapper[0].hasAttribute('data-search'))
-					$container.attr('data-selected', $(this).data('text'));
-
+				$wrapper.attr('data-selected', $(this).data('text'));
 				//hide all
 				customSelectArray.forEach(function (item) {
 					item.removeClass('custom-select-open');

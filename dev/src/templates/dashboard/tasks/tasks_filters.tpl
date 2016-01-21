@@ -16,16 +16,16 @@
 		</div>
 
 		<div class="right-filters">
-			<div id="projects-select" class="custom-select projects" data-search data-placeholder="Project">
-				<input type="hidden" name="project">
+			<div id="projects-select" class="custom-select projects" data-search>
+				<input class="custom-select-value" type="text" readOnly name="project" placeholder="Project">
 			</div>
 
-			<div id="milestones-select" class="custom-select milestones" data-search data-placeholder="Milestone">
-				<input type="hidden" name="milestone">
+			<div id="milestones-select" class="custom-select milestones" data-search>
+				<input class="custom-select-value" type="text" readOnly name="milestone" placeholder="Milestone">
 			</div>
 
-			<div id="priorities-select" class="custom-select priority" data-placeholder="High">
-				<input type="hidden" name="priority">
+			<div id="priorities-select" class="custom-select priority">
+				<input class="custom-select-value" type="text" readOnly name="priority" placeholder="Priority">
 	 		</div>
 			
 			<a class="btn-show-sort open-filter" href="">

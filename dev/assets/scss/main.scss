@@ -267,7 +267,6 @@ body {
     border-bottom: 1px solid #bbb;
     color: rgba(0, 0, 0, 0.75);
     font-size: 14px;
-
     &-open {
         // .custom-select-value
         .#{$self}-value {
@@ -314,34 +313,32 @@ body {
         // width: 100px;
         text-align: left;
 
+        &[data-selected]:before {
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            float: left;
+            background-repeat: no-repeat;
+        }
+        &[data-selected="critical"]:before {
+            background-image: url(../img/icon/icon-critical-small.svg);
+        }
+        
+        &[data-selected="high"]:before {
+            background-image: url(../img/icon/icon-high-small.svg);
+        }
+
+        &[data-selected="med"]:before {
+            background-image: url(../img/icon/icon-medium-small.svg);
+        }
+
+        &[data-selected="low"]:before {
+            background-image: url(../img/icon/icon-low-small.svg);
+        }
         .custom-select-container {
             text-transform: capitalize;
-            
-            &:before {
-                content: '';
-                display: inline-block;
-                width: 15px;
-                height: 15px;
-                margin-right: 5px;
-                float: left;
-                background-repeat: no-repeat;
-            }
-
-            &[data-selected="critical"]:before {
-                background-image: url(../img/icon/icon-critical-small.svg);
-            }
-            
-            &[data-selected="high"]:before {
-                background-image: url(../img/icon/icon-high-small.svg);
-            }
-
-            &[data-selected="med"]:before {
-                background-image: url(../img/icon/icon-medium-small.svg);
-            }
-
-            &[data-selected="low"]:before {
-                background-image: url(../img/icon/icon-low-small.svg);
-            }
         }
 
         li {
@@ -381,7 +378,10 @@ body {
         position: relative;
         // padding-right: 20px;
         // float: left;
-
+        text-transform: capitalize;
+        border: none;
+        cursor: pointer;
+        background: none;
         &:after {
             content: '';
             background-image: url(../img/icon/icon-rotation-small.svg);
@@ -704,9 +704,9 @@ body {
     position: absolute;
     text-align: center;
     top: 19px;
-    background-color: #f1f1f2;
+    // background-color: #f1f1f2;
     display: none;
-    z-index: 9999;
+    z-index: 1;
     left: 0;
     right: 0;
 

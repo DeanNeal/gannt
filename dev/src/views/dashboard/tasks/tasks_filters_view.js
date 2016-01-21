@@ -22,8 +22,7 @@ var TasksFilterView = BaseView.extend({
 	defaults: {
 		filter: 'all',
 	 	sort: 'title',
-	    offset: 0,
-	    'by-current': undefined
+	    offset: 0
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
