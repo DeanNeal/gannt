@@ -232,31 +232,16 @@
 
 				<li class="details-table_priority">
 					<div class="details-table_term">Priority:</div>
-					<span class="details-table_desc_priority" data-priority-name name="priority-name"></span>
-					<div class="custom-select priority-select" style="display: none">
-						<ul>
-							<li><div class="priority-select-item" data-priority-name="critical">Critical</div></li>
-							<li><div class="priority-select-item" data-priority-name="major">Major</div></li>
-							<li><div class="priority-select-item" data-priority-name="minor">Minor</div></li>
-							<li><div class="priority-select-item" data-priority-name="trivial">Trivial</div></li>
-						</ul>
-					</div>
+					<div class="priorities-select custom-select" data-placeholder="High">
+						<input type="hidden" name="priority-name">
+			 		</div>
 				</li>
 
 				<li class="details-table_status">
 					<div class="details-table_term">Status:</div>
-					<div class="details-table_desc">
-						<span class="details-table_desc_status" data-processing-name name="processing-name"></span>
-						<div class="custom-select status-select">
-							<ul>
-								<li><div class="status-select-item" data-processing-name="new">New</div></li>
-								<li><div class="status-select-item" data-processing-name="proccesing">Proccesing</div></li>
-								<li><div class="status-select-item" data-processing-name="send-back">Send Back</div></li>
-								<li><div class="status-select-item" data-processing-name="completed">Completed</div></li>
-								<li><div class="status-select-item" data-processing-name="done">Done</div></li>
-							</ul>
-						</div>
-					</div>
+					<div class="status-select custom-select" data-placeholder="New">
+						<input type="hidden" name="processing-name">
+			 		</div>
 				</li>
 
 				<li class="details-table_assignee">

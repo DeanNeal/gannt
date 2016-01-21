@@ -117,14 +117,14 @@
 			<li class="details-table_task">
 				<div class="details-table_desc">
 					<span class="icon-round"></span>
-					<span class="desc">Task</span>
+					<span class="desc" name="type">Task</span>
 				</div>
 			</li>
 
 			<li class="details-table_milestone">
 				<div class="details-table_desc" name="milestonename">
 <!-- 					<span class="icon-round-full"></span> -->
-					<span>+ Select Milestone</span>
+					<span name="milestonename">+ Select Milestone</span>
 				</div>
 			</li>
 

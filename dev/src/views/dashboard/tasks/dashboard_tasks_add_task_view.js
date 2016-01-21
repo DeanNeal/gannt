@@ -1,20 +1,51 @@
 var Backbone             = require('backbone'),
     BaseView             = require('views/baseview'),
     tpl                  = require('templates/dashboard/dashboard_tasks_add_task.tpl'),
-    $                    = require('jquery');
+    $                    = require('jquery'),
+    datepicker           = require('datepicker'),
+    NewTaskModel         = require('models/dashboard/new_task_model');
 
 var ContentView = BaseView.extend({
 	className: 'task-create panel',
 	template: tpl,
+	events: {
+		'click .btn-apply' : 'saveTask'
+	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
+		this.model = new NewTaskModel();
+		this.modelBinder = new Backbone.ModelBinder();
 		Backbone.on('global:click', this.onGlobalClick, this);
+	},
+	onRender: function(){
+		var self = this;
+		this.modelBinder.bind(this.model, this.el);
+		this.getElement('#task-date-start').datepicker({
+		    dateFormat: "yy-mm-dd",
+		    maxDate: new Date(this.model.get('date-finish')),
+		    onSelect: function(selected) {
+		        $(this).change(); 
+		        self.getElement('#task-date-finish').datepicker("option","minDate", selected)
+		    }
+
+		}).change();
+		this.getElement('#task-date-finish').datepicker({
+		    dateFormat: "yy-mm-dd",
+		    minDate: this.model.get('date-start'),
+		    onSelect: function(selected) {
+		        $(this).change(); 
+		        self.getElement('#task-date-start').datepicker("option","maxDate", selected)
+		    }
+		});
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
  
 		if(!currentEl.parents().hasClass('panel') && currentEl.parents().hasClass('task-list-item'))
 		  	this.parent.trigger('createView:close');
+	},
+	saveTask: function() {
+		this.collection;
 	},
 	remove: function(){
 		Backbone.off('global:click', this.onGlobalClick, this);

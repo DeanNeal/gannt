@@ -35,7 +35,6 @@ var ContentView = BaseView.extend({
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
-		console.log(123213);
 		 if(!currentEl.parents().hasClass('tasks-edit') && !currentEl.parents().hasClass('task-list-item'))
 		 	this.parent.trigger('taskView:close');
 	},

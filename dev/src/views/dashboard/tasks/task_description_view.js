@@ -47,6 +47,16 @@ var ContentView = BaseView.extend({
                 self.getElement('#task-date-start').datepicker("option","maxDate", selected)
             }
         });
+
+        this.getElement('.custom-select').customSelect({
+            url: this.api.catalog.get_list_task_priority,
+            template: 'customSelectListPriority'
+        });
+
+        // this.getElement('.status-select').customSelect({
+        //     url: this.api.catalog.get_list_task_priority,
+        //     template: 'customSelectListPriority'
+        // });
     },
     onGlobalClick: function(e) {
         var currentEl = $(e.target);
@@ -67,20 +77,20 @@ var ContentView = BaseView.extend({
         this.removeNestedView(this.seeMoreView);
         this.seeMoreView = undefined;
     },
-    openPriority: function(){
-        this.getElement('.priority-select').show();
-    },
-    changePriority: function(e){
-        this.model.set('priority-name', $(e.currentTarget).data('priority-name'));
-        this.getElement('.priority-select').hide(); 
-    },
-    openStatus: function(){
-        this.getElement('.status-select').show();
-    },
-    changeStatus: function(e){
-        this.model.set('processing-name', $(e.currentTarget).data('processing-name'));
-        this.getElement('.status-select').hide(); 
-    },
+    // openPriority: function(){
+    //     this.getElement('.priority-select').show();
+    // },
+    // changePriority: function(e){
+    //     this.model.set('priority-name', $(e.currentTarget).data('priority-name'));
+    //     this.getElement('.priority-select').hide(); 
+    // },
+    // openStatus: function(){
+    //     this.getElement('.status-select').show();
+    // },
+    // changeStatus: function(e){
+    //     this.model.set('processing-name', $(e.currentTarget).data('processing-name'));
+    //     this.getElement('.status-select').hide(); 
+    // },
     updateModel: function(model) {
         this.model = model;
         this.model.on('change', this.onChange, this);

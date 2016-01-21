@@ -144,7 +144,7 @@ var ContentView = BaseView.extend({
 	},
 	openCreateTask: function(){
 		if(!this.createView){
-			this.createView = this.addView(TaskCreateView);
+			this.createView = this.addView(TaskCreateView, {collection: this.taskList.collection});
 			this.renderNestedView(this.createView);
 		}
 	},

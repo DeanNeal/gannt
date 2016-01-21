@@ -48,9 +48,7 @@ let ModelFactory = {
                 // methods set
                 if (srcObj.links) {
                     srcObj.links.map(link => {
-                        methods.forEach(item=> {
-                            this[item.alias + '_' + link.id] = (args) => this.makeRequest(item.method, link.href, args)
-                        });
+                        this['get_' + link.id] = (args) => this.makeRequest('get', link.href, args)
                     });
                 }
             }
