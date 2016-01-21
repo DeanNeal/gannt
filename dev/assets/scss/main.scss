@@ -741,4 +741,11 @@ body {
     & + .tag {
         margin-left: 5px;
     }
+
+    .icon {
+        font-size: 6px;
+        margin-top: -2px;
+        cursor: pointer;
+        fill: #9a9a9a;
+    }
 }

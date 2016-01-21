@@ -17,11 +17,40 @@
 		</div>
 
 		<div class="tags">
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
-			<span class="tag" title="Title">Tag 1</span>
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
+
+			<span class="tag" title="Title">
+				Tag 1
+				<svg class="icon icon-close">
+			    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+				</svg>
+			</span>
 		</div>
 
 		<div class="left-view_control">
