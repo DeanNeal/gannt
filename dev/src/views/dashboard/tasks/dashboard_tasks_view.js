@@ -55,7 +55,7 @@ var TaskList = BaseView.extend({
 	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                      : 'changeTask',
-	    'click .close-panel'                              : 'closeEdit'
+	    'click .close-panel'                              : 'closeEditView'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -64,7 +64,7 @@ var TaskList = BaseView.extend({
 
 		this.listenTo(this, 'disable:change', this.onDisableStage, this);
 		this.listenTo(this, 'enable:change', this.onEnableStage, this);
-		this.listenTo(this, 'taskView:close', this.closeEdit, this);
+		this.listenTo(this, 'taskView:close', this.closeEditView, this);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
@@ -113,7 +113,7 @@ var TaskList = BaseView.extend({
 		this.events["click .task-list-item .row"] = "changeTask";
 		this.delegateEvents(this.events);
 	},
-	closeEdit: function(){
+	closeEditView: function(){
 		this.removeNestedView(this.editView);
 		this.editView = undefined;
 	}
@@ -123,13 +123,15 @@ var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter have-sort',
 	template: dashboardTpl,
 	events: {
-		'click .open-filter': 'toggleFilter',
-		'click .btn-add-new': 'openCreateTask'
+		'click .open-filter' : 'toggleFilter',
+		'click .btn-add-new' : 'openCreateTask',
+		'click .close-panel' : 'closeCreateView'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.taskList = this.addView(TaskList, {collection: {}}, '.task-list');
 		this.filter = this.addView(TasksFiltersView, {query: params.query}, '.filters-container');
+		this.listenTo(this, 'createView:close', this.closeCreateView, this);
 	},
 	onChangeParams: function(params){
 		this.taskList.updateTaskList(params.query);
@@ -145,6 +147,10 @@ var ContentView = BaseView.extend({
 			this.createView = this.addView(TaskCreateView);
 			this.renderNestedView(this.createView);
 		}
+	},
+	closeCreateView: function(){
+		this.removeNestedView(this.createView);
+		this.createView = undefined;
 	}
 	
 });

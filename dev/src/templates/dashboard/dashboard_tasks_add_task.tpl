@@ -1,4 +1,7 @@
 <div class="add-task-panel full-size">
+	<svg class="icon icon-close close-panel">
+    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+	</svg>
 	<div class="left-view">
 		<div class="subject">
 			<input type="text" placeholder="Subject">
@@ -31,13 +34,13 @@
 		<ul class="details-table">
 			<li class="details-table_project">
 				<div class="details-table_desc">
-					<div class="project-name" name="taskmaintagname">Pumpkin2 project</div>
-					<div class="company-name">Company: Dummy</div>
+					<div class="project-name" name="taskmaintagname">No project</div>
+<!-- 					<div class="company-name">Company: Dummy</div> -->
 				</div>
 			</li>
 
 			<li class="details-table_priority">
-				<span class="details-table_desc_priority" data-priority-name name="priority-name"></span>
+				<span class="details-table_desc_priority" data-priority-name name="priority-name">Major</span>
 				<div class="priority-select" style="display: none">
 					<ul>
 						<li>
@@ -85,8 +88,7 @@
 				<div class="details-table_desc">
 					<img src="" alt="" width="32" height="32" data-host="http://195.138.79.46/" name="avatar">
 					<div class="info">
-						<span class="name" name="taskusername"></span>
-						<span name="taskusername"></span>
+						<span class="name" name="taskusername">Assign to me</span>
 					</div>
 				</div>
 			</li>
@@ -100,7 +102,8 @@
 
 			<li class="details-table_milestone">
 				<div class="details-table_desc" name="milestonename">
-					<span class="icon-round-full"></span>
+<!-- 					<span class="icon-round-full"></span> -->
+					<span>+ Select Milestone</span>
 				</div>
 			</li>
 
@@ -110,14 +113,14 @@
 						<svg class="icon icon-calendar">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
 				        </svg>
-						<input type="text" id="task-date-start" class="datepicker" name="date-start">
+						<input type="text" id="task-date-start" class="datepicker" name="date-start" value="0000-00-00">
 					</div>
 					
 					<div>
 						<svg class="icon icon-calendar">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-calendar"></use>
 				        </svg>
-						<input type="text" id="task-date-finish" class="datepicker" name="date-finish">
+						<input type="text" id="task-date-finish" class="datepicker" name="date-finish" value="0000-00-00">
 					</div>
 				</div>
 			</li>

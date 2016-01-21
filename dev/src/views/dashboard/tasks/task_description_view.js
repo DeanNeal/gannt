@@ -25,13 +25,14 @@ var ContentView = BaseView.extend({
         this.modelBinder = new Backbone.ModelBinder();
 
         this.model.on('change', this.onChange, this);
+        Backbone.on('global:click', this.onGlobalClick, this);
     },
     onRender: function() {
         var self = this;
         this.modelBinder.bind(this.model, this.el);
         this.getElement('#task-date-start').datepicker({
             dateFormat: "yy-mm-dd",
-            maxDate: this.model.get('date-finish'),
+            maxDate: new Date(this.model.get('date-finish')),
             onSelect: function(selected) {
                 $(this).change(); 
                 self.getElement('#task-date-finish').datepicker("option","minDate", selected)
@@ -46,6 +47,11 @@ var ContentView = BaseView.extend({
                 self.getElement('#task-date-start').datepicker("option","maxDate", selected)
             }
         });
+    },
+    onGlobalClick: function(e) {
+        var currentEl = $(e.target);
+         if(!currentEl.parents().hasClass('custom-select'))
+            this.getElement('.custom-select').customSelect('hide');
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
