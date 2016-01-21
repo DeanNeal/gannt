@@ -232,7 +232,7 @@
 
 				<li class="details-table_priority">
 					<div class="details-table_term">Priority:</div>
-					<div class="priorities-select custom-select" data-placeholder="High">
+					<div class="details-table_desc priorities-select custom-select" data-placeholder="High">
 						<input type="hidden" name="priority-name">
 			 		</div>
 				</li>
