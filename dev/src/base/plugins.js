@@ -15,13 +15,17 @@ var api = Api.getInstance('/api/v1/system/catalog');
 
 class SetActiveState {
 	constructor(wrapper, param) {
-		var self = this;
+		let self = this;
 		this.wrapper = $(wrapper);
 		this.input = this.wrapper.find('input');
 		this.param = param;
 
 		this.wrapper.on('click', '.list-item', function () {
-			self.input.val($(this).data(self.param)).change();
+			let oldStr = $(this).data(self.param);
+			let string = (oldStr[0] == '-') ? oldStr.substr(1) : `-${oldStr}`;
+			$(this).data(self.param, string);
+
+			self.input.val(string).change();
 		});
 	}
 
