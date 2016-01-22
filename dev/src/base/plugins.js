@@ -78,7 +78,7 @@ $.fn.customSelect = function (options) {
 
 			if($input.val()){		
 				//$wrapper.attr('data-selected', $input.val());
-				//$value.text($input.val());
+				$value.text($value.text() || $input.val());
 			}
 			else
 				$value.text(placeholder);

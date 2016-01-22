@@ -3,7 +3,7 @@ var Backbone             = require('backbone'),
     tpl                  = require('templates/dashboard/dashboard_tasks_spent_hours_popup.tpl');
 
 var ContentView = BaseView.extend({
-	className: 'spent-hours-popup',
+	className: 'spent-hours',
 	template: tpl
 });
 
