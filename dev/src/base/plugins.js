@@ -130,10 +130,23 @@ $.fn.customSelect = function (options) {
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
-					settings.url().then(function (response) {
-						var tpl = _.template(templates[settings.template])(response);
-						$list.html(tpl);
+					settings.url().then(function (collection) {
+						var tpl = _.template(templates[settings.template])(collection);
+						$list.append(tpl);
 						//$list.mCustomScrollbar();
+
+						//LAZY LOAD
+						$list.on('scroll', function(){
+							if(collection.get_next){
+								if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+									collection.get_next().then(function(nextCollection){
+										collection = nextCollection;
+										var tpl = _.template(templates[settings.template])(nextCollection);
+										$list.append(tpl);
+									});				    
+								}
+							}
+						});
 					});
 				}
 			});
@@ -148,6 +161,7 @@ $.fn.customSelect = function (options) {
 				$value.text($(this).data('text'));
 				$wrapper.attr('data-selected', $(this).data('text'));
 
+				$list.empty();
 				//hide all
 				customSelectArray.forEach(function (item) {
 					item.removeClass('custom-select-open');
