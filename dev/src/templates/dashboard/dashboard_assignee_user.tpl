@@ -119,7 +119,7 @@
 
 		<div class="assignee-panel_controls">
 			<button>Apply</button>
-			<button>Close</button>
+			<button class="assignee-panel_close">Close</button>
 		</div>
 	</div>
 </div>

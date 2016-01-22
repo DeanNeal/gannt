@@ -4,7 +4,7 @@ var Backbone             = require('backbone'),
 
 var ContentView = BaseView.extend({
 	className: 'assigne-user',
-	template: tpl,
+	template: tpl
 });
 
 module.exports = ContentView;
