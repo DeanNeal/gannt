@@ -75,24 +75,30 @@ var ContentView = BaseView.extend({
         $(e.currentTarget).find('.files-preview').toggle();
     },
     openSeeMorePanel: function(){
-        this.seeMoreView = this.addView(SeeMorePanelView, {});
-        this.renderNestedView(this.seeMoreView);
+        if(!this.seeMoreView) {
+            this.seeMoreView = this.addView(SeeMorePanelView, {});
+            this.renderNestedView(this.seeMoreView);
+        }
     },
     closeSeeMorePanel: function() {
         this.removeNestedView(this.seeMoreView);
         this.seeMoreView = undefined;
     },
     openAssingeePanel: function() {
-        this.assigneeView = this.addView(AssigneePanelView, {});
-        this.renderNestedView(this.assigneeView);
+        if(!this.assigneeView) {
+            this.assigneeView = this.addView(AssigneePanelView, {});
+            this.renderNestedView(this.assigneeView);
+        }
     },
     closeAssingeePanel: function() {
         this.removeNestedView(this.assigneeView);
         this.assigneeView = undefined;
     },
     openSpentHoursPopup: function() {
-        this.spentHoursView = this.addView(SpentHoursPopupView, {});
-        this.renderNestedView(this.spentHoursView);
+        if(!this.spentHoursView) {
+            this.spentHoursView = this.addView(SpentHoursPopupView, {});
+            this.renderNestedView(this.spentHoursView);
+        }
     },
     updateModel: function(model) {
         this.model = model;
