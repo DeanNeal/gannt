@@ -64,6 +64,8 @@
 					<span><%=obj['milestonename']%></span>
 					<span class="deadline">Deadline: <%=obj['milestonedatefinish']%></span>
 			    </div>
+		    <% } else { %>
+				<span>+ Add Milestone</span>
 		    <% } %>
 		</div>
 	</div>
