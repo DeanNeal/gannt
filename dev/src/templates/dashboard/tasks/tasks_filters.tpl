@@ -40,7 +40,7 @@
 		</div>
 	</div>
 	
-	<div class="dashboard-table-header">	
+	<div class="dashboard-table-header">
 		<input type="hidden" name="sort">
 		<table>
 			<tbody>
