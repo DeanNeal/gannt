@@ -239,7 +239,7 @@
 
 				<li class="details-table_status">
 					<div class="details-table_term">Status:</div>
-					<div class="details-table_desc status-select custom-select">
+					<div class="details-table_desc custom-select">
 						<input class="custom-select-value" type="text" readOnly name="processing-name">
 			 		</div>
 				</li>
