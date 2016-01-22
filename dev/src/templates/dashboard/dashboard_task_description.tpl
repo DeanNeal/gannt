@@ -353,7 +353,7 @@
 				</div>
 			</div>
 
-			<div class="assignee-panel_wrap">
+			<div class="assignee-panel_wrap" style="display: none">
 				<div class="assignee-panel full-size">
 					<div class="assignee-panel_header">
 						<span>
