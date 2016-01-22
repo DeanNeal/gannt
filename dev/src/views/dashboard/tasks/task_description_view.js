@@ -67,8 +67,12 @@ var ContentView = BaseView.extend({
         var currentEl = $(e.target);
         if(!currentEl.parents().hasClass('custom-select'))
             this.getElement('.custom-select').customSelect('hide');
-        if(!currentEl.parents().hasClass('assigne-user') && !currentEl.parents().hasClass('open-assignee-panel'))
+
+        if(!currentEl.parents().hasClass('assignee-panel') && !currentEl.parents().hasClass('open-assignee-panel'))
             this.closeAssingeePanel();
+
+        if(!currentEl.parents().hasClass('spent-hours') && !currentEl.parents().hasClass('show-spent-hours-popup'))
+            this.closeSpentHoursPopup();
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
@@ -101,6 +105,10 @@ var ContentView = BaseView.extend({
             this.spentHoursView = this.addView(SpentHoursPopupView, {});
             this.renderNestedView(this.spentHoursView);
         }
+    },
+    closeSpentHoursPopup: function() {
+        this.removeNestedView(this.spentHoursView);
+        this.spentHoursView = undefined;
     },
     updateModel: function(model) {
         this.model = model;
