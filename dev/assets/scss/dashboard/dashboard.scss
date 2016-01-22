@@ -161,12 +161,20 @@
                         .icon {
                             color: #bebdbe;
                             font-size: 12px;
-                            @include rotate(90deg);
+                            display: none;
+                        }
+
+                        &[data-active="false"]{
+                            .icon {
+                                display: inline-block;
+                                @include rotate(90deg);
+                            }
                         }
 
                         &[data-active="true"]{
                             .icon {
-                                @include rotate(-90deg);       
+                                display: inline-block;
+                                @include rotate(-90deg);
                             }
                         }
 
