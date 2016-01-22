@@ -3,7 +3,7 @@ var Backbone             = require('backbone'),
     tpl                  = require('templates/dashboard/dashboard_assignee_user.tpl');
 
 var ContentView = BaseView.extend({
-	className: 'assigne-user',
+	className: 'assignee-panel',
 	template: tpl
 });
 
