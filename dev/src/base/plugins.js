@@ -22,10 +22,12 @@ class SetActiveState {
 
 		this.wrapper.on('click', '.list-item', function () {
 			let oldStr = $(this).data(self.param);
-			let string = (oldStr[0] == '-') ? oldStr.substr(1) : `-${oldStr}`;
-			$(this).data(self.param, string);
+			if (self.param == 'sort') {
+				oldStr = (oldStr[0] == '-') ? oldStr.substr(1) : `-${oldStr}`;
+				$(this).data(self.param, oldStr);
+			}
 
-			self.input.val(string).change();
+			self.input.val(oldStr).change();
 		});
 	}
 
@@ -35,7 +37,7 @@ class SetActiveState {
 class SetActiveStateAtList extends SetActiveState {
 	highLight() {
 		this.wrapper.
-		find('[data-' + this.param + '="' + this.input.val() + '"]').
+		find(`[data-${this.param}='${this.input.val()}']`).
 		    addClass('active').
 		    siblings().
 		    removeClass('active');
@@ -44,10 +46,9 @@ class SetActiveStateAtList extends SetActiveState {
 
 class SetActiveStateAtTable extends SetActiveState {
 	highLight() {
-		var item = this.wrapper.find('[data-' + this.param + '="' + this.input.val() + '"]');
-
-		item.siblings().removeAttr('data-active');
-		item.attr('data-active', true);
+		let oldStr = this.input.val();
+		let str = (oldStr[0] == '-') ? oldStr.substr(1) : oldStr;
+		this.wrapper.find(`[data-${this.param}='${str}']`).attr('data-active', `${(oldStr[0] != '-')}`).siblings().removeAttr('data-active');
 	}
 }
 
@@ -134,23 +135,10 @@ $.fn.customSelect = function (options) {
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
-					settings.url().then(function (collection) {
-						var tpl = _.template(templates[settings.template])(collection);
-						$list.append(tpl);
+					settings.url().then(function (response) {
+						var tpl = _.template(templates[settings.template])(response);
+						$list.html(tpl);
 						//$list.mCustomScrollbar();
-
-						//LAZY LOAD
-						$list.on('scroll', function(){
-							if(collection.get_next){
-								if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-									collection.get_next().then(function(nextCollection){
-										collection = nextCollection;
-										var tpl = _.template(templates[settings.template])(nextCollection);
-										$list.append(tpl);
-									});
-								}
-							}
-						});
 					});
 				}
 			});
@@ -165,7 +153,6 @@ $.fn.customSelect = function (options) {
 				$value.text($(this).data('text'));
 				$wrapper.attr('data-selected', $(this).data('text'));
 
-				$list.empty();
 				//hide all
 				customSelectArray.forEach(function (item) {
 					item.removeClass('custom-select-open');
