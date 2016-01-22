@@ -95,6 +95,7 @@ var ContentView = BaseView.extend({
         this.model = model;
         this.model.on('change', this.onChange, this);
         this.modelBinder.bind(this.model, this.el);
+        this.getElement('.custom-select').customSelect('refresh');
     },
     onChange: function(){
         this.model.update_self().then(function(){
