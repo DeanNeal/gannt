@@ -305,7 +305,7 @@
 					<div class="details-table_desc">
 						<input type="text"  value="22">
 
-						<svg class="icon icon-request">
+						<svg class="icon icon-request show-spent-hours-popup">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-request"></use>
 				        </svg>
 
@@ -351,19 +351,6 @@
 
 					<span>Delete</span>
 				</div>
-			</div>
-		</div>
-
-		<div class="spent-hours">
-			<textarea name="" id="" placeholder="Add some comment..."></textarea>
-
-			<div class="spent-hours_actual">
-				<span>Spent hours:</span>
-				<input type="text">
-			</div>
-
-			<div class="spent-hours_control">
-				<button>Submit</button>
 			</div>
 		</div>
 	</div>
