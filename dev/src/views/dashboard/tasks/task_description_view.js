@@ -1,11 +1,12 @@
-var Backbone          = require('backbone'),
-    $                 = require('jquery'),
-    datepicker        = require('datepicker'),
-    _                 = require('underscore'),
-    BaseView          = require('views/baseview'),
-    tpl               = require('templates/dashboard/dashboard_task_description.tpl'),
-    SeeMorePanelView  = require('views/dashboard/tasks/task_description_see_more_view'),
-    AssigneePanelView = require('views/dashboard/tasks/dashboard_assignee_user_view');
+var Backbone             = require('backbone'),
+    $                    = require('jquery'),
+    datepicker           = require('datepicker'),
+    _                    = require('underscore'),
+    BaseView             = require('views/baseview'),
+    tpl                  = require('templates/dashboard/dashboard_task_description.tpl'),
+    SeeMorePanelView     = require('views/dashboard/tasks/task_description_see_more_view'),
+    AssigneePanelView    = require('views/dashboard/tasks/dashboard_assignee_user_view'),
+    SpentHoursPopupView  = require('views/dashboard/tasks/dashboard_tasks_spent_hours_popup_view');
 
 var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
@@ -19,7 +20,8 @@ var ContentView = BaseView.extend({
         'click .details-table_desc_status'   : "openStatus",
         'click .status-select-item'          : "changeStatus",
         'click .open-assignee-panel'         : "openAssingeePanel",
-        'click .assignee-panel_close'         : "closeAssingeePanel"
+        'click .assignee-panel_close'        : "closeAssingeePanel",
+        'click .show-spent-hours-popup'      : "openSpentHoursPopup"
     },
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
@@ -89,6 +91,10 @@ var ContentView = BaseView.extend({
     closeAssingeePanel: function() {
         this.removeNestedView(this.assigneeView);
         this.assigneeView = undefined;
+    },
+    openSpentHoursPopup: function() {
+        this.spentHoursView = this.addView(SpentHoursPopupView, {});
+        this.renderNestedView(this.spentHoursView);
     },
     updateModel: function(model) {
         this.model = model;
