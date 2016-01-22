@@ -71,16 +71,23 @@ $.fn.customSelect = function (options) {
 
 	return this.each(function () {
 		var $wrapper = $(this),
-		    $input   = $wrapper.find('.custom-select-value'),
+		    $input   = $wrapper.find('.custom-select-input'),
+		    $value   = $wrapper.find('.custom-select-value'),
 		    items    = [],
-		    data     = $wrapper.data();
+		    data     = $wrapper.data(),
+		    placeholder = $input.attr('placeholder') ? $input.attr('placeholder').toLowerCase() : '';
 
 		//set current value or placeholder
 		if (settings.method == 'refresh') {
-			if($input.val())
-				$wrapper.attr('data-selected', $input.val());
-		}
 
+			if($input.val()){		
+				//$wrapper.attr('data-selected', $input.val());
+				$value.text($value.text() || $input.val());
+			}
+			else
+				$value.text(placeholder);
+		}
+ 
 		if (settings.method == 'hide') {
 			customSelectArray.forEach(function (dropdown, i) {
 				if(dropdown.is($wrapper))
@@ -103,7 +110,7 @@ $.fn.customSelect = function (options) {
 				items: items,
 				name: $input.data('name'),
 				search: $wrapper[0].hasAttribute('data-search') || false,
-				placeholder: $input.attr('placeholder') ? $input.attr('placeholder').toLowerCase() : ''
+				placeholder: placeholder
 			});
 
 			$wrapper.append(tpl);
@@ -113,10 +120,12 @@ $.fn.customSelect = function (options) {
 			    $container = $wrapper.find('.custom-select-container'),
 			    $search    = $wrapper.find('.custom-select-dropdown-search');
 
-			if($input.val())
+			if($input.val()){
 			 	$wrapper.attr('data-selected', $input.val());
+			 	$value.text($input.val());
+			}
 
-			$wrapper.on('click', 'input', function () {
+			$wrapper.on('click', '.custom-select-value', function () {
 				customSelectArray.forEach(function (item) {
 					if (!$wrapper.is(item))
 						item.removeClass('custom-select-open');
@@ -140,7 +149,9 @@ $.fn.customSelect = function (options) {
 					.attr('title', $(this).data('id'))
 					.change();
 
+				$value.text($(this).data('text'));
 				$wrapper.attr('data-selected', $(this).data('text'));
+
 				//hide all
 				customSelectArray.forEach(function (item) {
 					item.removeClass('custom-select-open');

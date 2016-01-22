@@ -43,7 +43,7 @@ var ContentView = BaseView.extend({
                 self.getElement('#task-date-finish').datepicker("option","minDate", selected)
             }
 
-        }).change();
+        });
         this.getElement('#task-date-finish').datepicker({
             dateFormat: "yy-mm-dd",
             minDate: this.model.get('date-start'),
@@ -67,6 +67,12 @@ var ContentView = BaseView.extend({
         var currentEl = $(e.target);
         if(!currentEl.parents().hasClass('custom-select'))
             this.getElement('.custom-select').customSelect('hide');
+
+        if(!currentEl.parents().hasClass('assignee-panel') && !currentEl.parents().hasClass('open-assignee-panel'))
+            this.closeAssingeePanel();
+
+        if(!currentEl.parents().hasClass('spent-hours') && !currentEl.parents().hasClass('show-spent-hours-popup'))
+            this.closeSpentHoursPopup();
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
@@ -75,24 +81,34 @@ var ContentView = BaseView.extend({
         $(e.currentTarget).find('.files-preview').toggle();
     },
     openSeeMorePanel: function(){
-        this.seeMoreView = this.addView(SeeMorePanelView, {});
-        this.renderNestedView(this.seeMoreView);
+        if(!this.seeMoreView) {
+            this.seeMoreView = this.addView(SeeMorePanelView, {});
+            this.renderNestedView(this.seeMoreView);
+        }
     },
     closeSeeMorePanel: function() {
         this.removeNestedView(this.seeMoreView);
         this.seeMoreView = undefined;
     },
     openAssingeePanel: function() {
-        this.assigneeView = this.addView(AssigneePanelView, {});
-        this.renderNestedView(this.assigneeView);
+        if(!this.assigneeView) {
+            this.assigneeView = this.addView(AssigneePanelView, {});
+            this.renderNestedView(this.assigneeView);
+        }
     },
     closeAssingeePanel: function() {
         this.removeNestedView(this.assigneeView);
         this.assigneeView = undefined;
     },
     openSpentHoursPopup: function() {
-        this.spentHoursView = this.addView(SpentHoursPopupView, {});
-        this.renderNestedView(this.spentHoursView);
+        if(!this.spentHoursView) {
+            this.spentHoursView = this.addView(SpentHoursPopupView, {});
+            this.renderNestedView(this.spentHoursView);
+        }
+    },
+    closeSpentHoursPopup: function() {
+        this.removeNestedView(this.spentHoursView);
+        this.spentHoursView = undefined;
     },
     updateModel: function(model) {
         this.model = model;

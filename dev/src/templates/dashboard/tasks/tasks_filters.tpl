@@ -17,15 +17,18 @@
 
 		<div class="right-filters">
 			<div id="projects-select" class="custom-select projects" data-search>
-				<input class="custom-select-value" type="text" readOnly name="project" placeholder="Project">
+				<span class="custom-select-value">Project</span>
+				<input class="custom-select-input" type="hidden" name="by-project[id]" placeholder="Project">
 			</div>
 
 			<div id="milestones-select" class="custom-select milestones" data-search>
-				<input class="custom-select-value" type="text" readOnly name="milestone" placeholder="Milestone">
+				<span class="custom-select-value">Milestone</span>
+				<input class="custom-select-input" type="hidden" name="by-milestone[id]" placeholder="Milestone">
 			</div>
 
 			<div id="priorities-select" class="custom-select priority">
-				<input class="custom-select-value" type="text" readOnly name="priority" placeholder="Priority">
+				<span class="custom-select-value">Priority</span>
+				<input class="custom-select-input" type="hidden" name="by-priority[id]" placeholder="Priority">
 	 		</div>
 			
 			<a class="btn-show-sort open-filter" href="">

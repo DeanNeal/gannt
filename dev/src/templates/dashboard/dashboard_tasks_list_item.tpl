@@ -59,16 +59,13 @@
 	<div class="col milestone">
 		<div class="info">
 			<% if(obj['milestonename']) { %>
-				<!-- <svg class="icon icon-trash">
-			        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-			    </svg> -->
-
 			    <span class="icon-round-full"></span>
-
 			    <div>
 					<span><%=obj['milestonename']%></span>
 					<span class="deadline">Deadline: <%=obj['milestonedatefinish']%></span>
 			    </div>
+		    <% } else { %>
+				<span>+ Add Milestone</span>
 		    <% } %>
 		</div>
 	</div>
