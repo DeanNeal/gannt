@@ -41,7 +41,7 @@ var ContentView = BaseView.extend({
                 self.getElement('#task-date-finish').datepicker("option","minDate", selected)
             }
 
-        }).change();
+        });
         this.getElement('#task-date-finish').datepicker({
             dateFormat: "yy-mm-dd",
             minDate: this.model.get('date-start'),
@@ -65,6 +65,8 @@ var ContentView = BaseView.extend({
         var currentEl = $(e.target);
         if(!currentEl.parents().hasClass('custom-select'))
             this.getElement('.custom-select').customSelect('hide');
+        if(!currentEl.parents().hasClass('assigne-user') && !currentEl.parents().hasClass('open-assignee-panel'))
+            this.closeAssingeePanel();
     },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);

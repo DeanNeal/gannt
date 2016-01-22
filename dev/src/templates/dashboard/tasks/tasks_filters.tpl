@@ -21,7 +21,7 @@
 			</div>
 
 			<div id="milestones-select" class="custom-select milestones" data-search>
-				<input class="custom-select-value" type="text" readOnly name="milestone" placeholder="Milestone">
+				<input class="custom-select-value" type="text" readOnly name="by-milestone[id]" placeholder="Milestone">
 			</div>
 
 			<div id="priorities-select" class="custom-select priority">
