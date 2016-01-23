@@ -20,7 +20,7 @@ var TasksFilterView = BaseView.extend({
 		'click .pagination_pages span' : "changePage"
 	},
 	defaults: {
-		filter: 'all',
+		filter: 'my_tasks',
 	 	sort: 'title',
 	    offset: 0
 	},
@@ -79,17 +79,20 @@ var TasksFilterView = BaseView.extend({
 
 		this.getElement('#projects-select').customSelect({
 			url: this.api.catalog.get_dashboard_product,
-			template: 'customSelectListTpl'
+			template: 'customSelectListTpl',
+			initialState: true
 		});
 		
 		this.getElement('#milestones-select').customSelect({
 			url: this.api.catalog.get_dashboard_milestones,
-			template: 'customSelectListTpl'
+			template: 'customSelectListTpl',
+			initialState: true
 		});
 		
 		this.getElement('#priorities-select').customSelect({
 			url: this.api.catalog.get_list_task_priority,
-			template: 'customSelectListPriority'
+			template: 'customSelectListPriority',
+			initialState: true
 		});
 	},
 	serialize: function () {

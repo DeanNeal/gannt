@@ -58,10 +58,9 @@ var customSelectArray = [];
 
 $.fn.customSelect = function (options) {
 
-	// var method = method;
-
-	if (typeof options === 'object')
+	if (typeof options === 'object'){
 		options = options;
+	}
 	if (typeof options === 'string') {
 		options = {
 			method: options
@@ -71,24 +70,30 @@ $.fn.customSelect = function (options) {
 	var settings = $.extend(true, {}, $.fn.customSelect.defaults, options);
 
 	return this.each(function () {
+		var self = this;
+		if(options.url)
+			this.url = options.url;
+
 		var $wrapper = $(this),
 		    $input   = $wrapper.find('.custom-select-input'),
 		    $value   = $wrapper.find('.custom-select-value'),
-		    items    = [],
 		    data     = $wrapper.data(),
 		    placeholder = $input.attr('placeholder') ? $input.attr('placeholder').toLowerCase() : '';
 
 		//set current value or placeholder
 		if (settings.method == 'refresh') {
-
+			//update value and data-selected when model has changed
 			if($input.val()){		
-				//$wrapper.attr('data-selected', $input.val());
-				$value.text($value.text() || $input.val());
-			}
-			else
+				this.url($input.val()).then(function(model){
+					$wrapper.attr('data-selected', model.get('name'));
+					$value.text(model.get('name'));
+				});
+			} else {
+				$wrapper.removeAttr('data-selected');
 				$value.text(placeholder);
+			}
 		}
- 
+ 		//hide current dropdown
 		if (settings.method == 'hide') {
 			customSelectArray.forEach(function (dropdown, i) {
 				if(dropdown.is($wrapper))
@@ -103,12 +108,12 @@ $.fn.customSelect = function (options) {
 			});
 		}
 
+		//initialization
 		if (!settings.method) {
 			customSelectArray.push($wrapper);
 
 			var tpl = _.template(customSelectTpl)({
 				value: $input.val(),
-				items: items,
 				name: $input.data('name'),
 				search: $wrapper[0].hasAttribute('data-search') || false,
 				placeholder: placeholder
@@ -121,9 +126,9 @@ $.fn.customSelect = function (options) {
 			    $container = $wrapper.find('.custom-select-container'),
 			    $search    = $wrapper.find('.custom-select-dropdown-search');
 
-			if($input.val()){
-			 	$wrapper.attr('data-selected', $input.val());
-			 	$value.text($input.val());
+			if(!settings.initialState){
+				$wrapper.attr('data-selected', $input.val());
+				$value.text($input.val());
 			}
 
 			$wrapper.on('click', '.custom-select-value', function () {
@@ -135,10 +140,22 @@ $.fn.customSelect = function (options) {
 				$wrapper.toggleClass('custom-select-open');
 
 				if ($dropdown.is(':visible')) {
-					settings.url().then(function (response) {
-						var tpl = _.template(templates[settings.template])(response);
+					self.url().then(function (collection) {
+						var tpl = _.template(templates[settings.template])(collection);
 						$list.html(tpl);
-						//$list.mCustomScrollbar();
+			
+						//LAZY LOAD
+						$list.on('scroll', function(){
+							if(collection.get_next){
+								if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+									collection.get_next().then(function(nextCollection){
+										collection = nextCollection;
+										var tpl = _.template(templates[settings.template])(nextCollection);
+										$list.append(tpl);
+									});				    
+								}
+							}
+						});
 					});
 				}
 			});
@@ -147,7 +164,6 @@ $.fn.customSelect = function (options) {
 
 				$input
 					.val($(this).data('id'))
-					.attr('title', $(this).data('id'))
 					.change();
 
 				$value.text($(this).data('text'));
@@ -173,5 +189,16 @@ $.fn.customSelect = function (options) {
 $.fn.customSelect.defaults = {
 	url: ''
 };
+
+
+
+
+var CustomSelect = function () {
+
+}
+
+
+
+
 
 export {SetActiveStateAtList, SetActiveStateAtTable};

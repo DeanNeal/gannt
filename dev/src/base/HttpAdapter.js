@@ -32,7 +32,7 @@ export default function (url) {
         // Dummy code REMOVE on production
         let uri = testPath + options.url;
 
-        if (options.args) {
+        if (options.args && typeof options.args === "object") {
             uri += '?';
             let argCount = 0;
             for (let key in options.args) {
@@ -43,6 +43,8 @@ export default function (url) {
                     uri += encodeURIComponent(key) + '=' + encodeURIComponent(options.args[key]);
                 }
             }
+        } else if (typeof options.args === "string") {
+            uri += '/by-id[id]=' + options.args;
         }
 
         client.withCredentials = true;
