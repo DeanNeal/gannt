@@ -87,11 +87,8 @@ var TaskList = BaseView.extend({
 			    self.renderNestedView(self.taskItemView, '.tasks-container');
 			});
 
-			tasks.get_count().then(function(data){
-				self.parent.trigger('pagination:update', data);
-				self.preloaderView.hide();
-			});
-
+			self.parent.trigger('pagination:update', tasks.get_extra_data);
+			self.preloaderView.hide();
  		});
 	},
 	changeTask: function(e){
