@@ -1,3 +1,4 @@
+var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
 var Api = require('base/api');
@@ -84,7 +85,12 @@ $.fn.customSelect = function (options) {
 		if (settings.method == 'refresh') {
 			//update value and data-selected when model has changed
 			if($input.val()){		
-				this.url($input.val()).then(function(model){
+				this.url($input.val()).then(function(response){
+					if(response instanceof Backbone.Collection)
+						var model = response.at(0);
+					else 
+						var model = response;
+
 					$wrapper.attr('data-selected', model.get('name'));
 					$value.text(model.get('name'));
 				});

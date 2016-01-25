@@ -18,7 +18,7 @@
 
 import * as _ from 'underscore';
 
-let testPath = 'http://134.249.143.42:84';
+let testPath = 'http://195.138.79.46/';
 
 export default function (url) {
 
@@ -44,7 +44,7 @@ export default function (url) {
                 }
             }
         } else if (typeof options.args === "string") {
-            uri += '/by-id[id]=' + options.args;
+            uri += '&by-id[id]=' + options.args;
         }
 
         client.withCredentials = true;
