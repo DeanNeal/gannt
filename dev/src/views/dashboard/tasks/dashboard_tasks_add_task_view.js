@@ -40,8 +40,9 @@ var ContentView = BaseView.extend({
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
- 
-		if(!currentEl.parents().hasClass('panel') && currentEl.parents().hasClass('task-list-item'))
+ 		if(currentEl.hasClass('btn-add-new') || currentEl.hasClass('icon-add'))
+ 			return;
+		if(!currentEl.parents().hasClass('task-create'))
 		  	this.parent.trigger('createView:close');
 	},
 	saveTask: function() {
