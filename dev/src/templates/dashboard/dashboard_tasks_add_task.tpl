@@ -68,7 +68,7 @@
 			</li>
 
 			<li class="details-table_priority">
-				<div class="details-table_desc priorities-select custom-select priority">
+				<div class="details-table_desc priorities-select custom-select custom-select-base priority">
 					<span class="custom-select-value"></span>
 					<input class="custom-select-input" type="hidden" name="priority-name">
 		 		</div>

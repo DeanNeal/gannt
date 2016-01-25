@@ -420,19 +420,19 @@ body {
                     float: left;
                 }
 
-                &[data-id="critical"]:before {
+                &[data-text="critical"]:before {
                     background: url(../img/icon/icon-critical-small.svg);
                 }
 
-                &[data-id="high"]:before {
+                &[data-text="high"]:before {
                     background: url(../img/icon/icon-high-small.svg);
                 }
 
-                &[data-id="med"]:before {
+                &[data-text="med"]:before {
                     background: url(../img/icon/icon-medium-small.svg);
                 }
 
-                &[data-id="low"]:before {
+                &[data-text="low"]:before {
                     background: url(../img/icon/icon-low-small.svg);
                 }
             }
