@@ -825,6 +825,7 @@ body {
     background-image: -o-linear-gradient(49deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%);
     background-image: -webkit-linear-gradient(49deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%);
     background-image: linear-gradient(41deg, #e7e7ea 10%, #ebe9e9 50.94%, #e7e9eb 90%);
+    @include box-shadow(-1px 0 10px #000);
     
     // .assignee-panel_header
     // .assignee-panel_controls

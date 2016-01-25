@@ -484,22 +484,16 @@
         &_content {
             position: relative;
             background-color: rgba(255, 255, 255, 0.5);
-            padding-bottom: 90px;
-            padding-top: 20px;
             border-right: 1px solid rgba(0, 0, 0, 0.14);
-        }
+            padding-top: 20px;
 
-        // .left-view_comments
-        &_comments {
-            /**/
-        }
+            .comments {
+                padding-bottom: 95px;
+                display: none;
+            }
 
-        // .left-view_comments-unit
-        &_comments-unit {
-            .#{$self} {
-                &_comments-unit {
-                    margin-left: 52px;
-                }
+            .status-report {
+                padding-bottom: 80px;
             }
         }
 
@@ -623,10 +617,12 @@
         
         // .left-view_add-comment-form
         &_add-comment-form {
-            position: absolute;
-            bottom: 10px;
-            left: 20px;
-            right: 20px;
+            // position: absolute;
+            // bottom: 10px;
+            // left: 20px;
+            // right: 20px;
+            position: relative;
+            padding: 0 20px;
 
             .icon {
                 font-size: 15px;
@@ -654,6 +650,16 @@
                 display: block;
                 border: 1px solid #d6d6d6;
             }
+        }
+
+        &_request-status {
+            text-align: center;
+            background: #fff;
+            padding: 20px 0 30px 0;
+            // position: absolute;
+            // bottom: 0;
+            // left: 0;
+            // right: 0;
         }
     }
 
@@ -747,6 +753,19 @@
 
         &.finish:before {
             color: #FF7078;
+        }
+    }
+
+    .btn-request {
+        color: #6458a0;
+        font-size: 14px;
+        font-weight: bold;
+        @include border-radius(25px);
+        border: 3px solid #81589f;
+        padding: 8px 20px;
+
+        .icon {
+            font-size: 15px;
         }
     }
 }
