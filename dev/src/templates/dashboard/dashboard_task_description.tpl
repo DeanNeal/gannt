@@ -29,7 +29,7 @@
 			<div class="left-view_header">
 				<ul>
 					<li data-active="true">
-						<a href="">Comments</a>
+						<a href="javascript:void(0)">Comments</a>
 					</li>
 
 					<li>
