@@ -80,15 +80,16 @@ var ContentView = BaseView.extend({
             }
         });
 
-        this.getElement('.custom-select').customSelect({
+        this.getElement('.priorities-select').customSelect({
             url: this.api.catalog.get_list_task_priority,
             template: 'customSelectListPriority'
         });
 
-        // this.getElement('.status-select').customSelect({
-        //     url: this.api.catalog.get_list_task_priority,
-        //     template: 'customSelectListPriority'
-        // });
+        this.getElement('.custom-select-status').customSelect({
+            url: this.api.catalog.get_list_task_status,
+            template: 'customSelectListPriority'
+        });
+
             // массив для шаблонизатора форм.
         // var restrict = { 
         //     'date-start': { 
