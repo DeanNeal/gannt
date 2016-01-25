@@ -82,8 +82,11 @@
 
 			<li class="details-table_status">
 				<div class="details-table_desc">
-					<span class="details-table_desc_status" data-processing-name="new" name="processing-name">New</span>
-					<div class="status-select">
+					<span class="details-table_desc_status" data-processing-name="new">New</span>
+					<span class="details-table_desc_status" data-processing-name="completed">Completed</span>
+					<span class="details-table_desc_status" data-processing-name="done">Done</span> 
+					<span class="details-table_desc_status" data-processing-name="send-back">Send Back</span>
+<!-- 					<div class="status-select">
 						<ul>
 							<li>
 								<div class="status-select-item" data-processing-name="new">New</div>		
@@ -101,7 +104,7 @@
 								<div class="status-select-item" data-processing-name="done">Done</div>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 			</li>
 
