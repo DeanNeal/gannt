@@ -81,6 +81,12 @@ var Helpers = {
         //noinspection JSDuplicatedDeclaration
         var date = new Date(date.replace(' ', 'T'));
         return date.toLocaleDateString('en-GB');
+    },
+
+    initRestrict: function(restrict, form){
+        for (var value  in restrict) { 
+          $(form).find(`[name='${value}']`).attr(restrict[value]);
+        }
     }
 
 };

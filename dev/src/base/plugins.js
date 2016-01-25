@@ -74,6 +74,8 @@ $.fn.customSelect = function (options) {
 		var self = this;
 		if(options.url)
 			this.url = options.url;
+		if(options.initialState)
+			this.initialState = options.initialState;
 
 		var $wrapper = $(this),
 		    $input   = $wrapper.find('.custom-select-input'),
@@ -84,16 +86,21 @@ $.fn.customSelect = function (options) {
 		//set current value or placeholder
 		if (settings.method == 'refresh') {
 			//update value and data-selected when model has changed
-			if($input.val()){		
-				this.url($input.val()).then(function(response){
-					if(response instanceof Backbone.Collection)
-						var model = response.at(0);
-					else 
-						var model = response;
+			if($input.val()){
+				if(!this.initialState){
+					$wrapper.attr('data-selected', $input.val());
+					$value.text($input.val());
+				} else {				
+					this.url($input.val()).then(function(response){
+						if(response instanceof Backbone.Collection)
+							var model = response.at(0);
+						else 
+							var model = response;
 
-					$wrapper.attr('data-selected', model.get('name'));
-					$value.text(model.get('name'));
-				});
+						$wrapper.attr('data-selected', model.get('name'));
+						$value.text(model.get('name'));
+					});
+				}
 			} else {
 				$wrapper.removeAttr('data-selected');
 				$value.text(placeholder);

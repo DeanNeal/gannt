@@ -1,4 +1,5 @@
 var Backbone             = require('backbone'),
+    Helpers              = require('base/helpers'),
     $                    = require('jquery'),
     datepicker           = require('datepicker'),
     _                    = require('underscore'),
@@ -64,6 +65,17 @@ var ContentView = BaseView.extend({
         //     url: this.api.catalog.get_list_task_priority,
         //     template: 'customSelectListPriority'
         // });
+            // массив для шаблонизатора форм.
+        var restrict = { 
+            'date-start': { 
+                disabled : false,
+                readonly : false,
+                visible   : false,  
+                title : 'Fuck' ,
+                placeholder: 'qweqw'
+            }
+        };
+        Helpers.initRestrict(restrict, this.el);
     },
     onGlobalClick: function(e) {
         var currentEl = $(e.target);
