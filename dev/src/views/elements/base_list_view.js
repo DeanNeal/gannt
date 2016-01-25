@@ -16,6 +16,11 @@ var listItemView = BaseView.extend({
 
         BaseView.prototype.onInitialize.call(this, params);
         this.modelBinder = new Backbone.ModelBinder();
+        
+        if(this.model.get('active'))
+            this.model.set({
+                'isSelected': true
+            });
     },
     onRender: function() {
         var bindings = {
@@ -30,7 +35,7 @@ var listItemView = BaseView.extend({
         this.data = _.clone(this.model.attributes);
     },
     onClick: function() {
-        if(this.model.get('disabled') == false){
+        if(!this.model.get('disabled')){
             this.model.set({
                 'isSelected': true
             });
