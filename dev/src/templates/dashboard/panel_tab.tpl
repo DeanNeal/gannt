@@ -1,0 +1,1 @@
+<span class="<%=className%> menu-item"><%=name%></span>
