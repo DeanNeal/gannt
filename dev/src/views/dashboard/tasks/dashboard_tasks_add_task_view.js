@@ -28,7 +28,7 @@ var ContentView = BaseView.extend({
 		        self.getElement('#task-date-finish').datepicker("option","minDate", selected)
 		    }
 
-		}).change();
+		});
 		this.getElement('#task-date-finish').datepicker({
 		    dateFormat: "yy-mm-dd",
 		    minDate: this.model.get('date-start'),
@@ -37,11 +37,21 @@ var ContentView = BaseView.extend({
 		        self.getElement('#task-date-start').datepicker("option","maxDate", selected)
 		    }
 		});
+
+		this.getElement('.custom-select').customSelect({
+		    url: this.api.catalog.get_list_task_priority,
+		    template: 'customSelectListPriority'
+		});
+
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
  		if(currentEl.hasClass('btn-add-new') || currentEl.hasClass('icon-add'))
  			return;
+
+ 		if(!currentEl.parents().hasClass('custom-select'))
+ 		    this.getElement('.custom-select').customSelect('hide');
+ 		
 		if(!currentEl.parents().hasClass('task-create'))
 		  	this.parent.trigger('createView:close');
 	},

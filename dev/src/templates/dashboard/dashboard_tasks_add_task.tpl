@@ -68,15 +68,10 @@
 			</li>
 
 			<li class="details-table_priority">
-				<span class="details-table_desc_priority" data-priority-name="major" name="priority-name">Major</span>
-				<div class="priority-select" style="display: none">
-					<ul>
-						<li><div class="priority-select-item" data-priority-name="critical">Critical</div></li>
-						<li><div class="priority-select-item" data-priority-name="major">Major</div></li>
-						<li><div class="priority-select-item" data-priority-name="minor">Minor</div></li>
-						<li><div class="priority-select-item" data-priority-name="trivial">Trivial</div></li>
-					</ul>
-				</div>
+				<div class="details-table_desc priorities-select custom-select priority">
+					<span class="custom-select-value"></span>
+					<input class="custom-select-input" type="hidden" name="priority-name">
+		 		</div>
 			</li>
 
 			<li class="details-table_status">
