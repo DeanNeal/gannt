@@ -7,6 +7,6 @@
 	</div>
 
 	<div class="spent-hours_control">
-		<button>Submit</button>
+		<button class="btn">Submit</button>
 	</div>
 </div>
