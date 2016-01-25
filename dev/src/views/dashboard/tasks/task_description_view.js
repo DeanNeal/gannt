@@ -31,6 +31,8 @@ var ContentView = BaseView.extend({
 
         this.model.on('change', this.onChange, this);
         Backbone.on('global:click', this.onGlobalClick, this);
+
+        this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
     },
     onRender: function() {
         var self = this;
@@ -100,6 +102,10 @@ var ContentView = BaseView.extend({
         this.removeNestedView(this.assigneeView);
         this.assigneeView = undefined;
     },
+    onAssingeeApply: function(text){
+        this.model.set('taskusername', text);
+        this.closeAssingeePanel();
+    },  
     openSpentHoursPopup: function() {
         if(!this.spentHoursView) {
             this.spentHoursView = this.addView(SpentHoursPopupView, {});
