@@ -85,7 +85,7 @@ body {
     padding-bottom: 40px;
 
     &.have-filter {
-        padding-top: 77px;
+        padding-top: 80px;
         // padding-top: 118px;
     }
 
@@ -732,7 +732,7 @@ body {
     position: absolute;
     text-align: center;
     top: 19px;
-    // background-color: #f1f1f2;
+    background-color: #f1f1f2;
     display: none;
     z-index: 1;
     left: 0;
@@ -824,6 +824,7 @@ body {
     &_search {
         position: relative;
         margin-top: 30px;
+        padding: 0 20px;
 
         input {
             outline: none;
@@ -875,6 +876,8 @@ body {
     
     // .assignee-panel_conten
     &_content {
+        padding: 30px 20px;
+
         li {
             & + li {
                 margin-top: 15px;
@@ -886,6 +889,19 @@ body {
                 display: inline-block;
                 vertical-align: middle;
             }
+
+            img {
+                @include border-radius(4px);
+            }
+        }
+    }
+
+    .user-data {
+        color: #25212d; /* text color */
+        font-size: 14px;
+
+        .name {
+            font-weight: 600;
         }
     }
 }

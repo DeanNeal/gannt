@@ -139,10 +139,15 @@ $.fn.customSelect = function (options) {
 				
 				$wrapper.toggleClass('custom-select-open');
 
+
+				$list.off('scroll');
 				if ($dropdown.is(':visible')) {
+					$list.scrollTop(0).empty();
 					self.url().then(function (collection) {
 						var tpl = _.template(templates[settings.template])(collection);
 						$list.html(tpl);
+
+						//$list.prepend('<li data-id="null">Default</li>');
 			
 						//LAZY LOAD
 						$list.on('scroll', function(){

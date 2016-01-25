@@ -64,44 +64,22 @@
 			<li class="details-table_project">
 				<div class="details-table_desc">
 					<div class="project-name" name="taskmaintagname">No project</div>
-<!-- 					<div class="company-name">Company: Dummy</div> -->
 				</div>
 			</li>
 
 			<li class="details-table_priority">
-				<span class="details-table_desc_priority" data-priority-name="major" name="priority-name">Major</span>
-				<div class="priority-select" style="display: none">
-					<ul>
-						<li><div class="priority-select-item" data-priority-name="critical">Critical</div></li>
-						<li><div class="priority-select-item" data-priority-name="major">Major</div></li>
-						<li><div class="priority-select-item" data-priority-name="minor">Minor</div></li>
-						<li><div class="priority-select-item" data-priority-name="trivial">Trivial</div></li>
-					</ul>
-				</div>
+				<div class="details-table_desc priorities-select custom-select priority">
+					<span class="custom-select-value"></span>
+					<input class="custom-select-input" type="hidden" name="priority-name">
+		 		</div>
 			</li>
 
 			<li class="details-table_status">
 				<div class="details-table_desc">
-					<span class="details-table_desc_status" data-processing-name="new" name="processing-name">New</span>
-					<div class="status-select">
-						<ul>
-							<li>
-								<div class="status-select-item" data-processing-name="new">New</div>		
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="proccesing">Proccesing</div>		
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="send-back">Send Back</div>		
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="completed">Completed</div>
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="done">Done</div>
-							</li>
-						</ul>
-					</div>
+					<span class="details-table_desc_status" data-processing-name="new">New</span>
+					<span class="details-table_desc_status" data-processing-name="completed">Completed</span>
+					<span class="details-table_desc_status" data-processing-name="done">Done</span> 
+					<span class="details-table_desc_status" data-processing-name="send-back">Send Back</span>
 				</div>
 			</li>
 
@@ -109,7 +87,9 @@
 				<div class="details-table_desc">
 					<img src="" alt="" width="32" height="32" data-host="http://195.138.79.46/" name="avatar">
 					<div class="info">
-						<span class="name" name="taskusername">Assign to me</span>
+						<div class="btn btn-text btn-assignee-to-me">
+							Assign to me
+						</div>
 					</div>
 				</div>
 			</li>
