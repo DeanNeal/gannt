@@ -92,11 +92,7 @@ $.fn.customSelect = function (options) {
 					$value.text($input.val());
 				} else {				
 					this.url($input.val()).then(function(response){
-						if(response instanceof Backbone.Collection)
-							var model = response.at(0);
-						else 
-							var model = response;
-
+						var model = response.at(0);
 						$wrapper.attr('data-selected', model.get('name'));
 						$value.text(model.get('name'));
 					});
