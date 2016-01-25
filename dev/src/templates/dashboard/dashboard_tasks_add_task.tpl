@@ -64,7 +64,6 @@
 			<li class="details-table_project">
 				<div class="details-table_desc">
 					<div class="project-name" name="taskmaintagname">No project</div>
-<!-- 					<div class="company-name">Company: Dummy</div> -->
 				</div>
 			</li>
 
@@ -86,25 +85,6 @@
 					<span class="details-table_desc_status" data-processing-name="completed">Completed</span>
 					<span class="details-table_desc_status" data-processing-name="done">Done</span> 
 					<span class="details-table_desc_status" data-processing-name="send-back">Send Back</span>
-<!-- 					<div class="status-select">
-						<ul>
-							<li>
-								<div class="status-select-item" data-processing-name="new">New</div>		
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="proccesing">Proccesing</div>		
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="send-back">Send Back</div>		
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="completed">Completed</div>
-							</li>
-							<li>
-								<div class="status-select-item" data-processing-name="done">Done</div>
-							</li>
-						</ul>
-					</div> -->
 				</div>
 			</li>
 
@@ -112,7 +92,9 @@
 				<div class="details-table_desc">
 					<img src="" alt="" width="32" height="32" data-host="http://195.138.79.46/" name="avatar">
 					<div class="info">
-						<span class="name" name="taskusername">Assign to me</span>
+						<div class="btn btn-text btn-assignee-to-me">
+							Assign to me
+						</div>
 					</div>
 				</div>
 			</li>

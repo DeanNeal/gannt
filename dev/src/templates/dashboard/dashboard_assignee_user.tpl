@@ -19,7 +19,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -28,7 +28,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -37,7 +37,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -46,7 +46,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -55,7 +55,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -64,7 +64,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -73,7 +73,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -82,7 +82,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -91,7 +91,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -100,7 +100,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>
@@ -109,7 +109,7 @@
 				<input type="checkbox">
 				<img class="avatar" src="build/img/avatar.png" alt="" width="52" height="52">
 				<div class="user-data">
-					<div>Maksim Shevchenko</div>
+					<div class="name">Maksim Shevchenko</div>
 					<div>Teammember</div>
 				</div>
 			</li>

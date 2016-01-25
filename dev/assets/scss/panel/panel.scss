@@ -121,11 +121,6 @@
                     border-color: #e7a765;
                 }
             }
-
-            .#{$self}_desc {
-                position: relative;
-                width: 95px;
-            }
         }
         
         // .details-table_assignee
@@ -297,7 +292,6 @@
             }
         }
 
-
         .project-name {
             color: #000;
             font-size: 16px;
@@ -349,6 +343,7 @@
 
         input,
         textarea {
+            padding: 10px 10px;
             background-color: rgba(0, 0, 0, 0.07);
             @include border-radius(3px);
             outline: none;
@@ -357,10 +352,13 @@
             width: 100%;
             font-family: "Open Sans", Arial;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
             resize: none;
             display: block;
-            color: #616161;
+            &::-webkit-input-placeholder {color: #616161;}
+            &::-moz-placeholder          {color: #616161;}
+            &:-moz-placeholder           {color: #616161;}
+            &:-ms-input-placeholder      {color: #616161;}
         }
 
         input {
@@ -369,12 +367,16 @@
 
         .subject {
             input {
-                color: #211d2f;
+                &::-webkit-input-placeholder {color: #211d2f;}
+                &::-moz-placeholder          {color: #211d2f;}
+                &:-moz-placeholder           {color: #211d2f;}
+                &:-ms-input-placeholder      {color: #211d2f;}
             }
         }
 
         .desc {
-            height: 428px;
+            // height: 428px;
+            height: calc(100% - 44px - 44px - 44px - 43px);
 
             textarea {
                 height: 100%;
@@ -392,6 +394,10 @@
 
             .tag {
                 vertical-align: middle;
+
+                & + .tag {
+                    margin-left: 2px
+                }
             }
         }
         
@@ -406,6 +412,43 @@
             @include border-radius(17px);
             border: 2px solid #81589f;
             padding: 5px 20px;
+            color: #6458a0;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+    .right-view {
+        .details-table {
+            padding-left: 50px;
+        }
+
+        .project-name {
+            font-weight: bold;
+        }
+        
+        // .details-table_assignee
+        .details-table_assignee {
+            img {
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .info {
+                margin-top: 0;
+                float: none;
+                display: inline-block;
+                vertical-align: middle;   
+            }
+        }
+
+        .btn-assignee-to-me {
+            color: rgba(37, 33, 45, 0.7);
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: underline;
         }
     }
 }
@@ -680,6 +723,21 @@
                 text-decoration: none;
                 font-weight: 600;
                 cursor: pointer;
+            }
+        }
+    }
+
+    .right-view {
+        .details-table {
+            $self: details-table;
+            
+            // .details-table_status
+            &_status {
+                // .details-table_status .details-table_desc
+                .#{$self}_desc {
+                    position: relative;
+                    width: 95px;
+                }
             }
         }
     }
