@@ -56,6 +56,8 @@ var ContentView = BaseView.extend({
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
 
         this.commentsView = this.addView(CommentsView, {}, '.left-view_content');
+
+        this.listenTo(this, 'spentHours:submit', this.openSpentHoursChange, this);
     },
     onRender: function() {
         var self = this;
@@ -162,6 +164,10 @@ var ContentView = BaseView.extend({
     removeComments: function() {
         this.removeNestedView(this.commentsView);
         this.commentsView = undefined;
+    },
+    openSpentHoursChange: function(value) {
+        this.model.set('spent-hours', value);
+        this.closeSpentHoursPopup();
     },
     updateModel: function(model) {
         this.model = model;

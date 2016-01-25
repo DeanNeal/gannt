@@ -4,7 +4,16 @@ var Backbone             = require('backbone'),
 
 var ContentView = BaseView.extend({
 	className: 'spent-hours',
-	template: tpl
+	template: tpl,
+	events: {
+		'click .btn-submit'    : "submitCount"
+	},
+	submitCount: function() {
+		var hours = this.getElement('.hours-count').val();
+
+		if (hours)
+			this.parent.trigger('spentHours:submit', hours);
+	}
 });
 
 module.exports = ContentView;
