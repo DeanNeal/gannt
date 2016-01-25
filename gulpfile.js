@@ -18,9 +18,27 @@ var gulp         = require('gulp'),
     clean        = require('gulp-clean'),
     babelify     = require('babelify'),
     bowerResolve = require('bower-resolve'),
-    nodeResolve  = require('resolve');
+    nodeResolve  = require('resolve'),
+    preprocess   = require('gulp-preprocess'),
+    gulpif       = require('gulp-if'),
+    parseArgs    = require('minimist'),
+    runSequence  = require('run-sequence');
 
 var Server = require('karma').Server;
+
+var config = _.extend({
+    env: process.env.NODE_ENV
+}, parseArgs(process.argv.slice(2)));
+
+gulp.task('set-dev-node-env', function () {
+    return process.env.NODE_ENV = config.env = 'dev';
+});
+
+gulp.task('set-prod-node-env', function () {
+    return process.env.NODE_ENV = config.env = 'prod';
+});
+
+var preprocess_settings = {context: {NODE_ENV: config.env}};
 
 gulp.task('test', function (done) {
     new Server({
@@ -95,9 +113,10 @@ gulp.task('copy-api', ['clean-tmp'], function () {
 
 var babelBuild = function () {
     return gulp.src(projectPath.source + "/**/*.js")
-        .pipe(sourcemaps.init())
+        .pipe(preprocess(preprocess_settings))
+        .pipe(gulpif(config.env === 'dev', sourcemaps.init()))
         .pipe(babel()).on('error', onError)
-        .pipe(sourcemaps.write("."))
+        .pipe(gulpif(config.env === 'dev', sourcemaps.write(".")))
         .pipe(gulp.dest(projectPath.dev + '/tmp'));
 };
 
@@ -142,9 +161,9 @@ var scripts = function () {
     return b.bundle()
         .pipe(source('app.js'))
         .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-     //   .pipe(uglify()).on('error', onError)
-        .pipe(sourcemaps.write('./'))
+        .pipe(gulpif(config.env === 'dev', sourcemaps.init({loadMaps: true})))
+        .pipe(gulpif(config.env === 'prod', uglify()).on('error', onError))
+        .pipe(gulpif(config.env === 'dev', sourcemaps.write('./')))
         .pipe(gulp.dest(projectPath.build + '/app'))
         .pipe(connect.reload());
 };
@@ -157,26 +176,34 @@ gulp.task('clean-styles', function () {
         .pipe(clean());
 });
 
-gulp.task('copy-fonts', ['clean-styles'], function () {
+gulp.task('copy-fonts', function () {
     return gulp.src(projectPath.assets + '/fonts/**')
         .pipe(gulp.dest(projectPath.build + '/styles/fonts'));
 });
 
-gulp.task('copy-images', ['copy-fonts'], function () {
+gulp.task('copy-images', function () {
     return gulp.src(projectPath.assets + '/img/**')
         .pipe(gulp.dest(projectPath.build + '/img'));
 });
 
+gulp.task('style-assets', function(callback){
+    runSequence(
+        'clean-styles',
+        ['copy-fonts', 'copy-images'],
+        callback);
+});
+
 var styles = function () {
     return gulp.src(projectPath.assets + '/scss/main.scss')
+        .pipe(gulpif(config.env === 'dev', sourcemaps.init()))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .on('error', onError)
+        .pipe(gulpif(config.env === 'dev', sourcemaps.write()))
         .pipe(concat('style.css'))
         .pipe(gulp.dest(projectPath.build + '/styles'))
         .pipe(connect.reload());
 };
 
-gulp.task('styles', ['copy-images'], styles);
+gulp.task('styles', ['style-assets'], styles);
 gulp.task('styles-watch', styles);
 
 var html = function () {
@@ -192,5 +219,16 @@ gulp.task('watch', function () {
     gulp.watch(projectPath.source + 'index.html', ['html-watch']);
 });
 
-gulp.task('default', ['connect', 'styles', 'scripts', 'watch']);
-gulp.task('clean', ['clean-tmp']);
+gulp.task('build', ['connect', 'styles', 'scripts', 'watch']);
+
+gulp.task('dev', ['set-dev-node-env'], function () {
+    return runSequence(
+        'build'
+    );
+});
+
+gulp.task('prod', ['set-prod-node-env'], function () {
+    return runSequence(
+        'build'
+    );
+});

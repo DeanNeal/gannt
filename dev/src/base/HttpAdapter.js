@@ -26,11 +26,14 @@ export default function (url) {
 
         // Instantiates the XMLHttpRequest
         let client = new XMLHttpRequest();
-        // TODO uncomment on production
-        //let uri = options.url;
 
-        // Dummy code REMOVE on production
+        /* @if NODE_ENV='dev' */
         let uri = testPath + options.url;
+        /* @endif */
+
+        /* @if NODE_ENV='prod' */
+        let uri = options.url;
+        /* @endif */
 
         if (options.args && typeof options.args === "object") {
             uri += '?';
