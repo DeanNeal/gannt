@@ -48,7 +48,10 @@ var ContentView = BaseView.extend({
             collection: new navBarCollection(this.links)
         }, '.left-view_header');
 
-        this.commentsView = this.addView(CommentsView, {}, '.left-view_content');
+
+        var collection = new Backbone.Collection([{},{},{}]);
+
+        this.commentsView = this.addView(CommentsView, {collection: collection}, '.left-view_content');
 
 
         this.modelBinder = new Backbone.ModelBinder();
@@ -167,16 +170,22 @@ var ContentView = BaseView.extend({
         this.statusReportView = undefined;
     },
     showComments: function() {
-        if(this.commentsView) {
-            this.removeNestedView(this.commentsView);
-        }
-        this.commentsView = this.addView(CommentsView, {});
-        this.renderNestedView(this.commentsView, '.left-view_content');
+        this.commentsUpdate();
         this.removeStatusReport();
     },
     removeComments: function() {
         this.removeNestedView(this.commentsView);
         this.commentsView = undefined;
+    },
+    commentsUpdate: function(){
+        if(this.commentsView) {
+            this.removeNestedView(this.commentsView);
+        }
+
+        var collection = new Backbone.Collection([{},{},{}]);
+
+        this.commentsView = this.addView(CommentsView, {collection: collection});
+        this.renderNestedView(this.commentsView, '.left-view_content');
     },
     onSpentHoursChange: function(value) {
         this.model.set('spent-hours', value);
@@ -187,11 +196,13 @@ var ContentView = BaseView.extend({
         this.model.on('change', this.onChange, this);
         this.modelBinder.bind(this.model, this.el);
         this.getElement('.custom-select').customSelect('refresh');
+        this.commentsUpdate();
     },
     onChange: function(){
         // this.model.update_self().then(function(){
         // });
     },
+
     remove : function () {
         this.modelBinder.unbind();
         BaseView.prototype.remove.call(this);
