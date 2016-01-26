@@ -22,7 +22,7 @@ var ContentView = BaseView.extend({
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
         'click .details-table_desc_priority' : "openPriority",
-        'click .priority-select-item'        : "changePriority",
+        // 'click .priority-select-item'        : "changePriority",
         'click .details-table_desc_status'   : "openStatus",
         'click .status-select-item'          : "changeStatus",
         'click .open-assignee-panel'         : "openAssingeePanel",
@@ -49,16 +49,16 @@ var ContentView = BaseView.extend({
             collection: new navBarCollection(this.links)
         }, '.left-view_header');
 
-        this.link = params.link;
+        this.commentsView = this.addView(CommentsView, {}, '.left-view_content');
+
+        // this.link = params.link;
         this.modelBinder = new Backbone.ModelBinder();
 
         this.model.on('change', this.onChange, this);
         Backbone.on('global:click', this.onGlobalClick, this);
 
+
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
-
-        this.commentsView = this.addView(CommentsView, {}, '.left-view_content');
-
         this.listenTo(this, 'spentHours:submit', this.openSpentHoursChange, this);
     },
     onRender: function() {
@@ -112,7 +112,7 @@ var ContentView = BaseView.extend({
         if(!currentEl.parents().hasClass('assignee-panel') && !currentEl.parents().hasClass('open-assignee-panel'))
             this.closeAssingeePanel();
 
-        if(!currentEl.parents().hasClass('spent-hours') && !currentEl.parents().hasClass('show-spent-hours-popup'))
+        if(!currentEl.parents().hasClass('spent-hours') && !currentEl.hasClass('show-spent-hours-popup'))
             this.closeSpentHoursPopup();
     },
     serialize: function(params) {
@@ -190,8 +190,8 @@ var ContentView = BaseView.extend({
         this.getElement('.custom-select').customSelect('refresh');
     },
     onChange: function(){
-        this.model.update_self().then(function(){
-        });
+        // this.model.update_self().then(function(){
+        // });
     },
     remove : function () {
         this.modelBinder.unbind();
