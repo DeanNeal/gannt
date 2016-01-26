@@ -9,7 +9,7 @@ var PaginationView = require('views/dashboard/tasks/task_pagination_view');
 var FilterModel    = require('models/dashboard/tasks_filter_model');
 var tpl            = require('templates/dashboard/tasks/tasks_filters.tpl');
 
-import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins';
+import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins/highlightActiveFilter';
 
 var TasksFilterView = BaseView.extend({
 	template: tpl,
