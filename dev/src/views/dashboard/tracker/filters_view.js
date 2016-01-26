@@ -7,7 +7,7 @@ var BaseView       = require('views/baseview');
 var BaseListView   = require('views/elements/base_list_view');
 var PaginationView = require('views/dashboard/tracker/pagination_view');
 var FilterModel    = require('models/dashboard/tasks_filter_model');
-var tpl            = require('templates/dashboard/tracker/tasks_filters.tpl');
+var tpl            = require('templates/dashboard/tracker/filters.tpl');
 
 import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins/highlightActiveFilter';
 

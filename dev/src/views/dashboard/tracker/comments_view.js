@@ -17,6 +17,9 @@ var CommentItemView = BaseView.extend({
 	},
 	removeComment: function(){
 	//	this.remove();
+	},
+	serialize: function(params) {
+	    this.data = _.clone(this.model.attributes);
 	}
 });
  
@@ -28,7 +31,7 @@ var ContentView = BaseView.extend({
 	},
 	onInitialize: function(params) {
 	    BaseView.prototype.onInitialize.call(this, params);
-	    
+
 	    this.collection.each(function(model) {
 	    	this.commentView = this.addView(CommentItemView, {model: model}, '.comments-container');
 	    }.bind(this));
@@ -38,7 +41,7 @@ var ContentView = BaseView.extend({
 
 		this.commentView = this.addView(CommentItemView, {});
 		this.renderNestedView(this.commentView, '.comments-container');
-	},
+	}
 
 });
 

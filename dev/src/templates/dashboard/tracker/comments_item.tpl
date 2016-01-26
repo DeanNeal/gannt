@@ -31,9 +31,7 @@
 			<div class="date">16:15 2015-15-15</div>
 		</div>
 
-		<div class="text">
-			Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf, Print this page to PDF for the complete set of vectors. Or to use on the desktop, install FontAwesome.otf,
-		</div>
+		<div class="text"><%=content%></div>
 
 		<div class="controls">
 			<svg class="icon icon-dialog">

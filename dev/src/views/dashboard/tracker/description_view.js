@@ -12,7 +12,8 @@ var Backbone             = require('backbone'),
     AssigneePanelView    = require('views/dashboard/tracker/assignee_user_view'),
     SpentHoursPopupView  = require('views/dashboard/tracker/spent_hours_popup_view'),
     CommentsView         = require('views/dashboard/tracker/comments_view'),
-    StatusReportView     = require('views/dashboard/tracker/status_report_view');
+    StatusReportView     = require('views/dashboard/tracker/status_report_view'),
+    PreloaderView        = require('views/preloader');
 
 var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
@@ -48,11 +49,9 @@ var ContentView = BaseView.extend({
             collection: new navBarCollection(this.links)
         }, '.left-view_header');
 
-
-        var collection = new Backbone.Collection([{},{},{}]);
-
-        this.commentsView = this.addView(CommentsView, {collection: collection}, '.left-view_content');
-
+        this.preloaderView = this.addView(PreloaderView, {}, '.left-view_content');
+        
+        this.commentsFetch();
 
         this.modelBinder = new Backbone.ModelBinder();
 
@@ -170,22 +169,23 @@ var ContentView = BaseView.extend({
         this.statusReportView = undefined;
     },
     showComments: function() {
-        this.commentsUpdate();
+        this.commentsFetch();
         this.removeStatusReport();
     },
     removeComments: function() {
         this.removeNestedView(this.commentsView);
         this.commentsView = undefined;
     },
-    commentsUpdate: function(){
+    commentsFetch: function(){
         if(this.commentsView) {
             this.removeNestedView(this.commentsView);
         }
-
-        var collection = new Backbone.Collection([{},{},{}]);
-
-        this.commentsView = this.addView(CommentsView, {collection: collection});
-        this.renderNestedView(this.commentsView, '.left-view_content');
+        this.preloaderView.show();
+        this.model.get_post().then(function(posts){
+            this.commentsView = this.addView(CommentsView, {collection: posts});
+            this.renderNestedView(this.commentsView, '.left-view_content');
+            this.preloaderView.hide();
+        }.bind(this));
     },
     onSpentHoursChange: function(value) {
         this.model.set('spent-hours', value);
@@ -196,7 +196,7 @@ var ContentView = BaseView.extend({
         this.model.on('change', this.onChange, this);
         this.modelBinder.bind(this.model, this.el);
         this.getElement('.custom-select').customSelect('refresh');
-        this.commentsUpdate();
+        this.commentsFetch();
     },
     onChange: function(){
         // this.model.update_self().then(function(){
