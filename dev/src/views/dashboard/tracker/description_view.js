@@ -49,8 +49,8 @@ var ContentView = BaseView.extend({
             collection: new navBarCollection(this.links)
         }, '.left-view_header');
 
-        this.preloaderView = this.addView(PreloaderView, {}, '.left-view_content');
-        
+        this.commentsPreloaderView = this.addView(PreloaderView, {}, '.left-view_content');
+
         this.commentsFetch();
 
         this.modelBinder = new Backbone.ModelBinder();
@@ -180,11 +180,11 @@ var ContentView = BaseView.extend({
         if(this.commentsView) {
             this.removeNestedView(this.commentsView);
         }
-        this.preloaderView.show();
+        this.commentsPreloaderView.show();
         this.model.get_post().then(function(posts){
             this.commentsView = this.addView(CommentsView, {collection: posts});
             this.renderNestedView(this.commentsView, '.left-view_content');
-            this.preloaderView.hide();
+            this.commentsPreloaderView.hide();
         }.bind(this));
     },
     onSpentHoursChange: function(value) {

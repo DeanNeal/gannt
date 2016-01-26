@@ -27,8 +27,8 @@
 
 	<div class="comment-right">
 		<div class="clearfix">
-			<div class="name">Peter Simon</div>
-			<div class="date">16:15 2015-15-15</div>
+			<div class="name"><%=name%></div>
+			<div class="date"><%=date%></div>
 		</div>
 
 		<div class="text"><%=content%></div>
