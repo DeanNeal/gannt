@@ -37,6 +37,8 @@ var ContentView = BaseView.extend({
 		var currentEl = $(e.target);
 		if(currentEl.hasClass('close-see-more') || currentEl.hasClass('assignee-panel_close') || currentEl.hasClass('btn-apply'))
 			return; 
+		if(currentEl.hasClass('btn-submit'))
+			return; 
 		if(!currentEl.parents().hasClass('tasks-edit') && !currentEl.parents().hasClass('task-list-item'))
 		 	this.parent.trigger('taskView:close');
 	},

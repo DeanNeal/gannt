@@ -22,7 +22,6 @@ var ContentView = BaseView.extend({
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
         'click .details-table_desc_priority' : "openPriority",
-        // 'click .priority-select-item'        : "changePriority",
         'click .details-table_desc_status'   : "openStatus",
         'click .status-select-item'          : "changeStatus",
         'click .open-assignee-panel'         : "openAssingeePanel",
@@ -51,7 +50,7 @@ var ContentView = BaseView.extend({
 
         this.commentsView = this.addView(CommentsView, {}, '.left-view_content');
 
-        // this.link = params.link;
+
         this.modelBinder = new Backbone.ModelBinder();
 
         this.model.on('change', this.onChange, this);
@@ -59,7 +58,7 @@ var ContentView = BaseView.extend({
 
 
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
-        this.listenTo(this, 'spentHours:submit', this.openSpentHoursChange, this);
+        this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
     },
     onRender: function() {
         var self = this;
@@ -179,7 +178,7 @@ var ContentView = BaseView.extend({
         this.removeNestedView(this.commentsView);
         this.commentsView = undefined;
     },
-    openSpentHoursChange: function(value) {
+    onSpentHoursChange: function(value) {
         this.model.set('spent-hours', value);
         this.closeSpentHoursPopup();
     },

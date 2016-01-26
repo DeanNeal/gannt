@@ -157,5 +157,3 @@ $.fn.customSelect = function (options) {
 $.fn.customSelect.defaults = {
     url: ''
 };
-
-var CustomSelect = function () {};
