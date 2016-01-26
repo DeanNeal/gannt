@@ -52,6 +52,16 @@
 				</div>
 			</div>
 		</li>
+
+		<li class="status-requested">
+			<svg class="icon icon-trash">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+	        </svg>
+
+	        Status requested by <span class="name">Some Some</span>
+
+	        <div class="date">16:15 2015-15-15</div>
+		</li>
 	</ul>
 
 	<div class="left-view_request-status">
