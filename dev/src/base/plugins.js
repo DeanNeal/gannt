@@ -105,18 +105,27 @@ $.fn.customSelect = function (options) {
 
                 $wrapper.toggleClass('custom-select-open');
 
-
                 $list.off('scroll');
                 if ($dropdown.is(':visible')) {
                     $list.scrollTop(0).empty();
                     self.url().then(function (collection) {
                         var tpl = _.template(templates[settings.template])(collection);
+                        var lastAnimation = 0;
                         $list.html(tpl);
 
                         //LAZY LOAD
-                        $list.on('scroll', function () {
+
+                        $list.on('mousewheel DOMMouseScroll', function (event) {
+                            var timeNow = new Date().getTime();
+                            var innerHeight = $(this).innerHeight();
+                            // Cancel scroll if currently animating or within quiet period
+                            if (timeNow - lastAnimation < 100) {
+                                event.preventDefault();
+                                return;
+                            }
+
                             if (collection.get_next) {
-                                if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                                if ($(this).scrollTop() + (innerHeight + innerHeight * 1.2) >= $(this)[0].scrollHeight) {
                                     collection.get_next().then(function (nextCollection) {
                                         collection = nextCollection;
                                         var tpl = _.template(templates[settings.template])(nextCollection);
@@ -124,7 +133,10 @@ $.fn.customSelect = function (options) {
                                     });
                                 }
                             }
+
+                            lastAnimation = timeNow;
                         });
+
                     });
                 }
             });
@@ -145,8 +157,8 @@ $.fn.customSelect = function (options) {
             });
 
             $search.on('keyup', function () {
-                var searchstr = $(this).val().toLowerCase();
-                Helpers.searchEngine(searchstr, $list, 2);
+                var searchStr = $(this).val().toLowerCase();
+                Helpers.searchEngine(searchStr, $list, 2);
             });
 
         }
@@ -158,4 +170,5 @@ $.fn.customSelect.defaults = {
     url: ''
 };
 
-var CustomSelect = function () {};
+var CustomSelect = function () {
+};
