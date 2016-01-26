@@ -496,7 +496,7 @@
                 padding-bottom: 80px;
             }
         }
-
+        
         .comment {
             padding: 0 20px 0 20px;
             position: relative;
@@ -612,6 +612,32 @@
             .icon {
                 font-size: 15px;
                 cursor: pointer;
+            }
+        }
+
+        .status-requested {
+            border: 1px solid #81589f;
+            @include border-radius(25px);
+            font-size: 14px;
+            margin: 0 20px;
+            padding: 7px 10px;
+
+            .icon {
+                font-size: 15px;
+            }
+
+            .name {
+                font-weight: bold;
+                color: #000;
+            }
+
+            .date {
+                float: right;
+                font-family: 'Roboto', sans-serif;
+                opacity: .6;
+                color: #000;
+                font-size: 11px;
+                line-height: 21px;
             }
         }
         
