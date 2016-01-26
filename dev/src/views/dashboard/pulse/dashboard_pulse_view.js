@@ -1,7 +1,7 @@
 var Backbone = require('backbone'),
 	_        = require('underscore'),
     BaseView = require('views/baseview'),
-    tpl      = require('templates/dashboard/dashboard_pulse.tpl');
+    tpl      = require('templates/dashboard/pulse/dashboard_pulse.tpl');
 
 var ContentView =  BaseView.extend({
 	template: tpl,

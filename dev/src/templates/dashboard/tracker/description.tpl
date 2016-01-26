@@ -117,13 +117,13 @@
 				<li class="details-table_hours">
 					<div class="details-table_term">Estimated hours:</div>
 					<div class="details-table_desc">
-						<input type="text"  value="22" class="show-spent-hours-popup">
+						<input type="text" class="show-spent-hours-popup" name="spent-hours">
 
 						<svg class="icon icon-request">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-request"></use>
 				        </svg>
 
-						<input type="text"  value="22">
+						<input type="text" value="22">
 
 						<svg class="icon icon-approve">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-approve"></use>

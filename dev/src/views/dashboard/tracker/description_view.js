@@ -6,13 +6,14 @@ var Backbone             = require('backbone'),
     BaseView             = require('views/baseview'),
     BaseListView         = require('views/elements/base_list_view'),
     navBarCollection     = require('collections/header_list'),
-    panelTab             = require('templates/dashboard/panel_tab.tpl'),
-    tpl                  = require('templates/dashboard/dashboard_task_description.tpl'),
-    SeeMorePanelView     = require('views/dashboard/tasks/task_description_see_more_view'),
-    AssigneePanelView    = require('views/dashboard/tasks/dashboard_assignee_user_view'),
-    SpentHoursPopupView  = require('views/dashboard/tasks/dashboard_tasks_spent_hours_popup_view'),
-    CommentsView         = require('views/dashboard/tasks/task_description_comments_view'),
-    StatusReportView     = require('views/dashboard/tasks/task_description_status_report_view');
+    panelTab             = require('templates/dashboard/tracker/panel_tab.tpl'),
+    tpl                  = require('templates/dashboard/tracker/description.tpl'),
+    SeeMorePanelView     = require('views/dashboard/tracker/see_more_view'),
+    AssigneePanelView    = require('views/dashboard/tracker/assignee_user_view'),
+    SpentHoursPopupView  = require('views/dashboard/tracker/spent_hours_popup_view'),
+    CommentsView         = require('views/dashboard/tracker/comments_view'),
+    StatusReportView     = require('views/dashboard/tracker/status_report_view'),
+    PreloaderView        = require('views/preloader');
 
 var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
@@ -22,7 +23,6 @@ var ContentView = BaseView.extend({
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
         'click .details-table_desc_priority' : "openPriority",
-        // 'click .priority-select-item'        : "changePriority",
         'click .details-table_desc_status'   : "openStatus",
         'click .status-select-item'          : "changeStatus",
         'click .open-assignee-panel'         : "openAssingeePanel",
@@ -49,9 +49,10 @@ var ContentView = BaseView.extend({
             collection: new navBarCollection(this.links)
         }, '.left-view_header');
 
-        this.commentsView = this.addView(CommentsView, {}, '.left-view_content');
+        this.commentsPreloaderView = this.addView(PreloaderView, {}, '.left-view_content');
 
-        // this.link = params.link;
+        this.commentsFetch();
+
         this.modelBinder = new Backbone.ModelBinder();
 
         this.model.on('change', this.onChange, this);
@@ -59,7 +60,7 @@ var ContentView = BaseView.extend({
 
 
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
-        this.listenTo(this, 'spentHours:submit', this.openSpentHoursChange, this);
+        this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
     },
     onRender: function() {
         var self = this;
@@ -168,18 +169,25 @@ var ContentView = BaseView.extend({
         this.statusReportView = undefined;
     },
     showComments: function() {
-        if(this.commentsView) {
-            this.removeNestedView(this.commentsView);
-        }
-        this.commentsView = this.addView(CommentsView, {});
-        this.renderNestedView(this.commentsView, '.left-view_content');
+        this.commentsFetch();
         this.removeStatusReport();
     },
     removeComments: function() {
         this.removeNestedView(this.commentsView);
         this.commentsView = undefined;
     },
-    openSpentHoursChange: function(value) {
+    commentsFetch: function(){
+        if(this.commentsView) {
+            this.removeNestedView(this.commentsView);
+        }
+        this.commentsPreloaderView.show();
+        this.model.get_post().then(function(posts){
+            this.commentsView = this.addView(CommentsView, {collection: posts});
+            this.renderNestedView(this.commentsView, '.left-view_content');
+            this.commentsPreloaderView.hide();
+        }.bind(this));
+    },
+    onSpentHoursChange: function(value) {
         this.model.set('spent-hours', value);
         this.closeSpentHoursPopup();
     },
@@ -188,11 +196,13 @@ var ContentView = BaseView.extend({
         this.model.on('change', this.onChange, this);
         this.modelBinder.bind(this.model, this.el);
         this.getElement('.custom-select').customSelect('refresh');
+        this.commentsFetch();
     },
     onChange: function(){
         // this.model.update_self().then(function(){
         // });
     },
+
     remove : function () {
         this.modelBinder.unbind();
         BaseView.prototype.remove.call(this);

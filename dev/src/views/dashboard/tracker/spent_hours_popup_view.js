@@ -1,6 +1,6 @@
 var Backbone             = require('backbone'),
     BaseView             = require('views/baseview'),
-    tpl                  = require('templates/dashboard/dashboard_tasks_spent_hours_popup.tpl');
+    tpl                  = require('templates/dashboard/tracker/spent_hours_popup.tpl');
 
 var ContentView = BaseView.extend({
 	className: 'spent-hours',
@@ -13,7 +13,7 @@ var ContentView = BaseView.extend({
 
 		if (hours)
 			this.parent.trigger('spentHours:submit', hours);
-	}
+	} 
 });
 
 module.exports = ContentView;

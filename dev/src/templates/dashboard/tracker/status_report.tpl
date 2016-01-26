@@ -52,16 +52,24 @@
 				</div>
 			</div>
 		</li>
+
+		<li class="status-requested">
+			<svg class="icon icon-trash">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+	        </svg>
+
+	        Status requested by <span class="name">Some Some</span>
+
+	        <div class="date">16:15 2015-15-15</div>
+		</li>
 	</ul>
 
-	<div class="left-view_add-comment-form">
-		<svg class="icon icon-trash add-file">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-        </svg>
-
-        <svg class="icon icon-trash send-message">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
-        </svg>
-		<textarea name="" id="" placeholder="Comment"></textarea>
+	<div class="left-view_request-status">
+		<button class="btn btn-request">
+			<svg class="icon icon-trash">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-trash"></use>
+	        </svg>
+			Request status
+		</button>
 	</div>
 </div>
