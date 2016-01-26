@@ -135,6 +135,8 @@ body {
                 position: absolute;
                 right: 0;
                 top: 3px;
+
+                pointer-events: none;
             }
             
             // .custom-select-open
