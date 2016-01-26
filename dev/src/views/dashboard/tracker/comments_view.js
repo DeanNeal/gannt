@@ -1,8 +1,8 @@
 var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
-    tpl                  = require('templates/dashboard/dashboard_tasks_comments.tpl'),
-    commentItemTpl       = require('templates/dashboard/dashboard_tasks_comments_item.tpl');
+    tpl                  = require('templates/dashboard/tracker/comments.tpl'),
+    commentItemTpl       = require('templates/dashboard/tracker/comments_item.tpl');
 
 
 var CommentItemView = BaseView.extend({

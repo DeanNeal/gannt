@@ -6,13 +6,13 @@ var Backbone             = require('backbone'),
     BaseView             = require('views/baseview'),
     BaseListView         = require('views/elements/base_list_view'),
     navBarCollection     = require('collections/header_list'),
-    panelTab             = require('templates/dashboard/panel_tab.tpl'),
-    tpl                  = require('templates/dashboard/dashboard_task_description.tpl'),
-    SeeMorePanelView     = require('views/dashboard/tasks/task_description_see_more_view'),
-    AssigneePanelView    = require('views/dashboard/tasks/dashboard_assignee_user_view'),
-    SpentHoursPopupView  = require('views/dashboard/tasks/dashboard_tasks_spent_hours_popup_view'),
-    CommentsView         = require('views/dashboard/tasks/task_description_comments_view'),
-    StatusReportView     = require('views/dashboard/tasks/task_description_status_report_view');
+    panelTab             = require('templates/dashboard/tracker/panel_tab.tpl'),
+    tpl                  = require('templates/dashboard/tracker/description.tpl'),
+    SeeMorePanelView     = require('views/dashboard/tracker/see_more_view'),
+    AssigneePanelView    = require('views/dashboard/tracker/assignee_user_view'),
+    SpentHoursPopupView  = require('views/dashboard/tracker/spent_hours_popup_view'),
+    CommentsView         = require('views/dashboard/tracker/comments_view'),
+    StatusReportView     = require('views/dashboard/tracker/status_report_view');
 
 var ContentView = BaseView.extend({
     className: 'tasks-description full-size',

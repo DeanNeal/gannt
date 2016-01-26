@@ -4,12 +4,12 @@ var Backbone              	  = require('backbone'),
     _                     	  = require('underscore'),
     BaseView              	  = require('views/baseview'),
     RoutedView            	  = require('views/routedview'),
-    TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
-    TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
-    TaskCreateView            = require('views/dashboard/tasks/dashboard_tasks_add_task_view'),
-    dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
-    dashboardTasksListTpl     = require('templates/dashboard/dashboard_tasks_list.tpl'),
-    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl'),
+    TasksFiltersView      	  = require('views/dashboard/tracker/filters_view.js'),
+    TaskEditView          	  = require('views/dashboard/tracker/edit_view'),
+    TaskCreateView            = require('views/dashboard/tracker/add_task_view'),
+    dashboardTpl          	  = require('templates/dashboard/tracker/tasks.tpl'),
+    dashboardTasksListTpl     = require('templates/dashboard/tracker/tasks_list.tpl'),
+    dashboardTasksListItemTpl = require('templates/dashboard/tracker/tasks_list_item.tpl'),
     PreloaderView             = require('views/preloader');
 
 

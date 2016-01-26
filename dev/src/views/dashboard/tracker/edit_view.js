@@ -1,8 +1,8 @@
 var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
-    TaskDescriptionView  = require('views/dashboard/tasks/task_description_view'),
-    tpl                  = require('templates/dashboard/dashboard_tasks_edit.tpl'),
+    TaskDescriptionView  = require('views/dashboard/tracker/description_view'),
+    tpl                  = require('templates/dashboard/tracker/edit.tpl'),
     $                    = require('jquery'),
     PreloaderView        = require('views/preloader');
 
