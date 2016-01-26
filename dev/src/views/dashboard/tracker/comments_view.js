@@ -40,12 +40,10 @@ var ContentView = BaseView.extend({
 	},
 	addComment: function(){
 		var content = this.getElement('textarea').val();
-		var model = new NewCommentModel(),
-			today = new Date(),
-			date  = today.toLocaleTimeString('en-US', {hour12: false ,hour: '2-digit', minute:'2-digit'}) + ' '+ today.toISOString().substr(0, 10);
+		var model = new NewCommentModel();
 		model.set({
 			content: content,
-			date: date
+			create: (new Date()).toISOString().substr(0, 10) + ' ' + (new Date()).toLocaleTimeString('en-US', {hour12: false})
 		});
 
 		this.commentView = this.addView(CommentItemView, {model: model});

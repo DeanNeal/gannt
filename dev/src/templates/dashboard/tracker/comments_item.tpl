@@ -1,7 +1,10 @@
 <div>
 	<div class="comment-left">
-		<img class="avatar" src="build/img/avatar.png" alt="">
-
+		<% if(avatar) { %>
+			<img class="avatar" src="http://195.138.79.46/<%=avatar%>" alt="">
+		<% } else { %>
+			<img src="build/img/avatar.png" alt="" width="52">
+		<% } %>
 		<div class="files">
 			<div class="count-wrap">
 				<span>8</span>
@@ -27,8 +30,8 @@
 
 	<div class="comment-right">
 		<div class="clearfix">
-			<div class="name"><%=name%></div>
-			<div class="date"><%=date%></div>
+			<div class="name"><%=obj['postcreator-name']%></div>
+			<div class="date"><%=create%></div>
 		</div>
 
 		<div class="text"><%=content%></div>
