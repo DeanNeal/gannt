@@ -11,12 +11,17 @@ class SetActiveState {
         this.input = this.wrapper.find('input');
         this.param = param;
 
-        this.wrapper.on('click', '.list-item', function () {
-            let oldStr = $(this).data(self.param);
+        if (this.param == 'sort') {
+            let val = this.input.val();
+            let str = (val[0] == '-') ? val.substr(1) : val;
+            this.wrapper.find(`[data-${this.param}='${str}']`).attr(`data-${this.param}`, val);
+        }
 
+        this.wrapper.on('click', '.list-item', function () {
+            let oldStr = $(this).attr(`data-${self.param}`);
             if (self.param == 'sort') {
                 oldStr = (oldStr[0] == '-') ? oldStr.substr(1) : `-${oldStr}`;
-                $(this).data(self.param, oldStr);
+                $(this).attr(`data-${self.param}`, oldStr);
             }
 
             self.input.val(oldStr).change();
@@ -36,8 +41,7 @@ class SetActiveStateAtList extends SetActiveState {
 class SetActiveStateAtTable extends SetActiveState {
     highLight() {
         let oldStr = this.input.val();
-        let str = (oldStr[0] == '-') ? oldStr.substr(1) : oldStr;
-        this.wrapper.find(`[data-${this.param}='${str}']`).attr('data-active', `${(oldStr[0] != '-')}`).siblings().removeAttr('data-active');
+        this.wrapper.find(`[data-${this.param}='${oldStr}']`).attr('data-active', `${(oldStr[0] != '-')}`).siblings().removeAttr('data-active');
     }
 }
 
