@@ -50,8 +50,8 @@ var TaskListItem = BaseView.extend({
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
-		 if(!currentEl.parents().hasClass('status'))
-		 	this.getElement('.status-select').hide();
+		 if(!currentEl.parents().hasClass('custom-select'))
+		 	this.getElement('.custom-select').customSelect('hide');
 	},
 	remove : function () {
 		Backbone.off('global:click', this.onGlobalClick, this);
