@@ -977,7 +977,7 @@ body {
     &_content {
         padding: 30px 20px;
 
-        li {
+        li {cursor: pointer;
             & + li {
                 margin-top: 15px;
             }
