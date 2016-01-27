@@ -52,7 +52,7 @@
 
 	<div class="col assignee">
 		<% if(obj['avatar']) { %>
-			<img class="avatar" src="http://195.138.79.46<%=obj['avatar']%>" alt="" title="<%=taskusername%>">
+			<img class="avatar" alt="" title="<%=taskusername%>" name="avatar">
 		<% } %>
 	</div>
 

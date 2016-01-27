@@ -28,7 +28,7 @@ var ContentView = BaseView.extend({
         'click .open-assignee-panel'         : "openAssingeePanel",
         'click .assignee-panel_close'        : "closeAssingeePanel",
         'click .show-spent-hours-popup'      : "openSpentHoursPopup",
-        'click .btn-status'                  : "showStatusReport",
+        'click .btn-status'                  : "openStatusReport",
         'click .btn-comments'                : "showComments"
     },
     links: [{
@@ -124,7 +124,7 @@ var ContentView = BaseView.extend({
     },
     openSeeMorePanel: function(){
         if(!this.seeMoreView) {
-            this.seeMoreView = this.addView(SeeMorePanelView, {});
+            this.seeMoreView = this.addView(SeeMorePanelView, {model: this.model});
             this.renderNestedView(this.seeMoreView);
         }
     },
@@ -134,7 +134,7 @@ var ContentView = BaseView.extend({
     },
     openAssingeePanel: function() {
         if(!this.assigneeView) {
-            this.assigneeView = this.addView(AssigneePanelView, {});
+            this.assigneeView = this.addView(AssigneePanelView, {model: this.model});
             this.renderNestedView(this.assigneeView);
         }
     },
@@ -142,8 +142,8 @@ var ContentView = BaseView.extend({
         this.removeNestedView(this.assigneeView);
         this.assigneeView = undefined;
     },
-    onAssingeeApply: function(text){
-        this.model.set('taskusername', text);
+    onAssingeeApply: function(member){
+        this.model.set(member);
         this.closeAssingeePanel();
     },  
     openSpentHoursPopup: function() {
@@ -156,7 +156,7 @@ var ContentView = BaseView.extend({
         this.removeNestedView(this.spentHoursView);
         this.spentHoursView = undefined;
     },
-    showStatusReport: function() {
+    openStatusReport: function() {
         if(this.statusReportView) {
             this.removeNestedView(this.statusReportView);
         }
