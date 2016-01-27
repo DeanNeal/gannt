@@ -1,5 +1,5 @@
 <div>
-	<% if(obj['pageCount']) { %>
+	<% if(obj['pageCount'] && currentPage) { %>
 		<div class="pagination_left pagination_unit">
 			<svg class="icon icon-pagination-prev">
 	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-pagination-prev"></use>

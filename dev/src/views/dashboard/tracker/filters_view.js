@@ -72,9 +72,19 @@ var TasksFilterView = BaseView.extend({
 		this.model.set('offset', (pageId - 1) * this.countModel.perpage);
 	},
 	updatePagination: function(countModel){
+		var offset = 0,
+			currentPage = 0;
 		this.countModel = countModel;
 		this.pagesCount = Math.ceil(countModel.count / countModel.perpage);
-		this.paginationView.update(this.pagesCount, Math.round(this.model.get('offset') / countModel.perpage + 1));
+		this.maxOffset = countModel.perpage * (this.pagesCount - 1);
+ 	
+		offset = this.model.get('offset') > this.maxOffset  ? this.maxOffset : this.model.get('offset');
+		currentPage = Math.round(offset / countModel.perpage + 1);
+
+		//if user enter wrong offset value 
+		this.model.set('offset', offset);
+
+		this.paginationView.update(this.pagesCount, currentPage);
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
