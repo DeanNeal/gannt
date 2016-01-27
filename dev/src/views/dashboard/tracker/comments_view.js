@@ -17,7 +17,6 @@ var CommentItemView = BaseView.extend({
 	    BaseView.prototype.onInitialize.call(this, params);
 	},
 	removeComment: function(){
-		console.log(this);
 		this.remove();
 	},
 	serialize: function(params) {

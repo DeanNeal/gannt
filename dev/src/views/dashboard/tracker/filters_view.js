@@ -54,13 +54,17 @@ var TasksFilterView = BaseView.extend({
 
 		if (offset >= this.countModel.perpage)
 			offset -= parseInt(this.countModel.perpage);
+		else 
+			offset = 0;
 		this.model.set('offset', offset);
 	},
 	nextClick: function(){
 		var offset = parseInt(this.model.get('offset') || 0);
 
- 	 	if(offset < (this.pagesCount - 1) * this.countModel.perpage)
+ 	 	if((offset + this.countModel.perpage) < (this.pagesCount - 1) * this.countModel.perpage)
 			offset += parseInt(this.countModel.perpage);
+		else 
+			offset = (this.pagesCount - 1) * this.countModel.perpage;
 		this.model.set('offset', offset);
 	},
 	changePage: function(e){

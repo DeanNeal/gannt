@@ -263,9 +263,9 @@ body {
         display: inline-block;
         vertical-align: top;
 
-        &:nth-child(1n+10) {
-            display: none;
-        }
+        // &:nth-child(1n+10) {
+        //     display: none;
+        // }
 
         &:last-child {
             display: inline-block;
