@@ -26,6 +26,10 @@ var AvatarView = BaseView.extend({
     },
     serialize: function(){
         this.data = _.clone(this.model.attributes);
+    },
+    remove : function () {
+        this.modelBinder.unbind();
+        BaseView.prototype.remove.call(this);
     }
 });
 

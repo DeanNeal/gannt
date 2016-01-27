@@ -1,5 +1,6 @@
 var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
+    Plugins                   = require('base/plugins'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
     BaseView              	  = require('views/baseview'),
@@ -17,7 +18,8 @@ var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
 	className: 'task-list-item',
 	events: {
-	    'click .col.status': 'toggleStatusWindow'
+	    'click .col.status'  : 'preventDefault',
+	    'click .col.priority': 'preventDefault'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -26,12 +28,21 @@ var TaskListItem = BaseView.extend({
 	},
 	onRender: function() {
 	    this.modelBinder.bind(this.model, this.el);
+
+	    this.getElement('.priorities-select').customSelect({
+	        url: this.api.catalog.get_list_task_priority,
+	        template: 'customSelectListPriority'
+	    });
+
+	    this.getElement('.custom-select-status').customSelect({
+	        url: this.api.catalog.get_list_task_status,
+	        template: 'customSelectListPriority'
+	    });
+
 	},
-	toggleStatusWindow: function (e) {
+	preventDefault: function (e) {
 		e.preventDefault();
 		e.stopPropagation();
-		
-		$(e.currentTarget).find('.status-select').toggle();
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);

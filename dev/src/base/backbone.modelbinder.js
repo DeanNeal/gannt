@@ -427,9 +427,9 @@
             else if(el.is('input') || el.is('select') || el.is('textarea')){
                 el.val(convertedValue || (convertedValue === 0 ? '0' : ''));
             } else if(el.is('img')) {
-                var ipAddress = 'http://195.138.79.46/';
+               // var ipAddress = 'http://195.138.79.46/';
                 if(convertedValue)
-                    el.attr('src', ipAddress + convertedValue.replace(ipAddress, ''));
+                    el.attr('src', convertedValue);
                 else 
                     el.attr('src', 'build/img/vyacheslav-demchuk.jpg');
             }

@@ -11,6 +11,9 @@ var MemberView = BaseView.extend({
 	className: '',
 	template: memberTpl,
 	tagName:'li',
+	events: {
+		'click'   : 'onUserClick',
+	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.modelBinder = new Backbone.ModelBinder();
@@ -20,7 +23,25 @@ var MemberView = BaseView.extend({
 	},
 	serialize: function(params) { 
 	    this.data = _.clone(this.model.attributes);
-	} 
+	},
+	onUserClick: function(e){
+		var checkbox = this.getElement('input[type="checkbox"]');
+	
+		this.member = {
+			taskusername: this.model.get('taskusername'),
+			taskuserid: this.model.get('taskuserid'),
+			role: this.model.get('role'),
+			avatar: this.model.get('avatar')
+		};
+
+		checkbox.prop('checked', !checkbox.is(':checked'));
+
+		this.parent.trigger('member:click', this.member);
+	},
+	remove : function () {
+	    this.modelBinder.unbind();
+	    BaseView.prototype.remove.call(this);
+	}
 }); 
 
 var ContentView = BaseView.extend({
@@ -28,37 +49,20 @@ var ContentView = BaseView.extend({
 	template: tpl,
 	events: {
 		'click .btn-apply'                   : 'onApplyClick',
-		'click .assignee-panel_content li'   : 'onUserClick',
 		'keyup .assignee-panel_search input' : 'searchMembers'
 	},
 
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.getMembers();
+		this.listenTo(this, 'member:click', this.setMember, this);
 	},
-	onRender: function(){
-		
+	setMember: function(member){
+		this.member = member;
 	},
-	onApplyClick: function(){ 
+	onApplyClick: function(){
 		if(this.member)
 			this.parent.trigger('assignee:apply', this.member);
-	},
-	onUserClick: function(e){
-		var member = $(e.currentTarget),
-	        id = member.data('id'),
-			text = member.find('.name').text(),
-	        role = member.find('.role').text(),
-			avatar = member.find('img').attr('src'),
-			checkbox = $(e.currentTarget).find('input[type="checkbox"]');
- 
-		this.member = {
-			taskusername: text,
-			taskuserid: id,
-			role: role,
-			avatar: avatar
-		};
-
-		checkbox.prop('checked', !checkbox.is(':checked'));
 	},
 	searchMembers: function(e){
 		var value = $(e.currentTarget).val(),
@@ -67,8 +71,11 @@ var ContentView = BaseView.extend({
 	},
 	getMembers: function(){
 		this.model.get_self().then(function(posts){
-		    this.memberView = this.addView(MemberView, {model: this.model});
-		    this.renderNestedView(this.memberView, '.assignee-panel_content ul');
+
+			for (var i = 0; i < 3; i++) {
+			    this.memberView = this.addView(MemberView, {model: this.model});
+			    this.renderNestedView(this.memberView, '.assignee-panel_content ul');
+			};
 		}.bind(this));
 	}
 
