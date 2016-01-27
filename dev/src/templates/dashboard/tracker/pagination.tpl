@@ -7,8 +7,17 @@
 		</div>
 
 		<ul class="pagination_pages pagination_unit">
-			<% for(var i=1; i <= pageCount; i++) { %>
-				<li><span <%if (currentPage == i) { %> data-active="true" <% } %> data-page-id="<%=i%>"><%=i%></span></li>
+			<%var startVal = currentPage <= 10 ? 1 : (currentPage - 10)%>
+			<%var endVal = pageCount < (currentPage + 10) ? pageCount : currentPage + 10%>
+
+			<% if (startVal !== 1) {%>
+				<li><span>...</span></li>
+			<% } %>
+			<% for(var i=startVal; i <= endVal; i++) { %>
+				<li><span class="pagination_item"<%if (currentPage == i) { %> data-active="true" <% } %> data-page-id="<%=i%>"><%=i%></span></li>
+			<% } %>
+			<% if (endVal !== pageCount) {%>
+				<li><span>...</span></li>
 			<% } %>
 		</ul>
 

@@ -15,9 +15,9 @@ var TasksFilterView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
 	events: {
-		'click .pagination_left'    : 'prevClick',
-		'click .pagination_right'   : 'nextClick',
-		'click .pagination_pages span' : "changePage"
+		'click .pagination_left'                   : 'prevClick',
+		'click .pagination_right'                  : 'nextClick',
+		'click .pagination_pages .pagination_item' : "changePage"
 	},
 	defaults: {
 		filter: 'my_tasks',
