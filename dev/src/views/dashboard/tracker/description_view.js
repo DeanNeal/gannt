@@ -110,6 +110,9 @@ var ContentView = BaseView.extend({
         if(!currentEl.parents().hasClass('custom-select'))
             this.getElement('.custom-select').customSelect('hide');
 
+        if(!currentEl.parents('body').length)
+            return;
+        
         if(!currentEl.parents().hasClass('assignee-panel') && !currentEl.parents().hasClass('open-assignee-panel'))
             this.closeAssingeePanel();
 

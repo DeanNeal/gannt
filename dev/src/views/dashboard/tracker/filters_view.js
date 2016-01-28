@@ -41,7 +41,7 @@ var TasksFilterView = BaseView.extend({
 		Backbone.history.navigate(this.getRouteWithParams(), {trigger: true});
 	},
 	updateFilterModel: function (model) {
-		this.model.clear({silent : true}).set(model || this.defaults);
+		this.model.clear({silent : true}).set(model || this.defaults, {silent: true});
 		this.modelBinder.bind(this.model, this.el);
 
 		this.filterList.highLight();
@@ -75,7 +75,7 @@ var TasksFilterView = BaseView.extend({
 		var offset = 0,
 			currentPage = 0;
 		this.countModel = countModel;
-		this.pagesCount = Math.ceil(countModel.count / countModel.perpage);
+		this.pagesCount = Math.ceil(countModel.count / countModel.perpage) || 1;
 		this.maxOffset = countModel.perpage * (this.pagesCount - 1);
  	
 		offset = this.model.get('offset') > this.maxOffset  ? this.maxOffset : this.model.get('offset');
@@ -122,7 +122,6 @@ var TasksFilterView = BaseView.extend({
 	},
 	remove: function () {
 		this.modelBinder.unbind();
-		this.getElement('.custom-select').customSelect('destroy');
 		Backbone.off('global:click', this.onGlobalClick, this);
 		BaseView.prototype.remove.call(this);
 	}
