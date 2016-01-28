@@ -62,6 +62,7 @@ var ContentView = BaseView.extend({
 
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
         this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
+        this.listenTo(this, 'comments:add', this.onAddComment, this);
     },
     onRender: function() {
         var self = this;
@@ -195,11 +196,15 @@ var ContentView = BaseView.extend({
             this.renderNestedView(this.commentsView, '.left-view_content');
             this.commentsPreloaderView.hide();
         }.bind(this));
-
-        //empty comment model
-        // this.model.create_post_create().then(function(posts){
-        //     debugger
-        // }.bind(this));
+    },
+    onAddComment: function(content) {
+        this.commentsPreloaderView.show();
+        this.model.create_post_create().then(function(comment){
+            comment.set('content', content);
+            this.model.update_post_create(comment.attributes).then(function(){
+                this.commentsFetch();
+            }.bind(this));
+        }.bind(this));
     },
     onSpentHoursChange: function(value) {
         this.model.set('spent-hours', value);

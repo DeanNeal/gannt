@@ -1,7 +1,7 @@
 var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
-    NewCommentModel      = require('models/dashboard/new_comment_model'),
+    // NewCommentModel      = require('models/dashboard/new_comment_model'),
     tpl                  = require('templates/dashboard/tracker/comments.tpl'),
     commentItemTpl       = require('templates/dashboard/tracker/comments_item.tpl');
 
@@ -39,14 +39,18 @@ var ContentView = BaseView.extend({
 	},
 	addComment: function(){
 		var content = this.getElement('textarea').val();
-		var model = new NewCommentModel();
-		model.set({
-			content: content,
-			create: (new Date()).toISOString().substr(0, 10) + ' ' + (new Date()).toLocaleTimeString('en-US', {hour12: false})
-		});
+		// var model = new NewCommentModel();
+		// model.set({
+		// 	content: content,
+		// 	create: (new Date()).toISOString().substr(0, 10) + ' ' + (new Date()).toLocaleTimeString('en-US', {hour12: false})
+		// });
 
-		this.commentView = this.addView(CommentItemView, {model: model});
-		this.renderNestedView(this.commentView, '.comments-container');
+		//this.commentView = this.addView(CommentItemView, {model: model});
+		//this.renderNestedView(this.commentView, '.comments-container');
+		if(content)
+			this.parent.trigger('comments:add', content);
+		else 
+			alert("Empty val");
 	}
 
 });
