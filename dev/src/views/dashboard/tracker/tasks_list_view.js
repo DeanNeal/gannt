@@ -24,20 +24,20 @@ var TaskListItem = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.modelBinder = new Backbone.ModelBinder();
-		//Backbone.on('global:click', this.onGlobalClick, this);
+		Backbone.on('global:click', this.onGlobalClick, this);
 	},
 	onRender: function() {
 	    this.modelBinder.bind(this.model, this.el);
 
-	    // this.getElement('.priorities-select').customSelect({
-	    //     url: this.api.catalog.get_list_task_priority,
-	    //     template: 'customSelectListPriority'
-	    // });
+	    this.getElement('.priorities-select').customSelect({
+	        url: this.api.catalog.get_list_task_priority,
+	        template: 'customSelectListPriority'
+	    });
 
-	    // this.getElement('.custom-select-status').customSelect({
-	    //     url: this.api.catalog.get_list_task_status,
-	    //     template: 'customSelectListPriority'
-	    // });
+	    this.getElement('.custom-select-status').customSelect({
+	        url: this.api.catalog.get_list_task_status,
+	        template: 'customSelectListPriority'
+	    });
 
 	},
 	preventDefault: function (e) {

@@ -9,7 +9,7 @@
 				<span class="icon-round"></span>
 				
 				<div class="task-name">
-					#<span name="id"></span>: <span name="name"></span>
+					#<span name="id"></span>: <input type="text" readonly name="name"><!-- <span name="name"></span> -->
 				</div>
 
 				<svg class="icon icon-edit">
@@ -19,7 +19,8 @@
 		</div>
 		
 			<div class="description-text">
-				<span name="description"></span>
+<!-- 				<span name="description"></span> -->
+				<textarea name="description" readonly></textarea>
 				<span class="see_more">See more</span>
 			</div>
 	</div>
@@ -46,7 +47,8 @@
 					<div class="details-table_term">Priority:</div>
 					<div class="details-table_desc priorities-select custom-select custom-select-base priority">
 						<span class="custom-select-value"></span>
-						<input class="custom-select-input" type="hidden" name="priority-name">
+						<input class="custom-select-input" type="hidden" name="priority">
+						<input class="custom-select-input-name" type="hidden" name="priority-name">
 			 		</div>
 				</li>
 
@@ -54,7 +56,8 @@
 					<div class="details-table_term">Status:</div>
 					<div class="details-table_desc custom-select custom-select-status">
 						<span class="custom-select-value"></span>
-						<input class="custom-select-input" type="hidden" name="processing-name">
+						<input class="custom-select-input" type="hidden" name="processing">
+						<input class="custom-select-input-name" type="hidden" name="processing-name">
 			 		</div>
 				</li>
 

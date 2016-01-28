@@ -26,14 +26,16 @@
 	<div class="col priority">
 		<div class="details-table_desc priorities-select custom-select custom-select-base priority">
 			<span class="custom-select-value"></span>
-			<input class="custom-select-input" type="hidden" name="priority-name">
+			<input class="custom-select-input" type="hidden" name="priority">
+			<input class="custom-select-input-name" type="hidden" name="priority-name">
  		</div>
 	</div>
 
 	<div class="col status">
 		<div class="details-table_desc custom-select custom-select-status">
 			<span class="custom-select-value"></span>
-			<input class="custom-select-input" type="hidden" name="processing-name">
+			<input class="custom-select-input" type="hidden" name="processing">
+			<input class="custom-select-input-name" type="hidden" name="processing-name">
  		</div>
 	</div>
 

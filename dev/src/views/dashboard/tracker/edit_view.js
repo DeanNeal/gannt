@@ -22,7 +22,7 @@ var ContentView = BaseView.extend({
 		this.preloaderView.show();
 
 		this.parent.trigger('disable:change');
-		model.get_self().then(function(task){
+		model.create_self().then(function(task){
 			if(!this.descr){			
 				this.descr = this.addView(TaskDescriptionView, {model: task});
 				this.renderNestedView(this.descr, '.task-description');
