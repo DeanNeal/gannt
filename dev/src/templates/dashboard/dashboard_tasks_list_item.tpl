@@ -60,8 +60,8 @@
 		<div class="info">
 			<% if(obj['milestonename']) { %>
 			    <span class="icon-round-full"></span>
-			    <div>
-					<span><%=obj['milestonename']%></span>
+			    <div title="<%=obj['milestonename']%>">
+					<%=obj['milestonename']%>
 					<span class="deadline">Deadline: <%=obj['milestonedatefinish']%></span>
 			    </div>
 		    <% } else { %>
