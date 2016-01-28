@@ -24,35 +24,22 @@
 	</div>
 
 	<div class="col priority">
-        <div data-priority-name name="priority-name"></div>
+		<div class="details-table_desc priorities-select custom-select custom-select-base priority">
+			<span class="custom-select-value"></span>
+			<input class="custom-select-input" type="hidden" name="priority-name">
+ 		</div>
 	</div>
 
 	<div class="col status">
-		<div data-processing-name name="processing-name"><%=obj['processing-name']%></div>
-		<div class="status-select">
-			<ul>
-				<li>
-					<div data-processing-name="send">Send back</div>		
-				</li>
-				<li>
-					<div data-processing-name="done">Done</div>		
-				</li>
-				<li>
-					<div data-processing-name="complete">Completed</div>		
-				</li>
-				<li>
-					<div data-processing-name="hold">On hold</div>
-				</li>
-				<li>
-					<div data-processing-name="new">New</div>
-				</li>
-			</ul>
-		</div>
+		<div class="details-table_desc custom-select custom-select-status">
+			<span class="custom-select-value"></span>
+			<input class="custom-select-input" type="hidden" name="processing-name">
+ 		</div>
 	</div>
 
 	<div class="col assignee">
 		<% if(obj['avatar']) { %>
-			<img class="avatar" src="http://195.138.79.46<%=obj['avatar']%>" alt="" title="<%=taskusername%>">
+			<img class="avatar" alt="" title="<%=taskusername%>" name="avatar">
 		<% } %>
 	</div>
 

@@ -1,6 +1,6 @@
 var Backbone             = require('backbone'),
     BaseView             = require('views/baseview'),
-    tpl                  = require('templates/dashboard/dashboard_tasks_add_task.tpl'),
+    tpl                  = require('templates/dashboard/tracker/add_task.tpl'),
     $                    = require('jquery'),
     datepicker           = require('datepicker'),
     NewTaskModel         = require('models/dashboard/new_task_model');

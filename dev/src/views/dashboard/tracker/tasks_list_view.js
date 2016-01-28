@@ -1,15 +1,16 @@
 var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
+    Plugins                   = require('base/plugins'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
     BaseView              	  = require('views/baseview'),
     RoutedView            	  = require('views/routedview'),
-    TasksFiltersView      	  = require('views/dashboard/tasks/tasks_filters_view.js'),
-    TaskEditView          	  = require('views/dashboard/tasks/dashboard_tasks_edit_view'),
-    TaskCreateView            = require('views/dashboard/tasks/dashboard_tasks_add_task_view'),
-    dashboardTpl          	  = require('templates/dashboard/dashboard_tasks.tpl'),
-    dashboardTasksListTpl     = require('templates/dashboard/dashboard_tasks_list.tpl'),
-    dashboardTasksListItemTpl = require('templates/dashboard/dashboard_tasks_list_item.tpl'),
+    TasksFiltersView      	  = require('views/dashboard/tracker/filters_view.js'),
+    TaskEditView          	  = require('views/dashboard/tracker/edit_view'),
+    TaskCreateView            = require('views/dashboard/tracker/add_task_view'),
+    dashboardTpl          	  = require('templates/dashboard/tracker/tasks.tpl'),
+    dashboardTasksListTpl     = require('templates/dashboard/tracker/tasks_list.tpl'),
+    dashboardTasksListItemTpl = require('templates/dashboard/tracker/tasks_list_item.tpl'),
     PreloaderView             = require('views/preloader');
 
 
@@ -17,7 +18,8 @@ var TaskListItem = BaseView.extend({
 	template: dashboardTasksListItemTpl,
 	className: 'task-list-item',
 	events: {
-	    'click .col.status': 'toggleStatusWindow'
+	    'click .col.status'  : 'preventDefault',
+	    'click .col.priority': 'preventDefault'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -26,12 +28,21 @@ var TaskListItem = BaseView.extend({
 	},
 	onRender: function() {
 	    this.modelBinder.bind(this.model, this.el);
+
+	    this.getElement('.priorities-select').customSelect({
+	        url: this.api.catalog.get_list_task_priority,
+	        template: 'customSelectListPriority'
+	    });
+
+	    this.getElement('.custom-select-status').customSelect({
+	        url: this.api.catalog.get_list_task_status,
+	        template: 'customSelectListPriority'
+	    });
+
 	},
-	toggleStatusWindow: function (e) {
+	preventDefault: function (e) {
 		e.preventDefault();
 		e.stopPropagation();
-		
-		$(e.currentTarget).find('.status-select').toggle();
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
@@ -39,8 +50,8 @@ var TaskListItem = BaseView.extend({
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
-		 if(!currentEl.parents().hasClass('status'))
-		 	this.getElement('.status-select').hide();
+		 if(!currentEl.parents().hasClass('custom-select'))
+		 	this.getElement('.custom-select').customSelect('hide');
 	},
 	remove : function () {
 		Backbone.off('global:click', this.onGlobalClick, this);
@@ -87,11 +98,8 @@ var TaskList = BaseView.extend({
 			    self.renderNestedView(self.taskItemView, '.tasks-container');
 			});
 
-			tasks.get_count().then(function(data){
-				self.parent.trigger('pagination:update', data);
-				self.preloaderView.hide();
-			});
-
+			self.parent.trigger('pagination:update', tasks.get_extra_data);
+			self.preloaderView.hide();
  		});
 	},
 	changeTask: function(e){

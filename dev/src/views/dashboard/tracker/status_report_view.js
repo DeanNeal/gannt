@@ -1,11 +1,11 @@
 var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
-    tpl                  = require('templates/dashboard/dashboard_tasks_comments.tpl');
+    tpl                  = require('templates/dashboard/tracker/status_report.tpl');
 
 var ContentView = BaseView.extend({
-	className: 'comments full-size',
+	className: 'status-report full-size',
 	template: tpl
-});
+}); 
 
 module.exports = ContentView;

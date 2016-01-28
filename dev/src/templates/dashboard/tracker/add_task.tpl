@@ -85,7 +85,7 @@
 
 			<li class="details-table_assignee">
 				<div class="details-table_desc">
-					<img src="" alt="" width="32" height="32" data-host="http://195.138.79.46/" name="avatar">
+					<img src="" alt="" width="32" height="32" name="avatar">
 					<div class="info">
 						<div class="btn btn-text btn-assignee-to-me">
 							Assign to me

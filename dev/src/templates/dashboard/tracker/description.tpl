@@ -61,10 +61,10 @@
 				<li class="details-table_assignee">
 					<div class="details-table_term">Assignee:</div>
 					<div class="details-table_desc open-assignee-panel">
-						<img src="" alt="" width="32" height="32" data-host="http://195.138.79.46/" name="avatar">
+						<img src="" alt="" width="32" height="32" name="avatar">
 						<div class="info">
 							<span class="name" name="taskusername"></span>
-							<span name="taskusername"></span>
+							<span name="role"></span>
 						</div>
 					</div>
 				</li>
@@ -117,13 +117,13 @@
 				<li class="details-table_hours">
 					<div class="details-table_term">Estimated hours:</div>
 					<div class="details-table_desc">
-						<input type="text"  value="22">
+						<input type="text" class="show-spent-hours-popup" name="spent-hours">
 
-						<svg class="icon icon-request show-spent-hours-popup">
+						<svg class="icon icon-request">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-request"></use>
 				        </svg>
 
-						<input type="text"  value="22">
+						<input type="text" value="22">
 
 						<svg class="icon icon-approve">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-approve"></use>

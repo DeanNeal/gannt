@@ -135,6 +135,8 @@ body {
                 position: absolute;
                 right: 0;
                 top: 3px;
+
+                pointer-events: none;
             }
             
             // .custom-select-open
@@ -261,9 +263,9 @@ body {
         display: inline-block;
         vertical-align: top;
 
-        &:nth-child(1n+10) {
-            display: none;
-        }
+        // &:nth-child(1n+10) {
+        //     display: none;
+        // }
 
         &:last-child {
             display: inline-block;
@@ -492,9 +494,7 @@ body {
 
                 .unit {
                     font-size: 14px;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
+                    @extend .text-overflow;
                 }
             }
         }
@@ -522,8 +522,75 @@ body {
             }
         }
 
-        &[data-selected="high"] {
-            /**/
+        &[data-selected="new"] {
+            // .custom-select-value
+            .#{$self}-value {
+                color: #5020b1;
+                border-color: #5020b1;
+            }
+        }
+
+        &[data-selected="sent back"] {
+            // .custom-select-value
+            .#{$self}-value {
+                color: #b7b7b7;
+                border-color: #b7b7b7;
+            }
+        }
+
+        &[data-selected="approved"] {
+            // .custom-select-value
+            .#{$self}-value {
+                /**/
+            }
+        }
+
+        .#{$self}-dropdown {
+            ul {
+                li {
+                    text-align: center;
+
+                    &[data-text="complete"] {
+                        .unit {
+                            color: #715539;
+                            border-color: #715539;
+                        }
+                    }
+
+                    &[data-text="new"] {
+                       .unit {
+                            color: #5020b1;
+                            border-color: #5020b1;
+                        }
+                    }
+
+                    &[data-text="sent back"] {
+                        .unit {
+                            color: #b7b7b7;
+                            border-color: #b7b7b7;
+                        }
+                    }
+
+                    &[data-text="approved"] {
+                        .unit {
+                            /**/
+                        }
+                    }
+
+                    .unit {
+                        display: inline-block;
+                        vertical-align: middle;
+                        border: 1px solid;
+                        @include border-radius(5px);
+                        padding: 2px 10px;
+                        font-size: 10px;
+                        text-transform: capitalize;
+                        font-weight: bold;
+                        line-height: 15px;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 }
@@ -910,7 +977,7 @@ body {
     &_content {
         padding: 30px 20px;
 
-        li {
+        li {cursor: pointer;
             & + li {
                 margin-top: 15px;
             }

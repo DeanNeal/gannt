@@ -1,8 +1,8 @@
 var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
-    TaskDescriptionView  = require('views/dashboard/tasks/task_description_view'),
-    tpl                  = require('templates/dashboard/dashboard_tasks_edit.tpl'),
+    TaskDescriptionView  = require('views/dashboard/tracker/description_view'),
+    tpl                  = require('templates/dashboard/tracker/edit.tpl'),
     $                    = require('jquery'),
     PreloaderView        = require('views/preloader');
 
@@ -36,6 +36,9 @@ var ContentView = BaseView.extend({
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
 		if(currentEl.hasClass('close-see-more') || currentEl.hasClass('assignee-panel_close') || currentEl.hasClass('btn-apply'))
+			return; 
+		
+		if(currentEl.hasClass('btn-submit') || currentEl.hasClass('icon') || currentEl.parents().hasClass('icon'))
 			return; 
 		if(!currentEl.parents().hasClass('tasks-edit') && !currentEl.parents().hasClass('task-list-item'))
 		 	this.parent.trigger('taskView:close');

@@ -2,7 +2,7 @@ var Backbone                  = require('backbone');
 var $                         = require('jquery');
 var _                         = require('underscore');
 var BaseView                  = require('views/baseview');
-var dashboardTasksPagination  = require('templates/dashboard/dashboard_tasks_pagination.tpl');
+var dashboardTasksPagination  = require('templates/dashboard/tracker/pagination.tpl');
 
 var PaginationView = BaseView.extend({
     template: dashboardTasksPagination,

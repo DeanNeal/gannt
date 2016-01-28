@@ -55,6 +55,10 @@ let ModelFactory = {
                         }
                     });
                 }
+
+                if(srcObj['extra-data']){
+                    this.get_extra_data = srcObj['extra-data'];
+                }
             }
         }
         return new Collection(response);

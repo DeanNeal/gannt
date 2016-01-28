@@ -19,9 +19,17 @@ var AvatarView = BaseView.extend({
     template: avatarTpl,
     onInitialize: function (params) {
         BaseView.prototype.onInitialize.call(this, params);
+        this.modelBinder = new Backbone.ModelBinder();
+    },
+    onRender: function(){
+        this.modelBinder.bind(this.model, this.el);
     },
     serialize: function(){
         this.data = _.clone(this.model.attributes);
+    },
+    remove : function () {
+        this.modelBinder.unbind();
+        BaseView.prototype.remove.call(this);
     }
 });
 

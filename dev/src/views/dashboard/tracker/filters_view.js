@@ -5,19 +5,19 @@ var Helpers        = require('base/helpers');
 var Plugins        = require('base/plugins');
 var BaseView       = require('views/baseview');
 var BaseListView   = require('views/elements/base_list_view');
-var PaginationView = require('views/dashboard/tasks/task_pagination_view');
+var PaginationView = require('views/dashboard/tracker/pagination_view');
 var FilterModel    = require('models/dashboard/tasks_filter_model');
-var tpl            = require('templates/dashboard/tasks/tasks_filters.tpl');
+var tpl            = require('templates/dashboard/tracker/filters.tpl');
 
-import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins';
+import { SetActiveStateAtList, SetActiveStateAtTable} from 'base/plugins/highlightActiveFilter';
 
 var TasksFilterView = BaseView.extend({
 	template: tpl,
 	className: 'filters',
 	events: {
-		'click .pagination_left'    : 'prevClick',
-		'click .pagination_right'   : 'nextClick',
-		'click .pagination_pages span' : "changePage"
+		'click .pagination_left'                   : 'prevClick',
+		'click .pagination_right'                  : 'nextClick',
+		'click .pagination_pages .pagination_item' : "changePage"
 	},
 	defaults: {
 		filter: 'my_tasks',
@@ -52,25 +52,39 @@ var TasksFilterView = BaseView.extend({
 	prevClick: function(){
 		var offset = parseInt(this.model.get('offset') || 0);
 
-		if (offset >= this.countModel.get('perpage'))
-			offset -= parseInt(this.countModel.get('perpage'));
+		if (offset >= this.countModel.perpage)
+			offset -= parseInt(this.countModel.perpage);
+		else 
+			offset = 0;
 		this.model.set('offset', offset);
 	},
 	nextClick: function(){
 		var offset = parseInt(this.model.get('offset') || 0);
 
- 	 	if(offset < (this.pagesCount - 1) * this.countModel.get('perpage'))
-			offset += parseInt(this.countModel.get('perpage'));
+ 	 	if((offset + this.countModel.perpage) < (this.pagesCount - 1) * this.countModel.perpage)
+			offset += parseInt(this.countModel.perpage);
+		else 
+			offset = (this.pagesCount - 1) * this.countModel.perpage;
 		this.model.set('offset', offset);
 	},
 	changePage: function(e){
 		var pageId = $(e.currentTarget).data('page-id');
-		this.model.set('offset', (pageId - 1) * this.countModel.get('perpage'));
+		this.model.set('offset', (pageId - 1) * this.countModel.perpage);
 	},
 	updatePagination: function(countModel){
+		var offset = 0,
+			currentPage = 0;
 		this.countModel = countModel;
-		this.pagesCount = Math.ceil(countModel.get('count') / countModel.get('perpage'));
-		this.paginationView.update(this.pagesCount, Math.round(this.model.get('offset') / countModel.get('perpage') + 1));
+		this.pagesCount = Math.ceil(countModel.count / countModel.perpage);
+		this.maxOffset = countModel.perpage * (this.pagesCount - 1);
+ 	
+		offset = this.model.get('offset') > this.maxOffset  ? this.maxOffset : this.model.get('offset');
+		currentPage = Math.round(offset / countModel.perpage + 1);
+
+		//if user enter wrong offset value 
+		this.model.set('offset', offset);
+
+		this.paginationView.update(this.pagesCount, currentPage);
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
