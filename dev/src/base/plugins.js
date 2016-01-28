@@ -25,21 +25,22 @@ var CustomSelect = function(elem, options) {
 CustomSelect.prototype.init = function() {
     var self = this;
 
+    customSelectArray.push(this.$elem);
+
     this.ui = {
         wrapper: this.$elem,
         input: this.$elem.find('.custom-select-input'),
         name: this.$elem.find('.custom-select-input-name'),
         value: this.$elem.find('.custom-select-value'),
-        data: this.$elem.data(),
-        placeholder: this.$elem.find('.custom-select-input').attr('placeholder') ? this.$elem.find('.custom-select-input').attr('placeholder').toLowerCase() : ''
+        data: this.$elem.data()
     };
 
-    customSelectArray.push(this.$elem);
+    this.ui.placeholder = this.ui.input.attr('placeholder') ? this.ui.input.attr('placeholder').toLowerCase() : '';
 
     this.refresh(); 
 
     this.$elem.on('click', '.custom-select-value', function() {
-        self.hide(this.$elem);
+        self.hide();
 
         var tpl = _.template(customSelectTpl)({
             value: self.ui.input.val(),
@@ -91,20 +92,16 @@ CustomSelect.prototype.init = function() {
         self.$elem.attr('data-selected', $(this).data('text'));
 
         //hide all
-        self.hide();
+        self.hide(true); 
     });
 
     return this;
 };
 
-CustomSelect.prototype.hide = function(current) {
+CustomSelect.prototype.hide = function(closeSelf) {
     var self = this;
     customSelectArray.forEach(function(item, i) { 
-        if (!item.is(self.$elem)) {
-            item.removeClass('custom-select-open');
-            item.find('.custom-select-container').remove();
-        }
-        if (item.is(self.$elem)) {
+        if (!item.is(self.$elem) || closeSelf) {
             item.removeClass('custom-select-open');
             item.find('.custom-select-container').remove();
         }
@@ -134,12 +131,14 @@ CustomSelect.prototype.refreshValue = function(value) {
 };
 
 
-// CustomSelect.prototype.destroy = function () {
-//     customSelectArray.forEach(function (item, i) {
-//         if (item.is(this.$elem))
-//             customSelectArray.splice(i, 1);
-//     });
-// };
+CustomSelect.prototype.destroy = function () {
+    var self = this;
+
+    customSelectArray.forEach(function (item, i) {
+        if (item.is(self.$elem))
+            customSelectArray.splice(i, 1);
+    });
+};
 
 $.fn.customSelect = function(option) {
     var options = typeof option == "object" && option;

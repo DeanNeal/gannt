@@ -189,11 +189,17 @@ var ContentView = BaseView.extend({
             this.removeNestedView(this.commentsView);
         }
         this.commentsPreloaderView.show();
+        //get posts collection
         this.model.get_post().then(function(posts){
             this.commentsView = this.addView(CommentsView, {collection: posts});
             this.renderNestedView(this.commentsView, '.left-view_content');
             this.commentsPreloaderView.hide();
         }.bind(this));
+
+        //empty comment model
+        // this.model.create_post_create().then(function(posts){
+        //     debugger
+        // }.bind(this));
     },
     onSpentHoursChange: function(value) {
         this.model.set('spent-hours', value);
