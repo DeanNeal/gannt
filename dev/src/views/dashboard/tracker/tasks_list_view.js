@@ -1,6 +1,5 @@
 var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
-    Plugins                   = require('base/plugins'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
     BaseView              	  = require('views/baseview'),

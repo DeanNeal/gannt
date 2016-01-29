@@ -10,7 +10,7 @@ var Api            = require('base/api');
 var ModelBinder    = require('base/backbone.modelbinder');
 
 import ModelFactory from 'base/ModelFactory';
-
+import 'base/plugins/customSelectList';
 
 var api = Api.getInstance('/api/v1/system/catalog');
 
