@@ -9,7 +9,7 @@
 				<span class="icon-round"></span>
 				
 				<div class="task-name">
-					#<span name="id"></span>: <input type="text" readonly name="name">
+					#<span name="id"></span>: <span name="name"></span>
 				</div>
 
 				<svg class="icon icon-edit">
@@ -19,7 +19,7 @@
 		</div>
 		
 			<div class="description-text">
-				<textarea name="description" readonly></textarea>
+				<span name="description"></span>
 				<span class="see_more">See more</span>
 			</div>
 	</div>

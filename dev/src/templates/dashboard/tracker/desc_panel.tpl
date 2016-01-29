@@ -4,11 +4,13 @@
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
         </svg>
 
-        <div class="see-more-panel_title"><%=name%></div>
+        <div class="see-more-panel_title">
+             <input type="text" name="name">
+        </div>
 	</div>
 
     <div class="see-more-panel_full-desc full-size scroll">
-    	<p><%=description%></p>
+        <textarea name="description"></textarea>
     </div>
 
     <div class="see-more-panel_footer"></div>

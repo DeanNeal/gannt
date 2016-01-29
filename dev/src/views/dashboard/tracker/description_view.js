@@ -20,7 +20,7 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click .description .icon-edit'      : "editDescription",
+        'click .description .icon-edit'      : "openSeeMorePanel",
         'click .files'                       : "toggleFiles",
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
@@ -128,10 +128,6 @@ var ContentView = BaseView.extend({
     },
     toggleFiles: function(e) {
         $(e.currentTarget).find('.files-preview').toggle();
-    },
-    editDescription: function(){ 
-        this.getElement('.task-name input').toggleClass('edit-mode').prop('readonly', !this.getElement('.task-name input').attr('readonly'));
-        this.getElement('.description-text textarea').toggleClass('edit-mode').prop('readonly', !this.getElement('.description-text textarea').attr('readonly'));
     },
     openSeeMorePanel: function(){
         if(!this.seeMoreView) {

@@ -30,6 +30,10 @@ var SeeMorePanelView = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.getFiles();
+		this.modelBinder = new Backbone.ModelBinder();
+	},
+	onRender: function(){
+		this.modelBinder.bind(this.model, this.el);
 	},
 	serialize: function(params) {
 	    this.data = _.clone(this.model.attributes);
@@ -39,6 +43,10 @@ var SeeMorePanelView = BaseView.extend({
 		    this.fileView = this.addView(FileView, {model: this.model});
 		    this.renderNestedView(this.fileView, '.see-more-panel_footer');
 		}.bind(this));
+	},
+	remove : function () {
+	    this.modelBinder.unbind();
+	    BaseView.prototype.remove.call(this);
 	}
 });
 
