@@ -202,14 +202,17 @@
             & > div {
                 vertical-align: middle;
             }
-
-            img {
+            
+            .watcher_item {
                 float: left;
-                @include border-radius(3px);
 
-                & + img {
+                & + .watcher_item {
                     margin-left: 1px;
                 }
+            }
+
+            img {
+                @include border-radius(3px);
             }
         }
         
