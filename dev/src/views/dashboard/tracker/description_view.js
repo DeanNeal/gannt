@@ -30,7 +30,7 @@ var ContentView = BaseView.extend({
         'click .open-assignee-panel'         : "onOpenAssingeePanelClick",
         'click .assignee-panel_close'        : "onCloseAssingeePanelClick",
         'click .show-spent-hours-popup'      : "onOpenSpentHoursPopupClick",
-        'click .btn-status'                  : "openStatusReport",
+        'click .btn-status'                  : "showStatusReport",
         'click .btn-comments'                : "showComments"
     },
     links: [{
@@ -64,6 +64,8 @@ var ContentView = BaseView.extend({
         this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
         this.listenTo(this, 'comments:add', this.onAddComment, this);
         this.listenTo(this, 'popups:close', this.closeAllPopups, this);
+
+        this.commentsIsLoaded = true;
     },
     onRender: function() {
         var self = this;
@@ -156,7 +158,7 @@ var ContentView = BaseView.extend({
         var model =  _.clone(this.model);
         this.openPopup('spentHoursView', SpentHoursPopupView, model);
     },
-    openStatusReport: function() {
+    showStatusReport: function() {
         if(this.statusReportView) {
             this.removeNestedView(this.statusReportView);
         }
@@ -180,11 +182,16 @@ var ContentView = BaseView.extend({
         }
         this.commentsPreloaderView.show();
         //get posts collection
-        this.model.get_post().then(function(posts){
-            this.commentsView = this.addView(CommentsView, {collection: posts});
-            this.renderNestedView(this.commentsView, '.left-view_content');
-            this.commentsPreloaderView.hide();
-        }.bind(this));
+
+        if(this.commentsIsLoaded){ 
+            this.commentsIsLoaded = false;       
+            this.model.get_post().then(function(posts){
+                this.commentsView = this.addView(CommentsView, {collection: posts});
+                this.renderNestedView(this.commentsView, '.left-view_content');
+                this.commentsPreloaderView.hide();
+                this.commentsIsLoaded = true;
+            }.bind(this));
+        }
     },
     onAddComment: function(content) {
         this.commentsPreloaderView.show();

@@ -115,8 +115,10 @@ export class CustomSelect {
         if (this.ui.input.val()) {
             if (this.options.initialState) {
                 this.options.url(this.ui.input.val()).then(function (response) {
-                    let model = response.at(0);
-                    self.refreshValue(model.get('name'));
+                    if(response.length){                    
+                        let model = response.at(0);
+                        self.refreshValue(model.get('name'));
+                    }
                 });
             } else {
                 this.refreshValue(this.ui.name.val());

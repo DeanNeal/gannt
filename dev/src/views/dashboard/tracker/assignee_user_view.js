@@ -72,7 +72,6 @@ var ContentView = PopupView.extend({
 	},
 	getMembers: function(){
 		this.model.get_self().then(function(posts){
-
 			for (var i = 0; i < 3; i++) {
 			    this.memberView = this.addView(MemberView, {model: this.model});
 			    this.renderNestedView(this.memberView, '.assignee-panel_content ul');
