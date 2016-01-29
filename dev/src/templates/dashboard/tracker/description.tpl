@@ -18,11 +18,11 @@
 			</div>
 		</div>
 		
-			<div class="description-text">
-				<textarea name="description" readonly></textarea>
-				<span class="see_more">See more</span>
-			</div>
-	</div>
+		<div class="description-text">
+			<textarea name="description" readonly></textarea>
+			<span class="see_more">See more</span>
+		</div>
+</div>
 
 	<div class="info-container full-size">
 		<div class="left-view">
