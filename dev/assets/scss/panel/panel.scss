@@ -716,6 +716,8 @@
             .task-name {
                 display: inline-block;
                 vertical-align: middle;
+                @extend .text-overflow;
+                max-width: 90%;
             }
 
             input[type="text"]{
