@@ -121,6 +121,12 @@
                     border-color: #e7a765;
                 }
             }
+
+            // .details-table_status .details-table_desc
+            .#{$self}_desc {
+                position: relative;
+                width: 95px;
+            }
         }
         
         // .details-table_assignee
@@ -764,21 +770,6 @@
                 text-decoration: none;
                 font-weight: 600;
                 cursor: pointer;
-            }
-        }
-    }
-
-    .right-view {
-        .details-table {
-            $self: details-table;
-            
-            // .details-table_status
-            &_status {
-                // .details-table_status .details-table_desc
-                .#{$self}_desc {
-                    position: relative;
-                    width: 95px;
-                }
             }
         }
     }

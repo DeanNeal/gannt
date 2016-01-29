@@ -602,7 +602,7 @@ body {
 .see-more-panel {
     position: absolute;
     padding-top: 60px;
-    padding-bottom: 100px;
+    padding-bottom: 145px;
     width: 100%;
     top: 0;
     bottom: 0;
@@ -624,6 +624,23 @@ body {
         cursor: pointer;
     }
     
+    // .see-more-panel_title
+    // .see-more-panel_full-desc
+    &_title,
+    &_full-desc {
+        input,
+        textarea {
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            opacity: .76;
+            border: 1px solid #d6d6d6;
+            padding: 10px 10px;
+            @include border-radius(3px);
+        }
+    }
+    
     // .see-more-panel_header
     &_header {
         position: absolute;
@@ -638,18 +655,22 @@ body {
         color: #000;
         font-size: 14px;
         font-weight: 700;
+
+        input {
+            height: 34px;
+        }
     }
     
     // .see-more-panel_full-desc
     &_full-desc {
         padding: 0 30px;
 
-        p {
-            opacity: .76;
-            color: #000;
-            font-size: 14px;
-            font-weight: 600;
+        textarea {            
+            height: 100%;
+            display: block;
+        }
 
+        p {
             & + p {
                 margin-top: 15px;
             }
