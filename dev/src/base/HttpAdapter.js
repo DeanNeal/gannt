@@ -47,7 +47,7 @@ export default function (url) {
                 }
             }
         } else if (typeof options.args === "string") {
-            uri += '&by-id[id]=' + options.args;
+            uri += '?by-id[id]=' + options.args;
         }
 
         client.withCredentials = true;

@@ -43,6 +43,7 @@ var ContentView = BaseView.extend({
         className: "btn-status",
         id: "status_report"
     }],
+    commentsIsLoaded : true,
     onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
 
@@ -64,8 +65,6 @@ var ContentView = BaseView.extend({
         this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
         this.listenTo(this, 'comments:add', this.onAddComment, this);
         this.listenTo(this, 'popups:close', this.closeAllPopups, this);
-
-        this.commentsIsLoaded = true;
     },
     onRender: function() {
         var self = this;
@@ -196,7 +195,7 @@ var ContentView = BaseView.extend({
     onAddComment: function(content) {
         this.commentsPreloaderView.show();
         this.model.create_post_create().then(function(comment){
-            comment.set('content', content);
+            comment.set('content', content);debugger
             this.model.update_post_create(comment.attributes).then(function(){
                 this.commentsFetch();
             }.bind(this));
