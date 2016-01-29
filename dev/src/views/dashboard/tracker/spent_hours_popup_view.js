@@ -17,10 +17,10 @@ var ContentView = BaseView.extend({
     },
 	submitCount: function() {
 		// var hours = this.getElement('.hours-count').val();
+		var val = this.model.get('spent-hours');
 
-		// if (hours)
-		// 	this.parent.trigger('spentHours:submit', hours);
-		// 	this.model.set
+		if (val)
+			this.parent.trigger('spentHours:submit', this.model.attributes);
 	} 
 });
 

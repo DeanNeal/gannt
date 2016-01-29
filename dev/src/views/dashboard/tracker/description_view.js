@@ -20,7 +20,7 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click. .icon-edit'                  : "editDescription",
+        'click .description .icon-edit'      : "editDescription",
         'click .files'                       : "toggleFiles",
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
@@ -88,12 +88,12 @@ var ContentView = BaseView.extend({
         });
 
         this.getElement('.priorities-select').customSelect({
-            url: this.api.catalog.get_list_task_priority,
+            url: this.model.get_priority,
             template: 'customSelectListPriority'
         });
 
         this.getElement('.custom-select-status').customSelect({
-            url: this.api.catalog.get_list_task_status,
+            url: this.model.get_processing,
             template: 'customSelectListPriority'
         });
 
@@ -208,8 +208,8 @@ var ContentView = BaseView.extend({
             }.bind(this));
         }.bind(this));
     },
-    onSpentHoursChange: function(value) {
-        this.model.set('spent-hours', value);
+    onSpentHoursChange: function(model) {
+        this.model.set(model);
         this.closeSpentHoursPopup();
     },
     watchersFetch: function() {
