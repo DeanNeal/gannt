@@ -22,7 +22,7 @@ var ContentView = BaseView.extend({
 		this.preloaderView.show();
 
 		this.parent.trigger('disable:change');
-		model.get_self().then(function(task){
+		model.create_self().then(function(task){
 			if(!this.descr){			
 				this.descr = this.addView(TaskDescriptionView, {model: task});
 				this.renderNestedView(this.descr, '.task-description');
@@ -35,11 +35,10 @@ var ContentView = BaseView.extend({
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
-		if(currentEl.hasClass('close-see-more') || currentEl.hasClass('assignee-panel_close') || currentEl.hasClass('btn-apply'))
-			return; 
-		
-		if(currentEl.hasClass('btn-submit') || currentEl.hasClass('icon') || currentEl.parents().hasClass('icon'))
-			return; 
+
+		if(!currentEl.parents('body').length)
+			return;
+
 		if(!currentEl.parents().hasClass('tasks-edit') && !currentEl.parents().hasClass('task-list-item'))
 		 	this.parent.trigger('taskView:close');
 	},

@@ -3,6 +3,7 @@ var Backbone = require('backbone');
 var TaskFilterModel = Backbone.Model.extend({
 	defaults: {
 		'taskmaintagname' : 'No Project',
+		'priority'        : '0',
 		'priority-name'   : 'low',
 		'processing-name' : 'new',
 		'taskusername'    : 'Assign to me',

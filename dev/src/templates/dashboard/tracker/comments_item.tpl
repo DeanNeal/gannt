@@ -1,7 +1,7 @@
 <div>
 	<div class="comment-left">
 		<% if(avatar) { %>
-			<img class="avatar" src="http://195.138.79.46/<%=avatar%>" alt="">
+			<img class="avatar" src="<%=avatar%>" alt="">
 		<% } else { %>
 			<img src="build/img/avatar.png" alt="" width="52">
 		<% } %>

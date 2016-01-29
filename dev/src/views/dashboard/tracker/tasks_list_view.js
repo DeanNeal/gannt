@@ -1,6 +1,5 @@
 var Backbone              	  = require('backbone'),
     Helpers                   = require('base/helpers'),
-    Plugins                   = require('base/plugins'),
     $                     	  = require('jquery'),
     _                     	  = require('underscore'),
     BaseView              	  = require('views/baseview'),
@@ -24,7 +23,7 @@ var TaskListItem = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.modelBinder = new Backbone.ModelBinder();
-		Backbone.on('global:click', this.onGlobalClick, this);
+		// Backbone.on('global:click', this.onGlobalClick, this);
 	},
 	onRender: function() {
 	    this.modelBinder.bind(this.model, this.el);
@@ -47,14 +46,14 @@ var TaskListItem = BaseView.extend({
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);
 		this.data.Helpers = Helpers;
-	},
-	onGlobalClick: function(e) {
-		var currentEl = $(e.target);
-		 if(!currentEl.parents().hasClass('custom-select'))
-		 	this.getElement('.custom-select').customSelect('hide');
-	},
+	}, 
+	// onGlobalClick: function(e) {
+	// 	var currentEl = $(e.target);
+	// 	 if(!currentEl.parents().hasClass('custom-select'))
+	// 	 	this.getElement('.custom-select').customSelect('hide');
+	// },
 	remove : function () {
-		Backbone.off('global:click', this.onGlobalClick, this);
+	//	Backbone.off('global:click', this.onGlobalClick, this);
 	    this.modelBinder.unbind();
 	}
 });
@@ -88,6 +87,7 @@ var TaskList = BaseView.extend({
 			self.collection = tasks;
 
 			if(self.taskItemView){			
+				self.getElement('.custom-select').customSelect('destroy');
 				self.getElement('.tasks-container').empty();
 				self.removeNestedView();
 				self.taskItemView.remove();

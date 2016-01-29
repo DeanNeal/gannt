@@ -19,6 +19,7 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
+        'click. .icon-edit'                  : "editDescription",
         'click .files'                       : "toggleFiles",
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
@@ -61,6 +62,7 @@ var ContentView = BaseView.extend({
 
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
         this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
+        this.listenTo(this, 'comments:add', this.onAddComment, this);
     },
     onRender: function() {
         var self = this;
@@ -110,6 +112,9 @@ var ContentView = BaseView.extend({
         if(!currentEl.parents().hasClass('custom-select'))
             this.getElement('.custom-select').customSelect('hide');
 
+        if(!currentEl.parents('body').length)
+            return;
+        
         if(!currentEl.parents().hasClass('assignee-panel') && !currentEl.parents().hasClass('open-assignee-panel'))
             this.closeAssingeePanel();
 
@@ -121,6 +126,10 @@ var ContentView = BaseView.extend({
     },
     toggleFiles: function(e) {
         $(e.currentTarget).find('.files-preview').toggle();
+    },
+    editDescription: function(){ 
+        this.getElement('.task-name input').toggleClass('edit-mode').prop('readonly', !this.getElement('.task-name input').attr('readonly'));
+        this.getElement('.description-text textarea').toggleClass('edit-mode').prop('readonly', !this.getElement('.description-text textarea').attr('readonly'));
     },
     openSeeMorePanel: function(){
         if(!this.seeMoreView) {
@@ -181,10 +190,20 @@ var ContentView = BaseView.extend({
             this.removeNestedView(this.commentsView);
         }
         this.commentsPreloaderView.show();
+        //get posts collection
         this.model.get_post().then(function(posts){
             this.commentsView = this.addView(CommentsView, {collection: posts});
             this.renderNestedView(this.commentsView, '.left-view_content');
             this.commentsPreloaderView.hide();
+        }.bind(this));
+    },
+    onAddComment: function(content) {
+        this.commentsPreloaderView.show();
+        this.model.create_post_create().then(function(comment){
+            comment.set('content', content);
+            this.model.update_post_create(comment.attributes).then(function(){
+                this.commentsFetch();
+            }.bind(this));
         }.bind(this));
     },
     onSpentHoursChange: function(value) {
@@ -199,8 +218,7 @@ var ContentView = BaseView.extend({
         this.commentsFetch();
     },
     onChange: function(){
-        // this.model.update_self().then(function(){
-        // });
+        this.model.update_self(this.model.attributes);
     },
 
     remove : function () {
