@@ -1,9 +1,10 @@
 var Backbone             = require('backbone'),
     BaseView             = require('views/baseview'),
+    PopupView            = require('views/elements/popup_view'),
     tpl                  = require('templates/dashboard/tracker/spent_hours_popup.tpl');
 
-var ContentView = BaseView.extend({
-	className: 'spent-hours',
+var ContentView = PopupView.extend({
+	// className: 'spent-hours popup',
 	template: tpl,
 	events: {
 		'click .btn-submit'    : "submitCount"

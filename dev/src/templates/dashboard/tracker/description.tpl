@@ -62,7 +62,7 @@
 
 				<li class="details-table_assignee">
 					<div class="details-table_term">Assignee:</div>
-					<div class="details-table_desc open-assignee-panel">
+					<div class="details-table_desc open-assignee-panel open-popup">
 						<img src="" alt="" width="32" height="32" name="avatar">
 						<div class="info">
 							<span class="name" name="taskusername"></span>
@@ -112,7 +112,7 @@
 
 				<li class="details-table_hours">
 					<div class="details-table_term">Estimated hours:</div>
-					<div class="details-table_desc">
+					<div class="details-table_desc open-popup">
 						<input type="text" class="show-spent-hours-popup" readonly name="spent-hours" maxlength="5">
 
 						<svg class="icon icon-request">

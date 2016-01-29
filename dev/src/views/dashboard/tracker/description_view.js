@@ -20,16 +20,16 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click .description .icon-edit'      : "openSeeMorePanel",
+        'click .description .icon-edit'      : "onOpenSeeMorePanelClick",
         'click .files'                       : "toggleFiles",
-        'click .see_more'                    : "openSeeMorePanel",
-        'click .close-see-more'              : "closeSeeMorePanel",
+        'click .see_more'                    : "onOpenSeeMorePanelClick",
+        'click .close-see-more'              : "onCloseSeeMorePanelClick",
         'click .details-table_desc_priority' : "openPriority",
         'click .details-table_desc_status'   : "openStatus",
         'click .status-select-item'          : "changeStatus",
-        'click .open-assignee-panel'         : "openAssingeePanel",
-        'click .assignee-panel_close'        : "closeAssingeePanel",
-        'click .show-spent-hours-popup'      : "openSpentHoursPopup",
+        'click .open-assignee-panel'         : "onOpenAssingeePanelClick",
+        'click .assignee-panel_close'        : "onCloseAssingeePanelClick",
+        'click .show-spent-hours-popup'      : "onOpenSpentHoursPopupClick",
         'click .btn-status'                  : "openStatusReport",
         'click .btn-comments'                : "showComments"
     },
@@ -59,12 +59,11 @@ var ContentView = BaseView.extend({
         this.modelBinder = new Backbone.ModelBinder();
 
         this.model.on('change', this.onChange, this);
-        Backbone.on('global:click', this.onGlobalClick, this);
-
 
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
         this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
         this.listenTo(this, 'comments:add', this.onAddComment, this);
+        this.listenTo(this, 'popups:close', this.closeAllPopups, this);
     },
     onRender: function() {
         var self = this;
@@ -97,7 +96,7 @@ var ContentView = BaseView.extend({
             template: 'customSelectListPriority'
         });
 
-            // массив для шаблонизатора форм.
+        // Restrict для шаблонизатора форм.
         // var restrict = { 
         //     'date-start': { 
         //         disabled : false,
@@ -109,59 +108,53 @@ var ContentView = BaseView.extend({
         // };
         // Helpers.initRestrict(restrict, this.el);
     },
-    onGlobalClick: function(e) {
-        var currentEl = $(e.target);
-        if(!currentEl.parents().hasClass('custom-select'))
-            this.getElement('.custom-select').customSelect('hide');
-
-        if(!currentEl.parents('body').length)
-            return;
-        
-        if(!currentEl.parents().hasClass('assignee-panel') && !currentEl.parents().hasClass('open-assignee-panel'))
-            this.closeAssingeePanel();
-
-        if(!currentEl.parents().hasClass('spent-hours') && !currentEl.hasClass('show-spent-hours-popup'))
-            this.closeSpentHoursPopup();
-    },
     serialize: function(params) {
         this.data = _.clone(this.model.attributes);
     },
     toggleFiles: function(e) {
         $(e.currentTarget).find('.files-preview').toggle();
     },
-    openSeeMorePanel: function(){
-        if(!this.seeMoreView) {
-            this.seeMoreView = this.addView(SeeMorePanelView, {model: this.model});
-            this.renderNestedView(this.seeMoreView);
+    openPopup: function(popupName, view, model){
+        if(!this[popupName]) {
+            this[popupName] = this.addView(view, {model: model});
+            this.renderNestedView(this[popupName]);
         }
     },
-    closeSeeMorePanel: function() {
-        this.removeNestedView(this.seeMoreView);
-        this.seeMoreView = undefined;
+
+    closePopup: function(popupName){
+        this.removeNestedViewByName(popupName);
     },
-    openAssingeePanel: function() {
-        if(!this.assigneeView) {
-            this.assigneeView = this.addView(AssigneePanelView, {model: this.model});
-            this.renderNestedView(this.assigneeView);
-        }
+
+    closeAllPopups: function() {
+        this.closePopup('seeMoreView')
+        this.closePopup('assigneeView');
+        this.closePopup('spentHoursView');
     },
-    closeAssingeePanel: function() {
-        this.removeNestedView(this.assigneeView);
-        this.assigneeView = undefined;
+
+    onOpenSeeMorePanelClick: function(){
+        this.openPopup('seeMoreView', SeeMorePanelView, this.model);
     },
+
+    onCloseSeeMorePanelClick: function(){
+        this.closePopup('seeMoreView');
+    },
+
+    onOpenAssingeePanelClick: function(){
+        this.openPopup('assigneeView', AssigneePanelView, this.model);
+    },
+
+    onCloseAssingeePanelClick: function(){
+        this.closePopup('assigneeView');
+    },
+
     onAssingeeApply: function(member){
         this.model.set(member);
-        this.closeAssingeePanel();
+        this.closePopup('assigneeView');
     },  
-    openSpentHoursPopup: function() {
-        if(!this.spentHoursView) {
-            this.spentHoursView = this.addView(SpentHoursPopupView, {model: _.clone(this.model)});
-            this.renderNestedView(this.spentHoursView);
-        }
-    },
-    closeSpentHoursPopup: function() {
-        this.removeNestedView(this.spentHoursView);
-        this.spentHoursView = undefined;
+
+    onOpenSpentHoursPopupClick: function(){
+        var model =  _.clone(this.model);
+        this.openPopup('spentHoursView', SpentHoursPopupView, model);
     },
     openStatusReport: function() {
         if(this.statusReportView) {
@@ -172,16 +165,14 @@ var ContentView = BaseView.extend({
         this.removeComments();
     },
     removeStatusReport: function() {
-        this.removeNestedView(this.statusReportView);
-        this.statusReportView = undefined;
+        this.removeNestedViewByName('statusReportView');
     },
     showComments: function() {
         this.commentsFetch();
         this.removeStatusReport();
     },
     removeComments: function() {
-        this.removeNestedView(this.commentsView);
-        this.commentsView = undefined;
+        this.removeNestedViewByName('commentsView');
     },
     commentsFetch: function(){
         if(this.commentsView) {
@@ -207,7 +198,7 @@ var ContentView = BaseView.extend({
     onSpentHoursChange: function(model) {
         this.model.set(model);
         this.modelBinder.bind(this.model, this.el);
-        this.closeSpentHoursPopup();
+        this.closePopup('spentHoursView');
     },
     watchersFetch: function() {
         if(this.watchersView) {

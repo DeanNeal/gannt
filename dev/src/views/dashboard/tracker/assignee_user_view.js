@@ -2,6 +2,7 @@ var $                    = require('jquery'),
 	Backbone             = require('backbone'),
 	_                    = require('underscore'),
     BaseView             = require('views/baseview'),
+    PopupView            = require('views/elements/popup_view'),
     Helpers              = require('base/helpers'),
     tpl                  = require('templates/dashboard/tracker/assignee_user.tpl'),
     memberTpl            = require('templates/dashboard/tracker/assignee_member.tpl');
@@ -44,8 +45,8 @@ var MemberView = BaseView.extend({
 	}
 }); 
 
-var ContentView = BaseView.extend({
-	className: 'assignee-panel',
+var ContentView = PopupView.extend({
+	// className: 'assignee-panel popup',
 	template: tpl,
 	events: {
 		'click .btn-apply'                   : 'onApplyClick',

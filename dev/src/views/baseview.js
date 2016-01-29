@@ -184,6 +184,11 @@ var BaseView = Backbone.View.extend({
         }
     },
 
+    removeNestedViewByName: function (popupName) {
+        this.removeNestedView(this[popupName]);
+        this[popupName] = undefined;
+    },
+
     removeAllNestedView: function () {
         this.stopListening();
         this.nestedViews = [];

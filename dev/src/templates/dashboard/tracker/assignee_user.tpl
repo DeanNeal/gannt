@@ -1,4 +1,4 @@
-<div class="full-size">
+<div class="assignee-panel full-size">
 	<div class="assignee-panel_header">
 		<span>
 			Assignee

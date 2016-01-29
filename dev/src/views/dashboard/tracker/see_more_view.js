@@ -25,7 +25,7 @@ var FileView = BaseView.extend({
 
 
 var SeeMorePanelView = BaseView.extend({
-	className: 'see-more-panel-wrap',
+	className: 'see-more-panel-wrap popup',
 	template: tpl,
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);

@@ -1,4 +1,4 @@
-<div>
+<div class="spent-hours">
 	<textarea name="" id="" placeholder="Add some comment..."></textarea>
 
 	<div class="spent-hours_actual">
