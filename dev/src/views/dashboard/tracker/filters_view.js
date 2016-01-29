@@ -2,7 +2,6 @@ var Backbone       = require('backbone');
 var $              = require('jquery');
 var _              = require('underscore');
 var Helpers        = require('base/helpers');
-var Plugins        = require('base/plugins');
 var BaseView       = require('views/baseview');
 var BaseListView   = require('views/elements/base_list_view');
 var PaginationView = require('views/dashboard/tracker/pagination_view');
