@@ -85,11 +85,11 @@ export class CustomSelect {
         let self = event.data;
 
         self.ui.input
-            .val($(self).data('id'))
+            .val($(this).data('id'))
             .change();
 
-        self.ui.value.text($(self).data('text'));
-        self.$elem.attr('data-selected', $(self).data('text'));
+        self.ui.value.text($(this).data('text'));
+        self.$elem.attr('data-selected', $(this).data('text'));
 
         //hide all
         self.hide(true);
