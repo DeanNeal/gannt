@@ -7,14 +7,14 @@ var ContentView = PopupView.extend({
 	// className: 'spent-hours popup',
 	template: tpl,
 	events: {
-		'click .btn-submit'    : "submitCount"
+		// 'click .btn-submit'    : "submitCount"
 	},
 	onInitialize: function(params) {
         BaseView.prototype.onInitialize.call(this, params);
-        this.modelBinder = new Backbone.ModelBinder();
+        //this.modelBinder = new Backbone.ModelBinder();
     },
     onRender: function() {
-    	this.modelBinder.bind(this.model, this.el);
+    	//this.modelBinder.bind(this.model, this.el);
     },
 	submitCount: function() {
 		var val = this.model.get('spent-hours');

@@ -49,7 +49,7 @@ var ContentView = PopupView.extend({
 	// className: 'assignee-panel popup',
 	template: tpl,
 	events: {
-		'click .btn-apply'                   : 'onApplyClick',
+		// 'click .btn-apply'                   : 'onApplyClick',
 		'keyup .assignee-panel_search input' : 'searchMembers'
 	},
 

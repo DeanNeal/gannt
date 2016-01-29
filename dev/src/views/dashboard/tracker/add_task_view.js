@@ -20,23 +20,23 @@ var ContentView = BaseView.extend({
 	onRender: function(){
 		var self = this;
 		this.modelBinder.bind(this.model, this.el);
-		this.getElement('#task-date-start').datepicker({
-		    dateFormat: "yy-mm-dd",
-		    maxDate: new Date(this.model.get('date-finish')),
-		    onSelect: function(selected) {
-		        $(this).change(); 
-		        self.getElement('#task-date-finish').datepicker("option","minDate", selected)
-		    }
+		// this.getElement('#task-date-start').datepicker({
+		//     dateFormat: "yy-mm-dd",
+		//     maxDate: new Date(this.model.get('date-finish')),
+		//     onSelect: function(selected) {
+		//         $(this).change(); 
+		//         self.getElement('#task-date-finish').datepicker("option","minDate", selected)
+		//     }
 
-		});
-		this.getElement('#task-date-finish').datepicker({
-		    dateFormat: "yy-mm-dd",
-		    minDate: this.model.get('date-start'),
-		    onSelect: function(selected) {
-		        $(this).change(); 
-		        self.getElement('#task-date-start').datepicker("option","maxDate", selected)
-		    }
-		});
+		// });
+		// this.getElement('#task-date-finish').datepicker({
+		//     dateFormat: "yy-mm-dd",
+		//     minDate: this.model.get('date-start'),
+		//     onSelect: function(selected) {
+		//         $(this).change(); 
+		//         self.getElement('#task-date-start').datepicker("option","maxDate", selected)
+		//     }
+		// });
 
 		this.getElement('.custom-select').customSelect({
 		    url: this.api.catalog.get_list_task_priority,

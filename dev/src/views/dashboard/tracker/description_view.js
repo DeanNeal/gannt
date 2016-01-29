@@ -69,31 +69,31 @@ var ContentView = BaseView.extend({
     onRender: function() {
         var self = this;
         this.modelBinder.bind(this.model, this.el);
-        this.getElement('#task-date-start').datepicker({
-            dateFormat: "yy-mm-dd",
-            maxDate: new Date(this.model.get('date-finish')),
-            onSelect: function(selected) {
-                $(this).change(); 
-                self.getElement('#task-date-finish').datepicker("option","minDate", selected)
-            }
+        // this.getElement('#task-date-start').datepicker({
+        //     dateFormat: "yy-mm-dd",
+        //     maxDate: new Date(this.model.get('date-finish')),
+        //     onSelect: function(selected) {
+        //         $(this).change(); 
+        //         self.getElement('#task-date-finish').datepicker("option","minDate", selected)
+        //     }
 
-        });
-        this.getElement('#task-date-finish').datepicker({
-            dateFormat: "yy-mm-dd",
-            minDate: this.model.get('date-start'),
-            onSelect: function(selected) {
-                $(this).change(); 
-                self.getElement('#task-date-start').datepicker("option","maxDate", selected)
-            }
-        });
+        // });
+        // this.getElement('#task-date-finish').datepicker({
+        //     dateFormat: "yy-mm-dd",
+        //     minDate: this.model.get('date-start'),
+        //     onSelect: function(selected) {
+        //         $(this).change(); 
+        //         self.getElement('#task-date-start').datepicker("option","maxDate", selected)
+        //     }
+        // });
 
         this.getElement('.priorities-select').customSelect({
-            url: this.model.get_priority,
+            url: this.model['get_priority-edit'],
             template: 'customSelectListPriority'
         });
 
         this.getElement('.custom-select-status').customSelect({
-            url: this.model.get_processing,
+            url: this.model['get_processing-edit'],
             template: 'customSelectListPriority'
         });
 
@@ -195,7 +195,7 @@ var ContentView = BaseView.extend({
     onAddComment: function(content) {
         this.commentsPreloaderView.show();
         this.model.create_post_create().then(function(comment){
-            comment.set('content', content);debugger
+            comment.set('content', content);
             this.model.update_post_create(comment.attributes).then(function(){
                 this.commentsFetch();
             }.bind(this));
@@ -227,8 +227,8 @@ var ContentView = BaseView.extend({
 
     remove : function () {
         this.modelBinder.unbind();
-        this.getElement('#task-date-start').datepicker("destroy");
-        this.getElement('#task-date-finish').datepicker("destroy");
+        // this.getElement('#task-date-start').datepicker("destroy");
+        // this.getElement('#task-date-finish').datepicker("destroy");
         BaseView.prototype.remove.call(this);
     }
 });

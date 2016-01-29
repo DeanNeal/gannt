@@ -42,7 +42,7 @@ var TasksFilterView = BaseView.extend({
 		this.model.clear({silent : true}).set(model || this.defaults, {silent: true});
 		this.modelBinder.bind(this.model, this.el);
 
-		this.filterList.highLight();
+		//this.filterList.highLight();
 		this.sortList.highLight();
 
 		this.getElement('.custom-select').customSelect('refresh');
@@ -86,7 +86,7 @@ var TasksFilterView = BaseView.extend({
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
-		this.filterList = new SetActiveStateAtList(this.getElement('.base-filters'), 'filter');
+		//this.filterList = new SetActiveStateAtList(this.getElement('.base-filters'), 'filter');
 		this.sortList = new SetActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
 
 		this.getElement('#projects-select').customSelect({
