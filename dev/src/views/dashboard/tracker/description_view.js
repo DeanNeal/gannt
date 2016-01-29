@@ -159,7 +159,7 @@ var ContentView = BaseView.extend({
     },  
     openSpentHoursPopup: function() {
         if(!this.spentHoursView) {
-            this.spentHoursView = this.addView(SpentHoursPopupView, {model: this.model});
+            this.spentHoursView = this.addView(SpentHoursPopupView, {model: _.clone(this.model)});
             this.renderNestedView(this.spentHoursView);
         }
     },
@@ -210,6 +210,7 @@ var ContentView = BaseView.extend({
     },
     onSpentHoursChange: function(model) {
         this.model.set(model);
+        this.modelBinder.bind(this.model, this.el);
         this.closeSpentHoursPopup();
     },
     watchersFetch: function() {

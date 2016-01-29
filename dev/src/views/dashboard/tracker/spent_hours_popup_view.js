@@ -16,11 +16,12 @@ var ContentView = BaseView.extend({
     	this.modelBinder.bind(this.model, this.el);
     },
 	submitCount: function() {
-		// var hours = this.getElement('.hours-count').val();
 		var val = this.model.get('spent-hours');
-
+		
 		if (val)
 			this.parent.trigger('spentHours:submit', this.model.attributes);
+		else
+			alert('Empty value');
 	} 
 });
 
