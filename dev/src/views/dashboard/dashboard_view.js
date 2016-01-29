@@ -1,3 +1,5 @@
+var Backbone         = require('backbone');
+var $                = require('jquery');
 var BaseView         = require('views/baseview');
 var Helpers          = require('base/helpers');
 var RoutedView       = require('views/routedview');
@@ -57,6 +59,16 @@ var ContentView = RoutedView.extend({
             // itemClassName: 'itemClassName', // class name for <li>
             collection: new navBarCollection(this.links)
         }, '.dashboard-header_menu');
+        Backbone.on('global:click', this.onGlobalClick, this);
+    },
+    onGlobalClick: function(e) {
+        var currentEl = $(e.target);
+         if(!currentEl.parents().hasClass('custom-select'))
+            this.getElement('.custom-select').customSelect('hide');
+    },
+    remove: function () {
+        Backbone.off('global:click', this.onGlobalClick, this);
+        BaseView.prototype.remove.call(this);
     }
 });
 

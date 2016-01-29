@@ -3,7 +3,7 @@
 
 	<div class="spent-hours_actual">
 		<span>Spent hours:</span>
-		<input type="text" class="hours-count">
+		<input type="text" class="hours-count" name="spent-hours">
 	</div>
 
 	<div class="spent-hours_control">

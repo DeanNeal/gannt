@@ -58,6 +58,7 @@ CustomSelect.prototype.init = function() {
 
         self.$elem.toggleClass('custom-select-open');
 
+        $search.off('keyup');
         $list.off('scroll');
         if ($dropdown.is(':visible')) {
             $list.scrollTop(0).empty();
@@ -80,6 +81,11 @@ CustomSelect.prototype.init = function() {
                 });
             });
         }
+
+        $search.on('keyup', function () {console.log(1);
+            var searchstr = $(this).val().toLowerCase();
+            Helpers.searchEngine(searchstr, $list, 2);
+        });
     });
 
     this.$elem.on('click', '.custom-select-dropdown li', function() {
