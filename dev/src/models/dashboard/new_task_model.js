@@ -5,6 +5,7 @@ var TaskFilterModel = Backbone.Model.extend({
 		'taskmaintagname' : 'No Project',
 		'priority'        : '0',
 		'priority-name'   : 'low',
+		'processing'      : '0',
 		'processing-name' : 'new',
 		'taskusername'    : 'Assign to me',
 		'type'            : 'Task',

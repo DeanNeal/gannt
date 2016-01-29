@@ -76,12 +76,11 @@
 			</li>
 
 			<li class="details-table_status">
-				<div class="details-table_desc">
-					<span class="details-table_desc_status" data-processing-name="new">New</span>
-					<span class="details-table_desc_status" data-processing-name="completed">Completed</span>
-					<span class="details-table_desc_status" data-processing-name="done">Done</span> 
-					<span class="details-table_desc_status" data-processing-name="send-back">Send Back</span>
-				</div>
+				<div class="details-table_desc custom-select custom-select-status">
+					<span class="custom-select-value"></span>
+					<input class="custom-select-input" type="hidden" name="processing">
+					<input class="custom-select-input-name" type="hidden" name="processing-name">
+		 		</div>
 			</li>
 
 			<li class="details-table_assignee">

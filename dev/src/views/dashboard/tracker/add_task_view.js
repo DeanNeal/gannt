@@ -43,6 +43,11 @@ var ContentView = BaseView.extend({
 		    template: 'customSelectListPriority'
 		});
 
+		this.getElement('.custom-select-status').customSelect({
+		    url: this.api.catalog.get_processing,
+		    template: 'customSelectListPriority'
+		});
+
 	},
 	onGlobalClick: function(e) {
 		var currentEl = $(e.target);
