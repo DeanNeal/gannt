@@ -2,7 +2,7 @@
 	<div class="header">
 		<div class="header_nav">
 			<div class="logo">
-				<a href="/#">
+				<a href="#">
 					<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512px" height="512px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink">
 	 					<defs>
 	   						<linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="273.956" y1="511.903" x2="273.956" y2="-0.0992129">
