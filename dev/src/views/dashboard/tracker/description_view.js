@@ -10,6 +10,7 @@ var Backbone             = require('backbone'),
     tpl                  = require('templates/dashboard/tracker/description.tpl'),
     SeeMorePanelView     = require('views/dashboard/tracker/see_more_view'),
     AssigneePanelView    = require('views/dashboard/tracker/assignee_user_view'),
+    WatchersView         = require('views/dashboard/tracker/watchers_view'),
     SpentHoursPopupView  = require('views/dashboard/tracker/spent_hours_popup_view'),
     CommentsView         = require('views/dashboard/tracker/comments_view'),
     StatusReportView     = require('views/dashboard/tracker/status_report_view'),
@@ -19,7 +20,7 @@ var ContentView = BaseView.extend({
     className: 'tasks-description full-size',
     template: tpl,
     events: {
-        'click. .icon-edit'                  : "editDescription",
+        'click .description .icon-edit'      : "editDescription",
         'click .files'                       : "toggleFiles",
         'click .see_more'                    : "openSeeMorePanel",
         'click .close-see-more'              : "closeSeeMorePanel",
@@ -53,6 +54,7 @@ var ContentView = BaseView.extend({
         this.commentsPreloaderView = this.addView(PreloaderView, {}, '.left-view_content');
 
         this.commentsFetch();
+        this.watchersFetch();
 
         this.modelBinder = new Backbone.ModelBinder();
 
@@ -86,12 +88,12 @@ var ContentView = BaseView.extend({
         });
 
         this.getElement('.priorities-select').customSelect({
-            url: this.api.catalog.get_list_task_priority,
+            url: this.model.get_priority,
             template: 'customSelectListPriority'
         });
 
         this.getElement('.custom-select-status').customSelect({
-            url: this.api.catalog.get_list_task_status,
+            url: this.model.get_processing,
             template: 'customSelectListPriority'
         });
 
@@ -157,7 +159,7 @@ var ContentView = BaseView.extend({
     },  
     openSpentHoursPopup: function() {
         if(!this.spentHoursView) {
-            this.spentHoursView = this.addView(SpentHoursPopupView, {});
+            this.spentHoursView = this.addView(SpentHoursPopupView, {model: this.model});
             this.renderNestedView(this.spentHoursView);
         }
     },
@@ -206,9 +208,17 @@ var ContentView = BaseView.extend({
             }.bind(this));
         }.bind(this));
     },
-    onSpentHoursChange: function(value) {
-        this.model.set('spent-hours', value);
+    onSpentHoursChange: function(model) {
+        this.model.set(model);
         this.closeSpentHoursPopup();
+    },
+    watchersFetch: function() {
+        if(this.watchersView) {
+            this.removeNestedView(this.watchersView);
+        }
+        var collection = new Backbone.Collection([{},{},{}]);
+        this.watchersView = this.addView(WatchersView, {collection: collection}, '.details-table_watchers_container');
+        this.renderNestedView(this.watchersView);
     },
     updateModel: function(model) {
         this.model = model;
@@ -223,6 +233,8 @@ var ContentView = BaseView.extend({
 
     remove : function () {
         this.modelBinder.unbind();
+        this.getElement('#task-date-start').datepicker("destroy");
+        this.getElement('#task-date-finish').datepicker("destroy");
         BaseView.prototype.remove.call(this);
     }
 });

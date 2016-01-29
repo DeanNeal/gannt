@@ -23,7 +23,6 @@ var TaskListItem = BaseView.extend({
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.modelBinder = new Backbone.ModelBinder();
-		// Backbone.on('global:click', this.onGlobalClick, this);
 	},
 	onRender: function() {
 	    this.modelBinder.bind(this.model, this.el);
@@ -47,13 +46,7 @@ var TaskListItem = BaseView.extend({
 		this.data = _.clone(this.model.attributes);
 		this.data.Helpers = Helpers;
 	}, 
-	// onGlobalClick: function(e) {
-	// 	var currentEl = $(e.target);
-	// 	 if(!currentEl.parents().hasClass('custom-select'))
-	// 	 	this.getElement('.custom-select').customSelect('hide');
-	// },
 	remove : function () {
-	//	Backbone.off('global:click', this.onGlobalClick, this);
 	    this.modelBinder.unbind();
 	}
 });
@@ -124,6 +117,7 @@ var TaskList = BaseView.extend({
 	closeEditView: function(){
 		this.removeNestedView(this.editView);
 		this.editView = undefined;
+		this.updateTaskList();
 	}
 });
 

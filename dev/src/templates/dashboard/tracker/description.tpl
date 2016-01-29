@@ -107,13 +107,7 @@
 
 				<li class="details-table_watchers">
 					<div class="details-table_term">Watchers:</div>
-					<div class="details-table_desc">
-						<img src="build/img/avatar.png" alt="" width="32" height="32">
-						<img src="build/img/avatar.png" alt="" width="32" height="32">
-						<img src="build/img/avatar.png" alt="" width="32" height="32">
-						<img src="build/img/avatar.png" alt="" width="32" height="32">
-						<img src="build/img/avatar.png" alt="" width="32" height="32">
-					</div>
+					<div class="details-table_desc details-table_watchers_container"></div>
 				</li>
 
 				<li class="details-table_hours">

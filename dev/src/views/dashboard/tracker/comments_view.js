@@ -1,7 +1,6 @@
 var Backbone             = require('backbone'),
     _                    = require('underscore'),
     BaseView             = require('views/baseview'),
-    // NewCommentModel      = require('models/dashboard/new_comment_model'),
     tpl                  = require('templates/dashboard/tracker/comments.tpl'),
     commentItemTpl       = require('templates/dashboard/tracker/comments_item.tpl');
 
@@ -34,19 +33,11 @@ var ContentView = BaseView.extend({
 	    BaseView.prototype.onInitialize.call(this, params);
 
 	    this.collection.each(function(model) {
-	    	this.commentView = this.addView(CommentItemView, {model: model}, '.comments-container');
+	    	this.addView(CommentItemView, {model: model}, '.comments-container');
 	    }.bind(this));
 	},
 	addComment: function(){
 		var content = this.getElement('textarea').val();
-		// var model = new NewCommentModel();
-		// model.set({
-		// 	content: content,
-		// 	create: (new Date()).toISOString().substr(0, 10) + ' ' + (new Date()).toLocaleTimeString('en-US', {hour12: false})
-		// });
-
-		//this.commentView = this.addView(CommentItemView, {model: model});
-		//this.renderNestedView(this.commentView, '.comments-container');
 		if(content)
 			this.parent.trigger('comments:add', content);
 		else 
