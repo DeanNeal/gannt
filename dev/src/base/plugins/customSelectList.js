@@ -62,6 +62,7 @@ export class CustomSelect {
 
         if ($dropdown.is(':visible')) {
             $list.scrollTop(0).empty();
+            let $contentLoadTriggered = false;
             self.options.url().then(function (collection) {
                 $list.html(_.template(templates[self.options.template])(collection));
 
@@ -69,10 +70,13 @@ export class CustomSelect {
 
                 $list.on('scroll', function () {
                     if (collection.get_next) {
-                        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                        let innerHeight = $(this).innerHeight();
+                        if ($(this).scrollTop() + (innerHeight + innerHeight * 1.2) >= $(this)[0].scrollHeight && $contentLoadTriggered == false) {
+                            $contentLoadTriggered = true;
                             collection.get_next().then((nextCollection) => {
                                 collection = nextCollection;
                                 $list.append(_.template(templates[self.options.template])(nextCollection));
+                                $contentLoadTriggered = false;
                             });
                         }
                     }
