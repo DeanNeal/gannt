@@ -602,7 +602,7 @@ body {
 .see-more-panel {
     position: absolute;
     padding-top: 60px;
-    padding-bottom: 100px;
+    padding-bottom: 145px;
     width: 100%;
     top: 0;
     bottom: 0;
@@ -624,6 +624,23 @@ body {
         cursor: pointer;
     }
     
+    // .see-more-panel_title
+    // .see-more-panel_full-desc
+    &_title,
+    &_full-desc {
+        input,
+        textarea {
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            opacity: .76;
+            border: 1px solid #d6d6d6;
+            padding: 10px 10px;
+            @include border-radius(3px);
+        }
+    }
+    
     // .see-more-panel_header
     &_header {
         position: absolute;
@@ -640,11 +657,7 @@ body {
         font-weight: 700;
 
         input {
-            width: 100%;
-            font-size: 14px;
-            font-weight: 600;
-            color: #000;
-            opacity: .76;
+            height: 34px;
         }
     }
     
@@ -652,14 +665,9 @@ body {
     &_full-desc {
         padding: 0 30px;
 
-        textarea {
-            width: 100%;
+        textarea {            
             height: 100%;
-            font-size: 14px;
-            font-weight: 600;
-            color: #000;
-            opacity: .76;
-            display: block
+            display: block;
         }
 
         p {
