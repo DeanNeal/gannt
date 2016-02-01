@@ -1,12 +1,12 @@
 <div>
 	<div class="clearfix">
 		<div class="left-filters">
-			<div class="btn-add-new">
+<!-- 			<div class="btn-add-new">
 				<svg class="icon icon-add">
 		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
 		        </svg>
 			</div>
-
+ -->
 			<div class="base-filters">
 				<div id="filter-select" class="custom-select custom-select-base">
 					<span class="custom-select-value">All</span>

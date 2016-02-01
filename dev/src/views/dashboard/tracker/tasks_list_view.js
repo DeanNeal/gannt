@@ -47,18 +47,64 @@ var TaskListItem = BaseView.extend({
 		this.data.Helpers = Helpers;
 	}, 
 	remove : function () {
+		BaseView.prototype.remove.call(this);
 	    this.modelBinder.unbind();
 	}
 });
 
 
 var TaskList = BaseView.extend({
+	className: 'task-list',
+	onInitialize: function (params) {
+		var self = this;
+		BaseView.prototype.onInitialize.call(this, params);
+
+		this.collection.each(function(model) {
+		    self.addView(TaskListItem, {model: model});
+		});
+	},
+	addTask: function(){
+		var model = new Backbone.Model({
+			'create': "2014-04-24 14:59:25",
+			'date-finish': "2014-04-09 00:00:00",
+			'date-start': "2014-04-09 00:00:00",
+			'description': "",
+			'id': "34",
+			'milestonedatefinish': "2014-07-08",
+			'milestonename': "New Milestone",
+			'modulerelation-milestonetask': "20",
+			'modulerelation-taskmaintag': "8",
+			'modulerelation-taskuser': 'null',
+			'modulerelation-taskusercreator': 'null',
+			'name': "",
+			'priority': "0",
+			'priority-name': "low",
+			'processing': "0",
+			'processing-name': "new",
+			'taskmaintagname': "BPM",
+			'tasktagname': 'null',
+			'taskusername': 'null',
+			'timestamp': "2014-04-24 14:59:25"
+		});
+
+	 	this.addItemView(TaskListItem, {model: model}, false, true);
+	},
+	remove: function(){
+		BaseView.prototype.remove.call(this);
+		this.getElement('.custom-select').customSelect('destroy');
+	}
+});
+
+
+
+var TaskListWrapper = BaseView.extend({
 	className: 'dashboard-table',
 	tagName: 'div',
 	template: dashboardTasksListTpl,
 	events: {
 	    'click .task-list-item .row'                      : 'changeTask',
-	    'click .close-panel'                              : 'closeEditView'
+	    'click .close-panel'                              : 'closeEditView',
+	    'click .add-task'                                 : 'addTask'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -74,26 +120,20 @@ var TaskList = BaseView.extend({
 	},
 	updateTaskList: function(query){
 		var self = this;
-
+ 
 		this.preloaderView.show();
  		this.api.catalog.get_dashboard_tasks(query).then(function(tasks){
 			self.collection = tasks;
 
-			if(self.taskItemView){			
-				self.getElement('.custom-select').customSelect('destroy');
-				self.getElement('.tasks-container').empty();
-				self.removeNestedView();
-				self.taskItemView.remove();
-			}
-
-			self.collection.each(function(model) {
-				self.taskItemView = self.addView(TaskListItem, {model: model});
-			    self.renderNestedView(self.taskItemView, '.tasks-container');
-			});
+ 			self.removeNestedViewByName('taskListWrapper');
+		    self.addViewByName('taskListWrapper', TaskList, tasks, '.tasks-container')
 
 			self.parent.trigger('pagination:update', tasks.get_extra_data);
 			self.preloaderView.hide();
  		});
+	},
+	addTask: function(){
+		this.taskListWrapper.addTask();
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
@@ -125,7 +165,7 @@ var ContentView = BaseView.extend({
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
-		this.taskList = this.addView(TaskList, {collection: {}}, '.task-list');
+		this.taskList = this.addView(TaskListWrapper, {collection: {}}, '.task-list');
 		this.filter = this.addView(TasksFiltersView, {query: params.query}, '.filters-container');
 		this.listenTo(this, 'createView:close', this.closeCreateView, this);
 	},

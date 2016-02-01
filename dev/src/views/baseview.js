@@ -122,16 +122,24 @@ var BaseView = Backbone.View.extend({
             data = {model: data}
 
         if(!this[popupName]) {
-            this[popupName] = this.addView(view, data || {}, target || null);
-            this.renderNestedView(this[popupName], target || null);
+            this[popupName] = this.addView(view, data || {}, target || false);
+            this.renderNestedView(this[popupName], target || false);
         }
     },
 
-    renderNestedView: function (view, targetElement) {
+    addItemView: function(view, data, target, prepend){
+        this.renderNestedView(this.addView(view, data || {}), target || false, prepend || false);
+    },
+
+    renderNestedView: function (view, targetElement, prepend) {
         var el = this.$el;
         if (targetElement)
             el = (typeof targetElement === 'string') ? this.$el.find(targetElement) : targetElement;
-        el.append(view.render().el);
+
+        if(prepend)
+            el.prepend(view.render().el);
+        else
+            el.append(view.render().el);
     },
 
     // getTemplate: function (name, model) {
@@ -204,10 +212,10 @@ var BaseView = Backbone.View.extend({
         }
     },
 
-    removeAllNestedView: function () {
-        this.stopListening();
-        this.nestedViews = [];
-    },
+    // removeAllNestedView: function () {
+    //     this.stopListening();
+    //     this.nestedViews = [];
+    // },
     /**
      * Removes view
      */
