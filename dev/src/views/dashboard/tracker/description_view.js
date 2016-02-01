@@ -115,11 +115,8 @@ var ContentView = BaseView.extend({
     toggleFiles: function(e) {
         $(e.currentTarget).find('.files-preview').toggle();
     },
-    openPopup: function(popupName, view, model){
-        if(!this[popupName]) {
-            this[popupName] = this.addView(view, {model: model});
-            this.renderNestedView(this[popupName]);
-        }
+    openPopup: function(popupName, view, data){
+        this.addViewByName(popupName, view, data);
     },
 
     closePopup: function(popupName){
@@ -176,17 +173,14 @@ var ContentView = BaseView.extend({
         this.removeNestedViewByName('commentsView');
     },
     commentsFetch: function(){
-        if(this.commentsView) {
-            this.removeNestedView(this.commentsView);
-        }
+        this.removeNestedViewByName('commentsView');
         this.commentsPreloaderView.show();
         //get posts collection
 
         if(this.commentsIsLoaded){ 
             this.commentsIsLoaded = false;       
             this.model.get_post().then(function(posts){
-                this.commentsView = this.addView(CommentsView, {collection: posts});
-                this.renderNestedView(this.commentsView, '.left-view_content');
+                this.addViewByName('commentsView', CommentsView, posts, '.left-view_content');
                 this.commentsPreloaderView.hide();
                 this.commentsIsLoaded = true;
             }.bind(this));
@@ -207,12 +201,9 @@ var ContentView = BaseView.extend({
         this.closePopup('spentHoursView');
     },
     watchersFetch: function() {
-        if(this.watchersView) {
-            this.removeNestedView(this.watchersView);
-        }
+        this.removeNestedViewByName('watchersView');
         var collection = new Backbone.Collection([{},{},{}]);
-        this.watchersView = this.addView(WatchersView, {collection: collection}, '.details-table_watchers_container');
-        this.renderNestedView(this.watchersView);
+        this.addViewByName('watchersView', WatchersView, collection, '.details-table_watchers_container');
     },
     updateModel: function(model) {
         this.model = model;

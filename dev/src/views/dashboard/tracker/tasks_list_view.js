@@ -99,11 +99,7 @@ var TaskList = BaseView.extend({
 		var id   = $(e.currentTarget).data('id'),
 			model = Helpers.findById(this.collection, id);
 
-		if(!this.editView){
-			this.editView = this.addView(TaskEditView);
-			this.renderNestedView(this.editView);
-		}
-
+		this.addViewByName('editView', TaskEditView);
 		this.editView.updateModel(model);
 	},
 	onDisableStage: function(){
@@ -115,8 +111,7 @@ var TaskList = BaseView.extend({
 		this.delegateEvents(this.events);
 	},
 	closeEditView: function(){
-		this.removeNestedView(this.editView);
-		this.editView = undefined;
+		this.removeNestedViewByName('editView');
 		this.updateTaskList();
 	}
 });
@@ -145,16 +140,13 @@ var ContentView = BaseView.extend({
 	    this.$el.toggleClass('have-sort');
 	},
 	openCreateTask: function(){
-		if(!this.createView){
-			this.createView = this.addView(TaskCreateView, {collection: this.taskList.collection});
-			this.renderNestedView(this.createView);
-		}
+		this.addViewByName('createView', TaskCreateView, this.taskList.collection);
 	},
 	closeCreateView: function(){
-		this.removeNestedView(this.createView);
-		this.createView = undefined;
+		this.removeNestedViewByName('createView');
 	}
 	
+
 });
 
 module.exports = ContentView;

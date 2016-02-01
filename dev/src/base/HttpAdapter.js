@@ -18,7 +18,7 @@
 
 import * as _ from 'underscore';
 
-let testPath = 'http://134.249.143.42:84/';
+let testPath = 'http://134.249.143.42:84';
 
 export default function (url) {
 

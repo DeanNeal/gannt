@@ -114,6 +114,19 @@ var BaseView = Backbone.View.extend({
         });
         return view;
     },
+
+    addViewByName: function(popupName, view, data, target){
+        if(data instanceof Backbone.Collection)
+            data = {collection: data}
+        else
+            data = {model: data}
+
+        if(!this[popupName]) {
+            this[popupName] = this.addView(view, data || {});
+            this.renderNestedView(this[popupName], target || null);
+        }
+    },
+
     renderNestedView: function (view, targetElement) {
         var el = this.$el;
         if (targetElement)
@@ -185,8 +198,10 @@ var BaseView = Backbone.View.extend({
     },
 
     removeNestedViewByName: function (popupName) {
-        this.removeNestedView(this[popupName]);
-        this[popupName] = undefined;
+        if(this[popupName]){        
+            this.removeNestedView(this[popupName]);
+            this[popupName] = undefined;
+        }
     },
 
     removeAllNestedView: function () {

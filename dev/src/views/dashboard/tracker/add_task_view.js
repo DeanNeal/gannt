@@ -54,12 +54,6 @@ var ContentView = BaseView.extend({
  		if(currentEl.hasClass('btn-add-new') || currentEl.hasClass('icon-add'))
  			return;
  		
- 		if(!currentEl.parents('body').length)
- 			return;
-
- 		if(!currentEl.parents().hasClass('custom-select'))
- 		    this.getElement('.custom-select').customSelect('hide');
- 		
 		if(!currentEl.parents().hasClass('task-create'))
 		  	this.parent.trigger('createView:close');
 	},
