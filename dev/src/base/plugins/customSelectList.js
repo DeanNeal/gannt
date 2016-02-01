@@ -5,7 +5,8 @@ import pluginify from 'base/plugins/pluginify';
 const customSelectTpl = require('templates/overall/plugins/custom_select.tpl');
 const templates = {
     customSelectListTpl: require('templates/overall/plugins/custom_select_list.tpl'),
-    customSelectListPriority: require('templates/overall/plugins/custom_select_list_priority.tpl')
+    customSelectListPriority: require('templates/overall/plugins/custom_select_list_priority.tpl'),
+    customSelectListDefault: require('templates/overall/plugins/custom_select_list_default.tpl')
 };
 
 let customSelectArray = [];
@@ -54,7 +55,8 @@ export class CustomSelect {
 
         let $list     = self.$elem.find('.custom-select-dropdown-list'),
             $dropdown = self.$elem.find('.custom-select-dropdown'),
-            $search   = self.$elem.find('.custom-select-dropdown-search');
+            $search   = self.$elem.find('.custom-select-dropdown-search'),
+            $initialList = self.$elem.find('.initial-list');
 
         self.$elem.toggleClass('custom-select-open');
 
@@ -63,25 +65,31 @@ export class CustomSelect {
         if ($dropdown.is(':visible')) {
             $list.scrollTop(0).empty();
             let $contentLoadTriggered = false;
-            self.options.url().then(function (collection) {
-                $list.html(_.template(templates[self.options.template])(collection));
 
-                //LAZY LOAD
+            if(self.options.url){            
+                self.options.url().then(function (collection) {
+                    $list.html(_.template(templates[self.options.template])(collection));
 
-                $list.on('scroll', function () {
-                    if (collection.get_next) {
-                        let innerHeight = $(this).innerHeight();
-                        if ($(this).scrollTop() + (innerHeight + innerHeight * 1.2) >= $(this)[0].scrollHeight && $contentLoadTriggered == false) {
-                            $contentLoadTriggered = true;
-                            collection.get_next().then((nextCollection) => {
-                                collection = nextCollection;
-                                $list.append(_.template(templates[self.options.template])(nextCollection));
-                                $contentLoadTriggered = false;
-                            });
+                    //LAZY LOAD
+
+                    $list.on('scroll', function () {
+                        if (collection.get_next) {
+                            let innerHeight = $(this).innerHeight();
+                            if ($(this).scrollTop() + (innerHeight + innerHeight * 1.2) >= $(this)[0].scrollHeight && $contentLoadTriggered == false) {
+                                $contentLoadTriggered = true;
+                                collection.get_next().then((nextCollection) => {
+                                    collection = nextCollection;
+                                    $list.append(_.template(templates[self.options.template])(nextCollection));
+                                    $contentLoadTriggered = false;
+                                });
+                            }
                         }
-                    }
+                    });
                 });
-            });
+            } else { 
+                $list.html(_.template(templates[self.options.template])({items: self.options.items}));
+                $list.find(`[data-id='${self.ui.input.val()}']`).addClass('active'); 
+            }
         }
     }
 
@@ -121,7 +129,7 @@ export class CustomSelect {
                     }
                 });
             } else {
-                this.refreshValue(this.ui.name.val());
+                this.refreshValue(this.ui.name.val() || this.ui.input.val());
             }
         } else {
             this.refreshValue(this.ui.placeholder);

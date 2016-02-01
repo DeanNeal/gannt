@@ -122,7 +122,7 @@ var BaseView = Backbone.View.extend({
             data = {model: data}
 
         if(!this[popupName]) {
-            this[popupName] = this.addView(view, data || {});
+            this[popupName] = this.addView(view, data || {}, target || null);
             this.renderNestedView(this[popupName], target || null);
         }
     },
@@ -134,11 +134,11 @@ var BaseView = Backbone.View.extend({
         el.append(view.render().el);
     },
 
-    getTemplate: function (name, model) {
-        var temp = 'text!templates/' + name + '.tpl',
-            template = require(temp);
-        return _.template(template)(model ? model : {});
-    },
+    // getTemplate: function (name, model) {
+    //     var temp = 'text!templates/' + name + '.tpl',
+    //         template = require(temp);
+    //     return _.template(template)(model ? model : {});
+    // },
     /**
      * Renders current view. It always returns itself and must be called from
      * all render methods in child classes

@@ -16,7 +16,8 @@ var TasksFilterView = BaseView.extend({
 	events: {
 		'click .pagination_left'                   : 'prevClick',
 		'click .pagination_right'                  : 'nextClick',
-		'click .pagination_pages .pagination_item' : "changePage"
+		'click .pagination_pages .pagination_item' : "changePage",
+		'click .icon-search'                       : 'toogleSearch'
 	},
 	defaults: {
 		filter: 'my_tasks',
@@ -42,7 +43,6 @@ var TasksFilterView = BaseView.extend({
 		this.model.clear({silent : true}).set(model || this.defaults, {silent: true});
 		this.modelBinder.bind(this.model, this.el);
 
-		//this.filterList.highLight();
 		this.sortList.highLight();
 
 		this.getElement('.custom-select').customSelect('refresh');
@@ -86,8 +86,27 @@ var TasksFilterView = BaseView.extend({
 	},
 	onRender: function () {
 		this.modelBinder.bind(this.model, this.el);
-		//this.filterList = new SetActiveStateAtList(this.getElement('.base-filters'), 'filter');
+
 		this.sortList = new SetActiveStateAtTable(this.getElement('.dashboard-table-header'), 'sort');
+
+		this.getElement('#filter-select').customSelect({
+			template: 'customSelectListDefault', 
+			items: [
+				{	
+					id: 'all',
+					name: 'All'
+				},
+				{
+					id:'todo',
+					name: 'To do'
+				},
+				{
+					id: 'my_tasks',
+					name: 'My tasks'
+				}
+			]
+		});
+
 
 		this.getElement('#projects-select').customSelect({
 			url: this.api.catalog.get_dashboard_product,
@@ -106,6 +125,9 @@ var TasksFilterView = BaseView.extend({
 			template: 'customSelectListPriority',
 			initialState: true
 		});
+	},
+	toogleSearch: function(){
+		this.getElement('.table-search').toggleClass('active');
 	},
 	serialize: function () {
 		this.data = _.clone(this.model.attributes);

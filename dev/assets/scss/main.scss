@@ -204,17 +204,28 @@ body {
     }
 
     .table-search {
-        width: 392px;
         float: right;
         padding: 15px 29px 29px 0;
-
+        .icon-search{
+            font-size: 28px;
+            float: right;
+            cursor: pointer;
+        }
+        &.active{
+            width: 392px;
+            input{
+                display: block;
+            }
+        }
         input {
-            padding: 5px;
+            display: none;
+            padding: 4px;
             border: none;
             border-bottom: 1px solid #d4d4d4;
             background: transparent;
             outline: none;
-            width: 100%;
+            width: 90%;
+            float: left;
         }
     }
 }

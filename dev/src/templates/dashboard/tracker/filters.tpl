@@ -8,14 +8,27 @@
 			</div>
 
 			<div class="base-filters">
-				<input type="hidden" name="filter">
-				<span data-filter="all" class="list-item">All</a></span>
-				<span data-filter="todo" class="list-item">To Do</a></span>
-				<span data-filter="my_tasks" class="list-item">My tasks</a></span>
+				<div id="filter-select" class="custom-select custom-select-base">
+					<span class="custom-select-value">All</span>
+					<input class="custom-select-input" type="hidden" name="filter" placeholder="All">
+				</div>
 			</div>
 		</div>
 
+
+		<div class="table-search">
+			<input type="text" placeholder="Search" name="search">
+			<svg class="icon icon-search">
+	            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use>
+	        </svg>
+		</div>
+
 		<div class="right-filters">
+			<div id="company-select" class="custom-select custom-select-base projects" data-search>
+				<span class="custom-select-value">Company</span>
+				<input class="custom-select-input" type="hidden" name="by-project[id]" placeholder="Company">
+			</div>
+
 			<div id="projects-select" class="custom-select custom-select-base projects" data-search>
 				<span class="custom-select-value">Project</span>
 				<input class="custom-select-input" type="hidden" name="by-project[id]" placeholder="Project">
@@ -25,22 +38,9 @@
 				<span class="custom-select-value">Milestone</span>
 				<input class="custom-select-input" type="hidden" name="by-milestone[id]" placeholder="Milestone">
 			</div>
-
-			<div id="priorities-select" class="custom-select custom-select-base priority">
-				<span class="custom-select-value">Priority</span>
-				<input class="custom-select-input" type="hidden" name="by-priority[id]" placeholder="Priority">
-	 		</div>
-			
-			<a class="btn-show-sort open-filter" href="">
-				<svg class="icon icon-add">
-		            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-add"></use>
-		        </svg>
-			</a>
 		</div>
 
-		<div class="table-search">
-			<input type="text" placeholder="Search">
-		</div>
+
 	</div>
 	
 	<div class="dashboard-table-header">

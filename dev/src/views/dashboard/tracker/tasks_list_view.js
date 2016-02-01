@@ -120,7 +120,6 @@ var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter have-sort',
 	template: dashboardTpl,
 	events: {
-		'click .open-filter' : 'toggleFilter',
 		'click .btn-add-new' : 'openCreateTask',
 		'click .close-panel' : 'closeCreateView'
 	},
@@ -133,11 +132,6 @@ var ContentView = BaseView.extend({
 	onChangeParams: function(params){
 		this.taskList.updateTaskList(params.query);
 		this.filter.updateFilterModel(params.query);
-	},
-	toggleFilter: function(e){
-	    e.preventDefault();
-	    this.getElement('.dashboard-table-header').toggle().toggleClass('active');
-	    this.$el.toggleClass('have-sort');
 	},
 	openCreateTask: function(){
 		this.addViewByName('createView', TaskCreateView, this.taskList.collection);
