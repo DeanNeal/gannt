@@ -108,6 +108,12 @@ var TasksFilterView = BaseView.extend({
 		});
 
 
+		this.getElement('#companies-select').customSelect({
+			url: this.api.catalog.get_dashboard_company,
+			template: 'customSelectListTpl',
+			initialState: true
+		});
+
 		this.getElement('#projects-select').customSelect({
 			url: this.api.catalog.get_dashboard_product,
 			template: 'customSelectListTpl',
@@ -120,11 +126,11 @@ var TasksFilterView = BaseView.extend({
 			initialState: true
 		});
 		
-		this.getElement('#priorities-select').customSelect({
-			url: this.api.catalog.get_list_task_priority,
-			template: 'customSelectListPriority',
-			initialState: true
-		});
+		// this.getElement('#priorities-select').customSelect({
+		// 	url: this.api.catalog.get_list_task_priority,
+		// 	template: 'customSelectListPriority',
+		// 	initialState: true
+		// });
 	},
 	toogleSearch: function(){
 		this.getElement('.table-search').toggleClass('active');

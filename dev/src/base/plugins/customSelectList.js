@@ -129,7 +129,7 @@ export class CustomSelect {
                     }
                 });
             } else {
-                this.refreshValue(this.ui.name.val() || this.ui.input.val());
+                this.refreshValue(this.ui.name.val() ||  _.findWhere(this.options.items, {id: this.ui.input.val()}).name  );
             }
         } else {
             this.refreshValue(this.ui.placeholder);

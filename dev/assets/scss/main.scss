@@ -104,6 +104,46 @@ body {
     .left-filters {
         float: left;
         padding: 13px 0 20px 12px;
+        .custom-select {
+            $self: custom-select;
+
+            margin-top: 10px;
+            //            border-bottom: 1px solid #bbb;
+            &.type{
+                max-width: initial;
+                min-width: initial;
+            }
+            &:after {
+                content: '';
+                background-image: url(../img/icon/icon-rotation-small.svg);
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin-right: 5px;
+                float: right;
+                background-repeat: no-repeat;
+                @include rotate(90deg);
+                color: #19BFEF;
+                position: absolute;
+                right: 0;
+                top: 7px;
+                background-size: cover;
+
+                pointer-events: none;
+            }
+            &-open {
+                &.#{$self} {
+                    &:after {
+                        @include rotate(270deg);
+                        top: 5px;
+                    }
+                }
+            }
+            &-value{
+                color: #19BFEF;
+            }
+        }    
+
     }
 
     .right-filters {
@@ -119,22 +159,23 @@ body {
             $self: custom-select;
 
             margin-top: 10px;
-            border-bottom: 1px solid #bbb;
+            //            border-bottom: 1px solid #bbb;
 
             &:after {
                 content: '';
                 background-image: url(../img/icon/icon-rotation-small.svg);
                 display: inline-block;
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
                 margin-right: 5px;
                 float: right;
                 background-repeat: no-repeat;
                 @include rotate(90deg);
-                color: rgba(129, 87, 159, 0.23);
+                color: #19BFEF;
                 position: absolute;
                 right: 0;
-                top: 3px;
+                top: 7px;
+                background-size: cover;
 
                 pointer-events: none;
             }
@@ -144,8 +185,14 @@ body {
                 &.#{$self} {
                     &:after {
                         @include rotate(270deg);
+                        top: 5px;
                     }
                 }
+            }
+            &-value{
+                border-radius: 4px;
+                border: 1px solid #19BFEF;
+                color: #19BFEF;
             }
         }
     }
@@ -181,7 +228,10 @@ body {
     .base-filters {
         margin-left: 13px;
         display: inline-block;
-
+        .custom-select-base{
+            max-width: 120px;
+            min-width: 120px;
+        }
         span {
             color: #9a9a9a;
             cursor: pointer;
@@ -228,9 +278,6 @@ body {
             float: left;
         }
     }
-}
-
-.bb-route-container {
 }
 
 .overflow {
@@ -318,7 +365,7 @@ body {
     $self: custom-select;
 
     &-base {
-        text-align: center;
+        // text-align: center;
         position: relative;
         float: left;
         margin-right: 10px;
@@ -337,6 +384,7 @@ body {
             @extend .text-overflow;
             position: relative;
             padding-right: 20px;
+            padding-left: 10px;
             // float: left;
             text-transform: capitalize;
             border: none;
@@ -371,11 +419,11 @@ body {
                 font-size: 20px;
             }
         }
-
+        &.companies,
         &.projects,
         &.milestones {
-            max-width: 90px;
-            min-width: 90px;
+            max-width: 120px;
+            min-width: 120px;
 
             .custom-select-value {
                 padding-right: 20px;
@@ -472,7 +520,7 @@ body {
         display: none;
         max-width: 300px;
         color: #000;
-        
+        text-align: center;
         // .custom-select-dropdown-search
         &-search {
             border: none;

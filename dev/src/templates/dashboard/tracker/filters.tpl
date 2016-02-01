@@ -8,7 +8,7 @@
 			</div>
  -->
 			<div class="base-filters">
-				<div id="filter-select" class="custom-select custom-select-base">
+				<div id="filter-select" class="custom-select custom-select-base type">
 					<span class="custom-select-value">All</span>
 					<input class="custom-select-input" type="hidden" name="filter" placeholder="All">
 				</div>
@@ -24,9 +24,9 @@
 		</div>
 
 		<div class="right-filters">
-			<div id="company-select" class="custom-select custom-select-base projects" data-search>
+			<div id="companies-select" class="custom-select custom-select-base companies" data-search>
 				<span class="custom-select-value">Company</span>
-				<input class="custom-select-input" type="hidden" name="by-project[id]" placeholder="Company">
+				<input class="custom-select-input" type="hidden" name="by-company[id]" placeholder="Company">
 			</div>
 
 			<div id="projects-select" class="custom-select custom-select-base projects" data-search>
