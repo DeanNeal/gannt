@@ -191,19 +191,13 @@
             text-align: center;
         }
     }
-
+    
     // .dashboard-table
     &-table {
         border-collapse: collapse;
         @extend .full-size;
-        // @extend .display-flex;
-        // flex-direction: column;
-        // flex: 1;
 
         .task-wrapper {
-            // @extend .display-flex;
-            // flex-direction: column;
-            // flex: 1;
             @extend .full-size;
             padding: 1px 0;
             position: relative;
@@ -214,8 +208,8 @@
         }
 
         .task-list-item {
-            @extend .display-flex;
-            flex: 1;
+            // @extend .display-flex;
+            // @extend .flex-1;
             position: relative;
             min-height: 40px;
 
@@ -246,8 +240,8 @@
 
         .row {
             @extend .display-flex;
-            flex: 1;
-            align-items: center;
+            @extend .flex-1;
+            @extend .align-items-center;
             border-bottom: 1px solid #dbdbdc;
             cursor: pointer;
             margin: 0px 15px;
@@ -258,18 +252,22 @@
             vertical-align: middle;
             padding: 4px 5px 3px 5px;
             font-size: 12px;
+
+            &.title {
+                @extend .display-flex;
+            }
         }
 
         .title {
-            display: flex;
+            @extend .align-items-center;
             color: rgba(0, 0, 0, 0.9);
             font-weight: bold;
             overflow: hidden;
-            align-items: center;
 
             .task-name {
-                display: flex;
-                flex: 1;
+                @extend .display-flex;
+                @extend .flex-1;
+                @extend .text-overflow;
 
                 span {
                     display: block;
@@ -283,7 +281,7 @@
             }
 
             .tags {
-                display: flex;
+                @extend .display-flex;
 
                 @media(max-width: 1024px) {
                     display: none;
