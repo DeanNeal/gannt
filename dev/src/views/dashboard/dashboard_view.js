@@ -63,7 +63,11 @@ var ContentView = RoutedView.extend({
     },
     onGlobalClick: function(e) {
         var currentEl = $(e.target);
-         if(!currentEl.parents().hasClass('custom-select'))
+
+        if(!currentEl.parents('body').length)
+            return;
+
+        if(!currentEl.parents().hasClass('custom-select'))
             this.getElement('.custom-select').customSelect('hide');
     },
     remove: function () {

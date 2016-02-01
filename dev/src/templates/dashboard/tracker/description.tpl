@@ -12,7 +12,7 @@
 					#<span name="id"></span>: <span name="name"></span>
 				</div>
 
-				<svg class="icon icon-edit">
+				<svg class="icon icon-edit open-popup">
             		<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-edit"></use>
         		</svg>
 			</div>
@@ -20,7 +20,7 @@
 		
 			<div class="description-text">
 				<span name="description"></span>
-				<span class="see_more">See more</span>
+				<span class="see_more open-popup">See more</span>
 			</div>
 	</div>
 
@@ -112,8 +112,8 @@
 
 				<li class="details-table_hours">
 					<div class="details-table_term">Estimated hours:</div>
-					<div class="details-table_desc open-popup">
-						<input type="text" class="show-spent-hours-popup" readonly name="spent-hours" maxlength="5">
+					<div class="details-table_desc">
+						<input type="text" class="show-spent-hours-popup open-popup" readonly name="spent-hours" maxlength="5">
 
 						<svg class="icon icon-request">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-request"></use>

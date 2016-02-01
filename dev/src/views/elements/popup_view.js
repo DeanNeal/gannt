@@ -6,12 +6,16 @@ var Backbone       = require('backbone'),
 var PopupView = BaseView.extend({
     className: 'popup',
     afterInitialize: function(){
+        this.modelBinder = new Backbone.ModelBinder();
         Backbone.on('global:click', this.onGlobalClick, this);
+    },
+    onRender: function(){
+        this.modelBinder.bind(this.model, this.el);
     },
     onGlobalClick: function(e) {
         var currentEl = $(e.target);
            
-        if(!currentEl.parents().hasClass('popup') && !currentEl.parents().hasClass('open-popup')){
+        if(!currentEl.parents().hasClass('popup') && !currentEl.parents().hasClass('open-popup') && !currentEl.hasClass('open-popup') ){
             this.parent.trigger('popups:close');
         }
     },
