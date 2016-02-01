@@ -1,10 +1,9 @@
 <div class="row" data-id="<%=id%>">
-	<div class="col">
+	<div class="col type">
     	<span class="icon-round"></span>
 	</div>
 	
 	<div class="col title">
-
 		<div class="task-name">
 			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>
 		</div>
