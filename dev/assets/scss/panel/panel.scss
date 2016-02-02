@@ -209,6 +209,11 @@
                 vertical-align: middle;
             }
             
+            // .details-table_watchers__container
+            &_container {
+                width: calc(100% - 148px);
+            }
+
             .watcher_item {
                 float: left;
 
