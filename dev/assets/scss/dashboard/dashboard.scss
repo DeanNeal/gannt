@@ -1,7 +1,7 @@
 .dashboard {
-    $base-width: 1437;
-    $one-unit: $base-width / 100;
-    $ul-width: 568 / $one-unit * 1%;
+    // $base-width: 1437;
+    // $one-unit: $base-width / 100;
+    // $ul-width: 568 / $one-unit * 1%;
     
     // .dashboard-header
     &-header {
@@ -16,12 +16,13 @@
     
     // .dashboard-header_menu
     &-header_menu{
-        $base-width: 1437;
-        $one-unit: $base-width / 100;
-        $ul-width: 568 / $one-unit * 1%;
+        // $base-width: 1437;
+        // $one-unit: $base-width / 100;
+        // $ul-width: 568 / $one-unit * 1%;
 
         // width: calc(#{$ul-width});
         height: 100%;
+        text-align: center;
 
         .navbar-nav {
             height: 100%;
@@ -47,10 +48,17 @@
             }
         }
     }
+
+    // .dashboard-header_unit
+    &-header_unit {
+        display: block;
+        float: left;
+        height: 100%;
+    }
     
     // .dashboard-header_info
     &-header_info {
-        width: calc(100% - #{$ul-width});
+        // width: calc(100% - #{$ul-width});
     }
     
     // .dashboard-header_dropdown
@@ -93,13 +101,6 @@
         }
     }
     
-    // .dashboard-header_unit
-    &-header_unit {
-        display: block;
-        float: left;
-        height: 100%;
-    }
-    
     // .dashboard-menu_btn
     &-menu_btn {
         color: #fff;
@@ -139,10 +140,10 @@
                 & > tr {
                     @extend .display-flex;
                     padding: 11px 15px 10px 15px;
-                    background: #e3e4e6;
-                    border-top: 1px solid #D0D0D0;
+                    // background: #e3e4e6;
+                    // border-top: 1px solid #D0D0D0;
                     border-bottom: 1px solid #DAD7D7;
-                    @include box-shadow(0 0 8px rgba(0,0,0,.19));
+                    // @include box-shadow(0 0 8px rgba(0,0,0,.19));
 
                     td {
                         display: inline-block;
@@ -197,9 +198,17 @@
         border-collapse: collapse;
         @extend .full-size;
 
+        .add-task {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            text-align: center;
+        }
+
         .task-wrapper {
             @extend .full-size;
-            padding: 1px 0;
+            padding: 31px 0 1px 0;
             position: relative;
         }
 

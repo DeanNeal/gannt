@@ -300,9 +300,9 @@ body {
     right: 0;
     bottom: 0;
     height: 40px;
-    background-color: #dfe1e5;
-    @include box-shadow(0 1px 10px rgba(0,0,0,.31));
-    text-align: center;
+    // background-color: #dfe1e5;
+    // @include box-shadow(0 1px 10px rgba(0,0,0,.31));
+    text-align: right;
     padding: 4px 0;
     z-index: 998;
 
