@@ -68,23 +68,23 @@ var ContentView = BaseView.extend({
     onRender: function() {
         var self = this;
         this.modelBinder.bind(this.model, this.el);
-        // this.getElement('#task-date-start').datepicker({
-        //     dateFormat: "yy-mm-dd",
-        //     maxDate: new Date(this.model.get('date-finish')),
-        //     onSelect: function(selected) {
-        //         $(this).change(); 
-        //         self.getElement('#task-date-finish').datepicker("option","minDate", selected)
-        //     }
+        this.getElement('#task-date-start').datepicker({
+            dateFormat: "yy-mm-dd",
+            maxDate: new Date(this.model.get('date-finish')),
+            onSelect: function(selected) {
+                $(this).change(); 
+                self.getElement('#task-date-finish').datepicker("option","minDate", selected)
+            }
 
-        // });
-        // this.getElement('#task-date-finish').datepicker({
-        //     dateFormat: "yy-mm-dd",
-        //     minDate: this.model.get('date-start'),
-        //     onSelect: function(selected) {
-        //         $(this).change(); 
-        //         self.getElement('#task-date-start').datepicker("option","maxDate", selected)
-        //     }
-        // });
+        });
+        this.getElement('#task-date-finish').datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: this.model.get('date-start'),
+            onSelect: function(selected) {
+                $(this).change(); 
+                self.getElement('#task-date-start').datepicker("option","maxDate", selected)
+            }
+        });
 
         this.getElement('.priorities-select').customSelect({
             url: this.model['get_priority-edit'],
@@ -100,9 +100,6 @@ var ContentView = BaseView.extend({
             url: this.model['get_modulerelation-milestonetask-edit'],
             template: 'customSelectListTpl'
         });
-
-
-
 
         this.getElement('.custom-select-watchers').customSelect({
             url: this.model['get_modulerelation-taskwatchers-edit'],
@@ -233,13 +230,16 @@ var ContentView = BaseView.extend({
     },
     onChange: function(){
         //this.model.set('modulerelation-taskwatchers', this.watchers, {silent: true} );
+        this.watchersFetch();
         this.model.update_self(this.model.attributes);
     },
 
     remove : function () {
         this.modelBinder.unbind();
-        // this.getElement('#task-date-start').datepicker("destroy");
-        // this.getElement('#task-date-finish').datepicker("destroy");
+        this.getElement('#task-date-start').datepicker("destroy");
+        this.getElement('#task-date-finish').datepicker("destroy");
+
+        this.getElement('.custom-select').customSelect('destroy');
         BaseView.prototype.remove.call(this);
     }
 });
