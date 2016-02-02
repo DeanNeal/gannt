@@ -72,7 +72,7 @@ var ContentView = PopupView.extend({
 		var self = this;
 		this.model['get_modulerelation-taskuser-edit']().then(function(collection){
 		    collection.each(function(model){
-			    self.addItemView(MemberView, {model: model}, '.assignee-panel_content ul');
+			    self.addItemView(MemberView, model, '.assignee-panel_content ul');
 		    });
 		});
 	}

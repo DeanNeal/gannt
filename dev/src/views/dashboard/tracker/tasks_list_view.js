@@ -87,7 +87,7 @@ var TaskList = BaseView.extend({
 			'timestamp': "2014-04-24 14:59:25"
 		});
 
-	 	this.addItemView(TaskListItem, {model: model}, false, true);
+	 	this.addItemView(TaskListItem, model, false, true);
 	},
 	remove: function(){
 		BaseView.prototype.remove.call(this);
@@ -114,6 +114,8 @@ var TaskListWrapper = BaseView.extend({
 		this.listenTo(this, 'disable:change', this.onDisableStage, this);
 		this.listenTo(this, 'enable:change', this.onEnableStage, this);
 		this.listenTo(this, 'taskView:close', this.closeEditView, this);
+
+		this.listenTo(this, 'createView:close', this.closeCreateView, this);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
@@ -133,9 +135,13 @@ var TaskListWrapper = BaseView.extend({
  		});
 	},
 	addTask: function(){
-		this.addItemView(TaskCreateView, {}, '.tasks-container .scroll', true);
+		this.removeNestedViewByName('createView');
+		this.addViewByName('createView', TaskCreateView, {}, '.tasks-container .scroll', true);
 		// this.taskListWrapper.addTask();
 		//this.addViewByName('createView', TaskCreateView, this.collection);
+	},
+	closeCreateView: function(){
+		this.removeNestedViewByName('createView');
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),
@@ -163,24 +169,24 @@ var ContentView = BaseView.extend({
 	template: dashboardTpl,
 	events: {
 		// 'click .btn-add-new' : 'openCreateTask',
-		'click .close-panel' : 'closeCreateView'
+		// 'click .close-panel' : 'closeCreateView'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
 		this.taskList = this.addView(TaskListWrapper, {collection: {}}, '.task-list');
 		this.filter = this.addView(TasksFiltersView, {query: params.query}, '.filters-container');
-		this.listenTo(this, 'createView:close', this.closeCreateView, this);
+		// this.listenTo(this, 'createView:close', this.closeCreateView, this);
 	},
 	onChangeParams: function(params){
 		this.taskList.updateTaskList(params.query);
 		this.filter.updateFilterModel(params.query);
-	},
+	}
 	// openCreateTask: function(){
 	// 	this.addViewByName('createView', TaskCreateView, this.taskList.collection);
 	// },
-	closeCreateView: function(){
-		this.removeNestedViewByName('createView');
-	}
+	// closeCreateView: function(){
+	// 	this.removeNestedViewByName('createView');
+	// }
 	
 
 });

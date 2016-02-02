@@ -106,7 +106,6 @@ export class CustomSelect {
            self.ui.input
                .val(multipleArray)
                .change();
-
         }
 
         if(!self.$elem[0].hasAttribute('data-multiselect')){        

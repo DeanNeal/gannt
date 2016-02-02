@@ -53,7 +53,7 @@ var ContentView = BaseView.extend({
 		var currentEl = $(e.target);
  		if(currentEl.hasClass('btn-add-new') || currentEl.hasClass('icon-add'))
  			return;
- 		
+
 		if(!currentEl.parents().hasClass('task-create'))
 		  	this.parent.trigger('createView:close');
 	},

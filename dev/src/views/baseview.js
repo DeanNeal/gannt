@@ -115,7 +115,7 @@ var BaseView = Backbone.View.extend({
         return view;
     },
 
-    addViewByName: function(popupName, view, data, target){
+    addViewByName: function(popupName, view, data, target, prepend){
         if(data instanceof Backbone.Collection)
             data = {collection: data}
         else
@@ -123,11 +123,16 @@ var BaseView = Backbone.View.extend({
 
         if(!this[popupName]) {
             this[popupName] = this.addView(view, data || {}, target || false);
-            this.renderNestedView(this[popupName], target || false);
+            this.renderNestedView(this[popupName], target || false, prepend);
         }
     },
 
     addItemView: function(view, data, target, prepend){
+        if(data instanceof Backbone.Collection)
+            data = {collection: data}
+        else
+            data = {model: data}
+
         this.renderNestedView(this.addView(view, data || {}), target || false, prepend || false);
     },
 

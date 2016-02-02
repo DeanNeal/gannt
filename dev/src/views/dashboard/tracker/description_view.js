@@ -212,11 +212,11 @@ var ContentView = BaseView.extend({
     watchersFetch: function() {
         var self = this;
         this.removeNestedViewByName('watchersView');
-        this.model['get_modulerelation-taskwatchers']().then(function(watchers){
-            self.addItemView(WatchersView, {collection: watchers}, '.details-table_watchers_container', true);
-            self.watchers = watchers.map(function(model){
-                return model.get('id')
-            });
+        this.model['get_modulerelation-taskwatchers']().then(function(watchers){console.log(watchers);
+            self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container', true);
+            // self.watchers = watchers.map(function(model){
+            //     return model.get('id')
+            // });
         });
 
     },
