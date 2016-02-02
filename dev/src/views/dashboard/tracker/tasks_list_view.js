@@ -54,7 +54,7 @@ var TaskListItem = BaseView.extend({
 
 
 var TaskList = BaseView.extend({
-	className: 'task-list',
+	className: '',
 	onInitialize: function (params) {
 		var self = this;
 		BaseView.prototype.onInitialize.call(this, params);
@@ -134,6 +134,7 @@ var TaskListWrapper = BaseView.extend({
 	},
 	addTask: function(){
 		this.taskListWrapper.addTask();
+		//this.addViewByName('createView', TaskCreateView, this.collection);
 	},
 	changeTask: function(e){
 		var id   = $(e.currentTarget).data('id'),

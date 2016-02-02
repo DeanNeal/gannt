@@ -201,9 +201,11 @@ var ContentView = BaseView.extend({
         this.closePopup('spentHoursView');
     },
     watchersFetch: function() {
+        var self = this;
         this.removeNestedViewByName('watchersView');
-        var collection = new Backbone.Collection([{},{},{}]);
-        this.addViewByName('watchersView', WatchersView, collection, '.details-table_watchers_container');
+        this.model['get_modulerelation-taskwatchers-edit']().then(function(watchers){
+            self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container');
+        });
     },
     updateModel: function(model) {
         this.model = model;
@@ -211,6 +213,7 @@ var ContentView = BaseView.extend({
         this.modelBinder.bind(this.model, this.el);
         this.getElement('.custom-select').customSelect('refresh');
         this.commentsFetch();
+        this.watchersFetch();
     },
     onChange: function(){
         this.model.update_self(this.model.attributes);
