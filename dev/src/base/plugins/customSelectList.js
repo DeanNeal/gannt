@@ -22,7 +22,8 @@ export class CustomSelect {
             input: this.$elem.find('.custom-select-input'),
             name: this.$elem.find('.custom-select-input-name'),
             value: this.$elem.find('.custom-select-value'),
-            data: this.$elem.data()
+            data: this.$elem.data(),
+            placeholder: this.$elem.attr('placeholder') ? this.$elem.attr('placeholder').toLowerCase() : ''
         };
 
         this.init();
@@ -30,7 +31,6 @@ export class CustomSelect {
 
     init() {
         customSelectArray.push(this.$elem);
-        this.ui.placeholder = this.ui.input.attr('placeholder') ? this.ui.input.attr('placeholder').toLowerCase() : '';
 
         this.refresh();
 
@@ -96,15 +96,30 @@ export class CustomSelect {
     selectCustomValue(event) {
         let self = event.data;
 
-        self.ui.input
-            .val($(this).data('id'))
-            .change();
 
-        self.ui.value.text($(this).data('text'));
-        self.$elem.attr('data-selected', $(this).data('text'));
+        if(self.$elem[0].hasAttribute('data-multiselect')){
+            $(this).toggleClass('active');
 
-        //hide all
-        self.hide(true);
+           var multipleArray =  self.$elem.find('li.active').map(function(i, item){ 
+                return $(item).data('id');
+           }).toArray();
+           self.ui.input
+               .val(multipleArray)
+               .change();
+
+        }
+
+        if(!self.$elem[0].hasAttribute('data-multiselect')){        
+            self.ui.input
+                .val($(this).data('id'))
+                .change();
+
+            self.ui.value.text($(this).data('text'));
+            self.$elem.attr('data-selected', $(this).data('text'));
+
+            //hide all
+            self.hide(true);
+        }
     }
 
     hide(closeSelf) {
