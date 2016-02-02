@@ -64,24 +64,22 @@ let ModelFactory = {
         return new Collection(response);
     },
     makeRequest: function (method, url, args = {}) {
-        let self = this;
-        let success = function (response) {
+        let success = response => {
             if (response.data instanceof Array) {
-                let collection = self.getCollection(response);
+                let collection = this.getCollection(response);
 
                 response.data.map(model => {
-                    collection.add(self.getModel(model));
+                    collection.add(this.getModel(model));
                 });
                 return collection;
             } else if (typeof response.data == 'object') {
-                return self.getModel(response);
+                return this.getModel(response);
             }
         };
 
-        return $http(url)[method](args).then(success).catch(function (err) {
-            console.log(err.message);
-            console.log(err.stack);
-        });
+        let error = response => console.log(response);
+
+        return $http(url)[method](args).then(success, error).catch(error);
     }
 };
 

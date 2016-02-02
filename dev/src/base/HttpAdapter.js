@@ -18,101 +18,122 @@
 
 import * as _ from 'underscore';
 
-let testPath = 'http://134.249.143.42:84';
+const testPath = 'http://134.249.143.42:84';
+//const testPath = 'http://195.138.79.46';
 
-export default function (url) {
+class PromiseHandler {
+    constructor(options) {
+        this.options = options;
+        this.resolve = response => console.log(response);
+        this.reject = response => console.log(response);
+    }
 
-    function client(options, resolve, reject) {
-
-        // Instantiates the XMLHttpRequest
-        let client = new XMLHttpRequest();
+    generateUri() {
+        let args = this.options.args;
 
         /* @if NODE_ENV='dev' */
-        let uri = testPath + options.url;
+        let uri = testPath + this.options.url;
         /* @endif */
 
         /* @if NODE_ENV='prod' */
-        let uri = options.url;
+        let uri = this.options.url;
         /* @endif */
 
-        if (options.args && typeof options.args === "object") {
+        if (args && typeof args === "object") {
             uri += '?';
             let argCount = 0;
-            for (let key in options.args) {
-                if (options.args.hasOwnProperty(key)) {
+            for (let key in args) {
+                if (args.hasOwnProperty(key)) {
                     if (argCount++) {
                         uri += '&';
                     }
-                    uri += encodeURIComponent(key) + '=' + encodeURIComponent(options.args[key]);
+                    uri += `${encodeURIComponent(key)}=${encodeURIComponent(args[key])}`;
                 }
             }
-        } else if (typeof options.args === "string") {
-            if(uri.indexOf('?') > 0)
-                uri += '&';
-            else
-                uri += '?';
-
-            uri += 'by-id[id]=' + options.args;
+        } else if (typeof args === "string") {
+            uri += uri.indexOf('?') > 0 ? '&' : '?';
+            uri += `by-id[id]=${args}`;
         }
 
-        client.withCredentials = true;
-
-        client.open(options.method, uri, true);
-        client.send();
-
-        client.onload = function () {
-            if (this.status >= 200 && this.status < 300) {
-                // Performs the function "resolve" when this.status is equal to 2xx
-                resolve(JSON.parse(this.response));
-            } else {
-                // Performs the function "reject" when this.status is different than 2xx
-                reject(this.statusText);
-            }
-        };
-
-        client.onerror = function () {
-            reject(this.statusText);
-        };
-
-        return client;
+        return uri;
     }
+
+    onResolve(self) {
+        if (self.status >= 200 && self.status < 300) {
+            let response = self.response ? JSON.parse(self.response) : {};
+
+            if (!response.length && !response.result) {
+                this.reject(response.error_message);
+            } else {
+                // Performs the function "resolve" when self.status is equal to 2xx
+                this.resolve(response);
+            }
+        } else {
+            // Performs the function "reject" when self.status is different than 2xx
+            this.onReject(self.statusText);
+        }
+
+        //TODO: Создать switch по состояниям self.status на проверку различных исключений
+    }
+
+    onReject(msg) {
+        this.reject(msg);
+    }
+
+    client(resolve, reject) {
+        if (typeof resolve !== 'function') {
+            throw new TypeError(`Resolver must be a function but it is ${typeof resolve}`);
+        } else {
+            this.resolve = resolve;
+        }
+
+        if (typeof reject !== 'function') {
+            throw new TypeError(`Rejecter must be a function but it is ${typeof reject}`);
+        } else {
+            this.reject = reject;
+        }
+
+        let self = this;
+
+        // Instantiates the XMLHttpRequest
+        let xhr = new XMLHttpRequest();
+
+        xhr.withCredentials = true;
+
+        xhr.open(this.options.method, this.generateUri(), true);
+        xhr.send();
+
+        xhr.onload = function () {
+            self.onResolve(this);
+        };
+
+        xhr.onerror = function () {
+            self.onReject(this.statusText);
+        };
+
+        return xhr;
+    }
+}
+
+export default function (url) {
 
     // A small example of object
     let core = {
 
         // Method that performs the ajax promise request
-        client: function (method, url, args = {}, callbacks) {
-            let options = _.extend({}, {method: method, url: url, args: args});
-
-            return client(options, resolve, reject);
-        },
-
-        // Method that performs the ajax promise request
         promise: function (method, url, args = {}) {
-
-            let options = _.extend({}, {method: method, url: url, args: args});
+            let xhr = new PromiseHandler(_.extend({}, {method: method, url: url, args: args}));
 
             // Creating a promise
-            return new Promise((resolve, reject) => client(options, resolve, reject));
+            return new Promise((resolve, reject) => xhr.client(resolve, reject));
         }
     };
 
     // Adapter pattern
     return {
-        'get': function (args) {
-            return core.promise('GET', url, args);
-        },
-        'post': function (args) {
-            return core.promise('POST', url, args);
-        },
-        'put': function (args) {
-            return core.promise('PUT', url, args);
-        },
-        'delete': function (args) {
-            return core.promise('DELETE', url, args);
-        },
-        client: function (method, args, callbacks = {}) {
-            return core.client(method, url, args, callbacks)
-        }
+        'get': args => core.promise('GET', url, args),
+        'post': args => core.promise('POST', url, args),
+        'put': args => core.promise('PUT', url, args),
+        'delete': args => core.promise('DELETE', url, args)
     };
 }
