@@ -8,9 +8,9 @@
 			</div>
  -->
 			<div class="base-filters">
-				<div id="filter-select" class="custom-select custom-select-base type">
+				<div id="filter-select" class="custom-select custom-select-base type" placeholder="All">
 					<span class="custom-select-value">All</span>
-					<input class="custom-select-input" type="hidden" name="filter" placeholder="All">
+					<input class="custom-select-input" type="hidden" name="filter">
 				</div>
 			</div>
 		</div>
@@ -24,19 +24,19 @@
 		</div>
 
 		<div class="right-filters">
-			<div id="companies-select" class="custom-select custom-select-base companies" data-search>
+			<div id="companies-select" class="custom-select custom-select-base companies" data-search placeholder="Company">
 				<span class="custom-select-value">Company</span>
-				<input class="custom-select-input" type="hidden" name="by-company[id]" placeholder="Company">
+				<input class="custom-select-input" type="hidden" name="by-company[id]">
 			</div>
 
-			<div id="projects-select" class="custom-select custom-select-base projects" data-search>
+			<div id="projects-select" class="custom-select custom-select-base projects" data-search placeholder="Project">
 				<span class="custom-select-value">Project</span>
-				<input class="custom-select-input" type="hidden" name="by-project[id]" placeholder="Project">
+				<input class="custom-select-input" type="hidden" name="by-project[id]">
 			</div>
 
-			<div id="milestones-select" class="custom-select custom-select-base milestones" data-search>
+			<div id="milestones-select" class="custom-select custom-select-base milestones" data-search placeholder="Milestone">
 				<span class="custom-select-value">Milestone</span>
-				<input class="custom-select-input" type="hidden" name="by-milestone[id]" placeholder="Milestone">
+				<input class="custom-select-input" type="hidden" name="by-milestone[id]">
 			</div>
 		</div>
 
