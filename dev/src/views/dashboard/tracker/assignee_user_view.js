@@ -27,11 +27,11 @@ var MemberView = BaseView.extend({
 	},
 	onUserClick: function(e){
 		this.member = {
-			taskusername: this.model.get('taskusername'),
-			taskuserid: this.model.get('taskuserid'),
-			role: 'unknown',
+			taskusername: this.model.get('name'),
+			taskuserid: this.model.get('id'),
+			// role: 'unknown',
 			avatar: this.model.get('avatar'),
-			'modulerelation-taskuser': '3'
+			'modulerelation-taskuser': this.model.get('id')
 		};
 
 		this.getElement().addClass('active').siblings().removeClass('active');
