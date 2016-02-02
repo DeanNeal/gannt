@@ -7,8 +7,10 @@
 		<div class="task-name">
 			<span class="" title="#<%=id%>: <%=name%>">#<%=id%>: <%=name%></span>
 		</div>
+	</div>
 
-		<div class="tags">
+	<div class="col tags">
+		<div class="">
 			<% if(obj['tasktag-name']) { %>
 				<% _.each(obj['tasktag-name'].split(','), function(tag) { %>
 					<span class="tag" title="<%=tag%>"><%=tag%></span>

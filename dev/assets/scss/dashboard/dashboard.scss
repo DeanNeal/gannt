@@ -269,6 +269,11 @@
             }
         }
 
+        .tags {
+            width: 16%;
+            text-align: center;
+        }
+
         .projects {
             font-weight: 600;
             font-size: 12px;
@@ -413,10 +418,10 @@
     &-table {
         .title {
             // width: 45.5%;
-            width: calc(100% - 27.1% - 465px);
+            width: calc(100% - 42.1% - 465px);
 
             @media(max-width: 1024px) {
-                width: calc(100% - 19% - 465px);
+                width: calc(100% - 35% - 465px);
             }
         }
 
