@@ -48,7 +48,7 @@
 		<table>
 			<tbody>
 				<tr>
-					<td class="title list-item" data-sort="title" data-active="true">
+					<td class="title list-item" data-sort="title">
 						Title
 						<svg class="icon icon-rotation">
 				            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-rotation"></use>
