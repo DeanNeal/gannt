@@ -26,8 +26,6 @@ var MemberView = BaseView.extend({
 	    this.data = _.clone(this.model.attributes);
 	},
 	onUserClick: function(e){
-		var checkbox = this.getElement('input[type="checkbox"]');
-	
 		this.member = {
 			taskusername: this.model.get('taskusername'),
 			taskuserid: this.model.get('taskuserid'),
@@ -35,8 +33,7 @@ var MemberView = BaseView.extend({
 			avatar: this.model.get('avatar')
 		};
 
-		checkbox.prop('checked', !checkbox.is(':checked'));
-
+		this.getElement().addClass('active').siblings().removeClass('active');
 		this.parent.trigger('member:click', this.member);
 	},
 	remove : function () {
@@ -49,7 +46,7 @@ var ContentView = PopupView.extend({
 	// className: 'assignee-panel popup',
 	template: tpl,
 	events: {
-		// 'click .btn-apply'                   : 'onApplyClick',
+		'click .btn-apply'                   : 'onApplyClick',
 		'keyup .assignee-panel_search input' : 'searchMembers'
 	},
 
