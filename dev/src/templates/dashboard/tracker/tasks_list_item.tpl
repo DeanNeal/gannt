@@ -10,17 +10,15 @@
 	</div>
 
 	<div class="col tags">
-		<div class="">
-			<% if(obj['tasktag-name']) { %>
-				<% _.each(obj['tasktag-name'].split(','), function(tag) { %>
-					<span class="tag" title="<%=tag%>"><%=tag%></span>
-				<% }); %>
-			<% }  else { %>
-				<span class="tag" title="Title">Tag 1</span>
-				<span class="tag" title="Title">Tag 2</span>
-				<span class="tag" title="Title">Tag 3</span>
-			<% } %>
-		</div>
+		<% if(obj['tasktag-name']) { %>
+			<% _.each(obj['tasktag-name'].split(','), function(tag) { %>
+				<span class="tag" title="<%=tag%>"><%=tag%></span>
+			<% }); %>
+		<% }  else { %>
+			<span class="tag" title="Title">Tag 1</span>
+			<span class="tag" title="Title">Tag 2</span>
+			<span class="tag" title="Title">Tag 3</span>
+		<% } %>
 	</div>
 
 	<div class="col projects">
