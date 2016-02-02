@@ -12,16 +12,15 @@ var ModelBinder    = require('base/backbone.modelbinder');
 import ModelFactory from 'base/ModelFactory';
 import 'base/plugins/customSelectList';
 
-var api = Api.getInstance('/api/v1/system/catalog');
+let api = Api.getInstance('/api/v1/system/catalog');
 
 api.getCatalog().then(function() {
-    var App = new GlobalView();
+    let App = new GlobalView();
     App.start();
     Backbone.history.start();
 });
 
-
-var router = new Router();
+let router = new Router();
 
 router.on('route:cubeggRoute', function(actions, args) {
 
