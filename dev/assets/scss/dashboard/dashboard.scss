@@ -272,6 +272,10 @@
         .tags {
             width: 16%;
             text-align: center;
+
+            .tag {
+                vertical-align: middle;
+            }
         }
 
         .projects {
