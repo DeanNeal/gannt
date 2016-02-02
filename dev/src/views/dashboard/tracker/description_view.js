@@ -54,8 +54,8 @@ var ContentView = BaseView.extend({
 
         this.commentsPreloaderView = this.addView(PreloaderView, {}, '.left-view_content');
 
-        this.commentsFetch();
-        this.watchersFetch();
+        //this.commentsFetch();
+//        this.watchersFetch();
 
         this.modelBinder = new Backbone.ModelBinder();
 
@@ -96,6 +96,12 @@ var ContentView = BaseView.extend({
             url: this.model['get_processing-edit'],
             template: 'customSelectListPriority'
         });
+
+        this.getElement('.custom-select-milestones').customSelect({
+            url: this.model['get_modulerelation-milestonetask-edit'],
+            template: 'customSelectListTpl'
+        });
+
 
         // Restrict для шаблонизатора форм.
         // var restrict = { 
@@ -203,9 +209,13 @@ var ContentView = BaseView.extend({
     watchersFetch: function() {
         var self = this;
         this.removeNestedViewByName('watchersView');
-        this.model['get_modulerelation-taskwatchers-edit']().then(function(watchers){
+        this.model['get_modulerelation-taskwatchers']().then(function(watchers){
             self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container');
         });
+
+        // this.model['get_modulerelation-taskwatchers-edit']().then(function(watchers){
+        //     self.model.set('modulerelation-taskwatchers', [1,2,3,4,5,6,7,8,9,10] );
+        // });
     },
     updateModel: function(model) {
         this.model = model;

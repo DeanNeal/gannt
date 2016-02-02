@@ -29,8 +29,9 @@ var MemberView = BaseView.extend({
 		this.member = {
 			taskusername: this.model.get('taskusername'),
 			taskuserid: this.model.get('taskuserid'),
-			role: this.model.get('role'),
-			avatar: this.model.get('avatar')
+			role: 'unknown',
+			avatar: this.model.get('avatar'),
+			'modulerelation-taskuser': '3'
 		};
 
 		this.getElement().addClass('active').siblings().removeClass('active');
@@ -68,12 +69,12 @@ var ContentView = PopupView.extend({
 		Helpers.searchEngine(value, $list, 2);
 	},
 	getMembers: function(){
-		this.model.get_self().then(function(posts){
-			for (var i = 0; i < 3; i++) {
-			    this.memberView = this.addView(MemberView, {model: this.model});
-			    this.renderNestedView(this.memberView, '.assignee-panel_content ul');
-			};
-		}.bind(this));
+		var self = this;
+		this.model['get_modulerelation-taskuser-edit']().then(function(collection){
+		    collection.each(function(model){
+			    self.addItemView(MemberView, {model: model}, '.assignee-panel_content ul');
+		    });
+		});
 	}
 
 });

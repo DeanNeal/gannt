@@ -129,7 +129,13 @@ export class CustomSelect {
                     }
                 });
             } else {
-                this.refreshValue(this.ui.name.val() ||  _.findWhere(this.options.items, {id: this.ui.input.val()}).name  );
+                if(this.ui.name.length)
+                    this.refreshValue(this.ui.name.val() );
+                else
+                    this.refreshValue(this.ui.input.val() );
+
+                if(this.options.items)
+                    this.refreshValue( _.findWhere(this.options.items, {id: this.ui.input.val()}).name );
             }
         } else {
             this.refreshValue(this.ui.placeholder);

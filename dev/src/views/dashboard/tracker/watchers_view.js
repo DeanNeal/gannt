@@ -13,8 +13,6 @@ var WatcherItemView = BaseView.extend({
 	onInitialize: function(params) {
 	    BaseView.prototype.onInitialize.call(this, params);
 	},
-  
-
 	serialize: function(params) {
 	    this.data = _.clone(this.model.attributes);
 	}

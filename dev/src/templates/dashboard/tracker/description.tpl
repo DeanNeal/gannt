@@ -81,8 +81,13 @@
 
 				<li class="details-table_milestone">
 					<div class="details-table_term">Milestones:</div>
-					<div class="details-table_desc" name="milestonename">
+<!-- 					<div class="details-table_desc" name="milestonename">
 						<span class="icon-round-full"></span>
+					</div> -->
+
+					<div class="details-table_desc custom-select custom-select-milestones" data-search>
+						<span class="custom-select-value">Milestone</span>
+						<input class="custom-select-input" type="hidden" name="milestonename" placeholder="Milestone">
 					</div>
 				</li>
 

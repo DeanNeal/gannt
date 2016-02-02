@@ -35,8 +35,9 @@ export default function (url) {
         let uri = options.url;
         /* @endif */
 
-        if (options.args && typeof options.args === "object") {
-            uri += '?';
+        if (options.args && typeof options.args === "object" && options.args.length) {
+            if(uri.indexOf('?') < 0)
+                uri += '?';
             let argCount = 0;
             for (let key in options.args) {
                 if (options.args.hasOwnProperty(key)) {
