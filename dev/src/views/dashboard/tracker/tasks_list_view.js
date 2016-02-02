@@ -54,7 +54,7 @@ var TaskListItem = BaseView.extend({
 
 
 var TaskList = BaseView.extend({
-	className: '',
+	className: 'scroll',
 	onInitialize: function (params) {
 		var self = this;
 		BaseView.prototype.onInitialize.call(this, params);
@@ -133,7 +133,8 @@ var TaskListWrapper = BaseView.extend({
  		});
 	},
 	addTask: function(){
-		this.taskListWrapper.addTask();
+		this.addItemView(TaskCreateView, {}, '.tasks-container .scroll', true);
+		// this.taskListWrapper.addTask();
 		//this.addViewByName('createView', TaskCreateView, this.collection);
 	},
 	changeTask: function(e){
@@ -161,7 +162,7 @@ var ContentView = BaseView.extend({
 	className: 'tasks full-size have-filter have-sort',
 	template: dashboardTpl,
 	events: {
-		'click .btn-add-new' : 'openCreateTask',
+		// 'click .btn-add-new' : 'openCreateTask',
 		'click .close-panel' : 'closeCreateView'
 	},
 	onInitialize: function (params) {
@@ -174,9 +175,9 @@ var ContentView = BaseView.extend({
 		this.taskList.updateTaskList(params.query);
 		this.filter.updateFilterModel(params.query);
 	},
-	openCreateTask: function(){
-		this.addViewByName('createView', TaskCreateView, this.taskList.collection);
-	},
+	// openCreateTask: function(){
+	// 	this.addViewByName('createView', TaskCreateView, this.taskList.collection);
+	// },
 	closeCreateView: function(){
 		this.removeNestedViewByName('createView');
 	}

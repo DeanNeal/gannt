@@ -1,8 +1,8 @@
-
 <div class="add-task-panel full-size">
 	<svg class="icon icon-close close-panel">
     	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
 	</svg>
+
 	<div class="left-view">
 		<div class="subject">
 			<input type="text" placeholder="Subject">
@@ -104,7 +104,7 @@
 
 			<li class="details-table_milestone">
 				<div class="details-table_desc" name="milestonename">
-<!-- 					<span class="icon-round-full"></span> -->
+					<!-- <span class="icon-round-full"></span> -->
 					<span name="milestonename">+ Select Milestone</span>
 				</div>
 			</li>
@@ -145,4 +145,3 @@
 		</ul>
 	</div>
 </div>
-

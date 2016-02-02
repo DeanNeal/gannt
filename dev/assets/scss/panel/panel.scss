@@ -13,6 +13,11 @@
     border-left: 1px solid #B5B5B5;
     z-index: 1000;
 
+    &.task-create {
+        position: static;
+        height: 500px;
+    }
+
     .close-panel {
         position: absolute;
         right: 10px;
@@ -220,14 +225,26 @@
             // .details-table_watchers__container
             &_container {
                 width: calc(100% - 148px);
+                position: relative;
+            }
+
+            .watchers {
+                display: inline-block;
+                vertical-align: middle;
             }
 
             .watcher_item {
-                float: left;
+                display: inline-block;
+                vertical-align: middle;
 
                 & + .watcher_item {
                     margin-left: 1px;
                 }
+            }
+
+            .custom-select-watchers {
+                display: inline-block;
+                vertical-align: middle;                
             }
 
             img {

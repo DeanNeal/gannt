@@ -1,4 +1,4 @@
-.dashboard {   
+.dashboard {
     // .dashboard-header
     &-header {
         position: absolute;
@@ -196,7 +196,7 @@
         }
 
         .tasks-container {
-            @extend .scroll;
+            // @extend .scroll;
         }
 
         .task-list-item {
@@ -421,7 +421,6 @@
     &-table-header,
     &-table {
         .title {
-            // width: 45.5%;
             width: calc(100% - 42.1% - 465px);
 
             @media(max-width: 1024px) {
@@ -430,7 +429,6 @@
         }
 
         .projects {
-            // width: 5%;
             width: 8.1%;
 
             @media(max-width: 1024px) {
@@ -439,23 +437,17 @@
         }
 
         .priority {
-            // width: 42px;
-            // width: 7.81%;
             width: 80px;
             text-align: center;
         }
 
         .status {
-            // width: 9%;
             width: 92px;
             text-align: center;
         }
 
         .assignee {
-            // width: 42px;
-            // width: 8.8%;
             min-width: 72px;
-            // margin-right: 15px;
             padding: 0;
             text-align: center;
         }
@@ -465,12 +457,10 @@
         }
 
         .created {
-            // width: 11%;
             width: 113px;
         }
 
         .updated {
-            // width: 8.5%;
             width: 90px;
         }
     }
