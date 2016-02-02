@@ -1,26 +1,17 @@
-.dashboard {
-    // $base-width: 1437;
-    // $one-unit: $base-width / 100;
-    // $ul-width: 568 / $one-unit * 1%;
-    
+.dashboard {   
     // .dashboard-header
     &-header {
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
-        background: #3f3b4a;
+        background: #f1f2f4;
         height: 65px;
         z-index: 10;
     }
     
     // .dashboard-header_menu
     &-header_menu{
-        // $base-width: 1437;
-        // $one-unit: $base-width / 100;
-        // $ul-width: 568 / $one-unit * 1%;
-
-        // width: calc(#{$ul-width});
         height: 100%;
         text-align: center;
 
@@ -30,21 +21,6 @@
             li {
                 height: 100%;
                 display: inline-block;
-                // width: calc(100% / 5);
-
-                a {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    padding: 10px;
-                    text-decoration: none;
-                    color: #fff;
-                }
-
-                .icon {
-                    font-size: 19px;
-                    fill: #fff;
-                }
             }
         }
     }
@@ -54,11 +30,6 @@
         display: block;
         float: left;
         height: 100%;
-    }
-    
-    // .dashboard-header_info
-    &-header_info {
-        // width: calc(100% - #{$ul-width});
     }
     
     // .dashboard-header_dropdown
@@ -103,24 +74,34 @@
     
     // .dashboard-menu_btn
     &-menu_btn {
-        color: #fff;
         text-align: center;
         height: 100%;
         position: relative;
-        -webkit-transition: all 200ms ease;
-        -moz-transition: all 200ms ease;
-        -ms-transition: all 200ms ease;
-        -o-transition: all 200ms ease;
-        padding: 0 15px;
+        padding: 0 45px;
+        text-transform: uppercase;
+
+        a {
+            line-height: 65px;
+            color: #a0a0aa;
+            width: 100%;
+            height: 100%;
+            display: block;
+            // padding: 10px;
+            text-decoration: none;
+        }
 
         &[data-active="true"] {
-            @include box-shadow(0 0 20px -7px #000);
+            // @include box-shadow(0 0 20px -7px #000);
+
+            a {
+                color: #453e60;
+            }
 
             &:after{
                 content: '';
                 position: absolute;
                 height: 5px;
-                background: rgba(63, 59, 74, 0.74);
+                background: #453e60;
                 width: 100%;
                 left: 0;
                 z-index: 1000;
@@ -204,6 +185,8 @@
             right: 0;
             top: 0;
             text-align: center;
+            background: #d9e0ea;
+            border: 1px dotted;
         }
 
         .task-wrapper {
@@ -217,32 +200,17 @@
         }
 
         .task-list-item {
-            // @extend .display-flex;
-            // @extend .flex-1;
             position: relative;
-            height: 40px;
+            height: 54px;
+            background: #eaedf4;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.55);
-                @include box-shadow(0 0 10px rgba(0,0,0,.21));
+                background: #f1f4fb;
+            }
 
-                &:before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    bottom: 0;
-                    width: 10px;
-                    background: #FFFFFF;
-                    @include box-shadow(0 0 21px -2px #000);
-                }
-
+            &:first-child {
                 .row {
-                    border-color: transparent;
-                }
-
-                .title {
-                    color: #000;
+                    border-top: 1px solid #dbdbdc;
                 }
             }
         }
@@ -251,9 +219,10 @@
             @extend .display-flex;
             @extend .flex-1;
             @extend .align-items-center;
-            border-bottom: 1px solid #dbdbdc;
+            @include border-radius(3px);
+            border: 1px solid #dbdbdc;
+            border-top: none;
             cursor: pointer;
-            margin: 0px 15px;
             height: 100%;
         }
 
