@@ -225,6 +225,12 @@
             // .details-table_watchers__container
             &_container {
                 width: calc(100% - 148px);
+                position: relative;
+            }
+
+            .watchers {
+                display: inline-block;
+                vertical-align: middle;
             }
 
             .watcher_item {
@@ -234,6 +240,11 @@
                 & + .watcher_item {
                     margin-left: 1px;
                 }
+            }
+
+            .custom-select-watchers {
+                display: inline-block;
+                vertical-align: middle;                
             }
 
             img {

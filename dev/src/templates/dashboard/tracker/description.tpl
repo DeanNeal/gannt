@@ -110,7 +110,7 @@
 				<li class="details-table_watchers">
 					<div class="details-table_term">Watchers:</div>
 					<div class="details-table_desc details-table_watchers_container">						
-						<div class="details-table_desc custom-select custom-select-watchers" data-multiselect placeholder="Add">
+						<div class="custom-select custom-select-watchers" data-multiselect placeholder="Add">
 							<span class="custom-select-value"></span>
 							<input class="custom-select-input" type="hidden" name="modulerelation-taskwatchers">
 				 		</div>
