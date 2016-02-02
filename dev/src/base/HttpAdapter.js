@@ -39,7 +39,7 @@ class PromiseHandler {
         let uri = this.options.url;
         /* @endif */
 
-        if (args && typeof args === "object") {
+        if (args && typeof args === "object" && args.length) {
             uri += '?';
             let argCount = 0;
             for (let key in args) {
