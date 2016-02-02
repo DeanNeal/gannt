@@ -58,6 +58,8 @@ export class CustomSelect {
             $search   = self.$elem.find('.custom-select-dropdown-search'),
             $initialList = self.$elem.find('.initial-list');
 
+        self.ui.list = $list;
+
         self.$elem.toggleClass('custom-select-open');
 
         $list.off('scroll');
@@ -70,8 +72,8 @@ export class CustomSelect {
                 self.options.url().then(function (collection) {
                     $list.html(_.template(templates[self.options.template])(collection));
 
+                    self.setActiveMultiselect($list);
                     //LAZY LOAD
-
                     $list.on('scroll', function () {
                         if (collection.get_next) {
                             let innerHeight = $(this).innerHeight();
@@ -90,6 +92,15 @@ export class CustomSelect {
                 $list.html(_.template(templates[self.options.template])({items: self.options.items}));
                 $list.find(`[data-id='${self.ui.input.val()}']`).addClass('active'); 
             }
+        }
+    }
+
+    setActiveMultiselect($list) {
+        var self = this;
+        if(this.$elem[0].hasAttribute('data-multiselect')){
+            this.ui.input.val().split(',').forEach(function(id){
+                self.ui.list.find(`li[data-id='${id}']`).addClass('active');
+            });
         }
     }
 

@@ -29,7 +29,7 @@ var ContentView = BaseView.extend({
         'click .status-select-item'          : "changeStatus",
         'click .open-assignee-panel'         : "onOpenAssingeePanelClick",
         'click .assignee-panel_close'        : "onCloseAssingeePanelClick",
-        'click .show-spent-hours-popup'      : "onOpenSpentHoursPopupClick",
+      //  'click .show-spent-hours-popup'      : "onOpenSpentHoursPopupClick",
         'click .btn-status'                  : "showStatusReport",
         'click .btn-comments'                : "showComments"
     },
@@ -212,11 +212,8 @@ var ContentView = BaseView.extend({
     watchersFetch: function() {
         var self = this;
         this.removeNestedViewByName('watchersView');
-        this.model['get_modulerelation-taskwatchers']().then(function(watchers){console.log(watchers);
+        this.model['get_modulerelation-taskwatchers']().then(function(watchers){
             self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container', true);
-            // self.watchers = watchers.map(function(model){
-            //     return model.get('id')
-            // });
         });
 
     },
@@ -229,9 +226,12 @@ var ContentView = BaseView.extend({
         this.watchersFetch();
     },
     onChange: function(){
-        //this.model.set('modulerelation-taskwatchers', this.watchers, {silent: true} );
-        this.watchersFetch();
-        this.model.update_self(this.model.attributes);
+        var self = this; 
+        //update model then do something
+        this.model.update_self(this.model.attributes).then(function(){
+            self.watchersFetch();
+        });
+
     },
 
     remove : function () {
