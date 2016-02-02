@@ -87,7 +87,7 @@ var BaseView = Backbone.View.extend({
         if (typeof el === 'string') {
             return this.$el.find(el);
         } else {
-            return el;
+            return this.$el;
         }
     },
     toggleClassNames: function () {
