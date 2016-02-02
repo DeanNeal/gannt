@@ -42,6 +42,8 @@ class SetActiveStateAtTable extends SetActiveState {
     highLight() {
         let oldStr = this.input.val();
         this.wrapper.find(`[data-${this.param}='${oldStr}']`).attr('data-active', `${(oldStr[0] != '-')}`).siblings().removeAttr('data-active');
+        if(!oldStr)
+            this.wrapper.find(`[data-${this.param}]`).removeAttr('data-active');
     }
 }
 

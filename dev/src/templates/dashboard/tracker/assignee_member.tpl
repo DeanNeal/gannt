@@ -1,4 +1,4 @@
-<div data-id="<%=obj['id']%>">
+<div>
 	<img class="avatar" alt="" width="52" height="52" name="avatar">
 	<div class="user-data">
 		<div class="name" name="name">M. Shevchenko</div>

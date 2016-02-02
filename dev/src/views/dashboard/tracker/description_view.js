@@ -56,10 +56,9 @@ var ContentView = BaseView.extend({
 
         //this.commentsFetch();
 //        this.watchersFetch();
+     //   this.model.on('change', this.onChange, this);
 
         this.modelBinder = new Backbone.ModelBinder();
-
-        this.model.on('change', this.onChange, this);
 
         this.listenTo(this, 'assignee:apply', this.onAssingeeApply, this);
         this.listenTo(this, 'spentHours:submit', this.onSpentHoursChange, this);
@@ -225,7 +224,7 @@ var ContentView = BaseView.extend({
         this.commentsFetch();
         this.watchersFetch();
     },
-    onChange: function(){
+    onChange: function(){console.log(this.model.attributes);
         this.model.update_self(this.model.attributes);
     },
 
