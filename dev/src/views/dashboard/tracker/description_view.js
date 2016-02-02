@@ -102,6 +102,13 @@ var ContentView = BaseView.extend({
         });
 
 
+
+
+        this.getElement('.custom-select-watchers').customSelect({
+            url: this.model['get_modulerelation-taskwatchers-edit'],
+            template: 'customSelectListTpl'
+        });
+
         // Restrict для шаблонизатора форм.
         // var restrict = { 
         //     'date-start': { 
@@ -210,11 +217,17 @@ var ContentView = BaseView.extend({
         this.removeNestedViewByName('watchersView');
         this.model['get_modulerelation-taskwatchers']().then(function(watchers){
             self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container');
+            
+            self.watchers = watchers.map(function(model){
+                return model.get('id')
+            });
+
+            self.model['get_modulerelation-taskwatchers-edit']().then(function(watchers){
+                self.model.set('modulerelation-taskwatchers', [1,2,3,4,5,6,7,8,9,10] );
+            });
+            
         });
 
-        // this.model['get_modulerelation-taskwatchers-edit']().then(function(watchers){
-        //     self.model.set('modulerelation-taskwatchers', [1,2,3,4,5,6,7,8,9,10] );
-        // });
     },
     updateModel: function(model) {
         this.model = model;
@@ -224,7 +237,8 @@ var ContentView = BaseView.extend({
         this.commentsFetch();
         this.watchersFetch();
     },
-    onChange: function(){console.log(this.model.attributes);
+    onChange: function(){
+        this.model.set('modulerelation-taskwatchers', this.watchers, {silent: true} );
         this.model.update_self(this.model.attributes);
     },
 

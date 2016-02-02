@@ -110,6 +110,11 @@
 				<li class="details-table_watchers">
 					<div class="details-table_term">Watchers:</div>
 					<div class="details-table_desc details-table_watchers_container"></div>
+
+					<div class="details-table_desc custom-select custom-select-watchers">
+						<span class="custom-select-value">Add watchers</span>
+						<input class="custom-select-input" type="hidden" name="processing">
+			 		</div>
 				</li>
 
 				<li class="details-table_hours">
