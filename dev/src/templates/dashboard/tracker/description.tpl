@@ -45,18 +45,16 @@
 				<li class="details-table_priority">
 					<div class="details-table_term">Priority:</div>
 					<div class="details-table_desc priorities-select custom-select custom-select-base priority">
-						<span class="custom-select-value"></span>
+						<span class="custom-select-value" name="priority-name"></span>
 						<input class="custom-select-input" type="hidden" name="priority">
-						<input class="custom-select-input-name" type="hidden" name="priority-name">
 			 		</div>
 				</li>
 
 				<li class="details-table_status">
 					<div class="details-table_term">Status:</div>
 					<div class="details-table_desc custom-select custom-select-status">
-						<span class="custom-select-value"></span>
+						<span class="custom-select-value" name="processing-name"></span>
 						<input class="custom-select-input" type="hidden" name="processing">
-						<input class="custom-select-input-name" type="hidden" name="processing-name">
 			 		</div>
 				</li>
 
@@ -82,9 +80,8 @@
 				<li class="details-table_milestone">
 					<div class="details-table_term">Milestones:</div>
 					<div class="details-table_desc custom-select custom-select-milestones" data-search placeholder="Milestone">
-						<span class="custom-select-value">Milestone</span>
+						<span class="custom-select-value" name="milestonename"></span>
 						<input class="custom-select-input" type="hidden" name="modulerelation-milestonetask">
-						<input class="custom-select-input-name" type="hidden" name="milestonename">
 					</div>
 				</li>
 
@@ -109,12 +106,7 @@
 
 				<li class="details-table_watchers">
 					<div class="details-table_term">Watchers:</div>
-					<div class="details-table_desc details-table_watchers_container">						
-						<div class="custom-select custom-select-watchers" data-multiselect placeholder="Add">
-							<span class="custom-select-value"></span>
-							<input class="custom-select-input" type="hidden" name="modulerelation-taskwatchers">
-				 		</div>
-					</div>
+					<div class="details-table_desc details-table_watchers_container"></div>
 				</li>
 
 				<li class="details-table_hours">

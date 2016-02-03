@@ -107,7 +107,7 @@ export class CustomSelect {
     selectCustomValue(event) {
         let self = event.data;
 
-
+        //Only one change event can be triggered if we have listenTo!!!
         if(self.$elem[0].hasAttribute('data-multiselect')){
             $(this).toggleClass('active');
 
@@ -123,6 +123,9 @@ export class CustomSelect {
             self.ui.input
                 .val($(this).data('id'))
                 .change();
+
+            if(self.ui.name.length)
+                self.ui.name.val($(this).data('text')).change();
 
             self.ui.value.text($(this).data('text'));
             self.$elem.attr('data-selected', $(this).data('text'));
@@ -145,32 +148,35 @@ export class CustomSelect {
     refresh() {
         let self = this;
 
-        if (this.ui.input.val()) {
-            if (this.options.initialState) {
-                this.options.url(this.ui.input.val()).then(function (response) {
-                    if(response.length){                    
-                        let model = response.at(0);
-                        self.refreshValue(model.get('name'));
+        if(!self.$elem[0].hasAttribute('data-multiselect')) {
+
+            if (this.ui.input.val()) {
+                if (this.options.initialState) {
+                    this.options.url(this.ui.input.val()).then(function (response) {
+                        if(response.length){                    
+                            let model = response.at(0);
+                            self.refreshValue(model.get('name'));
+                        }
+                    });
+                } else {
+                    if(this.options.items)
+                        this.refreshValue( _.findWhere(this.options.items, {id: this.ui.input.val()}).name );
+                    else {
+                        this.refreshValue(this.ui.value.text());
                     }
-                });
-            } else {
-                if(this.options.items)
-                    this.refreshValue( _.findWhere(this.options.items, {id: this.ui.input.val()}).name );
-                else {
-                    if(this.ui.name.length)
-                        this.refreshValue(this.ui.name.val() );
-                    else
-                        this.refreshValue(this.ui.input.val() );
                 }
+            } else {
+                this.refreshValue(this.ui.placeholder);
             }
-        } else {
-            this.refreshValue(this.ui.placeholder);
         }
     };
 
     refreshValue(value) {
         this.$elem.attr('data-selected', value);
         this.ui.value.text(value);
+
+        // if(this.ui.name.length)
+        //     this.ui.name.val(value).change();
     };
 
     destroy() {

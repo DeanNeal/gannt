@@ -70,7 +70,7 @@
 
 			<li class="details-table_priority">
 				<div class="details-table_desc priorities-select custom-select custom-select-base priority">
-					<span class="custom-select-value"></span>
+					<span class="custom-select-value" name="priority-name"></span>
 					<input class="custom-select-input" type="hidden" name="priority">
 					<input class="custom-select-input-name" type="hidden" name="priority-name">
 		 		</div>
@@ -78,7 +78,7 @@
 
 			<li class="details-table_status">
 				<div class="details-table_desc custom-select custom-select-status">
-					<span class="custom-select-value"></span>
+					<span class="custom-select-value" name="processing-name"></span>
 					<input class="custom-select-input" type="hidden" name="processing">
 					<input class="custom-select-input-name" type="hidden" name="processing-name">
 		 		</div>

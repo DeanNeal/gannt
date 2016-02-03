@@ -87,6 +87,11 @@ var Helpers = {
         for (var value  in restrict) { 
           $(form).find(`[name='${value}']`).attr(restrict[value]);
         }
+    },
+    getIds: function(collection){
+        return collection.map(function(item){ 
+             return item.get('id');
+        });
     }
 
 };

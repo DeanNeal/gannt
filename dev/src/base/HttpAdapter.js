@@ -39,23 +39,42 @@ class PromiseHandler {
         let uri = this.options.url;
         /* @endif */
 
-        if (args && typeof args === "object" && Object.keys(args).length) {
-            uri += '?';
-            let argCount = 0;
-            for (let key in args) {
-                if (args.hasOwnProperty(key)) {
-                    if (argCount++) {
-                        uri += '&';
+        if (this.options.method == "GET"){
+
+            if (args && typeof args === "object" && Object.keys(args).length) {
+                uri += uri.indexOf('?') > 0 ? '&' : '?';
+               // uri += '?';
+                let argCount = 0;
+                for (let key in args) {
+                    if (args.hasOwnProperty(key)) {
+                        if (argCount++) {
+                            uri += '&';
+                        }
+                        uri += `${encodeURIComponent(key)}=${encodeURIComponent(args[key])}`;
                     }
-                    uri += `${encodeURIComponent(key)}=${encodeURIComponent(args[key])}`;
                 }
+            } else if (typeof args === "string") {
+                uri += uri.indexOf('?') > 0 ? '&' : '?';
+                uri += `by-id[id]=${args}`;
             }
-        } else if (typeof args === "string") {
-            uri += uri.indexOf('?') > 0 ? '&' : '?';
-            uri += `by-id[id]=${args}`;
         }
 
         return uri;
+    }
+
+    generateParams() {
+        let args = this.options.args;
+        let argCount = 0;
+        let params = '';
+        for (let key in args) { 
+            if (args.hasOwnProperty(key)) {
+                if (argCount++) {
+                    params += '&';
+                }
+                params += `${encodeURIComponent(key)}=${encodeURIComponent(args[key])}`;
+            }
+        }
+        return params;
     }
 
     onResolve(self) {
@@ -85,7 +104,7 @@ class PromiseHandler {
             throw new TypeError(`Resolver must be a function but it is ${typeof resolve}`);
         } else {
             this.resolve = resolve;
-        }
+        } 
 
         if (typeof reject !== 'function') {
             throw new TypeError(`Rejecter must be a function but it is ${typeof reject}`);
@@ -101,7 +120,10 @@ class PromiseHandler {
         xhr.withCredentials = true;
 
         xhr.open(this.options.method, this.generateUri(), true);
-        xhr.send();
+        if (this.options.method == "GET")
+            xhr.send();
+        else 
+            xhr.send(this.generateParams());
 
         xhr.onload = function () {
             self.onResolve(this);

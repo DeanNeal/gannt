@@ -53,7 +53,8 @@ var ContentView = BaseView.extend({
 		var currentEl = $(e.target);
  		if(currentEl.hasClass('btn-add-new') || currentEl.hasClass('icon-add'))
  			return;
-
+        if(!currentEl.parents('body').length)
+            return;
 		if(!currentEl.parents().hasClass('task-create'))
 		  	this.parent.trigger('createView:close');
 	},
@@ -81,16 +82,16 @@ var ContentView = BaseView.extend({
 			'taskusername': 'null',
 			'timestamp': "2014-04-24 14:59:25"
 		});
-		model.set(this.model.attributes);
 
+		model.set(this.model.attributes);
 		this.parent.trigger('task:add', model);
 	},
 	remove: function(){
 		Backbone.off('global:click', this.onGlobalClick, this);
 		this.modelBinder.unbind();
 
-		this.getElement('#task-date-start').datepicker("destroy");
-		this.getElement('#task-date-finish').datepicker("destroy");
+		// this.getElement('#task-date-start').datepicker("destroy");
+		// this.getElement('#task-date-finish').datepicker("destroy");
 		BaseView.prototype.remove.call(this);
 	}
 });

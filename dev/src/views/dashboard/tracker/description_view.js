@@ -55,7 +55,7 @@ var ContentView = BaseView.extend({
         this.commentsPreloaderView = this.addView(PreloaderView, {}, '.left-view_content');
 
         //this.commentsFetch();
-//        this.watchersFetch();
+        this.watchersFetch();
      //   this.model.on('change', this.onChange, this);
 
         this.modelBinder = new Backbone.ModelBinder();
@@ -101,10 +101,10 @@ var ContentView = BaseView.extend({
             template: 'customSelectListTpl'
         });
 
-        this.getElement('.custom-select-watchers').customSelect({
-            url: this.model['get_modulerelation-taskwatchers-edit'],
-            template: 'customSelectListTpl'
-        });
+        // this.getElement('.custom-select-watchers').customSelect({
+        //     url: this.model['get_modulerelation-taskwatchers-edit'],
+        //     template: 'customSelectListTpl'
+        // });
 
         // Restrict для шаблонизатора форм.
         // var restrict = { 
@@ -215,8 +215,7 @@ var ContentView = BaseView.extend({
         this.model['get_modulerelation-taskwatchers']().then(function(watchers){
             self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container', true);
         });
-
-        // this.model['update_modulerelation-taskwatchers'](args);
+        //this.addViewByName('watchersView', WatchersView, {}, '.details-table_watchers_container', true);
     },
     updateModel: function(model) {
         this.model = model;
@@ -224,13 +223,13 @@ var ContentView = BaseView.extend({
         this.modelBinder.bind(this.model, this.el);
         this.getElement('.custom-select').customSelect('refresh');
         this.commentsFetch();
-       // this.watchersFetch();
+        this.watchersFetch();
     },
     onChange: function(){
         var self = this; 
         //update model then do something
         this.model.update_self(this.model.attributes).then(function(){
-            self.watchersFetch();
+
         });
 
     },
