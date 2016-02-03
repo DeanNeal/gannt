@@ -216,6 +216,7 @@ var ContentView = BaseView.extend({
             self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container', true);
         });
 
+        this.model['update_modulerelation-taskwatchers'](args);
     },
     updateModel: function(model) {
         this.model = model;

@@ -183,10 +183,11 @@
             position: absolute;
             left: 0;
             right: 0;
-            top: 0;
+            top: 2px;
             text-align: center;
             background: #d9e0ea;
-            border: 1px dotted;
+            border: 1px dashed #aaa;
+            cursor: pointer;
         }
 
         .task-wrapper {
