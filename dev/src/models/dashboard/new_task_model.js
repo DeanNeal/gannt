@@ -11,7 +11,8 @@ var TaskFilterModel = Backbone.Model.extend({
 		'type'            : 'Task',
 		'milestonename'   : '+ Select Milestone',
 		'date-start'      : '0000-00-00',
-		'date-finish'     : '0000-00-00'
+		'date-finish'     : '0000-00-00',
+		'tasktag-name'    : 'Tag1,Tag2'
 	}
 });
 

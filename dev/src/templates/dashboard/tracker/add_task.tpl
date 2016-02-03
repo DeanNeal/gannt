@@ -69,7 +69,7 @@
 			</li>
 
 			<li class="details-table_priority">
-				<div class="details-table_desc priorities-select custom-select custom-select-base priority">
+				<div class="details-table_desc custom-select-priority custom-select custom-select-base priority">
 					<span class="custom-select-value" name="priority-name"></span>
 					<input class="custom-select-input" type="hidden" name="priority">
 					<input class="custom-select-input-name" type="hidden" name="priority-name">
@@ -103,9 +103,10 @@
 			</li>
 
 			<li class="details-table_milestone">
-				<div class="details-table_desc" name="milestonename">
-					<!-- <span class="icon-round-full"></span> -->
-					<span name="milestonename">+ Select Milestone</span>
+				<div class="details-table_desc custom-select custom-select-milestones" data-search placeholder="Milestone">
+					<span class="custom-select-value" name="milestonename"></span>
+					<input class="custom-select-input" type="hidden" name="milestonename">
+					<input class="custom-select-input-name" type="hidden" name="milestonename">
 				</div>
 			</li>
 

@@ -38,13 +38,18 @@ var ContentView = BaseView.extend({
 		    }
 		});
 
-		this.getElement('.custom-select').customSelect({
+		this.getElement('.custom-select-priority').customSelect({
 		    url: this.api.catalog.get_list_task_priority,
 		    template: 'customSelectListPriority'
 		});
-
+debugger
 		this.getElement('.custom-select-status').customSelect({
 		    url: this.api.catalog.get_processing,
+		    template: 'customSelectListPriority'
+		});
+
+		this.getElement('.custom-select-milestones').customSelect({
+			url: this.api.catalog.get_list_task_priority,
 		    template: 'customSelectListPriority'
 		});
 
