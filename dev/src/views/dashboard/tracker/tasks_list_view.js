@@ -63,30 +63,7 @@ var TaskList = BaseView.extend({
 		    self.addView(TaskListItem, {model: model});
 		});
 	},
-	addTask: function(){
-		var model = new Backbone.Model({
-			'create': "2014-04-24 14:59:25",
-			'date-finish': "2014-04-09 00:00:00",
-			'date-start': "2014-04-09 00:00:00",
-			'description': "",
-			'id': "34",
-			'milestonedatefinish': "2014-07-08",
-			'milestonename': "New Milestone",
-			'modulerelation-milestonetask': "20",
-			'modulerelation-taskmaintag': "8",
-			'modulerelation-taskuser': 'null',
-			'modulerelation-taskusercreator': 'null',
-			'name': "",
-			'priority': "0",
-			'priority-name': "low",
-			'processing': "0",
-			'processing-name': "new",
-			'taskmaintagname': "BPM",
-			'tasktagname': 'null',
-			'taskusername': 'null',
-			'timestamp': "2014-04-24 14:59:25"
-		});
-
+	addTask: function(model){
 	 	this.addItemView(TaskListItem, model, false, true);
 	},
 	remove: function(){
@@ -104,7 +81,7 @@ var TaskListWrapper = BaseView.extend({
 	events: {
 	    'click .task-list-item .row'                      : 'changeTask',
 	    'click .close-panel'                              : 'closeEditView',
-	    'click .add-task'                                 : 'addTask'
+	    'click .add-task'                                 : 'openTaskCreate'
 	},
 	onInitialize: function (params) {
 		BaseView.prototype.onInitialize.call(this, params);
@@ -116,6 +93,8 @@ var TaskListWrapper = BaseView.extend({
 		this.listenTo(this, 'taskView:close', this.closeEditView, this);
 
 		this.listenTo(this, 'createView:close', this.closeCreateView, this);
+
+		this.listenTo(this, 'task:add', this.onTaskAdd, this);
 	},
 	serialize: function () {
 		this.data = _.clone({data: this.collection});
@@ -134,7 +113,11 @@ var TaskListWrapper = BaseView.extend({
 			self.preloaderView.hide();
  		});
 	},
-	addTask: function(){
+	onTaskAdd: function(model){
+		this.taskListWrapper.addTask(model);
+		this.closeCreateView();
+	},
+	openTaskCreate: function(){
 		this.removeNestedViewByName('createView');
 		this.addViewByName('createView', TaskCreateView, {}, '.tasks-container .scroll', true);
 		// this.taskListWrapper.addTask();

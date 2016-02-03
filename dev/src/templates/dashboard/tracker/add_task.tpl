@@ -5,11 +5,11 @@
 
 	<div class="left-view">
 		<div class="subject">
-			<input type="text" placeholder="Subject">
+			<input type="text" placeholder="Subject" name="name">
 		</div>
 		
 		<div class="desc">
-			<textarea name="" placeholder="Description"></textarea>
+			<textarea name="" placeholder="Description" name="description"></textarea>
 		</div>
 
 		<div>

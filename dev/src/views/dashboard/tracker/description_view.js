@@ -216,7 +216,7 @@ var ContentView = BaseView.extend({
             self.addViewByName('watchersView', WatchersView, watchers, '.details-table_watchers_container', true);
         });
 
-        this.model['update_modulerelation-taskwatchers'](args);
+        // this.model['update_modulerelation-taskwatchers'](args);
     },
     updateModel: function(model) {
         this.model = model;
@@ -224,7 +224,7 @@ var ContentView = BaseView.extend({
         this.modelBinder.bind(this.model, this.el);
         this.getElement('.custom-select').customSelect('refresh');
         this.commentsFetch();
-        this.watchersFetch();
+       // this.watchersFetch();
     },
     onChange: function(){
         var self = this; 
