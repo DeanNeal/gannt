@@ -237,6 +237,9 @@
                 vertical-align: middle;
                 min-height: 36px;
 
+                .custom-select-value{ 
+                    cursor: pointer;
+                }
                 &-wrapper {
                     display: inline-block;
                     vertical-align: middle;

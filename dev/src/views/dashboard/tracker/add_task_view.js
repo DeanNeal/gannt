@@ -42,9 +42,9 @@ var ContentView = BaseView.extend({
 		    url: this.api.catalog.get_list_task_priority,
 		    template: 'customSelectListPriority'
 		});
-debugger
+ 
 		this.getElement('.custom-select-status').customSelect({
-		    url: this.api.catalog.get_processing,
+		    url: this.api.catalog.get_list_task_status,
 		    template: 'customSelectListPriority'
 		});
 
