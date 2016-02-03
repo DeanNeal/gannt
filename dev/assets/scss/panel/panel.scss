@@ -221,6 +221,10 @@
             & > div {
                 vertical-align: middle;
             }
+
+            .#{$self}_desc{
+                min-height: 36px;
+            }
             
             // .details-table_watchers__container
             &_container {
@@ -231,6 +235,13 @@
             .watchers {
                 display: inline-block;
                 vertical-align: middle;
+                min-height: 36px;
+
+                &-wrapper {
+                    display: inline-block;
+                    vertical-align: middle;
+                    min-height: 36px;
+                }
             }
 
             .watcher_item {
